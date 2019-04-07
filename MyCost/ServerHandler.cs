@@ -40,5 +40,15 @@ namespace MyCost
 
             return resultData;
         }
+
+        public static string RetrieveDailyInfo(int userid)
+        {
+            return null;
+        }
+
+        public static string RetriveMonthlyInfo(int userid)
+        {
+            return null;
+        }
     }
 }

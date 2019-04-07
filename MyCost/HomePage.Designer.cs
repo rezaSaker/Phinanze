@@ -68,6 +68,7 @@
             this.btn_addNewData.Size = new System.Drawing.Size(102, 82);
             this.btn_addNewData.TabIndex = 1;
             this.btn_addNewData.UseVisualStyleBackColor = false;
+            this.btn_addNewData.Click += new System.EventHandler(this.btn_addNewData_Click);
             // 
             // btn_statistics
             // 
@@ -108,9 +109,10 @@
             this.tb_headerText.Location = new System.Drawing.Point(3, 3);
             this.tb_headerText.Name = "tb_headerText";
             this.tb_headerText.ReadOnly = true;
-            this.tb_headerText.Size = new System.Drawing.Size(347, 26);
+            this.tb_headerText.Size = new System.Drawing.Size(411, 26);
             this.tb_headerText.TabIndex = 0;
-            this.tb_headerText.Text = "Showing expense and earning data for all years";
+            this.tb_headerText.Text = "Showing monthly expense and earning data for all years";
+            this.tb_headerText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cmb_year
             // 
@@ -118,9 +120,9 @@
             this.cmb_year.FormattingEnabled = true;
             this.cmb_year.Items.AddRange(new object[] {
             "All years"});
-            this.cmb_year.Location = new System.Drawing.Point(356, 3);
+            this.cmb_year.Location = new System.Drawing.Point(420, 3);
             this.cmb_year.Name = "cmb_year";
-            this.cmb_year.Size = new System.Drawing.Size(310, 26);
+            this.cmb_year.Size = new System.Drawing.Size(246, 26);
             this.cmb_year.TabIndex = 1;
             // 
             // dataGridView
@@ -177,6 +179,7 @@
             this.Controls.Add(this.btn_home);
             this.Name = "HomePage";
             this.Text = "Home Page";
+            this.Load += new System.EventHandler(this.HomePage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
