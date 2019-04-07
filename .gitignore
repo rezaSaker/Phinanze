@@ -3,3 +3,4 @@ MyCost/bin/*
 .vs
 MyCost.sln
 *.config
+Assets/*
