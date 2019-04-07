@@ -2,3 +2,4 @@ MyCost/obj/*
 MyCost/bin/*
 .vs
 MyCost.sln
+*.config
