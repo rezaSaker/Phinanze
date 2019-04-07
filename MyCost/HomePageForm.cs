@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace MyCost
 {
-    public partial class HomePage : Form
+    public partial class HomePageForm : Form
     {
         private int userid;
 
-        public HomePage(int userid)
+        public HomePageForm(int userid)
         {
             InitializeComponent();
 
@@ -42,8 +42,8 @@ namespace MyCost
 
         private void btn_addNewData_Click(object sender, EventArgs e)
         {
-            MonthlyReport monReport = new MonthlyReport();
-            monReport.Show();
+            AddNewDataForm form = new AddNewDataForm(userid);
+            form.Show();
         }
     }
 }

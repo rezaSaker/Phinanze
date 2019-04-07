@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MyCost
 {
-    public partial class AddNewData : Form
+    public partial class MonthlyReportForm : Form
     {
-        public AddNewData()
+        public MonthlyReportForm()
         {
             InitializeComponent();
         }

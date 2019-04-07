@@ -1,6 +1,6 @@
 ﻿namespace MyCost
 {
-    partial class AddNewData
+    partial class AddNewDataForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridView_expenses = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tb_note = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lbl_status = new System.Windows.Forms.Label();
@@ -39,10 +43,6 @@
             this.cmb_month = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.cmb_year = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +68,28 @@
             this.dataGridView_expenses.Name = "dataGridView_expenses";
             this.dataGridView_expenses.Size = new System.Drawing.Size(753, 153);
             this.dataGridView_expenses.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Reason";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 255;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Amount";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Comment";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 255;
             // 
             // tb_note
             // 
@@ -185,28 +207,6 @@
             this.cmb_year.Size = new System.Drawing.Size(161, 26);
             this.cmb_year.TabIndex = 22;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Reason";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 255;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Amount";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Comment";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 255;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -280,7 +280,7 @@
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
             // 
-            // AddNewData
+            // AddNewDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -300,8 +300,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.tb_note);
             this.Controls.Add(this.dataGridView_expenses);
-            this.Name = "AddNewData";
+            this.Name = "AddNewDataForm";
             this.Text = "Add New Data";
+            this.Load += new System.EventHandler(this.AddNewDataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_expenses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

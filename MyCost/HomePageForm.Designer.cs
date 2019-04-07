@@ -1,6 +1,6 @@
 ﻿namespace MyCost
 {
-    partial class HomePage
+    partial class HomePageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePageForm));
             this.btn_home = new System.Windows.Forms.Button();
             this.btn_addNewData = new System.Windows.Forms.Button();
             this.btn_statistics = new System.Windows.Forms.Button();

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_register = new System.Windows.Forms.Button();
-            this.btn_login = new System.Windows.Forms.Button();
+            this.btn_registerPanel = new System.Windows.Forms.Button();
+            this.btn_loginPanel = new System.Windows.Forms.Button();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
             this.btn_submit = new System.Windows.Forms.Button();
             this.tb_confirmPassword = new System.Windows.Forms.TextBox();
@@ -39,35 +39,35 @@
             this.cb_rememberMe = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // btn_register
+            // btn_registerPanel
             // 
-            this.btn_register.AutoSize = true;
-            this.btn_register.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_register.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_register.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_register.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_register.Location = new System.Drawing.Point(140, 82);
-            this.btn_register.Name = "btn_register";
-            this.btn_register.Size = new System.Drawing.Size(246, 36);
-            this.btn_register.TabIndex = 0;
-            this.btn_register.Text = "Register";
-            this.btn_register.UseVisualStyleBackColor = false;
-            this.btn_register.Click += new System.EventHandler(this.btn_register_Click);
+            this.btn_registerPanel.AutoSize = true;
+            this.btn_registerPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_registerPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_registerPanel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_registerPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_registerPanel.Location = new System.Drawing.Point(140, 82);
+            this.btn_registerPanel.Name = "btn_registerPanel";
+            this.btn_registerPanel.Size = new System.Drawing.Size(246, 36);
+            this.btn_registerPanel.TabIndex = 0;
+            this.btn_registerPanel.Text = "Register";
+            this.btn_registerPanel.UseVisualStyleBackColor = false;
+            this.btn_registerPanel.Click += new System.EventHandler(this.btn_registerPanel_Click);
             // 
-            // btn_login
+            // btn_loginPanel
             // 
-            this.btn_login.AutoSize = true;
-            this.btn_login.BackColor = System.Drawing.Color.White;
-            this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_login.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_login.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_login.Location = new System.Drawing.Point(394, 82);
-            this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(246, 36);
-            this.btn_login.TabIndex = 1;
-            this.btn_login.Text = "Log in";
-            this.btn_login.UseVisualStyleBackColor = false;
-            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            this.btn_loginPanel.AutoSize = true;
+            this.btn_loginPanel.BackColor = System.Drawing.Color.White;
+            this.btn_loginPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_loginPanel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_loginPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_loginPanel.Location = new System.Drawing.Point(394, 82);
+            this.btn_loginPanel.Name = "btn_loginPanel";
+            this.btn_loginPanel.Size = new System.Drawing.Size(246, 36);
+            this.btn_loginPanel.TabIndex = 1;
+            this.btn_loginPanel.Text = "Log in";
+            this.btn_loginPanel.UseVisualStyleBackColor = false;
+            this.btn_loginPanel.Click += new System.EventHandler(this.btn_loginPanel_Click);
             // 
             // lbl_welcomeText
             // 
@@ -173,8 +173,8 @@
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.lbl_welcomeText);
-            this.Controls.Add(this.btn_login);
-            this.Controls.Add(this.btn_register);
+            this.Controls.Add(this.btn_loginPanel);
+            this.Controls.Add(this.btn_registerPanel);
             this.Name = "MainForm";
             this.Text = "Login or Register";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -185,8 +185,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_register;
-        private System.Windows.Forms.Button btn_login;
+        private System.Windows.Forms.Button btn_registerPanel;
+        private System.Windows.Forms.Button btn_loginPanel;
         private System.Windows.Forms.Label lbl_welcomeText;
         private System.Windows.Forms.Button btn_submit;
         private System.Windows.Forms.TextBox tb_confirmPassword;

@@ -23,23 +23,22 @@ namespace MyCost
             DisplayLoginPanel();
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        private void btn_loginPanel_Click(object sender, EventArgs e)
         {
             DisplayLoginPanel();
         }
 
         private void DisplayLoginPanel()
         {
-            btn_register.BackColor = Color.RoyalBlue;
-            btn_register.ForeColor = Color.White;
-            btn_login.BackColor = Color.White;
-            btn_login.ForeColor = Color.Black;
+            btn_registerPanel.BackColor = Color.RoyalBlue;
+            btn_registerPanel.ForeColor = Color.White;
+            btn_loginPanel.BackColor = Color.White;
+            btn_loginPanel.ForeColor = Color.Black;
+            btn_submit.Text = "Log in";
+            btn_submit.Location = new Point(270, 251);
 
             tb_confirmPassword.Visible = false;
             tb_confirmPassword.Enabled = false;
-
-            btn_submit.Text = "Log in";
-            btn_submit.Location = new Point(270, 251);
 
             cb_rememberMe.Location = new Point(140, 234);
 
@@ -48,13 +47,12 @@ namespace MyCost
             ResetTextBoxProperties();
         }
 
-        private void btn_register_Click(object sender, EventArgs e)
+        private void btn_registerPanel_Click(object sender, EventArgs e)
         {
-            btn_register.BackColor = Color.White;
-            btn_register.ForeColor = Color.Black;
-            btn_login.BackColor = Color.RoyalBlue;
-            btn_login.ForeColor = Color.White;
-
+            btn_registerPanel.BackColor = Color.White;
+            btn_registerPanel.ForeColor = Color.Black;
+            btn_loginPanel.BackColor = Color.RoyalBlue;
+            btn_loginPanel.ForeColor = Color.White;
             btn_submit.Text = "Register";
             btn_submit.Location = new Point(270, 299);
 
@@ -130,7 +128,7 @@ namespace MyCost
                 else
                 {
                     int userid = Convert.ToInt16(result);
-                    HomePage homePage = new HomePage(userid);
+                    HomePageForm homePage = new HomePageForm(userid);
                     homePage.Show();
                     this.Visible = false;
                     this.Enabled = false;
@@ -174,7 +172,7 @@ namespace MyCost
 
                 if(int.TryParse(result, out userid))
                 {
-                    HomePage homePage = new HomePage(userid);
+                    HomePageForm homePage = new HomePageForm(userid);
                     homePage.Show();
                     this.Visible = false;
                     this.Enabled = false;

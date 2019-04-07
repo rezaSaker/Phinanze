@@ -1,6 +1,6 @@
 ﻿namespace MyCost
 {
-    partial class MonthlyReport
+    partial class MonthlyReportForm
     {
         /// <summary>
         /// Required designer variable.
