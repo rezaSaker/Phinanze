@@ -128,8 +128,16 @@ namespace MyCost
                 else
                 {
                     int userid = Convert.ToInt16(result);
-                    HomePageForm homePage = new HomePageForm(userid);
+                    StaticStorage.userid = userid;
+
+                    //gets all data for this user from database
+                    FetchDailyInfo();
+                    FetchMonthlyInfo();
+                    FetchCategories();
+
+                    HomePageForm homePage = new HomePageForm();
                     homePage.Show();
+
                     this.Visible = false;
                     this.Enabled = false;
                 }
@@ -172,8 +180,11 @@ namespace MyCost
 
                 if(int.TryParse(result, out userid))
                 {
-                    HomePageForm homePage = new HomePageForm(userid);
+                    StaticStorage.userid = userid;
+
+                    HomePageForm homePage = new HomePageForm();
                     homePage.Show();
+
                     this.Visible = false;
                     this.Enabled = false;
                 }
@@ -186,6 +197,23 @@ namespace MyCost
             {
                 lbl_status.Text = "Server connection error";
             }                                       
+        }
+
+        private void FetchDailyInfo()
+        {
+            //get daily expenses and earnings from database
+            string result = ServerHandler.RetrieveDailyInfo();
+        }
+
+        private void FetchMonthlyInfo()
+        {
+            //get monthly expenses and earnings from database
+            string result = ServerHandler.RetriveMonthlyInfo();
+        }
+
+        private void FetchCategories()
+        {
+
         }
     }
 }

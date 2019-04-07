@@ -11,14 +11,10 @@ using System.Windows.Forms;
 namespace MyCost
 {
     public partial class AddNewDataForm : Form
-    {
-        private int userid;
-        
-        public AddNewDataForm(int userid)
+    {      
+        public AddNewDataForm()
         {
             InitializeComponent();
-
-            this.userid = userid;
         }
 
         private void AddNewDataForm_Load(object sender, EventArgs e)
@@ -53,6 +49,46 @@ namespace MyCost
             cmb_day.SelectedIndex = day - 1;
             cmb_month.SelectedIndex = month - 1;
             cmb_year.SelectedIndex = cmb_year.Items.IndexOf(year.ToString());
+        }
+
+        private void dgv_expenses_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 1)
+            {
+                CategoryListForm form = new CategoryListForm(dgv_expense, e.RowIndex);
+                form.Show();
+            }
+        }
+
+        private void btn_applyCategoryToAll_Click(object sender, EventArgs e)
+        {
+            if(dgv_earning.SelectedRows.Count < 1 && dgv_expense.SelectedRows.Count < 1)
+            {
+                //no row is selected
+                return;
+            }
+
+            List<int> expenseRowIndexList = new List<int>();
+            List<int> earningRowIndexList = new List<int>();
+            
+            foreach(DataGridViewRow row in dgv_expense.SelectedRows)
+            {
+                expenseRowIndexList.Add(row.Index);
+            }
+
+            foreach(DataGridViewRow row in dgv_earning.SelectedRows)
+            {
+                earningRowIndexList.Add(row.Index);
+            }
+
+            CategoryListForm form;
+            form = new CategoryListForm(
+                dgv_expense, 
+                dgv_earning, 
+                expenseRowIndexList, 
+                earningRowIndexList);
+
+            form.Show();
         }
     }
 }

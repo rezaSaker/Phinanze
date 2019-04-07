@@ -19,7 +19,7 @@ namespace MyCost
             requestData.Add("username", username);
             requestData.Add("password", password);
 
-            byte[] resultBytes = www.UploadValues("http://localhost/_HOST/MyCost/userAuthentication.php", "POST", requestData);
+            byte[] resultBytes = www.UploadValues(StaticStorage.SERVER_ADDRESS + "userAuthentication.php", "POST", requestData);
             string resultData = Encoding.UTF8.GetString(resultBytes);
 
             return resultData;
@@ -35,18 +35,18 @@ namespace MyCost
             requestData.Add("username", username);
             requestData.Add("password", password);
 
-            byte[] resultBytes = www.UploadValues("http://localhost/_HOST/MyCost/registerNewUser.php", "POST", requestData);
+            byte[] resultBytes = www.UploadValues(StaticStorage.SERVER_ADDRESS + "registerNewUser.php", "POST", requestData);
             string resultData = Encoding.UTF8.GetString(resultBytes);
 
             return resultData;
         }
 
-        public static string RetrieveDailyInfo(int userid)
+        public static string RetrieveDailyInfo()
         {
             return null;
         }
 
-        public static string RetriveMonthlyInfo(int userid)
+        public static string RetriveMonthlyInfo()
         {
             return null;
         }

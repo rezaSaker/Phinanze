@@ -28,11 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView_expenses = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_expense = new System.Windows.Forms.DataGridView();
             this.tb_note = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.lbl_status = new System.Windows.Forms.Label();
@@ -44,52 +40,35 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.cmb_year = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_earning = new System.Windows.Forms.DataGridView();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_save = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_expenses)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_expense)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_earning)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView_expenses
+            // dgv_expense
             // 
-            this.dataGridView_expenses.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView_expenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_expenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_expense.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_expense.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_expense.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Category,
             this.Column2,
             this.Column3});
-            this.dataGridView_expenses.Location = new System.Drawing.Point(25, 112);
-            this.dataGridView_expenses.Name = "dataGridView_expenses";
-            this.dataGridView_expenses.Size = new System.Drawing.Size(753, 153);
-            this.dataGridView_expenses.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Reason";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 255;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Amount";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Comment";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 255;
+            this.dgv_expense.Location = new System.Drawing.Point(25, 112);
+            this.dgv_expense.Name = "dgv_expense";
+            this.dgv_expense.Size = new System.Drawing.Size(753, 153);
+            this.dgv_expense.TabIndex = 3;
+            this.dgv_expense.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_expenses_CellDoubleClick);
             // 
             // tb_note
             // 
@@ -109,7 +88,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(693, 26);
             this.textBox2.TabIndex = 6;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_status
             // 
@@ -134,6 +112,7 @@
             this.btn_applyCategoryToAll.TabIndex = 16;
             this.btn_applyCategoryToAll.Text = "Apply category to all ";
             this.btn_applyCategoryToAll.UseVisualStyleBackColor = false;
+            this.btn_applyCategoryToAll.Click += new System.EventHandler(this.btn_applyCategoryToAll_Click);
             // 
             // textBox1
             // 
@@ -218,41 +197,19 @@
             this.label1.Text = "Earning";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dataGridView1
+            // dgv_earning
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_earning.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_earning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_earning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
-            this.dataGridView1.Location = new System.Drawing.Point(25, 310);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(753, 153);
-            this.dataGridView1.TabIndex = 23;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Reason";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 255;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 255;
+            this.dgv_earning.Location = new System.Drawing.Point(25, 310);
+            this.dgv_earning.Name = "dgv_earning";
+            this.dgv_earning.Size = new System.Drawing.Size(753, 153);
+            this.dgv_earning.TabIndex = 23;
             // 
             // btn_save
             // 
@@ -280,6 +237,52 @@
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Reason";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 255;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Amount";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Comment";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 255;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Reason";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 255;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 255;
+            // 
             // AddNewDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,7 +291,7 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_earning);
             this.Controls.Add(this.cmb_year);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.cmb_month);
@@ -299,40 +302,40 @@
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.tb_note);
-            this.Controls.Add(this.dataGridView_expenses);
+            this.Controls.Add(this.dgv_expense);
             this.Name = "AddNewDataForm";
             this.Text = "Add New Data";
             this.Load += new System.EventHandler(this.AddNewDataForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_expenses)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_expense)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_earning)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView_expenses;
+        private System.Windows.Forms.DataGridView dgv_expense;
         private System.Windows.Forms.TextBox tb_note;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.Button btn_applyCategoryToAll;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cmb_day;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox cmb_month;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ComboBox cmb_year;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_earning;
+        private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.Button btn_save;
-        private System.Windows.Forms.Button btn_cancel;
     }
 }
