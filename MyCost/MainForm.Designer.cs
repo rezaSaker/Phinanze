@@ -35,6 +35,8 @@
             this.tb_confirmPassword = new System.Windows.Forms.TextBox();
             this.tb_password = new System.Windows.Forms.TextBox();
             this.tb_username = new System.Windows.Forms.TextBox();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.cb_rememberMe = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btn_register
@@ -86,7 +88,7 @@
             this.btn_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_submit.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_submit.ForeColor = System.Drawing.Color.White;
-            this.btn_submit.Location = new System.Drawing.Point(269, 284);
+            this.btn_submit.Location = new System.Drawing.Point(270, 299);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(246, 36);
             this.btn_submit.TabIndex = 13;
@@ -136,12 +138,36 @@
             this.tb_username.Text = "Username";
             this.tb_username.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tb_username_MouseClick);
             // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status.Location = new System.Drawing.Point(157, 348);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(82, 20);
+            this.lbl_status.TabIndex = 14;
+            this.lbl_status.Text = "Label Status";
+            this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cb_rememberMe
+            // 
+            this.cb_rememberMe.AutoSize = true;
+            this.cb_rememberMe.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_rememberMe.Location = new System.Drawing.Point(140, 269);
+            this.cb_rememberMe.Name = "cb_rememberMe";
+            this.cb_rememberMe.Size = new System.Drawing.Size(126, 21);
+            this.cb_rememberMe.TabIndex = 15;
+            this.cb_rememberMe.Text = "Remember me";
+            this.cb_rememberMe.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(784, 363);
+            this.ClientSize = new System.Drawing.Size(784, 377);
+            this.Controls.Add(this.cb_rememberMe);
+            this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.tb_confirmPassword);
             this.Controls.Add(this.tb_password);
@@ -166,6 +192,8 @@
         private System.Windows.Forms.TextBox tb_confirmPassword;
         private System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.TextBox tb_username;
+        private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.CheckBox cb_rememberMe;
     }
 }
 
