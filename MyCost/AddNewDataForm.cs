@@ -60,6 +60,15 @@ namespace MyCost
             }
         }
 
+        private void dgv_earning_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 1)
+            {
+                CategoryListForm form = new CategoryListForm(dgv_earning, e.RowIndex);
+                form.Show();
+            }
+        }
+
         private void btn_applyCategoryToAll_Click(object sender, EventArgs e)
         {
             if(dgv_earning.SelectedRows.Count < 1 && dgv_expense.SelectedRows.Count < 1)
@@ -89,6 +98,166 @@ namespace MyCost
                 earningRowIndexList);
 
             form.Show();
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            Daily daily = new Daily();
+            daily.Note = tb_note.Text;
+            daily.Day = Convert.ToUInt16(cmb_day.SelectedValue.ToString());
+            daily.Month = cmb_day.Items.IndexOf(cmb_day.SelectedValue.ToString()) + 1;
+            daily.Year = Convert.ToUInt16(cmb_year.SelectedValue.ToString());
+
+            string source;
+            string reason;
+            string category;
+            string comment;
+            double amount;
+
+            foreach(DataGridViewRow row in dgv_expense.Rows)
+            {
+                try
+                {
+                    reason = dgv_expense.Rows[row.Index].Cells[0].Value.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    //since reason is option, no need to show any warning
+                    reason = "";
+                }
+
+                try
+                {
+                    amount = Convert.ToDouble(dgv_expense.Rows[row.Index].Cells[1].Value.ToString());
+                }
+                catch (NullReferenceException)
+                {
+                    string message = "Looks like you forgot to enter amount on row ";
+                    message += row.Index + " in Expense table Continuing may cause ";
+                    message += "loss of data.  Do you want to continue?";
+
+                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes) amount = .0;
+                    else return;         
+                }
+                catch (FormatException)
+                {
+                    string message = "Looks like you have typos on row ";
+                    message += row.Index + " in expense table. Amount can only be numbers. ";
+                    message += "Continuing may cause loss of data. Do you want to continue?";
+
+                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes) amount = .0;
+                    else return;
+                }
+
+                try
+                {
+                    category = dgv_expense.Rows[row.Index].Cells[2].Value.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    string message = "Looks like you forgot to enter category on row ";
+                    message += row.Index + " in Expense table. Continuing may cause ";
+                    message += "loss of data. Do you want to continue?";
+
+                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes) category = "";
+                    else return;
+                }
+
+                try
+                {
+                    comment = dgv_expense.Rows[row.Index].Cells[3].Value.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    //since comment is optional, no need to show any warning
+                    comment = "";
+                }
+
+                Expense expense = new Expense(reason, amount, category, comment);
+                daily.Expenses.Add(expense);
+            }
+
+            foreach (DataGridViewRow row in dgv_earning.Rows)
+            {
+                try
+                {
+                    source = dgv_earning.Rows[row.Index].Cells[0].Value.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    //since source is option, no need to show any warning
+                    source = "";
+                }
+
+                try
+                {
+                    amount = Convert.ToDouble(dgv_earning.Rows[row.Index].Cells[1].Value.ToString());
+                }
+                catch (NullReferenceException)
+                {
+                    string message = "Looks like you forgot to enter amount on row ";
+                    message += row.Index + " in Earning table Continuing may cause ";
+                    message += "loss of data.  Do you want to continue?";
+
+                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes) amount = .0;
+                    else return;
+                }
+                catch (FormatException)
+                {
+                    string message = "Looks like you have typos on row ";
+                    message += row.Index + " in Earning table. Amount can only be numbers. ";
+                    message += "Continuing may cause loss of data. Do you want to continue?";
+
+                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes) amount = .0;
+                    else return;
+                }
+
+                try
+                {
+                    category = dgv_earning.Rows[row.Index].Cells[2].Value.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    string message = "Looks like you forgot to enter category on row ";
+                    message += row.Index + " in earning table. Continuing may cause ";
+                    message += "loss of data. Do you want to continue?";
+
+                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (result == DialogResult.Yes) category = "";
+                    else return;
+                }
+
+                try
+                {
+                    comment = dgv_earning.Rows[row.Index].Cells[3].Value.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    //since comment is optional, no need to show any warning
+                    comment = "";
+                }
+
+                Earning earning = new Earning(source, amount, category, comment);
+                daily.Earnings.Add(earning);
+            }
+
+            string res = ServerHandler.SaveDailyInfo(daily);
         }
     }
 }

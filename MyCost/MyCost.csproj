@@ -57,6 +57,9 @@
     <Compile Include="CategoryListForm.Designer.cs">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Daily.cs" />
+    <Compile Include="Earning.cs" />
+    <Compile Include="Expense.cs" />
     <Compile Include="HomePageForm.cs">
       <SubType>Form</SubType>
     </Compile>

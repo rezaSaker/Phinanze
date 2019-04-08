@@ -210,6 +210,7 @@
             this.dgv_earning.Name = "dgv_earning";
             this.dgv_earning.Size = new System.Drawing.Size(753, 153);
             this.dgv_earning.TabIndex = 23;
+            this.dgv_earning.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_earning_CellDoubleClick);
             // 
             // btn_save
             // 
@@ -223,6 +224,7 @@
             this.btn_save.TabIndex = 25;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // btn_cancel
             // 
@@ -236,6 +238,7 @@
             this.btn_cancel.TabIndex = 26;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // Column1
             // 
@@ -262,7 +265,7 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Reason";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Source";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 255;
             // 
