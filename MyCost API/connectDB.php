@@ -1,9 +1,16 @@
 <?php
+
+/*
+	*connect to the database
+	*this file is used by several other files
+*/
+
+
 DEFINE('SERVER', 'server name');
 DEFINE('USERNAME', 'username');
 DEFINE('PASSWORD', 'password');
 DEFINE('DATABASE', 'database name');
 
-$connectDB = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE) or die("SERVER_ERROR");
+$connect = mysqli_connect(SERVER, USERNAME, PASSWORD, DATABASE) or die('Server connection error');
 
 ?>

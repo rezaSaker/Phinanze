@@ -8,11 +8,11 @@ namespace MyCost
 {
     class Expense
     {
+        private double amount;
+
         private string reason;
         private string category;
-        private string comment;
-
-        private double amount;
+        private string comment;      
 
         public Expense(string reason, double amount, string category, string comment)
         {

@@ -11,7 +11,9 @@ using System.Windows.Forms;
 namespace MyCost
 {
     public partial class AddNewDataForm : Form
-    {      
+    {
+        private int selectedDay;
+
         public AddNewDataForm()
         {
             InitializeComponent();
@@ -24,6 +26,23 @@ namespace MyCost
             int month = Convert.ToInt16(DateTime.Now.Month.ToString());
             int year = Convert.ToInt16(DateTime.Now.Year.ToString());
 
+            //sets years to cmb_year as items
+            for(int i = 2018; i < year + 10; i++)
+            {
+                cmb_year.Items.Add(i.ToString());
+            }
+
+            selectedDay = day; //is used to select the day in AddItemsToDayComboBox() method
+
+            //Sets the date fields to currents date
+            cmb_year.SelectedIndex = cmb_year.Items.IndexOf(year.ToString());
+            cmb_month.SelectedIndex = month - 1;
+        }
+
+        private void AddItemsToDayComboBox(int month, int year)
+        {
+            cmb_day.Items.Clear();
+
             //set the number of days according to month
             int numberOfdays;
             if (month == 2 && DateTime.IsLeapYear(year)) numberOfdays = 29;
@@ -34,26 +53,17 @@ namespace MyCost
             else numberOfdays = 31;
 
             //sets the days as items to combobox cmb_days
-            for(int i = 0; i < numberOfdays; i++)
+            for (int i = 0; i < numberOfdays; i++)
             {
                 cmb_day.Items.Add((i + 1).ToString());
             }
 
-            //sets years to cmb_year as items
-            for(int i = 2018; i < year + 10; i++)
-            {
-                cmb_year.Items.Add(i.ToString());
-            }
-
-            //Sets the date fields to currents date
-            cmb_day.SelectedIndex = day - 1;
-            cmb_month.SelectedIndex = month - 1;
-            cmb_year.SelectedIndex = cmb_year.Items.IndexOf(year.ToString());
+            cmb_day.SelectedIndex = selectedDay - 1;
         }
 
         private void dgv_expenses_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 1)
+            if(e.ColumnIndex == 2)
             {
                 CategoryListForm form = new CategoryListForm(dgv_expense, e.RowIndex);
                 form.Show();
@@ -62,7 +72,7 @@ namespace MyCost
 
         private void dgv_earning_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 2)
             {
                 CategoryListForm form = new CategoryListForm(dgv_earning, e.RowIndex);
                 form.Show();
@@ -109,9 +119,9 @@ namespace MyCost
         {
             Daily daily = new Daily();
             daily.Note = tb_note.Text;
-            daily.Day = Convert.ToUInt16(cmb_day.SelectedValue.ToString());
-            daily.Month = cmb_day.Items.IndexOf(cmb_day.SelectedValue.ToString()) + 1;
-            daily.Year = Convert.ToUInt16(cmb_year.SelectedValue.ToString());
+            daily.Day = Convert.ToUInt16(cmb_day.SelectedItem.ToString());
+            daily.Month = cmb_day.Items.IndexOf(cmb_day.SelectedItem.ToString()) + 1;
+            daily.Year = Convert.ToUInt16(cmb_year.SelectedItem.ToString());
 
             string source;
             string reason;
@@ -121,15 +131,17 @@ namespace MyCost
 
             foreach(DataGridViewRow row in dgv_expense.Rows)
             {
+                if(row.Index == dgv_expense.Rows.Count - 1)
+                {
+                    //this is the last row and it's an empty row
+                    break;
+                }
+
                 try
                 {
                     reason = dgv_expense.Rows[row.Index].Cells[0].Value.ToString();
                 }
-                catch (NullReferenceException)
-                {
-                    //since reason is option, no need to show any warning
-                    reason = "";
-                }
+                catch (NullReferenceException) { reason = ""; }
 
                 try
                 {
@@ -138,51 +150,34 @@ namespace MyCost
                 catch (NullReferenceException)
                 {
                     string message = "Looks like you forgot to enter amount on row ";
-                    message += row.Index + " in Expense table Continuing may cause ";
-                    message += "loss of data.  Do you want to continue?";
+                    message += (row.Index + 1) + ". Do you want to continue saving?";
 
-                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
                     if (result == DialogResult.Yes) amount = .0;
                     else return;         
                 }
                 catch (FormatException)
                 {
-                    string message = "Looks like you have typos on row ";
-                    message += row.Index + " in expense table. Amount can only be numbers. ";
-                    message += "Continuing may cause loss of data. Do you want to continue?";
+                    string message = "Looks like the amount is not correct on row ";
+                    message += (row.Index + 1) + " in expense table. Amount can only be numbers. ";
+                    message += "Please correct the amount before saving.";
 
-                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (result == DialogResult.Yes) amount = .0;
-                    else return;
+                    MessageBox.Show(message);
+                    return;
                 }
 
                 try
                 {
                     category = dgv_expense.Rows[row.Index].Cells[2].Value.ToString();
                 }
-                catch (NullReferenceException)
-                {
-                    string message = "Looks like you forgot to enter category on row ";
-                    message += row.Index + " in Expense table. Continuing may cause ";
-                    message += "loss of data. Do you want to continue?";
-
-                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (result == DialogResult.Yes) category = "";
-                    else return;
-                }
+                catch (NullReferenceException) { category = "None"; }
 
                 try
                 {
                     comment = dgv_expense.Rows[row.Index].Cells[3].Value.ToString();
                 }
-                catch (NullReferenceException)
-                {
-                    //since comment is optional, no need to show any warning
-                    comment = "";
-                }
+                catch (NullReferenceException) { comment = ""; }
 
                 Expense expense = new Expense(reason, amount, category, comment);
                 daily.Expenses.Add(expense);
@@ -190,15 +185,17 @@ namespace MyCost
 
             foreach (DataGridViewRow row in dgv_earning.Rows)
             {
+                if (row.Index == dgv_earning.Rows.Count - 1)
+                {
+                    //this is the last row and it's an empty row
+                    break;
+                }
+
                 try
                 {
                     source = dgv_earning.Rows[row.Index].Cells[0].Value.ToString();
                 }
-                catch (NullReferenceException)
-                {
-                    //since source is option, no need to show any warning
-                    source = "";
-                }
+                catch (NullReferenceException) { source = ""; }
 
                 try
                 {
@@ -207,57 +204,59 @@ namespace MyCost
                 catch (NullReferenceException)
                 {
                     string message = "Looks like you forgot to enter amount on row ";
-                    message += row.Index + " in Earning table Continuing may cause ";
-                    message += "loss of data.  Do you want to continue?";
+                    message += (row.Index + 1) + " in Earning table. Do you want to continue saving?";
 
-                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
                     if (result == DialogResult.Yes) amount = .0;
                     else return;
                 }
                 catch (FormatException)
                 {
-                    string message = "Looks like you have typos on row ";
-                    message += row.Index + " in Earning table. Amount can only be numbers. ";
-                    message += "Continuing may cause loss of data. Do you want to continue?";
+                    string message = "Looks like the amount is not correct on row ";
+                    message += (row.Index + 1) + " in expense table. Amount can only be numbers. ";
+                    message += "Please correct the amount before saving.";
 
-                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (result == DialogResult.Yes) amount = .0;
-                    else return;
+                    MessageBox.Show(message);
+                    return;
                 }
 
                 try
                 {
                     category = dgv_earning.Rows[row.Index].Cells[2].Value.ToString();
                 }
-                catch (NullReferenceException)
-                {
-                    string message = "Looks like you forgot to enter category on row ";
-                    message += row.Index + " in earning table. Continuing may cause ";
-                    message += "loss of data. Do you want to continue?";
-
-                    var result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (result == DialogResult.Yes) category = "";
-                    else return;
-                }
+                catch (NullReferenceException) { category = "None"; }
 
                 try
                 {
                     comment = dgv_earning.Rows[row.Index].Cells[3].Value.ToString();
                 }
-                catch (NullReferenceException)
-                {
-                    //since comment is optional, no need to show any warning
-                    comment = "";
-                }
+                catch (NullReferenceException) { comment = ""; }
 
                 Earning earning = new Earning(source, amount, category, comment);
                 daily.Earnings.Add(earning);
             }
 
-            string res = ServerHandler.SaveDailyInfo(daily);
+            if(ServerHandler.SaveDailyInfo(daily))
+            {
+                string message = "The info has been successfully saved. Do you want to close this page?";
+                DialogResult result = MessageBox.Show(message, "Notice", MessageBoxButtons.YesNo);
+
+                if(result == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else { MessageBox.Show("Sorry, something went wrong"); }
+        }
+
+        private void cmb_month_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //if the month chnages, the number of days should be chnaged
+            int month = cmb_month.SelectedIndex + 1;
+            int year = Convert.ToInt16(cmb_year.SelectedItem.ToString());
+
+            AddItemsToDayComboBox(month, year);
         }
     }
 }

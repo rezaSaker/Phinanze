@@ -8,8 +8,10 @@ namespace MyCost
 {
     class StaticStorage
     {
-        public const string SERVER_ADDRESS = "http://localhost/_HOST/MyCost/";
+        public const string ServerAddress = "http://localhost/_HOST/MyCost/";
 
-        public static int userid;
+        public static int UserID;
+
+        public static string AccessToken;
     }
 }

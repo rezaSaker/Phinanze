@@ -16,29 +16,39 @@ namespace MyCost
             System.Collections.Specialized.NameValueCollection requestData;
             requestData = new System.Collections.Specialized.NameValueCollection();
 
+            requestData.Add("key", Properties.Settings.Default.AccessKey);
             requestData.Add("username", username);
             requestData.Add("password", password);
 
-            byte[] resultBytes = www.UploadValues(StaticStorage.SERVER_ADDRESS + "userAuthentication.php", "POST", requestData);
-            string resultData = Encoding.UTF8.GetString(resultBytes);
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "userAuthentication.php", "POST", requestData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
 
-            return resultData;
+                return resultData;
+            }
+            catch { return "Server connection error";  }
         }
 
-        public static string RegisterNewUser(string username, string password)
+        public static string RegisterNewUser(string access_key, string username, string password)
         {
             WebClient www = new WebClient();
 
             System.Collections.Specialized.NameValueCollection requestData;
             requestData = new System.Collections.Specialized.NameValueCollection();
 
+            requestData.Add("key", access_key);
             requestData.Add("username", username);
             requestData.Add("password", password);
 
-            byte[] resultBytes = www.UploadValues(StaticStorage.SERVER_ADDRESS + "registerNewUser.php", "POST", requestData);
-            string resultData = Encoding.UTF8.GetString(resultBytes);
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "registerNewUser.php", "POST", requestData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
 
-            return resultData;
+                return resultData;
+            }
+            catch { return "Server connection error"; }
         }
 
         public static string RetrieveDailyInfo()
@@ -51,7 +61,7 @@ namespace MyCost
             return null;
         }
 
-        public static string SaveDailyInfo(Daily daily)
+        public static bool SaveDailyInfo(Daily daily)
         {
             WebClient www = new WebClient();
 
@@ -67,38 +77,51 @@ namespace MyCost
             string earningCategories = "";
             string earningComments = "";
 
-            int count = 0;
+            bool addSplitChar = false;
 
+            //adds splitting characters between expense properties so...
+            //...that we can split the rows when retrieving from db
             foreach (Expense expense in daily.Expenses)
             {
-                if (count > 0)
+                if (addSplitChar)
                 {
                     expenseReasons += "~";
                     expenseAmounts += "~";
                     expenseCategories += "~";
                     expenseComments += "~";
                 }
+                else { addSplitChar = true;  }
+
                 expenseReasons += expense.Reason;
                 expenseAmounts += expense.Amount.ToString();
                 expenseCategories += expense.Category;
                 expenseComments += expense.Comment;
             }
 
+            addSplitChar = false;
+
+            //adds splitting characters between expense properties so...
+            //...that we can split the rows when retrieving from db
             foreach (Earning earning in daily.Earnings)
             {
-                if (count > 0)
+                if (addSplitChar)
                 {
                     earningSources += "~";
                     earningAmounts += "~";
                     earningCategories += "~";
                     earningComments += "~";
                 }
+                else { addSplitChar = true; }
+
                 earningSources += earning.Source;
                 earningAmounts += earning.Amount.ToString();
                 earningCategories += earning.Category;
                 earningComments += earning.Comment;
             }
 
+            requestData.Add("key", Properties.Settings.Default.AccessKey);
+            requestData.Add("token", StaticStorage.AccessToken);
+            requestData.Add("userid", StaticStorage.UserID.ToString());
             requestData.Add("note", daily.Note);
             requestData.Add("day", daily.Day.ToString());
             requestData.Add("month", daily.Month.ToString());
@@ -110,19 +133,17 @@ namespace MyCost
             requestData.Add("earningSources", earningSources);
             requestData.Add("earningAmounts", earningAmounts);
             requestData.Add("earningCategories", earningCategories);
-            requestData.Add("cearningComments", earningComments);
+            requestData.Add("earningComments", earningComments);
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.SERVER_ADDRESS + "saveDailyInfo.php", "POST", requestData);
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveDailyInfo.php", "POST", requestData);
                 string result = Encoding.UTF8.GetString(resultBytes);
 
-                return "SUCCESS";
+                if (result == "SUCCESS") return true;
+                else return false;
             }
-            catch (WebException)
-            {
-                return "SERVER_ERROR";
-            }
+            catch (WebException) { return false; }
         }
     }
 }

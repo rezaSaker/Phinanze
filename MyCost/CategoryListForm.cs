@@ -71,7 +71,7 @@ namespace MyCost
             if (!multipleRowSelected)
             {
                 //dgv points to a DataGridView on AddNewDataForm form
-                dgv.Rows[rowIndex].Cells[1].Value = category;
+                dgv.Rows[rowIndex].Cells[2].Value = category;
                 this.Close();
             }
             else
@@ -79,13 +79,13 @@ namespace MyCost
                 foreach(int rowIndex in expenseRowIndexList)
                 {
                     //expenseDGV points to a DataGridView on AddNewDataForm form
-                    expenseDGV.Rows[rowIndex].Cells[1].Value = category;
+                    expenseDGV.Rows[rowIndex].Cells[2].Value = category;
                 }
 
                 foreach(int rowIndex in earningRowIndexList)
                 {
                     //earningDGV points to a dataGridView on AddNewDataForm form
-                    earningDGV.Rows[rowIndex].Cells[1].Value = category;
+                    earningDGV.Rows[rowIndex].Cells[2].Value = category;
                 }
 
                 this.Close();

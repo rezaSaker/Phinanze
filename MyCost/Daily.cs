@@ -8,6 +8,7 @@ namespace MyCost
 {
     class Daily
     {
+        private int id;
         private int day;
         private int month;
         private int year;
@@ -17,7 +18,11 @@ namespace MyCost
         private List<Expense> expenses;
         private List<Earning> earnings;
 
-        public Daily(){  }
+        public Daily()
+        {
+            expenses = new List<Expense>();
+            earnings = new List<Earning>();
+        }
 
         public int Day
         {

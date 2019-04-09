@@ -104,51 +104,49 @@ namespace MyCost
         {
             if (btn_submit.Text == "Log in")
             {
-                UserLogin();
+                LoginUser();
             }
             else
             {
-                UserRegister();
+                RegisterUser();
             }
         }
 
-        private void UserLogin()
+        private void LoginUser()
         {
             string username = tb_username.Text;
             string password = tb_password.Text;
 
-            try
+            string result = ServerHandler.AuthenticateUser(username, password);
+            string[] data = result.Split('|');
+
+            int userId;
+
+            //if the login succeeds, user's id and a temporary token are returned
+            //else, the error message is returned
+            if(int.TryParse(data[0], out userId))
             {
-                string result = ServerHandler.AuthenticateUser(username, password);
+                StaticStorage.UserID = Convert.ToInt16(data[0]);
+                StaticStorage.AccessToken = data[1];
 
-                if(result == "USER_NOT_FOUND")
-                {
-                    lbl_status.Text = "Invalid username or password";
-                }
-                else
-                {
-                    int userid = Convert.ToInt16(result);
-                    StaticStorage.userid = userid;
+                //gets all data for this user from database...
+                //...and store them in StaticStorage class
+                FetchDailyInfo();
+                FetchMonthlyInfo();
+                FetchCategories();
 
-                    //gets all data for this user from database
-                    FetchDailyInfo();
-                    FetchMonthlyInfo();
-                    FetchCategories();
+                HomePageForm homePage = new HomePageForm();
+                homePage.Show();
 
-                    HomePageForm homePage = new HomePageForm();
-                    homePage.Show();
-
-                    this.Visible = false;
-                    this.Enabled = false;
-                }
-            }
-            catch
-            {           
-                lbl_status.Text = "Server connection error";
-            }
+                //closing MainForm quits the app... 
+                //...so making it disbaled and invisible
+                this.Visible = false;
+                this.Enabled = false;
+            }        
+            else { lbl_status.Text = result; }
         }
 
-        private void UserRegister()
+        private void RegisterUser()
         {
             string username = tb_username.Text;
             string password = tb_password.Text;
@@ -170,33 +168,53 @@ namespace MyCost
                 return;
             }
 
-            try
+            string access_key = RandomString(100);
+
+            //if the register succeeds, user's id and a temporary token are retured
+            //else, the error info is returned
+            string result = ServerHandler.RegisterNewUser(access_key, username, password);
+            string[] data = result.Split('|');
+
+            int userId;
+
+            if(int.TryParse(data[0], out userId))
             {
-                //if the process succeeds, the user id is returned
-                //else, the error info is returned
-                string result = ServerHandler.RegisterNewUser(username, password);
+                Properties.Settings.Default.AccessKey = access_key;
+                Properties.Settings.Default.Save();
 
-                int userid;
+                StaticStorage.UserID = userId;
+                StaticStorage.AccessToken = data[1];          
 
-                if(int.TryParse(result, out userid))
-                {
-                    StaticStorage.userid = userid;
+                //gets all data for this user from database...
+                //...and store them in StaticStorage class
+                FetchDailyInfo();
+                FetchMonthlyInfo();
+                FetchCategories();
 
-                    HomePageForm homePage = new HomePageForm();
-                    homePage.Show();
+                HomePageForm homePage = new HomePageForm();
+                homePage.Show();
 
-                    this.Visible = false;
-                    this.Enabled = false;
-                }
-                else
-                {
-                    lbl_status.Text = result;
-                }
+                this.Visible = false;
+                this.Enabled = false;
             }
-            catch
+            else { lbl_status.Text = result; }                                      
+        }
+
+        private string RandomString(int size)
+        {
+            string randStr = "";
+            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+                             "abcdefghijklmnopqrstuvwxyz1234567890";
+            char[] charSet = str.ToCharArray();
+
+            Random rand = new Random();
+            
+            for(int i = 0; i < size; ++i)
             {
-                lbl_status.Text = "Server connection error";
-            }                                       
+                randStr += charSet[rand.Next(0, str.Length)];
+            }
+
+            return randStr;
         }
 
         private void FetchDailyInfo()
