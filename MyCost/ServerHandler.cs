@@ -13,17 +13,17 @@ namespace MyCost
         {
             WebClient www = new WebClient();
 
-            System.Collections.Specialized.NameValueCollection requestData;
-            requestData = new System.Collections.Specialized.NameValueCollection();
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
 
-            requestData.Add("key", Properties.Settings.Default.AccessKey);
-            requestData.Add("username", username);
-            requestData.Add("password", password);
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("username", username);
+            queryData.Add("password", password);
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "userAuthentication.php", "POST", requestData);
-                string resultData = Encoding.UTF8.GetString(resultBytes);
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "userAuthentication.php", "POST", queryData);
+                string resultData  = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
             }
@@ -34,17 +34,17 @@ namespace MyCost
         {
             WebClient www = new WebClient();
 
-            System.Collections.Specialized.NameValueCollection requestData;
-            requestData = new System.Collections.Specialized.NameValueCollection();
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
 
-            requestData.Add("key", access_key);
-            requestData.Add("username", username);
-            requestData.Add("password", password);
+            queryData.Add("key", access_key);
+            queryData.Add("username", username);
+            queryData.Add("password", password);
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "registerNewUser.php", "POST", requestData);
-                string resultData = Encoding.UTF8.GetString(resultBytes);
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "registerNewUser.php", "POST", queryData);
+                string resultData  = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
             }
@@ -55,43 +55,38 @@ namespace MyCost
         {
             WebClient www = new WebClient();
 
-            System.Collections.Specialized.NameValueCollection requestData;
-            requestData = new System.Collections.Specialized.NameValueCollection();
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
 
-            requestData.Add("key", Properties.Settings.Default.AccessKey);
-            requestData.Add("token", StaticStorage.AccessToken);
-            requestData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("token", StaticStorage.AccessToken);
+            queryData.Add("userid", StaticStorage.UserID.ToString());
 
-            try
-            {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getDailyInfo.php", "POST", requestData);
-                string resultData = Encoding.UTF8.GetString(resultBytes);
+           try
+           {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getDailyInfo.php", "POST", queryData);
+                string resultData  = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
             }
             catch { return "Server connection error"; }
-        }
+        }    
 
-        public static string RetriveMonthlyInfo()
-        {
-            return null;
-        }
-
-        public static bool SaveDailyInfo(Daily daily)
+        public static string SaveDailyInfo(Daily daily)
         {
             WebClient www = new WebClient();
 
-            System.Collections.Specialized.NameValueCollection requestData;
-            requestData = new System.Collections.Specialized.NameValueCollection();
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
 
-            string expenseReasons = "";
-            string expenseAmounts = "";
+            string expenseReasons    = "";
+            string expenseAmounts    = "";
             string expenseCategories = "";
-            string expenseComments = "";
-            string earningSources = "";
-            string earningAmounts = "";
+            string expenseComments   = "";
+            string earningSources    = "";
+            string earningAmounts    = "";
             string earningCategories = "";
-            string earningComments = "";
+            string earningComments   = "";
 
             bool addSplitChar = false;
 
@@ -101,17 +96,17 @@ namespace MyCost
             {
                 if (addSplitChar)
                 {
-                    expenseReasons += "~";
-                    expenseAmounts += "~";
+                    expenseReasons    += "~";
+                    expenseAmounts    += "~";
                     expenseCategories += "~";
-                    expenseComments += "~";
+                    expenseComments   += "~";
                 }
                 else { addSplitChar = true;  }
 
-                expenseReasons += expense.Reason;
-                expenseAmounts += expense.Amount.ToString();
+                expenseReasons    += expense.Reason;
+                expenseAmounts    += expense.Amount.ToString();
                 expenseCategories += expense.Category;
-                expenseComments += expense.Comment;
+                expenseComments   += expense.Comment;
             }
 
             addSplitChar = false;
@@ -122,44 +117,45 @@ namespace MyCost
             {
                 if (addSplitChar)
                 {
-                    earningSources += "~";
-                    earningAmounts += "~";
+                    earningSources    += "~";
+                    earningAmounts    += "~";
                     earningCategories += "~";
-                    earningComments += "~";
+                    earningComments   += "~";
                 }
                 else { addSplitChar = true; }
 
-                earningSources += earning.Source;
-                earningAmounts += earning.Amount.ToString();
+                earningSources    += earning.Source;
+                earningAmounts    += earning.Amount.ToString();
                 earningCategories += earning.Category;
-                earningComments += earning.Comment;
+                earningComments   += earning.Comment;
             }
 
-            requestData.Add("key", Properties.Settings.Default.AccessKey);
-            requestData.Add("token", StaticStorage.AccessToken);
-            requestData.Add("userid", StaticStorage.UserID.ToString());
-            requestData.Add("note", daily.Note);
-            requestData.Add("day", daily.Day.ToString());
-            requestData.Add("month", daily.Month.ToString());
-            requestData.Add("year", daily.Year.ToString());
-            requestData.Add("expenseReasons", expenseReasons);
-            requestData.Add("expenseAmounts", expenseAmounts);
-            requestData.Add("expenseCategories", expenseCategories);
-            requestData.Add("expenseComments", expenseComments);
-            requestData.Add("earningSources", earningSources);
-            requestData.Add("earningAmounts", earningAmounts);
-            requestData.Add("earningCategories", earningCategories);
-            requestData.Add("earningComments", earningComments);
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("token", StaticStorage.AccessToken);
+            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("note", daily.Note);
+            queryData.Add("day", daily.Day.ToString());
+            queryData.Add("month", daily.Month.ToString());
+            queryData.Add("year", daily.Year.ToString());
+            queryData.Add("expenseReasons", expenseReasons);
+            queryData.Add("expenseAmounts", expenseAmounts);
+            queryData.Add("expenseCategories", expenseCategories);
+            queryData.Add("expenseComments", expenseComments);
+            queryData.Add("earningSources", earningSources);
+            queryData.Add("earningAmounts", earningAmounts);
+            queryData.Add("earningCategories", earningCategories);
+            queryData.Add("earningComments", earningComments);
+            queryData.Add("totalExpense", daily.TotalExpense.ToString());
+            queryData.Add("totalEarning", daily.TotalEarning.ToString());
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveDailyInfo.php", "POST", requestData);
-                string result = Encoding.UTF8.GetString(resultBytes);
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveDailyInfo.php", "POST", queryData);
+                string resultData  = Encoding.UTF8.GetString(resultBytes);
 
-                if (result == "SUCCESS") return true;
-                else return false;
+                return resultData;
             }
-            catch (WebException) { return false; }
+            catch (WebException) { return "Server connection error"; }
         }
     }
 }

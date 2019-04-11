@@ -118,10 +118,13 @@ namespace MyCost
         private void btn_save_Click(object sender, EventArgs e)
         {
             Daily daily = new Daily();
-            daily.Note = tb_note.Text;
-            daily.Day = Convert.ToUInt16(cmb_day.SelectedItem.ToString());
-            daily.Month = cmb_day.Items.IndexOf(cmb_day.SelectedItem.ToString()) + 1;
-            daily.Year = Convert.ToUInt16(cmb_year.SelectedItem.ToString());
+
+            daily.Note          = tb_note.Text;
+            daily.Day           = Convert.ToUInt16(cmb_day.SelectedItem.ToString());
+            daily.Month         = cmb_month.Items.IndexOf(cmb_month.SelectedItem.ToString()) + 1;
+            daily.Year          = Convert.ToUInt16(cmb_year.SelectedItem.ToString());
+            daily.TotalEarning  = Convert.ToDouble(lbl_earningTotal.Text);
+            daily.TotalExpense  = Convert.ToDouble(lbl_expenseTotal.Text);
 
             string source;
             string reason;
@@ -149,17 +152,21 @@ namespace MyCost
                 }
                 catch (NullReferenceException)
                 {
-                    string message = "Looks like you forgot to enter amount on row ";
+                    string message;
+                    message = "Looks like you forgot to enter amount on row ";
                     message += (row.Index + 1) + ". Do you want to continue saving?";
 
                     DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (result == DialogResult.Yes) amount = .0;
-                    else return;         
+                    if (result == DialogResult.Yes)
+                        amount = .0;
+                    else
+                        return;         
                 }
                 catch (FormatException)
                 {
-                    string message = "Looks like the amount is not correct on row ";
+                    string message;
+                    message = "Looks like the amount is not correct on row ";
                     message += (row.Index + 1) + " in expense table. Amount can only be numbers. ";
                     message += "Please correct the amount before saving.";
 
@@ -208,8 +215,10 @@ namespace MyCost
 
                     DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (result == DialogResult.Yes) amount = .0;
-                    else return;
+                    if (result == DialogResult.Yes)
+                        amount = .0;
+                    else
+                        return;
                 }
                 catch (FormatException)
                 {
@@ -237,26 +246,147 @@ namespace MyCost
                 daily.Earnings.Add(earning);
             }
 
-            if(ServerHandler.SaveDailyInfo(daily))
-            {
-                string message = "The info has been successfully saved. Do you want to close this page?";
-                DialogResult result = MessageBox.Show(message, "Notice", MessageBoxButtons.YesNo);
+            string savingResult = ServerHandler.SaveDailyInfo(daily);
 
-                if(result == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+            if (savingResult == "SUCCESS")
+            {
+                StaticStorage.DailyInfo.Add(daily);
             }
-            else { MessageBox.Show("Sorry, something went wrong"); }
+            else
+            {
+                //if not success, the error info is returned
+                MessageBox.Show(savingResult);
+            }
+
         }
 
         private void cmb_month_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if the month chnages, the number of days should be chnaged
             int month = cmb_month.SelectedIndex + 1;
-            int year = Convert.ToInt16(cmb_year.SelectedItem.ToString());
+            int year  = Convert.ToInt16(cmb_year.SelectedItem.ToString());
 
             AddItemsToDayComboBox(month, year);
+        }
+
+        private void UpdateTotalExpenseLabel()
+        {
+            double amount;
+            double total = .0;
+
+            for(int i = 0; i < dgv_expense.Rows.Count - 1; ++i)
+            {
+                try
+                {
+                    amount = Convert.ToDouble(dgv_expense.Rows[i].Cells[1].Value.ToString());
+                    total  += amount;                
+                }
+                catch (FormatException)
+                {
+                    string message;
+                    message = "Looks like you have a typo in your amount. Amount can only be numbers. ";
+                    message += "Please re-enter the amount.";
+                    MessageBox.Show(message);
+
+                    //make the color of the column different so the user can easily point out
+                    dgv_expense.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                    dgv_expense.Rows[i].Cells[1].Style.ForeColor = Color.White;
+                }
+                catch (NullReferenceException)
+                {
+                    //make the color of the column different so the user can easily point out
+                    dgv_expense.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
+                    dgv_expense.Rows[i].Cells[1].Value           = "0.00";
+                }
+            }
+
+            lbl_expenseTotal.Text = string.Format("{0:0.00}", total);
+        }
+
+        private void UpdateTotalEarningLabel()
+        {
+            double amount;
+            double total = .0;
+
+            for (int i = 0; i < dgv_earning.Rows.Count - 1; ++i)
+            {
+                try
+                {
+                    amount = Convert.ToDouble(dgv_earning.Rows[i].Cells[1].Value.ToString());
+                    total  += amount;                
+                }
+                catch (FormatException)
+                {
+                    string message;
+                    message = "Looks like you have a typo in your amount. Amount can only be numbers. ";
+                    message += "Please re-enter the amount.";
+                    MessageBox.Show(message);
+
+                    //make the color of the column different so the user can easily point out
+                    dgv_earning.Rows[i].Cells[1].Style.BackColor = Color.Red;
+                    dgv_earning.Rows[i].Cells[1].Style.ForeColor = Color.White;
+                }
+                catch (NullReferenceException)
+                {
+                    //make the color of the column different so the user can easily point out
+                    dgv_earning.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
+                    dgv_earning.Rows[i].Cells[1].Value           = "0.00";
+                }
+            }
+
+            lbl_earningTotal.Text = string.Format("{0:0.00}", total);
+        }
+
+        private void dgv_expense_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if(e.ColumnIndex == 1)
+            {
+                //change the color to default if it was changed before due to any error
+                if (dgv_expense.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Red)
+                {
+                    dgv_expense.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
+                    dgv_expense.Rows[e.RowIndex].Cells[1].Style.ForeColor = Color.Black;
+                }
+                else if (dgv_expense.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Yellow)
+                {
+                    dgv_expense.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void dgv_earning_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if(e.ColumnIndex == 1)
+            {
+                //change the color to default if it was changed before due to any error
+                if (dgv_earning.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Red)
+                {
+                    dgv_earning.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
+                    dgv_earning.Rows[e.RowIndex].Cells[1].Style.ForeColor = Color.Black;
+                }
+                else if (dgv_earning.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Yellow)
+                {
+                    dgv_earning.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void dgv_expense_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //if an expense amount is entered
+            if (e.ColumnIndex == 1)
+            {
+                UpdateTotalExpenseLabel();
+            }
+        }
+
+        private void dgv_earning_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            //if an earning amount is entered
+            if (e.ColumnIndex == 1)
+            {
+                UpdateTotalEarningLabel();
+            }
         }
     }
 }

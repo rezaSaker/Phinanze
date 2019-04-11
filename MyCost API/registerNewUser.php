@@ -1,18 +1,19 @@
 <?php
 
 /*
-	*this script recieves data that is sent from... 
-	'...MyCost\ServerHandler.cs\RegisterNewUser(param1, param2)'
-	*and returns the user 'id and a unique token' if the user is created
+	*this script recieves data that is sent from MyCost app 
+	*register a new user
+	*and returns the user id and a unique token 
 */
 
 require_once('connectDB.php');
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']))
 {
-	$key = $_POST['key'];
-	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$key 	  = mysqli_real_escape_string($connect, $_POST['key']);
+	$username = mysqli_real_escape_string($connect, $_POST['username']);
+	$password = mysqli_real_escape_string($connect, $_POST['password']);
+	$password = md5(base64_encode($password));
 	
 	//check if the username contains any potential risky characters
 	$checkedUsername = mysqli_real_escape_string($connect, $username);	
@@ -27,10 +28,9 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']
 		die('The username already exists. Please choose a different username');
 	
 	//generate a random string as access token
-	$token = RandomToken(70);
+	$token = RandomToken(100);
 	
 	//saves the user info
-	$password = md5(base64_encode($password));
 	$query = "INSERT INTO users (username, password, token, access_key) 
 			  VALUES ('$username', '$password', '$token', '$key')";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
@@ -39,7 +39,11 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']
 	
 	die($userid . '|' . $token);	
 }
-else{ die('Sorry, something went wrong'); }
+else
+{ 
+	die('Sorry, something went wrong'); 
+}
+
 
 function RandomToken($tokenLen)
 {

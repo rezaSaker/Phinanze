@@ -13,6 +13,9 @@ namespace MyCost
         private int month;
         private int year;
 
+        private double totalExpense;
+        private double totalEarning;
+
         private string note;
 
         private List<Expense> expenses;
@@ -40,6 +43,18 @@ namespace MyCost
         {
             get { return year; }
             set { year = value; }
+        }
+
+        public double TotalExpense
+        {
+            get { return totalExpense; }
+            set { totalExpense = value; }
+        }
+
+        public double TotalEarning
+        {
+            get { return totalEarning; }
+            set { totalEarning = value; }
         }
 
         public string Note

@@ -13,5 +13,8 @@ namespace MyCost
         public static int UserID;
 
         public static string AccessToken;
+
+        public static List<Daily> DailyInfo     = new List<Daily>();
+        public static List<Monthly> MonthlyInfo = new List<Monthly>();
     }
 }

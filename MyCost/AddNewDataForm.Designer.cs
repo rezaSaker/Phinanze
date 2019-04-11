@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.dgv_expense = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tb_note = new System.Windows.Forms.TextBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.btn_applyCategoryToAll = new System.Windows.Forms.Button();
@@ -37,24 +41,20 @@
             this.cmb_year = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_earning = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbl_expenseTotal1 = new System.Windows.Forms.Label();
-            this.lbl_earningTotal1 = new System.Windows.Forms.Label();
             this.lbl_expenseTotal2 = new System.Windows.Forms.Label();
             this.lbl_totalEarning2 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_earningTotal = new System.Windows.Forms.Label();
+            this.lbl_expenseTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_expense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_earning)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +72,34 @@
             this.dgv_expense.Name = "dgv_expense";
             this.dgv_expense.Size = new System.Drawing.Size(806, 165);
             this.dgv_expense.TabIndex = 3;
+            this.dgv_expense.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_expense_CellBeginEdit);
             this.dgv_expense.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_expenses_CellDoubleClick);
+            this.dgv_expense.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_expense_CellEndEdit);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Reason";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 255;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Amount";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Comment";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 255;
             // 
             // tb_note
             // 
@@ -176,7 +203,34 @@
             this.dgv_earning.Name = "dgv_earning";
             this.dgv_earning.Size = new System.Drawing.Size(806, 165);
             this.dgv_earning.TabIndex = 23;
+            this.dgv_earning.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgv_earning_CellBeginEdit);
             this.dgv_earning.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_earning_CellDoubleClick);
+            this.dgv_earning.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_earning_CellEndEdit);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Source";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 255;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 255;
             // 
             // btn_save
             // 
@@ -250,43 +304,17 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "Year";
             // 
-            // lbl_expenseTotal1
-            // 
-            this.lbl_expenseTotal1.AutoSize = true;
-            this.lbl_expenseTotal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_expenseTotal1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_expenseTotal1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_expenseTotal1.Location = new System.Drawing.Point(91, 83);
-            this.lbl_expenseTotal1.Name = "lbl_expenseTotal1";
-            this.lbl_expenseTotal1.Size = new System.Drawing.Size(95, 24);
-            this.lbl_expenseTotal1.TabIndex = 31;
-            this.lbl_expenseTotal1.Text = "Total: $0.00";
-            this.lbl_expenseTotal1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_earningTotal1
-            // 
-            this.lbl_earningTotal1.AutoSize = true;
-            this.lbl_earningTotal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_earningTotal1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_earningTotal1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_earningTotal1.Location = new System.Drawing.Point(79, 295);
-            this.lbl_earningTotal1.Name = "lbl_earningTotal1";
-            this.lbl_earningTotal1.Size = new System.Drawing.Size(95, 24);
-            this.lbl_earningTotal1.TabIndex = 32;
-            this.lbl_earningTotal1.Text = "Total: $0.00";
-            this.lbl_earningTotal1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lbl_expenseTotal2
             // 
             this.lbl_expenseTotal2.AutoSize = true;
             this.lbl_expenseTotal2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_expenseTotal2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_expenseTotal2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_expenseTotal2.Location = new System.Drawing.Point(657, 73);
+            this.lbl_expenseTotal2.Location = new System.Drawing.Point(617, 71);
             this.lbl_expenseTotal2.Name = "lbl_expenseTotal2";
-            this.lbl_expenseTotal2.Size = new System.Drawing.Size(158, 24);
+            this.lbl_expenseTotal2.Size = new System.Drawing.Size(109, 24);
             this.lbl_expenseTotal2.TabIndex = 33;
-            this.lbl_expenseTotal2.Text = "Total expense: $0.00";
+            this.lbl_expenseTotal2.Text = "Total expense";
             this.lbl_expenseTotal2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_totalEarning2
@@ -295,62 +323,38 @@
             this.lbl_totalEarning2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_totalEarning2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_totalEarning2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_totalEarning2.Location = new System.Drawing.Point(663, 40);
+            this.lbl_totalEarning2.Location = new System.Drawing.Point(623, 38);
             this.lbl_totalEarning2.Name = "lbl_totalEarning2";
-            this.lbl_totalEarning2.Size = new System.Drawing.Size(152, 24);
+            this.lbl_totalEarning2.Size = new System.Drawing.Size(103, 24);
             this.lbl_totalEarning2.TabIndex = 34;
-            this.lbl_totalEarning2.Text = "Total earning: $0.00";
+            this.lbl_totalEarning2.Text = "Total earning";
             this.lbl_totalEarning2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // dataGridViewTextBoxColumn1
+            // lbl_earningTotal
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Source";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 255;
+            this.lbl_earningTotal.AutoSize = true;
+            this.lbl_earningTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_earningTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_earningTotal.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_earningTotal.Location = new System.Drawing.Point(732, 38);
+            this.lbl_earningTotal.Name = "lbl_earningTotal";
+            this.lbl_earningTotal.Size = new System.Drawing.Size(42, 24);
+            this.lbl_earningTotal.TabIndex = 35;
+            this.lbl_earningTotal.Text = "0.00";
+            this.lbl_earningTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridViewTextBoxColumn3
+            // lbl_expenseTotal
             // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 255;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Reason";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 255;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Amount";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Comment";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 255;
+            this.lbl_expenseTotal.AutoSize = true;
+            this.lbl_expenseTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_expenseTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_expenseTotal.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_expenseTotal.Location = new System.Drawing.Point(732, 71);
+            this.lbl_expenseTotal.Name = "lbl_expenseTotal";
+            this.lbl_expenseTotal.Size = new System.Drawing.Size(42, 24);
+            this.lbl_expenseTotal.TabIndex = 36;
+            this.lbl_expenseTotal.Text = "0.00";
+            this.lbl_expenseTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AddNewDataForm
             // 
@@ -359,10 +363,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(829, 536);
+            this.Controls.Add(this.lbl_expenseTotal);
+            this.Controls.Add(this.lbl_earningTotal);
             this.Controls.Add(this.lbl_totalEarning2);
             this.Controls.Add(this.lbl_expenseTotal2);
-            this.Controls.Add(this.lbl_earningTotal1);
-            this.Controls.Add(this.lbl_expenseTotal1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -409,8 +413,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbl_expenseTotal1;
-        private System.Windows.Forms.Label lbl_earningTotal1;
         private System.Windows.Forms.Label lbl_expenseTotal2;
         private System.Windows.Forms.Label lbl_totalEarning2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -421,5 +423,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Label lbl_earningTotal;
+        private System.Windows.Forms.Label lbl_expenseTotal;
     }
 }
