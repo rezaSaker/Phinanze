@@ -32,14 +32,14 @@
             this.tb_headerText = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +100,34 @@
             this.dataGridView.Size = new System.Drawing.Size(776, 352);
             this.dataGridView.TabIndex = 5;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Date";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 160;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Earning";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 160;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Spending";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 160;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Note";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 253;
+            // 
             // btn_addNew
             // 
             this.btn_addNew.BackColor = System.Drawing.Color.RoyalBlue;
@@ -108,7 +136,7 @@
             this.btn_addNew.ForeColor = System.Drawing.Color.White;
             this.btn_addNew.Location = new System.Drawing.Point(629, 402);
             this.btn_addNew.Name = "btn_addNew";
-            this.btn_addNew.Size = new System.Drawing.Size(159, 45);
+            this.btn_addNew.Size = new System.Drawing.Size(159, 41);
             this.btn_addNew.TabIndex = 6;
             this.btn_addNew.Text = "Add New";
             this.btn_addNew.UseVisualStyleBackColor = false;
@@ -121,7 +149,7 @@
             this.btn_cancel.ForeColor = System.Drawing.Color.Black;
             this.btn_cancel.Location = new System.Drawing.Point(464, 404);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(159, 40);
+            this.btn_cancel.Size = new System.Drawing.Size(159, 39);
             this.btn_cancel.TabIndex = 7;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
@@ -158,39 +186,11 @@
             this.comboBox1.Size = new System.Drawing.Size(124, 26);
             this.comboBox1.TabIndex = 9;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Date";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 160;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Earning";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 160;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Spending";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 160;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Note";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 253;
-            // 
-            // MonthlyReport
+            // MonthlyReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 455);
+            this.ClientSize = new System.Drawing.Size(800, 452);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.btn_cancel);
@@ -199,7 +199,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cmb_month);
             this.Controls.Add(this.tb_headerText);
-            this.Name = "MonthlyReport";
+            this.Name = "MonthlyReportForm";
             this.Text = "Monthly Report";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

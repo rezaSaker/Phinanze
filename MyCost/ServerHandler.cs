@@ -53,7 +53,23 @@ namespace MyCost
 
         public static string RetrieveDailyInfo()
         {
-            return null;
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection requestData;
+            requestData = new System.Collections.Specialized.NameValueCollection();
+
+            requestData.Add("key", Properties.Settings.Default.AccessKey);
+            requestData.Add("token", StaticStorage.AccessToken);
+            requestData.Add("userid", StaticStorage.UserID.ToString());
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getDailyInfo.php", "POST", requestData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch { return "Server connection error"; }
         }
 
         public static string RetriveMonthlyInfo()

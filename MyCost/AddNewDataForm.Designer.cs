@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgv_expense = new System.Windows.Forms.DataGridView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tb_note = new System.Windows.Forms.TextBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.btn_applyCategoryToAll = new System.Windows.Forms.Button();
             this.cmb_day = new System.Windows.Forms.ComboBox();
@@ -40,6 +40,13 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_expenseTotal1 = new System.Windows.Forms.Label();
+            this.lbl_earningTotal1 = new System.Windows.Forms.Label();
+            this.lbl_expenseTotal2 = new System.Windows.Forms.Label();
+            this.lbl_totalEarning2 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,13 +55,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lbl_expenseTotal1 = new System.Windows.Forms.Label();
-            this.lbl_earningTotal1 = new System.Windows.Forms.Label();
-            this.lbl_expenseTotal2 = new System.Windows.Forms.Label();
-            this.lbl_totalEarning2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_expense)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_earning)).BeginInit();
             this.SuspendLayout();
@@ -68,21 +68,19 @@
             this.Column2,
             this.Category,
             this.Column3});
-            this.dgv_expense.Location = new System.Drawing.Point(13, 113);
-            this.dgv_expense.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_expense.Location = new System.Drawing.Point(9, 110);
             this.dgv_expense.Name = "dgv_expense";
-            this.dgv_expense.Size = new System.Drawing.Size(1053, 212);
+            this.dgv_expense.Size = new System.Drawing.Size(806, 165);
             this.dgv_expense.TabIndex = 3;
             this.dgv_expense.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_expenses_CellDoubleClick);
             // 
-            // textBox2
+            // tb_note
             // 
-            this.textBox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(64, 5);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(1002, 26);
-            this.textBox2.TabIndex = 6;
+            this.tb_note.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_note.Location = new System.Drawing.Point(58, 5);
+            this.tb_note.Name = "tb_note";
+            this.tb_note.Size = new System.Drawing.Size(757, 26);
+            this.tb_note.TabIndex = 6;
             // 
             // lbl_status
             // 
@@ -90,8 +88,7 @@
             this.lbl_status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_status.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(13, 85);
-            this.lbl_status.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_status.Location = new System.Drawing.Point(9, 83);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(76, 24);
             this.lbl_status.TabIndex = 15;
@@ -104,10 +101,9 @@
             this.btn_applyCategoryToAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_applyCategoryToAll.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_applyCategoryToAll.ForeColor = System.Drawing.Color.Black;
-            this.btn_applyCategoryToAll.Location = new System.Drawing.Point(13, 603);
-            this.btn_applyCategoryToAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_applyCategoryToAll.Location = new System.Drawing.Point(9, 493);
             this.btn_applyCategoryToAll.Name = "btn_applyCategoryToAll";
-            this.btn_applyCategoryToAll.Size = new System.Drawing.Size(240, 40);
+            this.btn_applyCategoryToAll.Size = new System.Drawing.Size(160, 31);
             this.btn_applyCategoryToAll.TabIndex = 16;
             this.btn_applyCategoryToAll.Text = "Apply category to all ";
             this.btn_applyCategoryToAll.UseVisualStyleBackColor = false;
@@ -117,10 +113,9 @@
             // 
             this.cmb_day.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_day.FormattingEnabled = true;
-            this.cmb_day.Location = new System.Drawing.Point(64, 41);
-            this.cmb_day.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_day.Location = new System.Drawing.Point(58, 40);
             this.cmb_day.Name = "cmb_day";
-            this.cmb_day.Size = new System.Drawing.Size(109, 26);
+            this.cmb_day.Size = new System.Drawing.Size(97, 26);
             this.cmb_day.TabIndex = 18;
             // 
             // cmb_month
@@ -140,10 +135,9 @@
             "October",
             "November",
             "December"});
-            this.cmb_month.Location = new System.Drawing.Point(254, 41);
-            this.cmb_month.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_month.Location = new System.Drawing.Point(241, 40);
             this.cmb_month.Name = "cmb_month";
-            this.cmb_month.Size = new System.Drawing.Size(173, 26);
+            this.cmb_month.Size = new System.Drawing.Size(164, 26);
             this.cmb_month.TabIndex = 20;
             this.cmb_month.SelectedIndexChanged += new System.EventHandler(this.cmb_month_SelectedIndexChanged);
             // 
@@ -151,10 +145,9 @@
             // 
             this.cmb_year.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_year.FormattingEnabled = true;
-            this.cmb_year.Location = new System.Drawing.Point(498, 41);
-            this.cmb_year.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmb_year.Location = new System.Drawing.Point(484, 38);
             this.cmb_year.Name = "cmb_year";
-            this.cmb_year.Size = new System.Drawing.Size(139, 26);
+            this.cmb_year.Size = new System.Drawing.Size(109, 26);
             this.cmb_year.TabIndex = 22;
             // 
             // label1
@@ -163,8 +156,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 349);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 295);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 24);
             this.label1.TabIndex = 24;
@@ -180,10 +172,9 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4});
-            this.dgv_earning.Location = new System.Drawing.Point(13, 377);
-            this.dgv_earning.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgv_earning.Location = new System.Drawing.Point(9, 322);
             this.dgv_earning.Name = "dgv_earning";
-            this.dgv_earning.Size = new System.Drawing.Size(1053, 212);
+            this.dgv_earning.Size = new System.Drawing.Size(806, 165);
             this.dgv_earning.TabIndex = 23;
             this.dgv_earning.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_earning_CellDoubleClick);
             // 
@@ -193,10 +184,9 @@
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_save.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.White;
-            this.btn_save.Location = new System.Drawing.Point(900, 602);
-            this.btn_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_save.Location = new System.Drawing.Point(706, 493);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(166, 41);
+            this.btn_save.Size = new System.Drawing.Size(111, 32);
             this.btn_save.TabIndex = 25;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = false;
@@ -208,10 +198,9 @@
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancel.ForeColor = System.Drawing.Color.Black;
-            this.btn_cancel.Location = new System.Drawing.Point(736, 603);
-            this.btn_cancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_cancel.Location = new System.Drawing.Point(594, 494);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(156, 39);
+            this.btn_cancel.Size = new System.Drawing.Size(104, 30);
             this.btn_cancel.TabIndex = 26;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
@@ -222,70 +211,18 @@
             this.label2.AutoSize = true;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 9);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(9, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 20);
             this.label2.TabIndex = 27;
             this.label2.Text = "Note";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Source";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 355;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 355;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Reason";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 355;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Amount";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Comment";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 355;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(13, 44);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(9, 40);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 20);
             this.label3.TabIndex = 28;
@@ -296,8 +233,7 @@
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(194, 44);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(183, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 20);
             this.label4.TabIndex = 29;
@@ -308,8 +244,7 @@
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(449, 44);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(437, 41);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 30;
@@ -321,8 +256,7 @@
             this.lbl_expenseTotal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_expenseTotal1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_expenseTotal1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_expenseTotal1.Location = new System.Drawing.Point(97, 85);
-            this.lbl_expenseTotal1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_expenseTotal1.Location = new System.Drawing.Point(91, 83);
             this.lbl_expenseTotal1.Name = "lbl_expenseTotal1";
             this.lbl_expenseTotal1.Size = new System.Drawing.Size(95, 24);
             this.lbl_expenseTotal1.TabIndex = 31;
@@ -335,8 +269,7 @@
             this.lbl_earningTotal1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_earningTotal1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_earningTotal1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_earningTotal1.Location = new System.Drawing.Point(85, 349);
-            this.lbl_earningTotal1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_earningTotal1.Location = new System.Drawing.Point(79, 295);
             this.lbl_earningTotal1.Name = "lbl_earningTotal1";
             this.lbl_earningTotal1.Size = new System.Drawing.Size(95, 24);
             this.lbl_earningTotal1.TabIndex = 32;
@@ -349,13 +282,12 @@
             this.lbl_expenseTotal2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_expenseTotal2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_expenseTotal2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_expenseTotal2.Location = new System.Drawing.Point(677, 42);
-            this.lbl_expenseTotal2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_expenseTotal2.Location = new System.Drawing.Point(657, 73);
             this.lbl_expenseTotal2.Name = "lbl_expenseTotal2";
             this.lbl_expenseTotal2.Size = new System.Drawing.Size(158, 24);
             this.lbl_expenseTotal2.TabIndex = 33;
             this.lbl_expenseTotal2.Text = "Total expense: $0.00";
-            this.lbl_expenseTotal2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_expenseTotal2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lbl_totalEarning2
             // 
@@ -363,20 +295,70 @@
             this.lbl_totalEarning2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_totalEarning2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_totalEarning2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_totalEarning2.Location = new System.Drawing.Point(890, 41);
-            this.lbl_totalEarning2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_totalEarning2.Location = new System.Drawing.Point(663, 40);
             this.lbl_totalEarning2.Name = "lbl_totalEarning2";
             this.lbl_totalEarning2.Size = new System.Drawing.Size(152, 24);
             this.lbl_totalEarning2.TabIndex = 34;
             this.lbl_totalEarning2.Text = "Total earning: $0.00";
-            this.lbl_totalEarning2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbl_totalEarning2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Source";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 255;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 255;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Reason";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 255;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Amount";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            this.Category.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Comment";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 255;
             // 
             // AddNewDataForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1077, 656);
+            this.ClientSize = new System.Drawing.Size(829, 536);
             this.Controls.Add(this.lbl_totalEarning2);
             this.Controls.Add(this.lbl_expenseTotal2);
             this.Controls.Add(this.lbl_earningTotal1);
@@ -394,14 +376,14 @@
             this.Controls.Add(this.cmb_day);
             this.Controls.Add(this.btn_applyCategoryToAll);
             this.Controls.Add(this.lbl_status);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tb_note);
             this.Controls.Add(this.dgv_expense);
-            this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MaximizeBox = false;
+            this.HelpButton = true;
             this.Name = "AddNewDataForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Data";
             this.Load += new System.EventHandler(this.AddNewDataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_expense)).EndInit();
@@ -413,7 +395,7 @@
 
         #endregion
         private System.Windows.Forms.DataGridView dgv_expense;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tb_note;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.Button btn_applyCategoryToAll;
         private System.Windows.Forms.ComboBox cmb_day;
@@ -423,14 +405,6 @@
         private System.Windows.Forms.DataGridView dgv_earning;
         private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Button btn_cancel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -439,5 +413,13 @@
         private System.Windows.Forms.Label lbl_earningTotal1;
         private System.Windows.Forms.Label lbl_expenseTotal2;
         private System.Windows.Forms.Label lbl_totalEarning2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
