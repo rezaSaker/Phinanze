@@ -40,7 +40,7 @@ namespace MyCost
             tb_confirmPassword.Visible = false;
             tb_confirmPassword.Enabled = false;
 
-            cb_rememberMe.Location = new Point(135, 234);
+            cb_rememberMe.Location = new Point(140, 223);
 
             lbl_status.Location = new Point(270, 300);
 
@@ -209,7 +209,7 @@ namespace MyCost
         private string RandomString(int size)
         {
             string randStr = "";
-            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            string str     = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
                              "abcdefghijklmnopqrstuvwxyz1234567890";
             char[] charSet = str.ToCharArray();
 

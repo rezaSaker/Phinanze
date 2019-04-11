@@ -42,10 +42,10 @@
             // btn_registerPanel
             // 
             this.btn_registerPanel.AutoSize = true;
-            this.btn_registerPanel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_registerPanel.BackColor = System.Drawing.Color.White;
             this.btn_registerPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_registerPanel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_registerPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_registerPanel.ForeColor = System.Drawing.Color.Black;
             this.btn_registerPanel.Location = new System.Drawing.Point(140, 82);
             this.btn_registerPanel.Name = "btn_registerPanel";
             this.btn_registerPanel.Size = new System.Drawing.Size(246, 36);
@@ -98,9 +98,9 @@
             // 
             // tb_confirmPassword
             // 
-            this.tb_confirmPassword.BackColor = System.Drawing.SystemColors.Control;
+            this.tb_confirmPassword.BackColor = System.Drawing.Color.White;
             this.tb_confirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_confirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_confirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_confirmPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tb_confirmPassword.Location = new System.Drawing.Point(140, 226);
             this.tb_confirmPassword.Multiline = true;
@@ -112,9 +112,9 @@
             // 
             // tb_password
             // 
-            this.tb_password.BackColor = System.Drawing.SystemColors.Control;
+            this.tb_password.BackColor = System.Drawing.Color.White;
             this.tb_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_password.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tb_password.Location = new System.Drawing.Point(140, 180);
             this.tb_password.Multiline = true;
@@ -126,9 +126,9 @@
             // 
             // tb_username
             // 
-            this.tb_username.BackColor = System.Drawing.SystemColors.Control;
+            this.tb_username.BackColor = System.Drawing.Color.White;
             this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_username.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tb_username.Location = new System.Drawing.Point(140, 134);
             this.tb_username.Multiline = true;
@@ -164,7 +164,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 377);
             this.Controls.Add(this.cb_rememberMe);
             this.Controls.Add(this.lbl_status);
@@ -175,6 +175,8 @@
             this.Controls.Add(this.lbl_welcomeText);
             this.Controls.Add(this.btn_loginPanel);
             this.Controls.Add(this.btn_registerPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Login or Register";
             this.Load += new System.EventHandler(this.MainForm_Load);
