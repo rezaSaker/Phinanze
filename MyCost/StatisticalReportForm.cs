@@ -63,6 +63,10 @@ namespace MyCost
             monthlyExpenseBar10.Visible = false;
             monthlyExpenseBar11.Visible = false;
             monthlyExpenseBar12.Visible = false;
+
+            yearlyOverviewLabel.Text = "Not available";
+            totalyearlyEarningLabel.Text = "0.00";
+            totalYearlyExpenseLabel.Text = "0.00";
         }
 
         private void PlotYearlyFinancialReportGraph()
@@ -71,8 +75,6 @@ namespace MyCost
 
             double highestExpense = HighestExpense();
             double highestEarning = HighestEarning();
-            //double lowestExpense = LowestExpense();
-           // double lowestEarning = LowestEarning();
 
             double highestOfAll = highestExpense > highestEarning ? highestExpense: highestEarning;
             double highestValueOfChart = RoundToNextAllZeroNumber(highestOfAll);
@@ -85,6 +87,7 @@ namespace MyCost
 
             PlotMonthlyEarningData(highestValueOfChart);
             PlotMonthlyExpenseData(highestValueOfChart);
+            UpdateYearlyOverviewLabel();
         }
 
 
@@ -177,6 +180,40 @@ namespace MyCost
             _barValueDictionary.Add(new KeyValuePair<string, double>(bar.Name, barValue));
         }
 
+        private void UpdateYearlyOverviewLabel()
+        {
+            double totalExpense = .0;
+            double totalEarning = .0;
+
+            foreach(Monthly monthly in StaticStorage.MonthlyInfo)
+            {
+                if(_selectedYear == monthly.Year)
+                {
+                    totalExpense += monthly.Expense;
+                    totalEarning += monthly.Earning;
+                }
+            }
+
+            totalyearlyEarningLabel.Text = totalEarning.ToString();
+            totalYearlyExpenseLabel.Text = totalExpense.ToString();
+
+            if(totalExpense > totalEarning)
+            {
+                yearlyOverviewLabel.Text = "Negative (" + (totalEarning - totalExpense) + ")";
+                yearlyOverviewLabel.ForeColor = Color.Red;
+            }
+            else if (totalExpense < totalEarning)
+            {
+                yearlyOverviewLabel.Text = "Positive (" + (totalEarning - totalExpense) + ")";
+                yearlyOverviewLabel.ForeColor = Color.ForestGreen;
+            }
+            else
+            {
+                yearlyOverviewLabel.Text = "Neutral (" + (totalEarning - totalExpense) + ")";
+                yearlyOverviewLabel.ForeColor = Color.Yellow;
+            }
+        }
+
         private double HighestExpense()
         {
             double max = .0;
@@ -206,37 +243,7 @@ namespace MyCost
 
             return max;
         }
-
-        private double LowestExpense()
-        {
-            double min = double.MaxValue;
-
-            foreach (Monthly monthly in StaticStorage.MonthlyInfo)
-            {
-                if (monthly.Expense < min)
-                {
-                    min = monthly.Expense;
-                }
-            }
-
-            return min;
-        }
-
-        private double LowestEarning()
-        {
-            double min = double.MaxValue;
-
-            foreach (Monthly monthly in StaticStorage.MonthlyInfo)
-            {
-                if (monthly.Earning < min)
-                {
-                    min = monthly.Earning;
-                }
-            }
-
-            return min;
-        }
-
+        
         /// <summary>
         /// rounds a number to its next all zero number.For example, 750 to 800
         /// </summary>

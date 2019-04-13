@@ -77,6 +77,19 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.monthlyAmountLabel = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.yearlyOverviewLabel = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.totalYearlyExpenseLabel = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.totalyearlyEarningLabel = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CategoryWiseAmountLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -728,11 +741,169 @@
             this.monthlyAmountLabel.Text = "label20";
             this.monthlyAmountLabel.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.OrangeRed;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(307, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(18, 22);
+            this.button1.TabIndex = 74;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(328, 15);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(65, 17);
+            this.label20.TabIndex = 75;
+            this.label20.Text = "Expense";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.ForestGreen;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button2.Location = new System.Drawing.Point(407, 12);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(18, 22);
+            this.button2.TabIndex = 76;
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(428, 15);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(58, 17);
+            this.label21.TabIndex = 77;
+            this.label21.Text = "Earning";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(601, 257);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(73, 17);
+            this.label22.TabIndex = 78;
+            this.label22.Text = "Overview:";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // yearlyOverviewLabel
+            // 
+            this.yearlyOverviewLabel.AutoSize = true;
+            this.yearlyOverviewLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearlyOverviewLabel.Location = new System.Drawing.Point(672, 257);
+            this.yearlyOverviewLabel.Name = "yearlyOverviewLabel";
+            this.yearlyOverviewLabel.Size = new System.Drawing.Size(104, 17);
+            this.yearlyOverviewLabel.TabIndex = 79;
+            this.yearlyOverviewLabel.Text = "overview Label";
+            this.yearlyOverviewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(17, 257);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(176, 17);
+            this.label23.TabIndex = 80;
+            this.label23.Text = "Total expense of this year:";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalYearlyExpenseLabel
+            // 
+            this.totalYearlyExpenseLabel.AutoSize = true;
+            this.totalYearlyExpenseLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalYearlyExpenseLabel.Location = new System.Drawing.Point(190, 257);
+            this.totalYearlyExpenseLabel.Name = "totalYearlyExpenseLabel";
+            this.totalYearlyExpenseLabel.Size = new System.Drawing.Size(38, 17);
+            this.totalYearlyExpenseLabel.TabIndex = 81;
+            this.totalYearlyExpenseLabel.Text = "label";
+            this.totalYearlyExpenseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(311, 257);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(169, 17);
+            this.label24.TabIndex = 82;
+            this.label24.Text = "Total earning of this year:";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // totalyearlyEarningLabel
+            // 
+            this.totalyearlyEarningLabel.AutoSize = true;
+            this.totalyearlyEarningLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalyearlyEarningLabel.Location = new System.Drawing.Point(477, 257);
+            this.totalyearlyEarningLabel.Name = "totalyearlyEarningLabel";
+            this.totalyearlyEarningLabel.Size = new System.Drawing.Size(38, 17);
+            this.totalyearlyEarningLabel.TabIndex = 83;
+            this.totalyearlyEarningLabel.Text = "label";
+            this.totalyearlyEarningLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(17, 293);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(181, 17);
+            this.label25.TabIndex = 84;
+            this.label25.Text = "Amount spent on Category";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(211, 290);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(214, 25);
+            this.comboBox1.TabIndex = 85;
+            // 
+            // CategoryWiseAmountLabel
+            // 
+            this.CategoryWiseAmountLabel.AutoSize = true;
+            this.CategoryWiseAmountLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CategoryWiseAmountLabel.Location = new System.Drawing.Point(431, 293);
+            this.CategoryWiseAmountLabel.Name = "CategoryWiseAmountLabel";
+            this.CategoryWiseAmountLabel.Size = new System.Drawing.Size(53, 17);
+            this.CategoryWiseAmountLabel.TabIndex = 86;
+            this.CategoryWiseAmountLabel.Text = "=  0.00";
+            this.CategoryWiseAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // StatisticalReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 411);
+            this.ClientSize = new System.Drawing.Size(840, 502);
+            this.Controls.Add(this.CategoryWiseAmountLabel);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.totalyearlyEarningLabel);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.totalYearlyExpenseLabel);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.yearlyOverviewLabel);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.monthlyAmountLabel);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -842,5 +1013,18 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label monthlyAmountLabel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label yearlyOverviewLabel;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label totalYearlyExpenseLabel;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label totalyearlyEarningLabel;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label CategoryWiseAmountLabel;
     }
 }

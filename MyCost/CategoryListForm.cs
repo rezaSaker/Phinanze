@@ -51,17 +51,28 @@ namespace MyCost
 
         private void CategoryListForm_Load(object sender, EventArgs e)
         {
-            dataGridView.Rows.Add("House Rent");
-            dataGridView.Rows.Add("Transit");
-            dataGridView.Rows.Add("Gas or Fuel");
-            dataGridView.Rows.Add("Parking");
-            dataGridView.Rows.Add("Groccery");
-            dataGridView.Rows.Add("Clothing");
-            dataGridView.Rows.Add("Study Material");
-            dataGridView.Rows.Add("Hydro");
-            dataGridView.Rows.Add("Other Shopping");
-            dataGridView.Rows.Add("Restaurant");
-            dataGridView.Rows.Add("Other");
+            if(dgv.Name == "expenseDataGridView")
+            {
+                dataGridView.Rows.Add("House Rent");
+                dataGridView.Rows.Add("Transit");
+                dataGridView.Rows.Add("Gas or Fuel");
+                dataGridView.Rows.Add("Parking");
+                dataGridView.Rows.Add("Groccery");
+                dataGridView.Rows.Add("Clothing");
+                dataGridView.Rows.Add("Study Material");
+                dataGridView.Rows.Add("Hydro");
+                dataGridView.Rows.Add("Other Shopping");
+                dataGridView.Rows.Add("Restaurant");
+                dataGridView.Rows.Add("Other");
+            }
+            else
+            {
+                dataGridView.Rows.Add("Pay cheque");
+                dataGridView.Rows.Add("Bonus");
+                dataGridView.Rows.Add("Gift");
+                dataGridView.Rows.Add("Refund");
+                dataGridView.Rows.Add("Other");
+            }
         }
 
         private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
