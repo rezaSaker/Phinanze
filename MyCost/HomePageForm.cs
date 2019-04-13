@@ -18,6 +18,7 @@ namespace MyCost
         {
             InitializeComponent();
 
+            //monthList is user to convert numeric month to month text
             monthsList = new List<string>();
             monthsList.Add("January");
             monthsList.Add("February");
@@ -34,7 +35,7 @@ namespace MyCost
 
         }
 
-        private void HomePage_Load(object sender, EventArgs e)
+        private void HomePageLoaded(object sender, EventArgs e)
         {
             PlotMonthlyInfo();
         }
@@ -47,13 +48,15 @@ namespace MyCost
 
             foreach(Monthly monthly in StaticStorage.MonthlyInfo)
             {
-                string year    = monthly.Year.ToString();
-                string month   = monthsList[monthly.Month - 1];
+                string year = monthly.Year.ToString();
+                string month = monthsList[monthly.Month - 1];
                 string earning = monthly.Earning.ToString();
                 string expense = monthly.Expense.ToString();
 
+                //adds year, month, earning and expense in the first four columns of the dataGridView
                 dataGridView.Rows.Add(year, month, earning, expense);
                 
+                //adds the overview to the last column according to the earning and expense
                 if(monthly.Earning < monthly.Expense)
                 {
                     dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Red;
@@ -73,7 +76,7 @@ namespace MyCost
             }
         }
 
-        private void btn_addNewData_Click(object sender, EventArgs e)
+        private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
             AddNewDataForm form = new AddNewDataForm();
             form.Show();

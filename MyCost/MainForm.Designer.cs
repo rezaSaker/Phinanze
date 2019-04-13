@@ -28,46 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_registerPanel = new System.Windows.Forms.Button();
-            this.btn_loginPanel = new System.Windows.Forms.Button();
+            this.showRegisterPanelButton = new System.Windows.Forms.Button();
+            this.showLoginPanelButton = new System.Windows.Forms.Button();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
-            this.btn_submit = new System.Windows.Forms.Button();
-            this.tb_confirmPassword = new System.Windows.Forms.TextBox();
-            this.tb_password = new System.Windows.Forms.TextBox();
-            this.tb_username = new System.Windows.Forms.TextBox();
-            this.lbl_status = new System.Windows.Forms.Label();
-            this.cb_rememberMe = new System.Windows.Forms.CheckBox();
+            this.submitButton = new System.Windows.Forms.Button();
+            this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.rememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // btn_registerPanel
+            // showRegisterPanelButton
             // 
-            this.btn_registerPanel.AutoSize = true;
-            this.btn_registerPanel.BackColor = System.Drawing.Color.White;
-            this.btn_registerPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_registerPanel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_registerPanel.ForeColor = System.Drawing.Color.Black;
-            this.btn_registerPanel.Location = new System.Drawing.Point(140, 82);
-            this.btn_registerPanel.Name = "btn_registerPanel";
-            this.btn_registerPanel.Size = new System.Drawing.Size(246, 36);
-            this.btn_registerPanel.TabIndex = 0;
-            this.btn_registerPanel.Text = "Register";
-            this.btn_registerPanel.UseVisualStyleBackColor = false;
-            this.btn_registerPanel.Click += new System.EventHandler(this.btn_registerPanel_Click);
+            this.showRegisterPanelButton.AutoSize = true;
+            this.showRegisterPanelButton.BackColor = System.Drawing.Color.White;
+            this.showRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showRegisterPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
+            this.showRegisterPanelButton.Location = new System.Drawing.Point(140, 82);
+            this.showRegisterPanelButton.Name = "showRegisterPanelButton";
+            this.showRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
+            this.showRegisterPanelButton.TabIndex = 0;
+            this.showRegisterPanelButton.Text = "Register";
+            this.showRegisterPanelButton.UseVisualStyleBackColor = false;
+            this.showRegisterPanelButton.Click += new System.EventHandler(this.ShowRegisterPanelButtonClicked);
             // 
-            // btn_loginPanel
+            // showLoginPanelButton
             // 
-            this.btn_loginPanel.AutoSize = true;
-            this.btn_loginPanel.BackColor = System.Drawing.Color.White;
-            this.btn_loginPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_loginPanel.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_loginPanel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_loginPanel.Location = new System.Drawing.Point(394, 82);
-            this.btn_loginPanel.Name = "btn_loginPanel";
-            this.btn_loginPanel.Size = new System.Drawing.Size(246, 36);
-            this.btn_loginPanel.TabIndex = 1;
-            this.btn_loginPanel.Text = "Log in";
-            this.btn_loginPanel.UseVisualStyleBackColor = false;
-            this.btn_loginPanel.Click += new System.EventHandler(this.btn_loginPanel_Click);
+            this.showLoginPanelButton.AutoSize = true;
+            this.showLoginPanelButton.BackColor = System.Drawing.Color.White;
+            this.showLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showLoginPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.showLoginPanelButton.Location = new System.Drawing.Point(394, 82);
+            this.showLoginPanelButton.Name = "showLoginPanelButton";
+            this.showLoginPanelButton.Size = new System.Drawing.Size(246, 36);
+            this.showLoginPanelButton.TabIndex = 1;
+            this.showLoginPanelButton.Text = "Log in";
+            this.showLoginPanelButton.UseVisualStyleBackColor = false;
+            this.showLoginPanelButton.Click += new System.EventHandler(this.ShowLoginPanelButoonClicked);
             // 
             // lbl_welcomeText
             // 
@@ -81,84 +81,84 @@
             this.lbl_welcomeText.TabIndex = 3;
             this.lbl_welcomeText.Text = "MyCost";
             // 
-            // btn_submit
+            // submitButton
             // 
-            this.btn_submit.AutoSize = true;
-            this.btn_submit.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_submit.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_submit.ForeColor = System.Drawing.Color.White;
-            this.btn_submit.Location = new System.Drawing.Point(270, 299);
-            this.btn_submit.Name = "btn_submit";
-            this.btn_submit.Size = new System.Drawing.Size(246, 36);
-            this.btn_submit.TabIndex = 13;
-            this.btn_submit.Text = "Log in";
-            this.btn_submit.UseVisualStyleBackColor = false;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
+            this.submitButton.AutoSize = true;
+            this.submitButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitButton.ForeColor = System.Drawing.Color.White;
+            this.submitButton.Location = new System.Drawing.Point(270, 299);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(246, 36);
+            this.submitButton.TabIndex = 13;
+            this.submitButton.Text = "Log in";
+            this.submitButton.UseVisualStyleBackColor = false;
+            this.submitButton.Click += new System.EventHandler(this.SubmitButtonClicked);
             // 
-            // tb_confirmPassword
+            // confirmPasswordTextBox
             // 
-            this.tb_confirmPassword.BackColor = System.Drawing.Color.White;
-            this.tb_confirmPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_confirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_confirmPassword.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tb_confirmPassword.Location = new System.Drawing.Point(140, 226);
-            this.tb_confirmPassword.Multiline = true;
-            this.tb_confirmPassword.Name = "tb_confirmPassword";
-            this.tb_confirmPassword.Size = new System.Drawing.Size(500, 30);
-            this.tb_confirmPassword.TabIndex = 12;
-            this.tb_confirmPassword.Text = "Confirm password";
-            this.tb_confirmPassword.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tb_confirmPassword_MouseClick);
+            this.confirmPasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.confirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(140, 226);
+            this.confirmPasswordTextBox.Multiline = true;
+            this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
+            this.confirmPasswordTextBox.Size = new System.Drawing.Size(500, 30);
+            this.confirmPasswordTextBox.TabIndex = 12;
+            this.confirmPasswordTextBox.Text = "Confirm password";
+            this.confirmPasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ConfirmPasswordTextBoxClicked);
             // 
-            // tb_password
+            // passwordTextBox
             // 
-            this.tb_password.BackColor = System.Drawing.Color.White;
-            this.tb_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_password.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tb_password.Location = new System.Drawing.Point(140, 180);
-            this.tb_password.Multiline = true;
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(500, 30);
-            this.tb_password.TabIndex = 11;
-            this.tb_password.Text = "Password";
-            this.tb_password.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tb_password_MouseClick);
+            this.passwordTextBox.BackColor = System.Drawing.Color.White;
+            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.passwordTextBox.Location = new System.Drawing.Point(140, 180);
+            this.passwordTextBox.Multiline = true;
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(500, 30);
+            this.passwordTextBox.TabIndex = 11;
+            this.passwordTextBox.Text = "Password";
+            this.passwordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextboxClicked);
             // 
-            // tb_username
+            // usernameTextBox
             // 
-            this.tb_username.BackColor = System.Drawing.Color.White;
-            this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_username.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.tb_username.Location = new System.Drawing.Point(140, 134);
-            this.tb_username.Multiline = true;
-            this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(500, 30);
-            this.tb_username.TabIndex = 10;
-            this.tb_username.Text = "Username";
-            this.tb_username.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tb_username_MouseClick);
+            this.usernameTextBox.BackColor = System.Drawing.Color.White;
+            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.usernameTextBox.Location = new System.Drawing.Point(140, 134);
+            this.usernameTextBox.Multiline = true;
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(500, 30);
+            this.usernameTextBox.TabIndex = 10;
+            this.usernameTextBox.Text = "Username";
+            this.usernameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UsernameTextBoxClicked);
             // 
-            // lbl_status
+            // statusLabel
             // 
-            this.lbl_status.AutoSize = true;
-            this.lbl_status.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(157, 348);
-            this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(82, 20);
-            this.lbl_status.TabIndex = 14;
-            this.lbl_status.Text = "Label Status";
-            this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Location = new System.Drawing.Point(157, 348);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(82, 20);
+            this.statusLabel.TabIndex = 14;
+            this.statusLabel.Text = "Label Status";
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cb_rememberMe
+            // rememberMeCheckBox
             // 
-            this.cb_rememberMe.AutoSize = true;
-            this.cb_rememberMe.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_rememberMe.Location = new System.Drawing.Point(140, 269);
-            this.cb_rememberMe.Name = "cb_rememberMe";
-            this.cb_rememberMe.Size = new System.Drawing.Size(126, 21);
-            this.cb_rememberMe.TabIndex = 15;
-            this.cb_rememberMe.Text = "Remember me";
-            this.cb_rememberMe.UseVisualStyleBackColor = true;
+            this.rememberMeCheckBox.AutoSize = true;
+            this.rememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rememberMeCheckBox.Location = new System.Drawing.Point(140, 269);
+            this.rememberMeCheckBox.Name = "rememberMeCheckBox";
+            this.rememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
+            this.rememberMeCheckBox.TabIndex = 15;
+            this.rememberMeCheckBox.Text = "Remember me";
+            this.rememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -166,20 +166,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 377);
-            this.Controls.Add(this.cb_rememberMe);
-            this.Controls.Add(this.lbl_status);
-            this.Controls.Add(this.btn_submit);
-            this.Controls.Add(this.tb_confirmPassword);
-            this.Controls.Add(this.tb_password);
-            this.Controls.Add(this.tb_username);
+            this.Controls.Add(this.rememberMeCheckBox);
+            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.submitButton);
+            this.Controls.Add(this.confirmPasswordTextBox);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.usernameTextBox);
             this.Controls.Add(this.lbl_welcomeText);
-            this.Controls.Add(this.btn_loginPanel);
-            this.Controls.Add(this.btn_registerPanel);
+            this.Controls.Add(this.showLoginPanelButton);
+            this.Controls.Add(this.showRegisterPanelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Login or Register";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.MainFormLoaded);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,15 +187,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_registerPanel;
-        private System.Windows.Forms.Button btn_loginPanel;
+        private System.Windows.Forms.Button showRegisterPanelButton;
+        private System.Windows.Forms.Button showLoginPanelButton;
         private System.Windows.Forms.Label lbl_welcomeText;
-        private System.Windows.Forms.Button btn_submit;
-        private System.Windows.Forms.TextBox tb_confirmPassword;
-        private System.Windows.Forms.TextBox tb_password;
-        private System.Windows.Forms.TextBox tb_username;
-        private System.Windows.Forms.Label lbl_status;
-        private System.Windows.Forms.CheckBox cb_rememberMe;
+        private System.Windows.Forms.Button submitButton;
+        private System.Windows.Forms.TextBox confirmPasswordTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.CheckBox rememberMeCheckBox;
     }
 }
 

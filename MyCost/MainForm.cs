@@ -18,91 +18,59 @@ namespace MyCost
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainFormLoaded(object sender, EventArgs e)
         {
             DisplayLoginPanel();
         }
 
-        private void btn_loginPanel_Click(object sender, EventArgs e)
+        private void ShowRegisterPanelButtonClicked(object sender, EventArgs e)
+        {
+            //reset everything so the panels appears as a register form
+            showRegisterPanelButton.BackColor = Color.White;
+            showRegisterPanelButton.ForeColor = Color.Black;
+            showLoginPanelButton.BackColor = Color.RoyalBlue;
+            showLoginPanelButton.ForeColor = Color.White;
+            submitButton.Text = "Register";
+            submitButton.Location = new Point(270, 299);
+            confirmPasswordTextBox.Visible = true;
+            confirmPasswordTextBox.Enabled = true;
+            rememberMeCheckBox.Location = new Point(140, 269);
+            statusLabel.Location = new Point(157, 348);
+
+            ResetTextBoxProperties();
+        }
+
+        private void ShowLoginPanelButoonClicked(object sender, EventArgs e)
         {
             DisplayLoginPanel();
         }
 
-        private void DisplayLoginPanel()
+        private void UsernameTextBoxClicked(object sender, MouseEventArgs e)
         {
-            btn_registerPanel.BackColor = Color.RoyalBlue;
-            btn_registerPanel.ForeColor = Color.White;
-            btn_loginPanel.BackColor    = Color.White;
-            btn_loginPanel.ForeColor    = Color.Black;
-            btn_submit.Text             = "Log in";
-            btn_submit.Location         = new Point(270, 251);
-
-            tb_confirmPassword.Visible = false;
-            tb_confirmPassword.Enabled = false;
-
-            cb_rememberMe.Location = new Point(140, 223);
-
-            lbl_status.Location = new Point(270, 300);
-
-            ResetTextBoxProperties();
+            //removes the placeholder
+            usernameTextBox.Text = "";
+            usernameTextBox.ForeColor = Color.Black;
         }
 
-        private void btn_registerPanel_Click(object sender, EventArgs e)
+        private void PasswordTextboxClicked(object sender, MouseEventArgs e)
         {
-            btn_registerPanel.BackColor = Color.White;
-            btn_registerPanel.ForeColor = Color.Black;
-            btn_loginPanel.BackColor    = Color.RoyalBlue;
-            btn_loginPanel.ForeColor    = Color.White;
-            btn_submit.Text             = "Register";
-            btn_submit.Location         = new Point(270, 299);
-
-            tb_confirmPassword.Visible = true;
-            tb_confirmPassword.Enabled = true;
-
-            cb_rememberMe.Location = new Point(140, 269);
-
-            lbl_status.Location = new Point(157, 348);
-
-            ResetTextBoxProperties();
+            //removes the placeholder
+            passwordTextBox.Text = "";
+            passwordTextBox.ForeColor = Color.Black;
+            passwordTextBox.PasswordChar = '*';
         }
 
-        private void ResetTextBoxProperties()
+        private void ConfirmPasswordTextBoxClicked(object sender, MouseEventArgs e)
         {
-            lbl_status.ForeColor            = Color.Red;
-            lbl_status.Text                 = "";
-            tb_username.Text                = "Username";
-            tb_username.ForeColor           = Color.DarkGray;
-            tb_password.Text                = "Password";
-            tb_password.ForeColor           = Color.DarkGray;
-            tb_password.PasswordChar        = '\0';
-            tb_confirmPassword.Text         = "Confirm Password";
-            tb_confirmPassword.ForeColor    = Color.DarkGray;
-            tb_confirmPassword.PasswordChar = '\0';
+            //removes the placeholder
+            confirmPasswordTextBox.Text = "";
+            confirmPasswordTextBox.ForeColor = Color.Black;
+            confirmPasswordTextBox.PasswordChar = '*';
         }
 
-        private void tb_username_MouseClick(object sender, MouseEventArgs e)
+        private void SubmitButtonClicked(object sender, EventArgs e)
         {
-            tb_username.Text      = "";
-            tb_username.ForeColor = Color.Black;
-        }
-
-        private void tb_password_MouseClick(object sender, MouseEventArgs e)
-        {
-            tb_password.Text         = "";
-            tb_password.ForeColor    = Color.Black;
-            tb_password.PasswordChar = '*';
-        }
-
-        private void tb_confirmPassword_MouseClick(object sender, MouseEventArgs e)
-        {
-            tb_confirmPassword.Text         = "";
-            tb_confirmPassword.ForeColor    = Color.Black;
-            tb_confirmPassword.PasswordChar = '*';
-        }
-
-        private void btn_submit_Click(object sender, EventArgs e)
-        {
-            if (btn_submit.Text == "Log in")
+            if (submitButton.Text == "Log in")
             {
                 LoginUser();
             }
@@ -112,10 +80,42 @@ namespace MyCost
             }
         }
 
+        private void DisplayLoginPanel()
+        {
+            //reset everything so the panel appears as a login form
+            showRegisterPanelButton.BackColor = Color.RoyalBlue;
+            showRegisterPanelButton.ForeColor = Color.White;
+            showLoginPanelButton.BackColor = Color.White;
+            showLoginPanelButton.ForeColor = Color.Black;
+            submitButton.Text = "Log in";
+            submitButton.Location = new Point(270, 251);
+            confirmPasswordTextBox.Visible = false;
+            confirmPasswordTextBox.Enabled = false;
+            rememberMeCheckBox.Location = new Point(140, 223);
+            statusLabel.Location = new Point(270, 300);
+
+            ResetTextBoxProperties();
+        }
+
+        private void ResetTextBoxProperties()
+        {
+            //reset the placeholders in the textboxes
+            statusLabel.ForeColor = Color.Red;
+            statusLabel.Text = "";
+            usernameTextBox.Text = "Username";
+            usernameTextBox.ForeColor = Color.DarkGray;
+            passwordTextBox.Text = "Password";
+            passwordTextBox.ForeColor = Color.DarkGray;
+            passwordTextBox.PasswordChar = '\0';
+            confirmPasswordTextBox.Text = "Confirm Password";
+            confirmPasswordTextBox.ForeColor = Color.DarkGray;
+            confirmPasswordTextBox.PasswordChar = '\0';
+        }
+
         private void LoginUser()
         {
-            string username = tb_username.Text;
-            string password = tb_password.Text;
+            string username = usernameTextBox.Text;
+            string password = this.passwordTextBox.Text;
 
             string result = ServerHandler.AuthenticateUser(username, password);
             string[] data = result.Split('|');
@@ -124,9 +124,9 @@ namespace MyCost
 
             //if the login succeeds, user's id and a temporary token are returned
             //else, the error message is returned
-            if(int.TryParse(data[0], out userId))
+            if (int.TryParse(data[0], out userId))
             {
-                StaticStorage.UserID      = Convert.ToInt16(data[0]);
+                StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
 
                 //gets all data for this user from database...
@@ -142,32 +142,32 @@ namespace MyCost
                 //...so making it disbaled and invisible
                 this.Visible = false;
                 this.Enabled = false;
-            }        
+            }
             else
             {
-                lbl_status.Text = result;
+                statusLabel.Text = result;
             }
         }
 
         private void RegisterUser()
         {
-            string username = tb_username.Text;
-            string password = tb_password.Text;
-            string confirmPassword = tb_confirmPassword.Text;
+            string username = usernameTextBox.Text;
+            string password = this.passwordTextBox.Text;
+            string confirmPassword = confirmPasswordTextBox.Text;
 
-            if(username.Length < 0)
+            if (username.Length < 0)
             {
-                lbl_status.Text = "Please enter a username";
+                statusLabel.Text = "Please enter a username";
                 return;
             }
-            else if(password.Length < 0)
+            else if (password.Length < 0)
             {
-                lbl_status.Text = "Please enter a password";
+                statusLabel.Text = "Please enter a password";
                 return;
             }
             else if (confirmPassword != password)
             {
-                lbl_status.Text = "Password does not match";
+                statusLabel.Text = "Password does not match";
                 return;
             }
 
@@ -180,13 +180,13 @@ namespace MyCost
 
             int userId;
 
-            if(int.TryParse(data[0], out userId))
+            if (int.TryParse(data[0], out userId))
             {
                 Properties.Settings.Default.AccessKey = access_key;
                 Properties.Settings.Default.Save();
 
                 StaticStorage.UserID = userId;
-                StaticStorage.AccessToken = data[1];          
+                StaticStorage.AccessToken = data[1];
 
                 //gets all data for this user from database...
                 //...and store them in StaticStorage class
@@ -202,20 +202,20 @@ namespace MyCost
             }
             else
             {
-                lbl_status.Text = result;
-            }                                      
+                statusLabel.Text = result;
+            }
         }
 
         private string RandomString(int size)
         {
             string randStr = "";
-            string str     = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
                              "abcdefghijklmnopqrstuvwxyz1234567890";
             char[] charSet = str.ToCharArray();
 
             Random rand = new Random();
-            
-            for(int i = 0; i < size; ++i)
+
+            for (int i = 0; i < size; ++i)
             {
                 randStr += charSet[rand.Next(0, str.Length)];
             }
@@ -230,63 +230,63 @@ namespace MyCost
 
             string[] rows = result.Split('^');
 
-            if(rows[0] == "Server connection error" || rows[0] == "")
+            if (rows[0] == "Server connection error" || rows[0] == "")
             {
                 //some server error occurred or no data found in the DB for this user
                 return;
             }
 
-            foreach(string row in rows)
+            foreach (string row in rows)
             {
                 string[] cols = row.Split('|');
 
-                int day   = Convert.ToInt16(cols[0]);
+                int day = Convert.ToInt16(cols[0]);
                 int month = Convert.ToInt16(cols[1]);
-                int year  = Convert.ToInt32(cols[2]);
+                int year = Convert.ToInt32(cols[2]);
 
-                string note                = cols[3];      
-                string[] expenseReasons    = cols[4].Split('~');
-                string[] expenseAmounts    = cols[5].Split('~');
+                string note = cols[3];
+                string[] expenseReasons = cols[4].Split('~');
+                string[] expenseAmounts = cols[5].Split('~');
                 string[] expenseCategories = cols[6].Split('~');
-                string[] expenseComments   = cols[7].Split('~');
-                string[] earningSources    = cols[8].Split('~');
-                string[] earningAmounts    = cols[9].Split('~');
+                string[] expenseComments = cols[7].Split('~');
+                string[] earningSources = cols[8].Split('~');
+                string[] earningAmounts = cols[9].Split('~');
                 string[] earningCategories = cols[10].Split('~');
-                string[] earningComments   = cols[11].Split('~');
-                string totalExpense        = cols[12];
-                string totalEarning        = cols[13];
+                string[] earningComments = cols[11].Split('~');
+                string totalExpense = cols[12];
+                string totalEarning = cols[13];
 
                 Daily daily = new Daily();
 
-                daily.Day           = day;
-                daily.Month         = month;
-                daily.Year          = year;
-                daily.Note          = note;
-                daily.TotalEarning  = Convert.ToDouble(totalEarning);
-                daily.TotalExpense  = Convert.ToDouble(totalExpense);
+                daily.Day = day;
+                daily.Month = month;
+                daily.Year = year;
+                daily.Note = note;
+                daily.TotalEarning = Convert.ToDouble(totalEarning);
+                daily.TotalExpense = Convert.ToDouble(totalExpense);
 
-                if(expenseAmounts[0] != "")
+                if (expenseAmounts[0] != "")
                 {
                     for (int i = 0; i < expenseReasons.Length; i++)
                     {
-                        double amount   = Convert.ToDouble(expenseAmounts[i]);
-                        string reason   = expenseReasons[i];
+                        double amount = Convert.ToDouble(expenseAmounts[i]);
+                        string reason = expenseReasons[i];
                         string category = expenseCategories[i];
-                        string comment  = expenseComments[i];
+                        string comment = expenseComments[i];
                         Expense expense = new Expense(reason, amount, category, comment);
 
                         daily.Expenses.Add(expense);
                     }
                 }
 
-                if(earningAmounts[0] != "")
+                if (earningAmounts[0] != "")
                 {
                     for (int i = 0; i < earningSources.Length; i++)
                     {
-                        double amount   = Convert.ToDouble(earningAmounts[i]);
-                        string reason   = earningSources[i];
+                        double amount = Convert.ToDouble(earningAmounts[i]);
+                        string reason = earningSources[i];
                         string category = earningCategories[i];
-                        string comment  = earningComments[i];
+                        string comment = earningComments[i];
                         Earning earning = new Earning(reason, amount, category, comment);
 
                         daily.Earnings.Add(earning);
@@ -304,22 +304,22 @@ namespace MyCost
                 return;
             }
 
-            //we get the info from db order by year in descending
+            //we get the info from db in decsneding order of year
             //so the first year in the list is the most recent
             //and last year in the list is the oldest year
-            int recentYear = StaticStorage.DailyInfo[StaticStorage.DailyInfo.Count - 1].Year;
-            int oldestYear = StaticStorage.DailyInfo[0].Year;
+            int recentYear = StaticStorage.DailyInfo[0].Year;
+            int oldestYear = StaticStorage.DailyInfo[StaticStorage.DailyInfo.Count - 1].Year;
 
-            for(int year = recentYear; year >= oldestYear; --year)
+            for (int year = recentYear; year <= oldestYear; year++)
             {
-                for(int month = 1; month <= 12; ++month)
+                for (int month = 1; month <= 12; month++)
                 {
                     double totalEarning = .0;
                     double totalExpense = .0;
 
-                    foreach(Daily daily in StaticStorage.DailyInfo)
+                    foreach (Daily daily in StaticStorage.DailyInfo)
                     {
-                        if(daily.Year == year && daily.Month == month)
+                        if (daily.Year == year && daily.Month == month)
                         {
                             totalEarning += daily.TotalEarning;
                             totalExpense += daily.TotalExpense;

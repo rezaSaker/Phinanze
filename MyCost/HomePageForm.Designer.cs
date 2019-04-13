@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePageForm));
-            this.btn_addNewData = new System.Windows.Forms.Button();
+            this.AddNewDataButton = new System.Windows.Forms.Button();
             this.btn_statistics = new System.Windows.Forms.Button();
             this.btn_userProfile = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.cmb_year = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
             this.lbl_expenseTotal1 = new System.Windows.Forms.Label();
-            this.cmb_month = new System.Windows.Forms.ComboBox();
+            this.monthComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -44,26 +49,21 @@
             this.lbl_version = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // btn_addNewData
+            // AddNewDataButton
             // 
-            this.btn_addNewData.BackColor = System.Drawing.Color.White;
-            this.btn_addNewData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_addNewData.BackgroundImage")));
-            this.btn_addNewData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_addNewData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_addNewData.Location = new System.Drawing.Point(598, 12);
-            this.btn_addNewData.Name = "btn_addNewData";
-            this.btn_addNewData.Size = new System.Drawing.Size(60, 50);
-            this.btn_addNewData.TabIndex = 1;
-            this.btn_addNewData.UseVisualStyleBackColor = false;
-            this.btn_addNewData.Click += new System.EventHandler(this.btn_addNewData_Click);
+            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
+            this.AddNewDataButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddNewDataButton.BackgroundImage")));
+            this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewDataButton.Location = new System.Drawing.Point(598, 12);
+            this.AddNewDataButton.Name = "AddNewDataButton";
+            this.AddNewDataButton.Size = new System.Drawing.Size(60, 50);
+            this.AddNewDataButton.TabIndex = 1;
+            this.AddNewDataButton.UseVisualStyleBackColor = false;
+            this.AddNewDataButton.Click += new System.EventHandler(this.AddNewDataButtonClicked);
             // 
             // btn_statistics
             // 
@@ -103,16 +103,49 @@
             this.dataGridView.Size = new System.Drawing.Size(775, 365);
             this.dataGridView.TabIndex = 6;
             // 
-            // cmb_year
+            // Column1
             // 
-            this.cmb_year.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_year.FormattingEnabled = true;
-            this.cmb_year.Items.AddRange(new object[] {
+            this.Column1.HeaderText = "Year";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Month";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 160;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Earning";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 160;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Expense";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 160;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Overview";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 150;
+            // 
+            // yearComboBox
+            // 
+            this.yearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Items.AddRange(new object[] {
             "All years"});
-            this.cmb_year.Location = new System.Drawing.Point(159, 50);
-            this.cmb_year.Name = "cmb_year";
-            this.cmb_year.Size = new System.Drawing.Size(123, 26);
-            this.cmb_year.TabIndex = 5;
+            this.yearComboBox.Location = new System.Drawing.Point(159, 50);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(123, 26);
+            this.yearComboBox.TabIndex = 5;
             // 
             // lbl_welcomeText
             // 
@@ -139,11 +172,11 @@
             this.lbl_expenseTotal1.Text = "Monthly overview";
             this.lbl_expenseTotal1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cmb_month
+            // monthComboBox
             // 
-            this.cmb_month.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmb_month.FormattingEnabled = true;
-            this.cmb_month.Items.AddRange(new object[] {
+            this.monthComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Items.AddRange(new object[] {
             "All months",
             "January",
             "February",
@@ -157,10 +190,10 @@
             "October",
             "November",
             "December"});
-            this.cmb_month.Location = new System.Drawing.Point(288, 50);
-            this.cmb_month.Name = "cmb_month";
-            this.cmb_month.Size = new System.Drawing.Size(123, 26);
-            this.cmb_month.TabIndex = 33;
+            this.monthComboBox.Location = new System.Drawing.Point(288, 50);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(123, 26);
+            this.monthComboBox.TabIndex = 33;
             // 
             // button1
             // 
@@ -247,39 +280,6 @@
             this.button6.TabIndex = 40;
             this.button6.UseVisualStyleBackColor = false;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Year";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Month";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 160;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Earning";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 160;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Expense";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 160;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Overview";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 150;
-            // 
             // HomePageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,19 +292,19 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.cmb_month);
+            this.Controls.Add(this.monthComboBox);
             this.Controls.Add(this.lbl_expenseTotal1);
             this.Controls.Add(this.lbl_welcomeText);
             this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.cmb_year);
+            this.Controls.Add(this.yearComboBox);
             this.Controls.Add(this.btn_userProfile);
             this.Controls.Add(this.btn_statistics);
-            this.Controls.Add(this.btn_addNewData);
+            this.Controls.Add(this.AddNewDataButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "HomePageForm";
             this.Text = "Home Page";
-            this.Load += new System.EventHandler(this.HomePage_Load);
+            this.Load += new System.EventHandler(this.HomePageLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -312,14 +312,14 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btn_addNewData;
+        private System.Windows.Forms.Button AddNewDataButton;
         private System.Windows.Forms.Button btn_statistics;
         private System.Windows.Forms.Button btn_userProfile;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.ComboBox cmb_year;
+        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Label lbl_welcomeText;
         private System.Windows.Forms.Label lbl_expenseTotal1;
-        private System.Windows.Forms.ComboBox cmb_month;
+        private System.Windows.Forms.ComboBox monthComboBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
