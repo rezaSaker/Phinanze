@@ -8,42 +8,42 @@ namespace MyCost
 {
     class Earning
     {
-        private double amount;
+        private double _amount;
 
-        private string source;
-        private string category;
-        private string comment;      
+        private string _source;
+        private string _category;
+        private string _comment;      
 
         public Earning(string source, double amount, string category, string comment)
         {
-            this.source = source;
-            this.amount = amount;
-            this.category = category;
-            this.comment = comment;
+            _source = source;
+            _amount = amount;
+            _category = category;
+            _comment = comment;
         }
 
         public string Source
         {
-            get { return source; }
-            set { source = value; }
+            get { return _source; }
+            set { _source = value; }
         }
 
         public double Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return _amount; }
+            set { _amount = value; }
         }
 
         public string Category
         {
-            get { return category; }
-            set { category = value; }
+            get { return _category; }
+            set { _category = value; }
         }
 
         public string Comment
         {
-            get { return comment; }
-            set { comment = value; }
+            get { return _comment; }
+            set { _comment = value; }
         }
     }
 }

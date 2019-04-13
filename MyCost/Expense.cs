@@ -8,42 +8,42 @@ namespace MyCost
 {
     class Expense
     {
-        private double amount;
+        private double _amount;
 
-        private string reason;
-        private string category;
-        private string comment;      
+        private string _reason;
+        private string _category;
+        private string _comment;      
 
         public Expense(string reason, double amount, string category, string comment)
         {
-            this.reason = reason;
-            this.amount = amount;
-            this.category = category;
-            this.comment = comment;           
+            _reason = reason;
+            _amount = amount;
+            _category = category;
+            _comment = comment;           
         }
 
         public string Reason
         {
-            get { return reason; }
-            set { reason = value; }
+            get { return _reason; }
+            set { _reason = value; }
         }
 
         public double Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get { return _amount; }
+            set { _amount = value; }
         }
 
         public string Category
         {
-            get { return category; }
-            set { category = value; }
+            get { return _category; }
+            set { _category = value; }
         }
 
         public string Comment
         {
-            get { return comment; }
-            set { comment = value; }
+            get { return _comment; }
+            set { _comment = value; }
         }
     }
 }

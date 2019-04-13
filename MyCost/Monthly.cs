@@ -8,42 +8,42 @@ namespace MyCost
 {
     class Monthly
     {
-        private int month;
-        private int year;
+        private int _month;
+        private int _year;
 
-        private double earning;
-        private double expense;
+        private double _earning;
+        private double _expense;
 
         public Monthly(int month, int year, double earning, double expense)
         {
-            this.month   = month;
-            this.year    = year;
-            this.earning = earning;
-            this.expense = expense;
+            _month = month;
+            _year = year;
+            _earning = earning;
+            _expense = expense;
         }
 
         public int Month
         {
-            get { return month; }
-            set { month = value; }
+            get { return _month; }
+            set { _month = value; }
         }
 
         public int Year
         {
-            get { return year; }
-            set { year = value; }
+            get { return _year; }
+            set { _year = value; }
         }
 
         public double Earning
         {
-            get { return earning; }
-            set { earning = value; }
+            get { return _earning; }
+            set { _earning = value; }
         }
 
         public double Expense
         {
-            get { return expense; }
-            set { expense = value; }
+            get { return _expense; }
+            set { _expense = value; }
         }
     }
 }

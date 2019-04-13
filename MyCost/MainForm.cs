@@ -132,7 +132,6 @@ namespace MyCost
                 //gets all data for this user from database...
                 //...and store them in StaticStorage class
                 FetchDailyInfo();
-                FetchMonthlyInfo();
                 FetchCategories();
 
                 HomePageForm homePage = new HomePageForm();
@@ -191,7 +190,6 @@ namespace MyCost
                 //gets all data for this user from database...
                 //...and store them in StaticStorage class
                 FetchDailyInfo();
-                FetchMonthlyInfo();
                 FetchCategories();
 
                 HomePageForm homePage = new HomePageForm();
@@ -294,41 +292,6 @@ namespace MyCost
                 }
 
                 StaticStorage.DailyInfo.Add(daily);
-            }
-        }
-
-        private void FetchMonthlyInfo()
-        {
-            if (StaticStorage.DailyInfo.Count < 1)
-            {
-                return;
-            }
-
-            //we get the info from db in decsneding order of year
-            //so the first year in the list is the most recent
-            //and last year in the list is the oldest year
-            int recentYear = StaticStorage.DailyInfo[0].Year;
-            int oldestYear = StaticStorage.DailyInfo[StaticStorage.DailyInfo.Count - 1].Year;
-
-            for (int year = recentYear; year <= oldestYear; year++)
-            {
-                for (int month = 1; month <= 12; month++)
-                {
-                    double totalEarning = .0;
-                    double totalExpense = .0;
-
-                    foreach (Daily daily in StaticStorage.DailyInfo)
-                    {
-                        if (daily.Year == year && daily.Month == month)
-                        {
-                            totalEarning += daily.TotalEarning;
-                            totalExpense += daily.TotalExpense;
-                        }
-                    }
-
-                    Monthly monthly = new Monthly(month, year, totalEarning, totalExpense);
-                    StaticStorage.MonthlyInfo.Add(monthly);
-                }
             }
         }
 

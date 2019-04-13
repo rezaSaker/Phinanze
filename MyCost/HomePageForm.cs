@@ -12,26 +12,26 @@ namespace MyCost
 {
     public partial class HomePageForm : Form
     {
-        private List<string> monthsList;
+        private List<string> _monthList;
                                                     
         public HomePageForm()
         {
             InitializeComponent();
 
-            //monthList is user to convert numeric month to month text
-            monthsList = new List<string>();
-            monthsList.Add("January");
-            monthsList.Add("February");
-            monthsList.Add("March");
-            monthsList.Add("April");
-            monthsList.Add("May");
-            monthsList.Add("June");
-            monthsList.Add("July");
-            monthsList.Add("August");
-            monthsList.Add("September");
-            monthsList.Add("October");
-            monthsList.Add("November");
-            monthsList.Add("December");
+            //monthList is used to convert numeric month to month text
+            _monthList = new List<string>();
+            _monthList.Add("January");
+            _monthList.Add("February");
+            _monthList.Add("March");
+            _monthList.Add("April");
+            _monthList.Add("May");
+            _monthList.Add("June");
+            _monthList.Add("July");
+            _monthList.Add("August");
+            _monthList.Add("September");
+            _monthList.Add("October");
+            _monthList.Add("November");
+            _monthList.Add("December");
 
         }
 
@@ -44,12 +44,14 @@ namespace MyCost
         {
             dataGridView.Rows.Clear();
 
+            StaticStorage.FetchMonthlyInfo();
+
             int row = 0;
 
-            foreach(Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach (Monthly monthly in StaticStorage.MonthlyInfo)
             {
                 string year = monthly.Year.ToString();
-                string month = monthsList[monthly.Month - 1];
+                string month = _monthList[monthly.Month - 1];
                 string earning = monthly.Earning.ToString();
                 string expense = monthly.Expense.ToString();
 
@@ -73,13 +75,31 @@ namespace MyCost
                     dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Yellow;
                     dataGridView.Rows[row].Cells[4].Value           = "neutral";
                 }
+
+                row++;
             }
         }
 
         private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
-            AddNewDataForm form = new AddNewDataForm();
+            DailyInfoForm form = new DailyInfoForm(this);
             form.Show();
+
+            this.Visible = false;
+        }
+
+        private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        {
+            int year = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+            int month = _monthList.IndexOf(dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
+
+            MonthlyInfoForm form = new MonthlyInfoForm(month, year);
+            form.Show();
+        }
+
+        public void Refresh()
+        {
+            PlotMonthlyInfo();
         }
     }
 }

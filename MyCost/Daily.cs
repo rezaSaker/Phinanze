@@ -8,71 +8,70 @@ namespace MyCost
 {
     class Daily
     {
-        private int id;
-        private int day;
-        private int month;
-        private int year;
+        private int _day;
+        private int _month;
+        private int _year;
 
-        private double totalExpense;
-        private double totalEarning;
+        private double _totalExpense;
+        private double _totalEarning;
 
-        private string note;
+        private string _note;
 
-        private List<Expense> expenses;
-        private List<Earning> earnings;
+        private List<Expense> _expenses;
+        private List<Earning> _earnings;
 
         public Daily()
         {
-            expenses = new List<Expense>();
-            earnings = new List<Earning>();
+            _expenses = new List<Expense>();
+            _earnings = new List<Earning>();
         }
 
         public int Day
         {
-            get { return day; }
-            set { day = value; }
+            get { return _day; }
+            set { _day = value; }
         }
 
         public int Month
         {
-            get { return month; }
-            set { month = value; }
+            get { return _month; }
+            set { _month = value; }
         }
 
         public int Year
         {
-            get { return year; }
-            set { year = value; }
+            get { return _year; }
+            set { _year = value; }
         }
 
         public double TotalExpense
         {
-            get { return totalExpense; }
-            set { totalExpense = value; }
+            get { return _totalExpense; }
+            set { _totalExpense = value; }
         }
 
         public double TotalEarning
         {
-            get { return totalEarning; }
-            set { totalEarning = value; }
+            get { return _totalEarning; }
+            set { _totalEarning = value; }
         }
 
         public string Note
         {
-            get { return note; }
-            set { note = value; }
+            get { return _note; }
+            set { _note = value; }
         }
 
         public List<Expense> Expenses
         {
-            get { return expenses; }
-            set { expenses = value; }
+            get { return _expenses; }
+            set { _expenses = value; }
         }
 
         public List<Earning> Earnings
         {
-            get { return earnings; }
-            set { earnings = value; }
+            get { return _earnings; }
+            set { _earnings = value; }
         }
     }
 }

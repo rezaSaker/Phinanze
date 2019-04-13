@@ -10,42 +10,87 @@ using System.Windows.Forms;
 
 namespace MyCost
 {
-    public partial class AddNewDataForm : Form
+    public partial class DailyInfoForm : Form
     {
         private int _selectedDay;
+        private int _selectedMonth;
+        private int _selectedYear;
 
-        public AddNewDataForm()
+        private bool _firstInitializationCall;
+
+        private HomePageForm _homePageFormObj;
+        private MonthlyInfoForm _monthlyInfoFormObj;
+
+        public DailyInfoForm(HomePageForm obj)
         {
             InitializeComponent();
+
+            _homePageFormObj = obj;
+
+            //gets current day, month and year
+            _selectedDay = DateTime.Now.Day;
+            _selectedMonth = DateTime.Now.Month;
+            _selectedYear = DateTime.Now.Year;
+        }
+
+        public DailyInfoForm(int day, int month, int year, MonthlyInfoForm obj)
+        {
+            InitializeComponent();
+
+            _selectedDay = day;
+            _selectedMonth = month;
+            _selectedYear = year;
+            _monthlyInfoFormObj = obj;
         }
 
         private void AddNewDataFormLoaded(object sender, EventArgs e)
-        {
-            //gets current day, month and year
-            int day = Convert.ToInt16(DateTime.Now.Day.ToString());
-            int month = Convert.ToInt16(DateTime.Now.Month.ToString());
-            int year = Convert.ToInt16(DateTime.Now.Year.ToString());
-
-            //sets years to cmb_year as items
-            for (int i = 2018; i < year + 10; i++)
+        {     
+            for (int i = 2018; i < _selectedYear + 10; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
             }
 
-            _selectedDay = day; //is used to select the day in AddItemsToDayComboBox() method
+            //changing selctedIndex in comboBox results in calling of PlotDailyInfo() & AddItemsToDayComboBox()
+            //since we change selectedIndex in this loader method twice it will call those methods twice
+            //to avoid that redundancy we will check with a boolean if it is the first initialization call
+            _firstInitializationCall = true;
 
             //Sets the date fields to currents date
-            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(year.ToString());
-            monthComboBox.SelectedIndex = month - 1;
+            //day is selected in MonthComboBoxIndexChanged() which is called when we set the month 
+            monthComboBox.SelectedIndex = _selectedMonth - 1;
+            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
+
+            _firstInitializationCall = false;
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
-        {
-            //if the month changes, the number of days should chnage accordingly
-            int month = monthComboBox.SelectedIndex + 1;
-            int year = Convert.ToInt16(yearComboBox.SelectedItem.ToString());
+        {         
+            _selectedMonth = monthComboBox.SelectedIndex + 1;
 
-            AddItemsToDayComboBox(month, year);
+            //followiing method call will change the number of days in the dayComboBox according to the selected month
+            //this will also reset the selectedIndex of dayComboBox to _selectedDay
+            //changing index of dayComboBox will make call to PlotDailyInfo() method
+            AddItemsToDayComboBox();
+        }
+
+        private void YearComboBoxIndexChanged(object sender, EventArgs e)
+        {
+            _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+
+            //if it is first initialization call, then the items are already set to dayComboBox
+            //otherwise, if the yearComboBox index is changed later by user, then we need to ...
+            //reset the items to dayComboBox according to the year
+            if (!_firstInitializationCall)
+            {
+                AddItemsToDayComboBox();
+            }         
+        }
+
+        private void DayComboBoxIndexChanged(object sender, EventArgs e)
+        {
+            _selectedDay = dayComboBox.SelectedIndex + 1;
+
+            PlotDailyInfo();
         }
 
         private void ExpenseDGVCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
@@ -275,7 +320,19 @@ namespace MyCost
 
             if (savingResult == "SUCCESS")
             {
-                StaticStorage.DailyInfo.Add(daily);
+                int index = StaticStorage.DailyInfo.Count;
+
+                foreach(Daily d in StaticStorage.DailyInfo)
+                {
+                    if(d.Day == daily.Day 
+                        && d.Month == daily.Month 
+                        && d.Year == daily.Year)
+                    {
+                        index = StaticStorage.DailyInfo.IndexOf(d);
+                        break;
+                    }
+                }
+                StaticStorage.DailyInfo[index] = daily;
             }
             else
             {
@@ -324,22 +381,22 @@ namespace MyCost
             form.Show();
         }
 
-        private void AddItemsToDayComboBox(int month, int year)
+        private void AddItemsToDayComboBox()
         {
             dayComboBox.Items.Clear();
    
             int numberOfdays;
 
             //set the number of days according to month
-            if (month == 2 && DateTime.IsLeapYear(year))
+            if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
                 numberOfdays = 29;
-            else if (month == 2 && !DateTime.IsLeapYear(year))
+            else if (_selectedMonth == 2 && !DateTime.IsLeapYear(_selectedYear))
                 numberOfdays = 28;
-            else if (month <= 7 && month % 2 == 1)
+            else if (_selectedMonth <= 7 && _selectedMonth % 2 == 1)
                 numberOfdays = 31;
-            else if (month <= 7 && month % 2 == 0)
+            else if (_selectedMonth <= 7 && _selectedMonth % 2 == 0)
                 numberOfdays = 30;
-            else if (month > 7 && month % 2 == 1)
+            else if (_selectedMonth > 7 && _selectedMonth % 2 == 1)
                 numberOfdays = 30;
             else
                 numberOfdays = 31;
@@ -350,7 +407,18 @@ namespace MyCost
                 dayComboBox.Items.Add((i + 1).ToString());
             }
 
-            dayComboBox.SelectedIndex = _selectedDay - 1;
+            try
+            {
+                dayComboBox.SelectedIndex = _selectedDay - 1;
+            }
+            catch(ArgumentOutOfRangeException)
+            {
+                //this exception is thrown when _selectedDay is greater than...
+                //...the number of days for _selectedMonth
+                dayComboBox.SelectedIndex = 0;
+                _selectedDay = 1;
+            }
+            
         }
 
         private void UpdateTotalExpenseLabel()
@@ -423,9 +491,63 @@ namespace MyCost
             totalEarningLabel.Text = string.Format("{0:0.00}", total);
         }
 
-        private void DayComboBoxIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Plot data on this form for the selected date
+        /// </summary>
+        private void PlotDailyInfo()
         {
-            _selectedDay = dayComboBox.SelectedIndex + 1;
+            //clears the previous info
+            noteTextBox.Text = "";
+            totalExpenseLabel.Text = "0.00";
+            totalEarningLabel.Text = "0.00";
+            expenseDataGridView.Rows.Clear();
+            earningDataGridView.Rows.Clear();
+
+            //plot info for new selected date
+            foreach(Daily daily in StaticStorage.DailyInfo)
+            {
+                if(_selectedDay == daily.Day
+                    && _selectedMonth == daily.Month
+                    && _selectedYear == daily.Year)
+                {
+                    //plot common info first
+                    noteTextBox.Text = daily.Note;
+
+                    //plot expense info
+                    foreach(Expense expense in daily.Expenses)
+                    {
+                        expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
+                    }
+
+                    //plot earning info
+                    foreach(Earning earning in daily.Earnings)
+                    {
+                        earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
+                    }
+
+                    break;
+                }
+            }
+
+            UpdateTotalExpenseLabel();
+            UpdateTotalEarningLabel();
+        }
+
+        private void DailyInfoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_monthlyInfoFormObj != null)
+            {
+                //then this form was opened by MonthlyInfoForm whose refernce is passed as _calleeObj
+                _monthlyInfoFormObj.Refresh);
+                _monthlyInfoFormObj.Visible = true;
+            }
+            else
+            {
+                //then this form was opened by HomePageForm whose refernce is passed as _homePageFormObj
+                _homePageFormObj.Refresh();
+                _homePageFormObj.Visible = true;              
+            }
+            this.Close();
         }
     }
 }

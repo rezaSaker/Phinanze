@@ -1,6 +1,6 @@
 ﻿namespace MyCost
 {
-    partial class AddNewDataForm
+    partial class DailyInfoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -177,6 +177,7 @@
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(109, 26);
             this.yearComboBox.TabIndex = 22;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
             // label1
             // 
@@ -351,7 +352,7 @@
             this.totalExpenseLabel.Text = "0.00";
             this.totalExpenseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // AddNewDataForm
+            // DailyInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -381,9 +382,11 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
-            this.Name = "AddNewDataForm";
+            this.MaximizeBox = false;
+            this.Name = "DailyInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add New Data";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyInfoFormClosing);
             this.Load += new System.EventHandler(this.AddNewDataFormLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.expenseDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.earningDataGridView)).EndInit();

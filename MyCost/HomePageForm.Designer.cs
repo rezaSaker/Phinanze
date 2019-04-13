@@ -102,6 +102,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(775, 365);
             this.dataGridView.TabIndex = 6;
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             // 
             // Column1
             // 
