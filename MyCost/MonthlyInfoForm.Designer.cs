@@ -57,6 +57,7 @@
             "July",
             "August",
             "September",
+            "October",
             "November",
             "December"});
             this.monthComboBox.Location = new System.Drawing.Point(423, 12);

@@ -320,7 +320,7 @@ namespace MyCost
 
             if (savingResult == "SUCCESS")
             {
-                int index = StaticStorage.DailyInfo.Count;
+                int index = -1;
 
                 foreach(Daily d in StaticStorage.DailyInfo)
                 {
@@ -332,7 +332,16 @@ namespace MyCost
                         break;
                     }
                 }
-                StaticStorage.DailyInfo[index] = daily;
+                if(index == -1)
+                {
+                    //if no matching daily info is found, so add a new info
+                    StaticStorage.DailyInfo.Add(daily);
+                }
+                else
+                {
+                    //matching info is found, so update the current info
+                    StaticStorage.DailyInfo[index] = daily;
+                }
 
                 this.Close();
             }

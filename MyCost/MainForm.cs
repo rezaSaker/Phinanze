@@ -12,6 +12,8 @@ namespace MyCost
 {
     public partial class MainForm : Form
     {
+        private int _selectedYear;
+
         private List<string> _monthList;
                                                     
         public MainForm()
@@ -37,6 +39,25 @@ namespace MyCost
 
         private void HomePageLoaded(object sender, EventArgs e)
         {
+            for(int year = 2018; year <= DateTime.Now.Year; year++)
+            {
+                YearComboBox.Items.Add(year.ToString());
+            }
+
+            YearComboBox.SelectedIndex = 0;
+        }
+
+        private void YearComboBoxIndexChanged(object sender, EventArgs e)
+        {
+            if(YearComboBox.SelectedItem.ToString() == "All years")
+            {
+                _selectedYear = 0;
+            }
+            else
+            {
+                _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
+            }
+
             PlotMonthlyInfo();
         }
 
@@ -55,28 +76,47 @@ namespace MyCost
                 string earning = monthly.Earning.ToString();
                 string expense = monthly.Expense.ToString();
 
-                //adds year, month, earning and expense in the first four columns of the dataGridView
-                dataGridView.Rows.Add(year, month, earning, expense);
-                
-                //adds the overview to the last column according to the earning and expense
-                if(monthly.Earning < monthly.Expense)
+                if(_selectedYear == 0)//show info for all years
                 {
-                    dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Red;
-                    dataGridView.Rows[row].Cells[4].Value           = "Negative";
+                    //adds year, month, earning and expense in the first four columns of the dataGridView
+                    dataGridView.Rows.Add(year, month, earning, expense);
 
-                }
-                else if(monthly.Earning > monthly.Expense)
-                {
-                    dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Green;
-                    dataGridView.Rows[row].Cells[4].Value           = "Positive";
-                }
-                else
-                {
-                    dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Yellow;
-                    dataGridView.Rows[row].Cells[4].Value           = "neutral";
-                }
+                    //add an overview for the month on last column
+                    ShowFinancialOverviewPerRow(monthly, row);
 
-                row++;
+                    row++;
+                }
+                else if(_selectedYear == monthly.Year)// show info only for selected year
+                {
+                    //adds year, month, earning and expense in the first four columns of the dataGridView
+                    dataGridView.Rows.Add(year, month, earning, expense);
+
+                    //add an overview for the month on last column
+                    ShowFinancialOverviewPerRow(monthly, row);
+
+                    row++;
+                }
+            }
+        }
+
+        private void ShowFinancialOverviewPerRow(Monthly monthly, int row)
+        {
+            //adds the overview to the last column according to the earning and expense
+            if (monthly.Earning < monthly.Expense)
+            {
+                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Red;
+                dataGridView.Rows[row].Cells[4].Value = "Negative";
+
+            }
+            else if (monthly.Earning > monthly.Expense)
+            {
+                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Green;
+                dataGridView.Rows[row].Cells[4].Value = "Positive";
+            }
+            else
+            {
+                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Yellow;
+                dataGridView.Rows[row].Cells[4].Value = "neutral";
             }
         }
 

@@ -39,7 +39,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
-            this.monthComboBox = new System.Windows.Forms.ComboBox();
+            this.YearComboBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -151,28 +151,17 @@
             this.lbl_welcomeText.TabIndex = 30;
             this.lbl_welcomeText.Text = "MYCOST";
             // 
-            // monthComboBox
+            // YearComboBox
             // 
-            this.monthComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthComboBox.FormattingEnabled = true;
-            this.monthComboBox.Items.AddRange(new object[] {
-            "All months",
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.monthComboBox.Location = new System.Drawing.Point(12, 47);
-            this.monthComboBox.Name = "monthComboBox";
-            this.monthComboBox.Size = new System.Drawing.Size(123, 26);
-            this.monthComboBox.TabIndex = 33;
+            this.YearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YearComboBox.FormattingEnabled = true;
+            this.YearComboBox.Items.AddRange(new object[] {
+            "All years"});
+            this.YearComboBox.Location = new System.Drawing.Point(12, 47);
+            this.YearComboBox.Name = "YearComboBox";
+            this.YearComboBox.Size = new System.Drawing.Size(123, 26);
+            this.YearComboBox.TabIndex = 33;
+            this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
             // button1
             // 
@@ -271,7 +260,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.monthComboBox);
+            this.Controls.Add(this.YearComboBox);
             this.Controls.Add(this.lbl_welcomeText);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.logOutButton);
@@ -295,7 +284,7 @@
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label lbl_welcomeText;
-        private System.Windows.Forms.ComboBox monthComboBox;
+        private System.Windows.Forms.ComboBox YearComboBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
