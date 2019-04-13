@@ -28,174 +28,285 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.showRegisterPanelButton = new System.Windows.Forms.Button();
-            this.showLoginPanelButton = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.AddNewDataButton = new System.Windows.Forms.Button();
+            this.statisticsButton = new System.Windows.Forms.Button();
+            this.logOutButton = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
-            this.submitButton = new System.Windows.Forms.Button();
-            this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.rememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.monthComboBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.lbl_version = new System.Windows.Forms.Label();
+            this.ShowMonthlyInfoButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // showRegisterPanelButton
+            // AddNewDataButton
             // 
-            this.showRegisterPanelButton.AutoSize = true;
-            this.showRegisterPanelButton.BackColor = System.Drawing.Color.White;
-            this.showRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showRegisterPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
-            this.showRegisterPanelButton.Location = new System.Drawing.Point(140, 82);
-            this.showRegisterPanelButton.Name = "showRegisterPanelButton";
-            this.showRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
-            this.showRegisterPanelButton.TabIndex = 0;
-            this.showRegisterPanelButton.Text = "Register";
-            this.showRegisterPanelButton.UseVisualStyleBackColor = false;
-            this.showRegisterPanelButton.Click += new System.EventHandler(this.ShowRegisterPanelButtonClicked);
+            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
+            this.AddNewDataButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddNewDataButton.BackgroundImage")));
+            this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewDataButton.Location = new System.Drawing.Point(374, 13);
+            this.AddNewDataButton.Name = "AddNewDataButton";
+            this.AddNewDataButton.Size = new System.Drawing.Size(60, 60);
+            this.AddNewDataButton.TabIndex = 1;
+            this.AddNewDataButton.UseVisualStyleBackColor = false;
+            this.AddNewDataButton.Click += new System.EventHandler(this.AddNewDataButtonClicked);
             // 
-            // showLoginPanelButton
+            // statisticsButton
             // 
-            this.showLoginPanelButton.AutoSize = true;
-            this.showLoginPanelButton.BackColor = System.Drawing.Color.White;
-            this.showLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showLoginPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.showLoginPanelButton.Location = new System.Drawing.Point(394, 82);
-            this.showLoginPanelButton.Name = "showLoginPanelButton";
-            this.showLoginPanelButton.Size = new System.Drawing.Size(246, 36);
-            this.showLoginPanelButton.TabIndex = 1;
-            this.showLoginPanelButton.Text = "Log in";
-            this.showLoginPanelButton.UseVisualStyleBackColor = false;
-            this.showLoginPanelButton.Click += new System.EventHandler(this.ShowLoginPanelButoonClicked);
+            this.statisticsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("statisticsButton.BackgroundImage")));
+            this.statisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.statisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.statisticsButton.Location = new System.Drawing.Point(555, 13);
+            this.statisticsButton.Name = "statisticsButton";
+            this.statisticsButton.Size = new System.Drawing.Size(60, 60);
+            this.statisticsButton.TabIndex = 2;
+            this.statisticsButton.UseVisualStyleBackColor = true;
+            // 
+            // logOutButton
+            // 
+            this.logOutButton.BackColor = System.Drawing.Color.Red;
+            this.logOutButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logOutButton.BackgroundImage")));
+            this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logOutButton.Location = new System.Drawing.Point(727, 12);
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Size = new System.Drawing.Size(60, 60);
+            this.logOutButton.TabIndex = 3;
+            this.logOutButton.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column5,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dataGridView.Location = new System.Drawing.Point(12, 79);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(775, 365);
+            this.dataGridView.TabIndex = 6;
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Year";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Month";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 160;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Earning";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 160;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Expense";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 160;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Overview";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 150;
             // 
             // lbl_welcomeText
             // 
             this.lbl_welcomeText.AutoSize = true;
             this.lbl_welcomeText.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_welcomeText.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_welcomeText.Font = new System.Drawing.Font("Bauhaus 93", 24F, System.Drawing.FontStyle.Bold);
             this.lbl_welcomeText.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.lbl_welcomeText.Location = new System.Drawing.Point(293, 9);
+            this.lbl_welcomeText.Location = new System.Drawing.Point(6, 8);
             this.lbl_welcomeText.Name = "lbl_welcomeText";
-            this.lbl_welcomeText.Size = new System.Drawing.Size(191, 54);
-            this.lbl_welcomeText.TabIndex = 3;
-            this.lbl_welcomeText.Text = "MyCost";
+            this.lbl_welcomeText.Size = new System.Drawing.Size(140, 36);
+            this.lbl_welcomeText.TabIndex = 30;
+            this.lbl_welcomeText.Text = "MYCOST";
             // 
-            // submitButton
+            // monthComboBox
             // 
-            this.submitButton.AutoSize = true;
-            this.submitButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.ForeColor = System.Drawing.Color.White;
-            this.submitButton.Location = new System.Drawing.Point(270, 299);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(246, 36);
-            this.submitButton.TabIndex = 13;
-            this.submitButton.Text = "Log in";
-            this.submitButton.UseVisualStyleBackColor = false;
-            this.submitButton.Click += new System.EventHandler(this.SubmitButtonClicked);
+            this.monthComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Items.AddRange(new object[] {
+            "All months",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.monthComboBox.Location = new System.Drawing.Point(12, 47);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(123, 26);
+            this.monthComboBox.TabIndex = 33;
             // 
-            // confirmPasswordTextBox
+            // button1
             // 
-            this.confirmPasswordTextBox.BackColor = System.Drawing.Color.White;
-            this.confirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(140, 226);
-            this.confirmPasswordTextBox.Multiline = true;
-            this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
-            this.confirmPasswordTextBox.Size = new System.Drawing.Size(500, 30);
-            this.confirmPasswordTextBox.TabIndex = 12;
-            this.confirmPasswordTextBox.Text = "Confirm password";
-            this.confirmPasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ConfirmPasswordTextBoxClicked);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(758, 453);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(29, 28);
+            this.button1.TabIndex = 34;
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // passwordTextBox
+            // button2
             // 
-            this.passwordTextBox.BackColor = System.Drawing.Color.White;
-            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.passwordTextBox.Location = new System.Drawing.Point(140, 180);
-            this.passwordTextBox.Multiline = true;
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(500, 30);
-            this.passwordTextBox.TabIndex = 11;
-            this.passwordTextBox.Text = "Password";
-            this.passwordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextboxClicked);
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(724, 454);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(28, 27);
+            this.button2.TabIndex = 35;
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // usernameTextBox
+            // button3
             // 
-            this.usernameTextBox.BackColor = System.Drawing.Color.White;
-            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.usernameTextBox.Location = new System.Drawing.Point(140, 134);
-            this.usernameTextBox.Multiline = true;
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(500, 30);
-            this.usernameTextBox.TabIndex = 10;
-            this.usernameTextBox.Text = "Username";
-            this.usernameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UsernameTextBoxClicked);
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(690, 454);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(28, 27);
+            this.button3.TabIndex = 36;
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // statusLabel
+            // button4
             // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(157, 348);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(82, 20);
-            this.statusLabel.TabIndex = 14;
-            this.statusLabel.Text = "Label Status";
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button4.BackColor = System.Drawing.Color.White;
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(656, 454);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(28, 27);
+            this.button4.TabIndex = 37;
+            this.button4.UseVisualStyleBackColor = false;
             // 
-            // rememberMeCheckBox
+            // lbl_version
             // 
-            this.rememberMeCheckBox.AutoSize = true;
-            this.rememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rememberMeCheckBox.Location = new System.Drawing.Point(140, 269);
-            this.rememberMeCheckBox.Name = "rememberMeCheckBox";
-            this.rememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
-            this.rememberMeCheckBox.TabIndex = 15;
-            this.rememberMeCheckBox.Text = "Remember me";
-            this.rememberMeCheckBox.UseVisualStyleBackColor = true;
+            this.lbl_version.AutoSize = true;
+            this.lbl_version.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_version.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_version.Location = new System.Drawing.Point(12, 454);
+            this.lbl_version.Name = "lbl_version";
+            this.lbl_version.Size = new System.Drawing.Size(61, 22);
+            this.lbl_version.TabIndex = 38;
+            this.lbl_version.Text = "Version";
+            this.lbl_version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ShowMonthlyInfoButton
+            // 
+            this.ShowMonthlyInfoButton.BackColor = System.Drawing.Color.White;
+            this.ShowMonthlyInfoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ShowMonthlyInfoButton.BackgroundImage")));
+            this.ShowMonthlyInfoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ShowMonthlyInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowMonthlyInfoButton.Location = new System.Drawing.Point(464, 13);
+            this.ShowMonthlyInfoButton.Name = "ShowMonthlyInfoButton";
+            this.ShowMonthlyInfoButton.Size = new System.Drawing.Size(60, 60);
+            this.ShowMonthlyInfoButton.TabIndex = 39;
+            this.ShowMonthlyInfoButton.UseVisualStyleBackColor = false;
+            this.ShowMonthlyInfoButton.Click += new System.EventHandler(this.ShowMonthlyInfoButtonClicked);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.Color.White;
+            this.settingsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("settingsButton.BackgroundImage")));
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Location = new System.Drawing.Point(645, 12);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(60, 60);
+            this.settingsButton.TabIndex = 40;
+            this.settingsButton.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 377);
-            this.Controls.Add(this.rememberMeCheckBox);
-            this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.confirmPasswordTextBox);
-            this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.usernameTextBox);
+            this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.settingsButton);
+            this.Controls.Add(this.ShowMonthlyInfoButton);
+            this.Controls.Add(this.lbl_version);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.monthComboBox);
             this.Controls.Add(this.lbl_welcomeText);
-            this.Controls.Add(this.showLoginPanelButton);
-            this.Controls.Add(this.showRegisterPanelButton);
+            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.logOutButton);
+            this.Controls.Add(this.statisticsButton);
+            this.Controls.Add(this.AddNewDataButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Login or Register";
-            this.Load += new System.EventHandler(this.MainFormLoaded);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Home Page";
+            this.Load += new System.EventHandler(this.HomePageLoaded);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button showRegisterPanelButton;
-        private System.Windows.Forms.Button showLoginPanelButton;
+        private System.Windows.Forms.Button AddNewDataButton;
+        private System.Windows.Forms.Button statisticsButton;
+        private System.Windows.Forms.Button logOutButton;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label lbl_welcomeText;
-        private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.TextBox confirmPasswordTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.TextBox usernameTextBox;
-        private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.CheckBox rememberMeCheckBox;
+        private System.Windows.Forms.ComboBox monthComboBox;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label lbl_version;
+        private System.Windows.Forms.Button ShowMonthlyInfoButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button settingsButton;
     }
 }
-

@@ -17,15 +17,34 @@ namespace MyCost
 
         private bool _firstInitializationCall;
 
+        private MainForm _mainFormObj;
+
         private List<string> _monthList;
 
-        public MonthlyInfoForm(int month, int year)
+        public MonthlyInfoForm(MainForm obj)
+        {
+            InitializeComponent();
+
+            _selectedMonth = DateTime.Now.Month;
+            _selectedYear = DateTime.Now.Year;
+            _mainFormObj = obj;
+
+            InitializeMonthList();
+        }
+
+        public MonthlyInfoForm(int month, int year, MainForm obj)
         {
             InitializeComponent();
 
             _selectedMonth = month;
             _selectedYear = year;
+            _mainFormObj = obj;
 
+            InitializeMonthList();
+        }
+
+        private void InitializeMonthList()
+        {
             //monthList is used to convert numeric month to month text
             _monthList = new List<string>();
             _monthList.Add("January");
@@ -120,6 +139,20 @@ namespace MyCost
         public override void Refresh()
         {
             PlotData();
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void MonthlyInfoFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_mainFormObj != null)
+            {
+                _mainFormObj.Visible = true;
+                _mainFormObj.Refresh();
+            }
         }
     }
 }

@@ -67,6 +67,9 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -105,6 +108,7 @@
             this.btn_cancel.TabIndex = 7;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
             // yearComboBox
             // 
@@ -188,7 +192,9 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.monthComboBox);
             this.Name = "MonthlyInfoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Monthly Report";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MonthlyInfoFormClosing);
             this.Load += new System.EventHandler(this.MonthlyInfoFormLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

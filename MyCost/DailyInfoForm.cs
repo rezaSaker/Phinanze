@@ -18,14 +18,14 @@ namespace MyCost
 
         private bool _firstInitializationCall;
 
-        private HomePageForm _homePageFormObj;
+        private MainForm _mainFormObj;
         private MonthlyInfoForm _monthlyInfoFormObj;
 
-        public DailyInfoForm(HomePageForm obj)
+        public DailyInfoForm(MainForm obj)
         {
             InitializeComponent();
 
-            _homePageFormObj = obj;
+            _mainFormObj = obj;
 
             //gets current day, month and year
             _selectedDay = DateTime.Now.Day;
@@ -333,6 +333,8 @@ namespace MyCost
                     }
                 }
                 StaticStorage.DailyInfo[index] = daily;
+
+                this.Close();
             }
             else
             {
@@ -537,17 +539,16 @@ namespace MyCost
         {
             if (_monthlyInfoFormObj != null)
             {
-                //then this form was opened by MonthlyInfoForm whose refernce is passed as _calleeObj
-                _monthlyInfoFormObj.Refresh);
+                //then this form was opened by MonthlyInfoForm whose refernce is passed as _calleeObj              
                 _monthlyInfoFormObj.Visible = true;
+                _monthlyInfoFormObj.Refresh();
             }
-            else
+            else if(_mainFormObj != null)
             {
-                //then this form was opened by HomePageForm whose refernce is passed as _homePageFormObj
-                _homePageFormObj.Refresh();
-                _homePageFormObj.Visible = true;              
+                //then this form was opened by HomePageForm whose refernce is passed as _homePageFormObj              
+                _mainFormObj.Visible = true;
+                _mainFormObj.Refresh();
             }
-            this.Close();
         }
     }
 }

@@ -61,17 +61,17 @@
     <Compile Include="Daily.cs" />
     <Compile Include="Earning.cs" />
     <Compile Include="Expense.cs" />
-    <Compile Include="HomePageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HomePageForm.Designer.cs">
-      <DependentUpon>HomePageForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserAuthenticationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAuthenticationForm.Designer.cs">
+      <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Monthly.cs" />
     <Compile Include="MonthlyInfoForm.cs">
@@ -90,11 +90,11 @@
     <EmbeddedResource Include="CategoryListForm.resx">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HomePageForm.resx">
-      <DependentUpon>HomePageForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAuthenticationForm.resx">
+      <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MonthlyInfoForm.resx">
       <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
