@@ -17,6 +17,7 @@ namespace MyCost
         private int _selectedYear;
 
         private bool _firstInitializationCall;
+        private bool _gotBackToPreviousForm;
 
         private MainForm _mainFormObj;
         private MonthlyInfoForm _monthlyInfoFormObj;
@@ -26,6 +27,7 @@ namespace MyCost
             InitializeComponent();
 
             _mainFormObj = obj;
+            _gotBackToPreviousForm = false;
 
             //gets current day, month and year
             _selectedDay = DateTime.Now.Day;
@@ -41,6 +43,7 @@ namespace MyCost
             _selectedMonth = month;
             _selectedYear = year;
             _monthlyInfoFormObj = obj;
+            _gotBackToPreviousForm = false;
         }
 
         private void AddNewDataFormLoaded(object sender, EventArgs e)
@@ -343,6 +346,7 @@ namespace MyCost
                     StaticStorage.DailyInfo[index] = daily;
                 }
 
+                _gotBackToPreviousForm = true;
                 this.Close();
             }
             else
@@ -354,6 +358,7 @@ namespace MyCost
 
         private void CancelButtonClicked(object sender, EventArgs e)
         {
+            _gotBackToPreviousForm = true;
             this.Close();
         }
 
@@ -546,17 +551,21 @@ namespace MyCost
 
         private void DailyInfoFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_monthlyInfoFormObj != null)
+            if (_gotBackToPreviousForm && _monthlyInfoFormObj != null)
             {
                 //then this form was opened by MonthlyInfoForm whose refernce is passed as _calleeObj              
                 _monthlyInfoFormObj.Visible = true;
                 _monthlyInfoFormObj.Refresh();
             }
-            else if(_mainFormObj != null)
+            else if(_gotBackToPreviousForm && _mainFormObj != null)
             {
                 //then this form was opened by HomePageForm whose refernce is passed as _homePageFormObj              
                 _mainFormObj.Visible = true;
                 _mainFormObj.Refresh();
+            }
+            else
+            {
+                Application.Exit();
             }
         }
     }

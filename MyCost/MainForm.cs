@@ -14,11 +14,15 @@ namespace MyCost
     {
         private int _selectedYear;
 
+        private bool _goBackToPreviousForm;
+
         private List<string> _monthList;
                                                     
         public MainForm()
         {
             InitializeComponent();
+
+            _goBackToPreviousForm = false;
 
             //monthList is used to convert numeric month to month text
             _monthList = new List<string>();
@@ -150,6 +154,28 @@ namespace MyCost
         public override void Refresh()
         {
             PlotMonthlyInfo();
+        }
+
+        private void StatisticsButtonClicked(object sender, EventArgs e)
+        {
+            StatisticalReportForm form = new StatisticalReportForm();
+            form.Show();
+        }
+
+        private void LogOutButtonClicked(object sender, EventArgs e)
+        {
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
+
+            _goBackToPreviousForm = true;
+        }
+
+        private void MainFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_goBackToPreviousForm)
+            {
+                Application.Exit();
+            }
         }
     }
 }

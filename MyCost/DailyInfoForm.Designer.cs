@@ -112,12 +112,12 @@
             // lbl_status
             // 
             this.lbl_status.AutoSize = true;
-            this.lbl_status.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_status.BackColor = System.Drawing.Color.White;
             this.lbl_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_status.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(9, 83);
+            this.lbl_status.Location = new System.Drawing.Point(5, 85);
             this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(76, 24);
+            this.lbl_status.Size = new System.Drawing.Size(74, 22);
             this.lbl_status.TabIndex = 15;
             this.lbl_status.Text = "Expenses";
             this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -125,6 +125,7 @@
             // applyCategoryButton
             // 
             this.applyCategoryButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.applyCategoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.applyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCategoryButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applyCategoryButton.ForeColor = System.Drawing.Color.Black;
@@ -182,14 +183,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(9, 295);
+            this.label1.Location = new System.Drawing.Point(5, 297);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 24);
+            this.label1.Size = new System.Drawing.Size(68, 22);
             this.label1.TabIndex = 24;
-            this.label1.Text = "Earning";
+            this.label1.Text = "Earnings";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // earningDataGridView
@@ -237,6 +237,7 @@
             // saveButton
             // 
             this.saveButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.saveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
@@ -251,6 +252,7 @@
             // cancelbutton
             // 
             this.cancelbutton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.cancelbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.cancelbutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelbutton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelbutton.ForeColor = System.Drawing.Color.Black;
@@ -329,6 +331,7 @@
             // totalEarningLabel
             // 
             this.totalEarningLabel.AutoSize = true;
+            this.totalEarningLabel.BackColor = System.Drawing.Color.Aquamarine;
             this.totalEarningLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.totalEarningLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.totalEarningLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,6 +345,7 @@
             // totalExpenseLabel
             // 
             this.totalExpenseLabel.AutoSize = true;
+            this.totalExpenseLabel.BackColor = System.Drawing.Color.Aquamarine;
             this.totalExpenseLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.totalExpenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.totalExpenseLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

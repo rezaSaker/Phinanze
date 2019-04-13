@@ -73,6 +73,7 @@
             this.statisticsButton.Size = new System.Drawing.Size(60, 60);
             this.statisticsButton.TabIndex = 2;
             this.statisticsButton.UseVisualStyleBackColor = true;
+            this.statisticsButton.Click += new System.EventHandler(this.StatisticsButtonClicked);
             // 
             // logOutButton
             // 
@@ -85,6 +86,7 @@
             this.logOutButton.Size = new System.Drawing.Size(60, 60);
             this.logOutButton.TabIndex = 3;
             this.logOutButton.UseVisualStyleBackColor = false;
+            this.logOutButton.Click += new System.EventHandler(this.LogOutButtonClicked);
             // 
             // dataGridView
             // 
@@ -271,6 +273,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home Page";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
             this.Load += new System.EventHandler(this.HomePageLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);

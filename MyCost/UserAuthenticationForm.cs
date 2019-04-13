@@ -299,5 +299,10 @@ namespace MyCost
         {
 
         }
+
+        private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

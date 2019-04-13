@@ -87,6 +87,7 @@
             // btn_addNew
             // 
             this.btn_addNew.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_addNew.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.btn_addNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_addNew.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addNew.ForeColor = System.Drawing.Color.White;
@@ -100,6 +101,7 @@
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.White;
+            this.btn_cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancel.ForeColor = System.Drawing.Color.Black;
@@ -192,6 +194,7 @@
             this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.monthComboBox);
+            this.MaximizeBox = false;
             this.Name = "MonthlyInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Monthly Report";

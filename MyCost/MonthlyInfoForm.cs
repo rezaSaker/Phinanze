@@ -16,6 +16,7 @@ namespace MyCost
         private int _selectedYear;
 
         private bool _firstInitializationCall;
+        private bool _goBackToPreviousForm;
 
         private MainForm _mainFormObj;
 
@@ -28,6 +29,7 @@ namespace MyCost
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
             _mainFormObj = obj;
+            _goBackToPreviousForm = true;
 
             InitializeMonthList();
         }
@@ -39,6 +41,7 @@ namespace MyCost
             _selectedMonth = month;
             _selectedYear = year;
             _mainFormObj = obj;
+            _goBackToPreviousForm = false;
 
             InitializeMonthList();
         }
@@ -143,15 +146,20 @@ namespace MyCost
 
         private void CancelButtonClicked(object sender, EventArgs e)
         {
+            _goBackToPreviousForm = true;
             this.Close();
         }
 
         private void MonthlyInfoFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_mainFormObj != null)
+            if (_goBackToPreviousForm && _mainFormObj != null)
             {
                 _mainFormObj.Visible = true;
                 _mainFormObj.Refresh();
+            }
+            else
+            {
+                Application.Exit();
             }
         }
     }

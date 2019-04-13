@@ -85,6 +85,7 @@
             // 
             this.submitButton.AutoSize = true;
             this.submitButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.submitButton.FlatAppearance.BorderSize = 0;
             this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.White;
@@ -180,6 +181,7 @@
             this.Name = "UserAuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login or Register";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserAuthenticationFormClosing);
             this.Load += new System.EventHandler(this.MainFormLoaded);
             this.ResumeLayout(false);
             this.PerformLayout();
