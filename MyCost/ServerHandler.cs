@@ -27,7 +27,10 @@ namespace MyCost
 
                 return resultData;
             }
-            catch { return "Server connection error";  }
+            catch
+            {
+                return "Server connection error";
+            }
         }
 
         public static string RegisterNewUser(string access_key, string username, string password)
@@ -48,7 +51,10 @@ namespace MyCost
 
                 return resultData;
             }
-            catch { return "Server connection error"; }
+            catch
+            {
+                return "Server connection error";
+            }
         }
 
         public static string RetrieveDailyInfo()
@@ -69,7 +75,10 @@ namespace MyCost
 
                 return resultData;
             }
-            catch { return "Server connection error"; }
+            catch
+            {
+                return "Server connection error";
+            }
         }    
 
         public static string SaveDailyInfo(Daily daily)
@@ -155,7 +164,36 @@ namespace MyCost
 
                 return resultData;
             }
-            catch (WebException) { return "Server connection error"; }
+            catch (WebException)
+            {
+                return "Server connection error";
+            }
         }
+
+        public static string RetrieveCategories()
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("token", StaticStorage.AccessToken);
+            queryData.Add("userid", StaticStorage.UserID.ToString());
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getCategories.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch
+            {
+                return "Server connection error";
+            }
+        }
+
+
     }
 }

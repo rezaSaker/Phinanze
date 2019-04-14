@@ -87,9 +87,18 @@
             this.totalYearlyExpenseLabel = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.totalyearlyEarningLabel = new System.Windows.Forms.Label();
+            this.categoryWiseExpenseDGV = new System.Windows.Forms.DataGridView();
+            this.categoryWiseEarningDGV = new System.Windows.Forms.DataGridView();
             this.label25 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.CategoryWiseAmountLabel = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryWiseExpenseDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryWiseEarningDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -111,6 +120,7 @@
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(114, 25);
             this.yearComboBox.TabIndex = 2;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
             // label13
             // 
@@ -855,45 +865,120 @@
             this.totalyearlyEarningLabel.Text = "label";
             this.totalyearlyEarningLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // categoryWiseExpenseDGV
+            // 
+            this.categoryWiseExpenseDGV.AllowUserToAddRows = false;
+            this.categoryWiseExpenseDGV.AllowUserToDeleteRows = false;
+            this.categoryWiseExpenseDGV.AllowUserToOrderColumns = true;
+            this.categoryWiseExpenseDGV.AllowUserToResizeColumns = false;
+            this.categoryWiseExpenseDGV.AllowUserToResizeRows = false;
+            this.categoryWiseExpenseDGV.BackgroundColor = System.Drawing.Color.White;
+            this.categoryWiseExpenseDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.categoryWiseExpenseDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.categoryWiseExpenseDGV.GridColor = System.Drawing.Color.White;
+            this.categoryWiseExpenseDGV.Location = new System.Drawing.Point(15, 313);
+            this.categoryWiseExpenseDGV.Name = "categoryWiseExpenseDGV";
+            this.categoryWiseExpenseDGV.ReadOnly = true;
+            this.categoryWiseExpenseDGV.Size = new System.Drawing.Size(400, 161);
+            this.categoryWiseExpenseDGV.TabIndex = 84;
+            // 
+            // categoryWiseEarningDGV
+            // 
+            this.categoryWiseEarningDGV.AllowUserToAddRows = false;
+            this.categoryWiseEarningDGV.AllowUserToDeleteRows = false;
+            this.categoryWiseEarningDGV.AllowUserToOrderColumns = true;
+            this.categoryWiseEarningDGV.AllowUserToResizeColumns = false;
+            this.categoryWiseEarningDGV.AllowUserToResizeRows = false;
+            this.categoryWiseEarningDGV.BackgroundColor = System.Drawing.Color.White;
+            this.categoryWiseEarningDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.categoryWiseEarningDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.categoryWiseEarningDGV.GridColor = System.Drawing.Color.White;
+            this.categoryWiseEarningDGV.Location = new System.Drawing.Point(424, 313);
+            this.categoryWiseEarningDGV.Name = "categoryWiseEarningDGV";
+            this.categoryWiseEarningDGV.ReadOnly = true;
+            this.categoryWiseEarningDGV.Size = new System.Drawing.Size(400, 161);
+            this.categoryWiseEarningDGV.TabIndex = 85;
+            // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(17, 293);
+            this.label25.Location = new System.Drawing.Point(12, 293);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(181, 17);
-            this.label25.TabIndex = 84;
-            this.label25.Text = "Amount spent on Category";
+            this.label25.Size = new System.Drawing.Size(243, 17);
+            this.label25.TabIndex = 86;
+            this.label25.Text = "Expense overview for each category";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // label26
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(211, 290);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(214, 25);
-            this.comboBox1.TabIndex = 85;
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(419, 293);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(236, 17);
+            this.label26.TabIndex = 87;
+            this.label26.Text = "Earning overview for each category";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // CategoryWiseAmountLabel
+            // dataGridViewTextBoxColumn1
             // 
-            this.CategoryWiseAmountLabel.AutoSize = true;
-            this.CategoryWiseAmountLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CategoryWiseAmountLabel.Location = new System.Drawing.Point(431, 293);
-            this.CategoryWiseAmountLabel.Name = "CategoryWiseAmountLabel";
-            this.CategoryWiseAmountLabel.Size = new System.Drawing.Size(53, 17);
-            this.CategoryWiseAmountLabel.TabIndex = 86;
-            this.CategoryWiseAmountLabel.Text = "=  0.00";
-            this.CategoryWiseAmountLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 180;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Amount";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "%";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 80;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Category";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 180;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Amount";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "%";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 80;
             // 
             // StatisticalReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 502);
-            this.Controls.Add(this.CategoryWiseAmountLabel);
-            this.Controls.Add(this.comboBox1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(840, 527);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
+            this.Controls.Add(this.categoryWiseEarningDGV);
+            this.Controls.Add(this.categoryWiseExpenseDGV);
             this.Controls.Add(this.totalyearlyEarningLabel);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.totalYearlyExpenseLabel);
@@ -958,6 +1043,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StatisticalReport";
             this.Load += new System.EventHandler(this.StatisticalReportFormLoaded);
+            ((System.ComponentModel.ISupportInitialize)(this.categoryWiseExpenseDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryWiseEarningDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1023,8 +1110,15 @@
         private System.Windows.Forms.Label totalYearlyExpenseLabel;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label totalyearlyEarningLabel;
+        private System.Windows.Forms.DataGridView categoryWiseExpenseDGV;
+        private System.Windows.Forms.DataGridView categoryWiseEarningDGV;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label CategoryWiseAmountLabel;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

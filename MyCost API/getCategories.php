@@ -1,8 +1,7 @@
 <?php
-
 /*
-	*this file reads user's daily info from database
-	*and returns the data to MyCost app
+	*this script reads categories from database 
+	*and returns the catories to MyCost app
 */
 
 require_once('connectDB.php');
@@ -20,32 +19,48 @@ if(isset($_POST['key']) && isset($_POST['token']) && isset($_POST['userid']))
 	$id     = $row['id'];
 	
 	if($id == $userid)//request verified as authentic
-	{
-		$rowNum = 1;
-		$data   = "";
+	{	$data = "";
+		$rowNum =  1;
 		
-		//get all data for the user from DB
-		$query   = "SELECT * FROM daily_info WHERE userid = '$userid' ORDER BY year DESC";
+		//get expense categories for the user from DB
+		$query   = "SELECT * FROM categories WHERE userid = '$userid'";
 		$result  = mysqli_query($connect, $query) or die('Server connection error');
 		
+		//takes the expense categories for theis user
 		while($row = mysqli_fetch_array($result))
-		{
+		{			
 			if($rowNum > 1)
 			{
-				//adds a spliting character before each row expect the first one
-				$data .= '^';
+				//adds a splitting character before each row except the first one
+				$data .= '|';
 			}
 			else
 			{
-				$rowNum++;
+				$rowNum = 2;
 			}
 			
-			$data .= $row['day'] . '|' . $row['month'] . '|' . $row['year'] . '|' . $row['note'] . '|'; 
-			$data .= $row['expenseReasons'] . '|' . $row['expenseAmounts'] . '|';
-			$data .= $row['expenseCategories'] . '|' . $row['expenseComments'] . '|';
-			$data .= $row['earningSources'] . '|' . $row['earningAmounts'] . '|';
-			$data .= $row['earningCategories'] . '|' . $row['earningComments'] . '|';
-			$data .= $row['totalExpense'] . '|' .$row['totalEarning'];
+			$data .= $row['earningCategories'];
+		}
+		
+		//adds a splitting character between expense categories and earning categories
+		$data .= '^';
+		
+		$rowNum = 1;
+		
+		//takes earning categories for the user
+		while($row = mysqli_fetch_array($result))
+		{			
+			if($rowNum > 1)
+			{
+				//adds a splitting character before each row except the first one
+				$data .= '|';
+			}
+			else
+			{
+				$rowNum = 2;
+			}
+			
+			$data .= $row['eexpenseCategories'];
 		}
 		
 		die($data);
@@ -59,5 +74,6 @@ else
 {
 	die('Server connection error');
 }
+
 
 ?>

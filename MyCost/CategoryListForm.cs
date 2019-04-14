@@ -53,30 +53,27 @@ namespace MyCost
         {
             if(dgv.Name == "expenseDataGridView")
             {
-                dataGridView.Rows.Add("House Rent");
-                dataGridView.Rows.Add("Transit");
-                dataGridView.Rows.Add("Gas or Fuel");
-                dataGridView.Rows.Add("Parking");
-                dataGridView.Rows.Add("Groccery");
-                dataGridView.Rows.Add("Clothing");
-                dataGridView.Rows.Add("Study Material");
-                dataGridView.Rows.Add("Hydro");
-                dataGridView.Rows.Add("Other Shopping");
-                dataGridView.Rows.Add("Restaurant");
-                dataGridView.Rows.Add("Other");
+                foreach(string category in StaticStorage.ExpenseCategories)
+                {
+                    dataGridView.Rows.Add(category);
+                }
             }
             else
             {
-                dataGridView.Rows.Add("Pay cheque");
-                dataGridView.Rows.Add("Bonus");
-                dataGridView.Rows.Add("Gift");
-                dataGridView.Rows.Add("Refund");
-                dataGridView.Rows.Add("Other");
+                foreach(string category in StaticStorage.EarningCategories)
+                {
+                    dataGridView.Rows.Add(category);
+                }
             }
         }
 
         private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(e.RowIndex == dataGridView.Rows.Count - 1)
+            {
+                //this is the last row and this row is empty
+                return;
+            }
             string category = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             if (!multipleRowSelected)

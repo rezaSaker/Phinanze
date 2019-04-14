@@ -14,8 +14,11 @@ namespace MyCost
 
         public static string AccessToken;
 
-        public static List<Daily> DailyInfo     = new List<Daily>();
-        public static List<Monthly> MonthlyInfo = new List<Monthly>();
+        public static List<string> ExpenseCategories = new List<string>();
+        public static List<string> EarningCategories = new List<string>();
+
+        public static List<Daily> DailyInfo = new List<Daily>();
+        public static List<Monthly> MonthlyInfo = new List<Monthly>();   
 
         /// <summary>
         /// Fetch monthly info from the list of daily info and store it in StaticStorage.MonthlyInfo

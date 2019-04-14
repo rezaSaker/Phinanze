@@ -297,7 +297,48 @@ namespace MyCost
 
         private void FetchCategories()
         {
+            //adds default earning categories
+            StaticStorage.EarningCategories.Add("Pay cheque");
+            StaticStorage.EarningCategories.Add("Bonus");
+            StaticStorage.EarningCategories.Add("Gift");
+            StaticStorage.EarningCategories.Add("Refund");
+            StaticStorage.EarningCategories.Add("Other");
 
+            //add default expense categories
+            StaticStorage.ExpenseCategories.Add("House Rent");
+            StaticStorage.ExpenseCategories.Add("Transit");
+            StaticStorage.ExpenseCategories.Add("Gas or Fuel");
+            StaticStorage.ExpenseCategories.Add("Parking");
+            StaticStorage.ExpenseCategories.Add("Groccery");
+            StaticStorage.ExpenseCategories.Add("Clothing");
+            StaticStorage.ExpenseCategories.Add("Study Material");
+            StaticStorage.ExpenseCategories.Add("Hydro");
+            StaticStorage.ExpenseCategories.Add("Other Shopping");
+            StaticStorage.ExpenseCategories.Add("Restaurant");
+            StaticStorage.ExpenseCategories.Add("Other");
+
+            //get custom categories made by user from the database
+            string result = ServerHandler.RetrieveCategories();
+
+            if(result == "Server connection error" || result.Length < 1)
+            {
+                return;
+            }
+
+            string[] earningCategories = result.Split('^')[0].Split('|');
+            string[] expenseCategories = result.Split('^')[1].Split('|');
+
+            //adds custom earning categories
+            foreach(string cat in earningCategories)
+            {
+                StaticStorage.EarningCategories.Add(cat);
+            }
+
+            //adds custom eexpense categories
+            foreach (string cat in expenseCategories)
+            {
+                StaticStorage.ExpenseCategories.Add(cat);
+            }
         }
 
         private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)

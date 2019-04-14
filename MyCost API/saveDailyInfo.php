@@ -79,12 +79,12 @@ if(isset($_POST['token']) && isset($_POST['key']) && isset($_POST['userid']))
 	}
 	else //request from unauthentic source
 	{
-		die('Sorry, something went wrong');
+		die('Server connection error');
 	}
 }
 else
 { 
-	die('Sorry, something went wrong'); 
+	die('Server connection error'); 
 }
 
 ?>

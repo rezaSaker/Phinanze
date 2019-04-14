@@ -14,29 +14,83 @@ namespace MyCost
     {
         private int _selectedYear;
 
+        private double _totalYearlyExpense;
+        private double _totalYearlyEarning;
+
         private IDictionary<string, double> _barValueDictionary;
+        private IDictionary<string, double> _expenseCategoryDictonary;
+        private IDictionary<string, double> _earningCategoryDictionary;
+
+        private List<Button> _modifiedBars;
 
         public StatisticalReportForm()
         {
             InitializeComponent();
 
-            _selectedYear = DateTime.Now.Year;
+            _selectedYear = DateTime.Now.Year;          
             _barValueDictionary = new Dictionary<string, double>();
+            _expenseCategoryDictonary = new Dictionary<string, double>();
+            _earningCategoryDictionary = new Dictionary<string, double>();
+            _modifiedBars = new List<Button>();
+
+            foreach (string category in StaticStorage.EarningCategories)
+            {
+                _earningCategoryDictionary.Add(new KeyValuePair<string, double>(category, 0.0));
+            }
+
+            foreach(string category in StaticStorage.ExpenseCategories)
+            {
+                _expenseCategoryDictonary.Add(new KeyValuePair<string, double>(category, 0.0));
+            }
         }
 
         private void StatisticalReportFormLoaded(object sender, EventArgs e)
         {
-            //add items to yearCOmboBox
+            //add items to yearComboBox
             for(int year = 2018; year <= _selectedYear; year++)
             {
                 yearComboBox.Items.Add(year.ToString());
             }
-            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
-      
-            PlotYearlyFinancialReportGraph();
+
+            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());                       
         }
 
-        private void ResetGraphBarProperties()
+        /// <summary>
+        /// Automatically called when selected index in year comboBox is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void YearComboBoxIndexChanged(object sender, EventArgs e)
+        {
+            _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+
+            //yearly report should change when a new year is selected
+            PlotYearlyFinancialReport();
+        }       
+
+        private void PlotYearlyFinancialReport()
+        {
+            ResetAllProperties();
+
+            double highestExpense = HighestExpense();
+            double highestEarning = HighestEarning();
+
+            double highestOfAll = highestExpense > highestEarning ? highestExpense: highestEarning;
+            double highestValueOfChart = RoundToNextAllZeroNumber(highestOfAll);
+
+            //first set the label indicating different amount stages
+            highestLimitLabel.Text = highestValueOfChart.ToString();
+            semiHighestLimitLabel.Text = ((highestValueOfChart / 4.0) * 3.0).ToString();
+            middleLimitLabel.Text = ((highestValueOfChart / 4.0) * 2.0).ToString();
+            lowestLimitLabel.Text = (highestValueOfChart / 4.0).ToString();
+
+            PlotMonthlyEarningData(highestValueOfChart);
+            PlotMonthlyExpenseData(highestValueOfChart);
+            UpdateYearlyOverviewLabel();
+            PlotCategoryWiseReport();
+        }
+
+        private void ResetAllProperties()
         {
             monthlyEarningBar1.Visible = false;
             monthlyEarningBar2.Visible = false;
@@ -67,29 +121,19 @@ namespace MyCost
             yearlyOverviewLabel.Text = "Not available";
             totalyearlyEarningLabel.Text = "0.00";
             totalYearlyExpenseLabel.Text = "0.00";
+
+            _totalYearlyEarning = 0.0;
+            _totalYearlyExpense = 0.0;
+
+            _barValueDictionary.Clear();
+
+            foreach(Button bar in _modifiedBars)
+            {
+                bar.Size = new Size(13, 160);
+                bar.Location = new Point(bar.Location.X, 67);
+            }
+            _modifiedBars.Clear();
         }
-
-        private void PlotYearlyFinancialReportGraph()
-        {
-            ResetGraphBarProperties();
-
-            double highestExpense = HighestExpense();
-            double highestEarning = HighestEarning();
-
-            double highestOfAll = highestExpense > highestEarning ? highestExpense: highestEarning;
-            double highestValueOfChart = RoundToNextAllZeroNumber(highestOfAll);
-
-            //first set the label indicating different amount stages
-            highestLimitLabel.Text = highestValueOfChart.ToString();
-            semiHighestLimitLabel.Text = ((highestValueOfChart / 4.0) * 3.0).ToString();
-            middleLimitLabel.Text = ((highestValueOfChart / 4.0) * 2.0).ToString();
-            lowestLimitLabel.Text = (highestValueOfChart / 4.0).ToString();
-
-            PlotMonthlyEarningData(highestValueOfChart);
-            PlotMonthlyExpenseData(highestValueOfChart);
-            UpdateYearlyOverviewLabel();
-        }
-
 
         private void PlotMonthlyExpenseData(double highestGraphValue)
         {
@@ -97,30 +141,54 @@ namespace MyCost
             {
                 if (_selectedYear == monthly.Year)
                 {
-                    if(monthly.Month == 1)
+                    if (monthly.Month == 1)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar1);
+                    }
                     else if (monthly.Month == 2)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar2);
+                    }
                     else if (monthly.Month == 3)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar3);
+                    }
                     else if (monthly.Month == 4)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar4);
+                    }
                     else if (monthly.Month == 5)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar5);
+                    }
                     else if (monthly.Month == 6)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar6);
+                    }
                     else if (monthly.Month == 7)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar7);
+                    }
                     else if (monthly.Month == 8)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar8);
+                    }
                     else if (monthly.Month == 9)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar9);
+                    }
                     else if (monthly.Month == 10)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar10);
+                    }
                     else if (monthly.Month == 11)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar11);
+                    }
                     else if (monthly.Month == 12)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Expense, monthlyExpenseBar12);
+                    }
                 }
             }
         }
@@ -132,35 +200,59 @@ namespace MyCost
                 if (_selectedYear == monthly.Year)
                 {
                     if (monthly.Month == 1)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar1);
+                    }
                     else if (monthly.Month == 2)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar2);
+                    }
                     else if (monthly.Month == 3)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar3);
+                    }
                     else if (monthly.Month == 4)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar4);
+                    }
                     else if (monthly.Month == 5)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar5);
+                    }
                     else if (monthly.Month == 6)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar6);
+                    }
                     else if (monthly.Month == 7)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar7);
+                    }
                     else if (monthly.Month == 8)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar8);
+                    }
                     else if (monthly.Month == 9)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar9);
+                    }
                     else if (monthly.Month == 10)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar10);
+                    }
                     else if (monthly.Month == 11)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar11);
+                    }
                     else if (monthly.Month == 12)
+                    {
                         DrawGraphBar(highestGraphValue, monthly.Earning, monthlyEarningBar12);
+                    }
                 }
             }
         }
 
         /// <summary>
-        /// draws a bar accordin got values passed as argument
+        /// draws a bar in the graph according to the values passed as arguments
         /// </summary>
         /// <param name="chartsTopValue">the highest value of the entire chart</param>
         /// <param name="barValue">value of the bar that needs to be drawn</param>
@@ -169,7 +261,7 @@ namespace MyCost
         {
             double percentage = barValue / chartsTopValue;
 
-            //the rule is, the height of the bar is 160 for the highest value of the chart
+            //the height of the bar is 160 for the highest value of the chart
             //so, the height of the bar would be 160 * percentage
             int size = (int)(160.0 * percentage);
 
@@ -178,8 +270,12 @@ namespace MyCost
             bar.Location = new Point(bar.Location.X, bar.Location.Y + (160 - size));
 
             _barValueDictionary.Add(new KeyValuePair<string, double>(bar.Name, barValue));
+            _modifiedBars.Add(bar);
         }
 
+        /// <summary>
+        /// updates the text of label that shows overview for the year such as positive/negative
+        /// </summary>
         private void UpdateYearlyOverviewLabel()
         {
             double totalExpense = .0;
@@ -192,10 +288,10 @@ namespace MyCost
                     totalExpense += monthly.Expense;
                     totalEarning += monthly.Earning;
                 }
-            }
+            }           
 
-            totalyearlyEarningLabel.Text = totalEarning.ToString();
-            totalYearlyExpenseLabel.Text = totalExpense.ToString();
+            totalyearlyEarningLabel.Text = string.Format("{0:0.00}", totalEarning);
+            totalYearlyExpenseLabel.Text = string.Format("{0:0.00}", totalExpense);
 
             if(totalExpense > totalEarning)
             {
@@ -212,8 +308,15 @@ namespace MyCost
                 yearlyOverviewLabel.Text = "Neutral (" + (totalEarning - totalExpense) + ")";
                 yearlyOverviewLabel.ForeColor = Color.Yellow;
             }
+
+            _totalYearlyEarning = totalEarning;
+            _totalYearlyExpense = totalExpense;
         }
 
+        /// <summary>
+        /// calculates highest expense
+        /// </summary>
+        /// <returns></returns>
         private double HighestExpense()
         {
             double max = .0;
@@ -229,6 +332,10 @@ namespace MyCost
             return max;
         }
 
+        /// <summary>
+        /// Calculates highest earning
+        /// </summary>
+        /// <returns></returns>
         private double HighestEarning()
         {
             double max = .0;
@@ -284,12 +391,16 @@ namespace MyCost
             }
         }
 
+        /// <summary>
+        /// this method is called when any bar in the graph is hovered  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GrpahBarsHover(object sender, EventArgs e)
-        {
-            //this method is called when any bar in the graph is hovered
-            //whenver a bar is hovered, the amount for that bar should pop up on top of it
+        {              
             Button bar = (Button)sender;
 
+            //whenever a bar is hovered, the amount for that bar pops up on top of it
             monthlyAmountLabel.Visible = true;
             monthlyAmountLabel.Location = new Point(bar.Location.X, monthlyAmountLabel.Location.Y);
             monthlyAmountLabel.Text = _barValueDictionary[bar.Name].ToString();
@@ -299,5 +410,54 @@ namespace MyCost
         {
             monthlyAmountLabel.Visible = false;
         }
+
+        /// <summary>
+        /// Calculates total earning and total expense for each category and displays them in two different dataGridViews
+        /// </summary>
+        private void PlotCategoryWiseReport()
+        {           
+            foreach(Daily daily in StaticStorage.DailyInfo)
+            {
+                if(_selectedYear == daily.Year)
+                {
+                    //calculate expense total for each category
+                    foreach (Expense expense in daily.Expenses)
+                    {
+                        if (_expenseCategoryDictonary.ContainsKey(expense.Category))
+                        {
+                            _expenseCategoryDictonary[expense.Category] += expense.Amount;
+                        }
+                    }
+
+                    //calculate earning total for each category
+                    foreach(Earning earning in daily.Earnings)
+                    {
+                        if (_earningCategoryDictionary.ContainsKey(earning.Category))
+                        {
+                            _earningCategoryDictionary[earning.Category] += earning.Amount;
+                        }
+                    }
+                }
+            } 
+            
+            //plot category-wsie expense total
+            foreach(string category in _expenseCategoryDictonary.Keys)
+            {
+                double amount = _expenseCategoryDictonary[category];
+                double percentage = (amount / _totalYearlyExpense) * 100;
+
+                categoryWiseExpenseDGV.Rows.Add(category, string.Format("{0:0.00}", amount), string.Format("{0:0.00}", percentage) + "%");
+            }
+
+            //plot category_wise earning total
+            foreach(string category in _earningCategoryDictionary.Keys)
+            {
+                double amount = _earningCategoryDictionary[category];
+                double percentage = (amount / _totalYearlyEarning) * 100;
+
+                categoryWiseEarningDGV.Rows.Add(category, string.Format("{0:0.00}", amount), string.Format("{0:0.00}", percentage) + "%");
+            }
+        }
+   
     }
 }

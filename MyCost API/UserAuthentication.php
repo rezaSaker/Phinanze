@@ -61,13 +61,13 @@ if(isset($_POST['key']))
 }
 else 
 { 
-	die('Sorry, something went wrong');
+	die('Server connection error');
 }
 	
 
 function RandomToken($tokenLen)
 {
-	$charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,@$&^*";
+	$charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 	$charSetLen = strlen($charSet);
 	$randStr = "";
 	
