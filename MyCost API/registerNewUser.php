@@ -10,7 +10,7 @@ require_once('connectDB.php');
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']))
 {
-	$key 	  = mysqli_real_escape_string($connect, $_POST['key']);
+	$key = mysqli_real_escape_string($connect, $_POST['key']);
 	$username = mysqli_real_escape_string($connect, $_POST['username']);
 	$password = mysqli_real_escape_string($connect, $_POST['password']);
 	$password = md5(base64_encode($password));
