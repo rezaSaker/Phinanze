@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace MyCost
 {
@@ -190,6 +192,30 @@ namespace MyCost
             if (_quitAppOnFormClosing)
             {
                 Application.Exit();
+            }
+        }
+
+        private void FacebookButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://facebook.com");
+            }
+            catch
+            {
+                MessageBox.Show("Could not find the default browser");
+            }
+        }
+
+        private void ViewSourceButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://github.com/rezaSaker/MyCost");
+            }
+            catch
+            {
+                MessageBox.Show("Could not find the default browser");
             }
         }
     }
