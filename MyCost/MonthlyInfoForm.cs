@@ -16,32 +16,28 @@ namespace MyCost
         private int _selectedYear;
 
         private bool _firstInitializationCall;
-        private bool _goBackToPreviousForm;
-
-        private MainForm _mainFormObj;
+        private bool _quitAppOnFormClosing;
 
         private List<string> _monthList;
 
-        public MonthlyInfoForm(MainForm obj)
+        public MonthlyInfoForm()
         {
             InitializeComponent();
 
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
-            _mainFormObj = obj;
-            _goBackToPreviousForm = true;
+            _quitAppOnFormClosing = true;
 
             InitializeMonthList();
         }
 
-        public MonthlyInfoForm(int month, int year, MainForm obj)
+        public MonthlyInfoForm(int month, int year)
         {
             InitializeComponent();
 
             _selectedMonth = month;
             _selectedYear = year;
-            _mainFormObj = obj;
-            _goBackToPreviousForm = false;
+            _quitAppOnFormClosing = true;
 
             InitializeMonthList();
         }
@@ -136,31 +132,81 @@ namespace MyCost
             DailyInfoForm form = new DailyInfoForm(day, month, year, this);
             form.Show();
 
-            this.Visible = false;
-        }
-
-        public override void Refresh()
-        {
-            PlotData();
+            _quitAppOnFormClosing = false;
+            this.Hide();
         }
 
         private void CancelButtonClicked(object sender, EventArgs e)
         {
-            _goBackToPreviousForm = true;
+            MainForm form = new MainForm();
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void AddnewDataButtonClicked(object sender, EventArgs e)
+        {
+            addNewButton.PerformClick();
+        }
+
+        private void AddnewButtonClicked(object sender, EventArgs e)
+        {
+            DailyInfoForm form = new DailyInfoForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            MainForm form = new MainForm();
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void StatisticalReportButtonClicked(object sender, EventArgs e)
+        {
+            StatisticalReportForm form = new StatisticalReportForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void SettingsButtonClicked(object sender, EventArgs e)
+        {
+            SettingsForm form = new SettingsForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void LogOutButtonClicked(object sender, EventArgs e)
+        {
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
+
+            _quitAppOnFormClosing = false;
             this.Close();
         }
 
         private void MonthlyInfoFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_goBackToPreviousForm && _mainFormObj != null)
-            {
-                _mainFormObj.Visible = true;
-                _mainFormObj.Refresh();
-            }
-            else
+            if(_quitAppOnFormClosing)
             {
                 Application.Exit();
             }
         }
+
     }
 }

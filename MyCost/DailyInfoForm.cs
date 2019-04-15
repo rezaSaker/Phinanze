@@ -17,37 +17,41 @@ namespace MyCost
         private int _selectedYear;
 
         private bool _firstInitializationCall;
-        private bool _gotBackToPreviousForm;
+        private bool _quitAppOnFormClosing;
+        private bool _hasSaved;
 
-        private MainForm _mainFormObj;
-        private MonthlyInfoForm _monthlyInfoFormObj;
+        private Form _callerForm;
 
-        public DailyInfoForm(MainForm obj)
+        public DailyInfoForm(Form form)
         {
             InitializeComponent();
 
-            _mainFormObj = obj;
-            _gotBackToPreviousForm = false;
+            _callerForm = form;
+            _quitAppOnFormClosing = true;
+            _hasSaved = false;
 
-            //gets current day, month and year
+            //sets current day, month and year
             _selectedDay = DateTime.Now.Day;
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
         }
 
-        public DailyInfoForm(int day, int month, int year, MonthlyInfoForm obj)
+        public DailyInfoForm(int day, int month, int year, Form form)
         {
             InitializeComponent();
 
             _selectedDay = day;
             _selectedMonth = month;
             _selectedYear = year;
-            _monthlyInfoFormObj = obj;
-            _gotBackToPreviousForm = false;
+            _callerForm = form;
+            _quitAppOnFormClosing = true;
+            _hasSaved = false;
         }
 
         private void AddNewDataFormLoaded(object sender, EventArgs e)
-        {     
+        {
+            this.Location = new Point(_callerForm.Location.X, _callerForm.Location.Y);
+
             for (int i = 2018; i < _selectedYear + 10; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
@@ -96,12 +100,28 @@ namespace MyCost
             PlotDailyInfo();
         }
 
-        private void ExpenseDGVCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        private void CloseOpenedCategoryForm()
+        {
+            Form openForm = Application.OpenForms["CategoryListForm"];
+            if(openForm != null)
+            {
+                openForm.Close();
+            }
+        }
+
+        private void ExpenseDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
             //if the clicked column is category column
             if (e.ColumnIndex == 2)
             {
-                CategoryListForm form = new CategoryListForm(expenseDataGridView, e.RowIndex);
+                List<int> rowIndex = new List<int>();
+                rowIndex.Add(e.RowIndex);
+                
+                //this will prevent opeing multiple forms at the same time
+                CloseOpenedCategoryForm();
+
+                CategoryListForm form = new CategoryListForm(expenseDataGridView, rowIndex);
+                form.Location = new Point(384, 97);
                 form.Show();
             }
         }
@@ -133,12 +153,19 @@ namespace MyCost
             }
         }
 
-        private void EarningDGVCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        private void EarningDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
             //if the clicked column is category column
             if (e.ColumnIndex == 2)
             {
-                CategoryListForm form = new CategoryListForm(earningDataGridView, e.RowIndex);
+                List<int> rowIndex = new List<int>();
+                rowIndex.Add(e.RowIndex);
+
+                //this will prevent opeing multiple forms at the same time
+                CloseOpenedCategoryForm();
+
+                CategoryListForm form = new CategoryListForm(earningDataGridView, rowIndex);
+                form.Location = new Point(384, 288);
                 form.Show();
             }
         }
@@ -214,9 +241,9 @@ namespace MyCost
                     message = "Looks like you forgot to enter amount on row ";
                     message += (row.Index + 1) + ". Do you want to continue saving?";
 
-                    DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (result == DialogResult.Yes)
+                    if (dresult == DialogResult.Yes)
                         amount = .0;
                     else
                         return;
@@ -238,7 +265,7 @@ namespace MyCost
                 }
                 catch (NullReferenceException)
                 {
-                    category = "None";
+                    category = "Other";
                 }
 
                 try
@@ -280,9 +307,9 @@ namespace MyCost
                     string message = "Looks like you forgot to enter amount on row ";
                     message += (row.Index + 1) + " in Earning table. Do you want to continue saving?";
 
-                    DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (result == DialogResult.Yes)
+                    if (dresult == DialogResult.Yes)
                         amount = .0;
                     else
                         return;
@@ -303,7 +330,7 @@ namespace MyCost
                 }
                 catch (NullReferenceException)
                 {
-                    category = "None";
+                    category = "Other";
                 }
 
                 try
@@ -319,9 +346,9 @@ namespace MyCost
                 daily.Earnings.Add(earning);
             }
 
-            string savingResult = ServerHandler.SaveDailyInfo(daily);
+            string result = ServerHandler.SaveDailyInfo(daily);
 
-            if (savingResult == "SUCCESS")
+            if (result == "SUCCESS")
             {
                 int index = -1;
 
@@ -346,55 +373,14 @@ namespace MyCost
                     StaticStorage.DailyInfo[index] = daily;
                 }
 
-                _gotBackToPreviousForm = true;
-                this.Close();
+                //this will prevent the OnFormClosing method to attempt to save the info
+                _hasSaved = true;
             }
             else
             {
                 //if not success, the error info is returned
-                MessageBox.Show(savingResult);
+                MessageBox.Show(result);
             }
-        }
-
-        private void CancelButtonClicked(object sender, EventArgs e)
-        {
-            _gotBackToPreviousForm = true;
-            this.Close();
-        }
-
-        /// <summary>
-        /// apply a particular category to all selected rows in both expense and earning dataGridViews
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ApplyCategoryButtonClicked(object sender, EventArgs e)
-        {
-            if (earningDataGridView.SelectedRows.Count < 1 && expenseDataGridView.SelectedRows.Count < 1)
-            {
-                //no row is selected
-                return;
-            }
-
-            List<int> expenseRowIndexList = new List<int>();
-            List<int> earningRowIndexList = new List<int>();
-
-            foreach (DataGridViewRow row in expenseDataGridView.SelectedRows)
-            {
-                expenseRowIndexList.Add(row.Index);
-            }
-
-            foreach (DataGridViewRow row in earningDataGridView.SelectedRows)
-            {
-                earningRowIndexList.Add(row.Index);
-            }
-
-            CategoryListForm form;
-            form = new CategoryListForm(
-                expenseDataGridView,
-                earningDataGridView,
-                expenseRowIndexList,
-                earningRowIndexList);
-            form.Show();
         }
 
         private void AddItemsToDayComboBox()
@@ -452,12 +438,7 @@ namespace MyCost
                 }
                 catch (FormatException)
                 {
-                    string message;
-                    message = "Looks like you have a typo in your amount. Amount can only be numbers. ";
-                    message += "Please re-enter the amount.";
-                    MessageBox.Show(message);
-
-                    //make the color of the column different so the user can easily point out
+                    //make the color of the column different so the user can easily notice the error
                     expenseDataGridView.Rows[i].Cells[1].Style.BackColor = Color.Red;
                     expenseDataGridView.Rows[i].Cells[1].Style.ForeColor = Color.White;
                 }
@@ -487,11 +468,6 @@ namespace MyCost
                 }
                 catch (FormatException)
                 {
-                    string message;
-                    message = "Looks like you have a typo in your amount. Amount can only be numbers. ";
-                    message += "Please re-enter the amount.";
-                    MessageBox.Show(message);
-
                     //make the color of the column different so the user can easily point out
                     earningDataGridView.Rows[i].Cells[1].Style.BackColor = Color.Red;
                     earningDataGridView.Rows[i].Cells[1].Style.ForeColor = Color.White;
@@ -507,13 +483,9 @@ namespace MyCost
             totalEarningLabel.Text = string.Format("{0:0.00}", total);
         }
 
-        /// <summary>
-        /// Plot data on this form for the selected date
-        /// </summary>
         private void PlotDailyInfo()
         {
             //clears the previous info
-            noteTextBox.Text = "";
             totalExpenseLabel.Text = "0.00";
             totalEarningLabel.Text = "0.00";
             expenseDataGridView.Rows.Clear();
@@ -549,24 +521,120 @@ namespace MyCost
             UpdateTotalEarningLabel();
         }
 
+        private void ApplyCategoryButtonClicked(object sender, EventArgs e)
+        {
+            //clicking on this button applies a particular category to all selected rows
+            if (expenseDataGridView.SelectedRows.Count > 0)
+            {
+                OpenCategoryListForm(expenseDataGridView);
+            }
+            else if (earningDataGridView.SelectedRows.Count > 0)
+            {
+                OpenCategoryListForm(earningDataGridView);
+            }
+        }
+
+        private void OpenCategoryListForm(DataGridView dgv)
+        {
+            List<int> rowIndexes = new List<int>();
+
+            foreach (DataGridViewRow row in dgv.SelectedRows)
+            {
+                if (row.Index == dgv.Rows.Count - 1)
+                {
+                    //this is the last row and an empty row
+                    break;
+                }
+                rowIndexes.Add(row.Index);
+            }
+
+            CategoryListForm form = new CategoryListForm(dgv, rowIndexes);
+            form.Show();
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Location = new Point(this.Location.X, this.Location.Y);
+            _callerForm.Show();
+
+            _hasSaved = true;//this will prevent the OnFormClosing method to attempt to save the info
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            MainForm form = new MainForm();
+            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+
+        }
+
+        private void MonthlyReportButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            MonthlyInfoForm form = new MonthlyInfoForm();
+            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void StatisticalReportButtonClicked(object sender, EventArgs e)
+        {
+            StatisticalReportForm form = new StatisticalReportForm(this);
+            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void SettingsButtonClicked(object sender, EventArgs e)
+        {
+            SettingsForm form = new SettingsForm(this);
+            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void LogOutButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void NoteTextBoxClicked(object sender, EventArgs e)
+        {
+            noteTextBox.Text = "";
+            noteTextBox.ForeColor = Color.Black;
+        }
+
         private void DailyInfoFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_gotBackToPreviousForm && _monthlyInfoFormObj != null)
+            if (!_hasSaved)
             {
-                //then this form was opened by MonthlyInfoForm whose refernce is passed as _calleeObj              
-                _monthlyInfoFormObj.Visible = true;
-                _monthlyInfoFormObj.Refresh();
+                saveButton.PerformClick();
             }
-            else if(_gotBackToPreviousForm && _mainFormObj != null)
-            {
-                //then this form was opened by HomePageForm whose refernce is passed as _homePageFormObj              
-                _mainFormObj.Visible = true;
-                _mainFormObj.Refresh();
-            }
-            else
+
+            if (_quitAppOnFormClosing)
             {
                 Application.Exit();
             }
-        }
+        }    
     }
 }

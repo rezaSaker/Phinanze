@@ -10,7 +10,7 @@ require_once('connectDB.php');
 
 if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']))
 {
-	$key = mysqli_real_escape_string($connect, $_POST['key']);
+	$key 	  = mysqli_real_escape_string($connect, $_POST['key']);
 	$username = mysqli_real_escape_string($connect, $_POST['username']);
 	$password = mysqli_real_escape_string($connect, $_POST['password']);
 	$password = md5(base64_encode($password));
@@ -37,6 +37,14 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']
 	
 	$userid = mysqli_insert_id($connect);
 	
+	//add a new row in category table with the default categories for this user
+	$earningCategories = 'Pay cheque|Business|Gift|Bonus|Refund|Other';
+	$expenseCategories = 'House rent|Car|Transit|Groccery|Medical expense|Eating outside|Other';
+	$query = "INSERT INTO categories (earningCategories, expenseCategories, userid) 
+			  VALUES ('$earningCategories', '$expenseCategories', '$userid')";
+	mysqli_query($connect, $query) or die("Server connection error");
+	
+	//returns the userid and the access token to the MyCost app 
 	die($userid . '|' . $token);	
 }
 else

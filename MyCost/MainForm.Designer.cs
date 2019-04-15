@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.AddNewDataButton = new System.Windows.Forms.Button();
+            this.addNewDataButton = new System.Windows.Forms.Button();
             this.statisticsButton = new System.Windows.Forms.Button();
             this.logOutButton = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -40,28 +40,26 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
             this.YearComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.lbl_version = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
             this.ShowMonthlyInfoButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.viewSourceButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // AddNewDataButton
+            // addNewDataButton
             // 
-            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
-            this.AddNewDataButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddNewDataButton.BackgroundImage")));
-            this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddNewDataButton.Location = new System.Drawing.Point(374, 13);
-            this.AddNewDataButton.Name = "AddNewDataButton";
-            this.AddNewDataButton.Size = new System.Drawing.Size(60, 60);
-            this.AddNewDataButton.TabIndex = 1;
-            this.AddNewDataButton.UseVisualStyleBackColor = false;
-            this.AddNewDataButton.Click += new System.EventHandler(this.AddNewDataButtonClicked);
+            this.addNewDataButton.BackColor = System.Drawing.Color.White;
+            this.addNewDataButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("addNewDataButton.BackgroundImage")));
+            this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addNewDataButton.Location = new System.Drawing.Point(374, 13);
+            this.addNewDataButton.Name = "addNewDataButton";
+            this.addNewDataButton.Size = new System.Drawing.Size(60, 60);
+            this.addNewDataButton.TabIndex = 1;
+            this.addNewDataButton.UseVisualStyleBackColor = false;
+            this.addNewDataButton.Click += new System.EventHandler(this.AddNewDataButtonClicked);
             // 
             // statisticsButton
             // 
@@ -148,7 +146,7 @@
             this.lbl_welcomeText.AutoSize = true;
             this.lbl_welcomeText.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_welcomeText.Font = new System.Drawing.Font("Bauhaus 93", 24F, System.Drawing.FontStyle.Bold);
-            this.lbl_welcomeText.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbl_welcomeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lbl_welcomeText.Location = new System.Drawing.Point(6, 8);
             this.lbl_welcomeText.Name = "lbl_welcomeText";
             this.lbl_welcomeText.Size = new System.Drawing.Size(140, 36);
@@ -167,65 +165,17 @@
             this.YearComboBox.TabIndex = 33;
             this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
-            // button1
+            // versionLabel
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(758, 453);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(29, 28);
-            this.button1.TabIndex = 34;
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(724, 454);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 27);
-            this.button2.TabIndex = 35;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(690, 454);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(28, 27);
-            this.button3.TabIndex = 36;
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(656, 454);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(28, 27);
-            this.button4.TabIndex = 37;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // lbl_version
-            // 
-            this.lbl_version.AutoSize = true;
-            this.lbl_version.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_version.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_version.Location = new System.Drawing.Point(12, 454);
-            this.lbl_version.Name = "lbl_version";
-            this.lbl_version.Size = new System.Drawing.Size(61, 22);
-            this.lbl_version.TabIndex = 38;
-            this.lbl_version.Text = "Version";
-            this.lbl_version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.versionLabel.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLabel.Location = new System.Drawing.Point(9, 461);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(56, 17);
+            this.versionLabel.TabIndex = 38;
+            this.versionLabel.Text = "Version";
+            this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ShowMonthlyInfoButton
             // 
@@ -252,28 +202,50 @@
             this.settingsButton.TabIndex = 40;
             this.settingsButton.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(758, 453);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(29, 28);
+            this.button1.TabIndex = 34;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // viewSourceButton
+            // 
+            this.viewSourceButton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewSourceButton.Location = new System.Drawing.Point(634, 454);
+            this.viewSourceButton.Name = "viewSourceButton";
+            this.viewSourceButton.Size = new System.Drawing.Size(108, 27);
+            this.viewSourceButton.TabIndex = 41;
+            this.viewSourceButton.Text = "View source";
+            this.viewSourceButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.viewSourceButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.ShowMonthlyInfoButton);
-            this.Controls.Add(this.lbl_version);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.versionLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.YearComboBox);
             this.Controls.Add(this.lbl_welcomeText);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.statisticsButton);
-            this.Controls.Add(this.AddNewDataButton);
+            this.Controls.Add(this.addNewDataButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Home Page";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
             this.Load += new System.EventHandler(this.HomePageLoaded);
@@ -284,17 +256,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button AddNewDataButton;
+        private System.Windows.Forms.Button addNewDataButton;
         private System.Windows.Forms.Button statisticsButton;
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label lbl_welcomeText;
         private System.Windows.Forms.ComboBox YearComboBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label lbl_version;
+        private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Button ShowMonthlyInfoButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
@@ -302,5 +270,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button viewSourceButton;
     }
 }

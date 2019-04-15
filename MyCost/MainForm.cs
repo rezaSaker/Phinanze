@@ -14,15 +14,17 @@ namespace MyCost
     {
         private int _selectedYear;
 
-        private bool _goBackToPreviousForm;
+        private bool _quitAppOnFormClosing;
 
         private List<string> _monthList;
+
+        private Form _callerForm;
                                                     
         public MainForm()
         {
             InitializeComponent();
 
-            _goBackToPreviousForm = false;
+            _quitAppOnFormClosing = true;
 
             //monthList is used to convert numeric month to month text
             _monthList = new List<string>();
@@ -42,7 +44,9 @@ namespace MyCost
         }
 
         private void HomePageLoaded(object sender, EventArgs e)
-        {
+        {          
+            versionLabel.Text = "Version: " + Application.ProductVersion;
+
             for(int year = 2018; year <= DateTime.Now.Year; year++)
             {
                 YearComboBox.Items.Add(year.ToString());
@@ -127,9 +131,11 @@ namespace MyCost
         private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
             DailyInfoForm form = new DailyInfoForm(this);
+            form.Location = new Point(this.Location.X, this.Location.Y);
             form.Show();
 
-            this.Visible = false;
+            _quitAppOnFormClosing = false;
+            this.Hide();
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
@@ -137,29 +143,32 @@ namespace MyCost
             int year = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
             int month = _monthList.IndexOf(dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
 
-            MonthlyInfoForm form = new MonthlyInfoForm(month, year, this);
+            MonthlyInfoForm form = new MonthlyInfoForm(month, year);
+            form.Location = this.Location;
             form.Show();
 
-            this.Visible = false;
+            _quitAppOnFormClosing = false;
+            this.Close();
         }
 
         private void ShowMonthlyInfoButtonClicked(object sender, EventArgs e)
         {
-            MonthlyInfoForm form = new MonthlyInfoForm(this);
+            MonthlyInfoForm form = new MonthlyInfoForm();
+            form.Location = new Point(this.Location.X, this.Location.Y);
             form.Show();
 
-            this.Visible = false;
-        }
-
-        public override void Refresh()
-        {
-            PlotMonthlyInfo();
+            _quitAppOnFormClosing = false;
+            this.Close();
         }
 
         private void StatisticsButtonClicked(object sender, EventArgs e)
         {
-            StatisticalReportForm form = new StatisticalReportForm();
+            StatisticalReportForm form = new StatisticalReportForm(this);
+            form.Location = new Point(this.Location.X, this.Location.Y);
             form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
         }
 
         private void LogOutButtonClicked(object sender, EventArgs e)
@@ -167,12 +176,13 @@ namespace MyCost
             UserAuthenticationForm form = new UserAuthenticationForm();
             form.Show();
 
-            _goBackToPreviousForm = true;
+            _quitAppOnFormClosing = false;
+            this.Close();
         }
 
         private void MainFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_goBackToPreviousForm)
+            if (_quitAppOnFormClosing)
             {
                 Application.Exit();
             }

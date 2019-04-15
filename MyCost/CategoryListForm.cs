@@ -12,92 +12,165 @@ namespace MyCost
 {
     public partial class CategoryListForm : Form
     {
-        private int rowIndex;
+        private List<int> _rowIndexes;
 
-        private List<int> expenseRowIndexList;
-        private List<int> earningRowIndexList;
+        private string _categoryType;
 
-        private DataGridView dgv;
-        private DataGridView expenseDGV;
-        private DataGridView earningDGV;
+        private DataGridView _dgv;     
 
-        private bool multipleRowSelected;
-
-        public CategoryListForm(DataGridView dgv, int rowIndex)
+        public CategoryListForm(DataGridView dgv, List<int> rowIndexes)
         {
             InitializeComponent();
 
-            this.rowIndex = rowIndex;
-            this.dgv = dgv;
+            _dgv = dgv;
+            _rowIndexes = rowIndexes;
+        }       
 
-            multipleRowSelected = false;
-        }
-
-        public CategoryListForm(
-            DataGridView dgv1, 
-            DataGridView dgv2, 
-            List<int>rowIndexList1, 
-            List<int>rowIndexList2)
+        private void CategoryListFormLoaded(object sender, EventArgs e)
         {
-            InitializeComponent();
-
-            expenseDGV = dgv1;
-            earningDGV = dgv2;
-            expenseRowIndexList = rowIndexList1;
-            earningRowIndexList = rowIndexList2;
-
-            multipleRowSelected = true;
-        }
-
-        private void CategoryListForm_Load(object sender, EventArgs e)
-        {
-            if(dgv.Name == "expenseDataGridView")
+            //_dgv points to a dataGridView on DailyInfoForm whose reference is passed to this form via constructor
+            if (_dgv != null && _dgv.Name == "expenseDataGridView")
             {
-                foreach(string category in StaticStorage.ExpenseCategories)
+                foreach (string category in StaticStorage.ExpenseCategories)
                 {
                     dataGridView.Rows.Add(category);
                 }
+
+                _categoryType = "Expense";
             }
-            else
+            else if (_dgv != null && _dgv.Name == "earningDataGridView")
             {
-                foreach(string category in StaticStorage.EarningCategories)
+                foreach (string category in StaticStorage.EarningCategories)
                 {
                     dataGridView.Rows.Add(category);
                 }
-            }
+
+                _categoryType = "Earning";
+            }           
         }
 
-        private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex == dataGridView.Rows.Count - 1)
+            OpenSelectedCategory();
+        }
+
+        private void SelectButtonClicked(object sender, EventArgs e)
+        {
+            OpenSelectedCategory();
+        }
+
+        private void OpenSelectedCategory()
+        {
+            int rowIndex = dataGridView.CurrentCell.RowIndex;
+
+            if(rowIndex == dataGridView.Rows.Count - 1 || dataGridView.SelectedRows.Count > 1)
             {
-                //this is the last row and this row is empty
+                //either, selected row is the last row and an empty row
+                //or, more than one row is selected in the category dataGridView
                 return;
             }
-            string category = dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
 
-            if (!multipleRowSelected)
+            string category = dataGridView.Rows[rowIndex].Cells[0].Value.ToString();
+
+            foreach(int index in _rowIndexes)
             {
-                //dgv points to a DataGridView on AddNewDataForm form
-                dgv.Rows[rowIndex].Cells[2].Value = category;
-                this.Close();
+                //_dgv points to a dataGridView on DailyInfoForm whose reference is passed to this form via constructor
+                _dgv.Rows[index].Cells[2].Value = category;
+            }
+
+            this.Close();
+        }
+
+        private void DataGridViewCellEditEnded(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateCategories();
+        }
+
+        private void UpdateCategories()
+        {
+            string categoryNames = "";
+
+            if (_categoryType == "Expense")
+            {
+                StaticStorage.ExpenseCategories.Clear();
+
+                foreach (DataGridViewRow row in dataGridView.Rows)
+                {
+                    if(row.Index == dataGridView.Rows.Count - 1)
+                    {
+                        //this is the last row and it's an empty row
+                        break;
+                    }
+
+                    StaticStorage.ExpenseCategories.Add(row.Cells[0].Value.ToString());
+                    categoryNames += row.Cells[0].Value.ToString();
+
+                    //adds a splitting character after each category
+                    if (row.Index < dataGridView.Rows.Count - 2)
+                    {
+                        categoryNames += "|";
+                    }
+                }
             }
             else
             {
-                foreach(int rowIndex in expenseRowIndexList)
-                {
-                    //expenseDGV points to a DataGridView on AddNewDataForm form
-                    expenseDGV.Rows[rowIndex].Cells[2].Value = category;
-                }
+                StaticStorage.EarningCategories.Clear();
 
-                foreach(int rowIndex in earningRowIndexList)
+                foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    //earningDGV points to a dataGridView on AddNewDataForm form
-                    earningDGV.Rows[rowIndex].Cells[2].Value = category;
-                }
+                    if (row.Index == dataGridView.Rows.Count - 1)
+                    {
+                        //this is the last row and it's an empty row
+                        break;
+                    }
 
-                this.Close();
+                    StaticStorage.EarningCategories.Add(row.Cells[0].Value.ToString());
+                    categoryNames += row.Cells[0].Value.ToString();
+
+                    //adds a splitting character after each category
+                    if (row.Index < dataGridView.Rows.Count - 2)
+                    {
+                        categoryNames += "|";
+                    }
+                }
             }
+
+            string result = ServerHandler.SaveCategory(categoryNames, _categoryType);
         }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridView.CurrentCell.RowIndex;
+
+            if (rowIndex == dataGridView.Rows.Count - 1)
+            {
+                //this is the last row and it's an empty row
+                return;
+            }
+
+            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                dataGridView.Rows.Remove(row);
+            }
+
+            UpdateCategories();
+        }
+
+        private void DataGridViewUserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            if (e.Row.Index == dataGridView.Rows.Count - 1)
+            {
+                //this is the last row and it's an empty row
+                return;
+            }
+
+            UpdateCategories();
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }

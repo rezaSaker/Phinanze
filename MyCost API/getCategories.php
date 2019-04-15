@@ -1,7 +1,7 @@
 <?php
 /*
 	*this script reads categories from database 
-	*and returns the catories to MyCost app
+	*and returns the categories to MyCost app
 */
 
 require_once('connectDB.php');
@@ -19,50 +19,13 @@ if(isset($_POST['key']) && isset($_POST['token']) && isset($_POST['userid']))
 	$id     = $row['id'];
 	
 	if($id == $userid)//request verified as authentic
-	{	$data = "";
-		$rowNum =  1;
-		
+	{			
 		//get expense categories for the user from DB
 		$query   = "SELECT * FROM categories WHERE userid = '$userid'";
 		$result  = mysqli_query($connect, $query) or die('Server connection error');
-		
-		//takes the expense categories for theis user
-		while($row = mysqli_fetch_array($result))
-		{			
-			if($rowNum > 1)
-			{
-				//adds a splitting character before each row except the first one
-				$data .= '|';
-			}
-			else
-			{
-				$rowNum = 2;
-			}
-			
-			$data .= $row['earningCategories'];
-		}
-		
-		//adds a splitting character between expense categories and earning categories
-		$data .= '^';
-		
-		$rowNum = 1;
-		
-		//takes earning categories for the user
-		while($row = mysqli_fetch_array($result))
-		{			
-			if($rowNum > 1)
-			{
-				//adds a splitting character before each row except the first one
-				$data .= '|';
-			}
-			else
-			{
-				$rowNum = 2;
-			}
-			
-			$data .= $row['eexpenseCategories'];
-		}
-		
+		$row = mysqli_fetch_array($result);		
+		$data = $row['earningCategories'] . '^' . $row['expenseCategories'];
+						
 		die($data);
 	}
 	else //request from unauthentic source

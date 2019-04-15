@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAuthenticationForm));
             this.showRegisterPanelButton = new System.Windows.Forms.Button();
             this.showLoginPanelButton = new System.Windows.Forms.Button();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
@@ -74,7 +75,7 @@
             this.lbl_welcomeText.AutoSize = true;
             this.lbl_welcomeText.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_welcomeText.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_welcomeText.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lbl_welcomeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lbl_welcomeText.Location = new System.Drawing.Point(286, 9);
             this.lbl_welcomeText.Name = "lbl_welcomeText";
             this.lbl_welcomeText.Size = new System.Drawing.Size(209, 54);
@@ -177,6 +178,7 @@
             this.Controls.Add(this.showLoginPanelButton);
             this.Controls.Add(this.showRegisterPanelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "UserAuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

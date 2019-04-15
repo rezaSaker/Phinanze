@@ -9,15 +9,15 @@ require_once('connectDB.php');
 
 if(isset($_POST['key']) && isset($_POST['token']) && isset($_POST['userid']))
 {
-	$key = mysqli_real_escape_string($connect, $_POST['key']);
-	$token = mysqli_real_escape_string($connect, $_POST['token']);
+	$key 	= mysqli_real_escape_string($connect, $_POST['key']);
+	$token  = mysqli_real_escape_string($connect, $_POST['token']);
 	$userid = mysqli_real_escape_string($connect, $_POST['userid']);
 	
 	//verify the request
 	$query  = "SELECT id FROM users WHERE token = '$token' AND access_key = '$key'";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
-	$row = mysqli_fetch_array($result);
-	$id  = $row['id'];
+	$row    = mysqli_fetch_array($result);
+	$id     = $row['id'];
 	
 	if($id == $userid)//request verified as authentic
 	{

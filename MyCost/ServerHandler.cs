@@ -194,6 +194,30 @@ namespace MyCost
             }
         }
 
+        public static string SaveCategory(string categoryNames, string categoryType)
+        {
+            WebClient www = new WebClient();
 
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("token", StaticStorage.AccessToken);
+            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("categoryNames", categoryNames);
+            queryData.Add("categoryType", categoryType);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveCategories.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch
+            {
+                return "Server connection error";
+            }
+        }
     }
 }

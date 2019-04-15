@@ -17,13 +17,17 @@ namespace MyCost
         private double _totalYearlyExpense;
         private double _totalYearlyEarning;
 
+        private bool _quitAppOnFormClosing;
+
         private IDictionary<string, double> _barValueDictionary;
         private IDictionary<string, double> _expenseCategoryDictonary;
         private IDictionary<string, double> _earningCategoryDictionary;
 
         private List<Button> _modifiedBars;
 
-        public StatisticalReportForm()
+        private Form _callerForm;
+
+        public StatisticalReportForm(Form form)
         {
             InitializeComponent();
 
@@ -32,6 +36,8 @@ namespace MyCost
             _expenseCategoryDictonary = new Dictionary<string, double>();
             _earningCategoryDictionary = new Dictionary<string, double>();
             _modifiedBars = new List<Button>();
+            _callerForm = form;
+            _quitAppOnFormClosing = true;
 
             foreach (string category in StaticStorage.EarningCategories)
             {
@@ -55,11 +61,6 @@ namespace MyCost
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());                       
         }
 
-        /// <summary>
-        /// Automatically called when selected index in year comboBox is changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
             _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
@@ -125,7 +126,7 @@ namespace MyCost
             _totalYearlyEarning = 0.0;
             _totalYearlyExpense = 0.0;
 
-            _barValueDictionary.Clear();
+            _barValueDictionary.Clear();          
 
             foreach(Button bar in _modifiedBars)
             {
@@ -133,6 +134,9 @@ namespace MyCost
                 bar.Location = new Point(bar.Location.X, 67);
             }
             _modifiedBars.Clear();
+
+            categoryWiseEarningDGV.Rows.Clear();
+            categoryWiseExpenseDGV.Rows.Clear();
         }
 
         private void PlotMonthlyExpenseData(double highestGraphValue)
@@ -273,9 +277,6 @@ namespace MyCost
             _modifiedBars.Add(bar);
         }
 
-        /// <summary>
-        /// updates the text of label that shows overview for the year such as positive/negative
-        /// </summary>
         private void UpdateYearlyOverviewLabel()
         {
             double totalExpense = .0;
@@ -313,10 +314,6 @@ namespace MyCost
             _totalYearlyExpense = totalExpense;
         }
 
-        /// <summary>
-        /// calculates highest expense
-        /// </summary>
-        /// <returns></returns>
         private double HighestExpense()
         {
             double max = .0;
@@ -332,10 +329,6 @@ namespace MyCost
             return max;
         }
 
-        /// <summary>
-        /// Calculates highest earning
-        /// </summary>
-        /// <returns></returns>
         private double HighestEarning()
         {
             double max = .0;
@@ -391,11 +384,6 @@ namespace MyCost
             }
         }
 
-        /// <summary>
-        /// this method is called when any bar in the graph is hovered  
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void GrpahBarsHover(object sender, EventArgs e)
         {              
             Button bar = (Button)sender;
@@ -411,9 +399,6 @@ namespace MyCost
             monthlyAmountLabel.Visible = false;
         }
 
-        /// <summary>
-        /// Calculates total earning and total expense for each category and displays them in two different dataGridViews
-        /// </summary>
         private void PlotCategoryWiseReport()
         {           
             foreach(Daily daily in StaticStorage.DailyInfo)
@@ -446,6 +431,11 @@ namespace MyCost
                 double amount = _expenseCategoryDictonary[category];
                 double percentage = (amount / _totalYearlyExpense) * 100;
 
+                if(Double.IsNaN(percentage))
+                {
+                    percentage = 0.0;
+                }
+
                 categoryWiseExpenseDGV.Rows.Add(category, string.Format("{0:0.00}", amount), string.Format("{0:0.00}", percentage) + "%");
             }
 
@@ -455,9 +445,77 @@ namespace MyCost
                 double amount = _earningCategoryDictionary[category];
                 double percentage = (amount / _totalYearlyEarning) * 100;
 
+                if (Double.IsNaN(percentage))
+                {
+                    percentage = 0.0;
+                }
+
                 categoryWiseEarningDGV.Rows.Add(category, string.Format("{0:0.00}", amount), string.Format("{0:0.00}", percentage) + "%");
             }
         }
-   
+
+        private void GoBackButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Location = this.Location;
+            _callerForm.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void AddNewDataButtonClicked(object sender, EventArgs e)
+        {
+            DailyInfoForm form = new DailyInfoForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void MonthlyReportButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            MonthlyInfoForm form = new MonthlyInfoForm();
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            MainForm form = new MainForm();
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void SettingsButtonClicked(object sender, EventArgs e)
+        {
+            SettingsForm form = new SettingsForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
+        private void LogOutButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
     }
 }
