@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
+using MyCost.Common;
+using MyCost.ServerHandling;
 
 namespace MyCost
 {
@@ -286,7 +281,7 @@ namespace MyCost
                 string totalExpense = cols[12];
                 string totalEarning = cols[13];
 
-                Daily daily = new Daily();
+                DailyInfo daily = new DailyInfo();
 
                 daily.Day = day;
                 daily.Month = month;
@@ -303,7 +298,7 @@ namespace MyCost
                         string reason = expenseReasons[i];
                         string category = expenseCategories[i];
                         string comment = expenseComments[i];
-                        Expense expense = new Expense(reason, amount, category, comment);
+                        ExpenseInfo expense = new ExpenseInfo(reason, amount, category, comment);
 
                         daily.Expenses.Add(expense);
                     }
@@ -317,7 +312,7 @@ namespace MyCost
                         string reason = earningSources[i];
                         string category = earningCategories[i];
                         string comment = earningComments[i];
-                        Earning earning = new Earning(reason, amount, category, comment);
+                        EarningInfo earning = new EarningInfo(reason, amount, category, comment);
 
                         daily.Earnings.Add(earning);
                     }

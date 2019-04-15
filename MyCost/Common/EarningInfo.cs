@@ -4,28 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyCost
+namespace MyCost.Common
 {
-    class Expense
+    class EarningInfo
     {
         private double _amount;
 
-        private string _reason;
+        private string _source;
         private string _category;
         private string _comment;      
 
-        public Expense(string reason, double amount, string category, string comment)
+        public EarningInfo(string source, double amount, string category, string comment)
         {
-            _reason = reason;
+            _source = source;
             _amount = amount;
             _category = category;
-            _comment = comment;           
+            _comment = comment;
         }
 
-        public string Reason
+        public string Source
         {
-            get { return _reason; }
-            set { _reason = value; }
+            get { return _source; }
+            set { _source = value; }
         }
 
         public double Amount

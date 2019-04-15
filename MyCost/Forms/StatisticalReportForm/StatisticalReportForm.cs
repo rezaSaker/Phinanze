@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyCost.Common;
+using MyCost.ServerHandling;
 
 namespace MyCost
 {
@@ -141,7 +138,7 @@ namespace MyCost
 
         private void PlotMonthlyExpenseData(double highestGraphValue)
         {
-            foreach (Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach (MonthlyInfo monthly in StaticStorage.MonthlyInfo)
             {
                 if (_selectedYear == monthly.Year)
                 {
@@ -199,7 +196,7 @@ namespace MyCost
 
         private void PlotMonthlyEarningData(double highestGraphValue)
         {
-            foreach (Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach (MonthlyInfo monthly in StaticStorage.MonthlyInfo)
             {
                 if (_selectedYear == monthly.Year)
                 {
@@ -282,7 +279,7 @@ namespace MyCost
             double totalExpense = .0;
             double totalEarning = .0;
 
-            foreach(Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach(MonthlyInfo monthly in StaticStorage.MonthlyInfo)
             {
                 if(_selectedYear == monthly.Year)
                 {
@@ -318,7 +315,7 @@ namespace MyCost
         {
             double max = .0;
 
-            foreach(Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach(MonthlyInfo monthly in StaticStorage.MonthlyInfo)
             {
                 if(monthly.Expense > max)
                 {
@@ -333,7 +330,7 @@ namespace MyCost
         {
             double max = .0;
 
-            foreach(Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach(MonthlyInfo monthly in StaticStorage.MonthlyInfo)
             {
                 if(monthly.Earning > max)
                 {
@@ -401,12 +398,12 @@ namespace MyCost
 
         private void PlotCategoryWiseReport()
         {           
-            foreach(Daily daily in StaticStorage.DailyInfo)
+            foreach(DailyInfo daily in StaticStorage.DailyInfo)
             {
                 if(_selectedYear == daily.Year)
                 {
                     //calculate expense total for each category
-                    foreach (Expense expense in daily.Expenses)
+                    foreach (ExpenseInfo expense in daily.Expenses)
                     {
                         if (_expenseCategoryDictonary.ContainsKey(expense.Category))
                         {
@@ -415,7 +412,7 @@ namespace MyCost
                     }
 
                     //calculate earning total for each category
-                    foreach(Earning earning in daily.Earnings)
+                    foreach(EarningInfo earning in daily.Earnings)
                     {
                         if (_earningCategoryDictionary.ContainsKey(earning.Category))
                         {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyCost
+namespace MyCost.Common
 {
-    class Daily
+    class DailyInfo
     {
         private int _day;
         private int _month;
@@ -17,13 +17,13 @@ namespace MyCost
 
         private string _note;
 
-        private List<Expense> _expenses;
-        private List<Earning> _earnings;
+        private List<ExpenseInfo> _expenses;
+        private List<EarningInfo> _earnings;
 
-        public Daily()
+        public DailyInfo()
         {
-            _expenses = new List<Expense>();
-            _earnings = new List<Earning>();
+            _expenses = new List<ExpenseInfo>();
+            _earnings = new List<EarningInfo>();
         }
 
         public int Day
@@ -62,13 +62,13 @@ namespace MyCost
             set { _note = value; }
         }
 
-        public List<Expense> Expenses
+        public List<ExpenseInfo> Expenses
         {
             get { return _expenses; }
             set { _expenses = value; }
         }
 
-        public List<Earning> Earnings
+        public List<EarningInfo> Earnings
         {
             get { return _earnings; }
             set { _earnings = value; }

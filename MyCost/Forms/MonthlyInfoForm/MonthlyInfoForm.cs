@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyCost.Common;
+using MyCost.ServerHandling;
 
 namespace MyCost
 {
@@ -112,7 +108,7 @@ namespace MyCost
             string date;
 
             //plot new for newly selected month and year
-            foreach(Daily daily in StaticStorage.DailyInfo)
+            foreach(DailyInfo daily in StaticStorage.DailyInfo)
             {
                 if(_selectedMonth == daily.Month && _selectedYear == daily.Year)
                 {
@@ -230,7 +226,7 @@ namespace MyCost
                 {
                     dataGridView.Rows.Remove(row);
 
-                    foreach (Daily daily in StaticStorage.DailyInfo)
+                    foreach (DailyInfo daily in StaticStorage.DailyInfo)
                     {
                         if (daily.Day == day && daily.Month == _selectedMonth && daily.Year == _selectedYear)
                         {

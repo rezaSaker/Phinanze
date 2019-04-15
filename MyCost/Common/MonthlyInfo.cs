@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyCost
+namespace MyCost.Common
 {
-    class Monthly
+    class MonthlyInfo
     {
         private int _month;
         private int _year;
@@ -14,7 +14,7 @@ namespace MyCost
         private double _earning;
         private double _expense;
 
-        public Monthly(int month, int year, double earning, double expense)
+        public MonthlyInfo(int month, int year, double earning, double expense)
         {
             _month = month;
             _year = year;

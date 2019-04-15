@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using Microsoft.Win32;
+using MyCost.Common;
+using MyCost.ServerHandling;
 
 namespace MyCost
 {
@@ -42,7 +38,6 @@ namespace MyCost
             _monthList.Add("October");
             _monthList.Add("November");
             _monthList.Add("December");
-
         }
 
         private void MainFormLoading(object sender, EventArgs e)
@@ -79,7 +74,7 @@ namespace MyCost
 
             int row = 0;
 
-            foreach (Monthly monthly in StaticStorage.MonthlyInfo)
+            foreach (MonthlyInfo monthly in StaticStorage.MonthlyInfo)
             {
                 string year = monthly.Year.ToString();
                 string month = _monthList[monthly.Month - 1];
@@ -109,7 +104,7 @@ namespace MyCost
             }
         }
 
-        private void ShowFinancialOverviewPerRow(Monthly monthly, int row)
+        private void ShowFinancialOverviewPerRow(MonthlyInfo monthly, int row)
         {
             //adds the overview to the last column according to the earning and expense
             if (monthly.Earning < monthly.Expense)

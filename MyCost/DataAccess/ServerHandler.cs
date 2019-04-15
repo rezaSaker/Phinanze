@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Net;
+using MyCost.Common;
 
-namespace MyCost
+namespace MyCost.ServerHandling
 {
     class ServerHandler
     {
@@ -81,7 +78,7 @@ namespace MyCost
             }
         }    
 
-        public static string SaveDailyInfo(Daily daily)
+        public static string SaveDailyInfo(DailyInfo daily)
         {
             WebClient www = new WebClient();
 
@@ -101,7 +98,7 @@ namespace MyCost
 
             //adds splitting characters between expense properties so...
             //...that we can split the rows when retrieving from db
-            foreach (Expense expense in daily.Expenses)
+            foreach (ExpenseInfo expense in daily.Expenses)
             {
                 if (addSplitChar)
                 {
@@ -122,7 +119,7 @@ namespace MyCost
 
             //adds splitting characters between expense properties so...
             //...that we can split the rows when retrieving from db
-            foreach (Earning earning in daily.Earnings)
+            foreach (EarningInfo earning in daily.Earnings)
             {
                 if (addSplitChar)
                 {

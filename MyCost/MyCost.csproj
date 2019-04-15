@@ -46,75 +46,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\DailyInfoForm.cs">
+    <Compile Include="Forms\DailyInfoForm\DailyInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DailyInfoForm.Designer.cs">
+    <Compile Include="Forms\DailyInfoForm\DailyInfoForm.Designer.cs">
       <DependentUpon>DailyInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CategoryListForm.cs">
+    <Compile Include="Forms\CategoryListForm\CategoryListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CategoryListForm.Designer.cs">
+    <Compile Include="Forms\CategoryListForm\CategoryListForm.Designer.cs">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\Daily.cs" />
-    <Compile Include="Common\Earning.cs" />
-    <Compile Include="Common\Expense.cs" />
-    <Compile Include="Forms\MainForm.cs">
+    <Compile Include="Common\DailyInfo.cs" />
+    <Compile Include="Common\EarningInfo.cs" />
+    <Compile Include="Common\ExpenseInfo.cs" />
+    <Compile Include="Forms\MainForm\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SettingsForm.cs">
+    <Compile Include="Forms\SettingsForm\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SettingsForm.Designer.cs">
+    <Compile Include="Forms\SettingsForm\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StatisticalReportForm.cs">
+    <Compile Include="Forms\StatisticalReportForm\StatisticalReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\StatisticalReportForm.Designer.cs">
+    <Compile Include="Forms\StatisticalReportForm\StatisticalReportForm.Designer.cs">
       <DependentUpon>StatisticalReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserAuthenticationForm.cs">
+    <Compile Include="Forms\UserAuthenticationForm\UserAuthenticationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserAuthenticationForm.Designer.cs">
+    <Compile Include="Forms\UserAuthenticationForm\UserAuthenticationForm.Designer.cs">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\Monthly.cs" />
-    <Compile Include="Forms\MonthlyInfoForm.cs">
+    <Compile Include="Common\MonthlyInfo.cs" />
+    <Compile Include="Forms\MonthlyInfoForm\MonthlyInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MonthlyInfoForm.Designer.cs">
+    <Compile Include="Forms\MonthlyInfoForm\MonthlyInfoForm.Designer.cs">
       <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataAccess\ServerHandler.cs" />
     <Compile Include="Common\StaticStorage.cs" />
-    <EmbeddedResource Include="Forms\DailyInfoForm.resx">
+    <EmbeddedResource Include="Forms\DailyInfoForm\DailyInfoForm.resx">
       <DependentUpon>DailyInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CategoryListForm.resx">
+    <EmbeddedResource Include="Forms\CategoryListForm\CategoryListForm.resx">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SettingsForm.resx">
+    <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StatisticalReportForm.resx">
+    <EmbeddedResource Include="Forms\StatisticalReportForm\StatisticalReportForm.resx">
       <DependentUpon>StatisticalReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserAuthenticationForm.resx">
+    <EmbeddedResource Include="Forms\UserAuthenticationForm\UserAuthenticationForm.resx">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MonthlyInfoForm.resx">
+    <EmbeddedResource Include="Forms\MonthlyInfoForm\MonthlyInfoForm.resx">
       <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

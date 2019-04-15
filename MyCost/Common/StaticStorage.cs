@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace MyCost
+namespace MyCost.Common
 {
     class StaticStorage
     {
@@ -17,8 +13,8 @@ namespace MyCost
         public static List<string> ExpenseCategories = new List<string>();
         public static List<string> EarningCategories = new List<string>();
 
-        public static List<Daily> DailyInfo = new List<Daily>();
-        public static List<Monthly> MonthlyInfo = new List<Monthly>();   
+        public static List<DailyInfo> DailyInfo = new List<DailyInfo>();
+        public static List<MonthlyInfo> MonthlyInfo = new List<MonthlyInfo>();   
 
         /// <summary>
         /// Fetch monthly info from the list of daily info and store it in StaticStorage.MonthlyInfo
@@ -49,7 +45,7 @@ namespace MyCost
                     totalEarning = .0;
                     totalExpense = .0;
 
-                    foreach (Daily daily in DailyInfo)
+                    foreach (DailyInfo daily in DailyInfo)
                     {
                         if (daily.Year == year && daily.Month == month)
                         {
@@ -61,7 +57,7 @@ namespace MyCost
                     //if both expense total and earning total are 0 then, no data exists for this month
                     if (totalEarning != 0 || totalExpense != 0)
                     {
-                        Monthly monthly = new Monthly(month, year, totalEarning, totalExpense);
+                        MonthlyInfo monthly = new MonthlyInfo(month, year, totalEarning, totalExpense);
                         MonthlyInfo.Add(monthly);
                     }
                 }

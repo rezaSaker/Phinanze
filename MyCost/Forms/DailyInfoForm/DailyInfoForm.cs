@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MyCost.Common;
+using MyCost.ServerHandling;
 
 namespace MyCost
 {
@@ -197,7 +194,7 @@ namespace MyCost
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
-            Daily daily = new Daily();
+            DailyInfo daily = new DailyInfo();
 
             daily.Note = noteTextBox.Text;
             daily.Day = Convert.ToUInt16(dayComboBox.SelectedItem.ToString());
@@ -275,7 +272,7 @@ namespace MyCost
                     comment = "";
                 }
 
-                Expense expense = new Expense(reason, amount, category, comment);
+                ExpenseInfo expense = new ExpenseInfo(reason, amount, category, comment);
                 daily.Expenses.Add(expense);
             }
 
@@ -340,7 +337,7 @@ namespace MyCost
                     comment = "";
                 }
 
-                Earning earning = new Earning(source, amount, category, comment);
+                EarningInfo earning = new EarningInfo(source, amount, category, comment);
                 daily.Earnings.Add(earning);
             }
 
@@ -350,7 +347,7 @@ namespace MyCost
             {
                 int index = -1;
 
-                foreach(Daily d in StaticStorage.DailyInfo)
+                foreach(DailyInfo d in StaticStorage.DailyInfo)
                 {
                     if(d.Day == daily.Day 
                         && d.Month == daily.Month 
@@ -492,7 +489,7 @@ namespace MyCost
             earningDataGridView.Rows.Clear();
 
             //plot info for new selected date
-            foreach(Daily daily in StaticStorage.DailyInfo)
+            foreach(DailyInfo daily in StaticStorage.DailyInfo)
             {
                 if(_selectedDay == daily.Day
                     && _selectedMonth == daily.Month
@@ -503,13 +500,13 @@ namespace MyCost
                     noteTextBox.ForeColor = Color.Black;
 
                     //plot expense info
-                    foreach(Expense expense in daily.Expenses)
+                    foreach(ExpenseInfo expense in daily.Expenses)
                     {
                         expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
                     }
 
                     //plot earning info
-                    foreach(Earning earning in daily.Earnings)
+                    foreach(EarningInfo earning in daily.Earnings)
                     {
                         earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
                     }
