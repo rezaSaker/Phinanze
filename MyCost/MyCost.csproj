@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AppLoaderForm\AppLoaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AppLoaderForm\AppLoaderForm.Designer.cs">
+      <DependentUpon>AppLoaderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DailyInfoForm\DailyInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataAccess\ServerHandler.cs" />
     <Compile Include="Common\StaticStorage.cs" />
+    <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
+      <DependentUpon>AppLoaderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DailyInfoForm\DailyInfoForm.resx">
       <DependentUpon>DailyInfoForm.cs</DependentUpon>
     </EmbeddedResource>

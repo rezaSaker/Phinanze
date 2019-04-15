@@ -1,4 +1,4 @@
-﻿namespace MyCost
+﻿namespace MyCost.Forms
 {
     partial class MainForm
     {

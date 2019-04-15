@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MyCost
+namespace MyCost.Forms
 {
     public partial class SettingsForm : Form
     {

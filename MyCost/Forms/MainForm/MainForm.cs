@@ -6,7 +6,7 @@ using System.Diagnostics;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
-namespace MyCost
+namespace MyCost.Forms
 {
     public partial class MainForm : Form
     {

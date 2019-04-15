@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
-namespace MyCost
+namespace MyCost.Forms
 {
     public partial class StatisticalReportForm : Form
     {
