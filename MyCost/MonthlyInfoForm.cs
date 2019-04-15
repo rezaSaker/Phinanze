@@ -130,6 +130,7 @@ namespace MyCost
             int year = _selectedYear;
 
             DailyInfoForm form = new DailyInfoForm(day, month, year, this);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -206,6 +207,40 @@ namespace MyCost
             {
                 Application.Exit();
             }
+        }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                int day = Convert.ToInt32(dataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+
+                string result = ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
+
+                if(result != "SUCCESS")
+                {
+                    MessageBox.Show(result);
+                }
+                else
+                {
+                    dataGridView.Rows.Remove(row);
+
+                    foreach (Daily daily in StaticStorage.DailyInfo)
+                    {
+                        if (daily.Day == day && daily.Month == _selectedMonth && daily.Year == _selectedYear)
+                        {
+                            StaticStorage.DailyInfo.Remove(daily);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DataGridViewUserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            int day = Convert.ToInt32(dataGridView.Rows[e.Row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+
+            ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
         }
 
     }

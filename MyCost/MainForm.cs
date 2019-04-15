@@ -131,7 +131,7 @@ namespace MyCost
         private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
             DailyInfoForm form = new DailyInfoForm(this);
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -154,7 +154,7 @@ namespace MyCost
         private void ShowMonthlyInfoButtonClicked(object sender, EventArgs e)
         {
             MonthlyInfoForm form = new MonthlyInfoForm();
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -164,7 +164,7 @@ namespace MyCost
         private void StatisticsButtonClicked(object sender, EventArgs e)
         {
             StatisticalReportForm form = new StatisticalReportForm(this);
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;

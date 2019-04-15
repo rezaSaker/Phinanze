@@ -50,8 +50,6 @@ namespace MyCost
 
         private void AddNewDataFormLoaded(object sender, EventArgs e)
         {
-            this.Location = new Point(_callerForm.Location.X, _callerForm.Location.Y);
-
             for (int i = 2018; i < _selectedYear + 10; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
@@ -486,6 +484,8 @@ namespace MyCost
         private void PlotDailyInfo()
         {
             //clears the previous info
+            noteTextBox.Text = "Note";
+            noteTextBox.ForeColor = Color.Gray;
             totalExpenseLabel.Text = "0.00";
             totalEarningLabel.Text = "0.00";
             expenseDataGridView.Rows.Clear();
@@ -500,6 +500,7 @@ namespace MyCost
                 {
                     //plot common info first
                     noteTextBox.Text = daily.Note;
+                    noteTextBox.ForeColor = Color.Black;
 
                     //plot expense info
                     foreach(Expense expense in daily.Expenses)
@@ -620,8 +621,12 @@ namespace MyCost
 
         private void NoteTextBoxClicked(object sender, EventArgs e)
         {
-            noteTextBox.Text = "";
-            noteTextBox.ForeColor = Color.Black;
+            //if the textBox only contains the placeholder and user hasn't yet netered any text
+            if(noteTextBox.ForeColor == Color.Gray)
+            {
+                noteTextBox.Text = "";
+                noteTextBox.ForeColor = Color.Black;
+            }
         }
 
         private void DailyInfoFormClosing(object sender, FormClosingEventArgs e)

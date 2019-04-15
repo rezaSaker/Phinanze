@@ -44,6 +44,7 @@
             this.logOutButton = new System.Windows.Forms.Button();
             this.statisticsButton = new System.Windows.Forms.Button();
             this.addNewDataButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +88,7 @@
             this.dataGridView.Size = new System.Drawing.Size(776, 363);
             this.dataGridView.TabIndex = 5;
             this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
+            this.dataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DataGridViewUserDeletingRow);
             // 
             // Column1
             // 
@@ -123,9 +125,9 @@
             this.addNewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNewButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addNewButton.ForeColor = System.Drawing.Color.White;
-            this.addNewButton.Location = new System.Drawing.Point(629, 445);
+            this.addNewButton.Location = new System.Drawing.Point(656, 445);
             this.addNewButton.Name = "addNewButton";
-            this.addNewButton.Size = new System.Drawing.Size(159, 35);
+            this.addNewButton.Size = new System.Drawing.Size(132, 35);
             this.addNewButton.TabIndex = 6;
             this.addNewButton.Text = "Add New";
             this.addNewButton.UseVisualStyleBackColor = false;
@@ -134,13 +136,13 @@
             // btn_cancel
             // 
             this.btn_cancel.BackColor = System.Drawing.Color.White;
-            this.btn_cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
+            this.btn_cancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancel.ForeColor = System.Drawing.Color.Black;
-            this.btn_cancel.Location = new System.Drawing.Point(464, 447);
+            this.btn_cancel.Location = new System.Drawing.Point(531, 448);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(159, 32);
+            this.btn_cancel.Size = new System.Drawing.Size(119, 32);
             this.btn_cancel.TabIndex = 7;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = false;
@@ -230,11 +232,27 @@
             this.addNewDataButton.UseVisualStyleBackColor = false;
             this.addNewDataButton.Click += new System.EventHandler(this.AddnewDataButtonClicked);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.BackColor = System.Drawing.Color.White;
+            this.deleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.Black;
+            this.deleteButton.Location = new System.Drawing.Point(12, 448);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(119, 32);
+            this.deleteButton.TabIndex = 46;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButtonClicked);
+            // 
             // MonthlyInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.homeButton);
             this.Controls.Add(this.logOutButton);
@@ -275,5 +293,6 @@
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.Button statisticsButton;
         private System.Windows.Forms.Button addNewDataButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
