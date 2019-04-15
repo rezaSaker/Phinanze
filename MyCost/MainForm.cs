@@ -43,11 +43,11 @@ namespace MyCost
 
         }
 
-        private void HomePageLoaded(object sender, EventArgs e)
-        {          
+        private void MainFormLoading(object sender, EventArgs e)
+        {
             versionLabel.Text = "Version: " + Application.ProductVersion;
 
-            for(int year = 2018; year <= DateTime.Now.Year; year++)
+            for (int year = 2018; year <= DateTime.Now.Year; year++)
             {
                 YearComboBox.Items.Add(year.ToString());
             }

@@ -60,7 +60,7 @@ namespace MyCost
             _monthList.Add("December");
         }
 
-        private void MonthlyInfoFormLoaded(object sender, EventArgs e)
+        private void MonthlyInfoFormLoading(object sender, EventArgs e)
         {
             //adds years to yearComboBox
             for (int i = 2018; i <= _selectedYear + 10; i++)
@@ -248,5 +248,6 @@ namespace MyCost
             ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
         }
 
+        
     }
 }

@@ -50,15 +50,15 @@ namespace MyCost
             }
         }
 
-        private void StatisticalReportFormLoaded(object sender, EventArgs e)
+        private void StatisticalReportFormLoading(object sender, EventArgs e)
         {
             //add items to yearComboBox
-            for(int year = 2018; year <= _selectedYear; year++)
+            for (int year = 2018; year <= _selectedYear; year++)
             {
                 yearComboBox.Items.Add(year.ToString());
             }
 
-            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());                       
+            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
@@ -522,5 +522,6 @@ namespace MyCost
             _quitAppOnFormClosing = false;
             this.Close();
         }
+
     }
 }

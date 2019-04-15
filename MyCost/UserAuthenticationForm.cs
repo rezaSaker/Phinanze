@@ -18,18 +18,20 @@ namespace MyCost
             InitializeComponent();
         }
 
-        private void MainFormLoaded(object sender, EventArgs e)
+        private void UserAuthenticationFormLoading(object sender, EventArgs e)
         {
             DisplayLoginPanel();
+        }
 
+        private void UserAuthenticationFormShown(object sender, EventArgs e)
+        {
             //if user had his rememberme checkbox checked
-            if(Properties.Settings.Default.Username != null
+            if (Properties.Settings.Default.Username != null
                 && Properties.Settings.Default.Password != null)
             {
                 usernameTextBox.Text = Properties.Settings.Default.Username;
                 passwordTextBox.Text = Properties.Settings.Default.Password;
                 submitButton.PerformClick();
-                this.Hide();
             }
         }
 
@@ -346,6 +348,6 @@ namespace MyCost
         private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-        }
+        }    
     }
 }

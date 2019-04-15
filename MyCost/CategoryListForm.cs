@@ -16,7 +16,7 @@ namespace MyCost
 
         private string _categoryType;
 
-        private DataGridView _dgv;     
+        private DataGridView _dgv;
 
         public CategoryListForm(DataGridView dgv, List<int> rowIndexes)
         {
@@ -24,9 +24,9 @@ namespace MyCost
 
             _dgv = dgv;
             _rowIndexes = rowIndexes;
-        }       
+        }
 
-        private void CategoryListFormLoaded(object sender, EventArgs e)
+        private void CategoryListFormLoading(object sender, EventArgs e)
         {
             //_dgv points to a dataGridView on DailyInfoForm whose reference is passed to this form via constructor
             if (_dgv != null && _dgv.Name == "expenseDataGridView")
@@ -46,7 +46,7 @@ namespace MyCost
                 }
 
                 _categoryType = "Earning";
-            }           
+            }
         }
 
         private void dataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
@@ -63,7 +63,7 @@ namespace MyCost
         {
             int rowIndex = dataGridView.CurrentCell.RowIndex;
 
-            if(rowIndex == dataGridView.Rows.Count - 1 || dataGridView.SelectedRows.Count > 1)
+            if (rowIndex == dataGridView.Rows.Count - 1 || dataGridView.SelectedRows.Count > 1)
             {
                 //either, selected row is the last row and an empty row
                 //or, more than one row is selected in the category dataGridView
@@ -72,7 +72,7 @@ namespace MyCost
 
             string category = dataGridView.Rows[rowIndex].Cells[0].Value.ToString();
 
-            foreach(int index in _rowIndexes)
+            foreach (int index in _rowIndexes)
             {
                 //_dgv points to a dataGridView on DailyInfoForm whose reference is passed to this form via constructor
                 _dgv.Rows[index].Cells[2].Value = category;
@@ -96,7 +96,7 @@ namespace MyCost
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if(row.Index == dataGridView.Rows.Count - 1)
+                    if (row.Index == dataGridView.Rows.Count - 1)
                     {
                         //this is the last row and it's an empty row
                         break;

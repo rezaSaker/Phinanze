@@ -124,7 +124,7 @@
             this.Name = "CategoryListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Category List";
-            this.Load += new System.EventHandler(this.CategoryListFormLoaded);
+            this.Load += new System.EventHandler(this.CategoryListFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

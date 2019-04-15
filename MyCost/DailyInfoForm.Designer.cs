@@ -392,7 +392,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Daily expense and earning information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyInfoFormClosing);
-            this.Load += new System.EventHandler(this.AddNewDataFormLoaded);
+            this.Load += new System.EventHandler(this.AddNewDataFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.expenseDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.earningDataGridView)).EndInit();
             this.ResumeLayout(false);

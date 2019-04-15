@@ -1119,7 +1119,7 @@
             this.Name = "StatisticalReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "StatisticalReport";
-            this.Load += new System.EventHandler(this.StatisticalReportFormLoaded);
+            this.Load += new System.EventHandler(this.StatisticalReportFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.categoryWiseExpenseDGV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryWiseEarningDGV)).EndInit();
             this.ResumeLayout(false);

@@ -48,7 +48,7 @@ namespace MyCost
             _hasSaved = false;
         }
 
-        private void AddNewDataFormLoaded(object sender, EventArgs e)
+        private void AddNewDataFormLoading(object sender, EventArgs e)
         {
             for (int i = 2018; i < _selectedYear + 10; i++)
             {
@@ -645,6 +645,8 @@ namespace MyCost
             {
                 Application.Exit();
             }
-        }    
+        }
+
+        
     }
 }
