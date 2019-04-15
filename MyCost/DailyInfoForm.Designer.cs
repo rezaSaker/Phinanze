@@ -386,10 +386,11 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "DailyInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Add New Data";
+            this.Text = "Daily expense and earning information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyInfoFormClosing);
             this.Load += new System.EventHandler(this.AddNewDataFormLoaded);
             ((System.ComponentModel.ISupportInitialize)(this.expenseDataGridView)).EndInit();

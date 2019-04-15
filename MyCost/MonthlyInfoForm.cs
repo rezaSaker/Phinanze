@@ -194,6 +194,11 @@ namespace MyCost
 
         private void LogOutButtonClicked(object sender, EventArgs e)
         {
+            //this will opt out from direct login option that occurs when remember me checkbox is checked
+            Properties.Settings.Default.Username = null;
+            Properties.Settings.Default.Password = null;
+            Properties.Settings.Default.Save();
+
             UserAuthenticationForm form = new UserAuthenticationForm();
             form.Show();
 

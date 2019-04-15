@@ -21,6 +21,16 @@ namespace MyCost
         private void MainFormLoaded(object sender, EventArgs e)
         {
             DisplayLoginPanel();
+
+            //if user had his rememberme checkbox checked
+            if(Properties.Settings.Default.Username != null
+                && Properties.Settings.Default.Password != null)
+            {
+                usernameTextBox.Text = Properties.Settings.Default.Username;
+                passwordTextBox.Text = Properties.Settings.Default.Password;
+                submitButton.PerformClick();
+                this.Hide();
+            }
         }
 
         private void ShowRegisterPanelButtonClicked(object sender, EventArgs e)
@@ -129,6 +139,13 @@ namespace MyCost
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
 
+                if (rememberMeCheckBox.Checked)
+                {
+                    Properties.Settings.Default.Username = usernameTextBox.Text;
+                    Properties.Settings.Default.Password = passwordTextBox.Text;
+                    Properties.Settings.Default.Save();
+                }
+
                 //gets all data for this user from database...
                 //...and store them in StaticStorage class
                 FetchDailyInfo();
@@ -180,10 +197,17 @@ namespace MyCost
             if (int.TryParse(data[0], out userId))
             {
                 Properties.Settings.Default.AccessKey = access_key;
+
+                if (rememberMeCheckBox.Checked)
+                {
+                    Properties.Settings.Default.Username = usernameTextBox.Text;
+                    Properties.Settings.Default.Password = passwordTextBox.Text;
+                }
+
                 Properties.Settings.Default.Save();
 
                 StaticStorage.UserID = userId;
-                StaticStorage.AccessToken = data[1];
+                StaticStorage.AccessToken = data[1];             
 
                 //gets all data for this user from database...
                 //...and store them in StaticStorage class

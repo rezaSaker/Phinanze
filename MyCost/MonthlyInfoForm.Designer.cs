@@ -264,6 +264,7 @@
             this.Controls.Add(this.addNewButton);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.monthComboBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MonthlyInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
