@@ -32,6 +32,14 @@ namespace MyCost
                 usernameTextBox.Text = Properties.Settings.Default.Username;
                 passwordTextBox.Text = Properties.Settings.Default.Password;
                 submitButton.PerformClick();
+                
+                //if the login failed
+                if(statusLabel.Text == "Invalid username or password")
+                {
+                    statusLabel.Text = "";
+                    usernameTextBox.Text = "Username";
+                    passwordTextBox.Text = "Password";
+                }
             }
         }
 
