@@ -157,7 +157,7 @@ namespace MyCost.Forms
             int month = _selectedMonth;
             int year = _selectedYear;
 
-            DailyInfoForm form = new DailyInfoForm(day, month, year, this);
+            DailyInfoForm form = new DailyInfoForm(day, month, year);
             form.Location = this.Location;
             form.Show();
 
@@ -220,16 +220,6 @@ namespace MyCost.Forms
             }
         }
 
-        private void CancelButtonClicked(object sender, EventArgs e)
-        {
-            MainForm form = new MainForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
-        }
-
         private void AddnewDataButtonClicked(object sender, EventArgs e)
         {
             addNewButton.PerformClick();
@@ -237,12 +227,12 @@ namespace MyCost.Forms
 
         private void AddnewButtonClicked(object sender, EventArgs e)
         {
-            DailyInfoForm form = new DailyInfoForm(this);
+            DailyInfoForm form = new DailyInfoForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void HomeButtonClicked(object sender, EventArgs e)
@@ -257,22 +247,22 @@ namespace MyCost.Forms
 
         private void StatisticalReportButtonClicked(object sender, EventArgs e)
         {
-            StatisticalReportForm form = new StatisticalReportForm(this);
+            StatisticalReportForm form = new StatisticalReportForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void SettingsButtonClicked(object sender, EventArgs e)
         {
-            SettingsForm form = new SettingsForm(this);
+            SettingsForm form = new SettingsForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void LogOutButtonClicked(object sender, EventArgs e)
@@ -296,14 +286,6 @@ namespace MyCost.Forms
                 Application.Exit();
             }
         }
-
-        override public void Refresh()
-        {
-            _quitAppOnFormClosing = true;
-
-            PlotData();
-        }
-
         
     }
 }

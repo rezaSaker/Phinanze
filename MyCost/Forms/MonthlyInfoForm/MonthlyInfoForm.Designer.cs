@@ -36,7 +36,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addNewButton = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.HeaderLabel = new System.Windows.Forms.Label();
             this.settingsButton = new System.Windows.Forms.Button();
@@ -132,21 +131,6 @@
             this.addNewButton.Text = "Add New";
             this.addNewButton.UseVisualStyleBackColor = false;
             this.addNewButton.Click += new System.EventHandler(this.AddnewButtonClicked);
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.BackColor = System.Drawing.Color.White;
-            this.btn_cancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.ForeColor = System.Drawing.Color.Black;
-            this.btn_cancel.Location = new System.Drawing.Point(531, 448);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(119, 32);
-            this.btn_cancel.TabIndex = 7;
-            this.btn_cancel.Text = "Cancel";
-            this.btn_cancel.UseVisualStyleBackColor = false;
-            this.btn_cancel.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
             // yearComboBox
             // 
@@ -260,7 +244,6 @@
             this.Controls.Add(this.addNewDataButton);
             this.Controls.Add(this.HeaderLabel);
             this.Controls.Add(this.yearComboBox);
-            this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.addNewButton);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.monthComboBox);
@@ -282,7 +265,6 @@
         private System.Windows.Forms.ComboBox monthComboBox;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button addNewButton;
-        private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Label HeaderLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

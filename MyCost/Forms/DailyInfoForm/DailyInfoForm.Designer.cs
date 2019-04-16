@@ -46,7 +46,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saveButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.totalEarningLabel = new System.Windows.Forms.Label();
             this.totalExpenseLabel = new System.Windows.Forms.Label();
             this.settingsButton = new System.Windows.Forms.Button();
@@ -235,21 +234,6 @@
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.SaveButtonClicked);
             // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.cancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.ForeColor = System.Drawing.Color.Black;
-            this.cancelButton.Location = new System.Drawing.Point(569, 445);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(104, 30);
-            this.cancelButton.TabIndex = 26;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
-            // 
             // totalEarningLabel
             // 
             this.totalEarningLabel.AutoSize = true;
@@ -349,7 +333,7 @@
             this.applyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCategoryButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applyCategoryButton.ForeColor = System.Drawing.Color.Black;
-            this.applyCategoryButton.Location = new System.Drawing.Point(9, 445);
+            this.applyCategoryButton.Location = new System.Drawing.Point(479, 445);
             this.applyCategoryButton.Name = "applyCategoryButton";
             this.applyCategoryButton.Size = new System.Drawing.Size(178, 30);
             this.applyCategoryButton.TabIndex = 46;
@@ -372,7 +356,6 @@
             this.Controls.Add(this.homeButton);
             this.Controls.Add(this.totalExpenseLabel);
             this.Controls.Add(this.totalEarningLabel);
-            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.earningDataGridView);
@@ -410,7 +393,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView earningDataGridView;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label totalEarningLabel;
         private System.Windows.Forms.Label totalExpenseLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;

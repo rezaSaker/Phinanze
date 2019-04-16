@@ -126,24 +126,6 @@
   <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="dataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -13035,36 +13017,6 @@
         ds9lw+nrlw0PWN8YLiXovZ4A+GYYCLxtfXO4jb5+D3390T1y6vxXSV8HMNPv/Sa94lGF36M/+1de9G/+
         iH7/j52W2aWAv1P+Df8f3f9Lv8/fT783DA28l6/Sn32Kfu8jeK/067fgvdPXL+HPcmC4Dp8NnxGfNUE+
         IyMjIyPjcMUw/P/sbFvzSYRr5QAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="goBackButton.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
 </value>
   </data>
 </root>

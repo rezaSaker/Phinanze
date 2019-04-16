@@ -102,7 +102,6 @@
             this.logOutButton = new System.Windows.Forms.Button();
             this.homeButton = new System.Windows.Forms.Button();
             this.addNewDataButton = new System.Windows.Forms.Button();
-            this.goBackButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.categoryWiseExpenseDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryWiseEarningDGV)).BeginInit();
             this.SuspendLayout();
@@ -877,7 +876,8 @@
             this.categoryWiseExpenseDGV.Location = new System.Drawing.Point(7, 330);
             this.categoryWiseExpenseDGV.Name = "categoryWiseExpenseDGV";
             this.categoryWiseExpenseDGV.ReadOnly = true;
-            this.categoryWiseExpenseDGV.Size = new System.Drawing.Size(387, 145);
+            this.categoryWiseExpenseDGV.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.categoryWiseExpenseDGV.Size = new System.Drawing.Size(387, 150);
             this.categoryWiseExpenseDGV.TabIndex = 84;
             // 
             // Column1
@@ -918,7 +918,8 @@
             this.categoryWiseEarningDGV.Location = new System.Drawing.Point(400, 330);
             this.categoryWiseEarningDGV.Name = "categoryWiseEarningDGV";
             this.categoryWiseEarningDGV.ReadOnly = true;
-            this.categoryWiseEarningDGV.Size = new System.Drawing.Size(389, 145);
+            this.categoryWiseEarningDGV.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.categoryWiseEarningDGV.Size = new System.Drawing.Size(389, 150);
             this.categoryWiseEarningDGV.TabIndex = 85;
             // 
             // dataGridViewTextBoxColumn1
@@ -1028,26 +1029,12 @@
             this.addNewDataButton.UseVisualStyleBackColor = false;
             this.addNewDataButton.Click += new System.EventHandler(this.AddNewDataButtonClicked);
             // 
-            // goBackButton
-            // 
-            this.goBackButton.BackColor = System.Drawing.Color.White;
-            this.goBackButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("goBackButton.BackgroundImage")));
-            this.goBackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.goBackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.goBackButton.Location = new System.Drawing.Point(283, 5);
-            this.goBackButton.Name = "goBackButton";
-            this.goBackButton.Size = new System.Drawing.Size(60, 60);
-            this.goBackButton.TabIndex = 93;
-            this.goBackButton.UseVisualStyleBackColor = false;
-            this.goBackButton.Click += new System.EventHandler(this.GoBackButtonClicked);
-            // 
             // StatisticalReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
-            this.Controls.Add(this.goBackButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.ShowMonthlyInfoButton);
             this.Controls.Add(this.logOutButton);
@@ -1202,6 +1189,5 @@
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.Button homeButton;
         private System.Windows.Forms.Button addNewDataButton;
-        private System.Windows.Forms.Button goBackButton;
     }
 }

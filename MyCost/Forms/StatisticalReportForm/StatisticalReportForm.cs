@@ -22,9 +22,7 @@ namespace MyCost.Forms
 
         private List<Button> _modifiedBars;
 
-        private Form _callerForm;
-
-        public StatisticalReportForm(Form form)
+        public StatisticalReportForm()
         {
             InitializeComponent();
 
@@ -33,9 +31,6 @@ namespace MyCost.Forms
             _expenseCategoryDictonary = new Dictionary<string, double>();
             _earningCategoryDictionary = new Dictionary<string, double>();
             _modifiedBars = new List<Button>();
-            _callerForm = form;
-
-            AssignCategoriesToDictionary();       
         }
 
         private void StatisticalReportFormLoading(object sender, EventArgs e)
@@ -466,30 +461,18 @@ namespace MyCost.Forms
             }
         }
 
-        private void GoBackButtonClicked(object sender, EventArgs e)
+        private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Location = this.Location;
-            _callerForm.Show();
-            _callerForm.Refresh();
+            DailyInfoForm form = new DailyInfoForm();
+            form.Location = this.Location;
+            form.Show();
 
             _quitAppOnFormClosing = false;
             this.Close();
         }
 
-        private void AddNewDataButtonClicked(object sender, EventArgs e)
-        {
-            DailyInfoForm form = new DailyInfoForm(this);
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Hide();
-        }
-
         private void MonthlyReportButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Close();
-
             MonthlyInfoForm form = new MonthlyInfoForm();
             form.Location = this.Location;
             form.Show();
@@ -500,8 +483,6 @@ namespace MyCost.Forms
 
         private void HomeButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Close();
-
             MainForm form = new MainForm();
             form.Location = this.Location;
             form.Show();
@@ -512,18 +493,16 @@ namespace MyCost.Forms
 
         private void SettingsButtonClicked(object sender, EventArgs e)
         {
-            SettingsForm form = new SettingsForm(this);
+            SettingsForm form = new SettingsForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void LogOutButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Close();
-
             //this will opt out from direct login option that occurs when remember me checkbox is checked
             Properties.Settings.Default.Username = "";
             Properties.Settings.Default.Password = "";
@@ -542,13 +521,6 @@ namespace MyCost.Forms
             {
                 Application.Exit();
             }
-        }
-
-        override public void Refresh()
-        {
-            _quitAppOnFormClosing = true;
-
-            PlotYearlyFinancialReport();
         }
     }
 }

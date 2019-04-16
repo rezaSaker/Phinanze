@@ -130,12 +130,12 @@ namespace MyCost.Forms
 
         private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
-            DailyInfoForm form = new DailyInfoForm(this);
+            DailyInfoForm form = new DailyInfoForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
@@ -163,22 +163,22 @@ namespace MyCost.Forms
 
         private void StatisticsButtonClicked(object sender, EventArgs e)
         {
-            StatisticalReportForm form = new StatisticalReportForm(this);
+            StatisticalReportForm form = new StatisticalReportForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void SettingsButtonClicked(object sender, EventArgs e)
         {
-            SettingsForm form = new SettingsForm(this);
+            SettingsForm form = new SettingsForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void LogOutButtonClicked(object sender, EventArgs e)
@@ -213,13 +213,6 @@ namespace MyCost.Forms
             {
                 MessageBox.Show("Could not open the default browser");
             }
-        }
-
-        override public void Refresh()
-        {
-            _quitAppOnFormClosing = true;
-
-            PlotMonthlyInfo();
         }
 
     }

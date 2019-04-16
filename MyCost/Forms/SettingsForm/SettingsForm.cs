@@ -11,13 +11,9 @@ namespace MyCost.Forms
     {
         private bool _quitAppOnFormCLosing;
 
-        private Form _callerForm;
-
-        public SettingsForm(Form form)
+        public SettingsForm()
         {
             InitializeComponent();
-
-            _callerForm = form;
         }
 
         private void SettingsFormLoading(object sender, EventArgs e)
@@ -131,7 +127,7 @@ namespace MyCost.Forms
 
         private void AddNewDataButtonClicked(object sender, EventArgs e)
         {
-            DailyInfoForm form = new DailyInfoForm(this);
+            DailyInfoForm form = new DailyInfoForm();
             form.Location = this.Location;
             form.Show();
 
@@ -141,8 +137,6 @@ namespace MyCost.Forms
 
         private void MonthlyReportButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Close();
-
             MonthlyInfoForm form = new MonthlyInfoForm();
             form.Location = this.Location;
             form.Show();
@@ -153,18 +147,16 @@ namespace MyCost.Forms
 
         private void StatisticalReportButtonClicked(object sender, EventArgs e)
         {
-            StatisticalReportForm form = new StatisticalReportForm(this);
+            StatisticalReportForm form = new StatisticalReportForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormCLosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void HomeButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Close();
-
             MainForm form = new MainForm();
             form.Location = this.Location;
             form.Show();
@@ -179,8 +171,6 @@ namespace MyCost.Forms
             Properties.Settings.Default.Username = "";
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
-
-            _callerForm.Close();
 
             UserAuthenticationForm form = new UserAuthenticationForm();
             form.Show();
@@ -201,7 +191,7 @@ namespace MyCost.Forms
             }
         }
 
-        private void ReportissueButtonClicked(object sender, EventArgs e)
+        private void ReportIssueButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -225,42 +215,13 @@ namespace MyCost.Forms
             }
         }
 
-        private void CancelbuttonClicked(object sender, EventArgs e)
-        {
-            _callerForm.Location = this.Location;
-            _callerForm.Show();
-            _callerForm.Refresh();
-
-            _quitAppOnFormCLosing = false;
-            this.Close();
-        }
-
         private void SettingsFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_quitAppOnFormCLosing)
             {
                 Application.Exit();
             }
-        }
-
-        override public void Refresh()
-        {
-            _quitAppOnFormCLosing = true;
-
-            //reset everything
-            currentUserNameTextBox.Text = "Current username";
-            currentUserNameTextBox.ForeColor = Color.Gray;
-            newUserNameTextBox.Text = "New username";
-            newUserNameTextBox.ForeColor = Color.Gray;
-            confirmUserNameTextBox.Text = "Confirm new username";
-            confirmUserNameTextBox.ForeColor = Color.Gray;
-            currentPasswordTextBox.Text = "Current password";
-            currentPasswordTextBox.ForeColor = Color.Gray;
-            newPasswordTextBox.Text = "New password";
-            newPasswordTextBox.ForeColor = Color.Gray;
-            confirmPasswordTextBox.Text = "Confirm password";
-            confirmPasswordTextBox.ForeColor = Color.Gray;
-        }
+        }     
 
     }
 }

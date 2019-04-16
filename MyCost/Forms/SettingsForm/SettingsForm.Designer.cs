@@ -50,7 +50,6 @@
             this.reportIssueButton = new System.Windows.Forms.Button();
             this.helpButton = new System.Windows.Forms.Button();
             this.viewSourceButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // homeButton
@@ -296,13 +295,13 @@
             this.reportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.reportIssueButton.Location = new System.Drawing.Point(154, 432);
+            this.reportIssueButton.Location = new System.Drawing.Point(496, 422);
             this.reportIssueButton.Name = "reportIssueButton";
             this.reportIssueButton.Size = new System.Drawing.Size(141, 31);
             this.reportIssueButton.TabIndex = 64;
             this.reportIssueButton.Text = "Report Issues";
             this.reportIssueButton.UseVisualStyleBackColor = false;
-            this.reportIssueButton.Click += new System.EventHandler(this.ReportissueButtonClicked);
+            this.reportIssueButton.Click += new System.EventHandler(this.ReportIssueButtonClicked);
             // 
             // helpButton
             // 
@@ -311,7 +310,7 @@
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.helpButton.Location = new System.Drawing.Point(15, 432);
+            this.helpButton.Location = new System.Drawing.Point(344, 422);
             this.helpButton.Name = "helpButton";
             this.helpButton.Size = new System.Drawing.Size(133, 31);
             this.helpButton.TabIndex = 65;
@@ -326,7 +325,7 @@
             this.viewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewSourceButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewSourceButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.viewSourceButton.Location = new System.Drawing.Point(301, 432);
+            this.viewSourceButton.Location = new System.Drawing.Point(654, 422);
             this.viewSourceButton.Name = "viewSourceButton";
             this.viewSourceButton.Size = new System.Drawing.Size(131, 31);
             this.viewSourceButton.TabIndex = 66;
@@ -334,28 +333,12 @@
             this.viewSourceButton.UseVisualStyleBackColor = false;
             this.viewSourceButton.Click += new System.EventHandler(this.ViewSourceButtonClicked);
             // 
-            // cancelButton
-            // 
-            this.cancelButton.BackColor = System.Drawing.Color.White;
-            this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.cancelButton.Location = new System.Drawing.Point(643, 432);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(145, 31);
-            this.cancelButton.TabIndex = 68;
-            this.cancelButton.Text = "cancel";
-            this.cancelButton.UseVisualStyleBackColor = false;
-            this.cancelButton.Click += new System.EventHandler(this.CancelbuttonClicked);
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
-            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.viewSourceButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.reportIssueButton);
@@ -411,6 +394,5 @@
         private System.Windows.Forms.Button reportIssueButton;
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Button viewSourceButton;
-        private System.Windows.Forms.Button cancelButton;
     }
 }

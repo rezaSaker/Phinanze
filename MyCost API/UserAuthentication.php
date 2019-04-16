@@ -30,7 +30,7 @@ if(isset($_POST['key']))
 		$password = md5(base64_encode($password));
 			
 		//verify user's login credentials
-		$query  = "SELECT id FROM users WHERE username = '$username' AND password = '$password' AND access_key = '$access_key'";
+		$query  = "SELECT id FROM users WHERE access_key = '$access_key' AND username = '$username' AND password = '$password' AND access_key = '$access_key'";
 		$result = mysqli_query($connect, $query) or die('Server connection error');;		
 		$count  = mysqli_num_rows($result);
 

@@ -17,13 +17,10 @@ namespace MyCost.Forms
         private bool _quitAppOnFormClosing;
         private bool _hasSaved;
 
-        private Form _callerForm;
-
-        public DailyInfoForm(Form form)
+        public DailyInfoForm()
         {
             InitializeComponent();
 
-            _callerForm = form;
             _hasSaved = true;
             _quitAppOnFormClosing = true;
 
@@ -33,14 +30,13 @@ namespace MyCost.Forms
             _selectedYear = DateTime.Now.Year;
         }
 
-        public DailyInfoForm(int day, int month, int year, Form form)
+        public DailyInfoForm(int day, int month, int year)
         {
             InitializeComponent();
 
             _selectedDay = day;
             _selectedMonth = month;
             _selectedYear = year;
-            _callerForm = form;
             _hasSaved = true;
             _quitAppOnFormClosing = true;
         }
@@ -584,21 +580,8 @@ namespace MyCost.Forms
             _hasSaved = false;
         }
 
-        private void CancelButtonClicked(object sender, EventArgs e)
-        {
-            _callerForm.Location = this.Location;
-            _callerForm.Show();
-            _callerForm.Refresh();
-
-            _hasSaved = true;//this will prevent the OnFormClosing method to attempt to save the info
-            _quitAppOnFormClosing = false;
-            this.Close();
-        }
-
         private void HomeButtonClicked(object sender, EventArgs e)
-        {
-            _callerForm.Close();
-
+        {            
             MainForm form = new MainForm();
             form.Location = this.Location;
             form.Show();
@@ -609,9 +592,7 @@ namespace MyCost.Forms
         }
 
         private void MonthlyReportButtonClicked(object sender, EventArgs e)
-        {
-            _callerForm.Close();
-
+        {          
             MonthlyInfoForm form = new MonthlyInfoForm();
             form.Location = this.Location;
             form.Show();
@@ -622,28 +603,26 @@ namespace MyCost.Forms
 
         private void StatisticalReportButtonClicked(object sender, EventArgs e)
         {
-            StatisticalReportForm form = new StatisticalReportForm(this);
+            StatisticalReportForm form = new StatisticalReportForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void SettingsButtonClicked(object sender, EventArgs e)
         {
-            SettingsForm form = new SettingsForm(this);
+            SettingsForm form = new SettingsForm();
             form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
-            this.Hide();
+            this.Close();
         }
 
         private void LogOutButtonClicked(object sender, EventArgs e)
-        {
-            _callerForm.Close();
-
+        {          
             //this will opt out from direct login option that occurs when remember me checkbox is checked
             Properties.Settings.Default.Username = "";
             Properties.Settings.Default.Password = "";
@@ -684,11 +663,6 @@ namespace MyCost.Forms
             {
                 Application.Exit();
             }
-        }
-
-        override public void Refresh()
-        {
-            _quitAppOnFormClosing = true;
         }
     }
 }
