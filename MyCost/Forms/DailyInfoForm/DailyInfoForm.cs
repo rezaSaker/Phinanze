@@ -586,7 +586,7 @@ namespace MyCost.Forms
 
         private void CancelButtonClicked(object sender, EventArgs e)
         {
-            _callerForm.Location = new Point(this.Location.X, this.Location.Y);
+            _callerForm.Location = this.Location;
             _callerForm.Show();
             _callerForm.Refresh();
 
@@ -600,7 +600,7 @@ namespace MyCost.Forms
             _callerForm.Close();
 
             MainForm form = new MainForm();
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -613,7 +613,7 @@ namespace MyCost.Forms
             _callerForm.Close();
 
             MonthlyInfoForm form = new MonthlyInfoForm();
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -623,7 +623,7 @@ namespace MyCost.Forms
         private void StatisticalReportButtonClicked(object sender, EventArgs e)
         {
             StatisticalReportForm form = new StatisticalReportForm(this);
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -633,7 +633,7 @@ namespace MyCost.Forms
         private void SettingsButtonClicked(object sender, EventArgs e)
         {
             SettingsForm form = new SettingsForm(this);
-            form.Location = new Point(this.Location.X, this.Location.Y);
+            form.Location = this.Location;
             form.Show();
 
             _quitAppOnFormClosing = false;
