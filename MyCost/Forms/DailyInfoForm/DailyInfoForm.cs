@@ -47,7 +47,7 @@ namespace MyCost.Forms
 
         private void AddNewDataFormLoading(object sender, EventArgs e)
         {
-            for (int i = 2018; i < _selectedYear + 10; i++)
+            for (int i = 2018; i < _selectedYear + 3; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
             }
