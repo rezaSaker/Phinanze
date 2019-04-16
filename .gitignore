@@ -1,4 +1,4 @@
 MyCost/obj/*
 MyCost/bin/*
 .vs
-MyCost/Resources/AppIcon.pptx
+MyCost/Resources/*.pptx
