@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
 using MyCost.Common;
-using MyCost.ServerHandling;
 
 namespace MyCost.Forms
 {
@@ -15,12 +14,13 @@ namespace MyCost.Forms
         private bool _quitAppOnFormClosing;
 
         private List<string> _monthList;
-
-        private Form _callerForm;
                                                     
         public MainForm()
         {
             InitializeComponent();
+
+            _quitAppOnFormClosing = true;
+            _selectedYear = DateTime.Now.Year;
 
             //monthList is used to convert numeric month to month text
             _monthList = new List<string>();
@@ -42,12 +42,12 @@ namespace MyCost.Forms
         {
             versionLabel.Text = "Version: " + Application.ProductVersion;
 
-            for (int year = 2018; year <= DateTime.Now.Year; year++)
+            for (int year = 2018; year <= _selectedYear+3; year++)
             {
-                YearComboBox.Items.Add(year.ToString());
+                yearComboBox.Items.Add(year.ToString());
             }
 
-            YearComboBox.SelectedIndex = 0;
+            yearComboBox.SelectedIndex = 0;
         }
 
         private void MainFormShown(object sender, EventArgs e)
@@ -57,13 +57,13 @@ namespace MyCost.Forms
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if(YearComboBox.SelectedItem.ToString() == "All years")
+            if(yearComboBox.SelectedItem.ToString() == "All years")
             {
                 _selectedYear = 0;
             }
             else
             {
-                _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
+                _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
             }
 
             PlotMonthlyInfo();
@@ -171,6 +171,16 @@ namespace MyCost.Forms
             this.Hide();
         }
 
+        private void SettingsButtonClicked(object sender, EventArgs e)
+        {
+            SettingsForm form = new SettingsForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Hide();
+        }
+
         private void LogOutButtonClicked(object sender, EventArgs e)
         {
             //this will opt out from direct login option that occurs when remember me checkbox is checked
@@ -193,30 +203,24 @@ namespace MyCost.Forms
             }
         }
 
-        private void FacebookButtonClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start("https://facebook.com");
-            }
-            catch
-            {
-                MessageBox.Show("Could not find the default browser");
-            }
-        }
-
         private void ViewSourceButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                Process.Start("https://github.com/rezaSaker/MyCost");
+                Process.Start(StaticStorage.SourcePath);
             }
             catch
             {
-                MessageBox.Show("Could not find the default browser");
+                MessageBox.Show("Could not open the default browser");
             }
         }
 
-        
+        override public void Refresh()
+        {
+            _quitAppOnFormClosing = true;
+
+            PlotMonthlyInfo();
+        }
+
     }
 }

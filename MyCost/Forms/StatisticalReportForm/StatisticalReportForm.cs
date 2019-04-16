@@ -35,15 +35,7 @@ namespace MyCost.Forms
             _modifiedBars = new List<Button>();
             _callerForm = form;
 
-            foreach (string category in StaticStorage.EarningCategories)
-            {
-                _earningCategoryDictionary.Add(new KeyValuePair<string, double>(category, 0.0));
-            }
-
-            foreach(string category in StaticStorage.ExpenseCategories)
-            {
-                _expenseCategoryDictonary.Add(new KeyValuePair<string, double>(category, 0.0));
-            }
+            AssignCategoriesToDictionary();       
         }
 
         private void StatisticalReportFormLoading(object sender, EventArgs e)
@@ -55,11 +47,6 @@ namespace MyCost.Forms
             }
 
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
-        }
-
-        private void StatisticalReportFormShown(object sender, EventArgs e)
-        {
-            _quitAppOnFormClosing = true;
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
@@ -132,12 +119,29 @@ namespace MyCost.Forms
             foreach(Button bar in _modifiedBars)
             {
                 bar.Size = new Size(13, 160);
-                bar.Location = new Point(bar.Location.X, 67);
+                bar.Location = new Point(bar.Location.X, 84);
             }
             _modifiedBars.Clear();
 
             categoryWiseEarningDGV.Rows.Clear();
             categoryWiseExpenseDGV.Rows.Clear();
+            _earningCategoryDictionary.Clear();
+            _expenseCategoryDictonary.Clear();
+
+            AssignCategoriesToDictionary();         
+        }
+
+        private void AssignCategoriesToDictionary()
+        {
+            foreach (string category in StaticStorage.EarningCategories)
+            {
+                _earningCategoryDictionary.Add(new KeyValuePair<string, double>(category, 0.0));
+            }
+
+            foreach (string category in StaticStorage.ExpenseCategories)
+            {
+                _expenseCategoryDictonary.Add(new KeyValuePair<string, double>(category, 0.0));
+            }
         }
 
         private void PlotMonthlyExpenseData(double highestGraphValue)
@@ -274,7 +278,14 @@ namespace MyCost.Forms
             bar.Size = new Size(13, size);
             bar.Location = new Point(bar.Location.X, bar.Location.Y + (160 - size));
 
-            _barValueDictionary.Add(new KeyValuePair<string, double>(bar.Name, barValue));
+            if (_barValueDictionary.ContainsKey(bar.Name))
+            {
+                _barValueDictionary[bar.Name] = barValue;
+            }
+            else
+            {
+                _barValueDictionary.Add(new KeyValuePair<string, double>(bar.Name, barValue));
+            }
             _modifiedBars.Add(bar);
         }
 
@@ -459,6 +470,7 @@ namespace MyCost.Forms
         {
             _callerForm.Location = this.Location;
             _callerForm.Show();
+            _callerForm.Refresh();
 
             _quitAppOnFormClosing = false;
             this.Close();
@@ -524,5 +536,19 @@ namespace MyCost.Forms
             this.Close();
         }
 
+        private void StatisticalReportFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_quitAppOnFormClosing)
+            {
+                Application.Exit();
+            }
+        }
+
+        override public void Refresh()
+        {
+            _quitAppOnFormClosing = true;
+
+            PlotYearlyFinancialReport();
+        }
     }
 }

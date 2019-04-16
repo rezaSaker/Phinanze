@@ -8,9 +8,13 @@ namespace MyCost.Forms
 {
     public partial class UserAuthenticationForm : Form
     {
+        private bool _quitAppOnFormClosing;
+
         public UserAuthenticationForm()
         {
             InitializeComponent();
+
+            _quitAppOnFormClosing = true;
         }
 
         private void UserAuthenticationFormLoading(object sender, EventArgs e)
@@ -161,7 +165,8 @@ namespace MyCost.Forms
                 form.StartPosition = FormStartPosition.CenterScreen;
                 form.Show();
 
-                this.Hide();
+                _quitAppOnFormClosing = false;
+                this.Close();
             }
             else
             {
@@ -225,7 +230,8 @@ namespace MyCost.Forms
                 form.StartPosition = FormStartPosition.CenterScreen;
                 form.Show();
 
-                this.Hide();
+                _quitAppOnFormClosing = false;
+                this.Close();
             }
             else
             {
@@ -352,7 +358,8 @@ namespace MyCost.Forms
 
         private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            if(_quitAppOnFormClosing)
+                Application.Exit();
         }    
     }
 }

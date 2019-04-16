@@ -271,7 +271,6 @@
             this.Text = "Monthly Report";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MonthlyInfoFormClosing);
             this.Load += new System.EventHandler(this.MonthlyInfoFormLoading);
-            this.Shown += new System.EventHandler(this.MonthlyInfoFormShow);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

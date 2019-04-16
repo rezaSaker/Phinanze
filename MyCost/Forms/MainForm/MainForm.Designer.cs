@@ -39,11 +39,10 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_welcomeText = new System.Windows.Forms.Label();
-            this.YearComboBox = new System.Windows.Forms.ComboBox();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.versionLabel = new System.Windows.Forms.Label();
             this.ShowMonthlyInfoButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.facebookButton = new System.Windows.Forms.Button();
             this.viewSourceButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -153,17 +152,17 @@
             this.lbl_welcomeText.TabIndex = 30;
             this.lbl_welcomeText.Text = "MYCOST";
             // 
-            // YearComboBox
+            // yearComboBox
             // 
-            this.YearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YearComboBox.FormattingEnabled = true;
-            this.YearComboBox.Items.AddRange(new object[] {
+            this.yearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Items.AddRange(new object[] {
             "All years"});
-            this.YearComboBox.Location = new System.Drawing.Point(12, 47);
-            this.YearComboBox.Name = "YearComboBox";
-            this.YearComboBox.Size = new System.Drawing.Size(123, 26);
-            this.YearComboBox.TabIndex = 33;
-            this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
+            this.yearComboBox.Location = new System.Drawing.Point(12, 47);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(123, 26);
+            this.yearComboBox.TabIndex = 33;
+            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
             // versionLabel
             // 
@@ -201,25 +200,12 @@
             this.settingsButton.Size = new System.Drawing.Size(60, 60);
             this.settingsButton.TabIndex = 40;
             this.settingsButton.UseVisualStyleBackColor = false;
-            // 
-            // facebookButton
-            // 
-            this.facebookButton.BackColor = System.Drawing.Color.White;
-            this.facebookButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("facebookButton.BackgroundImage")));
-            this.facebookButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.facebookButton.FlatAppearance.BorderSize = 0;
-            this.facebookButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.facebookButton.Location = new System.Drawing.Point(758, 453);
-            this.facebookButton.Name = "facebookButton";
-            this.facebookButton.Size = new System.Drawing.Size(29, 28);
-            this.facebookButton.TabIndex = 34;
-            this.facebookButton.UseVisualStyleBackColor = false;
-            this.facebookButton.Click += new System.EventHandler(this.FacebookButtonClicked);
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButtonClicked);
             // 
             // viewSourceButton
             // 
             this.viewSourceButton.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.viewSourceButton.Location = new System.Drawing.Point(634, 454);
+            this.viewSourceButton.Location = new System.Drawing.Point(679, 451);
             this.viewSourceButton.Name = "viewSourceButton";
             this.viewSourceButton.Size = new System.Drawing.Size(108, 27);
             this.viewSourceButton.TabIndex = 41;
@@ -236,8 +222,7 @@
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.ShowMonthlyInfoButton);
             this.Controls.Add(this.versionLabel);
-            this.Controls.Add(this.facebookButton);
-            this.Controls.Add(this.YearComboBox);
+            this.Controls.Add(this.yearComboBox);
             this.Controls.Add(this.lbl_welcomeText);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.logOutButton);
@@ -251,7 +236,6 @@
             this.Text = "Home Page";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainFormClosing);
             this.Load += new System.EventHandler(this.MainFormLoading);
-            this.Shown += new System.EventHandler(this.MainFormShown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -264,7 +248,7 @@
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label lbl_welcomeText;
-        private System.Windows.Forms.ComboBox YearComboBox;
+        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Label versionLabel;
         private System.Windows.Forms.Button ShowMonthlyInfoButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -273,7 +257,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button facebookButton;
         private System.Windows.Forms.Button viewSourceButton;
     }
 }

@@ -393,7 +393,6 @@
             this.Text = "Daily expense and earning information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DailyInfoFormClosing);
             this.Load += new System.EventHandler(this.AddNewDataFormLoading);
-            this.Shown += new System.EventHandler(this.DailyInfoFormShown);
             ((System.ComponentModel.ISupportInitialize)(this.expenseDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.earningDataGridView)).EndInit();
             this.ResumeLayout(false);

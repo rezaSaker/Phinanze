@@ -24,7 +24,8 @@ namespace MyCost.Forms
             InitializeComponent();
 
             _callerForm = form;
-            _hasSaved = false;
+            _hasSaved = true;
+            _quitAppOnFormClosing = true;
 
             //sets current day, month and year
             _selectedDay = DateTime.Now.Day;
@@ -40,7 +41,8 @@ namespace MyCost.Forms
             _selectedMonth = month;
             _selectedYear = year;
             _callerForm = form;
-            _hasSaved = false;
+            _hasSaved = true;
+            _quitAppOnFormClosing = true;
         }
 
         private void AddNewDataFormLoading(object sender, EventArgs e)
@@ -49,7 +51,7 @@ namespace MyCost.Forms
             {
                 yearComboBox.Items.Add(i.ToString());
             }
-
+         
             //changing selctedIndex in comboBox results in calling of PlotDailyInfo() & AddItemsToDayComboBox()
             //since we change selectedIndex in this loader method twice it will call those methods twice
             //to avoid that redundancy we will check with a boolean if it is the first initialization call
@@ -61,11 +63,28 @@ namespace MyCost.Forms
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
 
             _firstInitializationCall = false;
-        }
 
-        private void DailyInfoFormShown(object sender, EventArgs e)
-        {
-            _quitAppOnFormClosing = true;
+            //this will add an event handler method to each editable control on the form
+            //so that we can detect if there's any unsaved changes
+            foreach(Control control in this.Controls)
+            {
+                if(control is TextBox)
+                {
+                    ((TextBox)control).TextChanged += ControlChanged;
+                }
+                else if(control is ComboBox)
+                {
+                    ((ComboBox)control).SelectedIndexChanged += ControlChanged;
+                }
+                else if(control is DataGridView)
+                {
+                    ((DataGridView)control).CellValueChanged += ControlChanged;
+                    ((DataGridView)control).UserAddedRow += ControlChanged;
+                }
+            }
+
+            saveButton.Enabled = false;
+            saveButton.BackColor = Color.LightGray;
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
@@ -371,8 +390,13 @@ namespace MyCost.Forms
                     StaticStorage.DailyInfo[index] = daily;
                 }
 
+                //monthly info needs to be updated according to daily info
+                StaticStorage.FetchMonthlyInfo();
+
                 //this will prevent the OnFormClosing method to attempt to save the info
                 _hasSaved = true;
+                saveButton.Enabled = false;
+                saveButton.BackColor = Color.LightGray;
             }
             else
             {
@@ -553,10 +577,18 @@ namespace MyCost.Forms
             form.Show();
         }
 
+        private void ControlChanged(object sender, EventArgs e)
+        {
+            saveButton.Enabled = true;
+            saveButton.BackColor = Color.RoyalBlue;
+            _hasSaved = false;
+        }
+
         private void CancelButtonClicked(object sender, EventArgs e)
         {
             _callerForm.Location = new Point(this.Location.X, this.Location.Y);
             _callerForm.Show();
+            _callerForm.Refresh();
 
             _hasSaved = true;//this will prevent the OnFormClosing method to attempt to save the info
             _quitAppOnFormClosing = false;
@@ -652,6 +684,11 @@ namespace MyCost.Forms
             {
                 Application.Exit();
             }
+        }
+
+        override public void Refresh()
+        {
+            _quitAppOnFormClosing = true;
         }
     }
 }

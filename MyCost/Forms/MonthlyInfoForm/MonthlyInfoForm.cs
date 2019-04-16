@@ -22,6 +22,7 @@ namespace MyCost.Forms
 
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
+            _quitAppOnFormClosing = true;
 
             InitializeMonthList();
         }
@@ -32,6 +33,7 @@ namespace MyCost.Forms
 
             _selectedMonth = month;
             _selectedYear = year;
+            _quitAppOnFormClosing = true;
 
             InitializeMonthList();
         }
@@ -57,7 +59,7 @@ namespace MyCost.Forms
         private void MonthlyInfoFormLoading(object sender, EventArgs e)
         {
             //adds years to yearComboBox
-            for (int i = 2018; i <= _selectedYear + 10; i++)
+            for (int i = 2018; i <= _selectedYear + 3; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
             }
@@ -71,11 +73,6 @@ namespace MyCost.Forms
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
 
             _firstInitializationCall = false;
-        }
-
-        private void MonthlyInfoFormShow(object sender, EventArgs e)
-        {
-            _quitAppOnFormClosing = true;
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
@@ -110,16 +107,48 @@ namespace MyCost.Forms
 
             string date;
 
-            //plot new for newly selected month and year
-            foreach(DailyInfo daily in StaticStorage.DailyInfo)
-            {
-                if(_selectedMonth == daily.Month && _selectedYear == daily.Year)
-                {
-                    date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
+            //this variables will be used to sort the info in the ascending order of date
+            int numberOfDays = GetNumberOfDays();
+            DailyInfo daily;
 
-                    dataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
+            //plot new for newly selected month and year
+            for(int day = 1; day <= numberOfDays; day++)
+            {
+                for(int j = 0; j < StaticStorage.DailyInfo.Count; j++)
+                {
+                    daily = StaticStorage.DailyInfo[j];
+
+                    if (_selectedMonth == daily.Month && _selectedYear == daily.Year && day == daily.Day)
+                    {
+                        date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
+
+                        dataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
+
+                        break;
+                    }
                 }
             }
+        }
+
+        private int GetNumberOfDays()
+        {
+            int numberOfdays;
+
+            //calculates the number of days according to month
+            if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
+                numberOfdays = 29;
+            else if (_selectedMonth == 2 && !DateTime.IsLeapYear(_selectedYear))
+                numberOfdays = 28;
+            else if (_selectedMonth <= 7 && _selectedMonth % 2 == 1)
+                numberOfdays = 31;
+            else if (_selectedMonth <= 7 && _selectedMonth % 2 == 0)
+                numberOfdays = 30;
+            else if (_selectedMonth > 7 && _selectedMonth % 2 == 1)
+                numberOfdays = 30;
+            else
+                numberOfdays = 31;
+
+            return numberOfdays;
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
@@ -134,6 +163,61 @@ namespace MyCost.Forms
 
             _quitAppOnFormClosing = false;
             this.Hide();
+        }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                int day = Convert.ToInt32(dataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+
+                string result = ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
+
+                if(result == "SUCCESS")
+                {
+                    dataGridView.Rows.Remove(row);
+
+                    foreach (DailyInfo daily in StaticStorage.DailyInfo)
+                    {
+                        if (daily.Day == day && daily.Month == _selectedMonth && daily.Year == _selectedYear)
+                        {
+                            StaticStorage.DailyInfo.Remove(daily);
+                        }
+                    }
+
+                    //monthly info should be updated according to daily info
+                    StaticStorage.FetchMonthlyInfo();
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+            }
+        }
+
+        private void DataGridViewUserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            int day = Convert.ToInt32(dataGridView.Rows[e.Row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+
+            string result = ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
+
+            if (result == "SUCCESS")
+            {
+                foreach (DailyInfo daily in StaticStorage.DailyInfo)
+                {
+                    if (daily.Day == day && daily.Month == _selectedMonth && daily.Year == _selectedYear)
+                    {
+                        StaticStorage.DailyInfo.Remove(daily);
+                    }
+                }
+
+                //monthly info should be updated according to daily info
+                StaticStorage.FetchMonthlyInfo();
+            }
+            else
+            {
+                MessageBox.Show(result);
+            }
         }
 
         private void CancelButtonClicked(object sender, EventArgs e)
@@ -213,38 +297,13 @@ namespace MyCost.Forms
             }
         }
 
-        private void DeleteButtonClicked(object sender, EventArgs e)
+        override public void Refresh()
         {
-            foreach(DataGridViewRow row in dataGridView.SelectedRows)
-            {
-                int day = Convert.ToInt32(dataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+            _quitAppOnFormClosing = true;
 
-                string result = ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
-
-                if(result != "SUCCESS")
-                {
-                    MessageBox.Show(result);
-                }
-                else
-                {
-                    dataGridView.Rows.Remove(row);
-
-                    foreach (DailyInfo daily in StaticStorage.DailyInfo)
-                    {
-                        if (daily.Day == day && daily.Month == _selectedMonth && daily.Year == _selectedYear)
-                        {
-                            StaticStorage.DailyInfo.Remove(daily);
-                        }
-                    }
-                }
-            }
+            PlotData();
         }
 
-        private void DataGridViewUserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            int day = Convert.ToInt32(dataGridView.Rows[e.Row.Index].Cells[0].Value.ToString().Split(' ')[0]);
-
-            ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
-        }
+        
     }
 }

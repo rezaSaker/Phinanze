@@ -25,11 +25,6 @@ namespace MyCost.Forms
             userNameLaabel.Text = "username: " + StaticStorage.Username;
         }
 
-        private void SettingsFormShown(object sender, EventArgs e)
-        {
-            _quitAppOnFormCLosing = true;
-        }
-
         private void UsernameTextBoxesClicked(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -222,6 +217,7 @@ namespace MyCost.Forms
         {
             _callerForm.Location = this.Location;
             _callerForm.Show();
+            _callerForm.Refresh();
 
             _quitAppOnFormCLosing = false;
             this.Close();
@@ -233,6 +229,25 @@ namespace MyCost.Forms
             {
                 Application.Exit();
             }
+        }
+
+        override public void Refresh()
+        {
+            _quitAppOnFormCLosing = true;
+
+            //reset everything
+            currentUserNameTextBox.Text = "Current username";
+            currentUserNameTextBox.ForeColor = Color.Gray;
+            newUserNameTextBox.Text = "New username";
+            newUserNameTextBox.ForeColor = Color.Gray;
+            confirmUserNameTextBox.Text = "Confirm new username";
+            confirmUserNameTextBox.ForeColor = Color.Gray;
+            currentPasswordTextBox.Text = "Current password";
+            currentPasswordTextBox.ForeColor = Color.Gray;
+            newPasswordTextBox.Text = "New password";
+            newPasswordTextBox.ForeColor = Color.Gray;
+            confirmPasswordTextBox.Text = "Confirm password";
+            confirmPasswordTextBox.ForeColor = Color.Gray;
         }
 
     }

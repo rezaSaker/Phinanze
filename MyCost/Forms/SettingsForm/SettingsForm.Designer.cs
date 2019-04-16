@@ -331,7 +331,6 @@
             // cancelButton
             // 
             this.cancelButton.BackColor = System.Drawing.Color.White;
-            this.cancelButton.Enabled = false;
             this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -378,7 +377,6 @@
             this.Text = "Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsFormClosing);
             this.Load += new System.EventHandler(this.SettingsFormLoading);
-            this.Shown += new System.EventHandler(this.SettingsFormShown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
