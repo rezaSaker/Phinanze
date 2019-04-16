@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Diagnostics;
+using MyCost.Common;
+using MyCost.ServerHandling;
 
 namespace MyCost.Forms
 {
     public partial class SettingsForm : Form
     {
+        private bool _quitAppOnFormCLosing;
+
         private Form _callerForm;
 
         public SettingsForm(Form form)
@@ -14,9 +20,220 @@ namespace MyCost.Forms
             _callerForm = form;
         }
 
-        private void SettingsForm_Load(object sender, EventArgs e)
+        private void SettingsFormLoading(object sender, EventArgs e)
         {
-
+            userNameLaabel.Text = "username: " + StaticStorage.Username;
         }
+
+        private void SettingsFormShown(object sender, EventArgs e)
+        {
+            _quitAppOnFormCLosing = true;
+        }
+
+        private void UsernameTextBoxesClicked(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            tb.ForeColor = Color.Black;
+            tb.Text = "";
+
+            if (currentUserNameTextBox.ForeColor == Color.Black
+                && currentUserNameTextBox.Text != null
+                && newUserNameTextBox.ForeColor == Color.Black
+                && newUserNameTextBox.Text != null
+                && confirmUserNameTextBox.ForeColor == Color.Black
+                && confirmUserNameTextBox.Text != null)
+            {
+                submitUserNameButton.Enabled = true;
+            }
+            else
+            {
+                submitUserNameButton.Enabled = false;
+            }
+        }
+
+        private void PasswordTextBoxesClicked(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+
+            tb.ForeColor = Color.Black;
+            tb.Text = "";
+
+            if (currentPasswordTextBox.ForeColor == Color.Black
+               && currentPasswordTextBox.Text != null
+               && newPasswordTextBox.ForeColor == Color.Black
+               && newPasswordTextBox.Text != null
+               && confirmPasswordTextBox.ForeColor == Color.Black
+               && confirmPasswordTextBox.Text != null)
+            {
+                submitPasswordButton.Enabled = true;
+            }
+            else
+            {
+                submitPasswordButton.Enabled = false;
+            }
+        }
+
+        private void SubmitNewUsernameButtonClicked(object sender, EventArgs e)
+        {
+            if (currentUserNameTextBox.Text != StaticStorage.Username)
+            {
+                MessageBox.Show("Current username is incorrect");
+            }
+            else if (newUserNameTextBox.Text != confirmUserNameTextBox.Text)
+            {
+                MessageBox.Show("Username doesn't match");
+            }
+            else //all feilds are correct
+            {
+                string result = ServerHandler.UpdateUsername(newUserNameTextBox.Text);
+
+                if (result == "SUCCESS")
+                {
+                    StaticStorage.Username = newUserNameTextBox.Text;
+                    userNameLaabel.Text = StaticStorage.Username;
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+            }
+        }
+
+        private void SubmitNewPasswordButtonClicked(object sender, EventArgs e)
+        {
+            if (newPasswordTextBox.Text != confirmPasswordTextBox.Text)
+            {
+                MessageBox.Show("Password doesn't match");
+            }
+            else //all fields are correct
+            {
+                string result = ServerHandler.UpdatePassword(currentPasswordTextBox.Text, newPasswordTextBox.Text);
+
+                if (result == "SUCCESS")
+                {
+                    //log out user from the current session
+                    logOutButton.PerformClick();
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+            }
+        }
+
+        private void AddNewDataButtonClicked(object sender, EventArgs e)
+        {
+            DailyInfoForm form = new DailyInfoForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormCLosing = false;
+            this.Hide();
+        }
+
+        private void MonthlyReportButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            MonthlyInfoForm form = new MonthlyInfoForm();
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormCLosing = false;
+            this.Close();
+        }
+
+        private void StatisticalReportButtonClicked(object sender, EventArgs e)
+        {
+            StatisticalReportForm form = new StatisticalReportForm(this);
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormCLosing = false;
+            this.Hide();
+        }
+
+        private void HomeButtonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Close();
+
+            MainForm form = new MainForm();
+            form.Location = this.Location;
+            form.Show();
+
+            _quitAppOnFormCLosing = false;
+            this.Close();
+        }
+
+        private void LogOutButtonClicked(object sender, EventArgs e)
+        {
+            //this will opt out from direct login option that occurs when remember me checkbox is checked
+            Properties.Settings.Default.Username = null;
+            Properties.Settings.Default.Password = null;
+            Properties.Settings.Default.Save();
+
+            _callerForm.Close();
+
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
+
+            _quitAppOnFormCLosing = false;
+            this.Close();
+        }
+
+        new private void HelpButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(StaticStorage.HelpSourcePath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not open default browser");
+            }
+        }
+
+        private void ReportissueButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(StaticStorage.ReportAppSourcePath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not open the default browser");
+            }
+        }
+
+        private void ViewSourceButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(StaticStorage.SourcePath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not open the default browser");
+            }
+        }
+
+        private void CancelbuttonClicked(object sender, EventArgs e)
+        {
+            _callerForm.Location = this.Location;
+            _callerForm.Show();
+
+            _quitAppOnFormCLosing = false;
+            this.Close();
+        }
+
+        private void SettingsFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_quitAppOnFormCLosing)
+            {
+                Application.Exit();
+            }
+        }
+
     }
 }

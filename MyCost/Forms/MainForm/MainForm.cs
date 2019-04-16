@@ -22,8 +22,6 @@ namespace MyCost.Forms
         {
             InitializeComponent();
 
-            _quitAppOnFormClosing = true;
-
             //monthList is used to convert numeric month to month text
             _monthList = new List<string>();
             _monthList.Add("January");
@@ -50,6 +48,11 @@ namespace MyCost.Forms
             }
 
             YearComboBox.SelectedIndex = 0;
+        }
+
+        private void MainFormShown(object sender, EventArgs e)
+        {
+            _quitAppOnFormClosing = true;
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
@@ -213,5 +216,7 @@ namespace MyCost.Forms
                 MessageBox.Show("Could not find the default browser");
             }
         }
+
+        
     }
 }

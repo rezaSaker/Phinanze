@@ -34,7 +34,6 @@ namespace MyCost.Forms
             _earningCategoryDictionary = new Dictionary<string, double>();
             _modifiedBars = new List<Button>();
             _callerForm = form;
-            _quitAppOnFormClosing = true;
 
             foreach (string category in StaticStorage.EarningCategories)
             {
@@ -56,6 +55,11 @@ namespace MyCost.Forms
             }
 
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
+        }
+
+        private void StatisticalReportFormShown(object sender, EventArgs e)
+        {
+            _quitAppOnFormClosing = true;
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)

@@ -143,6 +143,7 @@ namespace MyCost.Forms
             {
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
+                StaticStorage.Username = usernameTextBox.Text;
 
                 if (rememberMeCheckBox.Checked)
                 {
@@ -212,7 +213,8 @@ namespace MyCost.Forms
                 Properties.Settings.Default.Save();
 
                 StaticStorage.UserID = userId;
-                StaticStorage.AccessToken = data[1];             
+                StaticStorage.AccessToken = data[1];
+                StaticStorage.Username = usernameTextBox.Text;
 
                 //gets all data for this user from database...
                 //...and store them in StaticStorage class

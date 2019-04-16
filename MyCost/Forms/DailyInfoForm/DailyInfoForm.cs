@@ -24,7 +24,6 @@ namespace MyCost.Forms
             InitializeComponent();
 
             _callerForm = form;
-            _quitAppOnFormClosing = true;
             _hasSaved = false;
 
             //sets current day, month and year
@@ -41,7 +40,6 @@ namespace MyCost.Forms
             _selectedMonth = month;
             _selectedYear = year;
             _callerForm = form;
-            _quitAppOnFormClosing = true;
             _hasSaved = false;
         }
 
@@ -63,6 +61,11 @@ namespace MyCost.Forms
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
 
             _firstInitializationCall = false;
+        }
+
+        private void DailyInfoFormShown(object sender, EventArgs e)
+        {
+            _quitAppOnFormClosing = true;
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
@@ -633,6 +636,13 @@ namespace MyCost.Forms
 
         private void DailyInfoFormClosing(object sender, FormClosingEventArgs e)
         {
+            Form openCategoryForm = Application.OpenForms["CategoryListForm"];
+
+            if(openCategoryForm != null)
+            {
+                openCategoryForm.Close();
+            }
+
             if (!_hasSaved)
             {
                 saveButton.PerformClick();
@@ -643,7 +653,5 @@ namespace MyCost.Forms
                 Application.Exit();
             }
         }
-
-        
     }
 }

@@ -22,7 +22,6 @@ namespace MyCost.Forms
 
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
-            _quitAppOnFormClosing = true;
 
             InitializeMonthList();
         }
@@ -33,7 +32,6 @@ namespace MyCost.Forms
 
             _selectedMonth = month;
             _selectedYear = year;
-            _quitAppOnFormClosing = true;
 
             InitializeMonthList();
         }
@@ -73,6 +71,11 @@ namespace MyCost.Forms
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
 
             _firstInitializationCall = false;
+        }
+
+        private void MonthlyInfoFormShow(object sender, EventArgs e)
+        {
+            _quitAppOnFormClosing = true;
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
@@ -243,7 +246,5 @@ namespace MyCost.Forms
 
             ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
         }
-
-        
     }
 }

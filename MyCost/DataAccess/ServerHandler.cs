@@ -243,5 +243,58 @@ namespace MyCost.ServerHandling
                 return "Server connection error";
             }
         }
+
+        public static string UpdateUsername(string newUsername)
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("token", StaticStorage.AccessToken);
+            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("newUsername", newUsername);
+            queryData.Add("currentUsername", StaticStorage.Username);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updateUsername.php.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch
+            {
+                return "Server connection error";
+            }
+        }
+
+        public static string UpdatePassword(string currentPass, string newPass)
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
+            queryData.Add("token", StaticStorage.AccessToken);
+            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("username", StaticStorage.Username);
+            queryData.Add("currentPassword", currentPass);
+            queryData.Add("newPassword", newPass);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updatePassword.php.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch
+            {
+                return "Server connection error";
+            }
+        }
     }
 }
