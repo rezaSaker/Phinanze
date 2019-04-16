@@ -29,7 +29,7 @@ if(isset($_POST['key']) && isset($_POST['token']) && isset($_POST['userid']))
 				  AND year = '$year' AND userid = '$userid'";
 		mysqli_query($connect, $query) or die('Server connection error');
 
-		die('Server connection error');
+		die('SUCCESS');
 	}
 	else //request from unauthentic source
 	{

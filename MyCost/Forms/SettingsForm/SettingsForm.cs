@@ -29,15 +29,21 @@ namespace MyCost.Forms
         {
             TextBox tb = (TextBox)sender;
 
-            tb.ForeColor = Color.Black;
-            tb.Text = "";
+            if (tb.ForeColor != Color.Black)
+            {
+                tb.ForeColor = Color.Black;
+                tb.Text = "";
+            }
+        }
 
+        private void UserNameTextBoxesTextChanged(object sender, EventArgs e)
+        {
             if (currentUserNameTextBox.ForeColor == Color.Black
-                && currentUserNameTextBox.Text != null
+                && currentUserNameTextBox.Text != ""
                 && newUserNameTextBox.ForeColor == Color.Black
-                && newUserNameTextBox.Text != null
+                && newUserNameTextBox.Text != ""
                 && confirmUserNameTextBox.ForeColor == Color.Black
-                && confirmUserNameTextBox.Text != null)
+                && confirmUserNameTextBox.Text != "")
             {
                 submitUserNameButton.Enabled = true;
             }
@@ -51,15 +57,21 @@ namespace MyCost.Forms
         {
             TextBox tb = (TextBox)sender;
 
-            tb.ForeColor = Color.Black;
-            tb.Text = "";
+            if(tb.ForeColor != Color.Black)
+            {
+                tb.ForeColor = Color.Black;
+                tb.Text = "";
+            }
+        }
 
+        private void PasswordTextBoxesTextChanged(object sender, EventArgs e)
+        {
             if (currentPasswordTextBox.ForeColor == Color.Black
-               && currentPasswordTextBox.Text != null
+               && currentPasswordTextBox.Text != ""
                && newPasswordTextBox.ForeColor == Color.Black
-               && newPasswordTextBox.Text != null
+               && newPasswordTextBox.Text != ""
                && confirmPasswordTextBox.ForeColor == Color.Black
-               && confirmPasswordTextBox.Text != null)
+               && confirmPasswordTextBox.Text != "")
             {
                 submitPasswordButton.Enabled = true;
             }
@@ -85,8 +97,8 @@ namespace MyCost.Forms
 
                 if (result == "SUCCESS")
                 {
-                    StaticStorage.Username = newUserNameTextBox.Text;
-                    userNameLaabel.Text = StaticStorage.Username;
+                    //log out user from the current session
+                    logOutButton.PerformClick();
                 }
                 else
                 {

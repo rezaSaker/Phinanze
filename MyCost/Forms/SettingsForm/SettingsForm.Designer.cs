@@ -151,6 +151,7 @@
             this.currentUserNameTextBox.TabIndex = 48;
             this.currentUserNameTextBox.Text = "Current username";
             this.currentUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.currentUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
             // newUserNameTextBox
             // 
@@ -164,6 +165,7 @@
             this.newUserNameTextBox.TabIndex = 49;
             this.newUserNameTextBox.Text = "New username";
             this.newUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.newUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
             // confirmUserNameTextBox
             // 
@@ -177,6 +179,7 @@
             this.confirmUserNameTextBox.TabIndex = 50;
             this.confirmUserNameTextBox.Text = "Confirm new username";
             this.confirmUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.confirmUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
             // submitUserNameButton
             // 
@@ -222,6 +225,7 @@
             this.confirmPasswordTextBox.TabIndex = 55;
             this.confirmPasswordTextBox.Text = "Confirm new password";
             this.confirmPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
             // newPasswordTextBox
             // 
@@ -235,6 +239,7 @@
             this.newPasswordTextBox.TabIndex = 54;
             this.newPasswordTextBox.Text = "New password";
             this.newPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.newPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
             // currentPasswordTextBox
             // 
@@ -248,6 +253,7 @@
             this.currentPasswordTextBox.TabIndex = 53;
             this.currentPasswordTextBox.Text = "Current password";
             this.currentPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.currentPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
             // label2
             // 

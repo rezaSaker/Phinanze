@@ -25,20 +25,12 @@ namespace MyCost.Forms
         private void UserAuthenticationFormShown(object sender, EventArgs e)
         {
             //if user had his rememberme checkbox checked
-            if (Properties.Settings.Default.Username != null
-                && Properties.Settings.Default.Password != null)
+            if (Properties.Settings.Default.Username != ""
+                && Properties.Settings.Default.Password != "")
             {
                 usernameTextBox.Text = Properties.Settings.Default.Username;
                 passwordTextBox.Text = Properties.Settings.Default.Password;
                 submitButton.PerformClick();
-                
-                //if the login failed
-                if(statusLabel.Text == "Invalid username or password")
-                {
-                    statusLabel.Text = "";
-                    usernameTextBox.Text = "Username";
-                    passwordTextBox.Text = "Password";
-                }
             }
         }
 
@@ -66,25 +58,34 @@ namespace MyCost.Forms
 
         private void UsernameTextBoxClicked(object sender, MouseEventArgs e)
         {
-            //removes the placeholder
-            usernameTextBox.Text = "";
-            usernameTextBox.ForeColor = Color.Black;
+            if (usernameTextBox.ForeColor != Color.Black)
+            {
+                //removes the placeholder
+                usernameTextBox.Text = "";
+                usernameTextBox.ForeColor = Color.Black;
+            }
         }
 
         private void PasswordTextboxClicked(object sender, MouseEventArgs e)
         {
-            //removes the placeholder
-            passwordTextBox.Text = "";
-            passwordTextBox.ForeColor = Color.Black;
-            passwordTextBox.PasswordChar = '*';
+            if (passwordTextBox.ForeColor != Color.Black)
+            {
+                //removes the placeholder
+                passwordTextBox.Text = "";
+                passwordTextBox.ForeColor = Color.Black;
+                passwordTextBox.PasswordChar = '*';
+            }
         }
 
         private void ConfirmPasswordTextBoxClicked(object sender, MouseEventArgs e)
         {
-            //removes the placeholder
-            confirmPasswordTextBox.Text = "";
-            confirmPasswordTextBox.ForeColor = Color.Black;
-            confirmPasswordTextBox.PasswordChar = '*';
+            if (confirmPasswordTextBox.ForeColor != Color.Black)
+            {
+                //removes the placeholder
+                confirmPasswordTextBox.Text = "";
+                confirmPasswordTextBox.ForeColor = Color.Black;
+                confirmPasswordTextBox.PasswordChar = '*';
+            }
         }
 
         private void SubmitButtonClicked(object sender, EventArgs e)

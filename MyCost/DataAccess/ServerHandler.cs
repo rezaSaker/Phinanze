@@ -259,7 +259,7 @@ namespace MyCost.ServerHandling
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updateUsername.php.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updateUsername.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
@@ -286,7 +286,7 @@ namespace MyCost.ServerHandling
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updatePassword.php.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updatePassword.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
