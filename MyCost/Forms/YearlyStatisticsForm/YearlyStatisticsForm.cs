@@ -33,6 +33,7 @@ namespace MyCost.Forms
             yearlyRadioButton.Checked = true;
             bothEarningAndExpenseRadioButton.Checked = true;
             generalReportRadioButton.Checked = true;
+            yearlyGeneralReportChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
 
             for(int year = 2018; year <= _selectedYear+3; year++)
             {
@@ -156,7 +157,7 @@ namespace MyCost.Forms
             {
                 MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == i + 1);
 
-                if (monthly != null)
+                if (monthly != null && monthly.Earning > 0)
                 {
                     DataPoint point = new DataPoint();
                     point.SetValueXY(_monthNames[i], monthly.Earning);
@@ -174,7 +175,7 @@ namespace MyCost.Forms
             {
                 MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == i + 1);
 
-                if (monthly != null)
+                if (monthly != null && monthly.Expense > 0)
                 {
                     DataPoint point = new DataPoint();
                     point.SetValueXY(_monthNames[i], monthly.Expense);
@@ -184,8 +185,14 @@ namespace MyCost.Forms
             }
         }
 
+
         #endregion
 
-        
+        private void homeButton_Click(object sender, EventArgs e)
+        {
+            MainForm fomr = new MainForm();
+            fomr.Show();
+            this.Close();
+        }
     }
 }
