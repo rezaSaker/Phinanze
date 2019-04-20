@@ -19,9 +19,9 @@ namespace MyCost.Forms
             InitializeComponent();
         }
 
-        private void AppLoaderForm_Load(object sender, EventArgs e)
+        private void AppLoaderFormShown(object sender, EventArgs e)
         {
-
+            timer.Enabled = true;
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -35,11 +35,6 @@ namespace MyCost.Forms
 
                 this.Hide();
             }
-        }
-
-        private void AppLoaderFormShown(object sender, EventArgs e)
-        {
-            timer.Enabled = true;
-        }
+        }     
     }
 }

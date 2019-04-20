@@ -46,10 +46,11 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
             this.dataGridView.Location = new System.Drawing.Point(1, 64);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(266, 299);
             this.dataGridView.TabIndex = 0;
-            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCellDoubleClicked);
+            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellEditEnded);
             this.dataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridViewUserDeletedRow);
             // 
@@ -124,7 +125,7 @@
             this.Name = "CategoryListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Category List";
-            this.Load += new System.EventHandler(this.CategoryListFormLoading);
+            this.Load += new System.EventHandler(this.ThisFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

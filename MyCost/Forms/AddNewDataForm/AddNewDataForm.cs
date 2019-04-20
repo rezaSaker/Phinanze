@@ -7,75 +7,69 @@ using MyCost.ServerHandling;
 
 namespace MyCost.Forms
 {
-    public partial class DailyInfoForm : Form
+    public partial class AddNewDataForm : Form
     {
         private int _selectedDay;
         private int _selectedMonth;
         private int _selectedYear;
 
-        private bool _firstInitializationCall;
+        private bool _firstCall;
         private bool _quitAppOnFormClosing;
         private bool _hasSaved;
 
-        public DailyInfoForm()
+        public AddNewDataForm()
         {
-            InitializeComponent();
+            InitializeComponent();          
 
-            _hasSaved = true;
-            _quitAppOnFormClosing = true;
-
-            //sets current day, month and year
             _selectedDay = DateTime.Now.Day;
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
         }
 
-        public DailyInfoForm(int day, int month, int year)
+        public AddNewDataForm(int day, int month, int year)
         {
             InitializeComponent();
 
             _selectedDay = day;
             _selectedMonth = month;
             _selectedYear = year;
-            _hasSaved = true;
-            _quitAppOnFormClosing = true;
         }
 
-        private void AddNewDataFormLoading(object sender, EventArgs e)
+        #region event_handler_methods
+
+        private void ThisFormLoading(object sender, EventArgs e)
         {
+            _hasSaved = true;   //prevents save attempt when closing the form
+            _quitAppOnFormClosing = true;   //prevents exiting the app on closing of this form          
+            _firstCall = true;  //disable call to AddItemsToDayComboBox() in YearComboBoxSelectedIndexChanged() method
+
             for (int i = 2018; i < _selectedYear + 3; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
             }
-         
-            //changing selctedIndex in comboBox results in calling of PlotDailyInfo() & AddItemsToDayComboBox()
-            //since we change selectedIndex in this loader method twice it will call those methods twice
-            //to avoid that redundancy we will check with a boolean if it is the first initialization call
-            _firstInitializationCall = true;
-
-            //Sets the date fields to currents date
-            //day is selected in MonthComboBoxIndexChanged() which is called when we set the month 
+            
             monthComboBox.SelectedIndex = _selectedMonth - 1;
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
 
-            _firstInitializationCall = false;
+            _firstCall = false; //enable call to AddItemsToDayComboBox() in YearComboBoxSelectedIndexChanged() method
 
-            //this will add an event handler method to each editable control on the form
-            //so that we can detect if there's any unsaved changes
-            foreach(Control control in this.Controls)
+            //add an event handler method to each editable control on the form
+            //so that we can detect if there's any unsaved changes when closing the form
+            foreach (Control control in this.Controls)
             {
-                if(control is TextBox)
+                if (control is TextBox)
                 {
                     ((TextBox)control).TextChanged += ControlChanged;
                 }
-                else if(control is ComboBox)
+                else if (control is ComboBox)
                 {
                     ((ComboBox)control).SelectedIndexChanged += ControlChanged;
                 }
-                else if(control is DataGridView)
+                else if (control is DataGridView)
                 {
                     ((DataGridView)control).CellValueChanged += ControlChanged;
                     ((DataGridView)control).UserAddedRow += ControlChanged;
+                    ((DataGridView)control).UserDeletedRow += ControlChanged;
                 }
             }
 
@@ -83,13 +77,17 @@ namespace MyCost.Forms
             saveButton.BackColor = Color.LightGray;
         }
 
+        private void DayComboBoxIndexChanged(object sender, EventArgs e)
+        {
+            _selectedDay = dayComboBox.SelectedIndex + 1;
+
+            //plot data for the newly selected date
+            PlotDailyInfo();
+        }
+
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {         
             _selectedMonth = monthComboBox.SelectedIndex + 1;
-
-            //followiing method call will change the number of days in the dayComboBox according to the selected month
-            //this will also reset the selectedIndex of dayComboBox to _selectedDay
-            //changing index of dayComboBox will make call to PlotDailyInfo() method
             AddItemsToDayComboBox();
         }
 
@@ -97,28 +95,20 @@ namespace MyCost.Forms
         {
             _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
 
-            //if it is first initialization call, then the items are already set to dayComboBox
-            //otherwise, if the yearComboBox index is changed later by user, then we need to ...
-            //reset the items to dayComboBox according to the year
-            if (!_firstInitializationCall)
+            //if _firstCall is true, then the items are already set to dayComboBox and no need to reset it
+            if (!_firstCall)
             {
                 AddItemsToDayComboBox();
             }         
         }
 
-        private void DayComboBoxIndexChanged(object sender, EventArgs e)
+        private void NoteTextBoxClicked(object sender, EventArgs e)
         {
-            _selectedDay = dayComboBox.SelectedIndex + 1;
-
-            PlotDailyInfo();
-        }
-
-        private void CloseOpenedCategoryForm()
-        {
-            Form openForm = Application.OpenForms["CategoryListForm"];
-            if(openForm != null)
+            //if the textBox only contains the placeholder and user hasn't yet entered any text
+            if (noteTextBox.ForeColor == Color.Gray)
             {
-                openForm.Close();
+                noteTextBox.Text = "";
+                noteTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -127,15 +117,7 @@ namespace MyCost.Forms
             //if the clicked column is category column
             if (e.ColumnIndex == 2)
             {
-                List<int> rowIndex = new List<int>();
-                rowIndex.Add(e.RowIndex);
-                
-                //this will prevent opeing multiple forms at the same time
-                CloseOpenedCategoryForm();
-
-                CategoryListForm form = new CategoryListForm(expenseDataGridView, rowIndex);
-                form.Location = new Point(384, 97);
-                form.Show();
+                OpenCategoryListForm(expenseDataGridView);
             }
         }
 
@@ -171,15 +153,7 @@ namespace MyCost.Forms
             //if the clicked column is category column
             if (e.ColumnIndex == 2)
             {
-                List<int> rowIndex = new List<int>();
-                rowIndex.Add(e.RowIndex);
-
-                //this will prevent opeing multiple forms at the same time
-                CloseOpenedCategoryForm();
-
-                CategoryListForm form = new CategoryListForm(earningDataGridView, rowIndex);
-                form.Location = new Point(384, 288);
-                form.Show();
+                OpenCategoryListForm(earningDataGridView);
             }
         }
 
@@ -365,25 +339,26 @@ namespace MyCost.Forms
             {
                 int index = -1;
 
-                foreach(DailyInfo d in StaticStorage.DailyInfo)
+                //checks id any info with same date already exists
+                foreach(DailyInfo d in StaticStorage.DailyInfoList)
                 {
                     if(d.Day == daily.Day 
                         && d.Month == daily.Month 
                         && d.Year == daily.Year)
                     {
-                        index = StaticStorage.DailyInfo.IndexOf(d);
+                        index = StaticStorage.DailyInfoList.IndexOf(d);
                         break;
                     }
                 }
                 if(index == -1)
                 {
-                    //if no matching daily info is found, so add a new info
-                    StaticStorage.DailyInfo.Add(daily);
+                    //no info exists for this date, so add a new info
+                    StaticStorage.DailyInfoList.Add(daily);
                 }
                 else
                 {
-                    //matching info is found, so update the current info
-                    StaticStorage.DailyInfo[index] = daily;
+                    //info on this date already exists, so update the existing info
+                    StaticStorage.DailyInfoList[index] = daily;
                 }
 
                 //monthly info needs to be updated according to daily info
@@ -400,11 +375,76 @@ namespace MyCost.Forms
                 MessageBox.Show(result);
             }
         }
+      
+        private void ApplyCategoryButtonClicked(object sender, EventArgs e)
+        {
+            //clicking on this button applies a particular category to all selected rows
+            if (expenseDataGridView.SelectedRows.Count > 0)
+            {
+                OpenCategoryListForm(expenseDataGridView);
+            }
+            else if (earningDataGridView.SelectedRows.Count > 0)
+            {
+                OpenCategoryListForm(earningDataGridView);
+            }
+        }
+
+        private void MenuButtonsMouseHovering(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackColor = Color.ForestGreen;
+            button.ForeColor = Color.White;
+        }
+
+        private void MenuButtonsMouseLeaving(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            button.BackColor = Color.White;
+            button.ForeColor = Color.ForestGreen;
+        }
+
+        private void MenuButtonsClicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+
+            if (button.Name == "homeButton")
+                OpenNewForm(new MainForm());
+            else if (button.Name == "dailyReportButton")
+                OpenNewForm(new DailyReportForm());
+            else if (button.Name == "yearlyStatisticsButton")
+                OpenNewForm(new YearlyStatisticsForm());
+            else if (button.Name == "settingsButton")
+                OpenNewForm(new SettingsForm());
+            else if (button.Name == "logOutButton")
+                LogOut();
+        }
+
+        private void ControlChanged(object sender, EventArgs e)
+        {
+            //this method is triggered when any editable control on this form is edited
+            saveButton.Enabled = true;
+            saveButton.BackColor = Color.RoyalBlue;
+            _hasSaved = false;
+        }    
+
+        private void ThisFormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseOpenedCategoryForm();
+
+            if (!_hasSaved)
+                saveButton.PerformClick();
+
+            if (_quitAppOnFormClosing)
+                Application.Exit();
+        }
+        #endregion
+
+        #region non_event_handler_methods
 
         private void AddItemsToDayComboBox()
         {
             dayComboBox.Items.Clear();
-   
+
             int numberOfdays;
 
             //set the number of days according to month
@@ -421,7 +461,7 @@ namespace MyCost.Forms
             else
                 numberOfdays = 31;
 
-            //sets the days as items to dayComboBox
+            //set the days as items to dayComboBox
             for (int i = 0; i < numberOfdays; i++)
             {
                 dayComboBox.Items.Add((i + 1).ToString());
@@ -431,14 +471,55 @@ namespace MyCost.Forms
             {
                 dayComboBox.SelectedIndex = _selectedDay - 1;
             }
-            catch(ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException)
             {
-                //this exception is thrown when _selectedDay is greater than...
-                //...the number of days for _selectedMonth
+                //this exception is thrown when _selectedDay is greater than the number of days for _selectedMonth
                 dayComboBox.SelectedIndex = 0;
                 _selectedDay = 1;
             }
-            
+        }
+
+        private void PlotDailyInfo()
+        {
+            //clear previous info
+            noteTextBox.Text = "Note";
+            noteTextBox.ForeColor = Color.Gray;
+            totalExpenseLabel.Text = "0.00";
+            totalEarningLabel.Text = "0.00";
+            expenseDataGridView.Rows.Clear();
+            earningDataGridView.Rows.Clear();
+
+            //plot info for new selected date
+            foreach (DailyInfo daily in StaticStorage.DailyInfoList)
+            {
+                if (_selectedDay == daily.Day
+                    && _selectedMonth == daily.Month
+                    && _selectedYear == daily.Year)
+                {
+                    //plot common info first
+                    noteTextBox.Text = daily.Note;
+                    noteTextBox.ForeColor = Color.Black;
+
+                    //plot expense info
+                    foreach (ExpenseInfo expense in daily.Expenses)
+                    {
+                        expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
+                    }
+                    expenseDataGridView.Rows[0].Selected = false;
+
+                    //plot earning info
+                    foreach (EarningInfo earning in daily.Earnings)
+                    {
+                        earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
+                    }
+                    earningDataGridView.Rows[0].Selected = false;
+
+                    break;
+                }
+            }
+
+            UpdateTotalExpenseLabel();
+            UpdateTotalEarningLabel();
         }
 
         private void UpdateTotalExpenseLabel()
@@ -446,7 +527,7 @@ namespace MyCost.Forms
             double amount;
             double total = .0;
 
-            //goes through each row in expense datagridView and adds up the amounts
+            //go through each row in expense datagridView and add up the amounts
             for (int i = 0; i < expenseDataGridView.Rows.Count - 1; ++i)
             {
                 try
@@ -476,7 +557,7 @@ namespace MyCost.Forms
             double amount;
             double total = .0;
 
-            //goes through each row in expense datagridView and adds up the amounts
+            //go through each row in expense datagridView and add up the amounts
             for (int i = 0; i < earningDataGridView.Rows.Count - 1; ++i)
             {
                 try
@@ -499,64 +580,12 @@ namespace MyCost.Forms
             }
 
             totalEarningLabel.Text = string.Format("{0:0.00}", total);
-        }
-
-        private void PlotDailyInfo()
-        {
-            //clears the previous info
-            noteTextBox.Text = "Note";
-            noteTextBox.ForeColor = Color.Gray;
-            totalExpenseLabel.Text = "0.00";
-            totalEarningLabel.Text = "0.00";
-            expenseDataGridView.Rows.Clear();
-            earningDataGridView.Rows.Clear();
-
-            //plot info for new selected date
-            foreach(DailyInfo daily in StaticStorage.DailyInfo)
-            {
-                if(_selectedDay == daily.Day
-                    && _selectedMonth == daily.Month
-                    && _selectedYear == daily.Year)
-                {
-                    //plot common info first
-                    noteTextBox.Text = daily.Note;
-                    noteTextBox.ForeColor = Color.Black;
-
-                    //plot expense info
-                    foreach(ExpenseInfo expense in daily.Expenses)
-                    {
-                        expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
-                    }
-
-                    //plot earning info
-                    foreach(EarningInfo earning in daily.Earnings)
-                    {
-                        earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
-                    }
-
-                    break;
-                }
-            }
-
-            UpdateTotalExpenseLabel();
-            UpdateTotalEarningLabel();
-        }
-
-        private void ApplyCategoryButtonClicked(object sender, EventArgs e)
-        {
-            //clicking on this button applies a particular category to all selected rows
-            if (expenseDataGridView.SelectedRows.Count > 0)
-            {
-                OpenCategoryListForm(expenseDataGridView);
-            }
-            else if (earningDataGridView.SelectedRows.Count > 0)
-            {
-                OpenCategoryListForm(earningDataGridView);
-            }
-        }
+        }       
 
         private void OpenCategoryListForm(DataGridView dgv)
         {
+            CloseOpenedCategoryForm();  //prevents opening multiple category form at a time
+
             List<int> rowIndexes = new List<int>();
 
             foreach (DataGridViewRow row in dgv.SelectedRows)
@@ -571,98 +600,37 @@ namespace MyCost.Forms
 
             CategoryListForm form = new CategoryListForm(dgv, rowIndexes);
             form.Show();
-        }
+        }    
 
-        private void ControlChanged(object sender, EventArgs e)
+        private void CloseOpenedCategoryForm()
         {
-            saveButton.Enabled = true;
-            saveButton.BackColor = Color.RoyalBlue;
-            _hasSaved = false;
+            Form openForm = Application.OpenForms["CategoryListForm"];
+            if (openForm != null)
+            {
+                openForm.Close();
+            }
         }
 
-        private void HomeButtonClicked(object sender, EventArgs e)
-        {            
-            MainForm form = new MainForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
-
-        }
-
-        private void MonthlyReportButtonClicked(object sender, EventArgs e)
-        {          
-            MonthlyInfoForm form = new MonthlyInfoForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
-        }
-
-        private void StatisticalReportButtonClicked(object sender, EventArgs e)
+        private void OpenNewForm(Form form)
         {
-            StatisticalReportForm form = new StatisticalReportForm();
             form.Location = this.Location;
+            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;
             this.Close();
         }
 
-        private void SettingsButtonClicked(object sender, EventArgs e)
+        private void LogOut()
         {
-            SettingsForm form = new SettingsForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
-        }
-
-        private void LogOutButtonClicked(object sender, EventArgs e)
-        {          
-            //this will opt out from direct login option that occurs when remember me checkbox is checked
+            //reset auto login properties
             Properties.Settings.Default.Username = "";
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
 
-            UserAuthenticationForm form = new UserAuthenticationForm();
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
+            OpenNewForm(new UserAuthenticationForm());
         }
 
-        private void NoteTextBoxClicked(object sender, EventArgs e)
-        {
-            //if the textBox only contains the placeholder and user hasn't yet netered any text
-            if(noteTextBox.ForeColor == Color.Gray)
-            {
-                noteTextBox.Text = "";
-                noteTextBox.ForeColor = Color.Black;
-            }
-        }
-
-        private void DailyInfoFormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form openCategoryForm = Application.OpenForms["CategoryListForm"];
-
-            if(openCategoryForm != null)
-            {
-                openCategoryForm.Close();
-            }
-
-            if (!_hasSaved)
-            {
-                saveButton.PerformClick();
-            }
-
-            if (_quitAppOnFormClosing)
-            {
-                Application.Exit();
-            }
-        }
+        #endregion            
     }
 }

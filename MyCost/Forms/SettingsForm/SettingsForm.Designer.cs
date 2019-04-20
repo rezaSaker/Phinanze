@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.homeButton = new System.Windows.Forms.Button();
-            this.ShowMonthlyInfoButton = new System.Windows.Forms.Button();
-            this.logOutButton = new System.Windows.Forms.Button();
-            this.statisticsButton = new System.Windows.Forms.Button();
-            this.addNewDataButton = new System.Windows.Forms.Button();
             this.userNameLaabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.currentUserNameTextBox = new System.Windows.Forms.TextBox();
@@ -50,78 +45,20 @@
             this.reportIssueButton = new System.Windows.Forms.Button();
             this.helpButton = new System.Windows.Forms.Button();
             this.viewSourceButton = new System.Windows.Forms.Button();
+            this.logOutButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.yearlyStatisticsButton = new System.Windows.Forms.Button();
+            this.dailyReportButton = new System.Windows.Forms.Button();
+            this.addNewDataButton = new System.Windows.Forms.Button();
+            this.homeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // homeButton
-            // 
-            this.homeButton.BackColor = System.Drawing.Color.White;
-            this.homeButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeButton.BackgroundImage")));
-            this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeButton.Location = new System.Drawing.Point(643, 11);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(60, 60);
-            this.homeButton.TabIndex = 45;
-            this.homeButton.UseVisualStyleBackColor = false;
-            this.homeButton.Click += new System.EventHandler(this.HomeButtonClicked);
-            // 
-            // ShowMonthlyInfoButton
-            // 
-            this.ShowMonthlyInfoButton.BackColor = System.Drawing.Color.White;
-            this.ShowMonthlyInfoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ShowMonthlyInfoButton.BackgroundImage")));
-            this.ShowMonthlyInfoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ShowMonthlyInfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowMonthlyInfoButton.Location = new System.Drawing.Point(462, 12);
-            this.ShowMonthlyInfoButton.Name = "ShowMonthlyInfoButton";
-            this.ShowMonthlyInfoButton.Size = new System.Drawing.Size(60, 60);
-            this.ShowMonthlyInfoButton.TabIndex = 44;
-            this.ShowMonthlyInfoButton.UseVisualStyleBackColor = false;
-            this.ShowMonthlyInfoButton.Click += new System.EventHandler(this.MonthlyReportButtonClicked);
-            // 
-            // logOutButton
-            // 
-            this.logOutButton.BackColor = System.Drawing.Color.Red;
-            this.logOutButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logOutButton.BackgroundImage")));
-            this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logOutButton.Location = new System.Drawing.Point(725, 11);
-            this.logOutButton.Name = "logOutButton";
-            this.logOutButton.Size = new System.Drawing.Size(60, 60);
-            this.logOutButton.TabIndex = 43;
-            this.logOutButton.UseVisualStyleBackColor = false;
-            this.logOutButton.Click += new System.EventHandler(this.LogOutButtonClicked);
-            // 
-            // statisticsButton
-            // 
-            this.statisticsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("statisticsButton.BackgroundImage")));
-            this.statisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.statisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statisticsButton.Location = new System.Drawing.Point(553, 12);
-            this.statisticsButton.Name = "statisticsButton";
-            this.statisticsButton.Size = new System.Drawing.Size(60, 60);
-            this.statisticsButton.TabIndex = 42;
-            this.statisticsButton.UseVisualStyleBackColor = true;
-            this.statisticsButton.Click += new System.EventHandler(this.StatisticalReportButtonClicked);
-            // 
-            // addNewDataButton
-            // 
-            this.addNewDataButton.BackColor = System.Drawing.Color.White;
-            this.addNewDataButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("addNewDataButton.BackgroundImage")));
-            this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewDataButton.Location = new System.Drawing.Point(372, 12);
-            this.addNewDataButton.Name = "addNewDataButton";
-            this.addNewDataButton.Size = new System.Drawing.Size(60, 60);
-            this.addNewDataButton.TabIndex = 41;
-            this.addNewDataButton.UseVisualStyleBackColor = false;
-            this.addNewDataButton.Click += new System.EventHandler(this.AddNewDataButtonClicked);
             // 
             // userNameLaabel
             // 
             this.userNameLaabel.AutoSize = true;
             this.userNameLaabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameLaabel.ForeColor = System.Drawing.Color.Black;
-            this.userNameLaabel.Location = new System.Drawing.Point(12, 32);
+            this.userNameLaabel.Location = new System.Drawing.Point(12, 63);
             this.userNameLaabel.Name = "userNameLaabel";
             this.userNameLaabel.Size = new System.Drawing.Size(97, 19);
             this.userNameLaabel.TabIndex = 46;
@@ -333,12 +270,141 @@
             this.viewSourceButton.UseVisualStyleBackColor = false;
             this.viewSourceButton.Click += new System.EventHandler(this.ViewSourceButtonClicked);
             // 
+            // logOutButton
+            // 
+            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOutButton.BackColor = System.Drawing.Color.White;
+            this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logOutButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.logOutButton.Location = new System.Drawing.Point(662, 12);
+            this.logOutButton.Name = "logOutButton";
+            this.logOutButton.Size = new System.Drawing.Size(123, 38);
+            this.logOutButton.TabIndex = 73;
+            this.logOutButton.Text = "Log Out";
+            this.logOutButton.UseVisualStyleBackColor = false;
+            this.logOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.logOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.logOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsButton.ForeColor = System.Drawing.Color.White;
+            this.settingsButton.Location = new System.Drawing.Point(535, 12);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(121, 38);
+            this.settingsButton.TabIndex = 72;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.UseVisualStyleBackColor = false;
+            // 
+            // yearlyStatisticsButton
+            // 
+            this.yearlyStatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.yearlyStatisticsButton.BackColor = System.Drawing.Color.White;
+            this.yearlyStatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.yearlyStatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.yearlyStatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.yearlyStatisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearlyStatisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.yearlyStatisticsButton.Location = new System.Drawing.Point(406, 12);
+            this.yearlyStatisticsButton.Name = "yearlyStatisticsButton";
+            this.yearlyStatisticsButton.Size = new System.Drawing.Size(123, 38);
+            this.yearlyStatisticsButton.TabIndex = 71;
+            this.yearlyStatisticsButton.Text = "Statistics";
+            this.yearlyStatisticsButton.UseVisualStyleBackColor = false;
+            this.yearlyStatisticsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.yearlyStatisticsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.yearlyStatisticsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            // 
+            // dailyReportButton
+            // 
+            this.dailyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dailyReportButton.BackColor = System.Drawing.Color.White;
+            this.dailyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dailyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.dailyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dailyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.dailyReportButton.Location = new System.Drawing.Point(277, 12);
+            this.dailyReportButton.Name = "dailyReportButton";
+            this.dailyReportButton.Size = new System.Drawing.Size(123, 38);
+            this.dailyReportButton.TabIndex = 70;
+            this.dailyReportButton.Text = "Daily Report";
+            this.dailyReportButton.UseVisualStyleBackColor = false;
+            this.dailyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.dailyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.dailyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            // 
+            // addNewDataButton
+            // 
+            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.addNewDataButton.BackColor = System.Drawing.Color.White;
+            this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.addNewDataButton.Location = new System.Drawing.Point(148, 12);
+            this.addNewDataButton.Name = "addNewDataButton";
+            this.addNewDataButton.Size = new System.Drawing.Size(123, 38);
+            this.addNewDataButton.TabIndex = 69;
+            this.addNewDataButton.Text = "Add New";
+            this.addNewDataButton.UseVisualStyleBackColor = false;
+            this.addNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.addNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.addNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            // 
+            // homeButton
+            // 
+            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.homeButton.BackColor = System.Drawing.Color.White;
+            this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.homeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.homeButton.Location = new System.Drawing.Point(10, 12);
+            this.homeButton.Name = "homeButton";
+            this.homeButton.Size = new System.Drawing.Size(132, 38);
+            this.homeButton.TabIndex = 68;
+            this.homeButton.Text = "Home";
+            this.homeButton.UseVisualStyleBackColor = false;
+            this.homeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.homeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.homeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.logOutButton);
+            this.Controls.Add(this.settingsButton);
+            this.Controls.Add(this.yearlyStatisticsButton);
+            this.Controls.Add(this.dailyReportButton);
+            this.Controls.Add(this.addNewDataButton);
+            this.Controls.Add(this.homeButton);
             this.Controls.Add(this.viewSourceButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.reportIssueButton);
@@ -354,30 +420,19 @@
             this.Controls.Add(this.currentUserNameTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.userNameLaabel);
-            this.Controls.Add(this.homeButton);
-            this.Controls.Add(this.ShowMonthlyInfoButton);
-            this.Controls.Add(this.logOutButton);
-            this.Controls.Add(this.statisticsButton);
-            this.Controls.Add(this.addNewDataButton);
             this.Controls.Add(this.label4);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Settings";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SettingsFormClosing);
-            this.Load += new System.EventHandler(this.SettingsFormLoading);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
+            this.Load += new System.EventHandler(this.ThisFormLoading);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button homeButton;
-        private System.Windows.Forms.Button ShowMonthlyInfoButton;
-        private System.Windows.Forms.Button logOutButton;
-        private System.Windows.Forms.Button statisticsButton;
-        private System.Windows.Forms.Button addNewDataButton;
         private System.Windows.Forms.Label userNameLaabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox currentUserNameTextBox;
@@ -394,5 +449,11 @@
         private System.Windows.Forms.Button reportIssueButton;
         private System.Windows.Forms.Button helpButton;
         private System.Windows.Forms.Button viewSourceButton;
+        private System.Windows.Forms.Button logOutButton;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Button yearlyStatisticsButton;
+        private System.Windows.Forms.Button dailyReportButton;
+        private System.Windows.Forms.Button addNewDataButton;
+        private System.Windows.Forms.Button homeButton;
     }
 }

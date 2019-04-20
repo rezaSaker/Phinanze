@@ -61,7 +61,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.AppLoaderForm_Load);
             this.Shown += new System.EventHandler(this.AppLoaderFormShown);
             this.ResumeLayout(false);
             this.PerformLayout();

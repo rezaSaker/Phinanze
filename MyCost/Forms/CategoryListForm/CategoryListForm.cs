@@ -22,9 +22,11 @@ namespace MyCost.Forms
             _rowIndexes = rowIndexes;
         }
 
-        private void CategoryListFormLoading(object sender, EventArgs e)
+        #region event_handler_methods
+
+        private void ThisFormLoading(object sender, EventArgs e)
         {
-            //_dgv points to a dataGridView on DailyInfoForm whose reference is passed to this form via constructor
+            //_dgv points to a dataGridView on AddNewDataForm whose reference is passed to this form via constructor
             if (_dgv != null && _dgv.Name == "expenseDataGridView")
             {
                 foreach (string category in StaticStorage.ExpenseCategories)
@@ -45,7 +47,7 @@ namespace MyCost.Forms
             }
         }
 
-        private void dataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
             OpenSelectedCategory();
         }
@@ -55,31 +57,56 @@ namespace MyCost.Forms
             OpenSelectedCategory();
         }
 
+        private void DataGridViewCellEditEnded(object sender, DataGridViewCellEventArgs e)
+        {
+            UpdateCategories();
+        }
+
+        private void DataGridViewUserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            UpdateCategories();
+        }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridView.CurrentCell.RowIndex;
+
+            if (IsLastAndEmptyRow(rowIndex))
+                return;
+
+            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            {
+                dataGridView.Rows.Remove(row);
+            }
+
+            UpdateCategories();
+        }
+
+        private void CancelButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region non_event_handler_methods
+
         private void OpenSelectedCategory()
         {
             int rowIndex = dataGridView.CurrentCell.RowIndex;
 
-            if (rowIndex == dataGridView.Rows.Count - 1 || dataGridView.SelectedRows.Count > 1)
-            {
-                //either, selected row is the last row and an empty row
-                //or, more than one row is selected in the category dataGridView
+            if (IsLastAndEmptyRow(rowIndex))
                 return;
-            }
 
             string category = dataGridView.Rows[rowIndex].Cells[0].Value.ToString();
 
             foreach (int index in _rowIndexes)
             {
-                //_dgv points to a dataGridView on DailyInfoForm whose reference is passed to this form via constructor
+                //_dgv points to a dataGridView on AddNewDataForm whose reference is passed to this form via constructor
                 _dgv.Rows[index].Cells[2].Value = category;
             }
 
             this.Close();
-        }
-
-        private void DataGridViewCellEditEnded(object sender, DataGridViewCellEventArgs e)
-        {
-            UpdateCategories();
         }
 
         private void UpdateCategories()
@@ -92,20 +119,15 @@ namespace MyCost.Forms
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (row.Index == dataGridView.Rows.Count - 1)
-                    {
-                        //this is the last row and it's an empty row
+                    if (IsLastAndEmptyRow(row.Index))
                         break;
-                    }
 
                     StaticStorage.ExpenseCategories.Add(row.Cells[0].Value.ToString());
                     categoryNames += row.Cells[0].Value.ToString();
 
-                    //adds a splitting character after each category
+                    //adds a splitting character after each category except the last one
                     if (row.Index < dataGridView.Rows.Count - 2)
-                    {
                         categoryNames += "|";
-                    }
                 }
             }
             else
@@ -114,59 +136,35 @@ namespace MyCost.Forms
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (row.Index == dataGridView.Rows.Count - 1)
-                    {
-                        //this is the last row and it's an empty row
+                    if (IsLastAndEmptyRow(row.Index))
                         break;
-                    }
 
                     StaticStorage.EarningCategories.Add(row.Cells[0].Value.ToString());
                     categoryNames += row.Cells[0].Value.ToString();
 
-                    //adds a splitting character after each category
+                    //adds a splitting character after each category except the last one
                     if (row.Index < dataGridView.Rows.Count - 2)
-                    {
                         categoryNames += "|";
-                    }
                 }
             }
 
             string result = ServerHandler.SaveCategory(categoryNames, _categoryType);
-        }
 
-        private void DeleteButtonClicked(object sender, EventArgs e)
+            if(result != "SUCCESS")
+            {
+                //if not succeeds, the error message is returned
+                MessageBox.Show(result);
+            }
+        }     
+
+        private bool IsLastAndEmptyRow(int rowIndex)
         {
-            int rowIndex = dataGridView.CurrentCell.RowIndex;
-
             if (rowIndex == dataGridView.Rows.Count - 1)
-            {
-                //this is the last row and it's an empty row
-                return;
-            }
-
-            foreach (DataGridViewRow row in dataGridView.SelectedRows)
-            {
-                dataGridView.Rows.Remove(row);
-            }
-
-            UpdateCategories();
+                return true;
+            else
+                return false;
         }
 
-        private void DataGridViewUserDeletedRow(object sender, DataGridViewRowEventArgs e)
-        {
-            if (e.Row.Index == dataGridView.Rows.Count - 1)
-            {
-                //this is the last row and it's an empty row
-                return;
-            }
-
-            UpdateCategories();
-        }
-
-        private void CancelButtonClicked(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        #endregion
     }
 }

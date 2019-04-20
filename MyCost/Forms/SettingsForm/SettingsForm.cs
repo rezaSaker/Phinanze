@@ -9,14 +9,16 @@ namespace MyCost.Forms
 {
     public partial class SettingsForm : Form
     {
-        private bool _quitAppOnFormCLosing;
+        private bool _quitAppOnFormClosing;
 
         public SettingsForm()
         {
             InitializeComponent();
+
+            _quitAppOnFormClosing = true;
         }
 
-        private void SettingsFormLoading(object sender, EventArgs e)
+        private void ThisFormLoading(object sender, EventArgs e)
         {
             userNameLaabel.Text = "username: " + StaticStorage.Username;
         }
@@ -27,6 +29,7 @@ namespace MyCost.Forms
 
             if (tb.ForeColor != Color.Black)
             {
+                //remove the placeholder
                 tb.ForeColor = Color.Black;
                 tb.Text = "";
             }
@@ -87,17 +90,18 @@ namespace MyCost.Forms
             {
                 MessageBox.Show("Username doesn't match");
             }
-            else //all feilds are correct
+            else //all fields are correct
             {
                 string result = ServerHandler.UpdateUsername(newUserNameTextBox.Text);
 
                 if (result == "SUCCESS")
                 {
                     //log out user from the current session
-                    logOutButton.PerformClick();
+                    LogOut();
                 }
                 else
                 {
+                    //if the update doesn't succeeds, the error message is returned
                     MessageBox.Show(result);
                 }
             }
@@ -116,67 +120,44 @@ namespace MyCost.Forms
                 if (result == "SUCCESS")
                 {
                     //log out user from the current session
-                    logOutButton.PerformClick();
+                    LogOut();
                 }
                 else
                 {
+                    //if the update doesn't succeeds, error message is returned
                     MessageBox.Show(result);
                 }
             }
         }
 
-        private void AddNewDataButtonClicked(object sender, EventArgs e)
+        private void MenuButtonsMouseHovering(object sender, EventArgs e)
         {
-            DailyInfoForm form = new DailyInfoForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormCLosing = false;
-            this.Hide();
+            Button button = (Button)sender;
+            button.BackColor = Color.ForestGreen;
+            button.ForeColor = Color.White;
         }
 
-        private void MonthlyReportButtonClicked(object sender, EventArgs e)
+        private void MenuButtonsMouseLeaving(object sender, EventArgs e)
         {
-            MonthlyInfoForm form = new MonthlyInfoForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormCLosing = false;
-            this.Close();
+            Button button = (Button)sender;
+            button.BackColor = Color.White;
+            button.ForeColor = Color.ForestGreen;
         }
 
-        private void StatisticalReportButtonClicked(object sender, EventArgs e)
+        private void MenuButtonsClicked(object sender, EventArgs e)
         {
-            StatisticalReportForm form = new StatisticalReportForm();
-            form.Location = this.Location;
-            form.Show();
+            Button button = (Button)sender;
 
-            _quitAppOnFormCLosing = false;
-            this.Close();
-        }
-
-        private void HomeButtonClicked(object sender, EventArgs e)
-        {
-            MainForm form = new MainForm();
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormCLosing = false;
-            this.Close();
-        }
-
-        private void LogOutButtonClicked(object sender, EventArgs e)
-        {
-            //this will opt out from direct login option that occurs when remember me checkbox is checked
-            Properties.Settings.Default.Username = "";
-            Properties.Settings.Default.Password = "";
-            Properties.Settings.Default.Save();
-
-            UserAuthenticationForm form = new UserAuthenticationForm();
-            form.Show();
-
-            _quitAppOnFormCLosing = false;
-            this.Close();
+            if (button.Name == "homeButton")
+                OpenNewForm(new MainForm());
+            else if (button.Name == "dailyReportButton")
+                OpenNewForm(new DailyReportForm());
+            else if (button.Name == "yearlyStatisticsButton")
+                OpenNewForm(new YearlyStatisticsForm());
+            else if (button.Name == "addnewDataButton")
+                OpenNewForm(new AddNewDataForm());
+            else if (button.Name == "logOutButton")
+                LogOut();
         }
 
         new private void HelpButtonClicked(object sender, EventArgs e)
@@ -215,13 +196,32 @@ namespace MyCost.Forms
             }
         }
 
-        private void SettingsFormClosing(object sender, FormClosingEventArgs e)
+        private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_quitAppOnFormCLosing)
+            if (_quitAppOnFormClosing)
             {
                 Application.Exit();
             }
-        }     
+        }
 
+        private void OpenNewForm(Form form)
+        {
+            form.Location = this.Location;
+            form.Size = this.Size;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void LogOut()
+        {
+            //reset auto login properties
+            Properties.Settings.Default.Username = "";
+            Properties.Settings.Default.Password = "";
+            Properties.Settings.Default.Save();
+
+            OpenNewForm(new UserAuthenticationForm());
+        }
     }
 }

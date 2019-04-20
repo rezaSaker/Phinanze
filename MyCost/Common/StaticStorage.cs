@@ -8,7 +8,7 @@ namespace MyCost.Common
         public const string SourcePath = "https://github.com/rezaSaker/MyCost";
         public const string HelpSourcePath = "https://github.com/rezaSaker/MyCost";
         public const string ReportAppSourcePath = "https://github.com/rezaSaker/MyCost";
-
+        
         public static int UserID;
 
         public static string AccessToken;
@@ -17,17 +17,17 @@ namespace MyCost.Common
         public static List<string> ExpenseCategories = new List<string>();
         public static List<string> EarningCategories = new List<string>();
 
-        public static List<DailyInfo> DailyInfo = new List<DailyInfo>();
-        public static List<MonthlyInfo> MonthlyInfo = new List<MonthlyInfo>();   
+        public static List<DailyInfo> DailyInfoList = new List<DailyInfo>();
+        public static List<MonthlyInfo> MonthlyInfoList = new List<MonthlyInfo>();   
 
         /// <summary>
         /// Fetch monthly info from the list of daily info and store it in StaticStorage.MonthlyInfo
         /// </summary>
         public static void FetchMonthlyInfo()
         {
-            MonthlyInfo.Clear();
+            MonthlyInfoList.Clear();
 
-            if (DailyInfo.Count < 1)
+            if (DailyInfoList.Count < 1)
             {
                 //monthly info consists of daily info
                 //so, no daily info means no monthly info 
@@ -37,8 +37,8 @@ namespace MyCost.Common
             //we get the info from db in decsneding order of year
             //so the first year in the list is the most recent
             //and last year in the list is the oldest year
-            int recentYear = DailyInfo[0].Year;
-            int oldestYear = DailyInfo[DailyInfo.Count - 1].Year;
+            int recentYear = DailyInfoList[0].Year;
+            int oldestYear = DailyInfoList[DailyInfoList.Count - 1].Year;
             double totalEarning = .0;
             double totalExpense = .0;
 
@@ -49,7 +49,7 @@ namespace MyCost.Common
                     totalEarning = .0;
                     totalExpense = .0;
 
-                    foreach (DailyInfo daily in DailyInfo)
+                    foreach (DailyInfo daily in DailyInfoList)
                     {
                         if (daily.Year == year && daily.Month == month)
                         {
@@ -62,7 +62,7 @@ namespace MyCost.Common
                     if (totalEarning != 0 || totalExpense != 0)
                     {
                         MonthlyInfo monthly = new MonthlyInfo(month, year, totalEarning, totalExpense);
-                        MonthlyInfo.Add(monthly);
+                        MonthlyInfoList.Add(monthly);
                     }
                 }
             }

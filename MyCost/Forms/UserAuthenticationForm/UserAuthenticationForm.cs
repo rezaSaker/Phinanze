@@ -327,7 +327,7 @@ namespace MyCost.Forms
                     }
                 }
 
-                StaticStorage.DailyInfo.Add(daily);
+                StaticStorage.DailyInfoList.Add(daily);
             }
         }
 
