@@ -157,9 +157,6 @@
             // 
             // homeButton
             // 
-            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.homeButton.BackColor = System.Drawing.Color.ForestGreen;
             this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -175,9 +172,6 @@
             // 
             // addNewDataButton
             // 
-            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewDataButton.BackColor = System.Drawing.Color.White;
             this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -196,9 +190,6 @@
             // 
             // dailyReportButton
             // 
-            this.dailyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dailyReportButton.BackColor = System.Drawing.Color.White;
             this.dailyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dailyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -217,9 +208,6 @@
             // 
             // yearlyStatisticsButton
             // 
-            this.yearlyStatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.yearlyStatisticsButton.BackColor = System.Drawing.Color.White;
             this.yearlyStatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.yearlyStatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -238,9 +226,6 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsButton.BackColor = System.Drawing.Color.White;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -259,9 +244,7 @@
             // 
             // logOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.logOutButton.BackColor = System.Drawing.Color.White;
             this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -293,11 +276,13 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.homeButton);
             this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(816, 526);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Home Page";
+            this.Text = "MyCost - Home Page";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);

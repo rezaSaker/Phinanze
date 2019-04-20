@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewDataForm));
             this.expenseDataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteTextBox = new System.Windows.Forms.TextBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.dayComboBox = new System.Windows.Forms.ComboBox();
@@ -55,58 +55,59 @@
             this.dailyReportButton = new System.Windows.Forms.Button();
             this.addNewDataButton = new System.Windows.Forms.Button();
             this.homeButton = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.expenseDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.earningDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // expenseDataGridView
             // 
+            this.expenseDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.expenseDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.expenseDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.expenseDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.expenseDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.expenseDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Category,
             this.Column3});
-            this.expenseDataGridView.Location = new System.Drawing.Point(9, 117);
+            this.expenseDataGridView.Location = new System.Drawing.Point(9, 111);
             this.expenseDataGridView.Name = "expenseDataGridView";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.expenseDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.expenseDataGridView.Size = new System.Drawing.Size(779, 150);
             this.expenseDataGridView.TabIndex = 3;
             this.expenseDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ExpenseDGVEditBegan);
             this.expenseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDataGridViewCellClicked);
             this.expenseDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDGVEditEnded);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Reason";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 255;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Amount";
-            this.Column2.Name = "Column2";
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Comment";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 255;
-            // 
             // noteTextBox
             // 
+            this.noteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.noteTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.noteTextBox.Location = new System.Drawing.Point(361, 54);
+            this.noteTextBox.Location = new System.Drawing.Point(346, 55);
             this.noteTextBox.Name = "noteTextBox";
-            this.noteTextBox.Size = new System.Drawing.Size(427, 26);
+            this.noteTextBox.Size = new System.Drawing.Size(442, 26);
             this.noteTextBox.TabIndex = 6;
             this.noteTextBox.Text = "Note";
             this.noteTextBox.Click += new System.EventHandler(this.NoteTextBoxClicked);
@@ -117,7 +118,7 @@
             this.lbl_status.BackColor = System.Drawing.Color.White;
             this.lbl_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_status.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(5, 92);
+            this.lbl_status.Location = new System.Drawing.Point(5, 86);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(74, 22);
             this.lbl_status.TabIndex = 15;
@@ -128,7 +129,7 @@
             // 
             this.dayComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dayComboBox.FormattingEnabled = true;
-            this.dayComboBox.Location = new System.Drawing.Point(9, 54);
+            this.dayComboBox.Location = new System.Drawing.Point(9, 55);
             this.dayComboBox.Name = "dayComboBox";
             this.dayComboBox.Size = new System.Drawing.Size(61, 26);
             this.dayComboBox.TabIndex = 18;
@@ -151,7 +152,7 @@
             "October",
             "November",
             "December"});
-            this.monthComboBox.Location = new System.Drawing.Point(76, 54);
+            this.monthComboBox.Location = new System.Drawing.Point(76, 55);
             this.monthComboBox.Name = "monthComboBox";
             this.monthComboBox.Size = new System.Drawing.Size(149, 26);
             this.monthComboBox.TabIndex = 20;
@@ -161,7 +162,7 @@
             // 
             this.yearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(231, 54);
+            this.yearComboBox.Location = new System.Drawing.Point(231, 55);
             this.yearComboBox.Name = "yearComboBox";
             this.yearComboBox.Size = new System.Drawing.Size(109, 26);
             this.yearComboBox.TabIndex = 22;
@@ -172,7 +173,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 279);
+            this.label1.Location = new System.Drawing.Point(5, 264);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 22);
             this.label1.TabIndex = 24;
@@ -181,15 +182,33 @@
             // 
             // earningDataGridView
             // 
+            this.earningDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.earningDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.earningDataGridView.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Empty;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.earningDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.earningDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.earningDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn4});
-            this.earningDataGridView.Location = new System.Drawing.Point(9, 304);
+            this.earningDataGridView.Location = new System.Drawing.Point(9, 291);
             this.earningDataGridView.Name = "earningDataGridView";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.earningDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.earningDataGridView.Size = new System.Drawing.Size(779, 149);
             this.earningDataGridView.TabIndex = 23;
             this.earningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
@@ -200,7 +219,6 @@
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Source";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 255;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -211,23 +229,21 @@
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Category";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.HeaderText = "Comment";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 255;
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.BackColor = System.Drawing.Color.RoyalBlue;
             this.saveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.saveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.saveButton.ForeColor = System.Drawing.Color.White;
-            this.saveButton.Location = new System.Drawing.Point(677, 459);
+            this.saveButton.Location = new System.Drawing.Point(677, 446);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(111, 32);
             this.saveButton.TabIndex = 25;
@@ -242,7 +258,7 @@
             this.totalEarningLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.totalEarningLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.totalEarningLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalEarningLabel.Location = new System.Drawing.Point(79, 279);
+            this.totalEarningLabel.Location = new System.Drawing.Point(79, 264);
             this.totalEarningLabel.Name = "totalEarningLabel";
             this.totalEarningLabel.Size = new System.Drawing.Size(42, 24);
             this.totalEarningLabel.TabIndex = 35;
@@ -256,7 +272,7 @@
             this.totalExpenseLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.totalExpenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.totalExpenseLabel.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalExpenseLabel.Location = new System.Drawing.Point(79, 90);
+            this.totalExpenseLabel.Location = new System.Drawing.Point(79, 84);
             this.totalExpenseLabel.Name = "totalExpenseLabel";
             this.totalExpenseLabel.Size = new System.Drawing.Size(42, 24);
             this.totalExpenseLabel.TabIndex = 36;
@@ -265,12 +281,13 @@
             // 
             // applyCategoryButton
             // 
+            this.applyCategoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.applyCategoryButton.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.applyCategoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.applyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCategoryButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.applyCategoryButton.ForeColor = System.Drawing.Color.Black;
-            this.applyCategoryButton.Location = new System.Drawing.Point(530, 461);
+            this.applyCategoryButton.Location = new System.Drawing.Point(533, 448);
             this.applyCategoryButton.Name = "applyCategoryButton";
             this.applyCategoryButton.Size = new System.Drawing.Size(138, 28);
             this.applyCategoryButton.TabIndex = 46;
@@ -280,9 +297,7 @@
             // 
             // logOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.logOutButton.BackColor = System.Drawing.Color.White;
             this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -301,9 +316,6 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsButton.BackColor = System.Drawing.Color.White;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -322,9 +334,6 @@
             // 
             // yearlyStatisticsButton
             // 
-            this.yearlyStatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.yearlyStatisticsButton.BackColor = System.Drawing.Color.White;
             this.yearlyStatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.yearlyStatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -343,9 +352,6 @@
             // 
             // dailyReportButton
             // 
-            this.dailyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dailyReportButton.BackColor = System.Drawing.Color.White;
             this.dailyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dailyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -364,9 +370,6 @@
             // 
             // addNewDataButton
             // 
-            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewDataButton.BackColor = System.Drawing.Color.ForestGreen;
             this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -382,9 +385,6 @@
             // 
             // homeButton
             // 
-            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.homeButton.BackColor = System.Drawing.Color.White;
             this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -401,13 +401,33 @@
             this.homeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
             this.homeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Reason";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Amount";
+            this.Column2.Name = "Column2";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Comment";
+            this.Column3.Name = "Column3";
+            // 
             // AddNewDataForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 501);
+            this.ClientSize = new System.Drawing.Size(800, 487);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.yearlyStatisticsButton);
@@ -432,9 +452,10 @@
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(816, 526);
             this.Name = "AddNewDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Daily expense and earning information";
+            this.Text = "MyCost - Daily Expense and Earning";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.expenseDataGridView)).EndInit();
@@ -456,10 +477,6 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label totalEarningLabel;
         private System.Windows.Forms.Label totalExpenseLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -471,5 +488,9 @@
         private System.Windows.Forms.Button dailyReportButton;
         private System.Windows.Forms.Button addNewDataButton;
         private System.Windows.Forms.Button homeButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

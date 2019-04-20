@@ -61,15 +61,12 @@ namespace MyCost.Forms
                 {
                     ((TextBox)control).TextChanged += ControlChanged;
                 }
-                else if (control is ComboBox)
-                {
-                    ((ComboBox)control).SelectedIndexChanged += ControlChanged;
-                }
                 else if (control is DataGridView)
                 {
                     ((DataGridView)control).CellValueChanged += ControlChanged;
                     ((DataGridView)control).UserAddedRow += ControlChanged;
                     ((DataGridView)control).UserDeletedRow += ControlChanged;
+                    ((DataGridView)control).CellEndEdit += ControlChanged;
                 }
             }
 
@@ -505,14 +502,14 @@ namespace MyCost.Forms
                     {
                         expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
                     }
-                    expenseDataGridView.Rows[0].Selected = false;
+                    expenseDataGridView.Rows[0].Cells[0].Selected = false;
 
                     //plot earning info
                     foreach (EarningInfo earning in daily.Earnings)
                     {
                         earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
                     }
-                    earningDataGridView.Rows[0].Selected = false;
+                    earningDataGridView.Rows[0].Cells[0].Selected = false;
 
                     break;
                 }

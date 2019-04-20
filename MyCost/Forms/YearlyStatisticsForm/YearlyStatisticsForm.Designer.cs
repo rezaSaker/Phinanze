@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YearlyStatisticsForm));
             this.logOutButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.yearlyStatisticsButton = new System.Windows.Forms.Button();
@@ -190,22 +191,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.yearlyReportChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.Name = "ChartArea1";
-            this.yearlyReportChart.ChartAreas.Add(chartArea1);
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.Name = "ChartArea1";
+            this.yearlyReportChart.ChartAreas.Add(chartArea3);
             this.yearlyReportChart.Location = new System.Drawing.Point(12, 152);
             this.yearlyReportChart.Name = "yearlyReportChart";
-            series1.ChartArea = "ChartArea1";
-            series1.CustomProperties = "MaxPixelPointWidth=30";
-            series1.EmptyPointStyle.Label = "jan";
-            series1.IsVisibleInLegend = false;
-            series1.Name = "earning";
-            series2.ChartArea = "ChartArea1";
-            series2.CustomProperties = "MaxPixelPointWidth=30";
-            series2.IsVisibleInLegend = false;
-            series2.Name = "expense";
-            this.yearlyReportChart.Series.Add(series1);
-            this.yearlyReportChart.Series.Add(series2);
+            series5.ChartArea = "ChartArea1";
+            series5.CustomProperties = "MaxPixelPointWidth=30";
+            series5.EmptyPointStyle.Label = "jan";
+            series5.IsVisibleInLegend = false;
+            series5.Name = "earning";
+            series6.ChartArea = "ChartArea1";
+            series6.CustomProperties = "MaxPixelPointWidth=30";
+            series6.IsVisibleInLegend = false;
+            series6.Name = "expense";
+            this.yearlyReportChart.Series.Add(series5);
+            this.yearlyReportChart.Series.Add(series6);
             this.yearlyReportChart.Size = new System.Drawing.Size(776, 323);
             this.yearlyReportChart.TabIndex = 53;
             // 
@@ -378,22 +379,22 @@
             // 
             // monthlyReportChart
             // 
-            chartArea2.AxisX.MajorGrid.Enabled = false;
-            chartArea2.Name = "ChartArea1";
-            this.monthlyReportChart.ChartAreas.Add(chartArea2);
+            chartArea4.AxisX.MajorGrid.Enabled = false;
+            chartArea4.Name = "ChartArea1";
+            this.monthlyReportChart.ChartAreas.Add(chartArea4);
             this.monthlyReportChart.Location = new System.Drawing.Point(12, 154);
             this.monthlyReportChart.Name = "monthlyReportChart";
             this.monthlyReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Name = "earning";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Name = "expense";
-            this.monthlyReportChart.Series.Add(series3);
-            this.monthlyReportChart.Series.Add(series4);
+            series7.BorderWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series7.Name = "earning";
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series8.Name = "expense";
+            this.monthlyReportChart.Series.Add(series7);
+            this.monthlyReportChart.Series.Add(series8);
             this.monthlyReportChart.Size = new System.Drawing.Size(775, 321);
             this.monthlyReportChart.TabIndex = 66;
             this.monthlyReportChart.Visible = false;
@@ -415,9 +416,12 @@
             this.Controls.Add(this.dailyReportButton);
             this.Controls.Add(this.addNewDataButton);
             this.Controls.Add(this.homeButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "YearlyStatisticsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "StatisticalReport";
+            this.Text = "MyCost - Earning and Expense Statistics";
             this.Load += new System.EventHandler(this.ThisFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.yearlyReportChart)).EndInit();
             this.panel1.ResumeLayout(false);

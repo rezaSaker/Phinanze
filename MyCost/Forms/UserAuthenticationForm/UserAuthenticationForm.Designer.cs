@@ -182,7 +182,7 @@
             this.MaximizeBox = false;
             this.Name = "UserAuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login or Register";
+            this.Text = "MyCost - Login or Register";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserAuthenticationFormClosing);
             this.Load += new System.EventHandler(this.UserAuthenticationFormLoading);
             this.Shown += new System.EventHandler(this.UserAuthenticationFormShown);

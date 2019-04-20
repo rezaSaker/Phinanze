@@ -51,6 +51,8 @@
             this.dailyReportButton = new System.Windows.Forms.Button();
             this.addNewDataButton = new System.Windows.Forms.Button();
             this.homeButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // userNameLaabel
@@ -58,7 +60,7 @@
             this.userNameLaabel.AutoSize = true;
             this.userNameLaabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameLaabel.ForeColor = System.Drawing.Color.Black;
-            this.userNameLaabel.Location = new System.Drawing.Point(12, 63);
+            this.userNameLaabel.Location = new System.Drawing.Point(2, 2);
             this.userNameLaabel.Name = "userNameLaabel";
             this.userNameLaabel.Size = new System.Drawing.Size(97, 19);
             this.userNameLaabel.TabIndex = 46;
@@ -69,7 +71,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(12, 114);
+            this.label1.Location = new System.Drawing.Point(2, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 18);
             this.label1.TabIndex = 47;
@@ -81,7 +83,7 @@
             this.currentUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.currentUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.currentUserNameTextBox.Location = new System.Drawing.Point(15, 159);
+            this.currentUserNameTextBox.Location = new System.Drawing.Point(5, 98);
             this.currentUserNameTextBox.Name = "currentUserNameTextBox";
             this.currentUserNameTextBox.Size = new System.Drawing.Size(346, 26);
             this.currentUserNameTextBox.TabIndex = 48;
@@ -95,7 +97,7 @@
             this.newUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.newUserNameTextBox.Location = new System.Drawing.Point(16, 208);
+            this.newUserNameTextBox.Location = new System.Drawing.Point(6, 147);
             this.newUserNameTextBox.Name = "newUserNameTextBox";
             this.newUserNameTextBox.Size = new System.Drawing.Size(345, 26);
             this.newUserNameTextBox.TabIndex = 49;
@@ -109,7 +111,7 @@
             this.confirmUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.confirmUserNameTextBox.Location = new System.Drawing.Point(16, 256);
+            this.confirmUserNameTextBox.Location = new System.Drawing.Point(6, 195);
             this.confirmUserNameTextBox.Name = "confirmUserNameTextBox";
             this.confirmUserNameTextBox.Size = new System.Drawing.Size(345, 26);
             this.confirmUserNameTextBox.TabIndex = 50;
@@ -125,7 +127,7 @@
             this.submitUserNameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitUserNameButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitUserNameButton.ForeColor = System.Drawing.Color.White;
-            this.submitUserNameButton.Location = new System.Drawing.Point(16, 310);
+            this.submitUserNameButton.Location = new System.Drawing.Point(6, 249);
             this.submitUserNameButton.Name = "submitUserNameButton";
             this.submitUserNameButton.Size = new System.Drawing.Size(345, 35);
             this.submitUserNameButton.TabIndex = 51;
@@ -141,7 +143,7 @@
             this.submitPasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitPasswordButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitPasswordButton.ForeColor = System.Drawing.Color.White;
-            this.submitPasswordButton.Location = new System.Drawing.Point(444, 310);
+            this.submitPasswordButton.Location = new System.Drawing.Point(434, 249);
             this.submitPasswordButton.Name = "submitPasswordButton";
             this.submitPasswordButton.Size = new System.Drawing.Size(340, 35);
             this.submitPasswordButton.TabIndex = 56;
@@ -155,7 +157,7 @@
             this.confirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(444, 256);
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(434, 195);
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(340, 26);
             this.confirmPasswordTextBox.TabIndex = 55;
@@ -169,7 +171,7 @@
             this.newPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.newPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.newPasswordTextBox.Location = new System.Drawing.Point(445, 208);
+            this.newPasswordTextBox.Location = new System.Drawing.Point(435, 147);
             this.newPasswordTextBox.Name = "newPasswordTextBox";
             this.newPasswordTextBox.Size = new System.Drawing.Size(340, 26);
             this.newPasswordTextBox.TabIndex = 54;
@@ -183,7 +185,7 @@
             this.currentPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.currentPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.currentPasswordTextBox.Location = new System.Drawing.Point(443, 159);
+            this.currentPasswordTextBox.Location = new System.Drawing.Point(433, 98);
             this.currentPasswordTextBox.Name = "currentPasswordTextBox";
             this.currentPasswordTextBox.Size = new System.Drawing.Size(341, 26);
             this.currentPasswordTextBox.TabIndex = 53;
@@ -196,7 +198,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(442, 114);
+            this.label2.Location = new System.Drawing.Point(432, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(136, 18);
             this.label2.TabIndex = 52;
@@ -207,7 +209,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(399, 135);
+            this.label3.Location = new System.Drawing.Point(389, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 198);
             this.label3.TabIndex = 57;
@@ -227,6 +229,7 @@
             // 
             // reportIssueButton
             // 
+            this.reportIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.reportIssueButton.BackColor = System.Drawing.Color.White;
             this.reportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.reportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -242,6 +245,7 @@
             // 
             // helpButton
             // 
+            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.helpButton.BackColor = System.Drawing.Color.White;
             this.helpButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -257,6 +261,7 @@
             // 
             // viewSourceButton
             // 
+            this.viewSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.viewSourceButton.BackColor = System.Drawing.Color.White;
             this.viewSourceButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.viewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -272,9 +277,7 @@
             // 
             // logOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.logOutButton.BackColor = System.Drawing.Color.White;
             this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -293,9 +296,6 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsButton.BackColor = System.Drawing.Color.ForestGreen;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -311,9 +311,6 @@
             // 
             // yearlyStatisticsButton
             // 
-            this.yearlyStatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.yearlyStatisticsButton.BackColor = System.Drawing.Color.White;
             this.yearlyStatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.yearlyStatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -332,9 +329,6 @@
             // 
             // dailyReportButton
             // 
-            this.dailyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dailyReportButton.BackColor = System.Drawing.Color.White;
             this.dailyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.dailyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -353,9 +347,6 @@
             // 
             // addNewDataButton
             // 
-            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewDataButton.BackColor = System.Drawing.Color.White;
             this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -374,9 +365,6 @@
             // 
             // homeButton
             // 
-            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.homeButton.BackColor = System.Drawing.Color.White;
             this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
@@ -393,12 +381,35 @@
             this.homeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
             this.homeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.submitPasswordButton);
+            this.panel1.Controls.Add(this.confirmPasswordTextBox);
+            this.panel1.Controls.Add(this.newPasswordTextBox);
+            this.panel1.Controls.Add(this.currentPasswordTextBox);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.submitUserNameButton);
+            this.panel1.Controls.Add(this.confirmUserNameTextBox);
+            this.panel1.Controls.Add(this.newUserNameTextBox);
+            this.panel1.Controls.Add(this.currentUserNameTextBox);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.userNameLaabel);
+            this.panel1.Location = new System.Drawing.Point(10, 61);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(783, 312);
+            this.panel1.TabIndex = 74;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.settingsButton);
             this.Controls.Add(this.yearlyStatisticsButton);
@@ -408,25 +419,17 @@
             this.Controls.Add(this.viewSourceButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.reportIssueButton);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.submitPasswordButton);
-            this.Controls.Add(this.confirmPasswordTextBox);
-            this.Controls.Add(this.newPasswordTextBox);
-            this.Controls.Add(this.currentPasswordTextBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.submitUserNameButton);
-            this.Controls.Add(this.confirmUserNameTextBox);
-            this.Controls.Add(this.newUserNameTextBox);
-            this.Controls.Add(this.currentUserNameTextBox);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.userNameLaabel);
             this.Controls.Add(this.label4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Settings";
+            this.Text = "MyCost - Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,5 +458,6 @@
         private System.Windows.Forms.Button dailyReportButton;
         private System.Windows.Forms.Button addNewDataButton;
         private System.Windows.Forms.Button homeButton;
+        private System.Windows.Forms.Panel panel1;
     }
 }
