@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
-namespace MyCost.Forms
+namespace MyCost.View
 {
     public partial class UserAuthenticationForm : Form
     {
@@ -36,18 +36,7 @@ namespace MyCost.Forms
 
         private void ShowRegisterPanelButtonClicked(object sender, EventArgs e)
         {
-            //reset everything so the panel appears as a register form
-            showRegisterPanelButton.BackColor = Color.White;
-            showRegisterPanelButton.ForeColor = Color.Black;
-            showLoginPanelButton.BackColor = Color.RoyalBlue;
-            showLoginPanelButton.ForeColor = Color.White;
-            submitButton.Text = "Register";
-            submitButton.Location = new Point(270, 299);
-            confirmPasswordTextBox.Visible = true;
-            confirmPasswordTextBox.Enabled = true;
-            rememberMeCheckBox.Location = new Point(140, 269);
-            statusLabel.Location = new Point(157, 348);
-            ResetTextBoxProperties();
+            DisplayRegisterPanel();
         }
 
         private void ShowLoginPanelButoonClicked(object sender, EventArgs e)
@@ -111,6 +100,22 @@ namespace MyCost.Forms
             ResetTextBoxProperties();
         }
 
+        private void DisplayRegisterPanel()
+        {
+            //reset everything so the panel appears as a register form
+            showRegisterPanelButton.BackColor = Color.White;
+            showRegisterPanelButton.ForeColor = Color.Black;
+            showLoginPanelButton.BackColor = Color.RoyalBlue;
+            showLoginPanelButton.ForeColor = Color.White;
+            submitButton.Text = "Register";
+            submitButton.Location = new Point(270, 299);
+            confirmPasswordTextBox.Visible = true;
+            confirmPasswordTextBox.Enabled = true;
+            rememberMeCheckBox.Location = new Point(140, 269);
+            statusLabel.Location = new Point(157, 348);
+            ResetTextBoxProperties();
+        }
+
         private void ResetTextBoxProperties()
         {
             //reset the placeholders in the textboxes
@@ -162,7 +167,7 @@ namespace MyCost.Forms
         }
 
         private void RegisterUser()
-        {
+        {            
             string username = usernameTextBox.Text;
             string password = this.passwordTextBox.Text;
             string confirmPassword = confirmPasswordTextBox.Text;
@@ -183,7 +188,7 @@ namespace MyCost.Forms
                 return;
             }
 
-            string access_key = RandomString(100);
+            string access_key = Properties.Settings.Default.AccessKey;
             
             string result = ServerHandler.RegisterNewUser(access_key, username, password);
             string[] data = result.Split('|');
@@ -229,22 +234,7 @@ namespace MyCost.Forms
 
             _quitAppOnFormClosing = false;
             this.Close();
-        }
-
-        private string RandomString(int size)
-        {
-            string randStr = "";
-            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-                             "abcdefghijklmnopqrstuvwxyz1234567890";
-            char[] charSet = str.ToCharArray();
-
-            Random rand = new Random();
-
-            for (int i = 0; i < size; ++i)
-                randStr += charSet[rand.Next(0, str.Length)];
-
-            return randStr;
-        }
+        }    
 
         private void FetchDailyInfo()
         {
@@ -279,13 +269,15 @@ namespace MyCost.Forms
                 string totalExpense = cols[12];
                 string totalEarning = cols[13];
 
-                DailyInfo daily = new DailyInfo();
-                daily.Day = day;
-                daily.Month = month;
-                daily.Year = year;
-                daily.Note = note;
-                daily.TotalEarning = Convert.ToDouble(totalEarning);
-                daily.TotalExpense = Convert.ToDouble(totalExpense);
+                DailyInfo daily = new DailyInfo
+                {
+                    Day = day,
+                    Month = month,
+                    Year = year,
+                    Note = note,
+                    TotalEarning = Convert.ToDouble(totalEarning),
+                    TotalExpense = Convert.ToDouble(totalExpense)
+                };
 
                 if (expenseAmounts[0] != "")
                 {
@@ -296,11 +288,13 @@ namespace MyCost.Forms
                         string category = expenseCategories[i];
                         string comment = expenseComments[i];
 
-                        ExpenseInfo expense = new ExpenseInfo();
-                        expense.Reason = reason;
-                        expense.Amount = amount;
-                        expense.Category = category;
-                        expense.Comment = comment;
+                        ExpenseInfo expense = new ExpenseInfo
+                        {
+                            Reason = reason,
+                            Amount = amount,
+                            Category = category,
+                            Comment = comment
+                        };
                         daily.ExpenseList.Add(expense);
                     }
                 }
@@ -314,11 +308,13 @@ namespace MyCost.Forms
                         string category = earningCategories[i];
                         string comment = earningComments[i];
 
-                        EarningInfo earning = new EarningInfo();
-                        earning.Source = source;
-                        earning.Amount = amount;
-                        earning.Category = category;
-                        earning.Comment = comment;
+                        EarningInfo earning = new EarningInfo
+                        {
+                            Source = source,
+                            Amount = amount,
+                            Category = category,
+                            Comment = comment
+                        };
                         daily.EarningList.Add(earning);
                     }
                 }
@@ -340,17 +336,23 @@ namespace MyCost.Forms
             string[] earningCategories = result.Split('^')[0].Split('|');
             string[] expenseCategories = result.Split('^')[1].Split('|');
 
-            foreach(string cat in earningCategories)
+            foreach (string cat in earningCategories)
+            {
                 StaticStorage.EarningCategories.Add(cat);
+            }
 
             foreach (string cat in expenseCategories)
+            {
                 StaticStorage.ExpenseCategories.Add(cat);
+            }
         }
 
         private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)
         {
-            if(_quitAppOnFormClosing)
+            if (_quitAppOnFormClosing)
+            {
                 Application.Exit();
+            }
         }    
     }
 }

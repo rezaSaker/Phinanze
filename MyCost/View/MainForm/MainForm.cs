@@ -5,7 +5,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using MyCost.Common;
 
-namespace MyCost.Forms
+namespace MyCost.View
 {
     public partial class MainForm : Form
     {
@@ -22,7 +22,7 @@ namespace MyCost.Forms
             _quitAppOnFormClosing = true;
             _selectedYear = DateTime.Now.Year;
 
-            //monthList is used to convert months from numeric to text
+            //monthList is used to convert months from numeric to text, Ex: 1 -> january
             _monthList = new List<string>();
             _monthList.Add("January");
             _monthList.Add("February");
@@ -45,7 +45,9 @@ namespace MyCost.Forms
             MonthlyInfo.Fetch();
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
+            {
                 yearComboBox.Items.Add(year.ToString());
+            }
 
             yearComboBox.SelectedIndex = 0;
             versionLabel.Text = "Version: " + Application.ProductVersion;
@@ -53,10 +55,14 @@ namespace MyCost.Forms
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if(yearComboBox.SelectedItem.ToString() == "All years")
+            if (yearComboBox.SelectedItem.ToString() == "All years")
+            {
                 _selectedYear = 0;
+            }
             else
+            {
                 _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+            }
 
             PlotMonthlyInfo();
         }             
@@ -65,6 +71,7 @@ namespace MyCost.Forms
         {
             int year = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
             int month = _monthList.IndexOf(dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
+
             OpenNewForm(new MonthlyReportForm(month, year));           
         }
                           
@@ -87,15 +94,25 @@ namespace MyCost.Forms
             Button button = (Button)sender;
 
             if (button.Name == "addNewDataButton")
+            {
                 OpenNewForm(new AddNewDataForm());
+            }
             else if (button.Name == "monthlyReportButton")
+            {
                 OpenNewForm(new MonthlyReportForm());
+            }
             else if (button.Name == "statisticsButton")
+            {
                 OpenNewForm(new StatisticsForm());
+            }
             else if (button.Name == "settingsButton")
+            {
                 OpenNewForm(new SettingsForm());
+            }
             else if (button.Name == "logOutButton")
+            {
                 LogOut();
+            }
         }
 
 
@@ -137,12 +154,16 @@ namespace MyCost.Forms
                 }
                 rowIndex++;
             }
-            dataGridView.Rows[0].Selected = false;
+
+            if(dataGridView.Rows.Count > 0)
+            {
+                dataGridView.Rows[0].Cells[0].Selected = false;
+            }            
         }
 
         private void ShowOverview(MonthlyInfo monthly, int row)
         {
-            //add an overview to the last column according to the earning and expense
+            //add an overview for that month on the last column of dataGridView
             if (monthly.Earning < monthly.Expense)
             {
                 dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Red;
@@ -164,7 +185,6 @@ namespace MyCost.Forms
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
-            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;

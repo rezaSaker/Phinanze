@@ -5,9 +5,8 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Windows.Forms.DataVisualization.Charting;
 using MyCost.Common;
-using MyCost.ServerHandling;
 
-namespace MyCost.Forms
+namespace MyCost.View
 {
     public partial class StatisticsForm: Form
     {
@@ -43,9 +42,10 @@ namespace MyCost.Forms
             monthlyReportChart.Series["earning"].Color = Color.YellowGreen;
             monthlyReportChart.Series["expense"].Color = Color.OrangeRed;
 
-            for (int year = 2018; year <= _selectedYear+3; year++)
+            for (int year = 2018; year <= _selectedYear + 3; year++)
+            {
                 yearComboBox.Items.Add(year.ToString());
-
+            }
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
         }
 
@@ -67,6 +67,7 @@ namespace MyCost.Forms
             monthComboBox.Enabled = false;
             yearlyReportChart.Visible = true;
             monthlyReportChart.Visible = false;
+
             ShowReports();
         }
 
@@ -87,6 +88,7 @@ namespace MyCost.Forms
         {
             expenseRadioButton.Checked = false;
             bothEarningAndExpenseRadioButton.Checked = false;
+
             ShowReports();
         }
 
@@ -94,6 +96,7 @@ namespace MyCost.Forms
         {
             earningRadioButton.Checked = false;
             bothEarningAndExpenseRadioButton.Checked = false;
+
             ShowReports();
         }
 
@@ -103,18 +106,22 @@ namespace MyCost.Forms
             //that shows both earning and expense when checked
             earningRadioButton.Checked = false;
             expenseRadioButton.Checked = false;
+
             ShowReports();
         }
 
         private void GeneralReportRadioButtonClicked(object sender, EventArgs e)
         {
             categorywiseReportRadioButton.Checked = false;
+            bothEarningAndExpenseRadioButton.Enabled = true;
+            bothEarningAndExpenseRadioButton.Visible = true;
 
             if(monthlyRadioButton.Checked)
             {
                 yearlyReportChart.Visible = false;
                 monthlyReportChart.Visible = true;
             }
+
             ShowReports();
         }
 
@@ -123,8 +130,10 @@ namespace MyCost.Forms
             generalReportRadioButton.Checked = false;
             monthlyReportChart.Visible = false;
             yearlyReportChart.Visible = true;
-            earningRadioButton.Checked = bothEarningAndExpenseRadioButton.Checked ? true : false;
+            earningRadioButton.Checked = expenseRadioButton.Checked ? false : true;
             bothEarningAndExpenseRadioButton.Enabled = false;
+            bothEarningAndExpenseRadioButton.Visible = false;
+
             ShowReports();
         }
 
@@ -147,21 +156,33 @@ namespace MyCost.Forms
             Button button = (Button)sender;
 
             if (button.Name == "homeButton")
+            {
                 OpenNewForm(new MainForm());
+            }
             else if (button.Name == "addNewDataButton")
+            {
                 OpenNewForm(new AddNewDataForm());
+            }
             else if (button.Name == "monthlyReportButton")
+            {
                 OpenNewForm(new MonthlyReportForm());
+            }
             else if (button.Name == "settingsButton")
+            {
                 OpenNewForm(new SettingsForm());
+            }
             else if (button.Name == "logOutButton")
+            {
                 LogOut();
+            }
         }
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_quitAppOnFormClosing)
+            {
                 Application.Exit();
+            }
         }
         #endregion
 
@@ -170,13 +191,21 @@ namespace MyCost.Forms
         private void ShowReports()
         {
             if (generalReportRadioButton.Checked && yearlyRadioButton.Checked)
+            {
                 ShowGeneralYearlyReport();
+            }
             else if (generalReportRadioButton.Checked && monthlyRadioButton.Checked)
+            {
                 ShowGeneralMonthlyReport();
+            }
             else if (categorywiseReportRadioButton.Checked && yearlyRadioButton.Checked)
+            {
                 ShowCategorywiseYearlyReport();
+            }
             else if (categorywiseReportRadioButton.Checked && monthlyRadioButton.Checked)
+            {
                 ShowCategorywiseMonthlyReport();
+            }
         }
 
         private void ShowGeneralYearlyReport()
@@ -203,7 +232,7 @@ namespace MyCost.Forms
         private void ShowGeneralMonthlyReport()
         {
             List<DailyInfo> dailyInfo = StaticStorage.DailyInfoList.FindAll(
-                                            d => d.Month == _selectedMonth && d.Year == _selectedYear);
+                d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
             if(bothEarningAndExpenseRadioButton.Checked)
             {
@@ -232,8 +261,12 @@ namespace MyCost.Forms
                 dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
+                {
                     foreach (EarningInfo earning in daily.EarningList)
+                    {
                         dictCategorywiseEarning[earning.Category] += earning.Amount;
+                    }
+                }
                
                 PlotCategorywiseYearlyEarningDataOnChart(dictCategorywiseEarning);
             }
@@ -243,8 +276,12 @@ namespace MyCost.Forms
                 dictCategorywiseExpense = StaticStorage.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
+                {
                     foreach (ExpenseInfo expense in daily.ExpenseList)
+                    {
                         dictCategorywiseExpense[expense.Category] += expense.Amount;
+                    }
+                }
 
                 PlotCategorywiseYearlyExpenseDataOnChart(dictCategorywiseExpense);
             }
@@ -253,7 +290,7 @@ namespace MyCost.Forms
         private void ShowCategorywiseMonthlyReport()
         {
             List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
-                        d => d.Year == _selectedYear && d.Month == _selectedMonth);
+                d => d.Year == _selectedYear && d.Month == _selectedMonth);
 
             if (earningRadioButton.Checked)
             {
@@ -261,8 +298,12 @@ namespace MyCost.Forms
                 dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
+                {
                     foreach (EarningInfo earning in daily.EarningList)
+                    {
                         dictCategorywiseEarning[earning.Category] += earning.Amount;
+                    }
+                }
 
                 PlotCategorywiseMonthlyEarningDataOnChart(dictCategorywiseEarning);
             }
@@ -272,8 +313,12 @@ namespace MyCost.Forms
                 dictCategorywiseExpense = StaticStorage.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
+                {
                     foreach (ExpenseInfo expense in daily.ExpenseList)
+                    {
                         dictCategorywiseExpense[expense.Category] += expense.Amount;
+                    }
+                }
 
                 PlotCategorywiseMonthlyExpenseDataOnChart(dictCategorywiseExpense);
             }
@@ -286,17 +331,16 @@ namespace MyCost.Forms
             for (int mon = 1; mon <= 12; mon++)
             {
                 MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == mon);
+                DataPoint point = new DataPoint();
 
                 if (monthly != null)
-                {
-                    DataPoint point = new DataPoint();
+                {                    
                     point.SetValueXY(_monthNames[mon - 1], monthly.Earning); 
                     point.ToolTip = monthly.Earning.ToString();
                     yearlyReportChart.Series["earning"].Points.Add(point);
                 }
                 else
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(_monthNames[mon - 1], 0);
                     point.ToolTip = "0.00";
                     yearlyReportChart.Series["earning"].Points.Add(point);
@@ -311,17 +355,16 @@ namespace MyCost.Forms
             for (int mon = 1; mon <= 12; mon++)
             {
                 MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == mon);
+                DataPoint point = new DataPoint();
 
                 if (monthly != null)
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(_monthNames[mon - 1], monthly.Expense);
                     point.ToolTip = monthly.Expense.ToString();
                     yearlyReportChart.Series["expense"].Points.Add(point);
                 }
                 else
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(_monthNames[mon - 1], 0);
                     point.ToolTip = "0.00";
                     yearlyReportChart.Series["expense"].Points.Add(point);
@@ -338,17 +381,16 @@ namespace MyCost.Forms
             for(int day = 1; day <= numOfDays; day++)
             {
                 DailyInfo daily = dailyInfo.Find(d => d.Day == day);
+                DataPoint point = new DataPoint();
 
-                if(daily != null)
+                if (daily != null)
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(day, daily.TotalEarning);
                     point.ToolTip = daily.TotalEarning.ToString();
                     monthlyReportChart.Series["earning"].Points.Add(point);
                 }
                 else
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(day, 0);
                     point.ToolTip = "0.00";
                     monthlyReportChart.Series["earning"].Points.Add(point);
@@ -365,17 +407,16 @@ namespace MyCost.Forms
             for (int day = 1; day <= numOfDays; day++)
             {
                 DailyInfo daily = dailyInfo.Find(d => d.Day == day);
+                DataPoint point = new DataPoint();
 
                 if (daily != null)
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(day, daily.TotalExpense);
                     point.ToolTip = daily.TotalExpense.ToString();
                     monthlyReportChart.Series["expense"].Points.Add(point);
                 }
                 else
                 {
-                    DataPoint point = new DataPoint();
                     point.SetValueXY(day, 0);
                     point.ToolTip = "0.00";
                     monthlyReportChart.Series["expense"].Points.Add(point);
@@ -465,29 +506,36 @@ namespace MyCost.Forms
 
         private int GetNumberOfDays()
         {
-            int numberOfdays;
-
             //calculates the number of days according to month
             if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
-                numberOfdays = 29;
+            {
+                return 29;
+            }
             else if (_selectedMonth == 2 && !DateTime.IsLeapYear(_selectedYear))
-                numberOfdays = 28;
+            {
+                return 28;
+            }
             else if (_selectedMonth <= 7 && _selectedMonth % 2 == 1)
-                numberOfdays = 31;
+            {
+                return 31;
+            }
             else if (_selectedMonth <= 7 && _selectedMonth % 2 == 0)
-                numberOfdays = 30;
+            {
+                return 30;
+            }
             else if (_selectedMonth > 7 && _selectedMonth % 2 == 1)
-                numberOfdays = 30;
+            {
+               return 30;
+            }
             else
-                numberOfdays = 31;
-
-            return numberOfdays;
+            { 
+                return 31;
+            }
         }
 
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
-            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;

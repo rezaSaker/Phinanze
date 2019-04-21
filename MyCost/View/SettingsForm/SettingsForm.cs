@@ -5,7 +5,7 @@ using System.Diagnostics;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
-namespace MyCost.Forms
+namespace MyCost.View
 {
     public partial class SettingsForm : Form
     {
@@ -149,15 +149,25 @@ namespace MyCost.Forms
             Button button = (Button)sender;
 
             if (button.Name == "homeButton")
+            {
                 OpenNewForm(new MainForm());
+            }
             else if (button.Name == "monthlyReportButton")
+            {
                 OpenNewForm(new MonthlyReportForm());
+            }
             else if (button.Name == "statisticsButton")
+            {
                 OpenNewForm(new StatisticsForm());
+            }
             else if (button.Name == "addNewDataButton")
+            {
                 OpenNewForm(new AddNewDataForm());
+            }
             else if (button.Name == "logOutButton")
+            {
                 LogOut();
+            }
         }
 
         new private void HelpButtonClicked(object sender, EventArgs e)
@@ -207,7 +217,6 @@ namespace MyCost.Forms
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
-            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;

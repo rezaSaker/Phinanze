@@ -6,7 +6,7 @@ using System.Linq;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
-namespace MyCost.Forms
+namespace MyCost.View
 {
     public partial class AddNewDataForm : Form
     {
@@ -14,9 +14,8 @@ namespace MyCost.Forms
         private int _selectedMonth;
         private int _selectedYear;
 
-        private bool _firstCall;
         private bool _quitAppOnFormClosing;
-        private bool _isSaved;
+        private bool _hasUnsavedChanges;
 
         public AddNewDataForm()
         {
@@ -25,6 +24,8 @@ namespace MyCost.Forms
             _selectedDay = DateTime.Now.Day;
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
+            _quitAppOnFormClosing = true;
+            _hasUnsavedChanges = false;
         }
 
         public AddNewDataForm(int day, int month, int year)
@@ -34,25 +35,23 @@ namespace MyCost.Forms
             _selectedDay = day;
             _selectedMonth = month;
             _selectedYear = year;
+            _quitAppOnFormClosing = true;
+            _hasUnsavedChanges = false;
         }
 
         #region event_handler_methods
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            _isSaved = true;   //prevents attempt to save when closing the form
-            _quitAppOnFormClosing = true;   //prevents exiting the app on closing of this form          
-            _firstCall = true;  //disable call to AddItemsToDayComboBox() in YearComboBoxSelectedIndexChanged() method
-
             for (int i = 2018; i < _selectedYear + 3; i++)
+            {
                 yearComboBox.Items.Add(i.ToString());
-            
+            }
+
             monthComboBox.SelectedIndex = _selectedMonth - 1;
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
 
-            _firstCall = false; //enable call to AddItemsToDayComboBox() in YearComboBoxSelectedIndexChanged() method
-
-            //add an event handler method to each editable control on the form
+            //Add an event handler method to each editable control on the form
             //so that we can detect if there's any unsaved changes when closing the form
             foreach (Control control in this.Controls)
             {
@@ -68,6 +67,7 @@ namespace MyCost.Forms
                     ((DataGridView)control).CellEndEdit += ControlChanged;
                 }
             }
+
             saveButton.Enabled = false;
             saveButton.BackColor = Color.LightGray;
         }
@@ -87,15 +87,13 @@ namespace MyCost.Forms
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
             _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
-
-            //if _firstCall is true, then the items are already set to dayComboBox and no need to reset it
-            if (!_firstCall)
-                AddItemsToDayComboBox();      
+            AddItemsToDayComboBox();      
         }
 
         private void NoteTextBoxClicked(object sender, EventArgs e)
         {
-            //if the textBox only contains the placeholder and user hasn't yet entered any text
+            //if the textBox only contains the placeholder 
+            //and user hasn't yet entered any text
             if (noteTextBox.ForeColor == Color.Gray)
             {
                 noteTextBox.Text = "";
@@ -105,37 +103,63 @@ namespace MyCost.Forms
 
         private void ExpenseDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            //if the clicked column is category column
+            if(IslastEmptyRow(expenseDataGridView, e.RowIndex))
+            {
+                return;
+            }
+
+            //if it's category column
             if (e.ColumnIndex == 2)
-                OpenCategoryListForm(expenseDataGridView);
+            {
+                List<int> rowIndexList = new List<int>();
+                rowIndexList.Add(e.RowIndex);
+                CategoryListForm form = new CategoryListForm(expenseDataGridView, rowIndexList);
+                form.Show();
+            }
         }
 
         private void ExpenseDGVEditBegan(object sender, DataGridViewCellCancelEventArgs e)
         {
             //if it's amount column
             if (e.ColumnIndex == 1)
+            {
                 ResetAmountColumnColorToDeafault(expenseDataGridView, e.RowIndex);
+            }
         }
 
         private void ExpenseDGVEditEnded(object sender, DataGridViewCellEventArgs e)
         {
             //if an expense amount is entered
             if (e.ColumnIndex == 1)
+            {
                 UpdateTotalExpenseLabel();
+            }
         }
 
         private void EarningDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            //if the clicked column is category column
+            if (IslastEmptyRow(earningDataGridView, e.RowIndex))
+            {
+                return;
+            }
+
+            //if it's category column
             if (e.ColumnIndex == 2)
-                OpenCategoryListForm(earningDataGridView);
+            {
+                List<int> rowIndexList = new List<int>();
+                rowIndexList.Add(e.RowIndex);
+                CategoryListForm form = new CategoryListForm(earningDataGridView, rowIndexList);
+                form.Show();
+            }
         }
 
         private void EarningDGVEditBegan(object sender, DataGridViewCellCancelEventArgs e)
         {
             //if it's amount column
             if (e.ColumnIndex == 1)
+            {
                 ResetAmountColumnColorToDeafault(earningDataGridView, e.RowIndex);
+            }
         }
 
         private void EarningDGVEditEnded(object sender, DataGridViewCellEventArgs e)
@@ -150,7 +174,7 @@ namespace MyCost.Forms
         private void SaveButtonClicked(object sender, EventArgs e)
         {
             DailyInfo daily = new DailyInfo();
-            daily.Note = noteTextBox.Text;
+            daily.Note = noteTextBox.ForeColor == Color.Black ? noteTextBox.Text : "No note";
             daily.Day = Convert.ToUInt16(dayComboBox.SelectedItem.ToString());
             daily.Month = monthComboBox.Items.IndexOf(monthComboBox.SelectedItem.ToString()) + 1;
             daily.Year = Convert.ToUInt16(yearComboBox.SelectedItem.ToString());
@@ -165,14 +189,16 @@ namespace MyCost.Forms
 
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
-                if (IslastEmptyRow(expenseDataGridView, row.Index))                   
+                if (IslastEmptyRow(expenseDataGridView, row.Index))
+                {
                     break;
+                }
 
                 try
                 {
                     reason = expenseDataGridView.Rows[row.Index].Cells[0].Value.ToString();
                 }
-                catch (NullReferenceException)
+                catch
                 {
                     reason = "";
                 }
@@ -185,14 +211,18 @@ namespace MyCost.Forms
                 {
                     string message;
                     message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + ". Do you want to continue saving?";
+                    message += (row.Index + 1) + " In expense table. Do you want to continue saving?";
 
                     DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
                     if (dresult == DialogResult.Yes)
+                    {
                         amount = .0;
+                    }
                     else
+                    {
                         return;
+                    }
                 }
                 catch (FormatException)
                 {
@@ -209,7 +239,7 @@ namespace MyCost.Forms
                 {
                     category = expenseDataGridView.Rows[row.Index].Cells[2].Value.ToString();
                 }
-                catch (NullReferenceException)
+                catch
                 {
                     category = "Other";
                 }
@@ -218,29 +248,33 @@ namespace MyCost.Forms
                 {
                     comment = expenseDataGridView.Rows[row.Index].Cells[3].Value.ToString();
                 }
-                catch (NullReferenceException)
+                catch
                 {
                     comment = "";
                 }
 
-                ExpenseInfo expense = new ExpenseInfo();
-                expense.Reason = reason;
-                expense.Amount = amount;
-                expense.Category = category;
-                expense.Comment = comment;
+                ExpenseInfo expense = new ExpenseInfo
+                {
+                    Reason = reason,
+                    Amount = amount,
+                    Category = category,
+                    Comment = comment
+                };
                 daily.ExpenseList.Add(expense);
             }
 
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
                 if (IslastEmptyRow(earningDataGridView, row.Index))
+                {
                     break;
+                }
 
                 try
                 {
                     source = earningDataGridView.Rows[row.Index].Cells[0].Value.ToString();
                 }
-                catch (NullReferenceException)
+                catch
                 {
                     source = "";
                 }
@@ -257,9 +291,13 @@ namespace MyCost.Forms
                     DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
                     if (dresult == DialogResult.Yes)
+                    {
                         amount = .0;
+                    }
                     else
+                    {
                         return;
+                    }
                 }
                 catch (FormatException)
                 {
@@ -275,7 +313,7 @@ namespace MyCost.Forms
                 {
                     category = earningDataGridView.Rows[row.Index].Cells[2].Value.ToString();
                 }
-                catch (NullReferenceException)
+                catch
                 {
                     category = "Other";
                 }
@@ -284,35 +322,43 @@ namespace MyCost.Forms
                 {
                     comment = earningDataGridView.Rows[row.Index].Cells[3].Value.ToString();
                 }
-                catch (NullReferenceException)
+                catch
                 {
                     comment = "";
                 }
 
-                EarningInfo earning = new EarningInfo();
-                earning.Source = source;
-                earning.Amount = amount;
-                earning.Category = category;
-                earning.Comment = comment;
-                daily.EarningList.Add(earning);
+                EarningInfo earning = new EarningInfo
+                {
+                    Source = source,
+                    Amount = amount,
+                    Category = category,
+                    Comment = comment,
+                };
+                daily.EarningList.Add(earning); 
             }
 
             string result = ServerHandler.SaveDailyInfo(daily);
 
             if (result == "SUCCESS")
             {
-                //if any info on the same date already exists, update that info with this new info
+                //if any info on the same date already exists, overwrite that info 
                 //otherwise, add this info as new info
                 int index = StaticStorage.DailyInfoList.FindIndex(
                     d => d.Day == daily.Day && d.Month == daily.Month && d.Year == daily.Year);
 
                 if (index != -1)
+                {
                     StaticStorage.DailyInfoList[index] = daily;
+                }
                 else
+                {
                     StaticStorage.DailyInfoList.Add(daily);
+                }
 
-                //prevents attempt to save again while closing this form
-                _isSaved = true;
+                //monthly info should change accordingly since daily info has been modified
+                MonthlyInfo.Fetch();
+
+                _hasUnsavedChanges = false;
                 saveButton.Enabled = false;
                 saveButton.BackColor = Color.LightGray;
             }
@@ -327,9 +373,13 @@ namespace MyCost.Forms
         {
             //clicking on this button applies a particular category to all selected rows
             if (expenseDataGridView.SelectedRows.Count > 0)
+            {
                 OpenCategoryListForm(expenseDataGridView);
+            }
             else if (earningDataGridView.SelectedRows.Count > 0)
+            {
                 OpenCategoryListForm(earningDataGridView);
+            }
         }
 
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
@@ -351,15 +401,25 @@ namespace MyCost.Forms
             Button button = (Button)sender;
 
             if (button.Name == "homeButton")
+            {
                 OpenNewForm(new MainForm());
+            }
             else if (button.Name == "monthlyReportButton")
+            {
                 OpenNewForm(new MonthlyReportForm());
+            }
             else if (button.Name == "statisticsButton")
+            {
                 OpenNewForm(new StatisticsForm());
+            }
             else if (button.Name == "settingsButton")
+            {
                 OpenNewForm(new SettingsForm());
+            }
             else if (button.Name == "logOutButton")
+            {
                 LogOut();
+            }
         }
 
         private void ControlChanged(object sender, EventArgs e)
@@ -367,19 +427,24 @@ namespace MyCost.Forms
             //this method is triggered when any editable control on this form is edited
             saveButton.Enabled = true;
             saveButton.BackColor = Color.RoyalBlue;
-            _isSaved = false;
+            _hasUnsavedChanges = true;
         }    
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             CloseOpenedCategoryForm();
 
-            if (!_isSaved)
+            if (_hasUnsavedChanges)
+            {
                 saveButton.PerformClick();
+            }
 
             if (_quitAppOnFormClosing)
+            {
                 Application.Exit();
+            }
         }
+
         #endregion
 
         #region non_event_handler_methods
@@ -392,21 +457,35 @@ namespace MyCost.Forms
 
             //set the number of days according to month
             if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
+            {
                 numberOfdays = 29;
+            }
             else if (_selectedMonth == 2 && !DateTime.IsLeapYear(_selectedYear))
+            {
                 numberOfdays = 28;
+            }
             else if (_selectedMonth <= 7 && _selectedMonth % 2 == 1)
+            {
                 numberOfdays = 31;
+            }
             else if (_selectedMonth <= 7 && _selectedMonth % 2 == 0)
+            {
                 numberOfdays = 30;
+            }
             else if (_selectedMonth > 7 && _selectedMonth % 2 == 1)
+            {
                 numberOfdays = 30;
+            }
             else
+            {
                 numberOfdays = 31;
+            }
 
             //set the days as items to dayComboBox
             for (int day = 1; day <= numberOfdays; day++)
+            {
                 dayComboBox.Items.Add(day.ToString());
+            }
 
             try
             {
@@ -433,22 +512,27 @@ namespace MyCost.Forms
 
             //plot info for new selected date
             DailyInfo daily = StaticStorage.DailyInfoList.Find(
-                d => d.Day == _selectedDay && d.Month == _selectedMonth && d.Year == _selectedYear);
+                                    d => d.Day == _selectedDay 
+                                    && d.Month == _selectedMonth 
+                                    && d.Year == _selectedYear);
 
             if (daily != null)
             {
-                //plot common info
                 noteTextBox.Text = daily.Note;
                 noteTextBox.ForeColor = Color.Black;
 
-                //plot expense info
                 foreach (ExpenseInfo expense in daily.ExpenseList)
+                {
                     expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
+                }               
 
-                //plot earning info
                 foreach (EarningInfo earning in daily.EarningList)
+                {
                     earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
-            }           
+                }
+            }
+            expenseDataGridView.Rows[0].Cells[0].Selected = false;
+
             UpdateTotalExpenseLabel();
             UpdateTotalEarningLabel();
         }
@@ -462,7 +546,9 @@ namespace MyCost.Forms
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
                 if (IslastEmptyRow(expenseDataGridView, row.Index))
+                {
                     break;
+                }
 
                 try
                 {
@@ -494,7 +580,9 @@ namespace MyCost.Forms
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
                 if (IslastEmptyRow(earningDataGridView, row.Index))
+                {
                     break;
+                }
 
                 try
                 {
@@ -536,19 +624,21 @@ namespace MyCost.Forms
 
         private void OpenCategoryListForm(DataGridView dgv)
         {
-            CloseOpenedCategoryForm();  //prevents opening multiple category form at a time
+            CloseOpenedCategoryForm();
 
-            List<int> rowIndexeList = new List<int>();
+            List<int> rowIndexList = new List<int>();
 
             foreach (DataGridViewRow row in dgv.SelectedRows)
             {
                 if (IslastEmptyRow(dgv, row.Index))
+                {
                     break;
+                }
 
-                rowIndexeList.Add(row.Index);
+                rowIndexList.Add(row.Index);
             }
 
-            CategoryListForm form = new CategoryListForm(dgv, rowIndexeList);
+            CategoryListForm form = new CategoryListForm(dgv, rowIndexList);
             form.Show();
         }           
         
@@ -557,21 +647,26 @@ namespace MyCost.Forms
             Form openForm = Application.OpenForms["CategoryListForm"];
 
             if (openForm != null)
+            {
                 openForm.Close();
+            }
         }
 
         private bool IslastEmptyRow(DataGridView dgv, int rowindex)
         {
             if (rowindex == dgv.Rows.Count - 1)
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
-            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;
@@ -591,6 +686,7 @@ namespace MyCost.Forms
             _quitAppOnFormClosing = false;
             this.Close();
         }
+
         #endregion            
     }
 }

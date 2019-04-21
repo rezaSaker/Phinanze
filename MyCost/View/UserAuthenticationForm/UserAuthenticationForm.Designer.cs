@@ -1,4 +1,4 @@
-﻿namespace MyCost.Forms
+﻿namespace MyCost.View
 {
     partial class UserAuthenticationForm
     {
