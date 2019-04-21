@@ -52,6 +52,8 @@
             this.addNewDataButton = new System.Windows.Forms.Button();
             this.homeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,9 +237,9 @@
             this.reportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.reportIssueButton.Location = new System.Drawing.Point(496, 422);
+            this.reportIssueButton.Location = new System.Drawing.Point(164, 431);
             this.reportIssueButton.Name = "reportIssueButton";
-            this.reportIssueButton.Size = new System.Drawing.Size(141, 31);
+            this.reportIssueButton.Size = new System.Drawing.Size(153, 31);
             this.reportIssueButton.TabIndex = 64;
             this.reportIssueButton.Text = "Report Issues";
             this.reportIssueButton.UseVisualStyleBackColor = false;
@@ -251,9 +253,9 @@
             this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.helpButton.Location = new System.Drawing.Point(344, 422);
+            this.helpButton.Location = new System.Drawing.Point(12, 431);
             this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(133, 31);
+            this.helpButton.Size = new System.Drawing.Size(146, 31);
             this.helpButton.TabIndex = 65;
             this.helpButton.Text = "Help";
             this.helpButton.UseVisualStyleBackColor = false;
@@ -267,9 +269,9 @@
             this.viewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.viewSourceButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewSourceButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.viewSourceButton.Location = new System.Drawing.Point(654, 422);
+            this.viewSourceButton.Location = new System.Drawing.Point(323, 431);
             this.viewSourceButton.Name = "viewSourceButton";
-            this.viewSourceButton.Size = new System.Drawing.Size(131, 31);
+            this.viewSourceButton.Size = new System.Drawing.Size(148, 31);
             this.viewSourceButton.TabIndex = 66;
             this.viewSourceButton.Text = "View Source";
             this.viewSourceButton.UseVisualStyleBackColor = false;
@@ -383,8 +385,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.submitPasswordButton);
@@ -403,12 +405,44 @@
             this.panel1.Size = new System.Drawing.Size(783, 312);
             this.panel1.TabIndex = 74;
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.button1.Location = new System.Drawing.Point(477, 431);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 31);
+            this.button1.TabIndex = 75;
+            this.button1.Text = "View Source";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.button2.Location = new System.Drawing.Point(632, 431);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(156, 31);
+            this.button2.TabIndex = 76;
+            this.button2.Text = "View Source";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.settingsButton);
@@ -459,5 +493,7 @@
         private System.Windows.Forms.Button addNewDataButton;
         private System.Windows.Forms.Button homeButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

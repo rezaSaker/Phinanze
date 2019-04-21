@@ -30,14 +30,14 @@ namespace MyCost.ServerHandling
             }
         }
 
-        public static string RegisterNewUser(string access_key, string username, string password)
+        public static string RegisterNewUser(string username, string password)
         {
             WebClient www = new WebClient();
 
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", access_key);
+            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("username", username);
             queryData.Add("password", password);
 

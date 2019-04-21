@@ -27,8 +27,10 @@ namespace MyCost.View
         private void ThisFormShown(object sender, EventArgs e)
         {
             //if user had his rememberme checkbox checked
-            if (Properties.Settings.Default.Username != ""
-                && Properties.Settings.Default.Password != "")
+            string username = Properties.Settings.Default.Username;
+            string password = Properties.Settings.Default.Password;
+     
+            if (username != ""  && password != "")
             {
                 usernameTextBox.Text = Properties.Settings.Default.Username;
                 passwordTextBox.Text = Properties.Settings.Default.Password;
@@ -164,14 +166,7 @@ namespace MyCost.View
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
                 StaticStorage.Username = usernameTextBox.Text;
-
-                if (rememberMeCheckBox.Checked)
-                {
-                    Properties.Settings.Default.Username = usernameTextBox.Text;
-                    Properties.Settings.Default.Password = passwordTextBox.Text;
-                    Properties.Settings.Default.Save();
-                }
-
+               
                 ActionUponLoginSuccess();
             }
             else
@@ -203,25 +198,14 @@ namespace MyCost.View
                 return;
             }
 
-            string access_key = Properties.Settings.Default.AccessKey;
-
-            string result = ServerHandler.RegisterNewUser(access_key, username, password);
+            string result = ServerHandler.RegisterNewUser(username, password);
             string[] data = result.Split('|');
 
             //if the register succeeds, 
             //user's id and a temporary access token are retured
             //otherwise, the error info is returned
             if (int.TryParse(data[0], out int userId))
-            {
-                Properties.Settings.Default.AccessKey = access_key;
-
-                if (rememberMeCheckBox.Checked)
-                {
-                    Properties.Settings.Default.Username = usernameTextBox.Text;
-                    Properties.Settings.Default.Password = passwordTextBox.Text;
-                }
-                Properties.Settings.Default.Save();
-
+            {            
                 StaticStorage.UserID = userId;
                 StaticStorage.AccessToken = data[1];
                 StaticStorage.Username = usernameTextBox.Text;
@@ -236,6 +220,13 @@ namespace MyCost.View
 
         private void ActionUponLoginSuccess()
         {
+            if (rememberMeCheckBox.Checked)
+            {
+                Properties.Settings.Default.Username = usernameTextBox.Text;
+                Properties.Settings.Default.Password = passwordTextBox.Text;
+                Properties.Settings.Default.Save();
+            }
+
             //get all data for this user from database
             //and store them in StaticStorage class
             FetchDailyInfo();

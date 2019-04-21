@@ -120,7 +120,9 @@ namespace MyCost.View
             }
             else if (button.Name == "logOutButton")
             {
-                LogOut();
+                StaticStorage.LogOutUser();
+                _quitAppOnFormClosing = false;
+                this.Close();
             }
         }
 
@@ -247,20 +249,6 @@ namespace MyCost.View
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
-        }
-
-        private void LogOut()
-        {
-            //reset auto login properties
-            Properties.Settings.Default.Username = "";
-            Properties.Settings.Default.Password = "";
-            Properties.Settings.Default.Save();
-
-            UserAuthenticationForm form = new UserAuthenticationForm();
             form.Show();
 
             _quitAppOnFormClosing = false;
