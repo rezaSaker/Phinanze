@@ -37,8 +37,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatisticsForm));
             this.logOutButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.yearlyStatisticsButton = new System.Windows.Forms.Button();
-            this.dailyReportButton = new System.Windows.Forms.Button();
+            this.statisticsButton = new System.Windows.Forms.Button();
+            this.monthlyReportButton = new System.Windows.Forms.Button();
             this.addNewDataButton = new System.Windows.Forms.Button();
             this.homeButton = new System.Windows.Forms.Button();
             this.yearlyReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -68,8 +68,8 @@
             // 
             // logOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.logOutButton.BackColor = System.Drawing.Color.White;
             this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -89,8 +89,8 @@
             // 
             // settingsButton
             // 
-            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.settingsButton.BackColor = System.Drawing.Color.White;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -108,49 +108,49 @@
             this.settingsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
             this.settingsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // yearlyStatisticsButton
+            // statisticsButton
             // 
-            this.yearlyStatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.statisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearlyStatisticsButton.BackColor = System.Drawing.Color.ForestGreen;
-            this.yearlyStatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.yearlyStatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.yearlyStatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.yearlyStatisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yearlyStatisticsButton.ForeColor = System.Drawing.Color.White;
-            this.yearlyStatisticsButton.Location = new System.Drawing.Point(408, 12);
-            this.yearlyStatisticsButton.Name = "yearlyStatisticsButton";
-            this.yearlyStatisticsButton.Size = new System.Drawing.Size(123, 38);
-            this.yearlyStatisticsButton.TabIndex = 50;
-            this.yearlyStatisticsButton.Text = "Statistics";
-            this.yearlyStatisticsButton.UseVisualStyleBackColor = false;
+            this.statisticsButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.statisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.statisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.statisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.statisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statisticsButton.ForeColor = System.Drawing.Color.White;
+            this.statisticsButton.Location = new System.Drawing.Point(408, 12);
+            this.statisticsButton.Name = "statisticsButton";
+            this.statisticsButton.Size = new System.Drawing.Size(123, 38);
+            this.statisticsButton.TabIndex = 50;
+            this.statisticsButton.Text = "Statistics";
+            this.statisticsButton.UseVisualStyleBackColor = false;
             // 
-            // dailyReportButton
+            // monthlyReportButton
             // 
-            this.dailyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.monthlyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dailyReportButton.BackColor = System.Drawing.Color.White;
-            this.dailyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dailyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.dailyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.dailyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dailyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.dailyReportButton.Location = new System.Drawing.Point(279, 12);
-            this.dailyReportButton.Name = "dailyReportButton";
-            this.dailyReportButton.Size = new System.Drawing.Size(123, 38);
-            this.dailyReportButton.TabIndex = 49;
-            this.dailyReportButton.Text = "Daily Report";
-            this.dailyReportButton.UseVisualStyleBackColor = false;
-            this.dailyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.dailyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.dailyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.monthlyReportButton.BackColor = System.Drawing.Color.White;
+            this.monthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.monthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.monthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.monthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.monthlyReportButton.Location = new System.Drawing.Point(265, 12);
+            this.monthlyReportButton.Name = "monthlyReportButton";
+            this.monthlyReportButton.Size = new System.Drawing.Size(137, 38);
+            this.monthlyReportButton.TabIndex = 49;
+            this.monthlyReportButton.Text = "Monthly Report";
+            this.monthlyReportButton.UseVisualStyleBackColor = false;
+            this.monthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.monthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.monthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // addNewDataButton
             // 
-            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewDataButton.BackColor = System.Drawing.Color.White;
             this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -158,7 +158,7 @@
             this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.Location = new System.Drawing.Point(150, 12);
+            this.addNewDataButton.Location = new System.Drawing.Point(136, 12);
             this.addNewDataButton.Name = "addNewDataButton";
             this.addNewDataButton.Size = new System.Drawing.Size(123, 38);
             this.addNewDataButton.TabIndex = 48;
@@ -170,8 +170,8 @@
             // 
             // homeButton
             // 
-            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.homeButton.BackColor = System.Drawing.Color.White;
             this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -181,7 +181,7 @@
             this.homeButton.ForeColor = System.Drawing.Color.ForestGreen;
             this.homeButton.Location = new System.Drawing.Point(12, 12);
             this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(132, 38);
+            this.homeButton.Size = new System.Drawing.Size(118, 38);
             this.homeButton.TabIndex = 47;
             this.homeButton.Text = "Home";
             this.homeButton.UseVisualStyleBackColor = false;
@@ -191,8 +191,8 @@
             // 
             // yearlyReportChart
             // 
-            this.yearlyReportChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.yearlyReportChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.yearlyReportChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
             chartArea1.AxisX.MajorGrid.Enabled = false;
@@ -447,7 +447,7 @@
             this.label2.TabIndex = 70;
             this.label2.Text = "Expense";
             // 
-            // YearlyStatisticsForm
+            // StatisticsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -464,14 +464,14 @@
             this.Controls.Add(this.yearlyReportChart);
             this.Controls.Add(this.logOutButton);
             this.Controls.Add(this.settingsButton);
-            this.Controls.Add(this.yearlyStatisticsButton);
-            this.Controls.Add(this.dailyReportButton);
+            this.Controls.Add(this.statisticsButton);
+            this.Controls.Add(this.monthlyReportButton);
             this.Controls.Add(this.addNewDataButton);
             this.Controls.Add(this.homeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "YearlyStatisticsForm";
+            this.Name = "StatisticsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MyCost - Earning and Expense Statistics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
@@ -493,8 +493,8 @@
 
         private System.Windows.Forms.Button logOutButton;
         private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button yearlyStatisticsButton;
-        private System.Windows.Forms.Button dailyReportButton;
+        private System.Windows.Forms.Button statisticsButton;
+        private System.Windows.Forms.Button monthlyReportButton;
         private System.Windows.Forms.Button addNewDataButton;
         private System.Windows.Forms.Button homeButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart yearlyReportChart;

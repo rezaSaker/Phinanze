@@ -150,11 +150,11 @@ namespace MyCost.Forms
 
             if (button.Name == "homeButton")
                 OpenNewForm(new MainForm());
-            else if (button.Name == "dailyReportButton")
-                OpenNewForm(new MonthlyInfoForm());
-            else if (button.Name == "yearlyStatisticsButton")
+            else if (button.Name == "monthlyReportButton")
+                OpenNewForm(new MonthlyReportForm());
+            else if (button.Name == "statisticsButton")
                 OpenNewForm(new StatisticsForm());
-            else if (button.Name == "addnewDataButton")
+            else if (button.Name == "addNewDataButton")
                 OpenNewForm(new AddNewDataForm());
             else if (button.Name == "logOutButton")
                 LogOut();

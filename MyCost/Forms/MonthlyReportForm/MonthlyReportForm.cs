@@ -7,7 +7,7 @@ using MyCost.ServerHandling;
 
 namespace MyCost.Forms
 {
-    public partial class MonthlyInfoForm : Form
+    public partial class MonthlyReportForm : Form
     {
         private int _selectedMonth;
         private int _selectedYear;
@@ -17,7 +17,7 @@ namespace MyCost.Forms
 
         private List<string> _monthList;
 
-        public MonthlyInfoForm()
+        public MonthlyReportForm()
         {
             InitializeComponent();
 
@@ -25,7 +25,7 @@ namespace MyCost.Forms
             _selectedYear = DateTime.Now.Year;
         }
 
-        public MonthlyInfoForm(int month, int year)
+        public MonthlyReportForm(int month, int year)
         {
             InitializeComponent();
 
@@ -107,7 +107,7 @@ namespace MyCost.Forms
                 OpenNewForm(new MainForm());
             else if (button.Name == "addNewDataButton")
                 OpenNewForm(new AddNewDataForm());
-            else if (button.Name == "yearlyStatisticsButton")
+            else if (button.Name == "statisticsButton")
                 OpenNewForm(new StatisticsForm());
             else if (button.Name == "settingsButton")
                 OpenNewForm(new SettingsForm());

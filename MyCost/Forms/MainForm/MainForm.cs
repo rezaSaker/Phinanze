@@ -65,7 +65,7 @@ namespace MyCost.Forms
         {
             int year = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
             int month = _monthList.IndexOf(dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
-            OpenNewForm(new MonthlyInfoForm(month, year));           
+            OpenNewForm(new MonthlyReportForm(month, year));           
         }
                           
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
@@ -88,9 +88,9 @@ namespace MyCost.Forms
 
             if (button.Name == "addNewDataButton")
                 OpenNewForm(new AddNewDataForm());
-            else if (button.Name == "dailyReportButton")
-                OpenNewForm(new MonthlyInfoForm());
-            else if (button.Name == "yearlyStatisticsButton")
+            else if (button.Name == "monthlyReportButton")
+                OpenNewForm(new MonthlyReportForm());
+            else if (button.Name == "statisticsButton")
                 OpenNewForm(new StatisticsForm());
             else if (button.Name == "settingsButton")
                 OpenNewForm(new SettingsForm());
