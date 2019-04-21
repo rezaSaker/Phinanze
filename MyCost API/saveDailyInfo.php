@@ -13,13 +13,12 @@ if(isset($_POST['token']) && isset($_POST['key']) && isset($_POST['userid']))
 	$key = mysqli_real_escape_string($connect, $_POST['key']);
 	$userid = mysqli_real_escape_string($connect, $_POST['userid']);
 
-	//verify request
-	$query = "SELECT id FROM users WHERE token = '$token' AND access_key = '$key'";
+	//verify the request
+	$query = "SELECT * FROM users WHERE token = '$token' AND access_key = '$key' AND id = '$userid'";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
-	$row = mysqli_fetch_array($result);
-	$id = $row['id'];
+	$count = mysqli_num_rows($result);
 	
-	if($id == $userid)//request verified as authentic
+	if($count > 0)//request verified as authentic
 	{
 		$note = mysqli_real_escape_string($connect, $_POST['note']);
 		$day = mysqli_real_escape_string($connect, $_POST['day']);
@@ -52,7 +51,6 @@ if(isset($_POST['token']) && isset($_POST['key']) && isset($_POST['userid']))
 			$row = mysqli_fetch_array($result);
 			$id = $row['id'];
 			
-			//update existing row
 			$query = "UPDATE daily_info SET note = '$note', expenseReasons = '$expenseReasons',
 						expenseAmounts = '$expenseAmounts', expenseCategories = '$expenseCategories',
 						expenseComments = '$expenseComments', earningSources = '$earningSources',
@@ -65,7 +63,6 @@ if(isset($_POST['token']) && isset($_POST['key']) && isset($_POST['userid']))
 		}
 		else
 		{
-			//inserts new row
 			$query = "INSERT INTO daily_info (note, day, month, year, expenseReasons, expenseAmounts, 
 					  expenseCategories, expenseComments, earningSources, earningAmounts, earningCategories,
 					  earningComments, userid, totalExpense, totalEarning) VALUES ('$note', '$day', '$month',

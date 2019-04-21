@@ -13,24 +13,24 @@ if(isset($_POST['key']))
 	$access_key = mysqli_real_escape_string($connect, $_POST['key']);
 	
 	//verify request
-	$query  = "SELECT * FROM users WHERE access_key = '$access_key'";
-	$result = mysqli_query($connect, $query) or die('SERVER_ERROR');
-	$count  = mysqli_num_rows($result);
+	$query = "SELECT * FROM users WHERE access_key = '$access_key'";
+	$result = mysqli_query($connect, $query) or die('Server connection error');
+	$count = mysqli_num_rows($result);
 	
 	if($count > 0)//request verified as authentic
 	{
 		$username = $_POST['username'];
 		$password = $_POST['password'];
 		
-		//Important note: using mysqli_real_escape_string won't change anything...
-		//..in the string 'username' if the username is correct...
-		//...because when registering the user, we check the username with mysqli_real_escape_string...
-		//...and if we found anything risky we require user to enter a different username	
+		//Important note: using mysqli_real_escape_string won't change anything
+		//in the string 'username' if the username is correct
+		//because when registering the user, we check the username with mysqli_real_escape_string
+		//and if we found anything risky we require user to enter a different username	
 		$username = mysqli_real_escape_string($connect, $username);
 		$password = md5(base64_encode($password));
 			
 		//verify user's login credentials
-		$query  = "SELECT id FROM users WHERE access_key = '$access_key' AND username = '$username' AND password = '$password' AND access_key = '$access_key'";
+		$query  = "SELECT id FROM users WHERE access_key = '$access_key' AND username = '$username' AND password = '$password'";
 		$result = mysqli_query($connect, $query) or die('Server connection error');;		
 		$count  = mysqli_num_rows($result);
 
@@ -39,8 +39,8 @@ if(isset($_POST['key']))
 			$row    = mysqli_fetch_array($result);
 			$userid = $row['id'];
 			
-			//for security enhancement we generate a random string...
-			//...which is passed to our app as server access token
+			//for security enhancement we generate a random string
+			//which is passed to our app as server access token
 			$token  = RandomToken(100);
 			
 			//save the token into DB
