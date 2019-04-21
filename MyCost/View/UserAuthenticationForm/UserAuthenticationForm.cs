@@ -17,12 +17,14 @@ namespace MyCost.View
             _quitAppOnFormClosing = true;
         }
 
-        private void UserAuthenticationFormLoading(object sender, EventArgs e)
+        #region event_handler_methods
+
+        private void ThisFormLoading(object sender, EventArgs e)
         {
             DisplayLoginPanel();
         }
 
-        private void UserAuthenticationFormShown(object sender, EventArgs e)
+        private void ThisFormShown(object sender, EventArgs e)
         {
             //if user had his rememberme checkbox checked
             if (Properties.Settings.Default.Username != ""
@@ -79,10 +81,25 @@ namespace MyCost.View
         private void SubmitButtonClicked(object sender, EventArgs e)
         {
             if (submitButton.Text == "Log in")
+            {
                 LoginUser();
+            }
             else
+            {
                 RegisterUser();
+            }
+        }                    
+
+        private void ThisFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_quitAppOnFormClosing)
+            {
+                Application.Exit();
+            }
         }
+        #endregion
+
+        #region non_event_handler_methods
 
         private void DisplayLoginPanel()
         {
@@ -139,12 +156,10 @@ namespace MyCost.View
             string result = ServerHandler.AuthenticateUser(username, password);
             string[] data = result.Split('|');
 
-            int userId;
-
             //if the login succeeds, 
             //user's id and a temporary access token are returned
             //otherwise, the error message is returned
-            if (int.TryParse(data[0], out userId))
+            if (int.TryParse(data[0], out int userId))
             {
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
@@ -167,7 +182,7 @@ namespace MyCost.View
         }
 
         private void RegisterUser()
-        {            
+        {
             string username = usernameTextBox.Text;
             string password = this.passwordTextBox.Text;
             string confirmPassword = confirmPasswordTextBox.Text;
@@ -189,16 +204,14 @@ namespace MyCost.View
             }
 
             string access_key = Properties.Settings.Default.AccessKey;
-            
+
             string result = ServerHandler.RegisterNewUser(access_key, username, password);
             string[] data = result.Split('|');
-
-            int userId;
 
             //if the register succeeds, 
             //user's id and a temporary access token are retured
             //otherwise, the error info is returned
-            if (int.TryParse(data[0], out userId))
+            if (int.TryParse(data[0], out int userId))
             {
                 Properties.Settings.Default.AccessKey = access_key;
 
@@ -234,7 +247,7 @@ namespace MyCost.View
 
             _quitAppOnFormClosing = false;
             this.Close();
-        }    
+        }
 
         private void FetchDailyInfo()
         {
@@ -323,7 +336,7 @@ namespace MyCost.View
         }
 
         private void FetchCategories()
-        {         
+        {
             //get all categories made by user from the database
             string result = ServerHandler.RetrieveCategories();
 
@@ -346,13 +359,6 @@ namespace MyCost.View
                 StaticStorage.ExpenseCategories.Add(cat);
             }
         }
-
-        private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (_quitAppOnFormClosing)
-            {
-                Application.Exit();
-            }
-        }    
+        #endregion
     }
 }
