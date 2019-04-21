@@ -165,8 +165,7 @@ namespace MyCost.Forms
 
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
-                //if it is the last row, break the loop because last row is empty
-                if (row.Index == expenseDataGridView.Rows.Count - 1)                   
+                if (IslastEmptyRow(expenseDataGridView, row.Index))                   
                     break;
 
                 try
@@ -234,8 +233,7 @@ namespace MyCost.Forms
 
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
-                //if it is the last row, break the loop because last row is empty
-                if (row.Index == earningDataGridView.Rows.Count - 1)
+                if (IslastEmptyRow(earningDataGridView, row.Index))
                     break;
 
                 try
@@ -312,9 +310,6 @@ namespace MyCost.Forms
                     StaticStorage.DailyInfoList[index] = daily;
                 else
                     StaticStorage.DailyInfoList.Add(daily);
-                               
-                //monthly info needs to be updated according to daily info
-                StaticStorage.FetchMonthlyInfo();
 
                 //prevents attempt to save again while closing this form
                 _isSaved = true;
@@ -358,9 +353,9 @@ namespace MyCost.Forms
             if (button.Name == "homeButton")
                 OpenNewForm(new MainForm());
             else if (button.Name == "dailyReportButton")
-                OpenNewForm(new DailyReportForm());
+                OpenNewForm(new MonthlyInfoForm());
             else if (button.Name == "yearlyStatisticsButton")
-                OpenNewForm(new YearlyStatisticsForm());
+                OpenNewForm(new StatisticsForm());
             else if (button.Name == "settingsButton")
                 OpenNewForm(new SettingsForm());
             else if (button.Name == "logOutButton")
@@ -466,8 +461,7 @@ namespace MyCost.Forms
             //go through each row in expense datagridView and add up the amounts
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
-                //if it's the last row, break the loop because last row is empty
-                if (row.Index == expenseDataGridView.Rows.Count - 1)
+                if (IslastEmptyRow(expenseDataGridView, row.Index))
                     break;
 
                 try
@@ -499,8 +493,7 @@ namespace MyCost.Forms
             //go through each row in expense datagridView and add up the amounts
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
-                //if it's the last row, break the loop because last row is empty
-                if (row.Index == expenseDataGridView.Rows.Count - 1)
+                if (IslastEmptyRow(earningDataGridView, row.Index))
                     break;
 
                 try
@@ -549,8 +542,7 @@ namespace MyCost.Forms
 
             foreach (DataGridViewRow row in dgv.SelectedRows)
             {
-                //if it's the last row, break the loop because last row is empty
-                if (row.Index == dgv.Rows.Count - 1)
+                if (IslastEmptyRow(dgv, row.Index))
                     break;
 
                 rowIndexeList.Add(row.Index);
@@ -558,14 +550,22 @@ namespace MyCost.Forms
 
             CategoryListForm form = new CategoryListForm(dgv, rowIndexeList);
             form.Show();
-        }    
-
+        }           
+        
         private void CloseOpenedCategoryForm()
         {
             Form openForm = Application.OpenForms["CategoryListForm"];
 
             if (openForm != null)
                 openForm.Close();
+        }
+
+        private bool IslastEmptyRow(DataGridView dgv, int rowindex)
+        {
+            if (rowindex == dgv.Rows.Count - 1)
+                return true;
+            else
+                return false;
         }
 
         private void OpenNewForm(Form form)

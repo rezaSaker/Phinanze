@@ -80,11 +80,11 @@
     <Compile Include="Forms\SettingsForm\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\YearlyStatisticsForm\YearlyStatisticsForm.cs">
+    <Compile Include="Forms\StatisticsForm\StatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\YearlyStatisticsForm\YearlyStatisticsForm.Designer.cs">
-      <DependentUpon>YearlyStatisticsForm.cs</DependentUpon>
+    <Compile Include="Forms\StatisticsForm\StatisticsForm.Designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserAuthenticationForm\UserAuthenticationForm.cs">
       <SubType>Form</SubType>
@@ -93,10 +93,10 @@
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\MonthlyInfo.cs" />
-    <Compile Include="Forms\DailyReportForm\MonthlyInfoForm.cs">
+    <Compile Include="Forms\MonthlyInfoForm\MonthlyInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DailyReportForm\MonthlyInfoForm.Designer.cs">
+    <Compile Include="Forms\MonthlyInfoForm\MonthlyInfoForm.Designer.cs">
       <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -118,13 +118,13 @@
     <EmbeddedResource Include="Forms\SettingsForm\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\YearlyStatisticsForm\YearlyStatisticsForm.resx">
-      <DependentUpon>YearlyStatisticsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\StatisticsForm\StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserAuthenticationForm\UserAuthenticationForm.resx">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DailyReportForm\MonthlyInfoForm.resx">
+    <EmbeddedResource Include="Forms\MonthlyInfoForm\MonthlyInfoForm.resx">
       <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

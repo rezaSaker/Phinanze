@@ -41,27 +41,22 @@ namespace MyCost.Forms
         #region event_handler_methods
 
         private void ThisFormLoading(object sender, EventArgs e)
-        {
-            versionLabel.Text = "Version: " + Application.ProductVersion;
+        {             
+            MonthlyInfo.Fetch();
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
-            {
                 yearComboBox.Items.Add(year.ToString());
-            }
 
             yearComboBox.SelectedIndex = 0;
+            versionLabel.Text = "Version: " + Application.ProductVersion;
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
             if(yearComboBox.SelectedItem.ToString() == "All years")
-            {
                 _selectedYear = 0;
-            }
             else
-            {
                 _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
-            }
 
             PlotMonthlyInfo();
         }             
@@ -70,13 +65,7 @@ namespace MyCost.Forms
         {
             int year = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
             int month = _monthList.IndexOf(dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
-
-            DailyReportForm form = new DailyReportForm(month, year);
-            form.Location = this.Location;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
+            OpenNewForm(new MonthlyInfoForm(month, year));           
         }
                           
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
@@ -100,9 +89,9 @@ namespace MyCost.Forms
             if (button.Name == "addNewDataButton")
                 OpenNewForm(new AddNewDataForm());
             else if (button.Name == "dailyReportButton")
-                OpenNewForm(new DailyReportForm());
+                OpenNewForm(new MonthlyInfoForm());
             else if (button.Name == "yearlyStatisticsButton")
-                OpenNewForm(new YearlyStatisticsForm());
+                OpenNewForm(new StatisticsForm());
             else if (button.Name == "settingsButton")
                 OpenNewForm(new SettingsForm());
             else if (button.Name == "logOutButton")
@@ -125,9 +114,7 @@ namespace MyCost.Forms
         {
             dataGridView.Rows.Clear();
 
-            StaticStorage.FetchMonthlyInfo();
-
-            int row = 0;
+            int rowIndex = 0;
 
             foreach (MonthlyInfo monthly in StaticStorage.MonthlyInfoList)
             {
@@ -136,26 +123,19 @@ namespace MyCost.Forms
                 string earning = monthly.Earning.ToString();
                 string expense = monthly.Expense.ToString();
 
-                if (_selectedYear == 0)//show info for all years
+                if (_selectedYear == 0)
                 {
-                    //add year, month, earning and expense in the first four columns of the dataGridView
+                    //show info for all years
                     dataGridView.Rows.Add(year, month, earning, expense);
-
-                    //add an overview for the month on last column
-                    ShowOverview(monthly, row);
-
-                    row++;
+                    ShowOverview(monthly, rowIndex);
                 }
-                else if (_selectedYear == monthly.Year)// show info only for selected year
+                else if (_selectedYear == monthly.Year)
                 {
-                    //add year, month, earning and expense in the first four columns of the dataGridView
+                    // show info only for selected year
                     dataGridView.Rows.Add(year, month, earning, expense);
-
-                    //add an overview for the month on last column
-                    ShowOverview(monthly, row);
-
-                    row++;
+                    ShowOverview(monthly, rowIndex);
                 }
+                rowIndex++;
             }
             dataGridView.Rows[0].Selected = false;
         }
@@ -176,8 +156,8 @@ namespace MyCost.Forms
             }
             else
             {
-                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Yellow;
-                dataGridView.Rows[row].Cells[4].Value = "neutral";
+                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.OrangeRed;
+                dataGridView.Rows[row].Cells[4].Value = "Neutral";
             }
         }
 
@@ -198,9 +178,12 @@ namespace MyCost.Forms
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
 
-            OpenNewForm(new UserAuthenticationForm());
-        }
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
 
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
         #endregion
     }
 }

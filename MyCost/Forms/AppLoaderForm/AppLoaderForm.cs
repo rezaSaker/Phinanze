@@ -26,9 +26,7 @@ namespace MyCost.Forms
 
         private void TimerTick(object sender, EventArgs e)
         {
-            _countSeconds++;
-
-            if(_countSeconds == 3)
+            if(++_countSeconds == 3)
             {
                 UserAuthenticationForm form = new UserAuthenticationForm();
                 form.Show();

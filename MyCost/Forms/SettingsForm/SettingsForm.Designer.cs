@@ -60,7 +60,7 @@
             this.userNameLaabel.AutoSize = true;
             this.userNameLaabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userNameLaabel.ForeColor = System.Drawing.Color.Black;
-            this.userNameLaabel.Location = new System.Drawing.Point(2, 2);
+            this.userNameLaabel.Location = new System.Drawing.Point(3, 15);
             this.userNameLaabel.Name = "userNameLaabel";
             this.userNameLaabel.Size = new System.Drawing.Size(97, 19);
             this.userNameLaabel.TabIndex = 46;

@@ -34,44 +34,44 @@ namespace MyCost.Common
 
         public int Month
         {
-            get { return _month; }
-            set { _month = value; }
+            get => _month; 
+            set => _month = value; 
         }
 
         public int Year
         {
-            get { return _year; }
-            set { _year = value; }
+            get => _year;
+            set => _year = value; 
         }
 
         public double TotalExpense
         {
-            get { return _totalExpense; }
-            set { _totalExpense = value; }
+            get => _totalExpense; 
+            set => _totalExpense = value; 
         }
 
         public double TotalEarning
         {
-            get { return _totalEarning; }
-            set { _totalEarning = value; }
+            get => _totalEarning; 
+            set => _totalEarning = value; 
         }
 
         public string Note
         {
-            get { return _note; }
-            set { _note = value; }
+            get => _note; 
+            set => _note = value; 
         }
 
         public List<ExpenseInfo> ExpenseList
         {
-            get { return _expenseList; }
-            set { _expenseList = value; }
+            get => _expenseList; 
+            set => _expenseList = value; 
         }
 
         public List<EarningInfo> EarningList
-        {
-            get { return _earningList; }
-            set { _earningList = value; }
+        { 
+            get => _earningList; 
+            set => _earningList = value; 
         }
     }
 }

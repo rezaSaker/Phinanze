@@ -20,54 +20,6 @@ namespace MyCost.Common
         public static List<DailyInfo> DailyInfoList = new List<DailyInfo>();
         public static List<MonthlyInfo> MonthlyInfoList = new List<MonthlyInfo>();   
 
-        /// <summary>
-        /// Fetch monthly info from the list of daily info and store it in StaticStorage.MonthlyInfo
-        /// </summary>
-        public static void FetchMonthlyInfo()
-        {
-            MonthlyInfoList.Clear();
-
-            if (DailyInfoList.Count < 1)
-            {
-                //monthly info consists of daily info
-                //so, no daily info means no monthly info 
-                return;
-            }
-
-            //we get the info from db in decsneding order of year
-            //so the first year in the list is the most recent
-            //and last year in the list is the oldest year
-            int recentYear = DailyInfoList[0].Year;
-            int oldestYear = DailyInfoList[DailyInfoList.Count - 1].Year;
-            double totalEarning = .0;
-            double totalExpense = .0;
-
-            for (int year = recentYear; year <= oldestYear; year++)
-            {
-                for (int month = 1; month <= 12; month++)
-                {
-                    totalEarning = .0;
-                    totalExpense = .0;
-
-                    foreach (DailyInfo daily in DailyInfoList)
-                    {
-                        if (daily.Year == year && daily.Month == month)
-                        {
-                            totalEarning += daily.TotalEarning;
-                            totalExpense += daily.TotalExpense;
-                        }
-                    }
-
-                    //if both expense total and earning total are 0 then, no data exists for this month
-                    if (totalEarning != 0 || totalExpense != 0)
-                    {
-                        MonthlyInfo monthly = new MonthlyInfo(month, year, totalEarning, totalExpense);
-                        MonthlyInfoList.Add(monthly);
-                    }
-                }
-            }
-        }
-
-
+        
     }
 }

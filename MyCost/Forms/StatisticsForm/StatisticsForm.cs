@@ -9,7 +9,7 @@ using MyCost.ServerHandling;
 
 namespace MyCost.Forms
 {
-    public partial class YearlyStatisticsForm: Form
+    public partial class StatisticsForm: Form
     {
         private int _selectedYear;
         private int _selectedMonth;
@@ -19,7 +19,7 @@ namespace MyCost.Forms
         private string[] _monthNames = { "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
                                         "JUL", "AUG", "SEP", "OCT", "NOV", "DEC" };
 
-        public YearlyStatisticsForm()
+        public StatisticsForm()
         {
             InitializeComponent();
 
@@ -74,6 +74,7 @@ namespace MyCost.Forms
         {
             yearlyRadioButton.Checked = false;
             monthComboBox.Enabled = true;
+
             if (!categorywiseReportRadioButton.Checked)
             {
                 yearlyReportChart.Visible = false;
@@ -150,13 +151,18 @@ namespace MyCost.Forms
             else if (button.Name == "addNewDataButton")
                 OpenNewForm(new AddNewDataForm());
             else if (button.Name == "yearlyStatisticsButton")
-                OpenNewForm(new YearlyStatisticsForm());
+                OpenNewForm(new StatisticsForm());
             else if (button.Name == "settingsButton")
                 OpenNewForm(new SettingsForm());
             else if (button.Name == "logOutButton")
                 LogOut();
         }
 
+        private void ThisFormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_quitAppOnFormClosing)
+                Application.Exit();
+        }
         #endregion
 
         #region non_event_handler_methods
@@ -495,9 +501,12 @@ namespace MyCost.Forms
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
 
-            OpenNewForm(new UserAuthenticationForm());
-        }
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
 
-        #endregion
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+        #endregion      
     }
 }

@@ -7,7 +7,7 @@ using MyCost.ServerHandling;
 
 namespace MyCost.Forms
 {
-    public partial class DailyReportForm : Form
+    public partial class MonthlyInfoForm : Form
     {
         private int _selectedMonth;
         private int _selectedYear;
@@ -17,7 +17,7 @@ namespace MyCost.Forms
 
         private List<string> _monthList;
 
-        public DailyReportForm()
+        public MonthlyInfoForm()
         {
             InitializeComponent();
 
@@ -25,7 +25,7 @@ namespace MyCost.Forms
             _selectedYear = DateTime.Now.Year;
         }
 
-        public DailyReportForm(int month, int year)
+        public MonthlyInfoForm(int month, int year)
         {
             InitializeComponent();
 
@@ -43,9 +43,7 @@ namespace MyCost.Forms
 
             //add years to yearComboBox
             for (int i = 2018; i <= _selectedYear + 3; i++)
-            {
                 yearComboBox.Items.Add(i.ToString());
-            }
             
             monthComboBox.SelectedIndex = _selectedMonth - 1;
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
@@ -56,8 +54,6 @@ namespace MyCost.Forms
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {
             _selectedMonth = monthComboBox.SelectedIndex + 1;
-
-            //plot data for newly selected month
             PlotDailyInfo();
         }
 
@@ -67,10 +63,7 @@ namespace MyCost.Forms
 
             //if _fristCall is true, the data is already plotted, so need to plot again
             if (!_firstCall)
-            {
-                //plot data for newly selected year
                 PlotDailyInfo();
-            }
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
@@ -78,13 +71,12 @@ namespace MyCost.Forms
             int day = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Split(' ')[0]);
             int month = _selectedMonth;
             int year = _selectedYear;
-
             OpenNewForm(new AddNewDataForm(day, month, year));
         }
 
         private void DeleteButtonClicked(object sender, EventArgs e)
         {
-            //sending true as argument will remove the rows from this dataGridView as well
+            //sending true as argument removes the rows from this dataGridView as well
             DeleteDailyInfo(true);
         }
 
@@ -116,7 +108,7 @@ namespace MyCost.Forms
             else if (button.Name == "addNewDataButton")
                 OpenNewForm(new AddNewDataForm());
             else if (button.Name == "yearlyStatisticsButton")
-                OpenNewForm(new YearlyStatisticsForm());
+                OpenNewForm(new StatisticsForm());
             else if (button.Name == "settingsButton")
                 OpenNewForm(new SettingsForm());
             else if (button.Name == "logOutButton")
@@ -126,18 +118,15 @@ namespace MyCost.Forms
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_quitAppOnFormClosing)
-            {
                 Application.Exit();
-            }
         }
-
         #endregion
 
         #region non_event_handler_methods
 
         private void InitializeMonthList()
         {
-            //monthList is used to convert month from numeric to text
+            //monthList is used to convert month from numeric to text, ex: 1 -> January
             _monthList = new List<string>();
             _monthList.Add("January");
             _monthList.Add("February");
@@ -162,48 +151,41 @@ namespace MyCost.Forms
             HeaderLabel.Text += _monthList[_selectedMonth - 1] + " " + _selectedYear.ToString();
 
             int numberOfDays = GetNumberOfDays();
-            string date;
-            DailyInfo daily;
-
+ 
             //sort daily info and plot on dataGridView in ascending order
+            List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
+                d => d.Month == _selectedMonth && d.Year == _selectedYear);
+
             for (int day = 1; day <= numberOfDays; day++)
             {
-                for (int j = 0; j < StaticStorage.DailyInfoList.Count; j++)
-                {
-                    daily = StaticStorage.DailyInfoList[j];
+                DailyInfo daily = dailyInfoList.Find(d => d.Day == day);
 
-                    if (_selectedMonth == daily.Month && _selectedYear == daily.Year && day == daily.Day)
-                    {
-                        date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
-                        dataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
-                        break;
-                    }
+                if(daily != null)
+                {
+                    string date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
+                    dataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
                 }
-            }
+            }           
         }
 
         private int GetNumberOfDays()
         {
-            int numberOfdays;
-
             //calculates the number of days according to month
             if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
-                numberOfdays = 29;
+                return 29;
             else if (_selectedMonth == 2 && !DateTime.IsLeapYear(_selectedYear))
-                numberOfdays = 28;
+                return 28;
             else if (_selectedMonth <= 7 && _selectedMonth % 2 == 1)
-                numberOfdays = 31;
+                return 31;
             else if (_selectedMonth <= 7 && _selectedMonth % 2 == 0)
-                numberOfdays = 30;
+                return 30;
             else if (_selectedMonth > 7 && _selectedMonth % 2 == 1)
-                numberOfdays = 30;
+                return 30;
             else
-                numberOfdays = 31;
-
-            return numberOfdays;
+                return 31;
         }
 
-        private void DeleteDailyInfo(bool deleteButtonClicked = false)
+        private void DeleteDailyInfo(bool removeRow = false)
         {
             foreach (DataGridViewRow row in dataGridView.SelectedRows)
             {
@@ -213,16 +195,11 @@ namespace MyCost.Forms
 
                 if (result == "SUCCESS")
                 {
-                    if (deleteButtonClicked)
+                    if (removeRow)
                         dataGridView.Rows.RemoveAt(row.Index);
 
-                    foreach (DailyInfo daily in StaticStorage.DailyInfoList)
-                    {
-                        if (daily.Day == day && daily.Month == _selectedMonth && daily.Year == _selectedYear)
-                        {
-                            StaticStorage.DailyInfoList.Remove(daily);
-                        }
-                    }
+                    StaticStorage.DailyInfoList.RemoveAll(
+                        d => d.Day == day && d.Month == _selectedMonth && d.Year == _selectedYear);               
                 }
                 else
                 {
@@ -230,9 +207,6 @@ namespace MyCost.Forms
                     MessageBox.Show(result);
                 }
             }
-
-            //monthly info should be updated according to daily info
-            StaticStorage.FetchMonthlyInfo();
         }
 
         private void OpenNewForm(Form form)
@@ -252,9 +226,12 @@ namespace MyCost.Forms
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
 
-            OpenNewForm(new UserAuthenticationForm());
-        }
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
 
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
         #endregion
     }
 }

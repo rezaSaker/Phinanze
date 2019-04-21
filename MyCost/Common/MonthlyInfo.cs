@@ -14,36 +14,75 @@ namespace MyCost.Common
         private double _earning;
         private double _expense;
 
-        public MonthlyInfo(int month, int year, double earning, double expense)
-        {
-            _month = month;
-            _year = year;
-            _earning = earning;
-            _expense = expense;
-        }
+        public MonthlyInfo() { }
 
         public int Month
         {
-            get { return _month; }
-            set { _month = value; }
+            get => _month; 
+            set => _month = value; 
         }
 
         public int Year
         {
-            get { return _year; }
-            set { _year = value; }
+            get => _year; 
+            set => _year = value; 
         }
 
         public double Earning
         {
-            get { return _earning; }
-            set { _earning = value; }
+            get => _earning; 
+            set => _earning = value; 
         }
 
         public double Expense
         {
-            get { return _expense; }
-            set { _expense = value; }
+            get => _expense; 
+            set => _expense = value; 
         }
+
+        /// <summary>
+        /// Fetch monthly info from the list of daily info 
+        /// and store it in StaticStorage.MonthlyInfoList
+        /// </summary>
+        public static void Fetch()
+        {
+            StaticStorage.MonthlyInfoList.Clear();
+
+            if (StaticStorage.DailyInfoList.Count < 1)
+            {
+                //monthly info consists of daily info
+                //so, no daily info means no monthly info 
+                return;
+            }
+
+            //we get the info from db in decsneding order of year
+            //so the first year in the list is the most recent
+            //and last year in the list is the oldest year
+            int recentYear = StaticStorage.DailyInfoList[0].Year;
+            int oldestYear = StaticStorage.DailyInfoList[StaticStorage.DailyInfoList.Count - 1].Year;
+
+            for (int year = recentYear; year <= oldestYear; year++)
+            {
+                for (int month = 1; month <= 12; month++)
+                {
+                    List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
+                        d => d.Year == year && d.Month == month);
+
+                    if(dailyInfoList != null && dailyInfoList.Count > 0)
+                    {
+                        double earning = dailyInfoList.Sum(d => d.TotalEarning);
+                        double expense = dailyInfoList.Sum(d => d.TotalExpense);
+
+                        MonthlyInfo monthly = new MonthlyInfo();
+                        monthly.Month = month;
+                        monthly.Year = year;
+                        monthly.Expense = expense;
+                        monthly.Earning = earning;
+                        StaticStorage.MonthlyInfoList.Add(monthly);
+                    }                  
+                }
+            }
+        }
+
     }
 }

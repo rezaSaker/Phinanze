@@ -101,7 +101,7 @@ namespace MyCost.Forms
                 }
                 else
                 {
-                    //if the update doesn't succeeds, the error message is returned
+                    //if the update doesn't succeed, the error message is returned
                     MessageBox.Show(result);
                 }
             }
@@ -111,7 +111,7 @@ namespace MyCost.Forms
         {
             if (newPasswordTextBox.Text != confirmPasswordTextBox.Text)
             {
-                MessageBox.Show("Password doesn't match");
+                MessageBox.Show("Password doesn't match!");
             }
             else //all fields are correct
             {
@@ -124,7 +124,7 @@ namespace MyCost.Forms
                 }
                 else
                 {
-                    //if the update doesn't succeeds, error message is returned
+                    //if the update doesn't succeed, error message is returned
                     MessageBox.Show(result);
                 }
             }
@@ -151,9 +151,9 @@ namespace MyCost.Forms
             if (button.Name == "homeButton")
                 OpenNewForm(new MainForm());
             else if (button.Name == "dailyReportButton")
-                OpenNewForm(new DailyReportForm());
+                OpenNewForm(new MonthlyInfoForm());
             else if (button.Name == "yearlyStatisticsButton")
-                OpenNewForm(new YearlyStatisticsForm());
+                OpenNewForm(new StatisticsForm());
             else if (button.Name == "addnewDataButton")
                 OpenNewForm(new AddNewDataForm());
             else if (button.Name == "logOutButton")
@@ -168,7 +168,7 @@ namespace MyCost.Forms
             }
             catch
             {
-                MessageBox.Show("Could not open default browser");
+                MessageBox.Show("Could not open default browser!");
             }
         }
 
@@ -180,7 +180,7 @@ namespace MyCost.Forms
             }
             catch
             {
-                MessageBox.Show("Could not open the default browser");
+                MessageBox.Show("Could not open the default browser!");
             }
         }
 
@@ -192,7 +192,7 @@ namespace MyCost.Forms
             }
             catch
             {
-                MessageBox.Show("Could not open the default browser");
+                MessageBox.Show("Could not open the default browser!");
             }
         }
 
@@ -221,7 +221,11 @@ namespace MyCost.Forms
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
 
-            OpenNewForm(new UserAuthenticationForm());
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
         }
     }
 }

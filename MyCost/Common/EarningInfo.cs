@@ -18,26 +18,26 @@ namespace MyCost.Common
 
         public string Source
         {
-            get { return _source; }
-            set { _source = value; }
+            get => _source; 
+            set => _source = value; 
         }
 
         public double Amount
         {
-            get { return _amount; }
-            set { _amount = value; }
+            get => _amount; 
+            set => _amount = value; 
         }
 
         public string Category
         {
-            get { return _category; }
-            set { _category = value; }
+            get => _category; 
+            set => _category = value; 
         }
 
         public string Comment
         {
-            get { return _comment; }
-            set { _comment = value; }
+            get => _comment; 
+            set => _comment = value; 
         }
     }
 }

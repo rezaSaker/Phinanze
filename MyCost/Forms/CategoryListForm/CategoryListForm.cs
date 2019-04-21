@@ -8,35 +8,34 @@ namespace MyCost.Forms
 {
     public partial class CategoryListForm : Form
     {
-        private List<int> _rowIndexes;
+        private List<int> _rowIndexList;
 
         private string _categoryType;
 
         private DataGridView _dgv;
 
-        public CategoryListForm(DataGridView dgv, List<int> rowIndexes)
+        public CategoryListForm(DataGridView dgv, List<int> rowIndexList)
         {
             InitializeComponent();
 
             _dgv = dgv;
-            _rowIndexes = rowIndexes;
+            _rowIndexList = rowIndexList;
         }
 
         #region event_handler_methods
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            //_dgv points to a dataGridView on AddNewDataForm whose reference is passed to this form via constructor
-            if (_dgv != null && _dgv.Name == "expenseDataGridView")
+            //_dgv points to a dataGridView on AddNewDataForm 
+            //whose reference is passed to this form via constructor
+            if (_dgv.Name == "expenseDataGridView")
             {
                 foreach (string category in StaticStorage.ExpenseCategories)
-                {
                     dataGridView.Rows.Add(category);
-                }
 
                 _categoryType = "Expense";
             }
-            else if (_dgv != null && _dgv.Name == "earningDataGridView")
+            else if (_dgv.Name == "earningDataGridView")
             {
                 foreach (string category in StaticStorage.EarningCategories)
                 {
@@ -71,7 +70,7 @@ namespace MyCost.Forms
         {
             int rowIndex = dataGridView.CurrentCell.RowIndex;
 
-            if (IsLastAndEmptyRow(rowIndex))
+            if (IsLastEmptyRow(rowIndex))
                 return;
 
             foreach (DataGridViewRow row in dataGridView.SelectedRows)
@@ -86,7 +85,6 @@ namespace MyCost.Forms
         {
             this.Close();
         }
-
         #endregion
 
         #region non_event_handler_methods
@@ -95,17 +93,17 @@ namespace MyCost.Forms
         {
             int rowIndex = dataGridView.CurrentCell.RowIndex;
 
-            if (IsLastAndEmptyRow(rowIndex))
+            if (IsLastEmptyRow(rowIndex))
                 return;
 
             string category = dataGridView.Rows[rowIndex].Cells[0].Value.ToString();
 
-            foreach (int index in _rowIndexes)
+            foreach (int index in _rowIndexList)
             {
-                //_dgv points to a dataGridView on AddNewDataForm whose reference is passed to this form via constructor
+                //_dgv points to a dataGridView on AddNewDataForm 
+                //whose reference is passed to this form via constructor
                 _dgv.Rows[index].Cells[2].Value = category;
             }
-
             this.Close();
         }
 
@@ -119,13 +117,13 @@ namespace MyCost.Forms
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (IsLastAndEmptyRow(row.Index))
+                    if (IsLastEmptyRow(row.Index))
                         break;
 
                     StaticStorage.ExpenseCategories.Add(row.Cells[0].Value.ToString());
                     categoryNames += row.Cells[0].Value.ToString();
 
-                    //adds a splitting character after each category except the last one
+                    //add a splitting character after each category except the last one
                     if (row.Index < dataGridView.Rows.Count - 2)
                         categoryNames += "|";
                 }
@@ -136,13 +134,13 @@ namespace MyCost.Forms
 
                 foreach (DataGridViewRow row in dataGridView.Rows)
                 {
-                    if (IsLastAndEmptyRow(row.Index))
+                    if (IsLastEmptyRow(row.Index))
                         break;
 
                     StaticStorage.EarningCategories.Add(row.Cells[0].Value.ToString());
                     categoryNames += row.Cells[0].Value.ToString();
 
-                    //adds a splitting character after each category except the last one
+                    //add a splitting character after each category except the last one
                     if (row.Index < dataGridView.Rows.Count - 2)
                         categoryNames += "|";
                 }
@@ -157,14 +155,13 @@ namespace MyCost.Forms
             }
         }     
 
-        private bool IsLastAndEmptyRow(int rowIndex)
+        private bool IsLastEmptyRow(int rowIndex)
         {
             if (rowIndex == dataGridView.Rows.Count - 1)
                 return true;
             else
                 return false;
         }
-
         #endregion
     }
 }

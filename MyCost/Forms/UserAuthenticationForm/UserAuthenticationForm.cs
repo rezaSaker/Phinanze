@@ -36,7 +36,7 @@ namespace MyCost.Forms
 
         private void ShowRegisterPanelButtonClicked(object sender, EventArgs e)
         {
-            //reset everything so the panels appears as a register form
+            //reset everything so the panel appears as a register form
             showRegisterPanelButton.BackColor = Color.White;
             showRegisterPanelButton.ForeColor = Color.Black;
             showLoginPanelButton.BackColor = Color.RoyalBlue;
@@ -47,7 +47,6 @@ namespace MyCost.Forms
             confirmPasswordTextBox.Enabled = true;
             rememberMeCheckBox.Location = new Point(140, 269);
             statusLabel.Location = new Point(157, 348);
-
             ResetTextBoxProperties();
         }
 
@@ -91,13 +90,9 @@ namespace MyCost.Forms
         private void SubmitButtonClicked(object sender, EventArgs e)
         {
             if (submitButton.Text == "Log in")
-            {
                 LoginUser();
-            }
             else
-            {
                 RegisterUser();
-            }
         }
 
         private void DisplayLoginPanel()
@@ -113,7 +108,6 @@ namespace MyCost.Forms
             confirmPasswordTextBox.Enabled = false;
             rememberMeCheckBox.Location = new Point(140, 223);
             statusLabel.Location = new Point(270, 300);
-
             ResetTextBoxProperties();
         }
 
@@ -142,8 +136,9 @@ namespace MyCost.Forms
 
             int userId;
 
-            //if the login succeeds, user's id and a temporary token are returned
-            //else, the error message is returned
+            //if the login succeeds, 
+            //user's id and a temporary access token are returned
+            //otherwise, the error message is returned
             if (int.TryParse(data[0], out userId))
             {
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
@@ -157,20 +152,11 @@ namespace MyCost.Forms
                     Properties.Settings.Default.Save();
                 }
 
-                //gets all data for this user from database...
-                //...and store them in StaticStorage class
-                FetchDailyInfo();
-                FetchCategories();
-
-                MainForm form = new MainForm();
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Show();
-
-                _quitAppOnFormClosing = false;
-                this.Close();
+                ActionUponLoginSuccess();
             }
             else
             {
+                //displays the error message
                 statusLabel.Text = result;
             }
         }
@@ -183,29 +169,30 @@ namespace MyCost.Forms
 
             if (username.Length < 0)
             {
-                statusLabel.Text = "Please enter a username";
+                statusLabel.Text = "Please enter a username!";
                 return;
             }
             else if (password.Length < 0)
             {
-                statusLabel.Text = "Please enter a password";
+                statusLabel.Text = "Please enter a password!";
                 return;
             }
             else if (confirmPassword != password)
             {
-                statusLabel.Text = "Password does not match";
+                statusLabel.Text = "Password does not match!";
                 return;
             }
 
             string access_key = RandomString(100);
-
-            //if the register succeeds, user's id and a temporary token are retured
-            //else, the error info is returned
+            
             string result = ServerHandler.RegisterNewUser(access_key, username, password);
             string[] data = result.Split('|');
 
             int userId;
 
+            //if the register succeeds, 
+            //user's id and a temporary access token are retured
+            //otherwise, the error info is returned
             if (int.TryParse(data[0], out userId))
             {
                 Properties.Settings.Default.AccessKey = access_key;
@@ -215,29 +202,33 @@ namespace MyCost.Forms
                     Properties.Settings.Default.Username = usernameTextBox.Text;
                     Properties.Settings.Default.Password = passwordTextBox.Text;
                 }
-
                 Properties.Settings.Default.Save();
 
                 StaticStorage.UserID = userId;
                 StaticStorage.AccessToken = data[1];
                 StaticStorage.Username = usernameTextBox.Text;
 
-                //gets all data for this user from database...
-                //...and store them in StaticStorage class
-                FetchDailyInfo();
-                FetchCategories();
-
-                MainForm form = new MainForm();
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Show();
-
-                _quitAppOnFormClosing = false;
-                this.Close();
+                ActionUponLoginSuccess();
             }
             else
             {
                 statusLabel.Text = result;
             }
+        }
+
+        private void ActionUponLoginSuccess()
+        {
+            //get all data for this user from database
+            //and store them in StaticStorage class
+            FetchDailyInfo();
+            FetchCategories();
+
+            MainForm form = new MainForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
         }
 
         private string RandomString(int size)
@@ -250,16 +241,14 @@ namespace MyCost.Forms
             Random rand = new Random();
 
             for (int i = 0; i < size; ++i)
-            {
                 randStr += charSet[rand.Next(0, str.Length)];
-            }
 
             return randStr;
         }
 
         private void FetchDailyInfo()
         {
-            //gets daily expenses and earnings from database
+            //get daily expenses and earnings from database
             string result = ServerHandler.RetrieveDailyInfo();
 
             string[] rows = result.Split('^');
@@ -291,7 +280,6 @@ namespace MyCost.Forms
                 string totalEarning = cols[13];
 
                 DailyInfo daily = new DailyInfo();
-
                 daily.Day = day;
                 daily.Month = month;
                 daily.Year = year;
@@ -334,7 +322,6 @@ namespace MyCost.Forms
                         daily.EarningList.Add(earning);
                     }
                 }
-
                 StaticStorage.DailyInfoList.Add(daily);
             }
         }
@@ -344,25 +331,20 @@ namespace MyCost.Forms
             //get all categories made by user from the database
             string result = ServerHandler.RetrieveCategories();
 
-            if(result == "Server connection error")
+            if (result == "Server connection error" || result == "")
             {
+                //some server error occurred or no data found in the DB for this user
                 return;
             }
 
             string[] earningCategories = result.Split('^')[0].Split('|');
             string[] expenseCategories = result.Split('^')[1].Split('|');
 
-            //adds earning categories
             foreach(string cat in earningCategories)
-            {
                 StaticStorage.EarningCategories.Add(cat);
-            }
 
-            //adds expense categories
             foreach (string cat in expenseCategories)
-            {
                 StaticStorage.ExpenseCategories.Add(cat);
-            }
         }
 
         private void UserAuthenticationFormClosing(object sender, FormClosingEventArgs e)
