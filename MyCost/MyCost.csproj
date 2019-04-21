@@ -93,11 +93,11 @@
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\MonthlyInfo.cs" />
-    <Compile Include="Forms\DailyReportForm\DailyReportForm.cs">
+    <Compile Include="Forms\DailyReportForm\MonthlyInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DailyReportForm\DailyReportForm.Designer.cs">
-      <DependentUpon>DailyReportForm.cs</DependentUpon>
+    <Compile Include="Forms\DailyReportForm\MonthlyInfoForm.Designer.cs">
+      <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="Forms\UserAuthenticationForm\UserAuthenticationForm.resx">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DailyReportForm\DailyReportForm.resx">
-      <DependentUpon>DailyReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DailyReportForm\MonthlyInfoForm.resx">
+      <DependentUpon>MonthlyInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

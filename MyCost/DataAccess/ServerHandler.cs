@@ -98,7 +98,7 @@ namespace MyCost.ServerHandling
 
             //adds splitting characters between expense properties so...
             //...that we can split the rows when retrieving from db
-            foreach (ExpenseInfo expense in daily.Expenses)
+            foreach (ExpenseInfo expense in daily.ExpenseList)
             {
                 if (addSplitChar)
                 {
@@ -119,7 +119,7 @@ namespace MyCost.ServerHandling
 
             //adds splitting characters between expense properties so...
             //...that we can split the rows when retrieving from db
-            foreach (EarningInfo earning in daily.Earnings)
+            foreach (EarningInfo earning in daily.EarningList)
             {
                 if (addSplitChar)
                 {

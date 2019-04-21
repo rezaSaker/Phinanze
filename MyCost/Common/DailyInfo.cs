@@ -17,19 +17,19 @@ namespace MyCost.Common
 
         private string _note;
 
-        private List<ExpenseInfo> _expenses;
-        private List<EarningInfo> _earnings;
+        private List<ExpenseInfo> _expenseList;
+        private List<EarningInfo> _earningList;
 
         public DailyInfo()
         {
-            _expenses = new List<ExpenseInfo>();
-            _earnings = new List<EarningInfo>();
+            _expenseList = new List<ExpenseInfo>();
+            _earningList = new List<EarningInfo>();
         }
 
         public int Day
         {
-            get { return _day; }
-            set { _day = value; }
+            get => _day;
+            set => _day = value;
         }
 
         public int Month
@@ -62,16 +62,16 @@ namespace MyCost.Common
             set { _note = value; }
         }
 
-        public List<ExpenseInfo> Expenses
+        public List<ExpenseInfo> ExpenseList
         {
-            get { return _expenses; }
-            set { _expenses = value; }
+            get { return _expenseList; }
+            set { _expenseList = value; }
         }
 
-        public List<EarningInfo> Earnings
+        public List<EarningInfo> EarningList
         {
-            get { return _earnings; }
-            set { _earnings = value; }
+            get { return _earningList; }
+            set { _earningList = value; }
         }
     }
 }

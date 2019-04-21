@@ -307,9 +307,13 @@ namespace MyCost.Forms
                         string reason = expenseReasons[i];
                         string category = expenseCategories[i];
                         string comment = expenseComments[i];
-                        ExpenseInfo expense = new ExpenseInfo(reason, amount, category, comment);
 
-                        daily.Expenses.Add(expense);
+                        ExpenseInfo expense = new ExpenseInfo();
+                        expense.Reason = reason;
+                        expense.Amount = amount;
+                        expense.Category = category;
+                        expense.Comment = comment;
+                        daily.ExpenseList.Add(expense);
                     }
                 }
 
@@ -318,12 +322,16 @@ namespace MyCost.Forms
                     for (int i = 0; i < earningSources.Length; i++)
                     {
                         double amount = Convert.ToDouble(earningAmounts[i]);
-                        string reason = earningSources[i];
+                        string source = earningSources[i];
                         string category = earningCategories[i];
                         string comment = earningComments[i];
-                        EarningInfo earning = new EarningInfo(reason, amount, category, comment);
 
-                        daily.Earnings.Add(earning);
+                        EarningInfo earning = new EarningInfo();
+                        earning.Source = source;
+                        earning.Amount = amount;
+                        earning.Category = category;
+                        earning.Comment = comment;
+                        daily.EarningList.Add(earning);
                     }
                 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Linq;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
@@ -15,7 +16,7 @@ namespace MyCost.Forms
 
         private bool _firstCall;
         private bool _quitAppOnFormClosing;
-        private bool _hasSaved;
+        private bool _isSaved;
 
         public AddNewDataForm()
         {
@@ -39,14 +40,12 @@ namespace MyCost.Forms
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            _hasSaved = true;   //prevents save attempt when closing the form
+            _isSaved = true;   //prevents attempt to save when closing the form
             _quitAppOnFormClosing = true;   //prevents exiting the app on closing of this form          
             _firstCall = true;  //disable call to AddItemsToDayComboBox() in YearComboBoxSelectedIndexChanged() method
 
             for (int i = 2018; i < _selectedYear + 3; i++)
-            {
                 yearComboBox.Items.Add(i.ToString());
-            }
             
             monthComboBox.SelectedIndex = _selectedMonth - 1;
             yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
@@ -69,7 +68,6 @@ namespace MyCost.Forms
                     ((DataGridView)control).CellEndEdit += ControlChanged;
                 }
             }
-
             saveButton.Enabled = false;
             saveButton.BackColor = Color.LightGray;
         }
@@ -77,8 +75,6 @@ namespace MyCost.Forms
         private void DayComboBoxIndexChanged(object sender, EventArgs e)
         {
             _selectedDay = dayComboBox.SelectedIndex + 1;
-
-            //plot data for the newly selected date
             PlotDailyInfo();
         }
 
@@ -94,9 +90,7 @@ namespace MyCost.Forms
 
             //if _firstCall is true, then the items are already set to dayComboBox and no need to reset it
             if (!_firstCall)
-            {
-                AddItemsToDayComboBox();
-            }         
+                AddItemsToDayComboBox();      
         }
 
         private void NoteTextBoxClicked(object sender, EventArgs e)
@@ -113,63 +107,35 @@ namespace MyCost.Forms
         {
             //if the clicked column is category column
             if (e.ColumnIndex == 2)
-            {
                 OpenCategoryListForm(expenseDataGridView);
-            }
         }
 
         private void ExpenseDGVEditBegan(object sender, DataGridViewCellCancelEventArgs e)
         {
+            //if it's amount column
             if (e.ColumnIndex == 1)
-            {
-                //if the column is amount column, the color should be reset to default color
-                //because, we change the color when a wrong amount is entered
-                if (expenseDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Red)
-                {
-                    expenseDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
-                    expenseDataGridView.Rows[e.RowIndex].Cells[1].Style.ForeColor = Color.Black;
-                }
-                else if (expenseDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Yellow)
-                {
-                    expenseDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
-                }
-            }
+                ResetAmountColumnColorToDeafault(expenseDataGridView, e.RowIndex);
         }
 
         private void ExpenseDGVEditEnded(object sender, DataGridViewCellEventArgs e)
         {
             //if an expense amount is entered
             if (e.ColumnIndex == 1)
-            {
                 UpdateTotalExpenseLabel();
-            }
         }
 
         private void EarningDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
             //if the clicked column is category column
             if (e.ColumnIndex == 2)
-            {
                 OpenCategoryListForm(earningDataGridView);
-            }
         }
 
         private void EarningDGVEditBegan(object sender, DataGridViewCellCancelEventArgs e)
         {
+            //if it's amount column
             if (e.ColumnIndex == 1)
-            {
-                //if the column is amount column, the color should be reset to default color
-                //because, we change the color when a wrong amount is entered
-                if (earningDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Red)
-                {
-                    earningDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
-                    earningDataGridView.Rows[e.RowIndex].Cells[1].Style.ForeColor = Color.Black;
-                }
-                else if (earningDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor == Color.Yellow)
-                {
-                    earningDataGridView.Rows[e.RowIndex].Cells[1].Style.BackColor = Color.White;
-                }
-            }
+                ResetAmountColumnColorToDeafault(earningDataGridView, e.RowIndex);
         }
 
         private void EarningDGVEditEnded(object sender, DataGridViewCellEventArgs e)
@@ -184,7 +150,6 @@ namespace MyCost.Forms
         private void SaveButtonClicked(object sender, EventArgs e)
         {
             DailyInfo daily = new DailyInfo();
-
             daily.Note = noteTextBox.Text;
             daily.Day = Convert.ToUInt16(dayComboBox.SelectedItem.ToString());
             daily.Month = monthComboBox.Items.IndexOf(monthComboBox.SelectedItem.ToString()) + 1;
@@ -200,11 +165,9 @@ namespace MyCost.Forms
 
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
-                if (row.Index == expenseDataGridView.Rows.Count - 1)
-                {
-                    //this is the last row and it's an empty row
+                //if it is the last row, break the loop because last row is empty
+                if (row.Index == expenseDataGridView.Rows.Count - 1)                   
                     break;
-                }
 
                 try
                 {
@@ -261,17 +224,19 @@ namespace MyCost.Forms
                     comment = "";
                 }
 
-                ExpenseInfo expense = new ExpenseInfo(reason, amount, category, comment);
-                daily.Expenses.Add(expense);
+                ExpenseInfo expense = new ExpenseInfo();
+                expense.Reason = reason;
+                expense.Amount = amount;
+                expense.Category = category;
+                expense.Comment = comment;
+                daily.ExpenseList.Add(expense);
             }
 
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
+                //if it is the last row, break the loop because last row is empty
                 if (row.Index == earningDataGridView.Rows.Count - 1)
-                {
-                    //this is the last row and it's an empty row
                     break;
-                }
 
                 try
                 {
@@ -326,49 +291,39 @@ namespace MyCost.Forms
                     comment = "";
                 }
 
-                EarningInfo earning = new EarningInfo(source, amount, category, comment);
-                daily.Earnings.Add(earning);
+                EarningInfo earning = new EarningInfo();
+                earning.Source = source;
+                earning.Amount = amount;
+                earning.Category = category;
+                earning.Comment = comment;
+                daily.EarningList.Add(earning);
             }
 
             string result = ServerHandler.SaveDailyInfo(daily);
 
             if (result == "SUCCESS")
             {
-                int index = -1;
+                //if any info on the same date already exists, update that info with this new info
+                //otherwise, add this info as new info
+                int index = StaticStorage.DailyInfoList.FindIndex(
+                    d => d.Day == daily.Day && d.Month == daily.Month && d.Year == daily.Year);
 
-                //checks id any info with same date already exists
-                foreach(DailyInfo d in StaticStorage.DailyInfoList)
-                {
-                    if(d.Day == daily.Day 
-                        && d.Month == daily.Month 
-                        && d.Year == daily.Year)
-                    {
-                        index = StaticStorage.DailyInfoList.IndexOf(d);
-                        break;
-                    }
-                }
-                if(index == -1)
-                {
-                    //no info exists for this date, so add a new info
-                    StaticStorage.DailyInfoList.Add(daily);
-                }
-                else
-                {
-                    //info on this date already exists, so update the existing info
+                if (index != -1)
                     StaticStorage.DailyInfoList[index] = daily;
-                }
-
+                else
+                    StaticStorage.DailyInfoList.Add(daily);
+                               
                 //monthly info needs to be updated according to daily info
                 StaticStorage.FetchMonthlyInfo();
 
-                //this will prevent the OnFormClosing method to attempt to save the info
-                _hasSaved = true;
+                //prevents attempt to save again while closing this form
+                _isSaved = true;
                 saveButton.Enabled = false;
                 saveButton.BackColor = Color.LightGray;
             }
             else
             {
-                //if not success, the error info is returned
+                //if save is not success, the error message is returned
                 MessageBox.Show(result);
             }
         }
@@ -377,13 +332,9 @@ namespace MyCost.Forms
         {
             //clicking on this button applies a particular category to all selected rows
             if (expenseDataGridView.SelectedRows.Count > 0)
-            {
                 OpenCategoryListForm(expenseDataGridView);
-            }
             else if (earningDataGridView.SelectedRows.Count > 0)
-            {
                 OpenCategoryListForm(earningDataGridView);
-            }
         }
 
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
@@ -421,14 +372,14 @@ namespace MyCost.Forms
             //this method is triggered when any editable control on this form is edited
             saveButton.Enabled = true;
             saveButton.BackColor = Color.RoyalBlue;
-            _hasSaved = false;
+            _isSaved = false;
         }    
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             CloseOpenedCategoryForm();
 
-            if (!_hasSaved)
+            if (!_isSaved)
                 saveButton.PerformClick();
 
             if (_quitAppOnFormClosing)
@@ -459,10 +410,8 @@ namespace MyCost.Forms
                 numberOfdays = 31;
 
             //set the days as items to dayComboBox
-            for (int i = 0; i < numberOfdays; i++)
-            {
-                dayComboBox.Items.Add((i + 1).ToString());
-            }
+            for (int day = 1; day <= numberOfdays; day++)
+                dayComboBox.Items.Add(day.ToString());
 
             try
             {
@@ -470,7 +419,8 @@ namespace MyCost.Forms
             }
             catch (ArgumentOutOfRangeException)
             {
-                //this exception is thrown when _selectedDay is greater than the number of days for _selectedMonth
+                //this exception occurs when the selected day is greater 
+                //than the number of days in the selected month
                 dayComboBox.SelectedIndex = 0;
                 _selectedDay = 1;
             }
@@ -487,34 +437,23 @@ namespace MyCost.Forms
             earningDataGridView.Rows.Clear();
 
             //plot info for new selected date
-            foreach (DailyInfo daily in StaticStorage.DailyInfoList)
+            DailyInfo daily = StaticStorage.DailyInfoList.Find(
+                d => d.Day == _selectedDay && d.Month == _selectedMonth && d.Year == _selectedYear);
+
+            if (daily != null)
             {
-                if (_selectedDay == daily.Day
-                    && _selectedMonth == daily.Month
-                    && _selectedYear == daily.Year)
-                {
-                    //plot common info first
-                    noteTextBox.Text = daily.Note;
-                    noteTextBox.ForeColor = Color.Black;
+                //plot common info
+                noteTextBox.Text = daily.Note;
+                noteTextBox.ForeColor = Color.Black;
 
-                    //plot expense info
-                    foreach (ExpenseInfo expense in daily.Expenses)
-                    {
-                        expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
-                    }
-                    expenseDataGridView.Rows[0].Cells[0].Selected = false;
+                //plot expense info
+                foreach (ExpenseInfo expense in daily.ExpenseList)
+                    expenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
 
-                    //plot earning info
-                    foreach (EarningInfo earning in daily.Earnings)
-                    {
-                        earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
-                    }
-                    earningDataGridView.Rows[0].Cells[0].Selected = false;
-
-                    break;
-                }
-            }
-
+                //plot earning info
+                foreach (EarningInfo earning in daily.EarningList)
+                    earningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
+            }           
             UpdateTotalExpenseLabel();
             UpdateTotalEarningLabel();
         }
@@ -525,27 +464,30 @@ namespace MyCost.Forms
             double total = .0;
 
             //go through each row in expense datagridView and add up the amounts
-            for (int i = 0; i < expenseDataGridView.Rows.Count - 1; ++i)
+            foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
+                //if it's the last row, break the loop because last row is empty
+                if (row.Index == expenseDataGridView.Rows.Count - 1)
+                    break;
+
                 try
                 {
-                    amount = Convert.ToDouble(expenseDataGridView.Rows[i].Cells[1].Value.ToString());
+                    amount = Convert.ToDouble(row.Cells[1].Value.ToString());
                     total += amount;
                 }
                 catch (FormatException)
                 {
-                    //make the color of the column different so the user can easily notice the error
-                    expenseDataGridView.Rows[i].Cells[1].Style.BackColor = Color.Red;
-                    expenseDataGridView.Rows[i].Cells[1].Style.ForeColor = Color.White;
+                    //make column color red so the user can easily notice the error
+                    row.Cells[1].Style.BackColor = Color.Red;
+                    row.Cells[1].Style.ForeColor = Color.White;
                 }
                 catch (NullReferenceException)
                 {
-                    //make the color of the column different so the user can easily point out
-                    expenseDataGridView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
-                    expenseDataGridView.Rows[i].Cells[1].Value = "0.00";
+                    //make column color yellow so the user can easily notice the error
+                    row.Cells[1].Style.BackColor = Color.Yellow;
+                    row.Cells[1].Value = "0.00";
                 }
             }
-
             totalExpenseLabel.Text = string.Format("{0:0.00}", total);
         }
 
@@ -555,57 +497,75 @@ namespace MyCost.Forms
             double total = .0;
 
             //go through each row in expense datagridView and add up the amounts
-            for (int i = 0; i < earningDataGridView.Rows.Count - 1; ++i)
+            foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
+                //if it's the last row, break the loop because last row is empty
+                if (row.Index == expenseDataGridView.Rows.Count - 1)
+                    break;
+
                 try
                 {
-                    amount = Convert.ToDouble(earningDataGridView.Rows[i].Cells[1].Value.ToString());
+                    amount = Convert.ToDouble(row.Cells[1].Value.ToString());
                     total += amount;
                 }
                 catch (FormatException)
                 {
-                    //make the color of the column different so the user can easily point out
-                    earningDataGridView.Rows[i].Cells[1].Style.BackColor = Color.Red;
-                    earningDataGridView.Rows[i].Cells[1].Style.ForeColor = Color.White;
+                    //make column color red so the user can easily point out
+                    row.Cells[1].Style.BackColor = Color.Red;
+                    row.Cells[1].Style.ForeColor = Color.White;
                 }
                 catch (NullReferenceException)
                 {
-                    //make the color of the column different so the user can easily point out
-                    earningDataGridView.Rows[i].Cells[1].Style.BackColor = Color.Yellow;
-                    earningDataGridView.Rows[i].Cells[1].Value = "0.00";
+                    //make column color yellow so the user can easily point out
+                    row.Cells[1].Style.BackColor = Color.Yellow;
+                    row.Cells[1].Value = "0.00";
                 }
             }
-
             totalEarningLabel.Text = string.Format("{0:0.00}", total);
-        }       
+        }  
+        
+        private void ResetAmountColumnColorToDeafault(DataGridView dgv, int rowIndex)
+        {
+            //Whenever an invalid amount is entered, we change the color of 
+            //the amount column so user can easily point out the error.
+            //Therefore, when the invalid amount is changed to a valid amount,
+            //the amount column color should be reset to default color
+            if (dgv.Rows[rowIndex].Cells[1].Style.BackColor == Color.Red)
+            {
+                dgv.Rows[rowIndex].Cells[1].Style.BackColor = Color.White;
+                dgv.Rows[rowIndex].Cells[1].Style.ForeColor = Color.Black;
+            }
+            else if (dgv.Rows[rowIndex].Cells[1].Style.BackColor == Color.Yellow)
+            {
+                dgv.Rows[rowIndex].Cells[1].Style.BackColor = Color.White;
+            }
+        }
 
         private void OpenCategoryListForm(DataGridView dgv)
         {
             CloseOpenedCategoryForm();  //prevents opening multiple category form at a time
 
-            List<int> rowIndexes = new List<int>();
+            List<int> rowIndexeList = new List<int>();
 
             foreach (DataGridViewRow row in dgv.SelectedRows)
             {
+                //if it's the last row, break the loop because last row is empty
                 if (row.Index == dgv.Rows.Count - 1)
-                {
-                    //this is the last row and an empty row
                     break;
-                }
-                rowIndexes.Add(row.Index);
+
+                rowIndexeList.Add(row.Index);
             }
 
-            CategoryListForm form = new CategoryListForm(dgv, rowIndexes);
+            CategoryListForm form = new CategoryListForm(dgv, rowIndexeList);
             form.Show();
         }    
 
         private void CloseOpenedCategoryForm()
         {
             Form openForm = Application.OpenForms["CategoryListForm"];
+
             if (openForm != null)
-            {
                 openForm.Close();
-            }
         }
 
         private void OpenNewForm(Form form)
@@ -625,9 +585,12 @@ namespace MyCost.Forms
             Properties.Settings.Default.Password = "";
             Properties.Settings.Default.Save();
 
-            OpenNewForm(new UserAuthenticationForm());
-        }
+            UserAuthenticationForm form = new UserAuthenticationForm();
+            form.Show();
 
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
         #endregion            
     }
 }

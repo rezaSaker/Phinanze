@@ -14,13 +14,7 @@ namespace MyCost.Common
         private string _category;
         private string _comment;      
 
-        public EarningInfo(string source, double amount, string category, string comment)
-        {
-            _source = source;
-            _amount = amount;
-            _category = category;
-            _comment = comment;
-        }
+        public EarningInfo() { }
 
         public string Source
         {

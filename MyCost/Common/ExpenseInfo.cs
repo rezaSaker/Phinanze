@@ -14,13 +14,7 @@ namespace MyCost.Common
         private string _category;
         private string _comment;      
 
-        public ExpenseInfo(string reason, double amount, string category, string comment)
-        {
-            _reason = reason;
-            _amount = amount;
-            _category = category;
-            _comment = comment;           
-        }
+        public ExpenseInfo() { }
 
         public string Reason
         {

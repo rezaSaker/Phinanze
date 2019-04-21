@@ -226,7 +226,7 @@ namespace MyCost.Forms
                 dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
-                    foreach (EarningInfo earning in daily.Earnings)
+                    foreach (EarningInfo earning in daily.EarningList)
                         dictCategorywiseEarning[earning.Category] += earning.Amount;
                
                 PlotCategorywiseYearlyEarningDataOnChart(dictCategorywiseEarning);
@@ -237,7 +237,7 @@ namespace MyCost.Forms
                 dictCategorywiseExpense = StaticStorage.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
-                    foreach (ExpenseInfo expense in daily.Expenses)
+                    foreach (ExpenseInfo expense in daily.ExpenseList)
                         dictCategorywiseExpense[expense.Category] += expense.Amount;
 
                 PlotCategorywiseYearlyExpenseDataOnChart(dictCategorywiseExpense);
@@ -255,7 +255,7 @@ namespace MyCost.Forms
                 dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
-                    foreach (EarningInfo earning in daily.Earnings)
+                    foreach (EarningInfo earning in daily.EarningList)
                         dictCategorywiseEarning[earning.Category] += earning.Amount;
 
                 PlotCategorywiseMonthlyEarningDataOnChart(dictCategorywiseEarning);
@@ -266,7 +266,7 @@ namespace MyCost.Forms
                 dictCategorywiseExpense = StaticStorage.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
-                    foreach (ExpenseInfo expense in daily.Expenses)
+                    foreach (ExpenseInfo expense in daily.ExpenseList)
                         dictCategorywiseExpense[expense.Category] += expense.Amount;
 
                 PlotCategorywiseMonthlyExpenseDataOnChart(dictCategorywiseExpense);
