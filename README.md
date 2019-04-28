@@ -1,9 +1,5 @@
 <div style="text-align:center; width:100%;">
-
-<video autoplay muted loop height=400 width=700 >
-	<source src="MyCost/Resources/AppPreviewVideo.mp4" type="video/mp4" />
-	your browser does not support our preview video
-</video>
+<img src"MyCost/Resources/MyCostLogo.png" width=200 height=100>
 <br>
 <span style="font-size:20px">
 MyCost is a simple and useful personal finance managment app that allows users to
