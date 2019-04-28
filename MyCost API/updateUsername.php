@@ -1,46 +1,62 @@
 <?php
 
 /*
-	*this file recieves current username and new username
-	*updates the current username with the new username
-	*returns SUCCESS or error message
+	*Recieve current username and new username
+	*Update the current username with the new username
+	*Return SUCCESS or error message
 */
 
 require_once('connectDB.php');
+require_once('requestVerification.php');
 
 if(isset($_POST['key']) && isset($_POST['token']) && isset($_POST['userid']))
 {
-	$key = mysqli_real_escape_string($connect, $_POST['key']);
-	$token = mysqli_real_escape_string($connect, $_POST['token']);
+	$key    = mysqli_real_escape_string($connect, $_POST['key']);
+	$token  = mysqli_real_escape_string($connect, $_POST['token']);
 	$userid = mysqli_real_escape_string($connect, $_POST['userid']);
 	
-	//verify the request
-	$query = "SELECT * FROM users WHERE token = '$token' AND access_key = '$key' AND id = '$userid'";
-	$result = mysqli_query($connect, $query) or die('Server connection error');
-	$count = mysqli_num_rows($result);
-	
-	if($count > 0)//request verified as authentic
+	if(IsAuthenticRequest($connect, $userid, $token, $key))//request verified as authentic
 	{		
 		$currentUsername = mysqli_real_escape_string($connect, $_POST['currentUsername']);
-		$newUsername = $_POST['newUsername'];
+		$newUsername     = mysqli_real_escape_string($connect, $_POST['newUsername']);
+		$password        = mysqli_real_escape_string($connect, $_POST['password']);
 		
-		//checks if new username cotains risky characters
-		$checkedNewUsername = mysqli_real_escape_string($connect, $newUsername);		
-		if($checkedNewUsername != $newUsername)
-			die('Please choose a different username');
-		
-		//checks if new username is laready taken by another user_error
-		$query = "SELECT id FROM users WHERE username = '$newUsername'";
-		$result = mysqli_query($connect, $query) or die('Server connection error');
-		$count = mysqli_num_rows($result);
-		if($count > 0)
-			die('Username is already taken. Please choose a different username');
-		
-		//updates the current username with the new username
-		$query = "UPDATE users SET username = '$newUsername' WHERE username = '$currentUsername' AND id = '$userid'";
-		mysqli_query($connect, $query) or die('Server connection error');
-		
-		die('SUCCESS');
+		//verify password
+		$query  = "SELECT * FROM users WHERE username = '$currentUsername' AND id = '$userid' LIMIT 1";
+		$result = mysqli_query($connect, $query) or die('Server connection error');;		
+		$row    = mysqli_fetch_array($result);
+		$hashedPass = $row['password'];
+	
+	    if(password_verify($password, $hashedPass))
+	    {
+			//check if new username cotains risky characters
+			$checkedNewUsername = mysqli_real_escape_string($connect, $newUsername);
+			
+			if($checkedNewUsername != $newUsername)
+			{
+				die('Please choose a different username');
+			}
+			
+			//check if new username is already taken 
+			$query  = "SELECT id FROM users WHERE username = '$newUsername'";
+			$result = mysqli_query($connect, $query) or die('Server connection error');
+			$count  = mysqli_num_rows($result);
+			
+			if($count > 0)
+			{
+				die('Username is already taken. Please choose a different username');
+			}
+			
+			//update the current username with the new username
+			$query = "UPDATE users SET username = '$newUsername' WHERE username = '$currentUsername' AND id = '$userid'";
+			mysqli_query($connect, $query) or die('Server connection error');
+			
+			die('SUCCESS');
+		}
+		else
+		{
+			die('Invalid password');
+		}
 	}
 	else //request from unauthentic source
 	{

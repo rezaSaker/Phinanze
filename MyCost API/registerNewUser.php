@@ -1,54 +1,91 @@
 <?php
 
 /*
-	*this script recieves data that is sent from MyCost app 
-	*register a new user
-	*and returns the user id and a unique token 
+	*Receive data sent from MyCost app 
+	*Register a new user
+	*Returns the user id and a temporary access token 
 */
 
 require_once('connectDB.php');
+require_once('encryption.php');
 
-if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['key']))
-{
-	$key = mysqli_real_escape_string($connect, $_POST['key']);
-	$username = mysqli_real_escape_string($connect, $_POST['username']);
-	$password = mysqli_real_escape_string($connect, $_POST['password']);
-	$password = md5(base64_encode($password));
+if(isset($_POST['username']) && isset($_POST['password']) 
+	&& isset($_POST['key']) && isset($_POST['code']))
+{	
+	$username       = mysqli_real_escape_string($connect, $_POST['username']);
+	$password       = mysqli_real_escape_string($connect, $_POST['password']);
+	$key            = mysqli_real_escape_string($connect, $_POST['key']);
+	$activationCode = mysqli_real_escape_string($connect, $_POST['code']); 
+																								
+	//verify the request
+	$query  = "SELECT * FROM activation_codes WHERE code = '$activationCode'";
+	$result = mysqli_query($connect, $query) or die('Server connection error');
+	$count  = mysqli_num_rows($result);
+	
+	if($count < 1)
+	{
+		//activation code is invalid
+		die('Invalid activation code');
+	}
 	
 	//check if the username contains any potential risky characters
-	$checkedUsername = mysqli_real_escape_string($connect, $username);	
+	$checkedUsername = mysqli_real_escape_string($connect, $username);
+	
 	if($checkedUsername != $username) 
 	{
 		die('Please choose a different username');
-	}
+	}	
 	
-	//checks if the username already exists
-	$query = "SELECT * FROM users WHERE username = '$username'";
+	//check if the username already exists
+	$query  = "SELECT * FROM users WHERE username = '$username'";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
-	$count = mysqli_num_rows($result);
+	$count  = mysqli_num_rows($result);
+	
 	if($count > 0)
 	{
-		die('The username already exists. Please choose a different username');
+		die('The username already exists');
 	}
 	
 	//generate a random string as temporary access token
-	$token = RandomToken(100);
+	$token = RandomToken();
+	$encToken = Encrypt($token, $key);
 	
-	//saves the user info
-	$query = "INSERT INTO users (username, password, token, access_key) 
-			  VALUES ('$username', '$password', '$token', '$key')";
-	$result = mysqli_query($connect, $query) or die('Server connection error');
+	//hash password
+	$password = password_hash($password, PASSWORD_DEFAULT);
 	
+	//save the user info
+	$query  = "INSERT INTO users (username, password, token) 
+			  VALUES ('$username', '$password', '$encToken')";
+	$result = mysqli_query($connect, $query) or die('Server connection error');	
 	$userid = mysqli_insert_id($connect);
 	
 	//add a new row in category table with the default categories for this user
 	$earningCategories = 'Pay cheque|Business|Gift|Bonus|Refund|Other';
 	$expenseCategories = 'House rent|Car|Transit|Groccery|Medical expense|Eating outside|Other';
-	$query = "INSERT INTO categories (earningCategories, expenseCategories, userid) 
-			  VALUES ('$earningCategories', '$expenseCategories', '$userid')";
-	mysqli_query($connect, $query) or die("Server connection error");
 	
-	//returns the userid and the access token to the MyCost app 
+	$query  = "INSERT INTO categories (earningCategories, expenseCategories, userid) 
+			  VALUES ('$earningCategories', '$expenseCategories', '$userid')";
+	$result = mysqli_query($connect, $query) or die("Server connection error");
+
+	//we keep track that how many times an activation code is used
+	//an activation is allowed to be used maximum 3 times
+	$query  = "SELECT * FROM activation_codes WHERE code = '$activationCode'";
+	$result = mysqli_query($connect, $query) or die('Server connection error');
+	$row    = mysqli_fetch_array($result);
+	$times_used = $row['times_used'];
+	
+	if($times_used < 2)
+	{
+		$query  = "UPDATE activation_codes SET times_used = times_used + 1 WHERE code = '$activationCode'";
+		$result = mysqli_query($connect, $query) or die('Server connection error');
+	}
+	else
+	{
+		$query  = "DELETE FROM activation_codes WHERE code = '$activationCode'";
+		$result = mysqli_query($connect, $query) or die('Server connection error');
+	}
+	
+	//return the userid and the access token to MyCost app 
 	die($userid . '|' . $token);	
 }
 else
@@ -56,12 +93,12 @@ else
 	die('Server connection error'); 
 }
 
-
-function RandomToken($tokenLen)
-{
-	$charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+function RandomToken()
+{	
+	$charSet    = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 	$charSetLen = strlen($charSet);
-	$randStr = "";
+	$tokenLen   = mt_rand(70, 100);
+	$randStr    = "";
 	
 	for($i = 0; $i < $tokenLen; $i++)
 	{

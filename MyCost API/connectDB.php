@@ -1,8 +1,8 @@
 <?php
 
 /*
-	*connect to the database
-	*this file is used by several other files
+	*Connect to the database
+	*This file is required by all other file in MyCost API
 */
 
 DEFINE('SERVER', 'server address');
