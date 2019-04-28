@@ -181,7 +181,7 @@ namespace MyCost.View
         {
             try
             {
-                Process.Start(StaticStorage.HelpSourcePath);
+                Process.Start(StaticStorage.HelpPath);
             }
             catch
             {
@@ -193,7 +193,7 @@ namespace MyCost.View
         {
             try
             {
-                Process.Start(StaticStorage.ReportAppSourcePath);
+                Process.Start(StaticStorage.ReportAppPath);
             }
             catch
             {
@@ -201,11 +201,11 @@ namespace MyCost.View
             }
         }
 
-        private void ViewSourceButtonClicked(object sender, EventArgs e)
+        private void AboutAppButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                Process.Start(StaticStorage.SourcePath);
+                Process.Start(StaticStorage.AboutAppPath);
             }
             catch
             {

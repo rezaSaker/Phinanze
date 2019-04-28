@@ -103,13 +103,13 @@ namespace MyCost.View
         {
             if (submitButton.Text == "Log in")
             {
-                statusLabel.Text = "Verifying your login credentials, please wait....";
+                ShowMessage("Verifying your login credentials, please wait....");
 
                 LoginUser();
             }
             else
             {
-                statusLabel.Text = "Creating your account, please wait....";
+                ShowMessage("Creating your account, please wait....");
 
                 RegisterUser();
             }
@@ -165,7 +165,6 @@ namespace MyCost.View
         private void ResetTextBoxProperties()
         {
             //reset the placeholders in the textboxes
-            statusLabel.ForeColor = Color.OrangeRed;
             statusLabel.Text = "";
             usernameTextBox.Text = "Username";
             usernameTextBox.ForeColor = Color.DarkGray;
@@ -190,12 +189,12 @@ namespace MyCost.View
 
             if(username.Length < 1)
             {
-                statusLabel.Text = "Please enter username";
+                ShowErrorMessage("Please enter username");
                 return;
             }
             else if(password.Length < 1)
             {
-                statusLabel.Text = "Please enter password";
+                ShowErrorMessage("Please enter password");
                 return;
             }
 
@@ -215,7 +214,7 @@ namespace MyCost.View
             }
             else
             {
-                statusLabel.Text = result;
+                ShowErrorMessage(result);
             }
         }
 
@@ -234,22 +233,22 @@ namespace MyCost.View
 
             if (username.Length < 1)
             {
-                statusLabel.Text = "Please enter a username!";
+                ShowErrorMessage("Please enter a username!");
                 return;
             }
             else if (password.Length < 1)
             {
-                statusLabel.Text = "Please enter a password!";
+                ShowErrorMessage("Please enter a password!");
                 return;
             }
             else if (confirmPassword != password)
             {
-                statusLabel.Text = "Password does not match!";
+                ShowErrorMessage("Password does not match!");
                 return;
             }
             else if(activationCode.Length < 1)
             {
-                statusLabel.Text = "Please enter the activation code";
+                ShowErrorMessage("Please enter the activation code");
                 return;
             }
 
@@ -269,7 +268,7 @@ namespace MyCost.View
             }
             else
             {
-                statusLabel.Text = result;
+                ShowErrorMessage(result);
             }
         }
 
@@ -404,6 +403,18 @@ namespace MyCost.View
             {
                 StaticStorage.ExpenseCategories.Add(cat);
             }
+        }
+
+        private void ShowMessage(string message)
+        {
+            statusLabel.Text = message;
+            statusLabel.ForeColor = Color.ForestGreen;
+        }
+
+        private void ShowErrorMessage(string message)
+        {
+            statusLabel.Text = message;
+            statusLabel.ForeColor = Color.Red;
         }
         #endregion
     }

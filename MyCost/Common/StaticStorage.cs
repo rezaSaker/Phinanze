@@ -6,10 +6,10 @@ namespace MyCost.Common
 {
     class StaticStorage
     {
-        public const string ServerAddress = "https://rezasdev.000webhostapp.com/dev/soft/mycost/app_server/";
-        public const string SourcePath = "https://github.com/rezaSaker/MyCost";
-        public const string HelpSourcePath = "https://github.com/rezaSaker/MyCost";
-        public const string ReportAppSourcePath = "https://github.com/rezaSaker/MyCost/issues/new";
+        public const string ServerAddress = "Server address";
+        public const string AboutAppPath = "https://github.com/rezaSaker/MyCost";
+        public const string HelpPath = "https://github.com/rezaSaker/MyCost";
+        public const string ReportAppPath = "https://github.com/rezaSaker/MyCost/issues/new";
         
         public static int? UserID;
 

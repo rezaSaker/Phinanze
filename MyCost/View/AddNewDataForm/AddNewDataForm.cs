@@ -74,18 +74,33 @@ namespace MyCost.View
 
         private void DayComboBoxIndexChanged(object sender, EventArgs e)
         {
+            if (_hasUnsavedChanges)
+            {
+                AutoSave();
+            }
+
             _selectedDay = dayComboBox.SelectedIndex + 1;
             PlotDailyInfo();
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
-        {         
+        {
+            if (_hasUnsavedChanges)
+            {
+                AutoSave();
+            }
+
             _selectedMonth = monthComboBox.SelectedIndex + 1;
             AddItemsToDayComboBox();
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
+            if (_hasUnsavedChanges)
+            {
+                AutoSave();
+            }
+
             _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
             AddItemsToDayComboBox();      
         }
@@ -114,6 +129,7 @@ namespace MyCost.View
                 List<int> rowIndexList = new List<int>();
                 rowIndexList.Add(e.RowIndex);
                 CategoryListForm form = new CategoryListForm(expenseDataGridView, rowIndexList);
+                form.Location = new Point(this.Location.X + 300, this.Location.Y);
                 form.Show();
             }
         }
@@ -149,6 +165,7 @@ namespace MyCost.View
                 List<int> rowIndexList = new List<int>();
                 rowIndexList.Add(e.RowIndex);
                 CategoryListForm form = new CategoryListForm(earningDataGridView, rowIndexList);
+                form.Location = new Point(this.Location.X + 300, this.Location.Y);
                 form.Show();
             }
         }
@@ -447,9 +464,9 @@ namespace MyCost.View
         {
             DailyInfo daily = new DailyInfo();
             daily.Note = noteTextBox.ForeColor == Color.Black ? noteTextBox.Text : "No note";
-            daily.Day = Convert.ToUInt16(dayComboBox.SelectedItem.ToString());
-            daily.Month = monthComboBox.Items.IndexOf(monthComboBox.SelectedItem.ToString()) + 1;
-            daily.Year = Convert.ToUInt16(yearComboBox.SelectedItem.ToString());
+            daily.Day = _selectedDay;
+            daily.Month = _selectedMonth;
+            daily.Year = _selectedYear;
             daily.TotalEarning = Convert.ToDouble(totalEarningLabel.Text);
             daily.TotalExpense = Convert.ToDouble(totalExpenseLabel.Text);
 
@@ -696,6 +713,7 @@ namespace MyCost.View
             }
 
             CategoryListForm form = new CategoryListForm(dgv, rowIndexList);
+            form.Location = new Point(this.Location.X + 300, this.Location.Y);
             form.Show();
         }           
         
