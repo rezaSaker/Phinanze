@@ -1,5 +1,5 @@
 <div style="text-align:center; width:100%;">
-<img src"MyCost/Resources/MyCostLogo.png" width=200 height=100>
+<img src="MyCost/Resources/MyCostLogo.png" width=200 height=100>
 <br>
 <span style="font-size:20px">
 MyCost is a simple and useful personal finance managment app that allows users to
