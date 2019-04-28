@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Collections;
 using System.Net;
 using MyCost.Common;
 
@@ -30,7 +31,7 @@ namespace MyCost.ServerHandling
             }
         }
 
-        public static string RegisterNewUser(string username, string password)
+        public static string RegisterNewUser(string username, string password, string code)
         {
             WebClient www = new WebClient();
 
@@ -40,6 +41,7 @@ namespace MyCost.ServerHandling
             queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("username", username);
             queryData.Add("password", password);
+            queryData.Add("code", code);
 
             try
             {
@@ -244,7 +246,7 @@ namespace MyCost.ServerHandling
             }
         }
 
-        public static string UpdateUsername(string newUsername)
+        public static string UpdateUsername(string newUsername, string password)
         {
             WebClient www = new WebClient();
 
@@ -256,6 +258,7 @@ namespace MyCost.ServerHandling
             queryData.Add("userid", StaticStorage.UserID.ToString());
             queryData.Add("newUsername", newUsername);
             queryData.Add("currentUsername", StaticStorage.Username);
+            queryData.Add("password", password);
 
             try
             {

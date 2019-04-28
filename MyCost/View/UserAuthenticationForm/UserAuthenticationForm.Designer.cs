@@ -38,6 +38,7 @@
             this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.statusLabel = new System.Windows.Forms.Label();
             this.rememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.activationCodeTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // showRegisterPanelButton
@@ -90,7 +91,7 @@
             this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.White;
-            this.submitButton.Location = new System.Drawing.Point(270, 299);
+            this.submitButton.Location = new System.Drawing.Point(280, 344);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(246, 36);
             this.submitButton.TabIndex = 13;
@@ -144,7 +145,7 @@
             // 
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(157, 348);
+            this.statusLabel.Location = new System.Drawing.Point(276, 395);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(82, 20);
             this.statusLabel.TabIndex = 14;
@@ -155,19 +156,34 @@
             // 
             this.rememberMeCheckBox.AutoSize = true;
             this.rememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rememberMeCheckBox.Location = new System.Drawing.Point(140, 269);
+            this.rememberMeCheckBox.Location = new System.Drawing.Point(140, 319);
             this.rememberMeCheckBox.Name = "rememberMeCheckBox";
             this.rememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
             this.rememberMeCheckBox.TabIndex = 15;
             this.rememberMeCheckBox.Text = "Remember me";
             this.rememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
+            // activationCodeTextBox
+            // 
+            this.activationCodeTextBox.BackColor = System.Drawing.Color.White;
+            this.activationCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.activationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activationCodeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.activationCodeTextBox.Location = new System.Drawing.Point(140, 274);
+            this.activationCodeTextBox.Multiline = true;
+            this.activationCodeTextBox.Name = "activationCodeTextBox";
+            this.activationCodeTextBox.Size = new System.Drawing.Size(500, 30);
+            this.activationCodeTextBox.TabIndex = 16;
+            this.activationCodeTextBox.Text = "Activation Code";
+            this.activationCodeTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ActivationCodeTextBoxClicked);
+            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 377);
+            this.ClientSize = new System.Drawing.Size(784, 424);
+            this.Controls.Add(this.activationCodeTextBox);
             this.Controls.Add(this.rememberMeCheckBox);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.submitButton);
@@ -202,6 +218,7 @@
         private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.CheckBox rememberMeCheckBox;
+        private System.Windows.Forms.TextBox activationCodeTextBox;
     }
 }
 

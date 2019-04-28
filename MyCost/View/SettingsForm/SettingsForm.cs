@@ -32,6 +32,11 @@ namespace MyCost.View
                 //remove the placeholder
                 tb.ForeColor = Color.Black;
                 tb.Text = "";
+
+                if(tb.Name == "passwordTextBox")
+                {
+                    tb.PasswordChar = '*';
+                }
             }
         }
 
@@ -41,8 +46,8 @@ namespace MyCost.View
                 && currentUserNameTextBox.Text != ""
                 && newUserNameTextBox.ForeColor == Color.Black
                 && newUserNameTextBox.Text != ""
-                && confirmUserNameTextBox.ForeColor == Color.Black
-                && confirmUserNameTextBox.Text != "")
+                && passwordTextBox.ForeColor == Color.Black
+                && passwordTextBox.Text != "")
             {
                 submitUserNameButton.Enabled = true;
             }
@@ -60,6 +65,7 @@ namespace MyCost.View
             {
                 tb.ForeColor = Color.Black;
                 tb.Text = "";
+                tb.PasswordChar = '*';
             }
         }
 
@@ -85,27 +91,22 @@ namespace MyCost.View
             if (currentUserNameTextBox.Text != StaticStorage.Username)
             {
                 MessageBox.Show("Current username is incorrect");
+                return;
             }
-            else if (newUserNameTextBox.Text != confirmUserNameTextBox.Text)
-            {
-                MessageBox.Show("Username doesn't match");
-            }
-            else //all fields are correct
-            {
-                string result = ServerHandler.UpdateUsername(newUserNameTextBox.Text);
 
-                if (result == "SUCCESS")
-                {
-                    //log out user from the current session                    
-                    StaticStorage.LogOutUser();
-                    _quitAppOnFormClosing = false;
-                    this.Close();
-                }
-                else
-                {
-                    //if the update doesn't succeed, the error message is returned
-                    MessageBox.Show(result);
-                }
+            string result = ServerHandler.UpdateUsername(newUserNameTextBox.Text, passwordTextBox.Text);
+
+            if (result == "SUCCESS")
+            {
+                 //log out user from the current session                    
+                 StaticStorage.LogOutUser();
+                 _quitAppOnFormClosing = false;
+                 this.Close();
+            }
+            else
+            {
+                 //if the update doesn't succeed, the error message is returned
+                 MessageBox.Show(result);
             }
         }
 

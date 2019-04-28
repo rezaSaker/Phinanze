@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Linq;
 using MyCost.Common;
 using MyCost.ServerHandling;
 
@@ -65,6 +64,7 @@ namespace MyCost.View
                     ((DataGridView)control).UserAddedRow += ControlChanged;
                     ((DataGridView)control).UserDeletedRow += ControlChanged;
                     ((DataGridView)control).CellEndEdit += ControlChanged;
+                    ((DataGridView)control).CellBeginEdit += ControlChanged;
                 }
             }
 
@@ -173,200 +173,7 @@ namespace MyCost.View
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
-            DailyInfo daily = new DailyInfo();
-            daily.Note = noteTextBox.ForeColor == Color.Black ? noteTextBox.Text : "No note";
-            daily.Day = Convert.ToUInt16(dayComboBox.SelectedItem.ToString());
-            daily.Month = monthComboBox.Items.IndexOf(monthComboBox.SelectedItem.ToString()) + 1;
-            daily.Year = Convert.ToUInt16(yearComboBox.SelectedItem.ToString());
-            daily.TotalEarning = Convert.ToDouble(totalEarningLabel.Text);
-            daily.TotalExpense = Convert.ToDouble(totalExpenseLabel.Text);
-
-            string source;
-            string reason;
-            string category;
-            string comment;
-            double amount;
-
-            foreach (DataGridViewRow row in expenseDataGridView.Rows)
-            {
-                if (IslastEmptyRow(expenseDataGridView, row.Index))
-                {
-                    break;
-                }
-
-                try
-                {
-                    reason = expenseDataGridView.Rows[row.Index].Cells[0].Value.ToString();
-                }
-                catch
-                {
-                    reason = "";
-                }
-
-                try
-                {
-                    amount = Convert.ToDouble(expenseDataGridView.Rows[row.Index].Cells[1].Value.ToString());
-                }
-                catch (NullReferenceException)
-                {
-                    string message;
-                    message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + " In expense table. Do you want to continue saving?";
-
-                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (dresult == DialogResult.Yes)
-                    {
-                        amount = .0;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                catch (FormatException)
-                {
-                    string message;
-                    message = "Looks like the amount is not correct on row ";
-                    message += (row.Index + 1) + " in expense table. Amount can only be numbers. ";
-                    message += "Please correct the amount before saving.";
-
-                    MessageBox.Show(message);
-                    return;
-                }
-
-                try
-                {
-                    category = expenseDataGridView.Rows[row.Index].Cells[2].Value.ToString();
-                }
-                catch
-                {
-                    category = "Other";
-                }
-
-                try
-                {
-                    comment = expenseDataGridView.Rows[row.Index].Cells[3].Value.ToString();
-                }
-                catch
-                {
-                    comment = "";
-                }
-
-                ExpenseInfo expense = new ExpenseInfo
-                {
-                    Reason = reason,
-                    Amount = amount,
-                    Category = category,
-                    Comment = comment
-                };
-                daily.ExpenseList.Add(expense);
-            }
-
-            foreach (DataGridViewRow row in earningDataGridView.Rows)
-            {
-                if (IslastEmptyRow(earningDataGridView, row.Index))
-                {
-                    break;
-                }
-
-                try
-                {
-                    source = earningDataGridView.Rows[row.Index].Cells[0].Value.ToString();
-                }
-                catch
-                {
-                    source = "";
-                }
-
-                try
-                {
-                    amount = Convert.ToDouble(earningDataGridView.Rows[row.Index].Cells[1].Value.ToString());
-                }
-                catch (NullReferenceException)
-                {
-                    string message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + " in Earning table. Do you want to continue saving?";
-
-                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (dresult == DialogResult.Yes)
-                    {
-                        amount = .0;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-                catch (FormatException)
-                {
-                    string message = "Looks like the amount is not correct on row ";
-                    message += (row.Index + 1) + " in expense table. Amount can only be numbers. ";
-                    message += "Please correct the amount before saving.";
-
-                    MessageBox.Show(message);
-                    return;
-                }
-
-                try
-                {
-                    category = earningDataGridView.Rows[row.Index].Cells[2].Value.ToString();
-                }
-                catch
-                {
-                    category = "Other";
-                }
-
-                try
-                {
-                    comment = earningDataGridView.Rows[row.Index].Cells[3].Value.ToString();
-                }
-                catch
-                {
-                    comment = "";
-                }
-
-                EarningInfo earning = new EarningInfo
-                {
-                    Source = source,
-                    Amount = amount,
-                    Category = category,
-                    Comment = comment,
-                };
-                daily.EarningList.Add(earning); 
-            }
-
-            string result = ServerHandler.SaveDailyInfo(daily);
-
-            if (result == "SUCCESS")
-            {
-                //if any info on the same date already exists, overwrite that info 
-                //otherwise, add this info as new info
-                int index = StaticStorage.DailyInfoList.FindIndex(
-                    d => d.Day == daily.Day && d.Month == daily.Month && d.Year == daily.Year);
-
-                if (index != -1)
-                {
-                    StaticStorage.DailyInfoList[index] = daily;
-                }
-                else
-                {
-                    StaticStorage.DailyInfoList.Add(daily);
-                }
-
-                //monthly info should change accordingly since daily info has been modified
-                MonthlyInfo.Fetch();
-
-                _hasUnsavedChanges = false;
-                saveButton.Enabled = false;
-                saveButton.BackColor = Color.LightGray;
-            }
-            else
-            {
-                //if save is not success, the error message is returned
-                MessageBox.Show(result);
-            }
+            SaveInfo();
         }
       
         private void ApplyCategoryButtonClicked(object sender, EventArgs e)
@@ -398,6 +205,15 @@ namespace MyCost.View
 
         private void MenuButtonsClicked(object sender, EventArgs e)
         {
+            if (_hasUnsavedChanges)
+            {
+                if(!AutoSave())
+                {
+                    //if auto saving is not successful
+                    return;
+                }
+            }
+
             Button button = (Button)sender;
 
             if (button.Name == "homeButton")
@@ -435,18 +251,21 @@ namespace MyCost.View
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             CloseOpenedCategoryForm();
-
-            if (_hasUnsavedChanges)
-            {
-                saveButton.PerformClick();
-            }
-
+           
             if (_quitAppOnFormClosing)
             {
+                if (_hasUnsavedChanges)
+                {
+                    if(!AutoSave())
+                    {
+                        //if auto saving is not successful
+                        e.Cancel = true;
+                    }
+                }
+
                 Application.Exit();
             }
         }
-
         #endregion
 
         #region non_event_handler_methods
@@ -622,6 +441,242 @@ namespace MyCost.View
             {
                 dgv.Rows[rowIndex].Cells[1].Style.BackColor = Color.White;
             }
+        }
+
+        private bool SaveInfo()
+        {
+            DailyInfo daily = new DailyInfo();
+            daily.Note = noteTextBox.ForeColor == Color.Black ? noteTextBox.Text : "No note";
+            daily.Day = Convert.ToUInt16(dayComboBox.SelectedItem.ToString());
+            daily.Month = monthComboBox.Items.IndexOf(monthComboBox.SelectedItem.ToString()) + 1;
+            daily.Year = Convert.ToUInt16(yearComboBox.SelectedItem.ToString());
+            daily.TotalEarning = Convert.ToDouble(totalEarningLabel.Text);
+            daily.TotalExpense = Convert.ToDouble(totalExpenseLabel.Text);
+
+            string source;
+            string reason;
+            string category;
+            string comment;
+            double amount;
+
+            foreach (DataGridViewRow row in expenseDataGridView.Rows)
+            {
+                if (IslastEmptyRow(expenseDataGridView, row.Index))
+                {
+                    break;
+                }
+
+                try
+                {
+                    reason = expenseDataGridView.Rows[row.Index].Cells[0].Value.ToString();
+                }
+                catch
+                {
+                    reason = "";
+                }
+
+                try
+                {
+                    amount = Convert.ToDouble(expenseDataGridView.Rows[row.Index].Cells[1].Value.ToString());
+                }
+                catch (NullReferenceException)
+                {
+                    string message;
+                    message = "Looks like you forgot to enter amount on row ";
+                    message += (row.Index + 1) + " In expense table. Do you want to continue saving?";
+
+                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (dresult == DialogResult.Yes)
+                    {
+                        amount = .0;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    string message;
+                    message = "Looks like the amount is not correct on row ";
+                    message += (row.Index + 1) + " in expense table. Continuing may cause ";
+                    message += "loss of data. Do you want to continue saving?";
+
+                    DialogResult dresult = MessageBox.Show(message,"Alert", MessageBoxButtons.YesNo);
+                    
+                    if(dresult == DialogResult.Yes)
+                    {
+                        amount = 0.0;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                try
+                {
+                    category = expenseDataGridView.Rows[row.Index].Cells[2].Value.ToString();
+                }
+                catch
+                {
+                    category = "Other";
+                }
+
+                try
+                {
+                    comment = expenseDataGridView.Rows[row.Index].Cells[3].Value.ToString();
+                }
+                catch
+                {
+                    comment = "";
+                }
+
+                ExpenseInfo expense = new ExpenseInfo
+                {
+                    Reason = reason,
+                    Amount = amount,
+                    Category = category,
+                    Comment = comment
+                };
+                daily.ExpenseList.Add(expense);
+            }
+
+            foreach (DataGridViewRow row in earningDataGridView.Rows)
+            {
+                if (IslastEmptyRow(earningDataGridView, row.Index))
+                {
+                    break;
+                }
+
+                try
+                {
+                    source = earningDataGridView.Rows[row.Index].Cells[0].Value.ToString();
+                }
+                catch
+                {
+                    source = "";
+                }
+
+                try
+                {
+                    amount = Convert.ToDouble(earningDataGridView.Rows[row.Index].Cells[1].Value.ToString());
+                }
+                catch (NullReferenceException)
+                {
+                    string message = "Looks like you forgot to enter amount on row ";
+                    message += (row.Index + 1) + " in Earning table. Do you want to continue saving?";
+
+                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (dresult == DialogResult.Yes)
+                    {
+                        amount = .0;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                catch (FormatException)
+                {
+                    string message;
+                    message = "Looks like the amount is not correct on row ";
+                    message += (row.Index + 1) + " in earning table. Continuing may cause ";
+                    message += "loss of data. Do you want to continue saving?";
+
+                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                    if (dresult == DialogResult.Yes)
+                    {
+                        amount = 0.0;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                try
+                {
+                    category = earningDataGridView.Rows[row.Index].Cells[2].Value.ToString();
+                }
+                catch
+                {
+                    category = "Other";
+                }
+
+                try
+                {
+                    comment = earningDataGridView.Rows[row.Index].Cells[3].Value.ToString();
+                }
+                catch
+                {
+                    comment = "";
+                }
+
+                EarningInfo earning = new EarningInfo
+                {
+                    Source = source,
+                    Amount = amount,
+                    Category = category,
+                    Comment = comment,
+                };
+                daily.EarningList.Add(earning);
+            }
+
+            string result = ServerHandler.SaveDailyInfo(daily);
+
+            if (result == "SUCCESS")
+            {
+                //if any info on the same date already exists, overwrite that info 
+                //otherwise, add this info as new info
+                int index = StaticStorage.DailyInfoList.FindIndex(
+                    d => d.Day == daily.Day && d.Month == daily.Month && d.Year == daily.Year);
+
+                if (index != -1)
+                {
+                    StaticStorage.DailyInfoList[index] = daily;
+                }
+                else
+                {
+                    StaticStorage.DailyInfoList.Add(daily);
+                }
+
+                //monthly info should change accordingly since daily info has been modified
+                MonthlyInfo.Fetch();
+
+                _hasUnsavedChanges = false;
+                saveButton.Enabled = false;
+                saveButton.BackColor = Color.LightGray;
+                return true;
+            }
+            else
+            {
+                //if save is not success, the error message is returned
+                MessageBox.Show(result);
+                return false;
+            }
+        }
+
+        private bool AutoSave()
+        {
+            if (!SaveInfo())
+            {
+                //if the info is not successfully saved
+                string message = "You have unsaved changes. Changing or closing this ";
+                message += "page might cause loss of data. Do you want to continue?";
+
+                DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+                if (result == DialogResult.No)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private void OpenCategoryListForm(DataGridView dgv)

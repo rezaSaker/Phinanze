@@ -30,10 +30,19 @@ namespace MyCost.View
             string username = Properties.Settings.Default.Username;
             string password = Properties.Settings.Default.Password;
      
+            //if the user opted to auto login by checking the remmeberMeCheckBox 
             if (username != ""  && password != "")
             {
+                //make the text color black so that the login method 
+                //doesn't detect the texts as placeholder
+                usernameTextBox.ForeColor = Color.Black;
+                passwordTextBox.ForeColor = Color.Black;
+
+                //fille the username and password field with pre-saved info
                 usernameTextBox.Text = Properties.Settings.Default.Username;
                 passwordTextBox.Text = Properties.Settings.Default.Password;
+
+                //attempt login
                 submitButton.PerformClick();
             }
         }
@@ -52,7 +61,7 @@ namespace MyCost.View
         {
             if (usernameTextBox.ForeColor != Color.Black)
             {
-                //removes the placeholder
+                //remove the placeholder
                 usernameTextBox.Text = "";
                 usernameTextBox.ForeColor = Color.Black;
             }
@@ -62,7 +71,7 @@ namespace MyCost.View
         {
             if (passwordTextBox.ForeColor != Color.Black)
             {
-                //removes the placeholder
+                //remove the placeholder
                 passwordTextBox.Text = "";
                 passwordTextBox.ForeColor = Color.Black;
                 passwordTextBox.PasswordChar = '*';
@@ -73,10 +82,20 @@ namespace MyCost.View
         {
             if (confirmPasswordTextBox.ForeColor != Color.Black)
             {
-                //removes the placeholder
+                //remove the placeholder
                 confirmPasswordTextBox.Text = "";
                 confirmPasswordTextBox.ForeColor = Color.Black;
                 confirmPasswordTextBox.PasswordChar = '*';
+            }
+        }
+
+        private void ActivationCodeTextBoxClicked(object sender, MouseEventArgs e)
+        {
+            if(activationCodeTextBox.ForeColor != Color.Black)
+            {
+                //remove the placeholder
+                activationCodeTextBox.Text = "";
+                activationCodeTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -84,10 +103,14 @@ namespace MyCost.View
         {
             if (submitButton.Text == "Log in")
             {
+                statusLabel.Text = "Verifying your login credentials, please wait....";
+
                 LoginUser();
             }
             else
             {
+                statusLabel.Text = "Creating your account, please wait....";
+
                 RegisterUser();
             }
         }                    
@@ -111,11 +134,13 @@ namespace MyCost.View
             showLoginPanelButton.BackColor = Color.White;
             showLoginPanelButton.ForeColor = Color.Black;
             submitButton.Text = "Log in";
-            submitButton.Location = new Point(270, 251);
+            submitButton.Location = new Point(280, 251);
             confirmPasswordTextBox.Visible = false;
             confirmPasswordTextBox.Enabled = false;
+            activationCodeTextBox.Visible = false;
+            activationCodeTextBox.Enabled = false;
             rememberMeCheckBox.Location = new Point(140, 223);
-            statusLabel.Location = new Point(270, 300);
+            statusLabel.Location = new Point(276, 300);
             ResetTextBoxProperties();
         }
 
@@ -127,18 +152,20 @@ namespace MyCost.View
             showLoginPanelButton.BackColor = Color.RoyalBlue;
             showLoginPanelButton.ForeColor = Color.White;
             submitButton.Text = "Register";
-            submitButton.Location = new Point(270, 299);
+            submitButton.Location = new Point(280, 344);
             confirmPasswordTextBox.Visible = true;
             confirmPasswordTextBox.Enabled = true;
-            rememberMeCheckBox.Location = new Point(140, 269);
-            statusLabel.Location = new Point(157, 348);
+            activationCodeTextBox.Visible = true;
+            activationCodeTextBox.Enabled = true;
+            rememberMeCheckBox.Location = new Point(136, 319);
+            statusLabel.Location = new Point(276, 395);
             ResetTextBoxProperties();
         }
 
         private void ResetTextBoxProperties()
         {
             //reset the placeholders in the textboxes
-            statusLabel.ForeColor = Color.Red;
+            statusLabel.ForeColor = Color.OrangeRed;
             statusLabel.Text = "";
             usernameTextBox.Text = "Username";
             usernameTextBox.ForeColor = Color.DarkGray;
@@ -148,12 +175,29 @@ namespace MyCost.View
             confirmPasswordTextBox.Text = "Confirm Password";
             confirmPasswordTextBox.ForeColor = Color.DarkGray;
             confirmPasswordTextBox.PasswordChar = '\0';
+            activationCodeTextBox.Text = "Activation Code";
+            activationCodeTextBox.ForeColor = Color.DarkGray;
         }
 
         private void LoginUser()
         {
-            string username = usernameTextBox.Text;
-            string password = this.passwordTextBox.Text;
+            //if fore-color of a textBox is not black, that means the textbox 
+            //contains the placeholder text and user didn't enter any value
+            string username = usernameTextBox.ForeColor == Color.Black?
+                usernameTextBox.Text : "";
+            string password = passwordTextBox.ForeColor == Color.Black?
+                passwordTextBox.Text : "";
+
+            if(username.Length < 1)
+            {
+                statusLabel.Text = "Please enter username";
+                return;
+            }
+            else if(password.Length < 1)
+            {
+                statusLabel.Text = "Please enter password";
+                return;
+            }
 
             string result = ServerHandler.AuthenticateUser(username, password);
             string[] data = result.Split('|');
@@ -171,23 +215,29 @@ namespace MyCost.View
             }
             else
             {
-                //displays the error message
                 statusLabel.Text = result;
             }
         }
 
         private void RegisterUser()
         {
-            string username = usernameTextBox.Text;
-            string password = this.passwordTextBox.Text;
-            string confirmPassword = confirmPasswordTextBox.Text;
+            //if fore-color of a textBox is not black, that means the textbox 
+            //contains the placeholder text and user didn't enter any value
+            string username = usernameTextBox.ForeColor == Color.Black? 
+                usernameTextBox.Text : "";
+            string password = passwordTextBox.ForeColor == Color.Black?
+                passwordTextBox.Text : "";
+            string confirmPassword = confirmPasswordTextBox.ForeColor == Color.Black?
+                confirmPasswordTextBox.Text : "";
+            string activationCode = activationCodeTextBox.ForeColor == Color.Black ?
+                activationCodeTextBox.Text : "";
 
-            if (username.Length < 0)
+            if (username.Length < 1)
             {
                 statusLabel.Text = "Please enter a username!";
                 return;
             }
-            else if (password.Length < 0)
+            else if (password.Length < 1)
             {
                 statusLabel.Text = "Please enter a password!";
                 return;
@@ -197,13 +247,18 @@ namespace MyCost.View
                 statusLabel.Text = "Password does not match!";
                 return;
             }
+            else if(activationCode.Length < 1)
+            {
+                statusLabel.Text = "Please enter the activation code";
+                return;
+            }
 
-            string result = ServerHandler.RegisterNewUser(username, password);
+            string result = ServerHandler.RegisterNewUser(username, password, activationCode);
             string[] data = result.Split('|');
 
             //if the register succeeds, 
             //user's id and a temporary access token are retured
-            //otherwise, the error info is returned
+            //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
             {            
                 StaticStorage.UserID = userId;

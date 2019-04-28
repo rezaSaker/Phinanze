@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Windows.Forms;
+using System.Collections.Generic;
 using MyCost.View;
 
 namespace MyCost.Common
 {
     class StaticStorage
     {
-        public const string ServerAddress = "http://localhost/_HOST/MyCost/";
+        public const string ServerAddress = "https://rezasdev.000webhostapp.com/dev/soft/mycost/app_server/";
         public const string SourcePath = "https://github.com/rezaSaker/MyCost";
         public const string HelpSourcePath = "https://github.com/rezaSaker/MyCost";
-        public const string ReportAppSourcePath = "https://github.com/rezaSaker/MyCost";
+        public const string ReportAppSourcePath = "https://github.com/rezaSaker/MyCost/issues/new";
         
         public static int? UserID;
 
@@ -39,6 +40,6 @@ namespace MyCost.Common
 
             UserAuthenticationForm form = new UserAuthenticationForm();
             form.Show();
-        }
+        }     
     }
 }

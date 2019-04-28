@@ -33,7 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.currentUserNameTextBox = new System.Windows.Forms.TextBox();
             this.newUserNameTextBox = new System.Windows.Forms.TextBox();
-            this.confirmUserNameTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.submitUserNameButton = new System.Windows.Forms.Button();
             this.submitPasswordButton = new System.Windows.Forms.Button();
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -107,19 +107,19 @@
             this.newUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
             this.newUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
-            // confirmUserNameTextBox
+            // passwordTextBox
             // 
-            this.confirmUserNameTextBox.BackColor = System.Drawing.Color.White;
-            this.confirmUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.confirmUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.confirmUserNameTextBox.Location = new System.Drawing.Point(6, 195);
-            this.confirmUserNameTextBox.Name = "confirmUserNameTextBox";
-            this.confirmUserNameTextBox.Size = new System.Drawing.Size(345, 26);
-            this.confirmUserNameTextBox.TabIndex = 50;
-            this.confirmUserNameTextBox.Text = "Confirm new username";
-            this.confirmUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.confirmUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
+            this.passwordTextBox.BackColor = System.Drawing.Color.White;
+            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.passwordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.passwordTextBox.Location = new System.Drawing.Point(6, 195);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(345, 26);
+            this.passwordTextBox.TabIndex = 50;
+            this.passwordTextBox.Text = "Password";
+            this.passwordTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.passwordTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
             // submitUserNameButton
             // 
@@ -395,7 +395,7 @@
             this.panel1.Controls.Add(this.currentPasswordTextBox);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.submitUserNameButton);
-            this.panel1.Controls.Add(this.confirmUserNameTextBox);
+            this.panel1.Controls.Add(this.passwordTextBox);
             this.panel1.Controls.Add(this.newUserNameTextBox);
             this.panel1.Controls.Add(this.currentUserNameTextBox);
             this.panel1.Controls.Add(this.label1);
@@ -474,7 +474,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox currentUserNameTextBox;
         private System.Windows.Forms.TextBox newUserNameTextBox;
-        private System.Windows.Forms.TextBox confirmUserNameTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
         private System.Windows.Forms.Button submitUserNameButton;
         private System.Windows.Forms.Button submitPasswordButton;
         private System.Windows.Forms.TextBox confirmPasswordTextBox;
