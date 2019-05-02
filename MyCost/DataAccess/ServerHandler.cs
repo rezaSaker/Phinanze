@@ -1,13 +1,38 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Collections;
 using System.Net;
+using System.Threading;
 using MyCost.Common;
 
 namespace MyCost.ServerHandling
 {
     class ServerHandler
     {
-        public static string AuthenticateUser(string username, string password)
+        private string _webResponse;
+
+        public event EventHandler AuthenticationSuccessEventHandler;
+        public event EventHandler AuthenticationFailedEventHandler;
+        public event EventHandler RegisterSuccessEventHandler;
+        public event EventHandler RegisterFailedEventHandler;
+        public event EventHandler RetriveDailyInfoSuccessEventHandler;
+        public event EventHandler RetriveDailyInfoFailedEEventHandler;
+        public event EventHandler RetriveCategoriesSuccessEventhandler;
+        public event EventHandler RetriveCategoriesFailedEventHandler;
+
+        public string Response
+        {
+            get => _webResponse;
+            set => _webResponse = value;
+        }
+
+        public void LoginUser(string username, string password)
+        {
+            Thread thread = new Thread(() => WebRequestToAuthenticateUser(username, password));
+            thread.Start();
+        }
+
+        public void WebRequestToAuthenticateUser(string username, string password)
         {
             WebClient www = new WebClient();
 
@@ -22,16 +47,35 @@ namespace MyCost.ServerHandling
             {
                 byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "userAuthentication.php", "POST", queryData);
                 string resultData  = Encoding.UTF8.GetString(resultBytes);
+                _webResponse = resultData;
 
-                return resultData;
+                OnAuthenticationSuccess();
             }
             catch
             {
-                return "Server connection error";
+                _webResponse = "Server connection error";
+
+                OnAuthenticationFailed();
             }
         }
 
-        public static string RegisterNewUser(string username, string password, string code)
+        private void OnAuthenticationSuccess()
+        {
+            AuthenticationSuccessEventHandler?.Invoke(this, null);
+        }
+
+        private void OnAuthenticationFailed()
+        {
+            AuthenticationFailedEventHandler?.Invoke(this, null);
+        }
+
+        public void RegisterNewUser(string username, string password, string code)
+        {
+            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, code));
+            thread.Start();
+        }
+
+        private void WebRequestToRegisterUser(string username, string password, string code)
         {
             WebClient www = new WebClient();
 
@@ -46,17 +90,36 @@ namespace MyCost.ServerHandling
             try
             {
                 byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "registerNewUser.php", "POST", queryData);
-                string resultData  = Encoding.UTF8.GetString(resultBytes);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+                _webResponse = resultData;
 
-                return resultData;
+                OnRegisterSuccess();
             }
             catch
             {
-                return "Server connection error";
+                _webResponse = "Server connection error";
+
+                OnRegisterFailed();
             }
         }
 
-        public static string RetrieveDailyInfo()
+        private void OnRegisterSuccess()
+        {
+            RegisterSuccessEventHandler?.Invoke(this, null);
+        }
+
+        private void OnRegisterFailed()
+        {
+            RegisterFailedEventHandler?.Invoke(this, null);
+        }
+
+        public void RetrieveDailyInfo()
+        {
+            Thread thread = new Thread(() => WebRequestToRetrieveDailyInfo());
+            thread.Start();
+        }    
+
+        private void WebRequestToRetrieveDailyInfo()
         {
             WebClient www = new WebClient();
 
@@ -67,18 +130,18 @@ namespace MyCost.ServerHandling
             queryData.Add("token", StaticStorage.AccessToken);
             queryData.Add("userid", StaticStorage.UserID.ToString());
 
-           try
-           {
+            try
+            {
                 byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getDailyInfo.php", "POST", queryData);
-                string resultData  = Encoding.UTF8.GetString(resultBytes);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
 
-                return resultData;
+                _webResponse = resultData;
             }
             catch
             {
-                return "Server connection error";
+                _webResponse = "Server connection error";
             }
-        }    
+        }
 
         public static string SaveDailyInfo(DailyInfo daily)
         {

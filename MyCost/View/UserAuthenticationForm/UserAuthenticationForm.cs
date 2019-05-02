@@ -10,6 +10,13 @@ namespace MyCost.View
     {
         private bool _quitAppOnFormClosing;
 
+        private ServerHandler _webHandlerObject;
+
+        private delegate void UserAuthenticationDelegate();
+        private delegate void UserRegistrationDelegate();
+        private delegate void FetchDailyInfoDelegate();
+        private delegate void FetchCategoriesDelegate();
+
         public UserAuthenticationForm()
         {
             InitializeComponent();
@@ -100,17 +107,13 @@ namespace MyCost.View
         }
 
         private void SubmitButtonClicked(object sender, EventArgs e)
-        {
+        {          
             if (submitButton.Text == "Log in")
             {
-                ShowMessage("Verifying your login credentials, please wait....");
-
                 LoginUser();
             }
             else
             {
-                ShowMessage("Creating your account, please wait....");
-
                 RegisterUser();
             }
         }                    
@@ -198,7 +201,32 @@ namespace MyCost.View
                 return;
             }
 
-            string result = ServerHandler.AuthenticateUser(username, password);
+            //disable all controls so that the user cannot change
+            //anything until the login process ends
+            DisableAllControls();
+
+            ServerHandler webRequest = new ServerHandler();
+            webRequest.AuthenticationSuccessEventHandler += OnLoginSuccess;
+            webRequest.AuthenticationFailedEventHandler += OnLoginFailed;
+            _webHandlerObject = webRequest;
+
+            webRequest.LoginUser(username, password);           
+        }
+
+        private void OnLoginSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginSuccess), new object[] { });
+        }
+
+        private void OnLoginFailed(object sender, EventArgs e)
+        {
+            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginFailed), new object[] { });
+        }
+
+        private void ActionUponLoginSuccess()
+        {
+            string result = _webHandlerObject.Response;
+
             string[] data = result.Split('|');
 
             //if the login succeeds, 
@@ -209,13 +237,41 @@ namespace MyCost.View
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
                 StaticStorage.Username = usernameTextBox.Text;
-               
-                ActionUponLoginSuccess();
+
+                if (rememberMeCheckBox.Checked)
+                {
+                    Properties.Settings.Default.Username = usernameTextBox.Text;
+                    Properties.Settings.Default.Password = passwordTextBox.Text;
+                    Properties.Settings.Default.Save();
+                }
+
+                //get all data for this user from database
+                //and store them in StaticStorage class
+                FetchDailyInfo();
+                FetchCategories();
+
+                MainForm form = new MainForm();
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Show();
+
+                _quitAppOnFormClosing = false;
+                this.Close();
             }
             else
             {
+                //enable all controls so that the user can attempt to login again
+                EnableAllControls();
+
                 ShowErrorMessage(result);
             }
+        }
+
+        private void ActionUponLoginFailed()
+        {
+            //enable all controls so that the user can attempt to login again
+            EnableAllControls();
+
+            ShowErrorMessage("Server connection error. Please check your internet connection");
         }
 
         private void RegisterUser()
@@ -252,28 +308,52 @@ namespace MyCost.View
                 return;
             }
 
-            string result = ServerHandler.RegisterNewUser(username, password, activationCode);
+            //disable all controls so that the user cannot change
+            //anything until the login process ends
+            DisableAllControls();
+
+            ServerHandler webRequest = new ServerHandler();
+            webRequest.RegisterSuccessEventHandler += OnRegisterSuccess;
+            webRequest.RegisterFailedEventHandler += OnRegisterFailed;
+            _webHandlerObject = webRequest;
+            webRequest.RegisterNewUser(username, password, activationCode);
+        }
+
+        private void OnRegisterSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new UserRegistrationDelegate(ActionUponLoginSuccess), new object[] { });
+        }
+
+        private void OnRegisterFailed(object sender, EventArgs e)
+        {
+            this.Invoke(new UserRegistrationDelegate(ActionUponLoginFailed), new object[] { });
+        }
+
+        private void ActionUponRegisterSuccess()
+        {
+            string result = _webHandlerObject.Response;
+
             string[] data = result.Split('|');
 
             //if the register succeeds, 
             //user's id and a temporary access token are retured
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
-            {            
+            {
                 StaticStorage.UserID = userId;
                 StaticStorage.AccessToken = data[1];
                 StaticStorage.Username = usernameTextBox.Text;
 
-                ActionUponLoginSuccess();
+                ActionUponRegisterSuccess();
             }
             else
             {
+                //enable all controls so that the user can attempt to login again
+                EnableAllControls();
+
                 ShowErrorMessage(result);
             }
-        }
 
-        private void ActionUponLoginSuccess()
-        {
             if (rememberMeCheckBox.Checked)
             {
                 Properties.Settings.Default.Username = usernameTextBox.Text;
@@ -294,10 +374,37 @@ namespace MyCost.View
             this.Close();
         }
 
+        private void ActionUponRegisterFailed()
+        {
+            //enable all controls so that the user can attempt to login again
+            EnableAllControls();
+
+            ShowErrorMessage("Server connection error. Please check your internet connection.");
+        }
+
         private void FetchDailyInfo()
         {
             //get daily expenses and earnings from database
-            string result = ServerHandler.RetrieveDailyInfo();
+            ServerHandler webRequest = new ServerHandler();
+            webRequest.RetriveDailyInfoSuccessEventHandler += OnFetchDailyInfoSuccess;
+            webRequest.RetriveDailyInfoFailedEEventHandler += OnFetchDailyInfoFailed;
+            _webHandlerObject = webRequest;
+            webRequest.RetrieveDailyInfo();         
+        }
+
+        private void OnFetchDailyInfoSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new FetchDailyInfoDelegate(ActionUponFetchDailyInfoSuccess), new object[] { });
+        }
+
+        private void OnFetchDailyInfoFailed(object  sender, EventArgs e)
+        {
+            this.Invoke(new FetchDailyInfoDelegate(ActionUponFetchDailyInfoFailed), new object[] { });
+        }
+
+        private void ActionUponFetchDailyInfoSuccess()
+        {
+            string result = _webHandlerObject.Response;
 
             string[] rows = result.Split('^');
 
@@ -380,6 +487,13 @@ namespace MyCost.View
             }
         }
 
+        private void ActionUponFetchDailyInfoFailed()
+        {
+            string message = "Could not retrieve information from server. ";
+            message += "Please check your internet connection and try again.";
+            ShowErrorMessage(message);
+        }
+
         private void FetchCategories()
         {
             //get all categories made by user from the database
@@ -402,6 +516,22 @@ namespace MyCost.View
             foreach (string cat in expenseCategories)
             {
                 StaticStorage.ExpenseCategories.Add(cat);
+            }
+        }
+
+        private void EnableAllControls()
+        {
+            foreach(Control control in this.Controls)
+            {
+                control.Enabled = true;
+            }
+        }
+
+        private void DisableAllControls()
+        {
+            foreach(Control control in this.Controls)
+            {
+                control.Enabled = false;
             }
         }
 
