@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using MyCost.Common;
-using MyCost.ServerHandling;
+using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
@@ -220,7 +220,7 @@ namespace MyCost.View
             {
                 int day = Convert.ToInt32(dataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
 
-                string result = ServerHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
+                string result = WebHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
 
                 if (result == "SUCCESS")
                 {

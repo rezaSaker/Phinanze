@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using MyCost.Common;
-using MyCost.ServerHandling;
+using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
@@ -643,7 +643,7 @@ namespace MyCost.View
                 daily.EarningList.Add(earning);
             }
 
-            string result = ServerHandler.SaveDailyInfo(daily);
+            string result = WebHandler.SaveDailyInfo(daily);
 
             if (result == "SUCCESS")
             {

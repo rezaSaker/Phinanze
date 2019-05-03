@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using MyCost.Common;
-using MyCost.ServerHandling;
+using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
@@ -10,7 +10,7 @@ namespace MyCost.View
     {
         private bool _quitAppOnFormClosing;
 
-        private ServerHandler _webHandlerObject;
+        private WebHandler _webHandlerObject;
 
         private delegate void UserAuthenticationDelegate();
         private delegate void UserRegistrationDelegate();
@@ -24,8 +24,6 @@ namespace MyCost.View
             _quitAppOnFormClosing = true;
         }
 
-        #region event_handler_methods
-
         private void ThisFormLoading(object sender, EventArgs e)
         {
             DisplayLoginPanel();
@@ -33,19 +31,18 @@ namespace MyCost.View
 
         private void ThisFormShown(object sender, EventArgs e)
         {
-            //if user had his rememberme checkbox checked
             string username = Properties.Settings.Default.Username;
             string password = Properties.Settings.Default.Password;
-     
+
             //if the user opted to auto login by checking the remmeberMeCheckBox 
-            if (username != ""  && password != "")
+            if (username != "" && password != "")
             {
                 //make the text color black so that the login method 
-                //doesn't detect the texts as placeholder
+                //doesn't detect the texts as placeholder texts
                 usernameTextBox.ForeColor = Color.Black;
                 passwordTextBox.ForeColor = Color.Black;
 
-                //fille the username and password field with pre-saved info
+                //fills the username and password field with pre-saved info
                 usernameTextBox.Text = Properties.Settings.Default.Username;
                 passwordTextBox.Text = Properties.Settings.Default.Password;
 
@@ -125,9 +122,6 @@ namespace MyCost.View
                 Application.Exit();
             }
         }
-        #endregion
-
-        #region non_event_handler_methods
 
         private void DisplayLoginPanel()
         {
@@ -136,14 +130,18 @@ namespace MyCost.View
             showRegisterPanelButton.ForeColor = Color.White;
             showLoginPanelButton.BackColor = Color.White;
             showLoginPanelButton.ForeColor = Color.Black;
+
             submitButton.Text = "Log in";
             submitButton.Location = new Point(280, 251);
+
             confirmPasswordTextBox.Visible = false;
             confirmPasswordTextBox.Enabled = false;
             activationCodeTextBox.Visible = false;
             activationCodeTextBox.Enabled = false;
+
             rememberMeCheckBox.Location = new Point(140, 223);
             statusLabel.Location = new Point(276, 300);
+
             ResetTextBoxProperties();
         }
 
@@ -154,20 +152,24 @@ namespace MyCost.View
             showRegisterPanelButton.ForeColor = Color.Black;
             showLoginPanelButton.BackColor = Color.RoyalBlue;
             showLoginPanelButton.ForeColor = Color.White;
+
             submitButton.Text = "Register";
             submitButton.Location = new Point(280, 344);
+
             confirmPasswordTextBox.Visible = true;
             confirmPasswordTextBox.Enabled = true;
             activationCodeTextBox.Visible = true;
             activationCodeTextBox.Enabled = true;
+
             rememberMeCheckBox.Location = new Point(136, 319);
             statusLabel.Location = new Point(276, 395);
+
             ResetTextBoxProperties();
         }
 
         private void ResetTextBoxProperties()
         {
-            //reset the placeholders in the textboxes
+            //reset the placeholders in the TextBoxes
             statusLabel.Text = "";
             usernameTextBox.Text = "Username";
             usernameTextBox.ForeColor = Color.DarkGray;
@@ -192,25 +194,29 @@ namespace MyCost.View
 
             if(username.Length < 1)
             {
-                ShowErrorMessage("Please enter username");
+                ShowErrorMessage("Please enter username.");
                 return;
             }
             else if(password.Length < 1)
             {
-                ShowErrorMessage("Please enter password");
+                ShowErrorMessage("Please enter password.");
                 return;
             }
 
-            //disable all controls so that the user cannot change
-            //anything until the login process ends
+            //disable all controls so that the user cannot
+            //change anything until the login process ends
             DisableAllControls();
 
-            ServerHandler webRequest = new ServerHandler();
+            //show progress bar
+            //string status = "Verifying your login credentials, please wait...";
+            //ProgressViewerForm progressViewer = new ProgressViewerForm(status);
+
+
+            WebHandler webRequest = new WebHandler();
             webRequest.AuthenticationSuccessEventHandler += OnLoginSuccess;
             webRequest.AuthenticationFailedEventHandler += OnLoginFailed;
             _webHandlerObject = webRequest;
-
-            webRequest.LoginUser(username, password);           
+            webRequest.AuthenticateUser(username, password);           
         }
 
         private void OnLoginSuccess(object sender, EventArgs e)
@@ -245,17 +251,8 @@ namespace MyCost.View
                     Properties.Settings.Default.Save();
                 }
 
-                //get all data for this user from database
-                //and store them in StaticStorage class
+                //get daily info of this user from database
                 FetchDailyInfo();
-                FetchCategories();
-
-                MainForm form = new MainForm();
-                form.StartPosition = FormStartPosition.CenterScreen;
-                form.Show();
-
-                _quitAppOnFormClosing = false;
-                this.Close();
             }
             else
             {
@@ -271,12 +268,12 @@ namespace MyCost.View
             //enable all controls so that the user can attempt to login again
             EnableAllControls();
 
-            ShowErrorMessage("Server connection error. Please check your internet connection");
+            ShowErrorMessage("Server connection error. Please check your internet connection.");
         }
 
         private void RegisterUser()
         {
-            //if fore-color of a textBox is not black, that means the textbox 
+            //if fore-color of a textBox is not black, that means the TextBox 
             //contains the placeholder text and user didn't enter any value
             string username = usernameTextBox.ForeColor == Color.Black? 
                 usernameTextBox.Text : "";
@@ -289,30 +286,30 @@ namespace MyCost.View
 
             if (username.Length < 1)
             {
-                ShowErrorMessage("Please enter a username!");
+                ShowErrorMessage("Please enter a username.");
                 return;
             }
             else if (password.Length < 1)
             {
-                ShowErrorMessage("Please enter a password!");
+                ShowErrorMessage("Please enter a password.");
                 return;
             }
             else if (confirmPassword != password)
             {
-                ShowErrorMessage("Password does not match!");
+                ShowErrorMessage("Password does not match.");
                 return;
             }
             else if(activationCode.Length < 1)
             {
-                ShowErrorMessage("Please enter the activation code");
+                ShowErrorMessage("Please enter the activation code.");
                 return;
             }
 
             //disable all controls so that the user cannot change
-            //anything until the login process ends
+            //anything until the registration process ends
             DisableAllControls();
 
-            ServerHandler webRequest = new ServerHandler();
+            WebHandler webRequest = new WebHandler();
             webRequest.RegisterSuccessEventHandler += OnRegisterSuccess;
             webRequest.RegisterFailedEventHandler += OnRegisterFailed;
             _webHandlerObject = webRequest;
@@ -335,7 +332,7 @@ namespace MyCost.View
 
             string[] data = result.Split('|');
 
-            //if the register succeeds, 
+            //if the registration process succeeds, 
             //user's id and a temporary access token are retured
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
@@ -361,17 +358,8 @@ namespace MyCost.View
                 Properties.Settings.Default.Save();
             }
 
-            //get all data for this user from database
-            //and store them in StaticStorage class
+            //get daily info of this user from database
             FetchDailyInfo();
-            FetchCategories();
-
-            MainForm form = new MainForm();
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.Show();
-
-            _quitAppOnFormClosing = false;
-            this.Close();
         }
 
         private void ActionUponRegisterFailed()
@@ -385,9 +373,9 @@ namespace MyCost.View
         private void FetchDailyInfo()
         {
             //get daily expenses and earnings from database
-            ServerHandler webRequest = new ServerHandler();
-            webRequest.RetriveDailyInfoSuccessEventHandler += OnFetchDailyInfoSuccess;
-            webRequest.RetriveDailyInfoFailedEEventHandler += OnFetchDailyInfoFailed;
+            WebHandler webRequest = new WebHandler();
+            webRequest.RetrieveDailyInfoSuccessEventHandler += OnFetchDailyInfoSuccess;
+            webRequest.RetrieveDailyInfoFailedEEventHandler += OnFetchDailyInfoFailed;
             _webHandlerObject = webRequest;
             webRequest.RetrieveDailyInfo();         
         }
@@ -403,17 +391,30 @@ namespace MyCost.View
         }
 
         private void ActionUponFetchDailyInfoSuccess()
-        {
+        {                  
             string result = _webHandlerObject.Response;
 
             string[] rows = result.Split('^');
 
-            if (rows[0] == "Server connection error" || rows[0] == "")
+            if (rows[0] == "Server connection error")
             {
-                //some server error occurred or no data found in the DB for this user
+                //some server error occurred
+                ShowErrorMessage("Server connection error. Please check your internet connection.");
                 return;
             }
 
+            //start fetching categories from database on a seperate thread
+            //before starting to process the fetched daily info
+            FetchCategories();
+
+            if (rows[0] == "")
+            {
+                //no daily info found for this user in database
+                //so no need to process the info
+                return;
+            }
+
+            //process the fetched daily info and store them in StaticStorage class
             foreach (string row in rows)
             {
                 string[] cols = row.Split('|');
@@ -489,15 +490,32 @@ namespace MyCost.View
 
         private void ActionUponFetchDailyInfoFailed()
         {
-            string message = "Could not retrieve information from server. ";
-            message += "Please check your internet connection and try again.";
-            ShowErrorMessage(message);
+            ShowErrorMessage("Server connection error. Please check your internet connection.");
         }
 
         private void FetchCategories()
         {
             //get all categories made by user from the database
-            string result = ServerHandler.RetrieveCategories();
+            WebHandler webRequest = new WebHandler();
+            webRequest.RetrieveCategoriesSuccessEventhandler += OnFetchCategoriesSuccess;
+            webRequest.RetrieveCategoriesFailedEventHandler += OnFetchCategoriesFailed;
+            _webHandlerObject = webRequest;
+            webRequest.RetrieveCategories();
+        }
+
+        private void OnFetchCategoriesSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new FetchCategoriesDelegate(ActionUponFetchCategoriesSuccess), new object[] { });
+        }
+
+        private void OnFetchCategoriesFailed(object sender, EventArgs e)
+        {
+            this.Invoke(new FetchCategoriesDelegate(ActionUponFetchCategoriesFailed), new object[] { });
+        }
+
+        private void ActionUponFetchCategoriesSuccess()
+        {
+            string result = _webHandlerObject.Response;
 
             if (result == "Server connection error" || result == "")
             {
@@ -517,6 +535,18 @@ namespace MyCost.View
             {
                 StaticStorage.ExpenseCategories.Add(cat);
             }
+
+            MainForm form = new MainForm();
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Show();
+
+            _quitAppOnFormClosing = false;
+            this.Close();
+        }
+
+        private void ActionUponFetchCategoriesFailed()
+        {
+            ShowErrorMessage("Server connection error. Please check your internet connection.");
         }
 
         private void EnableAllControls()
@@ -535,17 +565,10 @@ namespace MyCost.View
             }
         }
 
-        private void ShowMessage(string message)
-        {
-            statusLabel.Text = message;
-            statusLabel.ForeColor = Color.ForestGreen;
-        }
-
         private void ShowErrorMessage(string message)
         {
             statusLabel.Text = message;
             statusLabel.ForeColor = Color.Red;
         }
-        #endregion
     }
 }

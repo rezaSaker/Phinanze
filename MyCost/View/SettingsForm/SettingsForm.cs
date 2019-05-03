@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
 using MyCost.Common;
-using MyCost.ServerHandling;
+using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
@@ -94,7 +94,7 @@ namespace MyCost.View
                 return;
             }
 
-            string result = ServerHandler.UpdateUsername(newUserNameTextBox.Text, passwordTextBox.Text);
+            string result = WebHandler.UpdateUsername(newUserNameTextBox.Text, passwordTextBox.Text);
 
             if (result == "SUCCESS")
             {
@@ -118,7 +118,7 @@ namespace MyCost.View
             }
             else //all fields are correct
             {
-                string result = ServerHandler.UpdatePassword(currentPasswordTextBox.Text, newPasswordTextBox.Text);
+                string result = WebHandler.UpdatePassword(currentPasswordTextBox.Text, newPasswordTextBox.Text);
 
                 if (result == "SUCCESS")
                 {

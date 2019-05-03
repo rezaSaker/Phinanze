@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using MyCost.Common;
-using MyCost.ServerHandling;
+using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
@@ -157,7 +157,7 @@ namespace MyCost.View
                 }
             }
 
-            string result = ServerHandler.SaveCategory(categoryNames, _categoryType);
+            string result = WebHandler.SaveCategory(categoryNames, _categoryType);
 
             if(result != "SUCCESS")
             {
