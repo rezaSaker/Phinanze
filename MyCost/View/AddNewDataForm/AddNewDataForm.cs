@@ -76,7 +76,7 @@ namespace MyCost.View
         {
             if (_hasUnsavedChanges)
             {
-                AutoSave();
+                AutoSaveDailyInfo();
             }
 
             _selectedDay = dayComboBox.SelectedIndex + 1;
@@ -87,7 +87,7 @@ namespace MyCost.View
         {
             if (_hasUnsavedChanges)
             {
-                AutoSave();
+                AutoSaveDailyInfo();
             }
 
             _selectedMonth = monthComboBox.SelectedIndex + 1;
@@ -98,7 +98,7 @@ namespace MyCost.View
         {
             if (_hasUnsavedChanges)
             {
-                AutoSave();
+                AutoSaveDailyInfo();
             }
 
             _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
@@ -190,7 +190,7 @@ namespace MyCost.View
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
-            SaveInfo();
+            SaveDailyInfo();
         }
       
         private void ApplyCategoryButtonClicked(object sender, EventArgs e)
@@ -224,7 +224,7 @@ namespace MyCost.View
         {
             if (_hasUnsavedChanges)
             {
-                if(!AutoSave())
+                if(!AutoSaveDailyInfo())
                 {
                     //if auto saving is not successful
                     return;
@@ -273,7 +273,7 @@ namespace MyCost.View
             {
                 if (_hasUnsavedChanges)
                 {
-                    if(!AutoSave())
+                    if(!AutoSaveDailyInfo())
                     {
                         //if auto saving is not successful
                         e.Cancel = true;
@@ -460,7 +460,7 @@ namespace MyCost.View
             }
         }
 
-        private bool SaveInfo()
+        private bool SaveDailyInfo()
         {
             DailyInfo daily = new DailyInfo();
             daily.Note = noteTextBox.ForeColor == Color.Black ? noteTextBox.Text : "No note";
@@ -677,9 +677,9 @@ namespace MyCost.View
             }
         }
 
-        private bool AutoSave()
+        private bool AutoSaveDailyInfo()
         {
-            if (!SaveInfo())
+            if (!SaveDailyInfo())
             {
                 //if the info is not successfully saved
                 string message = "You have unsaved changes. Changing or closing this ";

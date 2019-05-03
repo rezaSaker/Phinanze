@@ -199,14 +199,14 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            string expenseReasons    = "";
-            string expenseAmounts    = "";
+            string expenseReasons = "";
+            string expenseAmounts = "";
             string expenseCategories = "";
-            string expenseComments   = "";
-            string earningSources    = "";
-            string earningAmounts    = "";
+            string expenseComments = "";
+            string earningSources = "";
+            string earningAmounts = "";
             string earningCategories = "";
-            string earningComments   = "";
+            string earningComments = "";
 
             bool addSplitChar = false;
 
@@ -216,17 +216,17 @@ namespace MyCost.Common.WebHandler
             {
                 if (addSplitChar)
                 {
-                    expenseReasons    += "~";
-                    expenseAmounts    += "~";
+                    expenseReasons += "~";
+                    expenseAmounts += "~";
                     expenseCategories += "~";
-                    expenseComments   += "~";
+                    expenseComments += "~";
                 }
                 else { addSplitChar = true;  }
 
-                expenseReasons    += expense.Reason;
-                expenseAmounts    += expense.Amount.ToString();
+                expenseReasons += expense.Reason;
+                expenseAmounts += expense.Amount.ToString();
                 expenseCategories += expense.Category;
-                expenseComments   += expense.Comment;
+                expenseComments += expense.Comment;
             }
 
             addSplitChar = false;
@@ -237,17 +237,17 @@ namespace MyCost.Common.WebHandler
             {
                 if (addSplitChar)
                 {
-                    earningSources    += "~";
-                    earningAmounts    += "~";
+                    earningSources += "~";
+                    earningAmounts += "~";
                     earningCategories += "~";
-                    earningComments   += "~";
+                    earningComments += "~";
                 }
                 else { addSplitChar = true; }
 
-                earningSources    += earning.Source;
-                earningAmounts    += earning.Amount.ToString();
+                earningSources += earning.Source;
+                earningAmounts += earning.Amount.ToString();
                 earningCategories += earning.Category;
-                earningComments   += earning.Comment;
+                earningComments += earning.Comment;
             }
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
