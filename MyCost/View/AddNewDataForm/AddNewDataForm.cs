@@ -85,11 +85,6 @@ namespace MyCost.View
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (_hasUnsavedChanges)
-            {
-                AutoSaveDailyInfo();
-            }
-
             _selectedMonth = monthComboBox.SelectedIndex + 1;
             AddItemsToDayComboBox();
         }
@@ -190,7 +185,14 @@ namespace MyCost.View
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
-            SaveDailyInfo();
+            string result = SaveDailyInfo();
+
+            if(result == "Server connection error")
+            {
+                string message = "Could not save the information to database. ";
+                message += "Please check your internet connection and try again.";
+                MessageBox.Show(message);
+            }
         }
       
         private void ApplyCategoryButtonClicked(object sender, EventArgs e)
@@ -267,17 +269,15 @@ namespace MyCost.View
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
-            CloseOpenedCategoryForm();
-           
+            CloseOpenedCategoryForm();            
+
             if (_quitAppOnFormClosing)
             {
-                if (_hasUnsavedChanges)
+                if (_hasUnsavedChanges && !AutoSaveDailyInfo())
                 {
-                    if(!AutoSaveDailyInfo())
-                    {
-                        //if auto saving is not successful
-                        e.Cancel = true;
-                    }
+                     //if auto saving is not successful
+                     e.Cancel = true;
+                     return;
                 }
 
                 Application.Exit();
@@ -460,7 +460,7 @@ namespace MyCost.View
             }
         }
 
-        private bool SaveDailyInfo()
+        private string SaveDailyInfo()
         {
             DailyInfo daily = new DailyInfo();
             daily.Note = noteTextBox.ForeColor == Color.Black ? noteTextBox.Text : "No note";
@@ -510,7 +510,7 @@ namespace MyCost.View
                     }
                     else
                     {
-                        return false;
+                        return "Terminated by user";
                     }
                 }
                 catch (FormatException)
@@ -528,7 +528,7 @@ namespace MyCost.View
                     }
                     else
                     {
-                        return false;
+                        return "Terminated by user";
                     }
                 }
 
@@ -593,7 +593,7 @@ namespace MyCost.View
                     }
                     else
                     {
-                        return false;
+                        return "Terminated by user";
                     }
                 }
                 catch (FormatException)
@@ -611,7 +611,7 @@ namespace MyCost.View
                     }
                     else
                     {
-                        return false;
+                        return "Terminated by user";
                     }
                 }
 
@@ -667,27 +667,30 @@ namespace MyCost.View
                 _hasUnsavedChanges = false;
                 saveButton.Enabled = false;
                 saveButton.BackColor = Color.LightGray;
-                return true;
             }
-            else
-            {
-                //if save is not success, the error message is returned
-                MessageBox.Show(result);
-                return false;
-            }
+            return result;
         }
 
         private bool AutoSaveDailyInfo()
         {
-            if (!SaveDailyInfo())
+            string result = SaveDailyInfo();
+
+            if(result == "Terminated by user")
+            {
+                return false;
+            }
+            else if (result == "Server connection error")
             {
                 //if the info is not successfully saved
-                string message = "You have unsaved changes. Changing or closing this ";
-                message += "page might cause loss of data. Do you want to continue?";
+                string message = "Could not perform the automatic saving operation. ";
+                message += "It is recommended that you check your internet connection ";
+                message += "and try to save again. Continuing this page without saving might ";
+                message += "cause the unsaved changes to be permanently lost.\n\n";
+                message += "Do you want to continue without saving?";
 
-                DialogResult result = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                if (result == DialogResult.No)
+                if (dlgResult == DialogResult.No)
                 {
                     return false;
                 }

@@ -221,7 +221,7 @@ namespace MyCost.Common.WebHandler
                     expenseCategories += "~";
                     expenseComments += "~";
                 }
-                else { addSplitChar = true;  }
+                else { addSplitChar = true; }
 
                 expenseReasons += expense.Reason;
                 expenseAmounts += expense.Amount.ToString();
@@ -271,9 +271,10 @@ namespace MyCost.Common.WebHandler
             try
             {
                 byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveDailyInfo.php", "POST", queryData);
-                string resultData  = Encoding.UTF8.GetString(resultBytes);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
+                
             }
             catch (WebException)
             {
