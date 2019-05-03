@@ -42,6 +42,7 @@ namespace MyCost.View
                 //doesn't detect the texts as placeholder texts
                 usernameTextBox.ForeColor = Color.Black;
                 passwordTextBox.ForeColor = Color.Black;
+                passwordTextBox.PasswordChar = '*';
 
                 //fills the username and password field with pre-saved info
                 usernameTextBox.Text = Properties.Settings.Default.Username;
@@ -133,16 +134,15 @@ namespace MyCost.View
             showLoginPanelButton.ForeColor = Color.Black;
 
             submitButton.Text = "Log in";
-            submitButton.Location = new Point(280, 251);
+            submitButton.Location = new Point(280, 280);
 
             confirmPasswordTextBox.Visible = false;
             confirmPasswordTextBox.Enabled = false;
             activationCodeTextBox.Visible = false;
             activationCodeTextBox.Enabled = false;
 
-            rememberMeCheckBox.Location = new Point(140, 223);
-            statusLabel.Location = new Point(276, 300);
-            this.Size = new Size(800, 370);
+            rememberMeCheckBox.Location = new Point(146, 250);
+            this.Size = new Size(800, 410);
 
             ResetTextBoxProperties();
         }
@@ -156,15 +156,14 @@ namespace MyCost.View
             showLoginPanelButton.ForeColor = Color.White;
 
             submitButton.Text = "Register";
-            submitButton.Location = new Point(280, 344);
+            submitButton.Location = new Point(280, 368);
 
             confirmPasswordTextBox.Visible = true;
             confirmPasswordTextBox.Enabled = true;
             activationCodeTextBox.Visible = true;
             activationCodeTextBox.Enabled = true;
 
-            rememberMeCheckBox.Location = new Point(136, 319);
-            statusLabel.Location = new Point(276, 395);
+            rememberMeCheckBox.Location = new Point(146, 343);
             this.Size = new Size(800, 465);
 
             ResetTextBoxProperties();

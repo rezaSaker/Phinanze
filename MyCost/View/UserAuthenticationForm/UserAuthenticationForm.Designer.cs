@@ -48,7 +48,7 @@
             this.showRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showRegisterPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
-            this.showRegisterPanelButton.Location = new System.Drawing.Point(140, 82);
+            this.showRegisterPanelButton.Location = new System.Drawing.Point(146, 106);
             this.showRegisterPanelButton.Name = "showRegisterPanelButton";
             this.showRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
             this.showRegisterPanelButton.TabIndex = 0;
@@ -63,7 +63,7 @@
             this.showLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showLoginPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.showLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.showLoginPanelButton.Location = new System.Drawing.Point(394, 82);
+            this.showLoginPanelButton.Location = new System.Drawing.Point(400, 106);
             this.showLoginPanelButton.Name = "showLoginPanelButton";
             this.showLoginPanelButton.Size = new System.Drawing.Size(246, 36);
             this.showLoginPanelButton.TabIndex = 1;
@@ -91,7 +91,7 @@
             this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitButton.ForeColor = System.Drawing.Color.White;
-            this.submitButton.Location = new System.Drawing.Point(280, 344);
+            this.submitButton.Location = new System.Drawing.Point(280, 368);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(246, 36);
             this.submitButton.TabIndex = 13;
@@ -105,7 +105,7 @@
             this.confirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.confirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(140, 226);
+            this.confirmPasswordTextBox.Location = new System.Drawing.Point(146, 250);
             this.confirmPasswordTextBox.Multiline = true;
             this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
             this.confirmPasswordTextBox.Size = new System.Drawing.Size(500, 30);
@@ -119,7 +119,7 @@
             this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.passwordTextBox.Location = new System.Drawing.Point(140, 180);
+            this.passwordTextBox.Location = new System.Drawing.Point(146, 204);
             this.passwordTextBox.Multiline = true;
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(500, 30);
@@ -133,7 +133,7 @@
             this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.usernameTextBox.Location = new System.Drawing.Point(140, 134);
+            this.usernameTextBox.Location = new System.Drawing.Point(146, 158);
             this.usernameTextBox.Multiline = true;
             this.usernameTextBox.Name = "usernameTextBox";
             this.usernameTextBox.Size = new System.Drawing.Size(500, 30);
@@ -145,7 +145,7 @@
             // 
             this.statusLabel.AutoSize = true;
             this.statusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(276, 395);
+            this.statusLabel.Location = new System.Drawing.Point(142, 74);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(82, 20);
             this.statusLabel.TabIndex = 14;
@@ -156,7 +156,7 @@
             // 
             this.rememberMeCheckBox.AutoSize = true;
             this.rememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rememberMeCheckBox.Location = new System.Drawing.Point(140, 319);
+            this.rememberMeCheckBox.Location = new System.Drawing.Point(146, 343);
             this.rememberMeCheckBox.Name = "rememberMeCheckBox";
             this.rememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
             this.rememberMeCheckBox.TabIndex = 15;
@@ -169,7 +169,7 @@
             this.activationCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.activationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activationCodeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.activationCodeTextBox.Location = new System.Drawing.Point(140, 274);
+            this.activationCodeTextBox.Location = new System.Drawing.Point(146, 298);
             this.activationCodeTextBox.Multiline = true;
             this.activationCodeTextBox.Name = "activationCodeTextBox";
             this.activationCodeTextBox.Size = new System.Drawing.Size(500, 30);
