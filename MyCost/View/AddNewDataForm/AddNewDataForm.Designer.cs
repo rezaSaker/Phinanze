@@ -63,7 +63,7 @@
             // 
             // expenseDataGridView
             // 
-            this.expenseDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.expenseDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.expenseDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.expenseDataGridView.BackgroundColor = System.Drawing.Color.White;
@@ -79,6 +79,7 @@
             this.Column3});
             this.expenseDataGridView.Location = new System.Drawing.Point(9, 111);
             this.expenseDataGridView.Name = "expenseDataGridView";
+            this.expenseDataGridView.RowHeadersVisible = false;
             this.expenseDataGridView.Size = new System.Drawing.Size(779, 150);
             this.expenseDataGridView.TabIndex = 3;
             this.expenseDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ExpenseDGVEditBegan);
@@ -107,8 +108,8 @@
             // 
             // noteTextBox
             // 
-            this.noteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.noteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.noteTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noteTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
@@ -189,7 +190,7 @@
             // 
             // earningDataGridView
             // 
-            this.earningDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.earningDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.earningDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.earningDataGridView.BackgroundColor = System.Drawing.Color.White;
@@ -205,6 +206,7 @@
             this.dataGridViewTextBoxColumn4});
             this.earningDataGridView.Location = new System.Drawing.Point(9, 291);
             this.earningDataGridView.Name = "earningDataGridView";
+            this.earningDataGridView.RowHeadersVisible = false;
             this.earningDataGridView.Size = new System.Drawing.Size(779, 149);
             this.earningDataGridView.TabIndex = 23;
             this.earningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
