@@ -219,8 +219,8 @@ namespace MyCost.View
 
             //send web request to verify user's login credentials
             WebHandler webRequest = new WebHandler();
-            webRequest.AuthenticationSuccessEventHandler += OnLoginSuccess;
-            webRequest.AuthenticationFailedEventHandler += OnLoginFailed;
+            webRequest.WebRequestSuccessEventHandler += OnLoginSuccess;
+            webRequest.WebRequestFailedEventHandler += OnLoginFailed;
             _webHandlerObject = webRequest;
             webRequest.AuthenticateUser(username, password);           
         }
@@ -326,8 +326,8 @@ namespace MyCost.View
 
             //send web request to create new user account
             WebHandler webRequest = new WebHandler();
-            webRequest.RegisterSuccessEventHandler += OnRegisterSuccess;
-            webRequest.RegisterFailedEventHandler += OnRegisterFailed;
+            webRequest.WebRequestSuccessEventHandler += OnRegisterSuccess;
+            webRequest.WebRequestFailedEventHandler += OnRegisterFailed;
             _webHandlerObject = webRequest;
             webRequest.RegisterNewUser(username, password, activationCode);
         }
@@ -393,8 +393,8 @@ namespace MyCost.View
 
             //get daily expenses and earnings from database
             WebHandler webRequest = new WebHandler();
-            webRequest.RetrieveDailyInfoSuccessEventHandler += OnFetchDailyInfoSuccess;
-            webRequest.RetrieveDailyInfoFailedEEventHandler += OnFetchDailyInfoFailed;
+            webRequest.WebRequestSuccessEventHandler += OnFetchDailyInfoSuccess;
+            webRequest.WebRequestFailedEventHandler += OnFetchDailyInfoFailed;
             _webHandlerObject = webRequest;
             webRequest.RetrieveDailyInfo();         
         }
@@ -521,8 +521,8 @@ namespace MyCost.View
 
             //get all categories made by user from the database
             WebHandler webRequest = new WebHandler();
-            webRequest.RetrieveCategoriesSuccessEventhandler += OnFetchCategoriesSuccess;
-            webRequest.RetrieveCategoriesFailedEventHandler += OnFetchCategoriesFailed;
+            webRequest.WebRequestSuccessEventHandler += OnFetchCategoriesSuccess;
+            webRequest.WebRequestFailedEventHandler += OnFetchCategoriesFailed;
             _webHandlerObject = webRequest;
             webRequest.RetrieveCategories();
         }

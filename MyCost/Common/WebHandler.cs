@@ -10,15 +10,8 @@ namespace MyCost.Common.WebHandler
     {
         private string _webResponse;
 
-        public event EventHandler AuthenticationSuccessEventHandler;
-        public event EventHandler AuthenticationFailedEventHandler;
-        public event EventHandler RegisterSuccessEventHandler;
-        public event EventHandler RegisterFailedEventHandler;
-        public event EventHandler RetrieveDailyInfoSuccessEventHandler;
-        public event EventHandler RetrieveDailyInfoFailedEEventHandler;
-        public event EventHandler RetrieveCategoriesSuccessEventhandler;
-        public event EventHandler RetrieveCategoriesFailedEventHandler;
-        //public event eventhandler
+        public event EventHandler WebRequestSuccessEventHandler;
+        public event EventHandler WebRequestFailedEventHandler;
 
         public string Response
         {
@@ -61,12 +54,12 @@ namespace MyCost.Common.WebHandler
 
         private void OnAuthenticationSuccess()
         {
-            AuthenticationSuccessEventHandler?.Invoke(this, null);
+            WebRequestSuccessEventHandler?.Invoke(this, null);
         }
 
         private void OnAuthenticationFailed()
         {
-            AuthenticationFailedEventHandler?.Invoke(this, null);
+            WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
         public void RegisterNewUser(string username, string password, string code)
@@ -105,12 +98,12 @@ namespace MyCost.Common.WebHandler
 
         private void OnRegisterSuccess()
         {
-            RegisterSuccessEventHandler?.Invoke(this, null);
+            WebRequestSuccessEventHandler?.Invoke(this, null);
         }
 
         private void OnRegisterFailed()
         {
-            RegisterFailedEventHandler?.Invoke(this, null);
+            WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
         public void RetrieveDailyInfo()
@@ -148,12 +141,12 @@ namespace MyCost.Common.WebHandler
 
         private void OnRetrieveDailyInfoSuccess()
         {
-            RetrieveDailyInfoSuccessEventHandler?.Invoke(this, null);
+            WebRequestSuccessEventHandler?.Invoke(this, null);
         }
 
         private void OnRetrieveDailyInfoFailed()
         {
-            RetrieveDailyInfoFailedEEventHandler?.Invoke(this, null);
+            WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
         public void RetrieveCategories()
@@ -191,12 +184,12 @@ namespace MyCost.Common.WebHandler
 
         private void OnRetrieveCategoriesSuccess()
         {
-            RetrieveCategoriesSuccessEventhandler?.Invoke(this, null);
+            WebRequestSuccessEventHandler?.Invoke(this, null);
         }
 
         private void OnRetrieveCategoriesFailed()
         {
-            RetrieveCategoriesFailedEventHandler?.Invoke(this, null);
+            WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
         public static string SaveDailyInfo(DailyInfo daily)
