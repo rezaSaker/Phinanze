@@ -20,12 +20,12 @@ namespace MyCost.View
             InitializeComponent();
 
             _status = status;
+            UpdateStatus(status);
         }
 
-        public string Status
+        private void ProgressViewerForm_Load(object sender, EventArgs e)
         {
-            get => _status;
-            set => _status = value;
+            progressBar.MarqueeAnimationSpeed = 1;
         }
 
         public void StartProgressOnSeperateThread()
@@ -36,7 +36,28 @@ namespace MyCost.View
 
         private void ProgressStarter()
         {
-            
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            progressBar.Increment(10);
+        }
+
+        public void StopProgress()
+        {
+            this.Close();
+        }
+
+        public void UpdateStatus(string status)
+        {
+            statusLabel.Text = status;
+        }
+
+        public string Status
+        {
+            get => _status;
+            set => _status = value;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace MyCost.View
         private bool _quitAppOnFormClosing;
 
         private WebHandler _webHandlerObject;
+        private ProgressViewerForm _progressViewerObject;
 
         private delegate void UserAuthenticationDelegate();
         private delegate void UserRegistrationDelegate();
@@ -125,7 +126,7 @@ namespace MyCost.View
 
         private void DisplayLoginPanel()
         {
-            //reset everything so the panel appears as a login form
+            //reset everything so the panel appears as a login form 
             showRegisterPanelButton.BackColor = Color.RoyalBlue;
             showRegisterPanelButton.ForeColor = Color.White;
             showLoginPanelButton.BackColor = Color.White;
@@ -141,6 +142,7 @@ namespace MyCost.View
 
             rememberMeCheckBox.Location = new Point(140, 223);
             statusLabel.Location = new Point(276, 300);
+            this.Size = new Size(800, 370);
 
             ResetTextBoxProperties();
         }
@@ -163,6 +165,7 @@ namespace MyCost.View
 
             rememberMeCheckBox.Location = new Point(136, 319);
             statusLabel.Location = new Point(276, 395);
+            this.Size = new Size(800, 465);
 
             ResetTextBoxProperties();
         }
@@ -208,10 +211,14 @@ namespace MyCost.View
             DisableAllControls();
 
             //show progress bar
-            //string status = "Verifying your login credentials, please wait...";
-            //ProgressViewerForm progressViewer = new ProgressViewerForm(status);
+            string status = "Verifying your login credentials, please wait...";
+            ProgressViewerForm progressViewer = new ProgressViewerForm(status);
+            progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 100);
+            progressViewer.Show();
+            _progressViewerObject = progressViewer;
+            progressViewer.StartProgressOnSeperateThread();
 
-
+            //send web request to verify user's login credentials
             WebHandler webRequest = new WebHandler();
             webRequest.AuthenticationSuccessEventHandler += OnLoginSuccess;
             webRequest.AuthenticationFailedEventHandler += OnLoginFailed;
@@ -256,19 +263,21 @@ namespace MyCost.View
             }
             else
             {
+                _progressViewerObject.StopProgress();
+                ShowErrorMessage(result);
+
                 //enable all controls so that the user can attempt to login again
                 EnableAllControls();
-
-                ShowErrorMessage(result);
             }
         }
 
         private void ActionUponLoginFailed()
         {
-            //enable all controls so that the user can attempt to login again
-            EnableAllControls();
-
+            _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
+
+            //enable all controls so that the user can attempt to login again
+            EnableAllControls();      
         }
 
         private void RegisterUser()
@@ -309,6 +318,15 @@ namespace MyCost.View
             //anything until the registration process ends
             DisableAllControls();
 
+            //show progress bar
+            string status = "Creating your account, please wait...";
+            ProgressViewerForm progressViewer = new ProgressViewerForm(status);
+            progressViewer.Parent = this;
+            progressViewer.Show();
+            _progressViewerObject = progressViewer;
+            progressViewer.StartProgressOnSeperateThread();
+
+            //send web request to create new user account
             WebHandler webRequest = new WebHandler();
             webRequest.RegisterSuccessEventHandler += OnRegisterSuccess;
             webRequest.RegisterFailedEventHandler += OnRegisterFailed;
@@ -341,37 +359,40 @@ namespace MyCost.View
                 StaticStorage.AccessToken = data[1];
                 StaticStorage.Username = usernameTextBox.Text;
 
-                ActionUponRegisterSuccess();
+                if (rememberMeCheckBox.Checked)
+                {
+                    Properties.Settings.Default.Username = usernameTextBox.Text;
+                    Properties.Settings.Default.Password = passwordTextBox.Text;
+                    Properties.Settings.Default.Save();
+                }
+
+                //get daily info of this user from database
+                FetchDailyInfo();
             }
             else
             {
-                //enable all controls so that the user can attempt to login again
-                EnableAllControls();
-
+                _progressViewerObject.StopProgress();
                 ShowErrorMessage(result);
-            }
 
-            if (rememberMeCheckBox.Checked)
-            {
-                Properties.Settings.Default.Username = usernameTextBox.Text;
-                Properties.Settings.Default.Password = passwordTextBox.Text;
-                Properties.Settings.Default.Save();
+                //enable all controls so that the user can attempt to login again
+                EnableAllControls();               
             }
-
-            //get daily info of this user from database
-            FetchDailyInfo();
         }
 
         private void ActionUponRegisterFailed()
         {
-            //enable all controls so that the user can attempt to login again
-            EnableAllControls();
-
+            _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
+
+            //enable all controls so that the user can attempt to login again
+            EnableAllControls();           
         }
 
         private void FetchDailyInfo()
         {
+            string status = "Fetching daily information from database, please wait...";
+            _progressViewerObject.UpdateStatus(status);
+
             //get daily expenses and earnings from database
             WebHandler webRequest = new WebHandler();
             webRequest.RetrieveDailyInfoSuccessEventHandler += OnFetchDailyInfoSuccess;
@@ -399,7 +420,8 @@ namespace MyCost.View
             if (rows[0] == "Server connection error")
             {
                 //some server error occurred
-                ShowErrorMessage("Server connection error. Please check your internet connection.");
+                _progressViewerObject.StopProgress();
+                ShowErrorMessage("Server connection error. Please check your internet connection.");             
                 return;
             }
 
@@ -490,11 +512,15 @@ namespace MyCost.View
 
         private void ActionUponFetchDailyInfoFailed()
         {
+            _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
         }
 
         private void FetchCategories()
         {
+            string status = "Fetching categories from database, please wait...";
+            _progressViewerObject.UpdateStatus(status);
+
             //get all categories made by user from the database
             WebHandler webRequest = new WebHandler();
             webRequest.RetrieveCategoriesSuccessEventhandler += OnFetchCategoriesSuccess;
@@ -517,9 +543,11 @@ namespace MyCost.View
         {
             string result = _webHandlerObject.Response;
 
-            if (result == "Server connection error" || result == "")
+            if (result == "Server connection error")
             {
-                //some server error occurred or no data found in the DB for this user
+                //some server error occurred
+                _progressViewerObject.StopProgress();
+                ShowErrorMessage("Server connection error. Please check your internet connect.");
                 return;
             }
 
@@ -536,6 +564,8 @@ namespace MyCost.View
                 StaticStorage.ExpenseCategories.Add(cat);
             }
 
+            _progressViewerObject.StopProgress();
+
             MainForm form = new MainForm();
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
@@ -546,6 +576,7 @@ namespace MyCost.View
 
         private void ActionUponFetchCategoriesFailed()
         {
+            _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
         }
 
