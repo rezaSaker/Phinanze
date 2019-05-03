@@ -28,22 +28,6 @@ namespace MyCost.View
             progressBar.MarqueeAnimationSpeed = 1;
         }
 
-        public void StartProgressOnSeperateThread()
-        {
-            Thread thread = new Thread(ProgressStarter);
-            thread.Start();
-        }
-
-        private void ProgressStarter()
-        {
-            timer.Start();
-        }
-
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            progressBar.Increment(10);
-        }
-
         public void StopProgress()
         {
             this.Close();

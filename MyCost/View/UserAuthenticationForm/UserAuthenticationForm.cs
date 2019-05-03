@@ -216,7 +216,6 @@ namespace MyCost.View
             progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 100);
             progressViewer.Show();
             _progressViewerObject = progressViewer;
-            progressViewer.StartProgressOnSeperateThread();
 
             //send web request to verify user's login credentials
             WebHandler webRequest = new WebHandler();
@@ -321,10 +320,9 @@ namespace MyCost.View
             //show progress bar
             string status = "Creating your account, please wait...";
             ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-            progressViewer.Parent = this;
+            progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 200);
             progressViewer.Show();
             _progressViewerObject = progressViewer;
-            progressViewer.StartProgressOnSeperateThread();
 
             //send web request to create new user account
             WebHandler webRequest = new WebHandler();

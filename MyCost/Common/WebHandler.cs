@@ -18,6 +18,7 @@ namespace MyCost.Common.WebHandler
         public event EventHandler RetrieveDailyInfoFailedEEventHandler;
         public event EventHandler RetrieveCategoriesSuccessEventhandler;
         public event EventHandler RetrieveCategoriesFailedEventHandler;
+        //public event eventhandler
 
         public string Response
         {
