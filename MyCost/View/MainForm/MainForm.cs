@@ -46,22 +46,22 @@ namespace MyCost.View
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
             {
-                yearComboBox.Items.Add(year.ToString());
+                YearComboBox.Items.Add(year.ToString());
             }
 
-            yearComboBox.SelectedIndex = 0;
-            versionLabel.Text = "Version: " + Application.ProductVersion;
+            YearComboBox.SelectedIndex = 0;
+            VersionLabel.Text = "Version: " + Application.ProductVersion;
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (yearComboBox.SelectedItem.ToString() == "All years")
+            if (YearComboBox.SelectedItem.ToString() == "All years")
             {
                 _selectedYear = 0;
             }
             else
             {
-                _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+                _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
             }
 
             PlotMonthlyInfo();
@@ -69,8 +69,8 @@ namespace MyCost.View
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            int year = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
-            int month = _monthList.IndexOf(dataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
+            int year = Convert.ToInt32(HomeDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString());
+            int month = _monthList.IndexOf(HomeDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
 
             OpenNewForm(new MonthlyReportForm(month, year));           
         }
@@ -93,23 +93,23 @@ namespace MyCost.View
         {
             Button button = (Button)sender;
 
-            if (button.Name == "addNewDataButton")
+            if (button.Name == "AddNewDataButton")
             {
                 OpenNewForm(new AddNewDataForm());
             }
-            else if (button.Name == "monthlyReportButton")
+            else if (button.Name == "MonthlyReportButton")
             {
                 OpenNewForm(new MonthlyReportForm());
             }
-            else if (button.Name == "statisticsButton")
+            else if (button.Name == "StatisticsButton")
             {
                 OpenNewForm(new StatisticsForm());
             }
-            else if (button.Name == "settingsButton")
+            else if (button.Name == "SettingsButton")
             {
                 OpenNewForm(new SettingsForm());
             }
-            else if (button.Name == "logOutButton")
+            else if (button.Name == "LogOutButton")
             {
                 StaticStorage.LogOutUser();
                 _quitAppOnFormClosing = false;
@@ -131,7 +131,7 @@ namespace MyCost.View
 
         private void PlotMonthlyInfo()
         {
-            dataGridView.Rows.Clear();
+            HomeDataGridView.Rows.Clear();
 
             int rowIndex = 0;
 
@@ -145,21 +145,21 @@ namespace MyCost.View
                 if (_selectedYear == 0)
                 {
                     //show info for all years
-                    dataGridView.Rows.Add(year, month, earning, expense);
+                    HomeDataGridView.Rows.Add(year, month, earning, expense);
                     ShowOverview(monthly, rowIndex);
                 }
                 else if (_selectedYear == monthly.Year)
                 {
                     // show info only for selected year
-                    dataGridView.Rows.Add(year, month, earning, expense);
+                    HomeDataGridView.Rows.Add(year, month, earning, expense);
                     ShowOverview(monthly, rowIndex);
                 }
                 rowIndex++;
             }
 
-            if(dataGridView.Rows.Count > 0)
+            if(HomeDataGridView.Rows.Count > 0)
             {
-                dataGridView.Rows[0].Cells[0].Selected = false;
+                HomeDataGridView.Rows[0].Cells[0].Selected = false;
             }            
         }
 
@@ -168,19 +168,19 @@ namespace MyCost.View
             //add an overview for that month on the last column of dataGridView
             if (monthly.Earning < monthly.Expense)
             {
-                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Red;
-                dataGridView.Rows[row].Cells[4].Value = "Negative";
+                HomeDataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Red;
+                HomeDataGridView.Rows[row].Cells[4].Value = "Negative";
 
             }
             else if (monthly.Earning > monthly.Expense)
             {
-                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Green;
-                dataGridView.Rows[row].Cells[4].Value = "Positive";
+                HomeDataGridView.Rows[row].Cells[4].Style.ForeColor = Color.Green;
+                HomeDataGridView.Rows[row].Cells[4].Value = "Positive";
             }
             else
             {
-                dataGridView.Rows[row].Cells[4].Style.ForeColor = Color.OrangeRed;
-                dataGridView.Rows[row].Cells[4].Value = "Neutral";
+                HomeDataGridView.Rows[row].Cells[4].Style.ForeColor = Color.OrangeRed;
+                HomeDataGridView.Rows[row].Cells[4].Value = "Neutral";
             }
         }
 

@@ -32,36 +32,36 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.HomeDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yearComboBox = new System.Windows.Forms.ComboBox();
-            this.versionLabel = new System.Windows.Forms.Label();
-            this.homeButton = new System.Windows.Forms.Button();
-            this.addNewDataButton = new System.Windows.Forms.Button();
-            this.monthlyReportButton = new System.Windows.Forms.Button();
-            this.statisticsButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.logOutButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.YearComboBox = new System.Windows.Forms.ComboBox();
+            this.VersionLabel = new System.Windows.Forms.Label();
+            this.HomeButton = new System.Windows.Forms.Button();
+            this.AddNewDataButton = new System.Windows.Forms.Button();
+            this.MonthlyReportButton = new System.Windows.Forms.Button();
+            this.StatisticsButton = new System.Windows.Forms.Button();
+            this.SettingsButton = new System.Windows.Forms.Button();
+            this.LogOutButton = new System.Windows.Forms.Button();
+            this.LicenseLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.HomeDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView
+            // HomeDataGridView
             // 
-            this.dataGridView.AllowDrop = true;
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.HomeDataGridView.AllowDrop = true;
+            this.HomeDataGridView.AllowUserToAddRows = false;
+            this.HomeDataGridView.AllowUserToDeleteRows = false;
+            this.HomeDataGridView.AllowUserToResizeColumns = false;
+            this.HomeDataGridView.AllowUserToResizeRows = false;
+            this.HomeDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.HomeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.HomeDataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -69,9 +69,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.HomeDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.HomeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HomeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column5,
             this.Column2,
@@ -84,10 +84,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView.Location = new System.Drawing.Point(12, 110);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
+            this.HomeDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.HomeDataGridView.Location = new System.Drawing.Point(12, 110);
+            this.HomeDataGridView.Name = "HomeDataGridView";
+            this.HomeDataGridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,12 +95,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(775, 350);
-            this.dataGridView.TabIndex = 6;
-            this.dataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
+            this.HomeDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.HomeDataGridView.RowHeadersVisible = false;
+            this.HomeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HomeDataGridView.Size = new System.Drawing.Size(775, 350);
+            this.HomeDataGridView.TabIndex = 6;
+            this.HomeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             // 
             // Column1
             // 
@@ -132,165 +132,165 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
-            // yearComboBox
+            // YearComboBox
             // 
-            this.yearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Items.AddRange(new object[] {
+            this.YearComboBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YearComboBox.FormattingEnabled = true;
+            this.YearComboBox.Items.AddRange(new object[] {
             "All years"});
-            this.yearComboBox.Location = new System.Drawing.Point(12, 78);
-            this.yearComboBox.Name = "yearComboBox";
-            this.yearComboBox.Size = new System.Drawing.Size(132, 26);
-            this.yearComboBox.TabIndex = 33;
-            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
+            this.YearComboBox.Location = new System.Drawing.Point(12, 78);
+            this.YearComboBox.Name = "YearComboBox";
+            this.YearComboBox.Size = new System.Drawing.Size(132, 26);
+            this.YearComboBox.TabIndex = 33;
+            this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
-            // versionLabel
+            // VersionLabel
             // 
-            this.versionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.versionLabel.AutoSize = true;
-            this.versionLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.versionLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionLabel.Location = new System.Drawing.Point(9, 463);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(44, 16);
-            this.versionLabel.TabIndex = 38;
-            this.versionLabel.Text = "Version";
-            this.versionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.VersionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VersionLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLabel.Location = new System.Drawing.Point(9, 463);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(44, 16);
+            this.VersionLabel.TabIndex = 38;
+            this.VersionLabel.Text = "Version";
+            this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // homeButton
+            // HomeButton
             // 
-            this.homeButton.BackColor = System.Drawing.Color.ForestGreen;
-            this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeButton.ForeColor = System.Drawing.Color.White;
-            this.homeButton.Location = new System.Drawing.Point(12, 13);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(115, 38);
-            this.homeButton.TabIndex = 1;
-            this.homeButton.Text = "Home";
-            this.homeButton.UseVisualStyleBackColor = false;
+            this.HomeButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeButton.ForeColor = System.Drawing.Color.White;
+            this.HomeButton.Location = new System.Drawing.Point(12, 13);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(115, 38);
+            this.HomeButton.TabIndex = 1;
+            this.HomeButton.Text = "Home";
+            this.HomeButton.UseVisualStyleBackColor = false;
             // 
-            // addNewDataButton
+            // AddNewDataButton
             // 
-            this.addNewDataButton.BackColor = System.Drawing.Color.White;
-            this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.Location = new System.Drawing.Point(133, 13);
-            this.addNewDataButton.Name = "addNewDataButton";
-            this.addNewDataButton.Size = new System.Drawing.Size(123, 38);
-            this.addNewDataButton.TabIndex = 42;
-            this.addNewDataButton.Text = "Add New";
-            this.addNewDataButton.UseVisualStyleBackColor = false;
-            this.addNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.addNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.addNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
+            this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.Location = new System.Drawing.Point(133, 13);
+            this.AddNewDataButton.Name = "AddNewDataButton";
+            this.AddNewDataButton.Size = new System.Drawing.Size(123, 38);
+            this.AddNewDataButton.TabIndex = 42;
+            this.AddNewDataButton.Text = "Add New";
+            this.AddNewDataButton.UseVisualStyleBackColor = false;
+            this.AddNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.AddNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.AddNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // monthlyReportButton
+            // MonthlyReportButton
             // 
-            this.monthlyReportButton.BackColor = System.Drawing.Color.White;
-            this.monthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.monthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.monthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.monthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.monthlyReportButton.Location = new System.Drawing.Point(262, 13);
-            this.monthlyReportButton.Name = "monthlyReportButton";
-            this.monthlyReportButton.Size = new System.Drawing.Size(140, 38);
-            this.monthlyReportButton.TabIndex = 43;
-            this.monthlyReportButton.Text = "Monthly Report";
-            this.monthlyReportButton.UseVisualStyleBackColor = false;
-            this.monthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.monthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.monthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.White;
+            this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MonthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.Location = new System.Drawing.Point(262, 13);
+            this.MonthlyReportButton.Name = "MonthlyReportButton";
+            this.MonthlyReportButton.Size = new System.Drawing.Size(140, 38);
+            this.MonthlyReportButton.TabIndex = 43;
+            this.MonthlyReportButton.Text = "Monthly Report";
+            this.MonthlyReportButton.UseVisualStyleBackColor = false;
+            this.MonthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.MonthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.MonthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // statisticsButton
+            // StatisticsButton
             // 
-            this.statisticsButton.BackColor = System.Drawing.Color.White;
-            this.statisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.statisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.statisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.statisticsButton.Location = new System.Drawing.Point(408, 13);
-            this.statisticsButton.Name = "statisticsButton";
-            this.statisticsButton.Size = new System.Drawing.Size(123, 38);
-            this.statisticsButton.TabIndex = 44;
-            this.statisticsButton.Text = "Statistics";
-            this.statisticsButton.UseVisualStyleBackColor = false;
-            this.statisticsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.statisticsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.statisticsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.StatisticsButton.BackColor = System.Drawing.Color.White;
+            this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.Location = new System.Drawing.Point(408, 13);
+            this.StatisticsButton.Name = "StatisticsButton";
+            this.StatisticsButton.Size = new System.Drawing.Size(123, 38);
+            this.StatisticsButton.TabIndex = 44;
+            this.StatisticsButton.Text = "Statistics";
+            this.StatisticsButton.UseVisualStyleBackColor = false;
+            this.StatisticsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.StatisticsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.StatisticsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // settingsButton
+            // SettingsButton
             // 
-            this.settingsButton.BackColor = System.Drawing.Color.White;
-            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.settingsButton.Location = new System.Drawing.Point(537, 13);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(123, 38);
-            this.settingsButton.TabIndex = 45;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.settingsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.settingsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.SettingsButton.BackColor = System.Drawing.Color.White;
+            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SettingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.SettingsButton.Location = new System.Drawing.Point(537, 13);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(123, 38);
+            this.SettingsButton.TabIndex = 45;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = false;
+            this.SettingsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.SettingsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.SettingsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // logOutButton
+            // LogOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logOutButton.BackColor = System.Drawing.Color.White;
-            this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.logOutButton.Location = new System.Drawing.Point(664, 13);
-            this.logOutButton.Name = "logOutButton";
-            this.logOutButton.Size = new System.Drawing.Size(123, 38);
-            this.logOutButton.TabIndex = 46;
-            this.logOutButton.Text = "Log Out";
-            this.logOutButton.UseVisualStyleBackColor = false;
-            this.logOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.logOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.logOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogOutButton.BackColor = System.Drawing.Color.White;
+            this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.Location = new System.Drawing.Point(664, 13);
+            this.LogOutButton.Name = "LogOutButton";
+            this.LogOutButton.Size = new System.Drawing.Size(123, 38);
+            this.LogOutButton.TabIndex = 46;
+            this.LogOutButton.Text = "Log Out";
+            this.LogOutButton.UseVisualStyleBackColor = false;
+            this.LogOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // label1
+            // LicenseLabel
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(561, 463);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 16);
-            this.label1.TabIndex = 47;
-            this.label1.Text = "This application is provided under MIT License";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LicenseLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LicenseLabel.AutoSize = true;
+            this.LicenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LicenseLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LicenseLabel.Location = new System.Drawing.Point(561, 463);
+            this.LicenseLabel.Name = "LicenseLabel";
+            this.LicenseLabel.Size = new System.Drawing.Size(227, 16);
+            this.LicenseLabel.TabIndex = 47;
+            this.LicenseLabel.Text = "This application is provided under MIT License";
+            this.LicenseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 487);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.logOutButton);
-            this.Controls.Add(this.settingsButton);
-            this.Controls.Add(this.statisticsButton);
-            this.Controls.Add(this.monthlyReportButton);
-            this.Controls.Add(this.addNewDataButton);
-            this.Controls.Add(this.versionLabel);
-            this.Controls.Add(this.yearComboBox);
-            this.Controls.Add(this.dataGridView);
-            this.Controls.Add(this.homeButton);
+            this.Controls.Add(this.LicenseLabel);
+            this.Controls.Add(this.LogOutButton);
+            this.Controls.Add(this.SettingsButton);
+            this.Controls.Add(this.StatisticsButton);
+            this.Controls.Add(this.MonthlyReportButton);
+            this.Controls.Add(this.AddNewDataButton);
+            this.Controls.Add(this.VersionLabel);
+            this.Controls.Add(this.YearComboBox);
+            this.Controls.Add(this.HomeDataGridView);
+            this.Controls.Add(this.HomeButton);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -301,27 +301,27 @@
             this.Text = "MyCost - Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HomeDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.ComboBox yearComboBox;
-        private System.Windows.Forms.Label versionLabel;
+        private System.Windows.Forms.DataGridView HomeDataGridView;
+        private System.Windows.Forms.ComboBox YearComboBox;
+        private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.Button homeButton;
-        private System.Windows.Forms.Button addNewDataButton;
-        private System.Windows.Forms.Button monthlyReportButton;
-        private System.Windows.Forms.Button statisticsButton;
-        private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button logOutButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button HomeButton;
+        private System.Windows.Forms.Button AddNewDataButton;
+        private System.Windows.Forms.Button MonthlyReportButton;
+        private System.Windows.Forms.Button StatisticsButton;
+        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button LogOutButton;
+        private System.Windows.Forms.Label LicenseLabel;
     }
 }
