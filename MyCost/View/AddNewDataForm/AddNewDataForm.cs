@@ -12,9 +12,14 @@ namespace MyCost.View
         private int _selectedDay;
         private int _selectedMonth;
         private int _selectedYear;
+        private int _dayComboBoxPrevSelectedIndex;
+        private int _monthComboBoxPrevSelectedIndex;
+        private int _yearComboBoxPrevSelectedIndex;
 
         private bool _quitAppOnFormClosing;
         private bool _hasUnsavedChanges;
+        private bool _isAutoSaveAlreadyAttempted;
+        private bool _redundantTriggerOfEventHandler;
 
         public AddNewDataForm()
         {
@@ -23,8 +28,6 @@ namespace MyCost.View
             _selectedDay = DateTime.Now.Day;
             _selectedMonth = DateTime.Now.Month;
             _selectedYear = DateTime.Now.Year;
-            _quitAppOnFormClosing = true;
-            _hasUnsavedChanges = false;
         }
 
         public AddNewDataForm(int day, int month, int year)
@@ -34,14 +37,17 @@ namespace MyCost.View
             _selectedDay = day;
             _selectedMonth = month;
             _selectedYear = year;
-            _quitAppOnFormClosing = true;
-            _hasUnsavedChanges = false;
         }
 
         #region event_handler_methods
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
+            _quitAppOnFormClosing = true;
+            _hasUnsavedChanges = false;
+            _isAutoSaveAlreadyAttempted = false;
+            _redundantTriggerOfEventHandler = false;
+
             for (int i = 2018; i < _selectedYear + 3; i++)
             {
                 yearComboBox.Items.Add(i.ToString());
@@ -60,44 +66,123 @@ namespace MyCost.View
                 }
                 else if (control is DataGridView)
                 {
-                    ((DataGridView)control).CellValueChanged += ControlChanged;
                     ((DataGridView)control).UserAddedRow += ControlChanged;
                     ((DataGridView)control).UserDeletedRow += ControlChanged;
                     ((DataGridView)control).CellEndEdit += ControlChanged;
                     ((DataGridView)control).CellBeginEdit += ControlChanged;
                 }
             }
-
-            saveButton.Enabled = false;
-            saveButton.BackColor = Color.LightGray;
         }
 
         private void DayComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (_hasUnsavedChanges)
+            if (!_redundantTriggerOfEventHandler)
             {
-                AutoSaveDailyInfo();
-            }
+                if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
+                {
+                    if (!AutoSaveDailyInfo())
+                    {
+                        //since we are changing selected index, 
+                        //this will itrigger this method again which is unexpected
+                        //setting _redundantTriggerOfEventHandler = true will prevent tht
+                        _redundantTriggerOfEventHandler = true;
 
-            _selectedDay = dayComboBox.SelectedIndex + 1;
-            PlotDailyInfo();
+                        _isAutoSaveAlreadyAttempted = false;
+                        dayComboBox.SelectedIndex = _dayComboBoxPrevSelectedIndex;
+                        return;
+                    }
+                }
+
+                //keep record of the selected index so that we can 
+                //switch back to this index if needed during next selection change
+                _dayComboBoxPrevSelectedIndex = dayComboBox.SelectedIndex;
+
+                _selectedDay = dayComboBox.SelectedIndex + 1;
+                PlotDailyInfo();
+
+                _isAutoSaveAlreadyAttempted = false;
+                _hasUnsavedChanges = false;
+                saveButton.Enabled = false;
+                saveButton.BackColor = Color.LightBlue;
+            }
+            else
+            {
+                _redundantTriggerOfEventHandler = false;
+            }
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {
-            _selectedMonth = monthComboBox.SelectedIndex + 1;
-            AddItemsToDayComboBox();
+            if (!_redundantTriggerOfEventHandler)
+            {
+                if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
+                {
+                    if (!AutoSaveDailyInfo())
+                    {
+                        //since we are changing selected index, 
+                        //this will itrigger this method again which is unexpected
+                        //setting _redundantTriggerOfEventHandler = true will prevent tht
+                        _redundantTriggerOfEventHandler = true;
+
+                        _isAutoSaveAlreadyAttempted = false;
+                        monthComboBox.SelectedIndex = _monthComboBoxPrevSelectedIndex;
+                        return;
+                    }
+                }
+
+                //keep the record of the selected index so that we can 
+                //switch back to this index if needed during next selection change
+                _monthComboBoxPrevSelectedIndex = monthComboBox.SelectedIndex;
+
+                _selectedMonth = monthComboBox.SelectedIndex + 1;
+                AddItemsToDayComboBox();
+
+                _isAutoSaveAlreadyAttempted = false;
+                _hasUnsavedChanges = false;
+                saveButton.Enabled = false;
+                saveButton.BackColor = Color.LightBlue;
+            }
+            else
+            {
+                _redundantTriggerOfEventHandler = false;
+            }
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (_hasUnsavedChanges)
+            if (!_redundantTriggerOfEventHandler)
             {
-                AutoSaveDailyInfo();
-            }
+                if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
+                {
+                    if (!AutoSaveDailyInfo())
+                    {
+                        //since we are changing selected index, 
+                        //this will itrigger this method again which is unexpected
+                        //setting _redundantTriggerOfEventHandler = true will prevent tht
+                        _redundantTriggerOfEventHandler = true;
 
-            _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
-            AddItemsToDayComboBox();      
+                        _isAutoSaveAlreadyAttempted = false;
+                        yearComboBox.SelectedIndex = _yearComboBoxPrevSelectedIndex;
+                        return;
+                    }
+                }
+
+                //keep record of the selected index so that we can 
+                //switch back to this index if needed during next selection change
+                _yearComboBoxPrevSelectedIndex = yearComboBox.SelectedIndex;
+
+                _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+                AddItemsToDayComboBox();
+
+                _isAutoSaveAlreadyAttempted = false;
+                _hasUnsavedChanges = false;
+                saveButton.Enabled = false;
+                saveButton.BackColor = Color.LightBlue;
+            }
+            else
+            {
+                _redundantTriggerOfEventHandler = false;
+            }
         }
 
         private void NoteTextBoxClicked(object sender, EventArgs e)
@@ -673,6 +758,8 @@ namespace MyCost.View
 
         private bool AutoSaveDailyInfo()
         {
+            _isAutoSaveAlreadyAttempted = true;
+
             string result = SaveDailyInfo();
 
             if(result == "Terminated by user")
