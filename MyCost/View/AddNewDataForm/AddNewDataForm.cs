@@ -19,7 +19,7 @@ namespace MyCost.View
         private bool _quitAppOnFormClosing;
         private bool _hasUnsavedChanges;
         private bool _isAutoSaveAlreadyAttempted;
-        private bool _IsRedundantTriggerOfEventHandler;
+        private bool _isRedundantTriggerOfEventHandler;
 
         public AddNewDataForm()
         {
@@ -46,7 +46,7 @@ namespace MyCost.View
             _quitAppOnFormClosing = true;
             _hasUnsavedChanges = false;
             _isAutoSaveAlreadyAttempted = false;
-            _IsRedundantTriggerOfEventHandler = false;
+            _isRedundantTriggerOfEventHandler = false;
 
             for (int i = 2018; i < _selectedYear + 3; i++)
             {
@@ -76,7 +76,7 @@ namespace MyCost.View
 
         private void DayComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (!_IsRedundantTriggerOfEventHandler)
+            if (!_isRedundantTriggerOfEventHandler)
             {
                 if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
                 {
@@ -85,7 +85,7 @@ namespace MyCost.View
                         //Since we are changing selected index in this block, 
                         //this will trigger this method again which is unexpected.
                         //Setting _isRedundantTriggerOfEventHandler = true will prevent that
-                        _IsRedundantTriggerOfEventHandler = true;
+                        _isRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
                         DayComboBox.SelectedIndex = _dayComboBoxPrevSelectedIndex;
@@ -104,13 +104,13 @@ namespace MyCost.View
             }
             else
             {
-                _IsRedundantTriggerOfEventHandler = false;
+                _isRedundantTriggerOfEventHandler = false;
             }
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (!_IsRedundantTriggerOfEventHandler)
+            if (!_isRedundantTriggerOfEventHandler)
             {
                 if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
                 {
@@ -119,7 +119,7 @@ namespace MyCost.View
                         //Since we are changing selected index in this block, 
                         //this will trigger this method again which is unexpected.
                         //Setting _isRedundantTriggerOfEventHandler = true will prevent
-                        _IsRedundantTriggerOfEventHandler = true;
+                        _isRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
                         MonthComboBox.SelectedIndex = _monthComboBoxPrevSelectedIndex;
@@ -138,13 +138,13 @@ namespace MyCost.View
             }
             else
             {
-                _IsRedundantTriggerOfEventHandler = false;
+                _isRedundantTriggerOfEventHandler = false;
             }
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (!_IsRedundantTriggerOfEventHandler)
+            if (!_isRedundantTriggerOfEventHandler)
             {
                 if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
                 {
@@ -153,7 +153,7 @@ namespace MyCost.View
                         //Since we are changing selected index in this block, 
                         //this will trigger this method again which is unexpected.
                         //Setting _isRedundantTriggerOfEventHandler = true will prevent
-                        _IsRedundantTriggerOfEventHandler = true;
+                        _isRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
                         YearComboBox.SelectedIndex = _yearComboBoxPrevSelectedIndex;
@@ -172,7 +172,7 @@ namespace MyCost.View
             }
             else
             {
-                _IsRedundantTriggerOfEventHandler = false;
+                _isRedundantTriggerOfEventHandler = false;
             }
         }
 
