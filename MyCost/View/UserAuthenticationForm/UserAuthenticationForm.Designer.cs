@@ -29,153 +29,153 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAuthenticationForm));
-            this.showRegisterPanelButton = new System.Windows.Forms.Button();
-            this.showLoginPanelButton = new System.Windows.Forms.Button();
-            this.appLogoLabel = new System.Windows.Forms.Label();
-            this.submitButton = new System.Windows.Forms.Button();
-            this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.usernameTextBox = new System.Windows.Forms.TextBox();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.rememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.activationCodeTextBox = new System.Windows.Forms.TextBox();
+            this.ShowRegisterPanelButton = new System.Windows.Forms.Button();
+            this.ShowLoginPanelButton = new System.Windows.Forms.Button();
+            this.AppLogoLabel = new System.Windows.Forms.Label();
+            this.SubmitButton = new System.Windows.Forms.Button();
+            this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.UsernameTextBox = new System.Windows.Forms.TextBox();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
+            this.ActivationCodeTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // showRegisterPanelButton
+            // ShowRegisterPanelButton
             // 
-            this.showRegisterPanelButton.AutoSize = true;
-            this.showRegisterPanelButton.BackColor = System.Drawing.Color.White;
-            this.showRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showRegisterPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
-            this.showRegisterPanelButton.Location = new System.Drawing.Point(146, 106);
-            this.showRegisterPanelButton.Name = "showRegisterPanelButton";
-            this.showRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
-            this.showRegisterPanelButton.TabIndex = 0;
-            this.showRegisterPanelButton.Text = "Register";
-            this.showRegisterPanelButton.UseVisualStyleBackColor = false;
-            this.showRegisterPanelButton.Click += new System.EventHandler(this.ShowRegisterPanelButtonClicked);
+            this.ShowRegisterPanelButton.AutoSize = true;
+            this.ShowRegisterPanelButton.BackColor = System.Drawing.Color.White;
+            this.ShowRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowRegisterPanelButton.Location = new System.Drawing.Point(146, 106);
+            this.ShowRegisterPanelButton.Name = "ShowRegisterPanelButton";
+            this.ShowRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
+            this.ShowRegisterPanelButton.TabIndex = 0;
+            this.ShowRegisterPanelButton.Text = "Register";
+            this.ShowRegisterPanelButton.UseVisualStyleBackColor = false;
+            this.ShowRegisterPanelButton.Click += new System.EventHandler(this.ShowRegisterPanelButtonClicked);
             // 
-            // showLoginPanelButton
+            // ShowLoginPanelButton
             // 
-            this.showLoginPanelButton.AutoSize = true;
-            this.showLoginPanelButton.BackColor = System.Drawing.Color.White;
-            this.showLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showLoginPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.showLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.showLoginPanelButton.Location = new System.Drawing.Point(400, 106);
-            this.showLoginPanelButton.Name = "showLoginPanelButton";
-            this.showLoginPanelButton.Size = new System.Drawing.Size(246, 36);
-            this.showLoginPanelButton.TabIndex = 1;
-            this.showLoginPanelButton.Text = "Log in";
-            this.showLoginPanelButton.UseVisualStyleBackColor = false;
-            this.showLoginPanelButton.Click += new System.EventHandler(this.ShowLoginPanelButoonClicked);
+            this.ShowLoginPanelButton.AutoSize = true;
+            this.ShowLoginPanelButton.BackColor = System.Drawing.Color.White;
+            this.ShowLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ShowLoginPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ShowLoginPanelButton.Location = new System.Drawing.Point(400, 106);
+            this.ShowLoginPanelButton.Name = "ShowLoginPanelButton";
+            this.ShowLoginPanelButton.Size = new System.Drawing.Size(246, 36);
+            this.ShowLoginPanelButton.TabIndex = 1;
+            this.ShowLoginPanelButton.Text = "Log in";
+            this.ShowLoginPanelButton.UseVisualStyleBackColor = false;
+            this.ShowLoginPanelButton.Click += new System.EventHandler(this.ShowLoginPanelButoonClicked);
             // 
-            // appLogoLabel
+            // AppLogoLabel
             // 
-            this.appLogoLabel.AutoSize = true;
-            this.appLogoLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.appLogoLabel.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appLogoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.appLogoLabel.Location = new System.Drawing.Point(286, 9);
-            this.appLogoLabel.Name = "appLogoLabel";
-            this.appLogoLabel.Size = new System.Drawing.Size(209, 54);
-            this.appLogoLabel.TabIndex = 3;
-            this.appLogoLabel.Text = "MYCOST";
+            this.AppLogoLabel.AutoSize = true;
+            this.AppLogoLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.AppLogoLabel.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppLogoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.AppLogoLabel.Location = new System.Drawing.Point(286, 9);
+            this.AppLogoLabel.Name = "AppLogoLabel";
+            this.AppLogoLabel.Size = new System.Drawing.Size(209, 54);
+            this.AppLogoLabel.TabIndex = 3;
+            this.AppLogoLabel.Text = "MYCOST";
             // 
-            // submitButton
+            // SubmitButton
             // 
-            this.submitButton.AutoSize = true;
-            this.submitButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.submitButton.FlatAppearance.BorderSize = 0;
-            this.submitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitButton.ForeColor = System.Drawing.Color.White;
-            this.submitButton.Location = new System.Drawing.Point(280, 368);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(246, 36);
-            this.submitButton.TabIndex = 13;
-            this.submitButton.Text = "Log in";
-            this.submitButton.UseVisualStyleBackColor = false;
-            this.submitButton.Click += new System.EventHandler(this.SubmitButtonClicked);
+            this.SubmitButton.AutoSize = true;
+            this.SubmitButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.SubmitButton.FlatAppearance.BorderSize = 0;
+            this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SubmitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.ForeColor = System.Drawing.Color.White;
+            this.SubmitButton.Location = new System.Drawing.Point(280, 368);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(246, 36);
+            this.SubmitButton.TabIndex = 13;
+            this.SubmitButton.Text = "Log in";
+            this.SubmitButton.UseVisualStyleBackColor = false;
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButtonClicked);
             // 
-            // confirmPasswordTextBox
+            // ConfirmPasswordTextBox
             // 
-            this.confirmPasswordTextBox.BackColor = System.Drawing.Color.White;
-            this.confirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.confirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(146, 250);
-            this.confirmPasswordTextBox.Multiline = true;
-            this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
-            this.confirmPasswordTextBox.Size = new System.Drawing.Size(500, 30);
-            this.confirmPasswordTextBox.TabIndex = 12;
-            this.confirmPasswordTextBox.Text = "Confirm password";
-            this.confirmPasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ConfirmPasswordTextBoxClicked);
+            this.ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(146, 250);
+            this.ConfirmPasswordTextBox.Multiline = true;
+            this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
+            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(500, 30);
+            this.ConfirmPasswordTextBox.TabIndex = 12;
+            this.ConfirmPasswordTextBox.Text = "Confirm password";
+            this.ConfirmPasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ConfirmPasswordTextBoxClicked);
             // 
-            // passwordTextBox
+            // PasswordTextBox
             // 
-            this.passwordTextBox.BackColor = System.Drawing.Color.White;
-            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.passwordTextBox.Location = new System.Drawing.Point(146, 204);
-            this.passwordTextBox.Multiline = true;
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(500, 30);
-            this.passwordTextBox.TabIndex = 11;
-            this.passwordTextBox.Text = "Password";
-            this.passwordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextboxClicked);
+            this.PasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.PasswordTextBox.Location = new System.Drawing.Point(146, 204);
+            this.PasswordTextBox.Multiline = true;
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(500, 30);
+            this.PasswordTextBox.TabIndex = 11;
+            this.PasswordTextBox.Text = "Password";
+            this.PasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextboxClicked);
             // 
-            // usernameTextBox
+            // UsernameTextBox
             // 
-            this.usernameTextBox.BackColor = System.Drawing.Color.White;
-            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.usernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.usernameTextBox.Location = new System.Drawing.Point(146, 158);
-            this.usernameTextBox.Multiline = true;
-            this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(500, 30);
-            this.usernameTextBox.TabIndex = 10;
-            this.usernameTextBox.Text = "Username";
-            this.usernameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UsernameTextBoxClicked);
+            this.UsernameTextBox.BackColor = System.Drawing.Color.White;
+            this.UsernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.UsernameTextBox.Location = new System.Drawing.Point(146, 158);
+            this.UsernameTextBox.Multiline = true;
+            this.UsernameTextBox.Name = "UsernameTextBox";
+            this.UsernameTextBox.Size = new System.Drawing.Size(500, 30);
+            this.UsernameTextBox.TabIndex = 10;
+            this.UsernameTextBox.Text = "Username";
+            this.UsernameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UsernameTextBoxClicked);
             // 
-            // statusLabel
+            // StatusLabel
             // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(142, 74);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(82, 20);
-            this.statusLabel.TabIndex = 14;
-            this.statusLabel.Text = "Label Status";
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Location = new System.Drawing.Point(142, 74);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(82, 20);
+            this.StatusLabel.TabIndex = 14;
+            this.StatusLabel.Text = "Label Status";
+            this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rememberMeCheckBox
+            // RememberMeCheckBox
             // 
-            this.rememberMeCheckBox.AutoSize = true;
-            this.rememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rememberMeCheckBox.Location = new System.Drawing.Point(146, 343);
-            this.rememberMeCheckBox.Name = "rememberMeCheckBox";
-            this.rememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
-            this.rememberMeCheckBox.TabIndex = 15;
-            this.rememberMeCheckBox.Text = "Remember me";
-            this.rememberMeCheckBox.UseVisualStyleBackColor = true;
+            this.RememberMeCheckBox.AutoSize = true;
+            this.RememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RememberMeCheckBox.Location = new System.Drawing.Point(146, 343);
+            this.RememberMeCheckBox.Name = "RememberMeCheckBox";
+            this.RememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
+            this.RememberMeCheckBox.TabIndex = 15;
+            this.RememberMeCheckBox.Text = "Remember me";
+            this.RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // activationCodeTextBox
+            // ActivationCodeTextBox
             // 
-            this.activationCodeTextBox.BackColor = System.Drawing.Color.White;
-            this.activationCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.activationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activationCodeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.activationCodeTextBox.Location = new System.Drawing.Point(146, 298);
-            this.activationCodeTextBox.Multiline = true;
-            this.activationCodeTextBox.Name = "activationCodeTextBox";
-            this.activationCodeTextBox.Size = new System.Drawing.Size(500, 30);
-            this.activationCodeTextBox.TabIndex = 16;
-            this.activationCodeTextBox.Text = "Activation Code";
-            this.activationCodeTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ActivationCodeTextBoxClicked);
+            this.ActivationCodeTextBox.BackColor = System.Drawing.Color.White;
+            this.ActivationCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ActivationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActivationCodeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ActivationCodeTextBox.Location = new System.Drawing.Point(146, 298);
+            this.ActivationCodeTextBox.Multiline = true;
+            this.ActivationCodeTextBox.Name = "ActivationCodeTextBox";
+            this.ActivationCodeTextBox.Size = new System.Drawing.Size(500, 30);
+            this.ActivationCodeTextBox.TabIndex = 16;
+            this.ActivationCodeTextBox.Text = "Activation Code";
+            this.ActivationCodeTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ActivationCodeTextBoxClicked);
             // 
             // UserAuthenticationForm
             // 
@@ -183,16 +183,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 426);
-            this.Controls.Add(this.activationCodeTextBox);
-            this.Controls.Add(this.rememberMeCheckBox);
-            this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.submitButton);
-            this.Controls.Add(this.confirmPasswordTextBox);
-            this.Controls.Add(this.passwordTextBox);
-            this.Controls.Add(this.usernameTextBox);
-            this.Controls.Add(this.appLogoLabel);
-            this.Controls.Add(this.showLoginPanelButton);
-            this.Controls.Add(this.showRegisterPanelButton);
+            this.Controls.Add(this.ActivationCodeTextBox);
+            this.Controls.Add(this.RememberMeCheckBox);
+            this.Controls.Add(this.StatusLabel);
+            this.Controls.Add(this.SubmitButton);
+            this.Controls.Add(this.ConfirmPasswordTextBox);
+            this.Controls.Add(this.PasswordTextBox);
+            this.Controls.Add(this.UsernameTextBox);
+            this.Controls.Add(this.AppLogoLabel);
+            this.Controls.Add(this.ShowLoginPanelButton);
+            this.Controls.Add(this.ShowRegisterPanelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -209,16 +209,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button showRegisterPanelButton;
-        private System.Windows.Forms.Button showLoginPanelButton;
-        private System.Windows.Forms.Label appLogoLabel;
-        private System.Windows.Forms.Button submitButton;
-        private System.Windows.Forms.TextBox confirmPasswordTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.TextBox usernameTextBox;
-        private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.CheckBox rememberMeCheckBox;
-        private System.Windows.Forms.TextBox activationCodeTextBox;
+        private System.Windows.Forms.Button ShowRegisterPanelButton;
+        private System.Windows.Forms.Button ShowLoginPanelButton;
+        private System.Windows.Forms.Label AppLogoLabel;
+        private System.Windows.Forms.Button SubmitButton;
+        private System.Windows.Forms.TextBox ConfirmPasswordTextBox;
+        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.TextBox UsernameTextBox;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.CheckBox RememberMeCheckBox;
+        private System.Windows.Forms.TextBox ActivationCodeTextBox;
     }
 }
 

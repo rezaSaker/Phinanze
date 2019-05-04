@@ -29,180 +29,180 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.userNameLaabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.currentUserNameTextBox = new System.Windows.Forms.TextBox();
-            this.newUserNameTextBox = new System.Windows.Forms.TextBox();
-            this.passwordTextBox = new System.Windows.Forms.TextBox();
-            this.submitUserNameButton = new System.Windows.Forms.Button();
-            this.submitPasswordButton = new System.Windows.Forms.Button();
-            this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.newPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.currentPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.UserNameLaabel = new System.Windows.Forms.Label();
+            this.ChangeUsernameLabel = new System.Windows.Forms.Label();
+            this.CurrentUserNameTextBox = new System.Windows.Forms.TextBox();
+            this.NewUserNameTextBox = new System.Windows.Forms.TextBox();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.UpdateUsernameButton = new System.Windows.Forms.Button();
+            this.UpdatePasswordButton = new System.Windows.Forms.Button();
+            this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.NewPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.CurrentPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.ChangePasswordLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.reportIssueButton = new System.Windows.Forms.Button();
-            this.helpButton = new System.Windows.Forms.Button();
-            this.aboutAppButton = new System.Windows.Forms.Button();
-            this.logOutButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.statisticsButton = new System.Windows.Forms.Button();
-            this.monthlyReportButton = new System.Windows.Forms.Button();
-            this.addNewDataButton = new System.Windows.Forms.Button();
-            this.homeButton = new System.Windows.Forms.Button();
+            this.ReportIssueButton = new System.Windows.Forms.Button();
+            this.HelpButton = new System.Windows.Forms.Button();
+            this.AboutAppButton = new System.Windows.Forms.Button();
+            this.LogOutButton = new System.Windows.Forms.Button();
+            this.SettingsButton = new System.Windows.Forms.Button();
+            this.StatisticsButton = new System.Windows.Forms.Button();
+            this.MonthlyReportButton = new System.Windows.Forms.Button();
+            this.AddNewDataButton = new System.Windows.Forms.Button();
+            this.HomeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // userNameLaabel
+            // UserNameLaabel
             // 
-            this.userNameLaabel.AutoSize = true;
-            this.userNameLaabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userNameLaabel.ForeColor = System.Drawing.Color.Black;
-            this.userNameLaabel.Location = new System.Drawing.Point(3, 15);
-            this.userNameLaabel.Name = "userNameLaabel";
-            this.userNameLaabel.Size = new System.Drawing.Size(97, 19);
-            this.userNameLaabel.TabIndex = 46;
-            this.userNameLaabel.Text = "Username: ";
+            this.UserNameLaabel.AutoSize = true;
+            this.UserNameLaabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameLaabel.ForeColor = System.Drawing.Color.Black;
+            this.UserNameLaabel.Location = new System.Drawing.Point(3, 15);
+            this.UserNameLaabel.Name = "UserNameLaabel";
+            this.UserNameLaabel.Size = new System.Drawing.Size(97, 19);
+            this.UserNameLaabel.TabIndex = 46;
+            this.UserNameLaabel.Text = "Username: ";
             // 
-            // label1
+            // ChangeUsernameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(2, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 18);
-            this.label1.TabIndex = 47;
-            this.label1.Text = "Change username";
+            this.ChangeUsernameLabel.AutoSize = true;
+            this.ChangeUsernameLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeUsernameLabel.ForeColor = System.Drawing.Color.Black;
+            this.ChangeUsernameLabel.Location = new System.Drawing.Point(2, 53);
+            this.ChangeUsernameLabel.Name = "ChangeUsernameLabel";
+            this.ChangeUsernameLabel.Size = new System.Drawing.Size(139, 18);
+            this.ChangeUsernameLabel.TabIndex = 47;
+            this.ChangeUsernameLabel.Text = "Change Username";
             // 
-            // currentUserNameTextBox
+            // CurrentUserNameTextBox
             // 
-            this.currentUserNameTextBox.BackColor = System.Drawing.Color.White;
-            this.currentUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.currentUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.currentUserNameTextBox.Location = new System.Drawing.Point(5, 98);
-            this.currentUserNameTextBox.Name = "currentUserNameTextBox";
-            this.currentUserNameTextBox.Size = new System.Drawing.Size(346, 26);
-            this.currentUserNameTextBox.TabIndex = 48;
-            this.currentUserNameTextBox.Text = "Current username";
-            this.currentUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.currentUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
+            this.CurrentUserNameTextBox.BackColor = System.Drawing.Color.White;
+            this.CurrentUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CurrentUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.CurrentUserNameTextBox.Location = new System.Drawing.Point(5, 98);
+            this.CurrentUserNameTextBox.Name = "CurrentUserNameTextBox";
+            this.CurrentUserNameTextBox.Size = new System.Drawing.Size(346, 26);
+            this.CurrentUserNameTextBox.TabIndex = 48;
+            this.CurrentUserNameTextBox.Text = "Current username";
+            this.CurrentUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.CurrentUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
-            // newUserNameTextBox
+            // NewUserNameTextBox
             // 
-            this.newUserNameTextBox.BackColor = System.Drawing.Color.White;
-            this.newUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.newUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.newUserNameTextBox.Location = new System.Drawing.Point(6, 147);
-            this.newUserNameTextBox.Name = "newUserNameTextBox";
-            this.newUserNameTextBox.Size = new System.Drawing.Size(345, 26);
-            this.newUserNameTextBox.TabIndex = 49;
-            this.newUserNameTextBox.Text = "New username";
-            this.newUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.newUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
+            this.NewUserNameTextBox.BackColor = System.Drawing.Color.White;
+            this.NewUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NewUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.NewUserNameTextBox.Location = new System.Drawing.Point(6, 147);
+            this.NewUserNameTextBox.Name = "NewUserNameTextBox";
+            this.NewUserNameTextBox.Size = new System.Drawing.Size(345, 26);
+            this.NewUserNameTextBox.TabIndex = 49;
+            this.NewUserNameTextBox.Text = "New username";
+            this.NewUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.NewUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
-            // passwordTextBox
+            // PasswordTextBox
             // 
-            this.passwordTextBox.BackColor = System.Drawing.Color.White;
-            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.passwordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.passwordTextBox.Location = new System.Drawing.Point(6, 195);
-            this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(345, 26);
-            this.passwordTextBox.TabIndex = 50;
-            this.passwordTextBox.Text = "Password";
-            this.passwordTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.passwordTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
+            this.PasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.PasswordTextBox.Location = new System.Drawing.Point(6, 195);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.Size = new System.Drawing.Size(345, 26);
+            this.PasswordTextBox.TabIndex = 50;
+            this.PasswordTextBox.Text = "Password";
+            this.PasswordTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.PasswordTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
-            // submitUserNameButton
+            // UpdateUsernameButton
             // 
-            this.submitUserNameButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.submitUserNameButton.Enabled = false;
-            this.submitUserNameButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.submitUserNameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitUserNameButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitUserNameButton.ForeColor = System.Drawing.Color.White;
-            this.submitUserNameButton.Location = new System.Drawing.Point(6, 249);
-            this.submitUserNameButton.Name = "submitUserNameButton";
-            this.submitUserNameButton.Size = new System.Drawing.Size(345, 35);
-            this.submitUserNameButton.TabIndex = 51;
-            this.submitUserNameButton.Text = "Submit";
-            this.submitUserNameButton.UseVisualStyleBackColor = false;
-            this.submitUserNameButton.Click += new System.EventHandler(this.SubmitNewUsernameButtonClicked);
+            this.UpdateUsernameButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateUsernameButton.Enabled = false;
+            this.UpdateUsernameButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateUsernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateUsernameButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateUsernameButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateUsernameButton.Location = new System.Drawing.Point(6, 249);
+            this.UpdateUsernameButton.Name = "UpdateUsernameButton";
+            this.UpdateUsernameButton.Size = new System.Drawing.Size(345, 35);
+            this.UpdateUsernameButton.TabIndex = 51;
+            this.UpdateUsernameButton.Text = "Update Username";
+            this.UpdateUsernameButton.UseVisualStyleBackColor = false;
+            this.UpdateUsernameButton.Click += new System.EventHandler(this.SubmitNewUsernameButtonClicked);
             // 
-            // submitPasswordButton
+            // UpdatePasswordButton
             // 
-            this.submitPasswordButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.submitPasswordButton.Enabled = false;
-            this.submitPasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.submitPasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.submitPasswordButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.submitPasswordButton.ForeColor = System.Drawing.Color.White;
-            this.submitPasswordButton.Location = new System.Drawing.Point(434, 249);
-            this.submitPasswordButton.Name = "submitPasswordButton";
-            this.submitPasswordButton.Size = new System.Drawing.Size(340, 35);
-            this.submitPasswordButton.TabIndex = 56;
-            this.submitPasswordButton.Text = "Submit";
-            this.submitPasswordButton.UseVisualStyleBackColor = false;
-            this.submitPasswordButton.Click += new System.EventHandler(this.SubmitNewPasswordButtonClicked);
+            this.UpdatePasswordButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.UpdatePasswordButton.Enabled = false;
+            this.UpdatePasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdatePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdatePasswordButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdatePasswordButton.ForeColor = System.Drawing.Color.White;
+            this.UpdatePasswordButton.Location = new System.Drawing.Point(434, 249);
+            this.UpdatePasswordButton.Name = "UpdatePasswordButton";
+            this.UpdatePasswordButton.Size = new System.Drawing.Size(340, 35);
+            this.UpdatePasswordButton.TabIndex = 56;
+            this.UpdatePasswordButton.Text = "Update Password";
+            this.UpdatePasswordButton.UseVisualStyleBackColor = false;
+            this.UpdatePasswordButton.Click += new System.EventHandler(this.SubmitNewPasswordButtonClicked);
             // 
-            // confirmPasswordTextBox
+            // ConfirmPasswordTextBox
             // 
-            this.confirmPasswordTextBox.BackColor = System.Drawing.Color.White;
-            this.confirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.confirmPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.confirmPasswordTextBox.Location = new System.Drawing.Point(434, 195);
-            this.confirmPasswordTextBox.Name = "confirmPasswordTextBox";
-            this.confirmPasswordTextBox.Size = new System.Drawing.Size(340, 26);
-            this.confirmPasswordTextBox.TabIndex = 55;
-            this.confirmPasswordTextBox.Text = "Confirm new password";
-            this.confirmPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.confirmPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
+            this.ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(434, 195);
+            this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
+            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(340, 26);
+            this.ConfirmPasswordTextBox.TabIndex = 55;
+            this.ConfirmPasswordTextBox.Text = "Confirm new password";
+            this.ConfirmPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.ConfirmPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
-            // newPasswordTextBox
+            // NewPasswordTextBox
             // 
-            this.newPasswordTextBox.BackColor = System.Drawing.Color.White;
-            this.newPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.newPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.newPasswordTextBox.Location = new System.Drawing.Point(435, 147);
-            this.newPasswordTextBox.Name = "newPasswordTextBox";
-            this.newPasswordTextBox.Size = new System.Drawing.Size(340, 26);
-            this.newPasswordTextBox.TabIndex = 54;
-            this.newPasswordTextBox.Text = "New password";
-            this.newPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.newPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
+            this.NewPasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.NewPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NewPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.NewPasswordTextBox.Location = new System.Drawing.Point(435, 147);
+            this.NewPasswordTextBox.Name = "NewPasswordTextBox";
+            this.NewPasswordTextBox.Size = new System.Drawing.Size(340, 26);
+            this.NewPasswordTextBox.TabIndex = 54;
+            this.NewPasswordTextBox.Text = "New password";
+            this.NewPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.NewPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
-            // currentPasswordTextBox
+            // CurrentPasswordTextBox
             // 
-            this.currentPasswordTextBox.BackColor = System.Drawing.Color.White;
-            this.currentPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.currentPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.currentPasswordTextBox.Location = new System.Drawing.Point(433, 98);
-            this.currentPasswordTextBox.Name = "currentPasswordTextBox";
-            this.currentPasswordTextBox.Size = new System.Drawing.Size(341, 26);
-            this.currentPasswordTextBox.TabIndex = 53;
-            this.currentPasswordTextBox.Text = "Current password";
-            this.currentPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.currentPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
+            this.CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
+            this.CurrentPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CurrentPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.CurrentPasswordTextBox.Location = new System.Drawing.Point(433, 98);
+            this.CurrentPasswordTextBox.Name = "CurrentPasswordTextBox";
+            this.CurrentPasswordTextBox.Size = new System.Drawing.Size(341, 26);
+            this.CurrentPasswordTextBox.TabIndex = 53;
+            this.CurrentPasswordTextBox.Text = "Current password";
+            this.CurrentPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.CurrentPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
-            // label2
+            // ChangePasswordLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(432, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 18);
-            this.label2.TabIndex = 52;
-            this.label2.Text = "Change username";
+            this.ChangePasswordLabel.AutoSize = true;
+            this.ChangePasswordLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangePasswordLabel.ForeColor = System.Drawing.Color.Black;
+            this.ChangePasswordLabel.Location = new System.Drawing.Point(432, 53);
+            this.ChangePasswordLabel.Name = "ChangePasswordLabel";
+            this.ChangePasswordLabel.Size = new System.Drawing.Size(137, 18);
+            this.ChangePasswordLabel.TabIndex = 52;
+            this.ChangePasswordLabel.Text = "Change Password";
             // 
             // label3
             // 
@@ -227,159 +227,159 @@
             this.label4.Text = "_________________________________________________________________________________" +
     "_____";
             // 
-            // reportIssueButton
+            // ReportIssueButton
             // 
-            this.reportIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportIssueButton.BackColor = System.Drawing.Color.White;
-            this.reportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.reportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.reportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.reportIssueButton.Location = new System.Drawing.Point(326, 431);
-            this.reportIssueButton.Name = "reportIssueButton";
-            this.reportIssueButton.Size = new System.Drawing.Size(153, 31);
-            this.reportIssueButton.TabIndex = 64;
-            this.reportIssueButton.Text = "Report Issues";
-            this.reportIssueButton.UseVisualStyleBackColor = false;
-            this.reportIssueButton.Click += new System.EventHandler(this.ReportIssueButtonClicked);
+            this.ReportIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReportIssueButton.BackColor = System.Drawing.Color.White;
+            this.ReportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ReportIssueButton.Location = new System.Drawing.Point(326, 431);
+            this.ReportIssueButton.Name = "ReportIssueButton";
+            this.ReportIssueButton.Size = new System.Drawing.Size(153, 31);
+            this.ReportIssueButton.TabIndex = 64;
+            this.ReportIssueButton.Text = "Report Issues";
+            this.ReportIssueButton.UseVisualStyleBackColor = false;
+            this.ReportIssueButton.Click += new System.EventHandler(this.ReportIssueButtonClicked);
             // 
-            // helpButton
+            // HelpButton
             // 
-            this.helpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.helpButton.BackColor = System.Drawing.Color.White;
-            this.helpButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.helpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.helpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.helpButton.Location = new System.Drawing.Point(135, 431);
-            this.helpButton.Name = "helpButton";
-            this.helpButton.Size = new System.Drawing.Size(146, 31);
-            this.helpButton.TabIndex = 65;
-            this.helpButton.Text = "Help";
-            this.helpButton.UseVisualStyleBackColor = false;
-            this.helpButton.Click += new System.EventHandler(this.HelpButtonClicked);
+            this.HelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.HelpButton.BackColor = System.Drawing.Color.White;
+            this.HelpButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.HelpButton.Location = new System.Drawing.Point(135, 431);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(146, 31);
+            this.HelpButton.TabIndex = 65;
+            this.HelpButton.Text = "Help";
+            this.HelpButton.UseVisualStyleBackColor = false;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButtonClicked);
             // 
-            // aboutAppButton
+            // AboutAppButton
             // 
-            this.aboutAppButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.aboutAppButton.BackColor = System.Drawing.Color.White;
-            this.aboutAppButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.aboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutAppButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboutAppButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.aboutAppButton.Location = new System.Drawing.Point(522, 431);
-            this.aboutAppButton.Name = "aboutAppButton";
-            this.aboutAppButton.Size = new System.Drawing.Size(148, 31);
-            this.aboutAppButton.TabIndex = 66;
-            this.aboutAppButton.Text = "View Source";
-            this.aboutAppButton.UseVisualStyleBackColor = false;
-            this.aboutAppButton.Click += new System.EventHandler(this.AboutAppButtonClicked);
+            this.AboutAppButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.AboutAppButton.BackColor = System.Drawing.Color.White;
+            this.AboutAppButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.AboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AboutAppButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutAppButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.AboutAppButton.Location = new System.Drawing.Point(522, 431);
+            this.AboutAppButton.Name = "AboutAppButton";
+            this.AboutAppButton.Size = new System.Drawing.Size(148, 31);
+            this.AboutAppButton.TabIndex = 66;
+            this.AboutAppButton.Text = "View Source";
+            this.AboutAppButton.UseVisualStyleBackColor = false;
+            this.AboutAppButton.Click += new System.EventHandler(this.AboutAppButtonClicked);
             // 
-            // logOutButton
+            // LogOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logOutButton.BackColor = System.Drawing.Color.White;
-            this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.logOutButton.Location = new System.Drawing.Point(662, 12);
-            this.logOutButton.Name = "logOutButton";
-            this.logOutButton.Size = new System.Drawing.Size(123, 38);
-            this.logOutButton.TabIndex = 73;
-            this.logOutButton.Text = "Log Out";
-            this.logOutButton.UseVisualStyleBackColor = false;
-            this.logOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.logOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.logOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LogOutButton.BackColor = System.Drawing.Color.White;
+            this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.Location = new System.Drawing.Point(662, 12);
+            this.LogOutButton.Name = "LogOutButton";
+            this.LogOutButton.Size = new System.Drawing.Size(123, 38);
+            this.LogOutButton.TabIndex = 73;
+            this.LogOutButton.Text = "Log Out";
+            this.LogOutButton.UseVisualStyleBackColor = false;
+            this.LogOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // settingsButton
+            // SettingsButton
             // 
-            this.settingsButton.BackColor = System.Drawing.Color.ForestGreen;
-            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsButton.ForeColor = System.Drawing.Color.White;
-            this.settingsButton.Location = new System.Drawing.Point(535, 12);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(121, 38);
-            this.settingsButton.TabIndex = 72;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = false;
+            this.SettingsButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SettingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsButton.ForeColor = System.Drawing.Color.White;
+            this.SettingsButton.Location = new System.Drawing.Point(535, 12);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(121, 38);
+            this.SettingsButton.TabIndex = 72;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = false;
             // 
-            // statisticsButton
+            // StatisticsButton
             // 
-            this.statisticsButton.BackColor = System.Drawing.Color.White;
-            this.statisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.statisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.statisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.statisticsButton.Location = new System.Drawing.Point(406, 12);
-            this.statisticsButton.Name = "statisticsButton";
-            this.statisticsButton.Size = new System.Drawing.Size(123, 38);
-            this.statisticsButton.TabIndex = 71;
-            this.statisticsButton.Text = "Statistics";
-            this.statisticsButton.UseVisualStyleBackColor = false;
-            this.statisticsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.statisticsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.statisticsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.StatisticsButton.BackColor = System.Drawing.Color.White;
+            this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.Location = new System.Drawing.Point(406, 12);
+            this.StatisticsButton.Name = "StatisticsButton";
+            this.StatisticsButton.Size = new System.Drawing.Size(123, 38);
+            this.StatisticsButton.TabIndex = 71;
+            this.StatisticsButton.Text = "Statistics";
+            this.StatisticsButton.UseVisualStyleBackColor = false;
+            this.StatisticsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.StatisticsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.StatisticsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // monthlyReportButton
+            // MonthlyReportButton
             // 
-            this.monthlyReportButton.BackColor = System.Drawing.Color.White;
-            this.monthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.monthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.monthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.monthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.monthlyReportButton.Location = new System.Drawing.Point(264, 12);
-            this.monthlyReportButton.Name = "monthlyReportButton";
-            this.monthlyReportButton.Size = new System.Drawing.Size(136, 38);
-            this.monthlyReportButton.TabIndex = 70;
-            this.monthlyReportButton.Text = "Monthly Report";
-            this.monthlyReportButton.UseVisualStyleBackColor = false;
-            this.monthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.monthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.monthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.White;
+            this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MonthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.Location = new System.Drawing.Point(264, 12);
+            this.MonthlyReportButton.Name = "MonthlyReportButton";
+            this.MonthlyReportButton.Size = new System.Drawing.Size(136, 38);
+            this.MonthlyReportButton.TabIndex = 70;
+            this.MonthlyReportButton.Text = "Monthly Report";
+            this.MonthlyReportButton.UseVisualStyleBackColor = false;
+            this.MonthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.MonthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.MonthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // addNewDataButton
+            // AddNewDataButton
             // 
-            this.addNewDataButton.BackColor = System.Drawing.Color.White;
-            this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.Location = new System.Drawing.Point(135, 12);
-            this.addNewDataButton.Name = "addNewDataButton";
-            this.addNewDataButton.Size = new System.Drawing.Size(123, 38);
-            this.addNewDataButton.TabIndex = 69;
-            this.addNewDataButton.Text = "Add New";
-            this.addNewDataButton.UseVisualStyleBackColor = false;
-            this.addNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.addNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.addNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
+            this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.Location = new System.Drawing.Point(135, 12);
+            this.AddNewDataButton.Name = "AddNewDataButton";
+            this.AddNewDataButton.Size = new System.Drawing.Size(123, 38);
+            this.AddNewDataButton.TabIndex = 69;
+            this.AddNewDataButton.Text = "Add New";
+            this.AddNewDataButton.UseVisualStyleBackColor = false;
+            this.AddNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.AddNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.AddNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // homeButton
+            // HomeButton
             // 
-            this.homeButton.BackColor = System.Drawing.Color.White;
-            this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.homeButton.Location = new System.Drawing.Point(10, 12);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(119, 38);
-            this.homeButton.TabIndex = 68;
-            this.homeButton.Text = "Home";
-            this.homeButton.UseVisualStyleBackColor = false;
-            this.homeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.homeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.homeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.HomeButton.BackColor = System.Drawing.Color.White;
+            this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.Location = new System.Drawing.Point(10, 12);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(119, 38);
+            this.HomeButton.TabIndex = 68;
+            this.HomeButton.Text = "Home";
+            this.HomeButton.UseVisualStyleBackColor = false;
+            this.HomeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.HomeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.HomeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // panel1
             // 
@@ -387,17 +387,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.submitPasswordButton);
-            this.panel1.Controls.Add(this.confirmPasswordTextBox);
-            this.panel1.Controls.Add(this.newPasswordTextBox);
-            this.panel1.Controls.Add(this.currentPasswordTextBox);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.submitUserNameButton);
-            this.panel1.Controls.Add(this.passwordTextBox);
-            this.panel1.Controls.Add(this.newUserNameTextBox);
-            this.panel1.Controls.Add(this.currentUserNameTextBox);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.userNameLaabel);
+            this.panel1.Controls.Add(this.UpdatePasswordButton);
+            this.panel1.Controls.Add(this.ConfirmPasswordTextBox);
+            this.panel1.Controls.Add(this.NewPasswordTextBox);
+            this.panel1.Controls.Add(this.CurrentPasswordTextBox);
+            this.panel1.Controls.Add(this.ChangePasswordLabel);
+            this.panel1.Controls.Add(this.UpdateUsernameButton);
+            this.panel1.Controls.Add(this.PasswordTextBox);
+            this.panel1.Controls.Add(this.NewUserNameTextBox);
+            this.panel1.Controls.Add(this.CurrentUserNameTextBox);
+            this.panel1.Controls.Add(this.ChangeUsernameLabel);
+            this.panel1.Controls.Add(this.UserNameLaabel);
             this.panel1.Location = new System.Drawing.Point(10, 61);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(783, 312);
@@ -410,15 +410,15 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.logOutButton);
-            this.Controls.Add(this.settingsButton);
-            this.Controls.Add(this.statisticsButton);
-            this.Controls.Add(this.monthlyReportButton);
-            this.Controls.Add(this.addNewDataButton);
-            this.Controls.Add(this.homeButton);
-            this.Controls.Add(this.aboutAppButton);
-            this.Controls.Add(this.helpButton);
-            this.Controls.Add(this.reportIssueButton);
+            this.Controls.Add(this.LogOutButton);
+            this.Controls.Add(this.SettingsButton);
+            this.Controls.Add(this.StatisticsButton);
+            this.Controls.Add(this.MonthlyReportButton);
+            this.Controls.Add(this.AddNewDataButton);
+            this.Controls.Add(this.HomeButton);
+            this.Controls.Add(this.AboutAppButton);
+            this.Controls.Add(this.HelpButton);
+            this.Controls.Add(this.ReportIssueButton);
             this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -436,28 +436,28 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label userNameLaabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox currentUserNameTextBox;
-        private System.Windows.Forms.TextBox newUserNameTextBox;
-        private System.Windows.Forms.TextBox passwordTextBox;
-        private System.Windows.Forms.Button submitUserNameButton;
-        private System.Windows.Forms.Button submitPasswordButton;
-        private System.Windows.Forms.TextBox confirmPasswordTextBox;
-        private System.Windows.Forms.TextBox newPasswordTextBox;
-        private System.Windows.Forms.TextBox currentPasswordTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label UserNameLaabel;
+        private System.Windows.Forms.Label ChangeUsernameLabel;
+        private System.Windows.Forms.TextBox CurrentUserNameTextBox;
+        private System.Windows.Forms.TextBox NewUserNameTextBox;
+        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.Button UpdateUsernameButton;
+        private System.Windows.Forms.Button UpdatePasswordButton;
+        private System.Windows.Forms.TextBox ConfirmPasswordTextBox;
+        private System.Windows.Forms.TextBox NewPasswordTextBox;
+        private System.Windows.Forms.TextBox CurrentPasswordTextBox;
+        private System.Windows.Forms.Label ChangePasswordLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button reportIssueButton;
-        private System.Windows.Forms.Button helpButton;
-        private System.Windows.Forms.Button aboutAppButton;
-        private System.Windows.Forms.Button logOutButton;
-        private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button statisticsButton;
-        private System.Windows.Forms.Button monthlyReportButton;
-        private System.Windows.Forms.Button addNewDataButton;
-        private System.Windows.Forms.Button homeButton;
+        private System.Windows.Forms.Button ReportIssueButton;
+        private System.Windows.Forms.Button HelpButton;
+        private System.Windows.Forms.Button AboutAppButton;
+        private System.Windows.Forms.Button LogOutButton;
+        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button StatisticsButton;
+        private System.Windows.Forms.Button MonthlyReportButton;
+        private System.Windows.Forms.Button AddNewDataButton;
+        private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Panel panel1;
     }
 }

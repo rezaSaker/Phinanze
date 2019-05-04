@@ -35,171 +35,171 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatisticsForm));
-            this.logOutButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.statisticsButton = new System.Windows.Forms.Button();
-            this.monthlyReportButton = new System.Windows.Forms.Button();
-            this.addNewDataButton = new System.Windows.Forms.Button();
-            this.homeButton = new System.Windows.Forms.Button();
-            this.yearlyReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.yearlyRadioButton = new System.Windows.Forms.RadioButton();
-            this.monthlyRadioButton = new System.Windows.Forms.RadioButton();
-            this.yearComboBox = new System.Windows.Forms.ComboBox();
-            this.monthComboBox = new System.Windows.Forms.ComboBox();
-            this.earningRadioButton = new System.Windows.Forms.RadioButton();
-            this.expenseRadioButton = new System.Windows.Forms.RadioButton();
-            this.generalReportRadioButton = new System.Windows.Forms.RadioButton();
-            this.categorywiseReportRadioButton = new System.Windows.Forms.RadioButton();
-            this.bothEarningAndExpenseRadioButton = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.monthlyReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.yearlyReportChart)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.monthlyReportChart)).BeginInit();
+            this.LogOutButton = new System.Windows.Forms.Button();
+            this.SettingsButton = new System.Windows.Forms.Button();
+            this.StatisticsButton = new System.Windows.Forms.Button();
+            this.MonthlyReportButton = new System.Windows.Forms.Button();
+            this.AddNewDataButton = new System.Windows.Forms.Button();
+            this.HomeButton = new System.Windows.Forms.Button();
+            this.YearlyReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ShowYearlyReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.ShowMonthlyReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.YearComboBox = new System.Windows.Forms.ComboBox();
+            this.MonthComboBox = new System.Windows.Forms.ComboBox();
+            this.ShowEarningReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.ShowExpenseReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.ShowGeneralReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.ShowCategorywiseReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.ShowBothEarningAndExpenseReportRadioButton = new System.Windows.Forms.RadioButton();
+            this.Panel1 = new System.Windows.Forms.Panel();
+            this.Panel2 = new System.Windows.Forms.Panel();
+            this.Panel3 = new System.Windows.Forms.Panel();
+            this.MonthlyReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.RedButton = new System.Windows.Forms.Button();
+            this.GrennButton = new System.Windows.Forms.Button();
+            this.EarningLabel = new System.Windows.Forms.Label();
+            this.ExpenseLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.YearlyReportChart)).BeginInit();
+            this.Panel1.SuspendLayout();
+            this.Panel2.SuspendLayout();
+            this.Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportChart)).BeginInit();
             this.SuspendLayout();
             // 
-            // logOutButton
+            // LogOutButton
             // 
-            this.logOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.logOutButton.BackColor = System.Drawing.Color.White;
-            this.logOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.logOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.logOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOutButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.logOutButton.Location = new System.Drawing.Point(664, 12);
-            this.logOutButton.Name = "logOutButton";
-            this.logOutButton.Size = new System.Drawing.Size(123, 38);
-            this.logOutButton.TabIndex = 52;
-            this.logOutButton.Text = "Log Out";
-            this.logOutButton.UseVisualStyleBackColor = false;
-            this.logOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.logOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.logOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.LogOutButton.BackColor = System.Drawing.Color.White;
+            this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.Location = new System.Drawing.Point(664, 12);
+            this.LogOutButton.Name = "LogOutButton";
+            this.LogOutButton.Size = new System.Drawing.Size(123, 38);
+            this.LogOutButton.TabIndex = 52;
+            this.LogOutButton.Text = "Log Out";
+            this.LogOutButton.UseVisualStyleBackColor = false;
+            this.LogOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // settingsButton
+            // SettingsButton
             // 
-            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.SettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.settingsButton.BackColor = System.Drawing.Color.White;
-            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.settingsButton.Location = new System.Drawing.Point(537, 12);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(123, 38);
-            this.settingsButton.TabIndex = 51;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.settingsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.settingsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.SettingsButton.BackColor = System.Drawing.Color.White;
+            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.SettingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SettingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.SettingsButton.Location = new System.Drawing.Point(537, 12);
+            this.SettingsButton.Name = "SettingsButton";
+            this.SettingsButton.Size = new System.Drawing.Size(123, 38);
+            this.SettingsButton.TabIndex = 51;
+            this.SettingsButton.Text = "Settings";
+            this.SettingsButton.UseVisualStyleBackColor = false;
+            this.SettingsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.SettingsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.SettingsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // statisticsButton
+            // StatisticsButton
             // 
-            this.statisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.StatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.statisticsButton.BackColor = System.Drawing.Color.ForestGreen;
-            this.statisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.statisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.statisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statisticsButton.ForeColor = System.Drawing.Color.White;
-            this.statisticsButton.Location = new System.Drawing.Point(408, 12);
-            this.statisticsButton.Name = "statisticsButton";
-            this.statisticsButton.Size = new System.Drawing.Size(123, 38);
-            this.statisticsButton.TabIndex = 50;
-            this.statisticsButton.Text = "Statistics";
-            this.statisticsButton.UseVisualStyleBackColor = false;
+            this.StatisticsButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StatisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatisticsButton.ForeColor = System.Drawing.Color.White;
+            this.StatisticsButton.Location = new System.Drawing.Point(408, 12);
+            this.StatisticsButton.Name = "StatisticsButton";
+            this.StatisticsButton.Size = new System.Drawing.Size(123, 38);
+            this.StatisticsButton.TabIndex = 50;
+            this.StatisticsButton.Text = "Statistics";
+            this.StatisticsButton.UseVisualStyleBackColor = false;
             // 
-            // monthlyReportButton
+            // MonthlyReportButton
             // 
-            this.monthlyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.MonthlyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.monthlyReportButton.BackColor = System.Drawing.Color.White;
-            this.monthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.monthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.monthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.monthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.monthlyReportButton.Location = new System.Drawing.Point(265, 12);
-            this.monthlyReportButton.Name = "monthlyReportButton";
-            this.monthlyReportButton.Size = new System.Drawing.Size(137, 38);
-            this.monthlyReportButton.TabIndex = 49;
-            this.monthlyReportButton.Text = "Monthly Report";
-            this.monthlyReportButton.UseVisualStyleBackColor = false;
-            this.monthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.monthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.monthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.White;
+            this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MonthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.Location = new System.Drawing.Point(265, 12);
+            this.MonthlyReportButton.Name = "MonthlyReportButton";
+            this.MonthlyReportButton.Size = new System.Drawing.Size(137, 38);
+            this.MonthlyReportButton.TabIndex = 49;
+            this.MonthlyReportButton.Text = "Monthly Report";
+            this.MonthlyReportButton.UseVisualStyleBackColor = false;
+            this.MonthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.MonthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.MonthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // addNewDataButton
+            // AddNewDataButton
             // 
-            this.addNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.AddNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addNewDataButton.BackColor = System.Drawing.Color.White;
-            this.addNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.addNewDataButton.Location = new System.Drawing.Point(136, 12);
-            this.addNewDataButton.Name = "addNewDataButton";
-            this.addNewDataButton.Size = new System.Drawing.Size(123, 38);
-            this.addNewDataButton.TabIndex = 48;
-            this.addNewDataButton.Text = "Add New";
-            this.addNewDataButton.UseVisualStyleBackColor = false;
-            this.addNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.addNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.addNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
+            this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.Location = new System.Drawing.Point(136, 12);
+            this.AddNewDataButton.Name = "AddNewDataButton";
+            this.AddNewDataButton.Size = new System.Drawing.Size(123, 38);
+            this.AddNewDataButton.TabIndex = 48;
+            this.AddNewDataButton.Text = "Add New";
+            this.AddNewDataButton.UseVisualStyleBackColor = false;
+            this.AddNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.AddNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.AddNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // homeButton
+            // HomeButton
             // 
-            this.homeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.HomeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.homeButton.BackColor = System.Drawing.Color.White;
-            this.homeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.homeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.homeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.homeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.homeButton.Location = new System.Drawing.Point(12, 12);
-            this.homeButton.Name = "homeButton";
-            this.homeButton.Size = new System.Drawing.Size(118, 38);
-            this.homeButton.TabIndex = 47;
-            this.homeButton.Text = "Home";
-            this.homeButton.UseVisualStyleBackColor = false;
-            this.homeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.homeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.homeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.HomeButton.BackColor = System.Drawing.Color.White;
+            this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.Location = new System.Drawing.Point(12, 12);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(118, 38);
+            this.HomeButton.TabIndex = 47;
+            this.HomeButton.Text = "Home";
+            this.HomeButton.UseVisualStyleBackColor = false;
+            this.HomeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.HomeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.HomeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // yearlyReportChart
+            // YearlyReportChart
             // 
-            this.yearlyReportChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.YearlyReportChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.yearlyReportChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
+            this.YearlyReportChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
             chartArea1.AxisX.MajorGrid.Enabled = false;
             chartArea1.Name = "ChartArea1";
-            this.yearlyReportChart.ChartAreas.Add(chartArea1);
-            this.yearlyReportChart.Location = new System.Drawing.Point(12, 152);
-            this.yearlyReportChart.Name = "yearlyReportChart";
+            this.YearlyReportChart.ChartAreas.Add(chartArea1);
+            this.YearlyReportChart.Location = new System.Drawing.Point(12, 152);
+            this.YearlyReportChart.Name = "YearlyReportChart";
             series1.ChartArea = "ChartArea1";
             series1.CustomProperties = "MaxPixelPointWidth=30";
             series1.EmptyPointStyle.Label = "jan";
@@ -209,57 +209,57 @@
             series2.CustomProperties = "MaxPixelPointWidth=30";
             series2.IsVisibleInLegend = false;
             series2.Name = "expense";
-            this.yearlyReportChart.Series.Add(series1);
-            this.yearlyReportChart.Series.Add(series2);
-            this.yearlyReportChart.Size = new System.Drawing.Size(776, 323);
-            this.yearlyReportChart.TabIndex = 53;
+            this.YearlyReportChart.Series.Add(series1);
+            this.YearlyReportChart.Series.Add(series2);
+            this.YearlyReportChart.Size = new System.Drawing.Size(776, 323);
+            this.YearlyReportChart.TabIndex = 53;
             // 
-            // yearlyRadioButton
+            // ShowYearlyReportRadioButton
             // 
-            this.yearlyRadioButton.AutoSize = true;
-            this.yearlyRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yearlyRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.yearlyRadioButton.Location = new System.Drawing.Point(10, 15);
-            this.yearlyRadioButton.Name = "yearlyRadioButton";
-            this.yearlyRadioButton.Size = new System.Drawing.Size(67, 22);
-            this.yearlyRadioButton.TabIndex = 54;
-            this.yearlyRadioButton.TabStop = true;
-            this.yearlyRadioButton.Text = "Yearly";
-            this.yearlyRadioButton.UseVisualStyleBackColor = true;
-            this.yearlyRadioButton.Click += new System.EventHandler(this.YearlyRadioButtonClicked);
+            this.ShowYearlyReportRadioButton.AutoSize = true;
+            this.ShowYearlyReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowYearlyReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowYearlyReportRadioButton.Location = new System.Drawing.Point(10, 15);
+            this.ShowYearlyReportRadioButton.Name = "ShowYearlyReportRadioButton";
+            this.ShowYearlyReportRadioButton.Size = new System.Drawing.Size(67, 22);
+            this.ShowYearlyReportRadioButton.TabIndex = 54;
+            this.ShowYearlyReportRadioButton.TabStop = true;
+            this.ShowYearlyReportRadioButton.Text = "Yearly";
+            this.ShowYearlyReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowYearlyReportRadioButton.Click += new System.EventHandler(this.YearlyRadioButtonClicked);
             // 
-            // monthlyRadioButton
+            // ShowMonthlyReportRadioButton
             // 
-            this.monthlyRadioButton.AutoSize = true;
-            this.monthlyRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthlyRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.monthlyRadioButton.Location = new System.Drawing.Point(10, 49);
-            this.monthlyRadioButton.Name = "monthlyRadioButton";
-            this.monthlyRadioButton.Size = new System.Drawing.Size(78, 22);
-            this.monthlyRadioButton.TabIndex = 55;
-            this.monthlyRadioButton.TabStop = true;
-            this.monthlyRadioButton.Text = "Monthly";
-            this.monthlyRadioButton.UseVisualStyleBackColor = true;
-            this.monthlyRadioButton.Click += new System.EventHandler(this.MonthlyRadioButtonClicked);
+            this.ShowMonthlyReportRadioButton.AutoSize = true;
+            this.ShowMonthlyReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowMonthlyReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowMonthlyReportRadioButton.Location = new System.Drawing.Point(10, 49);
+            this.ShowMonthlyReportRadioButton.Name = "ShowMonthlyReportRadioButton";
+            this.ShowMonthlyReportRadioButton.Size = new System.Drawing.Size(78, 22);
+            this.ShowMonthlyReportRadioButton.TabIndex = 55;
+            this.ShowMonthlyReportRadioButton.TabStop = true;
+            this.ShowMonthlyReportRadioButton.Text = "Monthly";
+            this.ShowMonthlyReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowMonthlyReportRadioButton.Click += new System.EventHandler(this.MonthlyRadioButtonClicked);
             // 
-            // yearComboBox
+            // YearComboBox
             // 
-            this.yearComboBox.BackColor = System.Drawing.Color.White;
-            this.yearComboBox.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(94, 9);
-            this.yearComboBox.Name = "yearComboBox";
-            this.yearComboBox.Size = new System.Drawing.Size(150, 28);
-            this.yearComboBox.TabIndex = 56;
-            this.yearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxSelectedIndexChanged);
+            this.YearComboBox.BackColor = System.Drawing.Color.White;
+            this.YearComboBox.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YearComboBox.FormattingEnabled = true;
+            this.YearComboBox.Location = new System.Drawing.Point(94, 9);
+            this.YearComboBox.Name = "YearComboBox";
+            this.YearComboBox.Size = new System.Drawing.Size(150, 28);
+            this.YearComboBox.TabIndex = 56;
+            this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxSelectedIndexChanged);
             // 
-            // monthComboBox
+            // MonthComboBox
             // 
-            this.monthComboBox.BackColor = System.Drawing.Color.White;
-            this.monthComboBox.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthComboBox.ForeColor = System.Drawing.Color.Black;
-            this.monthComboBox.FormattingEnabled = true;
-            this.monthComboBox.Items.AddRange(new object[] {
+            this.MonthComboBox.BackColor = System.Drawing.Color.White;
+            this.MonthComboBox.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthComboBox.ForeColor = System.Drawing.Color.Black;
+            this.MonthComboBox.FormattingEnabled = true;
+            this.MonthComboBox.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -272,123 +272,123 @@
             "October",
             "November",
             "December"});
-            this.monthComboBox.Location = new System.Drawing.Point(94, 49);
-            this.monthComboBox.Name = "monthComboBox";
-            this.monthComboBox.Size = new System.Drawing.Size(150, 28);
-            this.monthComboBox.TabIndex = 57;
-            this.monthComboBox.SelectedIndexChanged += new System.EventHandler(this.MonthComboBoxSelectedIndexChanged);
+            this.MonthComboBox.Location = new System.Drawing.Point(94, 49);
+            this.MonthComboBox.Name = "MonthComboBox";
+            this.MonthComboBox.Size = new System.Drawing.Size(150, 28);
+            this.MonthComboBox.TabIndex = 57;
+            this.MonthComboBox.SelectedIndexChanged += new System.EventHandler(this.MonthComboBoxSelectedIndexChanged);
             // 
-            // earningRadioButton
+            // ShowEarningReportRadioButton
             // 
-            this.earningRadioButton.AutoSize = true;
-            this.earningRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.earningRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.earningRadioButton.Location = new System.Drawing.Point(8, 7);
-            this.earningRadioButton.Name = "earningRadioButton";
-            this.earningRadioButton.Size = new System.Drawing.Size(114, 22);
-            this.earningRadioButton.TabIndex = 58;
-            this.earningRadioButton.TabStop = true;
-            this.earningRadioButton.Text = "Earning Only";
-            this.earningRadioButton.UseVisualStyleBackColor = true;
-            this.earningRadioButton.Click += new System.EventHandler(this.EarningRadioButtonClicked);
+            this.ShowEarningReportRadioButton.AutoSize = true;
+            this.ShowEarningReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowEarningReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowEarningReportRadioButton.Location = new System.Drawing.Point(8, 7);
+            this.ShowEarningReportRadioButton.Name = "ShowEarningReportRadioButton";
+            this.ShowEarningReportRadioButton.Size = new System.Drawing.Size(114, 22);
+            this.ShowEarningReportRadioButton.TabIndex = 58;
+            this.ShowEarningReportRadioButton.TabStop = true;
+            this.ShowEarningReportRadioButton.Text = "Earning Only";
+            this.ShowEarningReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowEarningReportRadioButton.Click += new System.EventHandler(this.EarningRadioButtonClicked);
             // 
-            // expenseRadioButton
+            // ShowExpenseReportRadioButton
             // 
-            this.expenseRadioButton.AutoSize = true;
-            this.expenseRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expenseRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.expenseRadioButton.Location = new System.Drawing.Point(156, 7);
-            this.expenseRadioButton.Name = "expenseRadioButton";
-            this.expenseRadioButton.Size = new System.Drawing.Size(121, 22);
-            this.expenseRadioButton.TabIndex = 59;
-            this.expenseRadioButton.TabStop = true;
-            this.expenseRadioButton.Text = "Expense Only";
-            this.expenseRadioButton.UseVisualStyleBackColor = true;
-            this.expenseRadioButton.Click += new System.EventHandler(this.ExpenseRadioButtonClicked);
+            this.ShowExpenseReportRadioButton.AutoSize = true;
+            this.ShowExpenseReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowExpenseReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowExpenseReportRadioButton.Location = new System.Drawing.Point(156, 7);
+            this.ShowExpenseReportRadioButton.Name = "ShowExpenseReportRadioButton";
+            this.ShowExpenseReportRadioButton.Size = new System.Drawing.Size(121, 22);
+            this.ShowExpenseReportRadioButton.TabIndex = 59;
+            this.ShowExpenseReportRadioButton.TabStop = true;
+            this.ShowExpenseReportRadioButton.Text = "Expense Only";
+            this.ShowExpenseReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowExpenseReportRadioButton.Click += new System.EventHandler(this.ExpenseRadioButtonClicked);
             // 
-            // generalReportRadioButton
+            // ShowGeneralReportRadioButton
             // 
-            this.generalReportRadioButton.AutoSize = true;
-            this.generalReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.generalReportRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.generalReportRadioButton.Location = new System.Drawing.Point(8, 6);
-            this.generalReportRadioButton.Name = "generalReportRadioButton";
-            this.generalReportRadioButton.Size = new System.Drawing.Size(126, 22);
-            this.generalReportRadioButton.TabIndex = 60;
-            this.generalReportRadioButton.TabStop = true;
-            this.generalReportRadioButton.Text = "General report";
-            this.generalReportRadioButton.UseVisualStyleBackColor = true;
-            this.generalReportRadioButton.Click += new System.EventHandler(this.GeneralReportRadioButtonClicked);
+            this.ShowGeneralReportRadioButton.AutoSize = true;
+            this.ShowGeneralReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowGeneralReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowGeneralReportRadioButton.Location = new System.Drawing.Point(8, 6);
+            this.ShowGeneralReportRadioButton.Name = "ShowGeneralReportRadioButton";
+            this.ShowGeneralReportRadioButton.Size = new System.Drawing.Size(126, 22);
+            this.ShowGeneralReportRadioButton.TabIndex = 60;
+            this.ShowGeneralReportRadioButton.TabStop = true;
+            this.ShowGeneralReportRadioButton.Text = "General report";
+            this.ShowGeneralReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowGeneralReportRadioButton.Click += new System.EventHandler(this.GeneralReportRadioButtonClicked);
             // 
-            // categorywiseReportRadioButton
+            // ShowCategorywiseReportRadioButton
             // 
-            this.categorywiseReportRadioButton.AutoSize = true;
-            this.categorywiseReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categorywiseReportRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.categorywiseReportRadioButton.Location = new System.Drawing.Point(156, 6);
-            this.categorywiseReportRadioButton.Name = "categorywiseReportRadioButton";
-            this.categorywiseReportRadioButton.Size = new System.Drawing.Size(172, 22);
-            this.categorywiseReportRadioButton.TabIndex = 61;
-            this.categorywiseReportRadioButton.TabStop = true;
-            this.categorywiseReportRadioButton.Text = "Category-wise report";
-            this.categorywiseReportRadioButton.UseVisualStyleBackColor = true;
-            this.categorywiseReportRadioButton.Click += new System.EventHandler(this.CategorywiseReportRadioButton);
+            this.ShowCategorywiseReportRadioButton.AutoSize = true;
+            this.ShowCategorywiseReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowCategorywiseReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowCategorywiseReportRadioButton.Location = new System.Drawing.Point(156, 6);
+            this.ShowCategorywiseReportRadioButton.Name = "ShowCategorywiseReportRadioButton";
+            this.ShowCategorywiseReportRadioButton.Size = new System.Drawing.Size(172, 22);
+            this.ShowCategorywiseReportRadioButton.TabIndex = 61;
+            this.ShowCategorywiseReportRadioButton.TabStop = true;
+            this.ShowCategorywiseReportRadioButton.Text = "Category-wise report";
+            this.ShowCategorywiseReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowCategorywiseReportRadioButton.Click += new System.EventHandler(this.CategorywiseReportRadioButton);
             // 
-            // bothEarningAndExpenseRadioButton
+            // ShowBothEarningAndExpenseReportRadioButton
             // 
-            this.bothEarningAndExpenseRadioButton.AutoSize = true;
-            this.bothEarningAndExpenseRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bothEarningAndExpenseRadioButton.ForeColor = System.Drawing.Color.Black;
-            this.bothEarningAndExpenseRadioButton.Location = new System.Drawing.Point(298, 7);
-            this.bothEarningAndExpenseRadioButton.Name = "bothEarningAndExpenseRadioButton";
-            this.bothEarningAndExpenseRadioButton.Size = new System.Drawing.Size(207, 22);
-            this.bothEarningAndExpenseRadioButton.TabIndex = 62;
-            this.bothEarningAndExpenseRadioButton.TabStop = true;
-            this.bothEarningAndExpenseRadioButton.Text = "Both earning and expense";
-            this.bothEarningAndExpenseRadioButton.UseVisualStyleBackColor = true;
-            this.bothEarningAndExpenseRadioButton.Click += new System.EventHandler(this.BothEarningAndExpenseRadionButtonClicked);
+            this.ShowBothEarningAndExpenseReportRadioButton.AutoSize = true;
+            this.ShowBothEarningAndExpenseReportRadioButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowBothEarningAndExpenseReportRadioButton.ForeColor = System.Drawing.Color.Black;
+            this.ShowBothEarningAndExpenseReportRadioButton.Location = new System.Drawing.Point(298, 7);
+            this.ShowBothEarningAndExpenseReportRadioButton.Name = "ShowBothEarningAndExpenseReportRadioButton";
+            this.ShowBothEarningAndExpenseReportRadioButton.Size = new System.Drawing.Size(211, 22);
+            this.ShowBothEarningAndExpenseReportRadioButton.TabIndex = 62;
+            this.ShowBothEarningAndExpenseReportRadioButton.TabStop = true;
+            this.ShowBothEarningAndExpenseReportRadioButton.Text = "Both Earning and Expense";
+            this.ShowBothEarningAndExpenseReportRadioButton.UseVisualStyleBackColor = true;
+            this.ShowBothEarningAndExpenseReportRadioButton.Click += new System.EventHandler(this.BothEarningAndExpenseRadionButtonClicked);
             // 
-            // panel1
+            // Panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.monthComboBox);
-            this.panel1.Controls.Add(this.yearComboBox);
-            this.panel1.Controls.Add(this.monthlyRadioButton);
-            this.panel1.Controls.Add(this.yearlyRadioButton);
-            this.panel1.Location = new System.Drawing.Point(12, 56);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(261, 90);
-            this.panel1.TabIndex = 63;
+            this.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel1.Controls.Add(this.MonthComboBox);
+            this.Panel1.Controls.Add(this.YearComboBox);
+            this.Panel1.Controls.Add(this.ShowMonthlyReportRadioButton);
+            this.Panel1.Controls.Add(this.ShowYearlyReportRadioButton);
+            this.Panel1.Location = new System.Drawing.Point(12, 56);
+            this.Panel1.Name = "Panel1";
+            this.Panel1.Size = new System.Drawing.Size(261, 90);
+            this.Panel1.TabIndex = 63;
             // 
-            // panel2
+            // Panel2
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.bothEarningAndExpenseRadioButton);
-            this.panel2.Controls.Add(this.expenseRadioButton);
-            this.panel2.Controls.Add(this.earningRadioButton);
-            this.panel2.Location = new System.Drawing.Point(279, 56);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(508, 42);
-            this.panel2.TabIndex = 64;
+            this.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel2.Controls.Add(this.ShowBothEarningAndExpenseReportRadioButton);
+            this.Panel2.Controls.Add(this.ShowExpenseReportRadioButton);
+            this.Panel2.Controls.Add(this.ShowEarningReportRadioButton);
+            this.Panel2.Location = new System.Drawing.Point(279, 56);
+            this.Panel2.Name = "Panel2";
+            this.Panel2.Size = new System.Drawing.Size(508, 42);
+            this.Panel2.TabIndex = 64;
             // 
-            // panel3
+            // Panel3
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.categorywiseReportRadioButton);
-            this.panel3.Controls.Add(this.generalReportRadioButton);
-            this.panel3.Location = new System.Drawing.Point(279, 105);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(335, 41);
-            this.panel3.TabIndex = 65;
+            this.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel3.Controls.Add(this.ShowCategorywiseReportRadioButton);
+            this.Panel3.Controls.Add(this.ShowGeneralReportRadioButton);
+            this.Panel3.Location = new System.Drawing.Point(279, 105);
+            this.Panel3.Name = "Panel3";
+            this.Panel3.Size = new System.Drawing.Size(335, 41);
+            this.Panel3.TabIndex = 65;
             // 
-            // monthlyReportChart
+            // MonthlyReportChart
             // 
             chartArea2.AxisX.MajorGrid.Enabled = false;
             chartArea2.Name = "ChartArea1";
-            this.monthlyReportChart.ChartAreas.Add(chartArea2);
-            this.monthlyReportChart.Location = new System.Drawing.Point(12, 154);
-            this.monthlyReportChart.Name = "monthlyReportChart";
-            this.monthlyReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            this.MonthlyReportChart.ChartAreas.Add(chartArea2);
+            this.MonthlyReportChart.Location = new System.Drawing.Point(12, 154);
+            this.MonthlyReportChart.Name = "MonthlyReportChart";
+            this.MonthlyReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series3.BorderWidth = 2;
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -397,55 +397,55 @@
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series4.Name = "expense";
-            this.monthlyReportChart.Series.Add(series3);
-            this.monthlyReportChart.Series.Add(series4);
-            this.monthlyReportChart.Size = new System.Drawing.Size(775, 321);
-            this.monthlyReportChart.TabIndex = 66;
-            this.monthlyReportChart.Visible = false;
+            this.MonthlyReportChart.Series.Add(series3);
+            this.MonthlyReportChart.Series.Add(series4);
+            this.MonthlyReportChart.Size = new System.Drawing.Size(775, 321);
+            this.MonthlyReportChart.TabIndex = 66;
+            this.MonthlyReportChart.Visible = false;
             // 
-            // button1
+            // RedButton
             // 
-            this.button1.BackColor = System.Drawing.Color.YellowGreen;
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(657, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 18);
-            this.button1.TabIndex = 67;
-            this.button1.UseVisualStyleBackColor = false;
+            this.RedButton.BackColor = System.Drawing.Color.YellowGreen;
+            this.RedButton.Enabled = false;
+            this.RedButton.FlatAppearance.BorderSize = 0;
+            this.RedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RedButton.Location = new System.Drawing.Point(657, 104);
+            this.RedButton.Name = "RedButton";
+            this.RedButton.Size = new System.Drawing.Size(28, 18);
+            this.RedButton.TabIndex = 67;
+            this.RedButton.UseVisualStyleBackColor = false;
             // 
-            // button2
+            // GrennButton
             // 
-            this.button2.BackColor = System.Drawing.Color.OrangeRed;
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(657, 128);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 18);
-            this.button2.TabIndex = 68;
-            this.button2.UseVisualStyleBackColor = false;
+            this.GrennButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.GrennButton.Enabled = false;
+            this.GrennButton.FlatAppearance.BorderSize = 0;
+            this.GrennButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GrennButton.Location = new System.Drawing.Point(657, 128);
+            this.GrennButton.Name = "GrennButton";
+            this.GrennButton.Size = new System.Drawing.Size(28, 18);
+            this.GrennButton.TabIndex = 68;
+            this.GrennButton.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // EarningLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(691, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 18);
-            this.label1.TabIndex = 69;
-            this.label1.Text = "Earning";
+            this.EarningLabel.AutoSize = true;
+            this.EarningLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EarningLabel.Location = new System.Drawing.Point(691, 103);
+            this.EarningLabel.Name = "EarningLabel";
+            this.EarningLabel.Size = new System.Drawing.Size(62, 18);
+            this.EarningLabel.TabIndex = 69;
+            this.EarningLabel.Text = "Earning";
             // 
-            // label2
+            // ExpenseLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(691, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
-            this.label2.TabIndex = 70;
-            this.label2.Text = "Expense";
+            this.ExpenseLabel.AutoSize = true;
+            this.ExpenseLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpenseLabel.Location = new System.Drawing.Point(691, 127);
+            this.ExpenseLabel.Name = "ExpenseLabel";
+            this.ExpenseLabel.Size = new System.Drawing.Size(69, 18);
+            this.ExpenseLabel.TabIndex = 70;
+            this.ExpenseLabel.Text = "Expense";
             // 
             // StatisticsForm
             // 
@@ -453,21 +453,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.monthlyReportChart);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.yearlyReportChart);
-            this.Controls.Add(this.logOutButton);
-            this.Controls.Add(this.settingsButton);
-            this.Controls.Add(this.statisticsButton);
-            this.Controls.Add(this.monthlyReportButton);
-            this.Controls.Add(this.addNewDataButton);
-            this.Controls.Add(this.homeButton);
+            this.Controls.Add(this.ExpenseLabel);
+            this.Controls.Add(this.EarningLabel);
+            this.Controls.Add(this.GrennButton);
+            this.Controls.Add(this.RedButton);
+            this.Controls.Add(this.MonthlyReportChart);
+            this.Controls.Add(this.Panel3);
+            this.Controls.Add(this.Panel2);
+            this.Controls.Add(this.Panel1);
+            this.Controls.Add(this.YearlyReportChart);
+            this.Controls.Add(this.LogOutButton);
+            this.Controls.Add(this.SettingsButton);
+            this.Controls.Add(this.StatisticsButton);
+            this.Controls.Add(this.MonthlyReportButton);
+            this.Controls.Add(this.AddNewDataButton);
+            this.Controls.Add(this.HomeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -476,14 +476,14 @@
             this.Text = "MyCost - Earning and Expense Statistics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
-            ((System.ComponentModel.ISupportInitialize)(this.yearlyReportChart)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.monthlyReportChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YearlyReportChart)).EndInit();
+            this.Panel1.ResumeLayout(false);
+            this.Panel1.PerformLayout();
+            this.Panel2.ResumeLayout(false);
+            this.Panel2.PerformLayout();
+            this.Panel3.ResumeLayout(false);
+            this.Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,29 +491,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Button logOutButton;
-        private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Button statisticsButton;
-        private System.Windows.Forms.Button monthlyReportButton;
-        private System.Windows.Forms.Button addNewDataButton;
-        private System.Windows.Forms.Button homeButton;
-        private System.Windows.Forms.DataVisualization.Charting.Chart yearlyReportChart;
-        private System.Windows.Forms.RadioButton yearlyRadioButton;
-        private System.Windows.Forms.RadioButton monthlyRadioButton;
-        private System.Windows.Forms.ComboBox yearComboBox;
-        private System.Windows.Forms.ComboBox monthComboBox;
-        private System.Windows.Forms.RadioButton earningRadioButton;
-        private System.Windows.Forms.RadioButton expenseRadioButton;
-        private System.Windows.Forms.RadioButton generalReportRadioButton;
-        private System.Windows.Forms.RadioButton categorywiseReportRadioButton;
-        private System.Windows.Forms.RadioButton bothEarningAndExpenseRadioButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart monthlyReportChart;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button LogOutButton;
+        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button StatisticsButton;
+        private System.Windows.Forms.Button MonthlyReportButton;
+        private System.Windows.Forms.Button AddNewDataButton;
+        private System.Windows.Forms.Button HomeButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart YearlyReportChart;
+        private System.Windows.Forms.RadioButton ShowYearlyReportRadioButton;
+        private System.Windows.Forms.RadioButton ShowMonthlyReportRadioButton;
+        private System.Windows.Forms.ComboBox YearComboBox;
+        private System.Windows.Forms.ComboBox MonthComboBox;
+        private System.Windows.Forms.RadioButton ShowEarningReportRadioButton;
+        private System.Windows.Forms.RadioButton ShowExpenseReportRadioButton;
+        private System.Windows.Forms.RadioButton ShowGeneralReportRadioButton;
+        private System.Windows.Forms.RadioButton ShowCategorywiseReportRadioButton;
+        private System.Windows.Forms.RadioButton ShowBothEarningAndExpenseReportRadioButton;
+        private System.Windows.Forms.Panel Panel1;
+        private System.Windows.Forms.Panel Panel2;
+        private System.Windows.Forms.Panel Panel3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart MonthlyReportChart;
+        private System.Windows.Forms.Button RedButton;
+        private System.Windows.Forms.Button GrennButton;
+        private System.Windows.Forms.Label EarningLabel;
+        private System.Windows.Forms.Label ExpenseLabel;
     }
 }

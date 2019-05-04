@@ -31,7 +31,7 @@ namespace MyCost.View
             {
                 foreach (string category in StaticStorage.ExpenseCategories)
                 {
-                    dataGridView.Rows.Add(category);
+                    CategoryDataGridView.Rows.Add(category);
                 }
                 _categoryType = "Expense";
             }
@@ -39,7 +39,7 @@ namespace MyCost.View
             {
                 foreach (string category in StaticStorage.EarningCategories)
                 {
-                    dataGridView.Rows.Add(category);
+                    CategoryDataGridView.Rows.Add(category);
                 }
                 _categoryType = "Earning";
             }
@@ -67,16 +67,16 @@ namespace MyCost.View
 
         private void DeleteButtonClicked(object sender, EventArgs e)
         {
-            int rowIndex = dataGridView.CurrentCell.RowIndex;
+            int rowIndex = CategoryDataGridView.CurrentCell.RowIndex;
 
             if (IsLastEmptyRow(rowIndex))
             {
                 return;
             }
 
-            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            foreach (DataGridViewRow row in CategoryDataGridView.SelectedRows)
             {
-                dataGridView.Rows.Remove(row);
+                CategoryDataGridView.Rows.Remove(row);
             }
 
             UpdateCategories();
@@ -92,14 +92,14 @@ namespace MyCost.View
 
         private void OpenSelectedCategory()
         {
-            int rowIndex = dataGridView.CurrentCell.RowIndex;
+            int rowIndex = CategoryDataGridView.CurrentCell.RowIndex;
 
             if (IsLastEmptyRow(rowIndex))
             {
                 return;
             }
 
-            string category = dataGridView.Rows[rowIndex].Cells[0].Value.ToString();
+            string category = CategoryDataGridView.Rows[rowIndex].Cells[0].Value.ToString();
 
             foreach (int index in _rowIndexList)
             {
@@ -119,7 +119,7 @@ namespace MyCost.View
             {
                 StaticStorage.ExpenseCategories.Clear();
 
-                foreach (DataGridViewRow row in dataGridView.Rows)
+                foreach (DataGridViewRow row in CategoryDataGridView.Rows)
                 {
                     if (IsLastEmptyRow(row.Index))
                     {
@@ -131,7 +131,7 @@ namespace MyCost.View
                     categoryNames += category;
 
                     //add a splitting character after each category except the last one
-                    if (row.Index < dataGridView.Rows.Count - 2)
+                    if (row.Index < CategoryDataGridView.Rows.Count - 2)
                     {
                         categoryNames += "|";
                     }
@@ -141,7 +141,7 @@ namespace MyCost.View
             {
                 StaticStorage.EarningCategories.Clear();
 
-                foreach (DataGridViewRow row in dataGridView.Rows)
+                foreach (DataGridViewRow row in CategoryDataGridView.Rows)
                 {
                     if (IsLastEmptyRow(row.Index))
                     {
@@ -153,7 +153,7 @@ namespace MyCost.View
                     categoryNames += category;
 
                     //add a splitting character after each category except the last one
-                    if (row.Index < dataGridView.Rows.Count - 2)
+                    if (row.Index < CategoryDataGridView.Rows.Count - 2)
                     {
                         categoryNames += "|";
                     }
@@ -171,7 +171,7 @@ namespace MyCost.View
 
         private bool IsLastEmptyRow(int rowIndex)
         {
-            if (rowIndex == dataGridView.Rows.Count - 1)
+            if (rowIndex == CategoryDataGridView.Rows.Count - 1)
             {
                 return true;
             }

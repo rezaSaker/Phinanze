@@ -44,28 +44,28 @@ namespace MyCost.View
         {
             for (int i = 2018; i <= _selectedYear + 3; i++)
             {
-                yearComboBox.Items.Add(i.ToString());
+                YearComboBox.Items.Add(i.ToString());
             }
             
-            monthComboBox.SelectedIndex = _selectedMonth - 1;
-            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());           
+            MonthComboBox.SelectedIndex = _selectedMonth - 1;
+            YearComboBox.SelectedIndex = YearComboBox.Items.IndexOf(_selectedYear.ToString());           
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {
-            _selectedMonth = monthComboBox.SelectedIndex + 1;
+            _selectedMonth = MonthComboBox.SelectedIndex + 1;
             PlotDailyInfo();
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+            _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
             PlotDailyInfo();
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            int day = Convert.ToInt32(dataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Split(' ')[0]);
+            int day = Convert.ToInt32(MonthlyReportDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Split(' ')[0]);
             int month = _selectedMonth;
             int year = _selectedYear;
 
@@ -102,23 +102,23 @@ namespace MyCost.View
         {
             Button button = (Button)sender;
 
-            if (button.Name == "homeButton")
+            if (button.Name == "HomeButton")
             {
                 OpenNewForm(new MainForm());
             }
-            else if (button.Name == "addNewDataButton")
+            else if (button.Name == "AddNewDataButton")
             {
                 OpenNewForm(new AddNewDataForm());
             }
-            else if (button.Name == "statisticsButton")
+            else if (button.Name == "StatisticsButton")
             {
                 OpenNewForm(new StatisticsForm());
             }
-            else if (button.Name == "settingsButton")
+            else if (button.Name == "SettingsButton")
             {
                 OpenNewForm(new SettingsForm());
             }
-            else if (button.Name == "logOutButton")
+            else if (button.Name == "LogOutButton")
             {
                 StaticStorage.LogOutUser();
                 _quitAppOnFormClosing = false;
@@ -157,7 +157,7 @@ namespace MyCost.View
 
         private void PlotDailyInfo()
         {
-            dataGridView.Rows.Clear();
+            MonthlyReportDataGridView.Rows.Clear();
 
             HeaderLabel.Text = "Showing monthly information for ";
             HeaderLabel.Text += _monthList[_selectedMonth - 1] + " " + _selectedYear.ToString();
@@ -176,14 +176,14 @@ namespace MyCost.View
                 if(daily != null)
                 {
                     string date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
-                    dataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
-                    dataGridView.Rows[rowIndex++].HeaderCell.Value = rowIndex.ToString();
+                    MonthlyReportDataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
+                    MonthlyReportDataGridView.Rows[rowIndex++].HeaderCell.Value = rowIndex.ToString();
                 }
             }
 
-            if(dataGridView.Rows.Count > 0)
+            if(MonthlyReportDataGridView.Rows.Count > 0)
             {
-                dataGridView.Rows[0].Cells[0].Selected = false;
+                MonthlyReportDataGridView.Rows[0].Cells[0].Selected = false;
             }          
         }
 
@@ -223,9 +223,9 @@ namespace MyCost.View
             progressViewer.Location = new Point(this.Location.X + 78, this.Location.Y + 180);
             progressViewer.Show();
 
-            foreach (DataGridViewRow row in dataGridView.SelectedRows)
+            foreach (DataGridViewRow row in MonthlyReportDataGridView.SelectedRows)
             {
-                int day = Convert.ToInt32(dataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+                int day = Convert.ToInt32(MonthlyReportDataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
 
                 string result = WebHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
 
@@ -236,7 +236,7 @@ namespace MyCost.View
                         //when we delete a row on click of delete button
                         //that doesn't automatically remove that row from dataGridView
                         //so we need to manually remove it
-                        dataGridView.Rows.RemoveAt(row.Index);
+                        MonthlyReportDataGridView.Rows.RemoveAt(row.Index);
                     }
 
                     StaticStorage.DailyInfoList.RemoveAll(

@@ -20,7 +20,7 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            userNameLaabel.Text = "username: " + StaticStorage.Username;
+            UserNameLaabel.Text = "username: " + StaticStorage.Username;
         }
 
         private void UsernameTextBoxesClicked(object sender, EventArgs e)
@@ -42,18 +42,18 @@ namespace MyCost.View
 
         private void UserNameTextBoxesTextChanged(object sender, EventArgs e)
         {
-            if (currentUserNameTextBox.ForeColor == Color.Black
-                && currentUserNameTextBox.Text != ""
-                && newUserNameTextBox.ForeColor == Color.Black
-                && newUserNameTextBox.Text != ""
-                && passwordTextBox.ForeColor == Color.Black
-                && passwordTextBox.Text != "")
+            if (CurrentUserNameTextBox.ForeColor == Color.Black
+                && CurrentUserNameTextBox.Text != ""
+                && NewUserNameTextBox.ForeColor == Color.Black
+                && NewUserNameTextBox.Text != ""
+                && PasswordTextBox.ForeColor == Color.Black
+                && PasswordTextBox.Text != "")
             {
-                submitUserNameButton.Enabled = true;
+                UpdateUsernameButton.Enabled = true;
             }
             else
             {
-                submitUserNameButton.Enabled = false;
+                UpdateUsernameButton.Enabled = false;
             }
         }
 
@@ -71,30 +71,30 @@ namespace MyCost.View
 
         private void PasswordTextBoxesTextChanged(object sender, EventArgs e)
         {
-            if (currentPasswordTextBox.ForeColor == Color.Black
-               && currentPasswordTextBox.Text != ""
-               && newPasswordTextBox.ForeColor == Color.Black
-               && newPasswordTextBox.Text != ""
-               && confirmPasswordTextBox.ForeColor == Color.Black
-               && confirmPasswordTextBox.Text != "")
+            if (CurrentPasswordTextBox.ForeColor == Color.Black
+               && CurrentPasswordTextBox.Text != ""
+               && NewPasswordTextBox.ForeColor == Color.Black
+               && NewPasswordTextBox.Text != ""
+               && ConfirmPasswordTextBox.ForeColor == Color.Black
+               && ConfirmPasswordTextBox.Text != "")
             {
-                submitPasswordButton.Enabled = true;
+                UpdatePasswordButton.Enabled = true;
             }
             else
             {
-                submitPasswordButton.Enabled = false;
+                UpdatePasswordButton.Enabled = false;
             }
         }
 
         private void SubmitNewUsernameButtonClicked(object sender, EventArgs e)
         {
-            if (currentUserNameTextBox.Text != StaticStorage.Username)
+            if (CurrentUserNameTextBox.Text != StaticStorage.Username)
             {
                 MessageBox.Show("Current username is incorrect");
                 return;
             }
 
-            string result = WebHandler.UpdateUsername(newUserNameTextBox.Text, passwordTextBox.Text);
+            string result = WebHandler.UpdateUsername(NewUserNameTextBox.Text, PasswordTextBox.Text);
 
             if (result == "SUCCESS")
             {
@@ -112,13 +112,13 @@ namespace MyCost.View
 
         private void SubmitNewPasswordButtonClicked(object sender, EventArgs e)
         {
-            if (newPasswordTextBox.Text != confirmPasswordTextBox.Text)
+            if (NewPasswordTextBox.Text != ConfirmPasswordTextBox.Text)
             {
                 MessageBox.Show("Password doesn't match!");
             }
             else //all fields are correct
             {
-                string result = WebHandler.UpdatePassword(currentPasswordTextBox.Text, newPasswordTextBox.Text);
+                string result = WebHandler.UpdatePassword(CurrentPasswordTextBox.Text, NewPasswordTextBox.Text);
 
                 if (result == "SUCCESS")
                 {
@@ -153,23 +153,23 @@ namespace MyCost.View
         {
             Button button = (Button)sender;
 
-            if (button.Name == "homeButton")
+            if (button.Name == "HomeButton")
             {
                 OpenNewForm(new MainForm());
             }
-            else if (button.Name == "monthlyReportButton")
+            else if (button.Name == "MonthlyReportButton")
             {
                 OpenNewForm(new MonthlyReportForm());
             }
-            else if (button.Name == "statisticsButton")
+            else if (button.Name == "StatisticsButton")
             {
                 OpenNewForm(new StatisticsForm());
             }
-            else if (button.Name == "addNewDataButton")
+            else if (button.Name == "AddNewDataButton")
             {
                 OpenNewForm(new AddNewDataForm());
             }
-            else if (button.Name == "logOutButton")
+            else if (button.Name == "LogOutButton")
             {
                 StaticStorage.LogOutUser();
                 _quitAppOnFormClosing = false;

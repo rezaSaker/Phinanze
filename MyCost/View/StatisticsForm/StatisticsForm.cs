@@ -31,71 +31,71 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            monthComboBox.Enabled = false;
-            yearlyRadioButton.Checked = true;
-            bothEarningAndExpenseRadioButton.Checked = true;
-            generalReportRadioButton.Checked = true;
-            yearlyReportChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            yearlyReportChart.Series["earning"].Color = Color.YellowGreen;
-            yearlyReportChart.Series["expense"].Color = Color.OrangeRed;
-            monthlyReportChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            monthlyReportChart.Series["earning"].Color = Color.YellowGreen;
-            monthlyReportChart.Series["expense"].Color = Color.OrangeRed;
+            MonthComboBox.Enabled = false;
+            ShowYearlyReportRadioButton.Checked = true;
+            ShowBothEarningAndExpenseReportRadioButton.Checked = true;
+            ShowGeneralReportRadioButton.Checked = true;
+            YearlyReportChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            YearlyReportChart.Series["earning"].Color = Color.YellowGreen;
+            YearlyReportChart.Series["expense"].Color = Color.OrangeRed;
+            MonthlyReportChart.ChartAreas["ChartArea1"].AxisX.Interval = 1;
+            MonthlyReportChart.Series["earning"].Color = Color.YellowGreen;
+            MonthlyReportChart.Series["expense"].Color = Color.OrangeRed;
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
             {
-                yearComboBox.Items.Add(year.ToString());
+                YearComboBox.Items.Add(year.ToString());
             }
-            yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(_selectedYear.ToString());
+            YearComboBox.SelectedIndex = YearComboBox.Items.IndexOf(_selectedYear.ToString());
         }
 
         private void YearComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
+            _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
             ShowReports();
         }
 
         private void MonthComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            _selectedMonth = monthComboBox.SelectedIndex + 1;
+            _selectedMonth = MonthComboBox.SelectedIndex + 1;
             ShowReports();
         }
 
         private void YearlyRadioButtonClicked(object sender, EventArgs e)
         {
-            monthlyRadioButton.Checked = false;
-            monthComboBox.Enabled = false;
-            yearlyReportChart.Visible = true;
-            monthlyReportChart.Visible = false;
+            ShowMonthlyReportRadioButton.Checked = false;
+            MonthComboBox.Enabled = false;
+            YearlyReportChart.Visible = true;
+            MonthlyReportChart.Visible = false;
 
             ShowReports();
         }
 
         private void MonthlyRadioButtonClicked(object sender, EventArgs e)
         {
-            yearlyRadioButton.Checked = false;
-            monthComboBox.Enabled = true;
+            ShowYearlyReportRadioButton.Checked = false;
+            MonthComboBox.Enabled = true;
 
-            if (!categorywiseReportRadioButton.Checked)
+            if (!ShowCategorywiseReportRadioButton.Checked)
             {
-                yearlyReportChart.Visible = false;
-                monthlyReportChart.Visible = true;
+                YearlyReportChart.Visible = false;
+                MonthlyReportChart.Visible = true;
             }
-            monthComboBox.SelectedIndex = _selectedMonth - 1;
+            MonthComboBox.SelectedIndex = _selectedMonth - 1;
         }
 
         private void EarningRadioButtonClicked(object sender, EventArgs e)
         {
-            expenseRadioButton.Checked = false;
-            bothEarningAndExpenseRadioButton.Checked = false;
+            ShowExpenseReportRadioButton.Checked = false;
+            ShowBothEarningAndExpenseReportRadioButton.Checked = false;
 
             ShowReports();
         }
 
         private void ExpenseRadioButtonClicked(object sender, EventArgs e)
         {
-            earningRadioButton.Checked = false;
-            bothEarningAndExpenseRadioButton.Checked = false;
+            ShowEarningReportRadioButton.Checked = false;
+            ShowBothEarningAndExpenseReportRadioButton.Checked = false;
 
             ShowReports();
         }
@@ -104,22 +104,22 @@ namespace MyCost.View
         {
             //bothEarningAndExpenseRadioButton is a single radioButton
             //that shows both earning and expense when checked
-            earningRadioButton.Checked = false;
-            expenseRadioButton.Checked = false;
+            ShowEarningReportRadioButton.Checked = false;
+            ShowExpenseReportRadioButton.Checked = false;
 
             ShowReports();
         }
 
         private void GeneralReportRadioButtonClicked(object sender, EventArgs e)
         {
-            categorywiseReportRadioButton.Checked = false;
-            bothEarningAndExpenseRadioButton.Enabled = true;
-            bothEarningAndExpenseRadioButton.Visible = true;
+            ShowCategorywiseReportRadioButton.Checked = false;
+            ShowBothEarningAndExpenseReportRadioButton.Enabled = true;
+            ShowBothEarningAndExpenseReportRadioButton.Visible = true;
 
-            if(monthlyRadioButton.Checked)
+            if(ShowMonthlyReportRadioButton.Checked)
             {
-                yearlyReportChart.Visible = false;
-                monthlyReportChart.Visible = true;
+                YearlyReportChart.Visible = false;
+                MonthlyReportChart.Visible = true;
             }
 
             ShowReports();
@@ -127,12 +127,12 @@ namespace MyCost.View
 
         private void CategorywiseReportRadioButton(object sender, EventArgs e)
         {
-            generalReportRadioButton.Checked = false;
-            monthlyReportChart.Visible = false;
-            yearlyReportChart.Visible = true;
-            earningRadioButton.Checked = expenseRadioButton.Checked ? false : true;
-            bothEarningAndExpenseRadioButton.Enabled = false;
-            bothEarningAndExpenseRadioButton.Visible = false;
+            ShowGeneralReportRadioButton.Checked = false;
+            MonthlyReportChart.Visible = false;
+            YearlyReportChart.Visible = true;
+            ShowEarningReportRadioButton.Checked = ShowExpenseReportRadioButton.Checked ? false : true;
+            ShowBothEarningAndExpenseReportRadioButton.Enabled = false;
+            ShowBothEarningAndExpenseReportRadioButton.Visible = false;
 
             ShowReports();
         }
@@ -155,23 +155,23 @@ namespace MyCost.View
         {
             Button button = (Button)sender;
 
-            if (button.Name == "homeButton")
+            if (button.Name == "HomeButton")
             {
                 OpenNewForm(new MainForm());
             }
-            else if (button.Name == "addNewDataButton")
+            else if (button.Name == "AddNewDataButton")
             {
                 OpenNewForm(new AddNewDataForm());
             }
-            else if (button.Name == "monthlyReportButton")
+            else if (button.Name == "MonthlyReportButton")
             {
                 OpenNewForm(new MonthlyReportForm());
             }
-            else if (button.Name == "settingsButton")
+            else if (button.Name == "SettingsButton")
             {
                 OpenNewForm(new SettingsForm());
             }
-            else if (button.Name == "logOutButton")
+            else if (button.Name == "LogOutButton")
             {
                 StaticStorage.LogOutUser();
                 _quitAppOnFormClosing = false;
@@ -192,19 +192,19 @@ namespace MyCost.View
 
         private void ShowReports()
         {
-            if (generalReportRadioButton.Checked && yearlyRadioButton.Checked)
+            if (ShowGeneralReportRadioButton.Checked && ShowYearlyReportRadioButton.Checked)
             {
                 ShowGeneralYearlyReport();
             }
-            else if (generalReportRadioButton.Checked && monthlyRadioButton.Checked)
+            else if (ShowGeneralReportRadioButton.Checked && ShowMonthlyReportRadioButton.Checked)
             {
                 ShowGeneralMonthlyReport();
             }
-            else if (categorywiseReportRadioButton.Checked && yearlyRadioButton.Checked)
+            else if (ShowCategorywiseReportRadioButton.Checked && ShowYearlyReportRadioButton.Checked)
             {
                 ShowCategorywiseYearlyReport();
             }
-            else if (categorywiseReportRadioButton.Checked && monthlyRadioButton.Checked)
+            else if (ShowCategorywiseReportRadioButton.Checked && ShowMonthlyReportRadioButton.Checked)
             {
                 ShowCategorywiseMonthlyReport();
             }
@@ -214,19 +214,19 @@ namespace MyCost.View
         {
             List<MonthlyInfo> monthlyInfo = StaticStorage.MonthlyInfoList.FindAll(m => m.Year == _selectedYear);
 
-            if (bothEarningAndExpenseRadioButton.Checked)
+            if (ShowBothEarningAndExpenseReportRadioButton.Checked)
             {
                 PlotGeneralYearlyEarningDataOnChart(monthlyInfo);
                 PlotGeneralYearlyExpenseDataOnChart(monthlyInfo);
             }
-            else if (earningRadioButton.Checked)
+            else if (ShowEarningReportRadioButton.Checked)
             {
-                yearlyReportChart.Series["expense"].Points.Clear();
+                YearlyReportChart.Series["expense"].Points.Clear();
                 PlotGeneralYearlyEarningDataOnChart(monthlyInfo);
             }
-            else if (expenseRadioButton.Checked)
+            else if (ShowExpenseReportRadioButton.Checked)
             {
-                yearlyReportChart.Series["earning"].Points.Clear();
+                YearlyReportChart.Series["earning"].Points.Clear();
                 PlotGeneralYearlyExpenseDataOnChart(monthlyInfo);
             }
         }
@@ -236,19 +236,19 @@ namespace MyCost.View
             List<DailyInfo> dailyInfo = StaticStorage.DailyInfoList.FindAll(
                 d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
-            if(bothEarningAndExpenseRadioButton.Checked)
+            if(ShowBothEarningAndExpenseReportRadioButton.Checked)
             {
                 PlotGeneralMonthlyEarningDataOnChart(dailyInfo);
                 PlotGeneralMonthlyExpenseDataOnChart(dailyInfo);
             }
-            else if (earningRadioButton.Checked)
+            else if (ShowEarningReportRadioButton.Checked)
             {
-                monthlyReportChart.Series["expense"].Points.Clear();
+                MonthlyReportChart.Series["expense"].Points.Clear();
                 PlotGeneralMonthlyEarningDataOnChart(dailyInfo);
             }
-            else if (expenseRadioButton.Checked)
+            else if (ShowExpenseReportRadioButton.Checked)
             {
-                monthlyReportChart.Series["earning"].Points.Clear();
+                MonthlyReportChart.Series["earning"].Points.Clear();
                 PlotGeneralMonthlyExpenseDataOnChart(dailyInfo);
             }
         }
@@ -257,7 +257,7 @@ namespace MyCost.View
         {                       
             List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(d => d.Year == _selectedYear);
                   
-            if (earningRadioButton.Checked)
+            if (ShowEarningReportRadioButton.Checked)
             {
                 IDictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
                 dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
@@ -294,7 +294,7 @@ namespace MyCost.View
             List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
                 d => d.Year == _selectedYear && d.Month == _selectedMonth);
 
-            if (earningRadioButton.Checked)
+            if (ShowEarningReportRadioButton.Checked)
             {
                 IDictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
                 dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
@@ -328,7 +328,7 @@ namespace MyCost.View
 
         private void PlotGeneralYearlyEarningDataOnChart(List<MonthlyInfo> monthlyInfo)
         {
-            yearlyReportChart.Series["earning"].Points.Clear();
+            YearlyReportChart.Series["earning"].Points.Clear();
 
             for (int mon = 1; mon <= 12; mon++)
             {
@@ -339,20 +339,20 @@ namespace MyCost.View
                 {                    
                     point.SetValueXY(_monthNames[mon - 1], monthly.Earning); 
                     point.ToolTip = monthly.Earning.ToString();
-                    yearlyReportChart.Series["earning"].Points.Add(point);
+                    YearlyReportChart.Series["earning"].Points.Add(point);
                 }
                 else
                 {
                     point.SetValueXY(_monthNames[mon - 1], 0);
                     point.ToolTip = "0.00";
-                    yearlyReportChart.Series["earning"].Points.Add(point);
+                    YearlyReportChart.Series["earning"].Points.Add(point);
                 }
             }
         }
 
         private void PlotGeneralYearlyExpenseDataOnChart(List<MonthlyInfo> monthlyInfo)
         {
-            yearlyReportChart.Series["expense"].Points.Clear();
+            YearlyReportChart.Series["expense"].Points.Clear();
             
             for (int mon = 1; mon <= 12; mon++)
             {
@@ -363,20 +363,20 @@ namespace MyCost.View
                 {
                     point.SetValueXY(_monthNames[mon - 1], monthly.Expense);
                     point.ToolTip = monthly.Expense.ToString();
-                    yearlyReportChart.Series["expense"].Points.Add(point);
+                    YearlyReportChart.Series["expense"].Points.Add(point);
                 }
                 else
                 {
                     point.SetValueXY(_monthNames[mon - 1], 0);
                     point.ToolTip = "0.00";
-                    yearlyReportChart.Series["expense"].Points.Add(point);
+                    YearlyReportChart.Series["expense"].Points.Add(point);
                 }
             }
         }
 
         private void PlotGeneralMonthlyEarningDataOnChart(List<DailyInfo> dailyInfo)
         {
-            monthlyReportChart.Series["earning"].Points.Clear();
+            MonthlyReportChart.Series["earning"].Points.Clear();
 
             int numOfDays = GetNumberOfDays();
 
@@ -389,20 +389,20 @@ namespace MyCost.View
                 {
                     point.SetValueXY(day, daily.TotalEarning);
                     point.ToolTip = daily.TotalEarning.ToString();
-                    monthlyReportChart.Series["earning"].Points.Add(point);
+                    MonthlyReportChart.Series["earning"].Points.Add(point);
                 }
                 else
                 {
                     point.SetValueXY(day, 0);
                     point.ToolTip = "0.00";
-                    monthlyReportChart.Series["earning"].Points.Add(point);
+                    MonthlyReportChart.Series["earning"].Points.Add(point);
                 }
             }
         }
 
         private void PlotGeneralMonthlyExpenseDataOnChart(List<DailyInfo> dailyInfo)
         {
-            monthlyReportChart.Series["expense"].Points.Clear();
+            MonthlyReportChart.Series["expense"].Points.Clear();
 
             int numOfDays = GetNumberOfDays();
 
@@ -415,13 +415,13 @@ namespace MyCost.View
                 {
                     point.SetValueXY(day, daily.TotalExpense);
                     point.ToolTip = daily.TotalExpense.ToString();
-                    monthlyReportChart.Series["expense"].Points.Add(point);
+                    MonthlyReportChart.Series["expense"].Points.Add(point);
                 }
                 else
                 {
                     point.SetValueXY(day, 0);
                     point.ToolTip = "0.00";
-                    monthlyReportChart.Series["expense"].Points.Add(point);
+                    MonthlyReportChart.Series["expense"].Points.Add(point);
                 }
             }
         }
@@ -429,8 +429,8 @@ namespace MyCost.View
         private void PlotCategorywiseYearlyEarningDataOnChart(
             IDictionary<string, double> dictCategorywiseEarning)
         {
-            yearlyReportChart.Series["earning"].Points.Clear();
-            yearlyReportChart.Series["expense"].Points.Clear();
+            YearlyReportChart.Series["earning"].Points.Clear();
+            YearlyReportChart.Series["expense"].Points.Clear();
 
             double total = dictCategorywiseEarning.Sum(x => x.Value);
 
@@ -442,15 +442,15 @@ namespace MyCost.View
                 DataPoint point = new DataPoint();
                 point.SetValueXY(category, amount);
                 point.ToolTip = amount.ToString() + string.Format(" ({0:0.00}%)", percentage);
-                yearlyReportChart.Series["earning"].Points.Add(point);
+                YearlyReportChart.Series["earning"].Points.Add(point);
             }
         }
 
         private void PlotCategorywiseYearlyExpenseDataOnChart(
             IDictionary<string, double> dictCategorywiseExpense)
         {
-            yearlyReportChart.Series["earning"].Points.Clear();
-            yearlyReportChart.Series["expense"].Points.Clear();
+            YearlyReportChart.Series["earning"].Points.Clear();
+            YearlyReportChart.Series["expense"].Points.Clear();
 
             double total = dictCategorywiseExpense.Sum(x => x.Value);
 
@@ -462,15 +462,15 @@ namespace MyCost.View
                 DataPoint point = new DataPoint();
                 point.SetValueXY(category, amount);
                 point.ToolTip = amount.ToString() + string.Format(" ({0:0.00}%)", percentage);
-                yearlyReportChart.Series["expense"].Points.Add(point);
+                YearlyReportChart.Series["expense"].Points.Add(point);
             }
         }
 
         private void PlotCategorywiseMonthlyEarningDataOnChart(
             IDictionary<string, double> dictCategorywiseEarning)
         {
-            yearlyReportChart.Series["earning"].Points.Clear();
-            yearlyReportChart.Series["expense"].Points.Clear();
+            YearlyReportChart.Series["earning"].Points.Clear();
+            YearlyReportChart.Series["expense"].Points.Clear();
 
             double total = dictCategorywiseEarning.Sum(x => x.Value);
 
@@ -482,15 +482,15 @@ namespace MyCost.View
                 DataPoint point = new DataPoint();
                 point.SetValueXY(category, amount);
                 point.ToolTip = amount.ToString() + string.Format(" ({0:0.00}%)", percentage);
-                yearlyReportChart.Series["earning"].Points.Add(point);
+                YearlyReportChart.Series["earning"].Points.Add(point);
             }
         }
 
         private void PlotCategorywiseMonthlyExpenseDataOnChart(
             IDictionary<string, double> dictCategorywiseExpense)
         {
-            yearlyReportChart.Series["earning"].Points.Clear();
-            yearlyReportChart.Series["expense"].Points.Clear();
+            YearlyReportChart.Series["earning"].Points.Clear();
+            YearlyReportChart.Series["expense"].Points.Clear();
 
             double total = dictCategorywiseExpense.Sum(x => x.Value);
 
@@ -502,7 +502,7 @@ namespace MyCost.View
                 DataPoint point = new DataPoint();
                 point.SetValueXY(category, amount);
                 point.ToolTip = amount.ToString() + string.Format(" ({0:0.00}%)", percentage);
-                yearlyReportChart.Series["expense"].Points.Add(point);
+                YearlyReportChart.Series["expense"].Points.Add(point);
             }
         }
 

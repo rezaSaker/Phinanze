@@ -40,16 +40,16 @@ namespace MyCost.View
             {
                 //make the text color black so that the login method 
                 //doesn't detect the texts as placeholder texts
-                usernameTextBox.ForeColor = Color.Black;
-                passwordTextBox.ForeColor = Color.Black;
-                passwordTextBox.PasswordChar = '*';
+                UsernameTextBox.ForeColor = Color.Black;
+                PasswordTextBox.ForeColor = Color.Black;
+                PasswordTextBox.PasswordChar = '*';
 
                 //fills the username and password field with pre-saved info
-                usernameTextBox.Text = Properties.Settings.Default.Username;
-                passwordTextBox.Text = Properties.Settings.Default.Password;
+                UsernameTextBox.Text = Properties.Settings.Default.Username;
+                PasswordTextBox.Text = Properties.Settings.Default.Password;
 
                 //attempt login
-                submitButton.PerformClick();
+                SubmitButton.PerformClick();
             }
         }
 
@@ -65,49 +65,49 @@ namespace MyCost.View
 
         private void UsernameTextBoxClicked(object sender, MouseEventArgs e)
         {
-            if (usernameTextBox.ForeColor != Color.Black)
+            if (UsernameTextBox.ForeColor != Color.Black)
             {
                 //remove the placeholder
-                usernameTextBox.Text = "";
-                usernameTextBox.ForeColor = Color.Black;
+                UsernameTextBox.Text = "";
+                UsernameTextBox.ForeColor = Color.Black;
             }
         }
 
         private void PasswordTextboxClicked(object sender, MouseEventArgs e)
         {
-            if (passwordTextBox.ForeColor != Color.Black)
+            if (PasswordTextBox.ForeColor != Color.Black)
             {
                 //remove the placeholder
-                passwordTextBox.Text = "";
-                passwordTextBox.ForeColor = Color.Black;
-                passwordTextBox.PasswordChar = '*';
+                PasswordTextBox.Text = "";
+                PasswordTextBox.ForeColor = Color.Black;
+                PasswordTextBox.PasswordChar = '*';
             }
         }
 
         private void ConfirmPasswordTextBoxClicked(object sender, MouseEventArgs e)
         {
-            if (confirmPasswordTextBox.ForeColor != Color.Black)
+            if (ConfirmPasswordTextBox.ForeColor != Color.Black)
             {
                 //remove the placeholder
-                confirmPasswordTextBox.Text = "";
-                confirmPasswordTextBox.ForeColor = Color.Black;
-                confirmPasswordTextBox.PasswordChar = '*';
+                ConfirmPasswordTextBox.Text = "";
+                ConfirmPasswordTextBox.ForeColor = Color.Black;
+                ConfirmPasswordTextBox.PasswordChar = '*';
             }
         }
 
         private void ActivationCodeTextBoxClicked(object sender, MouseEventArgs e)
         {
-            if(activationCodeTextBox.ForeColor != Color.Black)
+            if(ActivationCodeTextBox.ForeColor != Color.Black)
             {
                 //remove the placeholder
-                activationCodeTextBox.Text = "";
-                activationCodeTextBox.ForeColor = Color.Black;
+                ActivationCodeTextBox.Text = "";
+                ActivationCodeTextBox.ForeColor = Color.Black;
             }
         }
 
         private void SubmitButtonClicked(object sender, EventArgs e)
         {          
-            if (submitButton.Text == "Log in")
+            if (SubmitButton.Text == "Log in")
             {
                 LoginUser();
             }
@@ -128,20 +128,20 @@ namespace MyCost.View
         private void DisplayLoginPanel()
         {
             //reset everything so the panel appears as a login form 
-            showRegisterPanelButton.BackColor = Color.RoyalBlue;
-            showRegisterPanelButton.ForeColor = Color.White;
-            showLoginPanelButton.BackColor = Color.White;
-            showLoginPanelButton.ForeColor = Color.Black;
+            ShowRegisterPanelButton.BackColor = Color.RoyalBlue;
+            ShowRegisterPanelButton.ForeColor = Color.White;
+            ShowLoginPanelButton.BackColor = Color.White;
+            ShowLoginPanelButton.ForeColor = Color.Black;
 
-            submitButton.Text = "Log in";
-            submitButton.Location = new Point(280, 280);
+            SubmitButton.Text = "Log in";
+            SubmitButton.Location = new Point(280, 280);
 
-            confirmPasswordTextBox.Visible = false;
-            confirmPasswordTextBox.Enabled = false;
-            activationCodeTextBox.Visible = false;
-            activationCodeTextBox.Enabled = false;
+            ConfirmPasswordTextBox.Visible = false;
+            ConfirmPasswordTextBox.Enabled = false;
+            ActivationCodeTextBox.Visible = false;
+            ActivationCodeTextBox.Enabled = false;
 
-            rememberMeCheckBox.Location = new Point(146, 250);
+            RememberMeCheckBox.Location = new Point(146, 250);
             this.Size = new Size(800, 410);
 
             ResetTextBoxProperties();
@@ -150,20 +150,20 @@ namespace MyCost.View
         private void DisplayRegisterPanel()
         {
             //reset everything so the panel appears as a register form
-            showRegisterPanelButton.BackColor = Color.White;
-            showRegisterPanelButton.ForeColor = Color.Black;
-            showLoginPanelButton.BackColor = Color.RoyalBlue;
-            showLoginPanelButton.ForeColor = Color.White;
+            ShowRegisterPanelButton.BackColor = Color.White;
+            ShowRegisterPanelButton.ForeColor = Color.Black;
+            ShowLoginPanelButton.BackColor = Color.RoyalBlue;
+            ShowLoginPanelButton.ForeColor = Color.White;
 
-            submitButton.Text = "Register";
-            submitButton.Location = new Point(280, 368);
+            SubmitButton.Text = "Register";
+            SubmitButton.Location = new Point(280, 368);
 
-            confirmPasswordTextBox.Visible = true;
-            confirmPasswordTextBox.Enabled = true;
-            activationCodeTextBox.Visible = true;
-            activationCodeTextBox.Enabled = true;
+            ConfirmPasswordTextBox.Visible = true;
+            ConfirmPasswordTextBox.Enabled = true;
+            ActivationCodeTextBox.Visible = true;
+            ActivationCodeTextBox.Enabled = true;
 
-            rememberMeCheckBox.Location = new Point(146, 343);
+            RememberMeCheckBox.Location = new Point(146, 343);
             this.Size = new Size(800, 465);
 
             ResetTextBoxProperties();
@@ -172,27 +172,27 @@ namespace MyCost.View
         private void ResetTextBoxProperties()
         {
             //reset the placeholders in the TextBoxes
-            statusLabel.Text = "";
-            usernameTextBox.Text = "Username";
-            usernameTextBox.ForeColor = Color.DarkGray;
-            passwordTextBox.Text = "Password";
-            passwordTextBox.ForeColor = Color.DarkGray;
-            passwordTextBox.PasswordChar = '\0';
-            confirmPasswordTextBox.Text = "Confirm Password";
-            confirmPasswordTextBox.ForeColor = Color.DarkGray;
-            confirmPasswordTextBox.PasswordChar = '\0';
-            activationCodeTextBox.Text = "Activation Code";
-            activationCodeTextBox.ForeColor = Color.DarkGray;
+            StatusLabel.Text = "";
+            UsernameTextBox.Text = "Username";
+            UsernameTextBox.ForeColor = Color.DarkGray;
+            PasswordTextBox.Text = "Password";
+            PasswordTextBox.ForeColor = Color.DarkGray;
+            PasswordTextBox.PasswordChar = '\0';
+            ConfirmPasswordTextBox.Text = "Confirm Password";
+            ConfirmPasswordTextBox.ForeColor = Color.DarkGray;
+            ConfirmPasswordTextBox.PasswordChar = '\0';
+            ActivationCodeTextBox.Text = "Activation Code";
+            ActivationCodeTextBox.ForeColor = Color.DarkGray;
         }
 
         private void LoginUser()
         {
             //if fore-color of a textBox is not black, that means the textbox 
             //contains the placeholder text and user didn't enter any value
-            string username = usernameTextBox.ForeColor == Color.Black?
-                usernameTextBox.Text : "";
-            string password = passwordTextBox.ForeColor == Color.Black?
-                passwordTextBox.Text : "";
+            string username = UsernameTextBox.ForeColor == Color.Black?
+                UsernameTextBox.Text : "";
+            string password = PasswordTextBox.ForeColor == Color.Black?
+                PasswordTextBox.Text : "";
 
             if(username.Length < 1)
             {
@@ -247,12 +247,12 @@ namespace MyCost.View
             {
                 StaticStorage.UserID = Convert.ToInt16(data[0]);
                 StaticStorage.AccessToken = data[1];
-                StaticStorage.Username = usernameTextBox.Text;
+                StaticStorage.Username = UsernameTextBox.Text;
 
-                if (rememberMeCheckBox.Checked)
+                if (RememberMeCheckBox.Checked)
                 {
-                    Properties.Settings.Default.Username = usernameTextBox.Text;
-                    Properties.Settings.Default.Password = passwordTextBox.Text;
+                    Properties.Settings.Default.Username = UsernameTextBox.Text;
+                    Properties.Settings.Default.Password = PasswordTextBox.Text;
                     Properties.Settings.Default.Save();
                 }
 
@@ -282,14 +282,14 @@ namespace MyCost.View
         {
             //if fore-color of a textBox is not black, that means the TextBox 
             //contains the placeholder text and user didn't enter any value
-            string username = usernameTextBox.ForeColor == Color.Black? 
-                usernameTextBox.Text : "";
-            string password = passwordTextBox.ForeColor == Color.Black?
-                passwordTextBox.Text : "";
-            string confirmPassword = confirmPasswordTextBox.ForeColor == Color.Black?
-                confirmPasswordTextBox.Text : "";
-            string activationCode = activationCodeTextBox.ForeColor == Color.Black ?
-                activationCodeTextBox.Text : "";
+            string username = UsernameTextBox.ForeColor == Color.Black? 
+                UsernameTextBox.Text : "";
+            string password = PasswordTextBox.ForeColor == Color.Black?
+                PasswordTextBox.Text : "";
+            string confirmPassword = ConfirmPasswordTextBox.ForeColor == Color.Black?
+                ConfirmPasswordTextBox.Text : "";
+            string activationCode = ActivationCodeTextBox.ForeColor == Color.Black ?
+                ActivationCodeTextBox.Text : "";
 
             if (username.Length < 1)
             {
@@ -354,12 +354,12 @@ namespace MyCost.View
             {
                 StaticStorage.UserID = userId;
                 StaticStorage.AccessToken = data[1];
-                StaticStorage.Username = usernameTextBox.Text;
+                StaticStorage.Username = UsernameTextBox.Text;
 
-                if (rememberMeCheckBox.Checked)
+                if (RememberMeCheckBox.Checked)
                 {
-                    Properties.Settings.Default.Username = usernameTextBox.Text;
-                    Properties.Settings.Default.Password = passwordTextBox.Text;
+                    Properties.Settings.Default.Username = UsernameTextBox.Text;
+                    Properties.Settings.Default.Password = PasswordTextBox.Text;
                     Properties.Settings.Default.Save();
                 }
 
@@ -598,8 +598,8 @@ namespace MyCost.View
 
         private void ShowErrorMessage(string message)
         {
-            statusLabel.Text = message;
-            statusLabel.ForeColor = Color.Red;
+            StatusLabel.Text = message;
+            StatusLabel.ForeColor = Color.Red;
         }
     }
 }

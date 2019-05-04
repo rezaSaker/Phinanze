@@ -25,7 +25,7 @@ namespace MyCost.View
 
         private void ProgressViewerForm_Load(object sender, EventArgs e)
         {
-            progressBar.MarqueeAnimationSpeed = 1;
+            UI_ProgressBar.MarqueeAnimationSpeed = 1;
         }
 
         public void StopProgress()
@@ -35,7 +35,7 @@ namespace MyCost.View
 
         public void UpdateStatus(string status)
         {
-            statusLabel.Text = status;
+            StatusLabel.Text = status;
         }
 
         public string Status

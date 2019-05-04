@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.StatusLabel = new System.Windows.Forms.Label();
+            this.UI_ProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
-            // statusLabel
+            // StatusLabel
             // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(12, 9);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(58, 20);
-            this.statusLabel.TabIndex = 0;
-            this.statusLabel.Text = "Progress";
+            this.StatusLabel.AutoSize = true;
+            this.StatusLabel.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Location = new System.Drawing.Point(12, 9);
+            this.StatusLabel.Name = "StatusLabel";
+            this.StatusLabel.Size = new System.Drawing.Size(58, 20);
+            this.StatusLabel.TabIndex = 0;
+            this.StatusLabel.Text = "Progress";
             // 
-            // progressBar
+            // UI_ProgressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(16, 52);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(616, 23);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar.TabIndex = 1;
+            this.UI_ProgressBar.Location = new System.Drawing.Point(16, 52);
+            this.UI_ProgressBar.Name = "UI_ProgressBar";
+            this.UI_ProgressBar.Size = new System.Drawing.Size(616, 23);
+            this.UI_ProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.UI_ProgressBar.TabIndex = 1;
             // 
             // ProgressViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(644, 124);
-            this.Controls.Add(this.progressBar);
-            this.Controls.Add(this.statusLabel);
+            this.Controls.Add(this.UI_ProgressBar);
+            this.Controls.Add(this.StatusLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -72,7 +72,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label StatusLabel;
+        private System.Windows.Forms.ProgressBar UI_ProgressBar;
     }
 }
