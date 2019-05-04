@@ -61,7 +61,7 @@ namespace MyCost.View
             ShowReports();
         }
 
-        private void YearlyRadioButtonClicked(object sender, EventArgs e)
+        private void YearlyReportRadioButtonClicked(object sender, EventArgs e)
         {
             ShowMonthlyReportRadioButton.Checked = false;
             MonthComboBox.Enabled = false;
@@ -71,7 +71,7 @@ namespace MyCost.View
             ShowReports();
         }
 
-        private void MonthlyRadioButtonClicked(object sender, EventArgs e)
+        private void MonthlyReportRadioButtonClicked(object sender, EventArgs e)
         {
             ShowYearlyReportRadioButton.Checked = false;
             MonthComboBox.Enabled = true;
@@ -84,7 +84,7 @@ namespace MyCost.View
             MonthComboBox.SelectedIndex = _selectedMonth - 1;
         }
 
-        private void EarningRadioButtonClicked(object sender, EventArgs e)
+        private void ShowEarningReportRadioButtonClicked(object sender, EventArgs e)
         {
             ShowExpenseReportRadioButton.Checked = false;
             ShowBothEarningAndExpenseReportRadioButton.Checked = false;
@@ -92,7 +92,7 @@ namespace MyCost.View
             ShowReports();
         }
 
-        private void ExpenseRadioButtonClicked(object sender, EventArgs e)
+        private void ShowExpenseReportRadioButtonClicked(object sender, EventArgs e)
         {
             ShowEarningReportRadioButton.Checked = false;
             ShowBothEarningAndExpenseReportRadioButton.Checked = false;
@@ -102,8 +102,7 @@ namespace MyCost.View
 
         private void BothEarningAndExpenseRadionButtonClicked(object sender, EventArgs e)
         {
-            //bothEarningAndExpenseRadioButton is a single radioButton
-            //that shows both earning and expense when checked
+            //this method is called when ShowBothEarningAndExpenseReportRadioButton is Clicked
             ShowEarningReportRadioButton.Checked = false;
             ShowExpenseReportRadioButton.Checked = false;
 
@@ -543,6 +542,6 @@ namespace MyCost.View
             _quitAppOnFormClosing = false;
             this.Close();
         }
-        #endregion      
+        #endregion
     }
 }

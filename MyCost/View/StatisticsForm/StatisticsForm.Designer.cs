@@ -226,7 +226,7 @@
             this.ShowYearlyReportRadioButton.TabStop = true;
             this.ShowYearlyReportRadioButton.Text = "Yearly";
             this.ShowYearlyReportRadioButton.UseVisualStyleBackColor = true;
-            this.ShowYearlyReportRadioButton.Click += new System.EventHandler(this.YearlyRadioButtonClicked);
+            this.ShowYearlyReportRadioButton.Click += new System.EventHandler(this.YearlyReportRadioButtonClicked);
             // 
             // ShowMonthlyReportRadioButton
             // 
@@ -240,7 +240,7 @@
             this.ShowMonthlyReportRadioButton.TabStop = true;
             this.ShowMonthlyReportRadioButton.Text = "Monthly";
             this.ShowMonthlyReportRadioButton.UseVisualStyleBackColor = true;
-            this.ShowMonthlyReportRadioButton.Click += new System.EventHandler(this.MonthlyRadioButtonClicked);
+            this.ShowMonthlyReportRadioButton.Click += new System.EventHandler(this.MonthlyReportRadioButtonClicked);
             // 
             // YearComboBox
             // 
@@ -290,7 +290,7 @@
             this.ShowEarningReportRadioButton.TabStop = true;
             this.ShowEarningReportRadioButton.Text = "Earning Only";
             this.ShowEarningReportRadioButton.UseVisualStyleBackColor = true;
-            this.ShowEarningReportRadioButton.Click += new System.EventHandler(this.EarningRadioButtonClicked);
+            this.ShowEarningReportRadioButton.Click += new System.EventHandler(this.ShowEarningReportRadioButtonClicked);
             // 
             // ShowExpenseReportRadioButton
             // 
@@ -304,7 +304,7 @@
             this.ShowExpenseReportRadioButton.TabStop = true;
             this.ShowExpenseReportRadioButton.Text = "Expense Only";
             this.ShowExpenseReportRadioButton.UseVisualStyleBackColor = true;
-            this.ShowExpenseReportRadioButton.Click += new System.EventHandler(this.ExpenseRadioButtonClicked);
+            this.ShowExpenseReportRadioButton.Click += new System.EventHandler(this.ShowExpenseReportRadioButtonClicked);
             // 
             // ShowGeneralReportRadioButton
             // 
