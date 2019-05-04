@@ -113,6 +113,7 @@ namespace MyCost.View
         private void UpdateCategories()
         {
             string categoryNames = "";
+            string category;
 
             if (_categoryType == "Expense")
             {
@@ -125,8 +126,9 @@ namespace MyCost.View
                         break;
                     }
 
-                    StaticStorage.ExpenseCategories.Add(row.Cells[0].Value.ToString());
-                    categoryNames += row.Cells[0].Value.ToString();
+                    category = FilterString(row.Cells[0].Value.ToString());
+                    StaticStorage.ExpenseCategories.Add(category);
+                    categoryNames += category;
 
                     //add a splitting character after each category except the last one
                     if (row.Index < dataGridView.Rows.Count - 2)
@@ -146,8 +148,9 @@ namespace MyCost.View
                         break;
                     }
 
-                    StaticStorage.EarningCategories.Add(row.Cells[0].Value.ToString());
-                    categoryNames += row.Cells[0].Value.ToString();
+                    category = FilterString(row.Cells[0].Value.ToString());
+                    StaticStorage.EarningCategories.Add(category);
+                    categoryNames += category;
 
                     //add a splitting character after each category except the last one
                     if (row.Index < dataGridView.Rows.Count - 2)
@@ -176,6 +179,17 @@ namespace MyCost.View
             {
                 return false;
             }
+        }
+
+        private string FilterString(string str)
+        {
+            //we use '|' character to split categories when retrieving 
+            //from database. So, if any string contains that character, that
+            //might lead to an unexpected error. So this method will replace
+            //all '|' characters with '/' character in a string
+            string filteredString = str.Replace('|', '/');
+
+            return filteredString;
         }
         #endregion
     }
