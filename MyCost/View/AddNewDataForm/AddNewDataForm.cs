@@ -562,6 +562,7 @@ namespace MyCost.View
                 try
                 {
                     reason = expenseDataGridView.Rows[row.Index].Cells[0].Value.ToString();
+                    reason = FilterString(reason);
                 }
                 catch
                 {
@@ -576,7 +577,8 @@ namespace MyCost.View
                 {
                     string message;
                     message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + " In expense table. Do you want to continue saving?";
+                    message += (row.Index + 1) + " In expense table.\n\n";
+                    message += "Do you want to continue saving without changing the amount?";
 
                     DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
@@ -593,8 +595,8 @@ namespace MyCost.View
                 {
                     string message;
                     message = "Looks like the amount is not correct on row ";
-                    message += (row.Index + 1) + " in expense table. Continuing may cause ";
-                    message += "loss of data. Do you want to continue saving?";
+                    message += (row.Index + 1) + " in expense table. Amount can only contain digit.\n\n";
+                    message += "Do you want to continue saving without changing amount?";
 
                     DialogResult dlgResult = MessageBox.Show(message,"Alert", MessageBoxButtons.YesNo);
                     
@@ -611,6 +613,7 @@ namespace MyCost.View
                 try
                 {
                     category = expenseDataGridView.Rows[row.Index].Cells[2].Value.ToString();
+                    category = FilterString(category);
                 }
                 catch
                 {
@@ -620,6 +623,7 @@ namespace MyCost.View
                 try
                 {
                     comment = expenseDataGridView.Rows[row.Index].Cells[3].Value.ToString();
+                    comment = FilterString(comment);
                 }
                 catch
                 {
@@ -646,6 +650,7 @@ namespace MyCost.View
                 try
                 {
                     source = earningDataGridView.Rows[row.Index].Cells[0].Value.ToString();
+                    source = FilterString(source);
                 }
                 catch
                 {
@@ -659,7 +664,8 @@ namespace MyCost.View
                 catch (NullReferenceException)
                 {
                     string message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + " in Earning table. Do you want to continue saving?";
+                    message += (row.Index + 1) + " in Earning table. \n\n";
+                    message += "Do you want to continue saving without changing the amount?";
 
                     DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
@@ -676,8 +682,8 @@ namespace MyCost.View
                 {
                     string message;
                     message = "Looks like the amount is not correct on row ";
-                    message += (row.Index + 1) + " in earning table. Continuing may cause ";
-                    message += "loss of data. Do you want to continue saving?";
+                    message += (row.Index + 1) + " in earning table.\n\n";
+                    message += "Do you want to continue saving without changing the amount?";
 
                     DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
@@ -694,6 +700,7 @@ namespace MyCost.View
                 try
                 {
                     category = earningDataGridView.Rows[row.Index].Cells[2].Value.ToString();
+                    category = FilterString(category);
                 }
                 catch
                 {
@@ -703,6 +710,7 @@ namespace MyCost.View
                 try
                 {
                     comment = earningDataGridView.Rows[row.Index].Cells[3].Value.ToString();
+                    comment = FilterString(comment);
                 }
                 catch
                 {
@@ -771,7 +779,6 @@ namespace MyCost.View
                     return false;
                 }
             }
-
             return true;
         }
 
@@ -787,7 +794,6 @@ namespace MyCost.View
                 {
                     break;
                 }
-
                 rowIndexList.Add(row.Index);
             }
 
@@ -833,6 +839,27 @@ namespace MyCost.View
             _hasUnsavedChanges = false;
             saveButton.Enabled = false;
             saveButton.BackColor = Color.LightBlue;
+        }
+
+        private string FilterString(string str)
+        {
+            //we use '~' character to split daily information when retrieving 
+            //from database. So, if any string contains that character, that
+            //might lead to an unexpected error. So this method will replace
+            //all '~' characters with '-' character in a string
+            char[] charArray = str.ToCharArray();
+            string filteredString = "";
+
+            for(int i = 0; i < charArray.Length; i++)
+            {
+                if(charArray[i] == '~')
+                {
+                    charArray[i] = '-';
+                }
+                filteredString += charArray[i].ToString();
+            }
+
+            return filteredString;
         }
         #endregion            
     }
