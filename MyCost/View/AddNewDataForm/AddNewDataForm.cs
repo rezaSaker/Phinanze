@@ -847,17 +847,7 @@ namespace MyCost.View
             //from database. So, if any string contains that character, that
             //might lead to an unexpected error. So this method will replace
             //all '~' characters with '-' character in a string
-            char[] charArray = str.ToCharArray();
-            string filteredString = "";
-
-            for(int i = 0; i < charArray.Length; i++)
-            {
-                if(charArray[i] == '~')
-                {
-                    charArray[i] = '-';
-                }
-                filteredString += charArray[i].ToString();
-            }
+            string filteredString = str.Replace('~', '-');
 
             return filteredString;
         }
