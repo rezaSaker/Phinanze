@@ -19,7 +19,7 @@ namespace MyCost.View
         private bool _quitAppOnFormClosing;
         private bool _hasUnsavedChanges;
         private bool _isAutoSaveAlreadyAttempted;
-        private bool _redundantTriggerOfEventHandler;
+        private bool _IsRedundantTriggerOfEventHandler;
 
         public AddNewDataForm()
         {
@@ -46,7 +46,7 @@ namespace MyCost.View
             _quitAppOnFormClosing = true;
             _hasUnsavedChanges = false;
             _isAutoSaveAlreadyAttempted = false;
-            _redundantTriggerOfEventHandler = false;
+            _IsRedundantTriggerOfEventHandler = false;
 
             for (int i = 2018; i < _selectedYear + 3; i++)
             {
@@ -76,16 +76,16 @@ namespace MyCost.View
 
         private void DayComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (!_redundantTriggerOfEventHandler)
+            if (!_IsRedundantTriggerOfEventHandler)
             {
                 if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
                 {
                     if (!AutoSaveDailyInfo())
                     {
-                        //since we are changing selected index, 
+                        //since we are changing selected index in this block, 
                         //this will itrigger this method again which is unexpected
-                        //setting _redundantTriggerOfEventHandler = true will prevent tht
-                        _redundantTriggerOfEventHandler = true;
+                        //setting _redundantTriggerOfEventHandler = true will prevent that
+                        _IsRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
                         dayComboBox.SelectedIndex = _dayComboBoxPrevSelectedIndex;
@@ -104,22 +104,22 @@ namespace MyCost.View
             }
             else
             {
-                _redundantTriggerOfEventHandler = false;
+                _IsRedundantTriggerOfEventHandler = false;
             }
         }
 
         private void MonthComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (!_redundantTriggerOfEventHandler)
+            if (!_IsRedundantTriggerOfEventHandler)
             {
                 if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
                 {
                     if (!AutoSaveDailyInfo())
                     {
-                        //since we are changing selected index, 
+                        //since we are changing selected index in this block, 
                         //this will itrigger this method again which is unexpected
-                        //setting _redundantTriggerOfEventHandler = true will prevent tht
-                        _redundantTriggerOfEventHandler = true;
+                        //setting _redundantTriggerOfEventHandler = true will prevent that
+                        _IsRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
                         monthComboBox.SelectedIndex = _monthComboBoxPrevSelectedIndex;
@@ -138,22 +138,22 @@ namespace MyCost.View
             }
             else
             {
-                _redundantTriggerOfEventHandler = false;
+                _IsRedundantTriggerOfEventHandler = false;
             }
         }
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            if (!_redundantTriggerOfEventHandler)
+            if (!_IsRedundantTriggerOfEventHandler)
             {
                 if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
                 {
                     if (!AutoSaveDailyInfo())
                     {
-                        //since we are changing selected index, 
+                        //since we are changing selected index in this block, 
                         //this will itrigger this method again which is unexpected
-                        //setting _redundantTriggerOfEventHandler = true will prevent tht
-                        _redundantTriggerOfEventHandler = true;
+                        //setting _redundantTriggerOfEventHandler = true will prevent that
+                        _IsRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
                         yearComboBox.SelectedIndex = _yearComboBoxPrevSelectedIndex;
@@ -172,7 +172,7 @@ namespace MyCost.View
             }
             else
             {
-                _redundantTriggerOfEventHandler = false;
+                _IsRedundantTriggerOfEventHandler = false;
             }
         }
 
@@ -189,7 +189,7 @@ namespace MyCost.View
 
         private void ExpenseDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if(IslastEmptyRow(expenseDataGridView, e.RowIndex) || e.RowIndex == -1)
+            if(IsLastEmptyRow(expenseDataGridView, e.RowIndex) || e.RowIndex == -1)
             {
                 return;
             }
@@ -225,7 +225,7 @@ namespace MyCost.View
 
         private void EarningDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if (IslastEmptyRow(earningDataGridView, e.RowIndex) || e.RowIndex == -1)
+            if (IsLastEmptyRow(earningDataGridView, e.RowIndex) || e.RowIndex == -1)
             {
                 return;
             }
@@ -459,7 +459,7 @@ namespace MyCost.View
             //go through each row in expense datagridView and add up the amounts
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
-                if (IslastEmptyRow(expenseDataGridView, row.Index))
+                if (IsLastEmptyRow(expenseDataGridView, row.Index))
                 {
                     break;
                 }
@@ -493,7 +493,7 @@ namespace MyCost.View
             //go through each row in expense datagridView and add up the amounts
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
-                if (IslastEmptyRow(earningDataGridView, row.Index))
+                if (IsLastEmptyRow(earningDataGridView, row.Index))
                 {
                     break;
                 }
@@ -554,7 +554,7 @@ namespace MyCost.View
 
             foreach (DataGridViewRow row in expenseDataGridView.Rows)
             {
-                if (IslastEmptyRow(expenseDataGridView, row.Index))
+                if (IsLastEmptyRow(expenseDataGridView, row.Index))
                 {
                     break;
                 }
@@ -578,9 +578,9 @@ namespace MyCost.View
                     message = "Looks like you forgot to enter amount on row ";
                     message += (row.Index + 1) + " In expense table. Do you want to continue saving?";
 
-                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (dresult == DialogResult.Yes)
+                    if (dlgResult == DialogResult.Yes)
                     {
                         amount = .0;
                     }
@@ -596,9 +596,9 @@ namespace MyCost.View
                     message += (row.Index + 1) + " in expense table. Continuing may cause ";
                     message += "loss of data. Do you want to continue saving?";
 
-                    DialogResult dresult = MessageBox.Show(message,"Alert", MessageBoxButtons.YesNo);
+                    DialogResult dlgResult = MessageBox.Show(message,"Alert", MessageBoxButtons.YesNo);
                     
-                    if(dresult == DialogResult.Yes)
+                    if(dlgResult == DialogResult.Yes)
                     {
                         amount = 0.0;
                     }
@@ -638,7 +638,7 @@ namespace MyCost.View
 
             foreach (DataGridViewRow row in earningDataGridView.Rows)
             {
-                if (IslastEmptyRow(earningDataGridView, row.Index))
+                if (IsLastEmptyRow(earningDataGridView, row.Index))
                 {
                     break;
                 }
@@ -661,9 +661,9 @@ namespace MyCost.View
                     string message = "Looks like you forgot to enter amount on row ";
                     message += (row.Index + 1) + " in Earning table. Do you want to continue saving?";
 
-                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (dresult == DialogResult.Yes)
+                    if (dlgResult == DialogResult.Yes)
                     {
                         amount = .0;
                     }
@@ -679,9 +679,9 @@ namespace MyCost.View
                     message += (row.Index + 1) + " in earning table. Continuing may cause ";
                     message += "loss of data. Do you want to continue saving?";
 
-                    DialogResult dresult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
-                    if (dresult == DialogResult.Yes)
+                    if (dlgResult == DialogResult.Yes)
                     {
                         amount = 0.0;
                     }
@@ -783,7 +783,7 @@ namespace MyCost.View
 
             foreach (DataGridViewRow row in dgv.SelectedRows)
             {
-                if (IslastEmptyRow(dgv, row.Index))
+                if (IsLastEmptyRow(dgv, row.Index))
                 {
                     break;
                 }
@@ -806,7 +806,7 @@ namespace MyCost.View
             }
         }
 
-        private bool IslastEmptyRow(DataGridView dgv, int rowindex)
+        private bool IsLastEmptyRow(DataGridView dgv, int rowindex)
         {
             if (rowindex == dgv.Rows.Count - 1)
             {
