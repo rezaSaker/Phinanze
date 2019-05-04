@@ -21,6 +21,8 @@ namespace MyCost.View
         private bool _isAutoSaveAlreadyAttempted;
         private bool _redundantTriggerOfEventHandler;
 
+        private ProgressViewerForm _progressViewer;
+
         public AddNewDataForm()
         {
             InitializeComponent();          
@@ -100,10 +102,7 @@ namespace MyCost.View
                 _selectedDay = dayComboBox.SelectedIndex + 1;
                 PlotDailyInfo();
 
-                _isAutoSaveAlreadyAttempted = false;
-                _hasUnsavedChanges = false;
-                saveButton.Enabled = false;
-                saveButton.BackColor = Color.LightBlue;
+                ResetProperties();
             }
             else
             {
@@ -137,10 +136,7 @@ namespace MyCost.View
                 _selectedMonth = monthComboBox.SelectedIndex + 1;
                 AddItemsToDayComboBox();
 
-                _isAutoSaveAlreadyAttempted = false;
-                _hasUnsavedChanges = false;
-                saveButton.Enabled = false;
-                saveButton.BackColor = Color.LightBlue;
+                ResetProperties();
             }
             else
             {
@@ -174,10 +170,7 @@ namespace MyCost.View
                 _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
                 AddItemsToDayComboBox();
 
-                _isAutoSaveAlreadyAttempted = false;
-                _hasUnsavedChanges = false;
-                saveButton.Enabled = false;
-                saveButton.BackColor = Color.LightBlue;
+                ResetProperties();
             }
             else
             {
@@ -836,7 +829,15 @@ namespace MyCost.View
 
             _quitAppOnFormClosing = false;
             this.Close();
-        }       
+        } 
+        
+        private void ResetProperties()
+        {
+            _isAutoSaveAlreadyAttempted = false;
+            _hasUnsavedChanges = false;
+            saveButton.Enabled = false;
+            saveButton.BackColor = Color.LightBlue;
+        }
         #endregion            
     }
 }
