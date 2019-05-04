@@ -29,7 +29,7 @@ namespace MyCost.View
             //_dgv points to a dataGridView on AddNewDataForm 
             if (_dgv.Name == "expenseDataGridView")
             {
-                foreach (string category in StaticStorage.ExpenseCategories)
+                foreach (string category in GlobalSpace.ExpenseCategories)
                 {
                     CategoryDataGridView.Rows.Add(category);
                 }
@@ -37,7 +37,7 @@ namespace MyCost.View
             }
             else if (_dgv.Name == "earningDataGridView")
             {
-                foreach (string category in StaticStorage.EarningCategories)
+                foreach (string category in GlobalSpace.EarningCategories)
                 {
                     CategoryDataGridView.Rows.Add(category);
                 }
@@ -117,7 +117,7 @@ namespace MyCost.View
 
             if (_categoryType == "Expense")
             {
-                StaticStorage.ExpenseCategories.Clear();
+                GlobalSpace.ExpenseCategories.Clear();
 
                 foreach (DataGridViewRow row in CategoryDataGridView.Rows)
                 {
@@ -127,7 +127,7 @@ namespace MyCost.View
                     }
 
                     category = FilterString(row.Cells[0].Value.ToString());
-                    StaticStorage.ExpenseCategories.Add(category);
+                    GlobalSpace.ExpenseCategories.Add(category);
                     categoryNames += category;
 
                     //add a splitting character after each category except the last one
@@ -139,7 +139,7 @@ namespace MyCost.View
             }
             else
             {
-                StaticStorage.EarningCategories.Clear();
+                GlobalSpace.EarningCategories.Clear();
 
                 foreach (DataGridViewRow row in CategoryDataGridView.Rows)
                 {
@@ -149,7 +149,7 @@ namespace MyCost.View
                     }
 
                     category = FilterString(row.Cells[0].Value.ToString());
-                    StaticStorage.EarningCategories.Add(category);
+                    GlobalSpace.EarningCategories.Add(category);
                     categoryNames += category;
 
                     //add a splitting character after each category except the last one

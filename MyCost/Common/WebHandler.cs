@@ -38,7 +38,7 @@ namespace MyCost.Common.WebHandler
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "userAuthentication.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "userAuthentication.php", "POST", queryData);
                 string resultData  = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
@@ -82,7 +82,7 @@ namespace MyCost.Common.WebHandler
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "registerNewUser.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "registerNewUser.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
@@ -120,12 +120,12 @@ namespace MyCost.Common.WebHandler
             queryData = new System.Collections.Specialized.NameValueCollection();
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getDailyInfo.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "getDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
@@ -163,12 +163,12 @@ namespace MyCost.Common.WebHandler
             queryData = new System.Collections.Specialized.NameValueCollection();
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "getCategories.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "getCategories.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
@@ -257,8 +257,8 @@ namespace MyCost.Common.WebHandler
             }
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("note", daily.Note);
             queryData.Add("day", daily.Day.ToString());
             queryData.Add("month", daily.Month.ToString());
@@ -276,7 +276,7 @@ namespace MyCost.Common.WebHandler
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveDailyInfo.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "saveDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
@@ -296,14 +296,14 @@ namespace MyCost.Common.WebHandler
             queryData = new System.Collections.Specialized.NameValueCollection();
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("categoryNames", categoryNames);
             queryData.Add("categoryType", categoryType);
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "saveCategories.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "saveCategories.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
@@ -322,15 +322,15 @@ namespace MyCost.Common.WebHandler
             queryData = new System.Collections.Specialized.NameValueCollection();
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("day", day.ToString());
             queryData.Add("month", month.ToString());
             queryData.Add("year", year.ToString());
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "deleteDailyInfo.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "deleteDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
@@ -349,15 +349,15 @@ namespace MyCost.Common.WebHandler
             queryData = new System.Collections.Specialized.NameValueCollection();
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("newUsername", newUsername);
-            queryData.Add("currentUsername", StaticStorage.Username);
+            queryData.Add("currentUsername", GlobalSpace.Username);
             queryData.Add("password", password);
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updateUsername.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "updateUsername.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;
@@ -376,15 +376,15 @@ namespace MyCost.Common.WebHandler
             queryData = new System.Collections.Specialized.NameValueCollection();
 
             queryData.Add("key", Properties.Settings.Default.AccessKey);
-            queryData.Add("token", StaticStorage.AccessToken);
-            queryData.Add("userid", StaticStorage.UserID.ToString());
-            queryData.Add("username", StaticStorage.Username);
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
+            queryData.Add("username", GlobalSpace.Username);
             queryData.Add("currentPassword", currentPass);
             queryData.Add("newPassword", newPass);
 
             try
             {
-                byte[] resultBytes = www.UploadValues(StaticStorage.ServerAddress + "updatePassword.php", "POST", queryData);
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "updatePassword.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;

@@ -46,9 +46,9 @@ namespace MyCost.Common
         /// </summary>
         public static void Fetch()
         {
-            StaticStorage.MonthlyInfoList.Clear();
+            GlobalSpace.MonthlyInfoList.Clear();
 
-            if (StaticStorage.DailyInfoList.Count < 1)
+            if (GlobalSpace.DailyInfoList.Count < 1)
             {
                 //monthly info consists of daily info
                 //so, no daily info means no monthly info 
@@ -58,14 +58,14 @@ namespace MyCost.Common
             //we get the info from db in decsneding order of year
             //so the first year in the list is the most recent
             //and last year in the list is the oldest year
-            int recentYear = StaticStorage.DailyInfoList[0].Year;
-            int oldestYear = StaticStorage.DailyInfoList[StaticStorage.DailyInfoList.Count - 1].Year;
+            int recentYear = GlobalSpace.DailyInfoList[0].Year;
+            int oldestYear = GlobalSpace.DailyInfoList[GlobalSpace.DailyInfoList.Count - 1].Year;
 
             for (int year = recentYear; year <= oldestYear; year++)
             {
                 for (int month = 1; month <= 12; month++)
                 {
-                    List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
+                    List<DailyInfo> dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
                         d => d.Year == year && d.Month == month);
 
                     if(dailyInfoList != null && dailyInfoList.Count > 0)
@@ -78,7 +78,7 @@ namespace MyCost.Common
                         monthly.Year = year;
                         monthly.Expense = expense;
                         monthly.Earning = earning;
-                        StaticStorage.MonthlyInfoList.Add(monthly);
+                        GlobalSpace.MonthlyInfoList.Add(monthly);
                     }                  
                 }
             }

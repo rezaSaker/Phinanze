@@ -111,7 +111,7 @@ namespace MyCost.View
             }
             else if (button.Name == "LogOutButton")
             {
-                StaticStorage.LogOutUser();
+                GlobalSpace.LogOutUser();
                 _quitAppOnFormClosing = false;
                 this.Close();
             }
@@ -135,7 +135,7 @@ namespace MyCost.View
 
             int rowIndex = 0;
 
-            foreach (MonthlyInfo monthly in StaticStorage.MonthlyInfoList)
+            foreach (MonthlyInfo monthly in GlobalSpace.MonthlyInfoList)
             {
                 string year = monthly.Year.ToString();
                 string month = _monthList[monthly.Month - 1];

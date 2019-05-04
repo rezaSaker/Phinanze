@@ -109,7 +109,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\WebHandler.cs" />
-    <Compile Include="Common\StaticStorage.cs" />
+    <Compile Include="Common\GlobalSpace.cs" />
     <EmbeddedResource Include="View\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
     </EmbeddedResource>

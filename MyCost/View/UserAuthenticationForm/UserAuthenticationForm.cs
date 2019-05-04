@@ -250,9 +250,9 @@ namespace MyCost.View
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
             {
-                StaticStorage.UserID = Convert.ToInt16(data[0]);
-                StaticStorage.AccessToken = data[1];
-                StaticStorage.Username = UsernameTextBox.Text;
+                GlobalSpace.UserID = Convert.ToInt16(data[0]);
+                GlobalSpace.AccessToken = data[1];
+                GlobalSpace.Username = UsernameTextBox.Text;
 
                 if (RememberMeCheckBox.Checked)
                 {
@@ -357,9 +357,9 @@ namespace MyCost.View
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
             {
-                StaticStorage.UserID = userId;
-                StaticStorage.AccessToken = data[1];
-                StaticStorage.Username = UsernameTextBox.Text;
+                GlobalSpace.UserID = userId;
+                GlobalSpace.AccessToken = data[1];
+                GlobalSpace.Username = UsernameTextBox.Text;
 
                 if (RememberMeCheckBox.Checked)
                 {
@@ -508,7 +508,7 @@ namespace MyCost.View
                         daily.EarningList.Add(earning);
                     }
                 }
-                StaticStorage.DailyInfoList.Add(daily);
+                GlobalSpace.DailyInfoList.Add(daily);
             }
         }
 
@@ -558,12 +558,12 @@ namespace MyCost.View
 
             foreach (string cat in earningCategories)
             {
-                StaticStorage.EarningCategories.Add(cat);
+                GlobalSpace.EarningCategories.Add(cat);
             }
 
             foreach (string cat in expenseCategories)
             {
-                StaticStorage.ExpenseCategories.Add(cat);
+                GlobalSpace.ExpenseCategories.Add(cat);
             }
 
             _progressViewerObject.StopProgress();

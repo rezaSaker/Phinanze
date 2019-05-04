@@ -20,7 +20,7 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            UserNameLaabel.Text = "username: " + StaticStorage.Username;
+            UserNameLaabel.Text = "username: " + GlobalSpace.Username;
         }
 
         private void UsernameTextBoxesClicked(object sender, EventArgs e)
@@ -88,7 +88,7 @@ namespace MyCost.View
 
         private void SubmitNewUsernameButtonClicked(object sender, EventArgs e)
         {
-            if (CurrentUserNameTextBox.Text != StaticStorage.Username)
+            if (CurrentUserNameTextBox.Text != GlobalSpace.Username)
             {
                 MessageBox.Show("Current username is incorrect");
                 return;
@@ -99,7 +99,7 @@ namespace MyCost.View
             if (result == "SUCCESS")
             {
                  //log out user from the current session                    
-                 StaticStorage.LogOutUser();
+                 GlobalSpace.LogOutUser();
                  _quitAppOnFormClosing = false;
                  this.Close();
             }
@@ -123,7 +123,7 @@ namespace MyCost.View
                 if (result == "SUCCESS")
                 {
                     //log out user from the current session                   
-                    StaticStorage.LogOutUser();
+                    GlobalSpace.LogOutUser();
                     _quitAppOnFormClosing = false;
                     this.Close();
                 }
@@ -171,7 +171,7 @@ namespace MyCost.View
             }
             else if (button.Name == "LogOutButton")
             {
-                StaticStorage.LogOutUser();
+                GlobalSpace.LogOutUser();
                 _quitAppOnFormClosing = false;
                 this.Close();
             }
@@ -181,7 +181,7 @@ namespace MyCost.View
         {
             try
             {
-                Process.Start(StaticStorage.HelpPath);
+                Process.Start(GlobalSpace.HelpPath);
             }
             catch
             {
@@ -193,7 +193,7 @@ namespace MyCost.View
         {
             try
             {
-                Process.Start(StaticStorage.ReportAppPath);
+                Process.Start(GlobalSpace.ReportAppPath);
             }
             catch
             {
@@ -205,7 +205,7 @@ namespace MyCost.View
         {
             try
             {
-                Process.Start(StaticStorage.AboutAppPath);
+                Process.Start(GlobalSpace.AboutAppPath);
             }
             catch
             {

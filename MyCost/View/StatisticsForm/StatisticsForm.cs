@@ -172,7 +172,7 @@ namespace MyCost.View
             }
             else if (button.Name == "LogOutButton")
             {
-                StaticStorage.LogOutUser();
+                GlobalSpace.LogOutUser();
                 _quitAppOnFormClosing = false;
                 this.Close();
             }
@@ -211,7 +211,7 @@ namespace MyCost.View
 
         private void ShowGeneralYearlyReport()
         {
-            List<MonthlyInfo> monthlyInfo = StaticStorage.MonthlyInfoList.FindAll(m => m.Year == _selectedYear);
+            List<MonthlyInfo> monthlyInfo = GlobalSpace.MonthlyInfoList.FindAll(m => m.Year == _selectedYear);
 
             if (ShowBothEarningAndExpenseReportRadioButton.Checked)
             {
@@ -232,7 +232,7 @@ namespace MyCost.View
 
         private void ShowGeneralMonthlyReport()
         {
-            List<DailyInfo> dailyInfo = StaticStorage.DailyInfoList.FindAll(
+            List<DailyInfo> dailyInfo = GlobalSpace.DailyInfoList.FindAll(
                 d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
             if(ShowBothEarningAndExpenseReportRadioButton.Checked)
@@ -254,12 +254,12 @@ namespace MyCost.View
 
         private void ShowCategorywiseYearlyReport()
         {                       
-            List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(d => d.Year == _selectedYear);
+            List<DailyInfo> dailyInfoList = GlobalSpace.DailyInfoList.FindAll(d => d.Year == _selectedYear);
                   
             if (ShowEarningReportRadioButton.Checked)
             {
                 IDictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
-                dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
                 {
@@ -274,7 +274,7 @@ namespace MyCost.View
             else
             {
                 IDictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
-                dictCategorywiseExpense = StaticStorage.ExpenseCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
                 {
@@ -290,13 +290,13 @@ namespace MyCost.View
 
         private void ShowCategorywiseMonthlyReport()
         {
-            List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
+            List<DailyInfo> dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
                 d => d.Year == _selectedYear && d.Month == _selectedMonth);
 
             if (ShowEarningReportRadioButton.Checked)
             {
                 IDictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
-                dictCategorywiseEarning = StaticStorage.EarningCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
                 {
@@ -311,7 +311,7 @@ namespace MyCost.View
             else
             {
                 IDictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
-                dictCategorywiseExpense = StaticStorage.ExpenseCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
                 {

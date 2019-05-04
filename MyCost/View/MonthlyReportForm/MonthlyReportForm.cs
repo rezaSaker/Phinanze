@@ -120,7 +120,7 @@ namespace MyCost.View
             }
             else if (button.Name == "LogOutButton")
             {
-                StaticStorage.LogOutUser();
+                GlobalSpace.LogOutUser();
                 _quitAppOnFormClosing = false;
                 this.Close();
             }
@@ -164,7 +164,7 @@ namespace MyCost.View
 
             int numberOfDays = GetNumberOfDaysInMonth();
             
-            List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
+            List<DailyInfo> dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
                 d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
             //plot info sorted in ascending order
@@ -239,7 +239,7 @@ namespace MyCost.View
                         MonthlyReportDataGridView.Rows.RemoveAt(row.Index);
                     }
 
-                    StaticStorage.DailyInfoList.RemoveAll(
+                    GlobalSpace.DailyInfoList.RemoveAll(
                         d => d.Day == day && d.Month == _selectedMonth && d.Year == _selectedYear);
 
                     //monthly info should change accordingly since daily info has been modified

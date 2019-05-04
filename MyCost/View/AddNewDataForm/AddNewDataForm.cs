@@ -329,7 +329,7 @@ namespace MyCost.View
             }
             else if (button.Name == "LogOutButton")
             {
-                StaticStorage.LogOutUser();
+                GlobalSpace.LogOutUser();
                 _quitAppOnFormClosing = false;
                 this.Close();
             }
@@ -425,7 +425,7 @@ namespace MyCost.View
             EarningDataGridView.Rows.Clear();
 
             //plot info for new selected date
-            DailyInfo daily = StaticStorage.DailyInfoList.Find(
+            DailyInfo daily = GlobalSpace.DailyInfoList.Find(
                                     d => d.Day == _selectedDay 
                                     && d.Month == _selectedMonth 
                                     && d.Year == _selectedYear);
@@ -733,16 +733,16 @@ namespace MyCost.View
             {
                 //if any info on the same date already exists, overwrite that info 
                 //otherwise, add this info as new info
-                int index = StaticStorage.DailyInfoList.FindIndex(
+                int index = GlobalSpace.DailyInfoList.FindIndex(
                     d => d.Day == daily.Day && d.Month == daily.Month && d.Year == daily.Year);
 
                 if (index != -1)
                 {
-                    StaticStorage.DailyInfoList[index] = daily;
+                    GlobalSpace.DailyInfoList[index] = daily;
                 }
                 else
                 {
-                    StaticStorage.DailyInfoList.Add(daily);
+                    GlobalSpace.DailyInfoList.Add(daily);
                 }
 
                 //monthly info should change accordingly since daily info has been modified

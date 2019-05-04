@@ -4,7 +4,7 @@ using MyCost.View;
 
 namespace MyCost.Common
 {
-    class StaticStorage
+    class GlobalSpace
     {
         public const string ServerAddress = Server.Address;
         public const string AboutAppPath = "https://github.com/rezaSaker/MyCost";
