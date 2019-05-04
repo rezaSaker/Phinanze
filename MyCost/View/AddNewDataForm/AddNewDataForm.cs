@@ -82,9 +82,9 @@ namespace MyCost.View
                 {
                     if (!AutoSaveDailyInfo())
                     {
-                        //since we are changing selected index in this block, 
-                        //this will itrigger this method again which is unexpected
-                        //setting _redundantTriggerOfEventHandler = true will prevent that
+                        //Since we are changing selected index in this block, 
+                        //this will trigger this method again which is unexpected.
+                        //Setting _isRedundantTriggerOfEventHandler = true will prevent that
                         _IsRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
@@ -93,7 +93,7 @@ namespace MyCost.View
                     }
                 }
 
-                //keep record of the selected index so that we can 
+                //Keep record of the selected index so that we can 
                 //switch back to this index if needed during next selection change
                 _dayComboBoxPrevSelectedIndex = DayComboBox.SelectedIndex;
 
@@ -116,9 +116,9 @@ namespace MyCost.View
                 {
                     if (!AutoSaveDailyInfo())
                     {
-                        //since we are changing selected index in this block, 
-                        //this will itrigger this method again which is unexpected
-                        //setting _redundantTriggerOfEventHandler = true will prevent that
+                        //Since we are changing selected index in this block, 
+                        //this will trigger this method again which is unexpected.
+                        //Setting _isRedundantTriggerOfEventHandler = true will prevent
                         _IsRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
@@ -127,7 +127,7 @@ namespace MyCost.View
                     }
                 }
 
-                //keep the record of the selected index so that we can 
+                //Keep the record of the selected index so that we can 
                 //switch back to this index if needed during next selection change
                 _monthComboBoxPrevSelectedIndex = MonthComboBox.SelectedIndex;
 
@@ -150,9 +150,9 @@ namespace MyCost.View
                 {
                     if (!AutoSaveDailyInfo())
                     {
-                        //since we are changing selected index in this block, 
-                        //this will itrigger this method again which is unexpected
-                        //setting _redundantTriggerOfEventHandler = true will prevent that
+                        //Since we are changing selected index in this block, 
+                        //this will trigger this method again which is unexpected.
+                        //Setting _isRedundantTriggerOfEventHandler = true will prevent
                         _IsRedundantTriggerOfEventHandler = true;
 
                         _isAutoSaveAlreadyAttempted = false;
@@ -161,7 +161,7 @@ namespace MyCost.View
                     }
                 }
 
-                //keep record of the selected index so that we can 
+                //Keep record of the selected index so that we can 
                 //switch back to this index if needed during next selection change
                 _yearComboBoxPrevSelectedIndex = YearComboBox.SelectedIndex;
 
