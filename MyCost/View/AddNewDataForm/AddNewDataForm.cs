@@ -21,8 +21,6 @@ namespace MyCost.View
         private bool _isAutoSaveAlreadyAttempted;
         private bool _redundantTriggerOfEventHandler;
 
-        private ProgressViewerForm _progressViewer;
-
         public AddNewDataForm()
         {
             InitializeComponent();          

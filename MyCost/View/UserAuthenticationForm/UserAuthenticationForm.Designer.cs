@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAuthenticationForm));
             this.showRegisterPanelButton = new System.Windows.Forms.Button();
             this.showLoginPanelButton = new System.Windows.Forms.Button();
-            this.lbl_welcomeText = new System.Windows.Forms.Label();
+            this.appLogoLabel = new System.Windows.Forms.Label();
             this.submitButton = new System.Windows.Forms.Button();
             this.confirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
@@ -71,17 +71,17 @@
             this.showLoginPanelButton.UseVisualStyleBackColor = false;
             this.showLoginPanelButton.Click += new System.EventHandler(this.ShowLoginPanelButoonClicked);
             // 
-            // lbl_welcomeText
+            // appLogoLabel
             // 
-            this.lbl_welcomeText.AutoSize = true;
-            this.lbl_welcomeText.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl_welcomeText.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_welcomeText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lbl_welcomeText.Location = new System.Drawing.Point(286, 9);
-            this.lbl_welcomeText.Name = "lbl_welcomeText";
-            this.lbl_welcomeText.Size = new System.Drawing.Size(209, 54);
-            this.lbl_welcomeText.TabIndex = 3;
-            this.lbl_welcomeText.Text = "MYCOST";
+            this.appLogoLabel.AutoSize = true;
+            this.appLogoLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.appLogoLabel.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appLogoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.appLogoLabel.Location = new System.Drawing.Point(286, 9);
+            this.appLogoLabel.Name = "appLogoLabel";
+            this.appLogoLabel.Size = new System.Drawing.Size(209, 54);
+            this.appLogoLabel.TabIndex = 3;
+            this.appLogoLabel.Text = "MYCOST";
             // 
             // submitButton
             // 
@@ -190,7 +190,7 @@
             this.Controls.Add(this.confirmPasswordTextBox);
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.usernameTextBox);
-            this.Controls.Add(this.lbl_welcomeText);
+            this.Controls.Add(this.appLogoLabel);
             this.Controls.Add(this.showLoginPanelButton);
             this.Controls.Add(this.showRegisterPanelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -211,7 +211,7 @@
 
         private System.Windows.Forms.Button showRegisterPanelButton;
         private System.Windows.Forms.Button showLoginPanelButton;
-        private System.Windows.Forms.Label lbl_welcomeText;
+        private System.Windows.Forms.Label appLogoLabel;
         private System.Windows.Forms.Button submitButton;
         private System.Windows.Forms.TextBox confirmPasswordTextBox;
         private System.Windows.Forms.TextBox passwordTextBox;
