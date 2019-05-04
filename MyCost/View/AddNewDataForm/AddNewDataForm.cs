@@ -189,7 +189,7 @@ namespace MyCost.View
 
         private void ExpenseDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if(IslastEmptyRow(expenseDataGridView, e.RowIndex))
+            if(IslastEmptyRow(expenseDataGridView, e.RowIndex) || e.RowIndex == -1)
             {
                 return;
             }
@@ -225,7 +225,7 @@ namespace MyCost.View
 
         private void EarningDataGridViewCellClicked(object sender, DataGridViewCellEventArgs e)
         {
-            if (IslastEmptyRow(earningDataGridView, e.RowIndex))
+            if (IslastEmptyRow(earningDataGridView, e.RowIndex) || e.RowIndex == -1)
             {
                 return;
             }

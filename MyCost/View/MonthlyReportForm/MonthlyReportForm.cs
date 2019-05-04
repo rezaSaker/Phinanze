@@ -162,12 +162,13 @@ namespace MyCost.View
             HeaderLabel.Text = "Showing monthly information for ";
             HeaderLabel.Text += _monthList[_selectedMonth - 1] + " " + _selectedYear.ToString();
 
-            int numberOfDays = GetNumberOfDays();
+            int numberOfDays = GetNumberOfDaysInMonth();
             
             List<DailyInfo> dailyInfoList = StaticStorage.DailyInfoList.FindAll(
                 d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
             //plot info sorted in ascending order
+            int rowIndex = 0;
             for (int day = 1; day <= numberOfDays; day++)
             {
                 DailyInfo daily = dailyInfoList.Find(d => d.Day == day);
@@ -176,6 +177,7 @@ namespace MyCost.View
                 {
                     string date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
                     dataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
+                    dataGridView.Rows[rowIndex++].HeaderCell.Value = rowIndex.ToString();
                 }
             }
 
@@ -185,7 +187,7 @@ namespace MyCost.View
             }          
         }
 
-        private int GetNumberOfDays()
+        private int GetNumberOfDaysInMonth()
         {
             //calculates the number of days according to month
             if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
@@ -216,6 +218,11 @@ namespace MyCost.View
 
         private void DeleteDailyInfo(bool manuallyRemoveRow = false)
         {
+            string status = "Deleting daily infomation...";
+            ProgressViewerForm progressViewer = new ProgressViewerForm(status);
+            progressViewer.Location = new Point(this.Location.X + 78, this.Location.Y + 180);
+            progressViewer.Show();
+
             foreach (DataGridViewRow row in dataGridView.SelectedRows)
             {
                 int day = Convert.ToInt32(dataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
@@ -244,6 +251,8 @@ namespace MyCost.View
                     MessageBox.Show(result);
                 }
             }
+
+            progressViewer.StopProgress();
         }
 
         private void OpenNewForm(Form form)
