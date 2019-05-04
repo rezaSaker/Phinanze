@@ -102,7 +102,7 @@ namespace MyCost.View
                 _selectedDay = dayComboBox.SelectedIndex + 1;
                 PlotDailyInfo();
 
-                ResetProperties();
+                ResetEverything();
             }
             else
             {
@@ -136,7 +136,7 @@ namespace MyCost.View
                 _selectedMonth = monthComboBox.SelectedIndex + 1;
                 AddItemsToDayComboBox();
 
-                ResetProperties();
+                ResetEverything();
             }
             else
             {
@@ -170,7 +170,7 @@ namespace MyCost.View
                 _selectedYear = Convert.ToInt32(yearComboBox.SelectedItem.ToString());
                 AddItemsToDayComboBox();
 
-                ResetProperties();
+                ResetEverything();
             }
             else
             {
@@ -742,9 +742,7 @@ namespace MyCost.View
                 //monthly info should change accordingly since daily info has been modified
                 MonthlyInfo.Fetch();
 
-                _hasUnsavedChanges = false;
-                saveButton.Enabled = false;
-                saveButton.BackColor = Color.LightGray;
+                ResetEverything();
             }
             return result;
         }
@@ -831,7 +829,7 @@ namespace MyCost.View
             this.Close();
         } 
         
-        private void ResetProperties()
+        private void ResetEverything()
         {
             _isAutoSaveAlreadyAttempted = false;
             _hasUnsavedChanges = false;
