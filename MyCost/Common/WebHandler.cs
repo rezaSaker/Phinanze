@@ -221,7 +221,10 @@ namespace MyCost.Common.WebHandler
                     expenseCategories += "~";
                     expenseComments += "~";
                 }
-                else { addSplitChar = true; }
+                else
+                {
+                    addSplitChar = true;
+                }
 
                 expenseReasons += expense.Reason;
                 expenseAmounts += expense.Amount.ToString();
@@ -242,7 +245,10 @@ namespace MyCost.Common.WebHandler
                     earningCategories += "~";
                     earningComments += "~";
                 }
-                else { addSplitChar = true; }
+                else
+                {
+                    addSplitChar = true;
+                }
 
                 earningSources += earning.Source;
                 earningAmounts += earning.Amount.ToString();
