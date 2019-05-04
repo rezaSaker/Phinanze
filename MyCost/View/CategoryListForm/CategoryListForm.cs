@@ -22,7 +22,7 @@ namespace MyCost.View
             _rowIndexList = rowIndexList;
         }
 
-        #region event_handler_methods
+        #region UI EventHandler Methods
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
@@ -88,7 +88,7 @@ namespace MyCost.View
         }
         #endregion
 
-        #region non_event_handler_methods
+        #region General Private Methods
 
         private void OpenSelectedCategory()
         {

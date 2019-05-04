@@ -25,6 +25,8 @@ namespace MyCost.View
             _quitAppOnFormClosing = true;
         }
 
+        #region UI EventHandler Methods
+
         private void ThisFormLoading(object sender, EventArgs e)
         {
             DisplayLoginPanel();
@@ -124,6 +126,9 @@ namespace MyCost.View
                 Application.Exit();
             }
         }
+        #endregion
+
+        #region General Private Methods
 
         private void DisplayLoginPanel()
         {
@@ -601,5 +606,6 @@ namespace MyCost.View
             StatusLabel.Text = message;
             StatusLabel.ForeColor = Color.Red;
         }
+        #endregion
     }
 }
