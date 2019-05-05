@@ -67,23 +67,10 @@ if(isset($_POST['username']) && isset($_POST['password'])
 			  VALUES ('$earningCategories', '$expenseCategories', '$userid')";
 	$result = mysqli_query($connect, $query) or die("Server connection error");
 
-	//we keep track that how many times an activation code is used
-	//an activation is allowed to be used maximum 3 times
-	$query  = "SELECT * FROM activation_codes WHERE code = '$activationCode'";
+	//Activation code expire after one user
+	//so delete the activation code
+	$query  = "DELETE FROM activation_codes WHERE code = '$activationCode'";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
-	$row    = mysqli_fetch_array($result);
-	$times_used = $row['times_used'];
-	
-	if($times_used < 2)
-	{
-		$query  = "UPDATE activation_codes SET times_used = times_used + 1 WHERE code = '$activationCode'";
-		$result = mysqli_query($connect, $query) or die('Server connection error');
-	}
-	else
-	{
-		$query  = "DELETE FROM activation_codes WHERE code = '$activationCode'";
-		$result = mysqli_query($connect, $query) or die('Server connection error');
-	}
 	
 	//return the userid and the access token to MyCost app 
 	die($userid . '|' . $token);	
