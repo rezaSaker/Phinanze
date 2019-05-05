@@ -282,7 +282,7 @@ namespace MyCost.Common.WebHandler
                 return resultData;
                 
             }
-            catch (WebException)
+            catch
             {
                 return "Server connection error";
             }
