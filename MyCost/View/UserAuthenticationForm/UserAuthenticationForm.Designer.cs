@@ -39,6 +39,8 @@
             this.StatusLabel = new System.Windows.Forms.Label();
             this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.ActivationCodeTextBox = new System.Windows.Forms.TextBox();
+            this.LicenseLabel = new System.Windows.Forms.Label();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ShowRegisterPanelButton
@@ -177,12 +179,37 @@
             this.ActivationCodeTextBox.Text = "Activation Code";
             this.ActivationCodeTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ActivationCodeTextBoxClicked);
             // 
+            // LicenseLabel
+            // 
+            this.LicenseLabel.AutoSize = true;
+            this.LicenseLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LicenseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LicenseLabel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.LicenseLabel.Location = new System.Drawing.Point(260, 421);
+            this.LicenseLabel.Name = "LicenseLabel";
+            this.LicenseLabel.Size = new System.Drawing.Size(286, 16);
+            this.LicenseLabel.TabIndex = 17;
+            this.LicenseLabel.Text = "This application is provided under MIT License";
+            this.LicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
+            // 
+            // HelpButton
+            // 
+            this.HelpButton.Location = new System.Drawing.Point(716, 9);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(56, 25);
+            this.HelpButton.TabIndex = 18;
+            this.HelpButton.Text = "Help";
+            this.HelpButton.UseVisualStyleBackColor = true;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButtonClicked);
+            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 426);
+            this.ClientSize = new System.Drawing.Size(784, 449);
+            this.Controls.Add(this.HelpButton);
+            this.Controls.Add(this.LicenseLabel);
             this.Controls.Add(this.ActivationCodeTextBox);
             this.Controls.Add(this.RememberMeCheckBox);
             this.Controls.Add(this.StatusLabel);
@@ -219,6 +246,8 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.CheckBox RememberMeCheckBox;
         private System.Windows.Forms.TextBox ActivationCodeTextBox;
+        private System.Windows.Forms.Label LicenseLabel;
+        private System.Windows.Forms.Button HelpButton;
     }
 }
 

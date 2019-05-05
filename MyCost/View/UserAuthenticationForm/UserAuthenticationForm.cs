@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 using MyCost.Common;
 using MyCost.Common.WebHandler;
 
@@ -117,7 +118,38 @@ namespace MyCost.View
             {
                 RegisterUser();
             }
-        }                    
+        }
+
+        private void HelpButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(GlobalSpace.HelpPath);
+            }
+            catch
+            {
+                MessageBox.Show("Sorry, could not open your default browser");
+            }
+        }
+
+        private void LicenseLabelClicked(object sender, EventArgs e)
+        {
+            string message = "Do you want to see the full license?";
+
+            DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+
+            if (dlgResult == DialogResult.Yes)
+            {
+                try
+                {
+                    Process.Start(GlobalSpace.LicensePath);
+                }
+                catch
+                {
+                    MessageBox.Show("Sorry, could not open your default browser");
+                }
+            }
+        }
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -147,7 +179,8 @@ namespace MyCost.View
             ActivationCodeTextBox.Enabled = false;
 
             RememberMeCheckBox.Location = new Point(146, 250);
-            this.Size = new Size(800, 410);
+            LicenseLabel.Location = new Point(260, 345);
+            this.Size = new Size(800, 430);
 
             ResetTextBoxProperties();
         }
@@ -169,7 +202,8 @@ namespace MyCost.View
             ActivationCodeTextBox.Enabled = true;
 
             RememberMeCheckBox.Location = new Point(146, 343);
-            this.Size = new Size(800, 465);
+            LicenseLabel.Location = new Point(260, 421);
+            this.Size = new Size(800, 500);
 
             ResetTextBoxProperties();
         }
