@@ -15,7 +15,7 @@ namespace MyCost.View
         private WebHandler _webHandlerToGetActivationCode;
         private ProgressViewerForm _progressViewerObject;
 
-        private delegate void UserAuthenticationDelegate();
+        private delegate void UserAuthenticationDelegate(bool autoLogin);
         private delegate void UserRegistrationDelegate();
         private delegate void FetchDailyInfoDelegate();
         private delegate void FetchCategoriesDelegate();
@@ -54,7 +54,7 @@ namespace MyCost.View
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
 
                 //attempt login
-                SubmitButton.PerformClick();
+                LoginUser(true);
             }
         }
 
@@ -114,7 +114,7 @@ namespace MyCost.View
         {          
             if (SubmitButton.Text == "Log in")
             {
-                LoginUser();
+                LoginUser(false);
             }
             else
             {
@@ -235,7 +235,7 @@ namespace MyCost.View
             ActivationCodeTextBox.ForeColor = Color.DarkGray;
         }
 
-        private void LoginUser()
+        private void LoginUser(bool isAutoLogin)
         {
             //if fore-color of a textBox is not black, that means the textbox 
             //contains the placeholder text and user didn't enter any value
@@ -268,23 +268,25 @@ namespace MyCost.View
 
             //send web request to verify user's login credentials
             WebHandler webRequest = new WebHandler();
-            webRequest.WebRequestSuccessEventHandler += OnLoginSuccess;
-            webRequest.WebRequestFailedEventHandler += OnLoginFailed;
+            webRequest.WebRequestSuccessEventHandler += 
+                new EventHandler((sender, e) => OnLoginSuccess(sender, e, isAutoLogin));
+            webRequest.WebRequestFailedEventHandler += 
+                new EventHandler((sender, e) => OnLoginFailed(sender, e, isAutoLogin));
             _webHandlerObject = webRequest;
             webRequest.AuthenticateUser(username, password);           
         }
 
-        private void OnLoginSuccess(object sender, EventArgs e)
+        private void OnLoginSuccess(object sender, EventArgs e, bool isAutoLogin)
         {
-            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginSuccess), new object[] { });
+            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginSuccess), new object[] { isAutoLogin });
         }
 
-        private void OnLoginFailed(object sender, EventArgs e)
+        private void OnLoginFailed(object sender, EventArgs e, bool isAutoLogin)
         {
-            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginFailed), new object[] { });
+            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginFailed), new object[] { isAutoLogin });
         }
 
-        private void ActionUponLoginSuccess()
+        private void ActionUponLoginSuccess(bool isAutoLogin)
         {
             string result = _webHandlerObject.Response;
 
@@ -312,14 +314,18 @@ namespace MyCost.View
             else
             {
                 _progressViewerObject.StopProgress();
-                ShowErrorMessage(result);
+
+                if (!isAutoLogin)
+                {
+                    ShowErrorMessage(result);
+                }           
 
                 //enable all controls so that the user can attempt to login again
                 EnableAllControls();
             }
         }
 
-        private void ActionUponLoginFailed()
+        private void ActionUponLoginFailed(bool isAutoLogin)
         {
             _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
@@ -383,12 +389,12 @@ namespace MyCost.View
 
         private void OnRegisterSuccess(object sender, EventArgs e)
         {
-            this.Invoke(new UserRegistrationDelegate(ActionUponLoginSuccess), new object[] { });
+            this.Invoke(new UserRegistrationDelegate(ActionUponRegisterSuccess), new object[] { });
         }
 
         private void OnRegisterFailed(object sender, EventArgs e)
         {
-            this.Invoke(new UserRegistrationDelegate(ActionUponLoginFailed), new object[] { });
+            this.Invoke(new UserRegistrationDelegate(ActionUponRegisterFailed), new object[] { });
         }
 
         private void ActionUponRegisterSuccess()
