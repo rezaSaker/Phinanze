@@ -12,12 +12,14 @@ namespace MyCost.View
         private bool _quitAppOnFormClosing;
 
         private WebHandler _webHandlerObject;
+        private WebHandler _webHandlerToGetActivationCode;
         private ProgressViewerForm _progressViewerObject;
 
         private delegate void UserAuthenticationDelegate();
         private delegate void UserRegistrationDelegate();
         private delegate void FetchDailyInfoDelegate();
         private delegate void FetchCategoriesDelegate();
+        private delegate void GetActivationCodeDelegate();
 
         public UserAuthenticationForm()
         {
@@ -151,6 +153,11 @@ namespace MyCost.View
             }
         }
 
+        private void GetActivationCodeButtonClicked(object sender, EventArgs e)
+        {
+            GetActivationCode();
+        }
+
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_quitAppOnFormClosing)
@@ -170,6 +177,8 @@ namespace MyCost.View
             ShowLoginPanelButton.BackColor = Color.White;
             ShowLoginPanelButton.ForeColor = Color.Black;
 
+            GetActivationCodeButton.Visible = false;
+            GetActivationCodeButton.Enabled = false;
             SubmitButton.Text = "Log in";
             SubmitButton.Location = new Point(280, 280);
 
@@ -193,6 +202,8 @@ namespace MyCost.View
             ShowLoginPanelButton.BackColor = Color.RoyalBlue;
             ShowLoginPanelButton.ForeColor = Color.White;
 
+            GetActivationCodeButton.Visible = true;
+            GetActivationCodeButton.Enabled = true;
             SubmitButton.Text = "Register";
             SubmitButton.Location = new Point(280, 368);
 
@@ -614,6 +625,40 @@ namespace MyCost.View
         {
             _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
+        }
+
+        private void GetActivationCode()
+        {
+            WebHandler webRequest = new WebHandler();
+            webRequest.GetActivationCodeSuccessEventHandler += OnGetActivationCodeSuccess;
+            webRequest.GetActivationCodeFailedEventHandler += OnGetActivationCodeFailed;
+            _webHandlerToGetActivationCode = webRequest;
+            webRequest.GetActivationCode();
+        }
+
+        private void OnGetActivationCodeSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new GetActivationCodeDelegate(ActionUponGetActivationCodeSuccess), new object[] { });
+        }
+
+        private void OnGetActivationCodeFailed(object sender, EventArgs e)
+        {
+            this.Invoke(new GetActivationCodeDelegate(ActionUponGetActivationCodeFailed), new object[] { });
+        }
+
+        private void ActionUponGetActivationCodeSuccess()
+        {
+            string code = _webHandlerToGetActivationCode.Response;
+
+            ActivationCodeTextBox.ForeColor = Color.Black;
+            ActivationCodeTextBox.Text = code;
+        }
+
+        private void ActionUponGetActivationCodeFailed()
+        {
+            string status = "Could not generate activation code. Please check your internet connection.";
+
+            StatusLabel.Text = status;
         }
 
         private void EnableAllControls()

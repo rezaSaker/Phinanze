@@ -12,6 +12,8 @@ namespace MyCost.Common.WebHandler
 
         public event EventHandler WebRequestSuccessEventHandler;
         public event EventHandler WebRequestFailedEventHandler;
+        public event EventHandler GetActivationCodeSuccessEventHandler;
+        public event EventHandler GetActivationCodeFailedEventHandler;
 
         public string Response
         {
@@ -393,6 +395,46 @@ namespace MyCost.Common.WebHandler
             {
                 return "Server connection error";
             }
+        }
+
+        public void GetActivationCode()
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "generateActivationCode.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+                _webResponse = resultData;
+
+                if(resultData != "Server connection error")
+                {
+                    OnGetActivationCodeSuccessful();                   
+                }
+                else
+                {
+                    OnGetActivationCodeFailed();
+                }               
+            }
+            catch
+            {
+                _webResponse = "Server connection error";
+
+                OnGetActivationCodeFailed();
+            }
+        }
+
+        private void OnGetActivationCodeSuccessful()
+        {
+            GetActivationCodeSuccessEventHandler?.Invoke(this, null);
+        }
+
+        private void OnGetActivationCodeFailed()
+        {
+            GetActivationCodeFailedEventHandler?.Invoke(this, null);
         }
     }
 }
