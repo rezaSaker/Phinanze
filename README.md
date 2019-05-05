@@ -1,6 +1,15 @@
 <div style="text-align:center; width:100%;">
 <img src="MyCost/Resources/MyCostLogo.png" width=200 height=100>
 <br>
+
+<img src="https://img.shields.io/github/issues/rezaSaker/MyCost.svg" style="margin-right: 10px">
+<img src="https://img.shields.io/github/forks/rezaSaker/MyCost.svg" style="margin-right: 10px">
+<img src="https://img.shields.io/github/stars/rezaSaker/MyCost.svg" style="margin-right: 10px">
+<img src="https://img.shields.io/github/license/rezaSaker/MyCost.svg" style="margin-right: 10px">
+<img src="https://img.shields.io/badge/Version-1.1.1.5-green.svg" style="margin-right: 10px">
+
+<br><br>
+
 <span style="font-size:20px">
 MyCost is a simple and useful personal finance managment app that allows users to
 keep track of their personal earnings and expenses. This application is developed
