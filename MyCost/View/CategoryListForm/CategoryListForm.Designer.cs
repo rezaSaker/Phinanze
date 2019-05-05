@@ -70,7 +70,6 @@
             this.CategoryDataGridView.Location = new System.Drawing.Point(1, 64);
             this.CategoryDataGridView.MultiSelect = false;
             this.CategoryDataGridView.Name = "CategoryDataGridView";
-            this.CategoryDataGridView.RowHeadersVisible = false;
             this.CategoryDataGridView.RowHeadersWidth = 30;
             this.CategoryDataGridView.Size = new System.Drawing.Size(266, 299);
             this.CategoryDataGridView.TabIndex = 0;

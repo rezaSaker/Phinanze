@@ -594,7 +594,7 @@ namespace MyCost.View
         {
             foreach(Control control in this.Controls)
             {
-                if (control.Name != "appLogoLabel")
+                if (control.Name != "AppLogoLabel")
                 {
                     control.Enabled = false;
                 }
