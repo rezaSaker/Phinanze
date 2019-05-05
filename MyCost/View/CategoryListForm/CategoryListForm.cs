@@ -27,7 +27,7 @@ namespace MyCost.View
         private void ThisFormLoading(object sender, EventArgs e)
         {
             //_dgv points to a dataGridView on AddNewDataForm 
-            if (_dgv.Name == "expenseDataGridView")
+            if (_dgv.Name == "ExpenseDataGridView")
             {
                 foreach (string category in GlobalSpace.ExpenseCategories)
                 {
@@ -35,7 +35,7 @@ namespace MyCost.View
                 }
                 _categoryType = "Expense";
             }
-            else if (_dgv.Name == "earningDataGridView")
+            else if (_dgv.Name == "EarningDataGridView")
             {
                 foreach (string category in GlobalSpace.EarningCategories)
                 {
