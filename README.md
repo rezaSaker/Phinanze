@@ -21,5 +21,5 @@ The application is distributed under [MIT License](https://github.com/rezaSaker/
 - All PHP files in **MyCost API** folder have to be uploaded to the server address defined in ```GlobalSpace.cs``` class.
 
 ## Output Examples
-![Screenshot of output 1](MyCost/Resources/Screenshot1.jpeg)
-![Screenshot of output 1](MyCost/Resources/Screenshot2.jpeg)
+![Screenshot of output 1](MyCost/Resources/Screenshot1.jpg)
+![Screenshot of output 1](MyCost/Resources/Screenshot2.jpg)
