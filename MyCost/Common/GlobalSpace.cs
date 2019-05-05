@@ -7,9 +7,10 @@ namespace MyCost.Common
     class GlobalSpace
     {
         public const string ServerAddress = Server.Address;
-        public const string AboutAppPath = "https://github.com/rezaSaker/MyCost";
-        public const string HelpPath = "https://github.com/rezaSaker/MyCost";
-        public const string ReportAppPath = "https://github.com/rezaSaker/MyCost/issues/new";
+        public const string AboutAppPath = Server.AboutAppPath;
+        public const string HelpPath = Server.HelpPath;
+        public const string ReportIssuePath = Server.ReportIssuePath;
+        public const string SourceCodePath = Server.SourceCodePath;
         
         public static int? UserID;
 

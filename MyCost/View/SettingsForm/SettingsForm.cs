@@ -193,7 +193,7 @@ namespace MyCost.View
         {
             try
             {
-                Process.Start(GlobalSpace.ReportAppPath);
+                Process.Start(GlobalSpace.ReportIssuePath);
             }
             catch
             {
@@ -206,6 +206,18 @@ namespace MyCost.View
             try
             {
                 Process.Start(GlobalSpace.AboutAppPath);
+            }
+            catch
+            {
+                MessageBox.Show("Could not open the default browser!");
+            }
+        }
+
+        private void ViewSourceButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(GlobalSpace.SourceCodePath);
             }
             catch
             {

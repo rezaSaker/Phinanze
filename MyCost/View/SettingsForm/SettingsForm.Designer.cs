@@ -52,6 +52,7 @@
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ViewSourceButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,7 +236,7 @@
             this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ReportIssueButton.Location = new System.Drawing.Point(326, 431);
+            this.ReportIssueButton.Location = new System.Drawing.Point(235, 431);
             this.ReportIssueButton.Name = "ReportIssueButton";
             this.ReportIssueButton.Size = new System.Drawing.Size(153, 31);
             this.ReportIssueButton.TabIndex = 64;
@@ -251,7 +252,7 @@
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.HelpButton.Location = new System.Drawing.Point(135, 431);
+            this.HelpButton.Location = new System.Drawing.Point(15, 431);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(146, 31);
             this.HelpButton.TabIndex = 65;
@@ -267,11 +268,11 @@
             this.AboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AboutAppButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutAppButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.AboutAppButton.Location = new System.Drawing.Point(522, 431);
+            this.AboutAppButton.Location = new System.Drawing.Point(443, 431);
             this.AboutAppButton.Name = "AboutAppButton";
             this.AboutAppButton.Size = new System.Drawing.Size(148, 31);
             this.AboutAppButton.TabIndex = 66;
-            this.AboutAppButton.Text = "View Source";
+            this.AboutAppButton.Text = "About";
             this.AboutAppButton.UseVisualStyleBackColor = false;
             this.AboutAppButton.Click += new System.EventHandler(this.AboutAppButtonClicked);
             // 
@@ -403,12 +404,29 @@
             this.panel1.Size = new System.Drawing.Size(783, 312);
             this.panel1.TabIndex = 74;
             // 
+            // ViewSourceButton
+            // 
+            this.ViewSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ViewSourceButton.BackColor = System.Drawing.Color.White;
+            this.ViewSourceButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ViewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ViewSourceButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewSourceButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ViewSourceButton.Location = new System.Drawing.Point(640, 431);
+            this.ViewSourceButton.Name = "ViewSourceButton";
+            this.ViewSourceButton.Size = new System.Drawing.Size(148, 31);
+            this.ViewSourceButton.TabIndex = 75;
+            this.ViewSourceButton.Text = "View Source";
+            this.ViewSourceButton.UseVisualStyleBackColor = false;
+            this.ViewSourceButton.Click += new System.EventHandler(this.ViewSourceButtonClicked);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
+            this.Controls.Add(this.ViewSourceButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.SettingsButton);
@@ -459,5 +477,6 @@
         private System.Windows.Forms.Button AddNewDataButton;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button ViewSourceButton;
     }
 }
