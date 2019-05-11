@@ -113,7 +113,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MonthlyReportDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.MonthlyReportDataGridView.RowHeadersWidth = 60;
+            this.MonthlyReportDataGridView.RowHeadersWidth = 30;
             this.MonthlyReportDataGridView.Size = new System.Drawing.Size(776, 343);
             this.MonthlyReportDataGridView.TabIndex = 5;
             this.MonthlyReportDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);

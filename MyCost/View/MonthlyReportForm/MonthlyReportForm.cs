@@ -168,7 +168,6 @@ namespace MyCost.View
                 d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
             //plot info sorted in ascending order
-            int rowIndex = 0;
             for (int day = 1; day <= numberOfDays; day++)
             {
                 DailyInfo daily = dailyInfoList.Find(d => d.Day == day);
@@ -177,7 +176,6 @@ namespace MyCost.View
                 {
                     string date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
                     MonthlyReportDataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
-                    MonthlyReportDataGridView.Rows[rowIndex++].HeaderCell.Value = rowIndex.ToString();
                 }
             }
 
