@@ -3,15 +3,13 @@
 /*
 	*Recieve data sent from MyCost App
 	*Verify user's login credentials
-	*Return the user's id and a temporary access token
+	*Return the user's id 
 */
 
 require_once('connectDB.php');
-require_once('encryption.php');
 	
-if(isset($_POST['key']) && isset($_POST['username']) && isset($_POST['password']))
+if(isset($_POST['username']) && isset($_POST['password']))
 {	
-	$key      = mysqli_real_escape_string($connect, $_POST['key']);
 	$username = mysqli_real_escape_string($connect, $_POST['username']);
 	$password = mysqli_real_escape_string($connect, $_POST['password']);
 			
@@ -19,7 +17,6 @@ if(isset($_POST['key']) && isset($_POST['username']) && isset($_POST['password']
 	$query  = "SELECT * FROM users WHERE username = '$username' LIMIT 1";
 	$result = mysqli_query($connect, $query) or die('Server connection error');;		
 	$count  = mysqli_num_rows($result);
-	$hashedPass = "";
 	
 	if($count > 0)
 	{
@@ -30,14 +27,13 @@ if(isset($_POST['key']) && isset($_POST['username']) && isset($_POST['password']
 		{
 			$userid = $row['id'];
 			
-			//generate a random access token
+			//generate a random string as temporary access token
 			$token = RandomToken();
-			$encToken = Encrypt($token, $key);
-				
-			//save the token into DB
-			$query  = "UPDATE users SET token = '$encToken' WHERE id = '$userid'";
-			$result = mysqli_query($connect, $query) or die('Server connection error');
-
+			
+			//update the previous token with this new token
+			$query = "UPDATE users SET token = '$token' WHERE id = '$userid'";
+			mysqli_query($connect, $query) or die('Server connection error');
+			
 			die($userid . '|' . $token);			
 		}
 		else
@@ -54,14 +50,13 @@ else
 { 
 	die('Server connection error');
 }
-	
 
 function RandomToken()
 {	
-	$charSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+	$charSet    = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 	$charSetLen = strlen($charSet);
-	$tokenLen = mt_rand(70, 100);
-	$randStr = "";
+	$tokenLen   = mt_rand(70, 100);
+	$randStr    = "";
 	
 	for($i = 0; $i < $tokenLen; $i++)
 	{

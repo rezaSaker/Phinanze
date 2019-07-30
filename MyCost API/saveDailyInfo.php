@@ -8,13 +8,12 @@
 require_once('connectDB.php');
 require_once('requestVerification.php');
 
-if(isset($_POST['token']) && isset($_POST['key']) && isset($_POST['userid']))
+if(isset($_POST['token']) && isset($_POST['userid']))
 {
 	$token  = mysqli_real_escape_string($connect, $_POST['token']);
-	$key    = mysqli_real_escape_string($connect, $_POST['key']);
 	$userid = mysqli_real_escape_string($connect, $_POST['userid']);
 	
-	if(IsAuthenticRequest($connect, $userid, $token, $key))//request verified as authentic
+	if(IsAuthenticRequest($connect, $userid, $token))//request verified as authentic
 	{
 		$note              = mysqli_real_escape_string($connect, $_POST['note']);
 		$day               = mysqli_real_escape_string($connect, $_POST['day']);
@@ -31,10 +30,8 @@ if(isset($_POST['token']) && isset($_POST['key']) && isset($_POST['userid']))
 		$totalExpense      = mysqli_real_escape_string($connect, $_POST['totalExpense']);
 		$totalEarning      = mysqli_real_escape_string($connect, $_POST['totalEarning']);
 		
-	    //|------------------------------------------------------------|
-		//|If any row already exists with the same day, month and year,|
-		//|we will update that, otherwise we'll insert a new row       |
-		//|------------------------------------------------------------|
+		//If any row already exists with the same day, month and year,
+		//then we will update that, otherwise we'll insert a new row       
 		
 		//check for existing rows
 		$query  = "SELECT id FROM daily_info WHERE day = '$day' AND month = '$month'

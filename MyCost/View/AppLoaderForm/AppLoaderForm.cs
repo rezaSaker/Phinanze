@@ -19,18 +19,6 @@ namespace MyCost.View
             InitializeComponent();
         }
 
-        private void AppLoaderForm_Load(object sender, EventArgs e)
-        {
-            //when the app is run on a user's machine for the first time,
-            //we create an permanent access token that is later used to 
-            //communicate with the server
-            if (Properties.Settings.Default.AccessKey == "")
-            {
-                Properties.Settings.Default.AccessKey = RandomString(100);
-                Properties.Settings.Default.Save();
-            }
-        }
-
         private void AppLoaderFormShown(object sender, EventArgs e)
         {
             timer.Enabled = true;
@@ -44,21 +32,6 @@ namespace MyCost.View
                 form.Show();
                 this.Hide();
             }
-        }
-
-        private string RandomString(int size)
-        {
-            string randStr = "";
-            string str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-                             "abcdefghijklmnopqrstuvwxyz1234567890";
-            char[] charSet = str.ToCharArray();
-
-            Random rand = new Random();
-
-            for (int i = 0; i < size; ++i)
-                randStr += charSet[rand.Next(0, str.Length)];
-
-            return randStr;
         }
     }
 }

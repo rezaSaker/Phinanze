@@ -3,20 +3,17 @@
 /*
 	*Receive data sent from MyCost app 
 	*Register a new user
-	*Returns the user id and a temporary access token 
+	*Returns the user id and an unique token 
 */
 
 require_once('connectDB.php');
-require_once('encryption.php');
 
-if(isset($_POST['username']) && isset($_POST['password']) 
-	&& isset($_POST['key']) && isset($_POST['code']))
+if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['activationCode']))
 {	
 	$username       = mysqli_real_escape_string($connect, $_POST['username']);
 	$password       = mysqli_real_escape_string($connect, $_POST['password']);
-	$key            = mysqli_real_escape_string($connect, $_POST['key']);
-	$activationCode = mysqli_real_escape_string($connect, $_POST['code']); 
-																								
+	$activationCode = mysqli_real_escape_string($connect, $_POST['activationCode']);
+	
 	//verify the request
 	$query  = "SELECT * FROM activation_codes WHERE code = '$activationCode'";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
@@ -28,10 +25,9 @@ if(isset($_POST['username']) && isset($_POST['password'])
 		die('Invalid activation code');
 	}
 	
-	//check if the username contains any potential risky characters
-	$checkedUsername = mysqli_real_escape_string($connect, $username);
-	
-	if($checkedUsername != $username) 
+	//if the filtered username doesn't match the exact username as entered by the user,
+	//then the username contains potential risky character and new username would be required
+	if($username != $_POST['username']) 
 	{
 		die('Please choose a different username');
 	}	
@@ -43,19 +39,18 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	
 	if($count > 0)
 	{
-		die('The username already exists');
+		die('This username already exists');
 	}
 	
 	//generate a random string as temporary access token
 	$token = RandomToken();
-	$encToken = Encrypt($token, $key);
 	
 	//hash password
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	
 	//save the user info
 	$query  = "INSERT INTO users (username, password, token) 
-			  VALUES ('$username', '$password', '$encToken')";
+			  VALUES ('$username', '$password', '$token')";
 	$result = mysqli_query($connect, $query) or die('Server connection error');	
 	$userid = mysqli_insert_id($connect);
 	

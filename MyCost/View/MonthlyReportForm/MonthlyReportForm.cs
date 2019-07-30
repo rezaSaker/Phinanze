@@ -167,7 +167,7 @@ namespace MyCost.View
             List<DailyInfo> dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
                 d => d.Month == _selectedMonth && d.Year == _selectedYear);
 
-            //plot info sorted in ascending order
+            //plot info in ascending order of day
             for (int day = 1; day <= numberOfDays; day++)
             {
                 DailyInfo daily = dailyInfoList.Find(d => d.Day == day);

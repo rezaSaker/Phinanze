@@ -34,7 +34,6 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("username", username);
             queryData.Add("password", password);
 
@@ -64,24 +63,22 @@ namespace MyCost.Common.WebHandler
             WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
-        public void RegisterNewUser(string username, string password, string code)
+        public void RegisterNewUser(string username, string password, string activationCode)
         {
-            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, code));
+            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode));
             thread.Start();
         }
 
-        private void WebRequestToRegisterUser(string username, string password, string code)
+        private void WebRequestToRegisterUser(string username, string password, string activationCode)
         {
             WebClient www = new WebClient();
 
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("username", username);
             queryData.Add("password", password);
-            queryData.Add("code", code);
-
+            queryData.Add("activationCode", activationCode);
             try
             {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "registerNewUser.php", "POST", queryData);
@@ -121,24 +118,23 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
 
-            try
-            {
+            //try
+            //{
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "getDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
                 OnRetrieveDailyInfoSuccess();
-            }
-            catch
-            {
-                _webResponse = "Server connection error";
+            //}
+            //catch
+            //{
+                //_webResponse = "Server connection error";
 
-                OnRetrieveDailyInfoFailed();
-            }
+                //OnRetrieveDailyInfoFailed();
+            //}
         }
 
         private void OnRetrieveDailyInfoSuccess()
@@ -164,24 +160,23 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
 
-            try
-            {
+            //try
+            //{
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "getCategories.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
                 OnRetrieveCategoriesSuccess();
-            }
-            catch
-            {
-                _webResponse = "Server connection error";
+            //}
+            //catch
+            //{
+                //_webResponse = "Server connection error";
 
-                OnRetrieveCategoriesFailed();
-            }
+                //OnRetrieveCategoriesFailed();
+            //}
         }
 
         private void OnRetrieveCategoriesSuccess()
@@ -258,7 +253,6 @@ namespace MyCost.Common.WebHandler
                 earningComments += earning.Comment;
             }
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("note", daily.Note);
@@ -297,7 +291,6 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("categoryNames", categoryNames);
@@ -323,7 +316,6 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("day", day.ToString());
@@ -350,7 +342,6 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("newUsername", newUsername);
@@ -377,7 +368,6 @@ namespace MyCost.Common.WebHandler
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            queryData.Add("key", Properties.Settings.Default.AccessKey);
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("username", GlobalSpace.Username);

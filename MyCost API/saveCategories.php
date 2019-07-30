@@ -8,13 +8,12 @@
 require_once('connectDB.php');
 require_once('requestVerification.php');
 
-if(isset($_POST['key']) && isset($_POST['token']) && isset($_POST['userid']))
+if(isset($_POST['token']) && isset($_POST['userid']))
 {
-	$key    = mysqli_real_escape_string($connect, $_POST['key']);
 	$token  = mysqli_real_escape_string($connect, $_POST['token']);
 	$userid = mysqli_real_escape_string($connect, $_POST['userid']);
 	
-	if(IsAuthenticRequest($connect, $userid, $token, $key))//request verified as authentic
+	if(IsAuthenticRequest($connect, $userid, $token))//request verified as authentic
 	{	
 		$categoryNames = mysqli_real_escape_string($connect, $_POST['categoryNames']);
 		$categoryType  = mysqli_real_escape_string($connect, $_POST['categoryType']);			

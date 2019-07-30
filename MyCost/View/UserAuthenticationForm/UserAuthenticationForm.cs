@@ -15,7 +15,7 @@ namespace MyCost.View
         private WebHandler _webHandlerToGetActivationCode;
         private ProgressViewerForm _progressViewerObject;
 
-        private delegate void UserAuthenticationDelegate(bool autoLogin);
+        private delegate void UserAuthenticationDelegate();
         private delegate void UserRegistrationDelegate();
         private delegate void FetchDailyInfoDelegate();
         private delegate void FetchCategoriesDelegate();
@@ -54,7 +54,7 @@ namespace MyCost.View
                 PasswordTextBox.Text = Properties.Settings.Default.Password;
 
                 //attempt login
-                LoginUser(true);
+                LoginUser();
             }
         }
 
@@ -114,7 +114,7 @@ namespace MyCost.View
         {          
             if (SubmitButton.Text == "Log in")
             {
-                LoginUser(false);
+                LoginUser();
             }
             else
             {
@@ -235,7 +235,7 @@ namespace MyCost.View
             ActivationCodeTextBox.ForeColor = Color.DarkGray;
         }
 
-        private void LoginUser(bool isAutoLogin)
+        private void LoginUser()
         {
             //if fore-color of a textBox is not black, that means the textbox 
             //contains the placeholder text and user didn't enter any value
@@ -268,70 +268,20 @@ namespace MyCost.View
 
             //send web request to verify user's login credentials
             WebHandler webRequest = new WebHandler();
-            webRequest.WebRequestSuccessEventHandler += 
-                new EventHandler((sender, e) => OnLoginSuccess(sender, e, isAutoLogin));
-            webRequest.WebRequestFailedEventHandler += 
-                new EventHandler((sender, e) => OnLoginFailed(sender, e, isAutoLogin));
+            webRequest.WebRequestSuccessEventHandler += OnLoginSuccess;
+            webRequest.WebRequestFailedEventHandler += OnLoginFailed;
             _webHandlerObject = webRequest;
             webRequest.AuthenticateUser(username, password);           
         }
 
-        private void OnLoginSuccess(object sender, EventArgs e, bool isAutoLogin)
+        private void OnLoginSuccess(object sender, EventArgs e)
         {
-            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginSuccess), new object[] { isAutoLogin });
+            this.Invoke(new UserAuthenticationDelegate(ActionUponAuthSuccess), new object[] { });
         }
 
-        private void OnLoginFailed(object sender, EventArgs e, bool isAutoLogin)
+        private void OnLoginFailed(object sender, EventArgs e)
         {
-            this.Invoke(new UserAuthenticationDelegate(ActionUponLoginFailed), new object[] { isAutoLogin });
-        }
-
-        private void ActionUponLoginSuccess(bool isAutoLogin)
-        {
-            string result = _webHandlerObject.Response;
-
-            string[] data = result.Split('|');
-
-            //if the login succeeds, 
-            //user's id and a temporary access token are returned
-            //otherwise, the error message is returned
-            if (int.TryParse(data[0], out int userId))
-            {
-                GlobalSpace.UserID = Convert.ToInt16(data[0]);
-                GlobalSpace.AccessToken = data[1];
-                GlobalSpace.Username = UsernameTextBox.Text;
-
-                if (RememberMeCheckBox.Checked)
-                {
-                    Properties.Settings.Default.Username = UsernameTextBox.Text;
-                    Properties.Settings.Default.Password = PasswordTextBox.Text;
-                    Properties.Settings.Default.Save();
-                }
-
-                //get daily info of this user from database
-                FetchDailyInfo();
-            }
-            else
-            {
-                _progressViewerObject.StopProgress();
-
-                if (!isAutoLogin)
-                {
-                    ShowErrorMessage(result);
-                }           
-
-                //enable all controls so that the user can attempt to login again
-                EnableAllControls();
-            }
-        }
-
-        private void ActionUponLoginFailed(bool isAutoLogin)
-        {
-            _progressViewerObject.StopProgress();
-            ShowErrorMessage("Server connection error. Please check your internet connection.");
-
-            //enable all controls so that the user can attempt to login again
-            EnableAllControls();      
+            this.Invoke(new UserAuthenticationDelegate(ActionUponAuthFailed), new object[] { });
         }
 
         private void RegisterUser()
@@ -364,7 +314,7 @@ namespace MyCost.View
             }
             else if(activationCode.Length < 1)
             {
-                ShowErrorMessage("Please enter the activation code.");
+                ShowErrorMessage("Press the [Get Code] button to generate a valid activation code");
                 return;
             }
 
@@ -389,28 +339,28 @@ namespace MyCost.View
 
         private void OnRegisterSuccess(object sender, EventArgs e)
         {
-            this.Invoke(new UserRegistrationDelegate(ActionUponRegisterSuccess), new object[] { });
+            this.Invoke(new UserRegistrationDelegate(ActionUponAuthSuccess), new object[] { });
         }
 
         private void OnRegisterFailed(object sender, EventArgs e)
         {
-            this.Invoke(new UserRegistrationDelegate(ActionUponRegisterFailed), new object[] { });
+            this.Invoke(new UserRegistrationDelegate(ActionUponAuthFailed), new object[] { });
         }
 
-        private void ActionUponRegisterSuccess()
+        private void ActionUponAuthSuccess()
         {
             string result = _webHandlerObject.Response;
 
             string[] data = result.Split('|');
 
             //if the registration process succeeds, 
-            //user's id and a temporary access token are retured
+            //user's id and an unique access token are retured
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
             {
                 GlobalSpace.UserID = userId;
-                GlobalSpace.AccessToken = data[1];
                 GlobalSpace.Username = UsernameTextBox.Text;
+                GlobalSpace.AccessToken = data[1];
 
                 if (RememberMeCheckBox.Checked)
                 {
@@ -432,7 +382,7 @@ namespace MyCost.View
             }
         }
 
-        private void ActionUponRegisterFailed()
+        private void ActionUponAuthFailed()
         {
             _progressViewerObject.StopProgress();
             ShowErrorMessage("Server connection error. Please check your internet connection.");
