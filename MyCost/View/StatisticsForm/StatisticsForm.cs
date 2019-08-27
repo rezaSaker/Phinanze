@@ -329,20 +329,20 @@ namespace MyCost.View
         {
             YearlyReportChart.Series["earning"].Points.Clear();
 
-            for (int mon = 1; mon <= 12; mon++)
+            for (int month = 1; month <= 12; month++)
             {
-                MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == mon);
+                MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == month);
                 DataPoint point = new DataPoint();
 
                 if (monthly != null)
                 {                    
-                    point.SetValueXY(_monthNames[mon - 1], monthly.Earning); 
+                    point.SetValueXY(_monthNames[month - 1], monthly.Earning); 
                     point.ToolTip = monthly.Earning.ToString();
                     YearlyReportChart.Series["earning"].Points.Add(point);
                 }
                 else
                 {
-                    point.SetValueXY(_monthNames[mon - 1], 0);
+                    point.SetValueXY(_monthNames[month - 1], 0);
                     point.ToolTip = "0.00";
                     YearlyReportChart.Series["earning"].Points.Add(point);
                 }
@@ -353,20 +353,20 @@ namespace MyCost.View
         {
             YearlyReportChart.Series["expense"].Points.Clear();
             
-            for (int mon = 1; mon <= 12; mon++)
+            for (int month = 1; month <= 12; month++)
             {
-                MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == mon);
+                MonthlyInfo monthly = monthlyInfo.Find(m => m.Month == month);
                 DataPoint point = new DataPoint();
 
                 if (monthly != null)
                 {
-                    point.SetValueXY(_monthNames[mon - 1], monthly.Expense);
+                    point.SetValueXY(_monthNames[month - 1], monthly.Expense);
                     point.ToolTip = monthly.Expense.ToString();
                     YearlyReportChart.Series["expense"].Points.Add(point);
                 }
                 else
                 {
-                    point.SetValueXY(_monthNames[mon - 1], 0);
+                    point.SetValueXY(_monthNames[month - 1], 0);
                     point.ToolTip = "0.00";
                     YearlyReportChart.Series["expense"].Points.Add(point);
                 }
@@ -399,7 +399,7 @@ namespace MyCost.View
             }
         }
 
-        private void PlotGeneralMonthlyExpenseDataOnChart(List<DailyInfo> dailyInfo)
+        private void PlotGeneralMonthlyExpenseDataOnChart(List<DailyInfo> dailyInfoList)
         {
             MonthlyReportChart.Series["expense"].Points.Clear();
 
@@ -407,13 +407,13 @@ namespace MyCost.View
 
             for (int day = 1; day <= numOfDays; day++)
             {
-                DailyInfo daily = dailyInfo.Find(d => d.Day == day);
+                DailyInfo dailyInfo = dailyInfoList.Find(d => d.Day == day);
                 DataPoint point = new DataPoint();
 
-                if (daily != null)
+                if (dailyInfo != null)
                 {
-                    point.SetValueXY(day, daily.TotalExpense);
-                    point.ToolTip = daily.TotalExpense.ToString();
+                    point.SetValueXY(day, dailyInfo.TotalExpense);
+                    point.ToolTip = dailyInfo.TotalExpense.ToString();
                     MonthlyReportChart.Series["expense"].Points.Add(point);
                 }
                 else
