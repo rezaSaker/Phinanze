@@ -851,6 +851,7 @@ namespace MyCost.View
 
             return filteredString;
         }
+
         #endregion            
     }
 }

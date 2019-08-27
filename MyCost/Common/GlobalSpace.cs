@@ -20,6 +20,7 @@ namespace MyCost.Common
         public static int? UserID;
 
         public static string AccessToken;
+        public static string CypherKey;
         public static string Username;
 
         public static List<string> ExpenseCategories = new List<string>();

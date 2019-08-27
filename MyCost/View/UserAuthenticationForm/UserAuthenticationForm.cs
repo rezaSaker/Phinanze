@@ -361,6 +361,7 @@ namespace MyCost.View
                 GlobalSpace.UserID = userId;
                 GlobalSpace.Username = UsernameTextBox.Text;
                 GlobalSpace.AccessToken = data[1];
+                GlobalSpace.CypherKey = PasswordTextBox.Text;
 
                 if (RememberMeCheckBox.Checked)
                 {
@@ -444,21 +445,21 @@ namespace MyCost.View
             {
                 string[] cols = row.Split('|');
 
-                int day = Convert.ToInt16(cols[0]);
-                int month = Convert.ToInt16(cols[1]);
-                int year = Convert.ToInt32(cols[2]);
+                int day = Convert.ToInt16(StringCypher.Decrypt(cols[0], GlobalSpace.CypherKey));
+                int month = Convert.ToInt16(StringCypher.Decrypt(cols[1], GlobalSpace.CypherKey));
+                int year = Convert.ToInt32(StringCypher.Decrypt(cols[2], GlobalSpace.CypherKey));
 
-                string note = cols[3];
-                string[] expenseReasons = cols[4].Split('~');
-                string[] expenseAmounts = cols[5].Split('~');
-                string[] expenseCategories = cols[6].Split('~');
-                string[] expenseComments = cols[7].Split('~');
-                string[] earningSources = cols[8].Split('~');
-                string[] earningAmounts = cols[9].Split('~');
-                string[] earningCategories = cols[10].Split('~');
-                string[] earningComments = cols[11].Split('~');
-                string totalExpense = cols[12];
-                string totalEarning = cols[13];
+                string note = StringCypher.Decrypt(cols[3], GlobalSpace.CypherKey);
+                string[] expenseReasons = StringCypher.Decrypt(cols[4], GlobalSpace.CypherKey).Split('~');
+                string[] expenseAmounts = StringCypher.Decrypt(cols[5], GlobalSpace.CypherKey).Split('~');
+                string[] expenseCategories = StringCypher.Decrypt(cols[6], GlobalSpace.CypherKey).Split('~');
+                string[] expenseComments = StringCypher.Decrypt(cols[7], GlobalSpace.CypherKey).Split('~');
+                string[] earningSources = StringCypher.Decrypt(cols[8], GlobalSpace.CypherKey).Split('~');
+                string[] earningAmounts = StringCypher.Decrypt(cols[9], GlobalSpace.CypherKey).Split('~');
+                string[] earningCategories = StringCypher.Decrypt(cols[10], GlobalSpace.CypherKey).Split('~');
+                string[] earningComments = StringCypher.Decrypt(cols[11], GlobalSpace.CypherKey).Split('~');
+                string totalExpense = StringCypher.Decrypt(cols[12], GlobalSpace.CypherKey);
+                string totalEarning = StringCypher.Decrypt(cols[13], GlobalSpace.CypherKey);
 
                 DailyInfo daily = new DailyInfo
                 {

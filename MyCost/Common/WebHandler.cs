@@ -121,20 +121,20 @@ namespace MyCost.Common.WebHandler
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
 
-            //try
-            //{
+            try
+            {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "getDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
                 OnRetrieveDailyInfoSuccess();
-            //}
-            //catch
-            //{
-                //_webResponse = "Server connection error";
+            }
+            catch
+            {
+                _webResponse = "Server connection error";
 
-                //OnRetrieveDailyInfoFailed();
-            //}
+                OnRetrieveDailyInfoFailed();
+            }
         }
 
         private void OnRetrieveDailyInfoSuccess()
@@ -163,20 +163,20 @@ namespace MyCost.Common.WebHandler
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
 
-            //try
-            //{
+            try
+            {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "getCategories.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
 
                 OnRetrieveCategoriesSuccess();
-            //}
-            //catch
-            //{
-                //_webResponse = "Server connection error";
+            }
+            catch
+            {
+                _webResponse = "Server connection error";
 
-                //OnRetrieveCategoriesFailed();
-            //}
+                OnRetrieveCategoriesFailed();
+            }
         }
 
         private void OnRetrieveCategoriesSuccess()
@@ -207,8 +207,8 @@ namespace MyCost.Common.WebHandler
 
             bool addSplitChar = false;
 
-            //adds splitting characters between expense properties so...
-            //...that we can split the rows when retrieving from db
+            //adds splitting characters between expense properties so
+            //that we can split the rows when retrieving from db
             foreach (ExpenseInfo expense in daily.ExpenseList)
             {
                 if (addSplitChar)
@@ -231,8 +231,8 @@ namespace MyCost.Common.WebHandler
 
             addSplitChar = false;
 
-            //adds splitting characters between expense properties so...
-            //...that we can split the rows when retrieving from db
+            //adds splitting characters between expense properties so
+            //that we can split the rows when retrieving from db
             foreach (EarningInfo earning in daily.EarningList)
             {
                 if (addSplitChar)
@@ -255,33 +255,32 @@ namespace MyCost.Common.WebHandler
 
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
-            queryData.Add("note", daily.Note);
-            queryData.Add("day", daily.Day.ToString());
-            queryData.Add("month", daily.Month.ToString());
-            queryData.Add("year", daily.Year.ToString());
-            queryData.Add("expenseReasons", expenseReasons);
-            queryData.Add("expenseAmounts", expenseAmounts);
-            queryData.Add("expenseCategories", expenseCategories);
-            queryData.Add("expenseComments", expenseComments);
-            queryData.Add("earningSources", earningSources);
-            queryData.Add("earningAmounts", earningAmounts);
-            queryData.Add("earningCategories", earningCategories);
-            queryData.Add("earningComments", earningComments);
-            queryData.Add("totalExpense", daily.TotalExpense.ToString());
-            queryData.Add("totalEarning", daily.TotalEarning.ToString());
+            queryData.Add("note", StringCypher.Encrypt(daily.Note, GlobalSpace.CypherKey));
+            queryData.Add("day", StringCypher.Encrypt(daily.Day.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("month", StringCypher.Encrypt(daily.Month.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("year", StringCypher.Encrypt(daily.Year.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("expenseReasons", StringCypher.Encrypt(expenseReasons, GlobalSpace.CypherKey));
+            queryData.Add("expenseAmounts", StringCypher.Encrypt(expenseAmounts, GlobalSpace.CypherKey));
+            queryData.Add("expenseCategories", StringCypher.Encrypt(expenseCategories, GlobalSpace.CypherKey));
+            queryData.Add("expenseComments", StringCypher.Encrypt(expenseComments, GlobalSpace.CypherKey));
+            queryData.Add("earningSources", StringCypher.Encrypt(earningSources, GlobalSpace.CypherKey));
+            queryData.Add("earningAmounts", StringCypher.Encrypt(earningAmounts, GlobalSpace.CypherKey));
+            queryData.Add("earningCategories", StringCypher.Encrypt(earningCategories, GlobalSpace.CypherKey));
+            queryData.Add("earningComments", StringCypher.Encrypt(earningComments, GlobalSpace.CypherKey));
+            queryData.Add("totalExpense", StringCypher.Encrypt(daily.TotalExpense.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("totalEarning", StringCypher.Encrypt(daily.TotalEarning.ToString(), GlobalSpace.CypherKey));
 
-            try
-            {
+            //try
+            //{
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "saveDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
-                return resultData;
-                
-            }
-            catch
-            {
-                return "Server connection error";
-            }
+                return resultData;      
+            //}
+            //catch
+            //{
+            //    return "Server connection error";
+            //}
         }
 
         public static string SaveCategory(string categoryNames, string categoryType)
