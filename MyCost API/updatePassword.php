@@ -19,6 +19,7 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 		$username        = mysqli_real_escape_string($connect, $_POST['username']);
 		$currentPassword = mysqli_real_escape_string($connect, $_POST['currentPassword']);
 		$newPassword     = mysqli_real_escape_string($connect, $_POST['newPassword']);
+		$newCipherKey    = mysqli_real_escape_string($connect, $_POST['newCipherKey']);
 		
 		//checks if the current password is valid
 		$query  = "SELECT * FROM users WHERE username = '$username' AND id = '$userid' LIMIT 1";
@@ -33,7 +34,7 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 			$newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 			
 			//update the current password
-			$query  = "UPDATE users SET password = '$newPassword' WHERE username = '$username' AND id = '$userid'";
+			$query  = "UPDATE users SET password = '$newPassword', cipher_key = '$newCipherKey' WHERE username = '$username' AND id = '$userid'";
 			$result = mysqli_query($connect, $query) or die('Server connection error');
 			
 			die('SUCCESS');

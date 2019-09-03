@@ -375,6 +375,13 @@ namespace MyCost.Common.WebHandler
             queryData.Add("currentPassword", currentPass);
             queryData.Add("newPassword", newPass);
 
+            //cipher key for data encryption is encrypted with password when saved to database
+            //so when change the password we have to encrypt the key with new password and
+            //replace old encrypted key in the database with newly encypted one
+            string newCipherKey = StringCipher.Encrypt(GlobalSpace.CypherKey, newPass);
+            queryData.Add("newCipherKey", newCipherKey);
+
+
             try
             {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "updatePassword.php", "POST", queryData);
