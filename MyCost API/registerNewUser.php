@@ -8,11 +8,13 @@
 
 require_once('connectDB.php');
 
-if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['activationCode']))
+if(isset($_POST['username']) && isset($_POST['password']) 
+	&& isset($_POST['activationCode']) && isset($_POST['cipherKey']))
 {	
 	$username       = mysqli_real_escape_string($connect, $_POST['username']);
 	$password       = mysqli_real_escape_string($connect, $_POST['password']);
 	$activationCode = mysqli_real_escape_string($connect, $_POST['activationCode']);
+	$cipherKey      = mysqli_real_escape_string($connect, $_POST['cipherKey']);
 	
 	//verify the request
 	$query  = "SELECT * FROM activation_codes WHERE code = '$activationCode'";
@@ -49,8 +51,8 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['activ
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	
 	//save the user info
-	$query  = "INSERT INTO users (username, password, token) 
-			  VALUES ('$username', '$password', '$token')";
+	$query  = "INSERT INTO users (username, password, token, cipher_key) 
+			  VALUES ('$username', '$password', '$token', '$cipherKey')";
 	$result = mysqli_query($connect, $query) or die('Server connection error');	
 	$userid = mysqli_insert_id($connect);
 	
@@ -67,8 +69,8 @@ if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['activ
 	$query  = "DELETE FROM activation_codes WHERE code = '$activationCode'";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
 	
-	//return the userid and the access token to MyCost app 
-	die($userid . '|' . $token);	
+	//return the userid, the access token and the cypher key for user's data decryption 
+	die($userid . '|' . $token . '|' . $cipherKey);	
 }
 else
 { 

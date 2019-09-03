@@ -63,13 +63,13 @@ namespace MyCost.Common.WebHandler
             WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
-        public void RegisterNewUser(string username, string password, string activationCode)
+        public void RegisterNewUser(string username, string password, string activationCode, string cypherKey)
         {
-            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode));
+            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode, cypherKey));
             thread.Start();
         }
 
-        private void WebRequestToRegisterUser(string username, string password, string activationCode)
+        private void WebRequestToRegisterUser(string username, string password, string activationCode, string cypherKey)
         {
             WebClient www = new WebClient();
 
@@ -79,6 +79,8 @@ namespace MyCost.Common.WebHandler
             queryData.Add("username", username);
             queryData.Add("password", password);
             queryData.Add("activationCode", activationCode);
+            queryData.Add("cipherKey", cypherKey);
+
             try
             {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "registerNewUser.php", "POST", queryData);
@@ -255,20 +257,20 @@ namespace MyCost.Common.WebHandler
 
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
-            queryData.Add("note", StringCypher.Encrypt(daily.Note, GlobalSpace.CypherKey));
-            queryData.Add("day", StringCypher.Encrypt(daily.Day.ToString(), GlobalSpace.CypherKey));
-            queryData.Add("month", StringCypher.Encrypt(daily.Month.ToString(), GlobalSpace.CypherKey));
-            queryData.Add("year", StringCypher.Encrypt(daily.Year.ToString(), GlobalSpace.CypherKey));
-            queryData.Add("expenseReasons", StringCypher.Encrypt(expenseReasons, GlobalSpace.CypherKey));
-            queryData.Add("expenseAmounts", StringCypher.Encrypt(expenseAmounts, GlobalSpace.CypherKey));
-            queryData.Add("expenseCategories", StringCypher.Encrypt(expenseCategories, GlobalSpace.CypherKey));
-            queryData.Add("expenseComments", StringCypher.Encrypt(expenseComments, GlobalSpace.CypherKey));
-            queryData.Add("earningSources", StringCypher.Encrypt(earningSources, GlobalSpace.CypherKey));
-            queryData.Add("earningAmounts", StringCypher.Encrypt(earningAmounts, GlobalSpace.CypherKey));
-            queryData.Add("earningCategories", StringCypher.Encrypt(earningCategories, GlobalSpace.CypherKey));
-            queryData.Add("earningComments", StringCypher.Encrypt(earningComments, GlobalSpace.CypherKey));
-            queryData.Add("totalExpense", StringCypher.Encrypt(daily.TotalExpense.ToString(), GlobalSpace.CypherKey));
-            queryData.Add("totalEarning", StringCypher.Encrypt(daily.TotalEarning.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("note", StringCipher.Encrypt(daily.Note, GlobalSpace.CypherKey));
+            queryData.Add("day", StringCipher.Encrypt(daily.Day.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("month", StringCipher.Encrypt(daily.Month.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("year", StringCipher.Encrypt(daily.Year.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("expenseReasons", StringCipher.Encrypt(expenseReasons, GlobalSpace.CypherKey));
+            queryData.Add("expenseAmounts", StringCipher.Encrypt(expenseAmounts, GlobalSpace.CypherKey));
+            queryData.Add("expenseCategories", StringCipher.Encrypt(expenseCategories, GlobalSpace.CypherKey));
+            queryData.Add("expenseComments", StringCipher.Encrypt(expenseComments, GlobalSpace.CypherKey));
+            queryData.Add("earningSources", StringCipher.Encrypt(earningSources, GlobalSpace.CypherKey));
+            queryData.Add("earningAmounts", StringCipher.Encrypt(earningAmounts, GlobalSpace.CypherKey));
+            queryData.Add("earningCategories", StringCipher.Encrypt(earningCategories, GlobalSpace.CypherKey));
+            queryData.Add("earningComments", StringCipher.Encrypt(earningComments, GlobalSpace.CypherKey));
+            queryData.Add("totalExpense", StringCipher.Encrypt(daily.TotalExpense.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("totalEarning", StringCipher.Encrypt(daily.TotalEarning.ToString(), GlobalSpace.CypherKey));
 
             //try
             //{

@@ -26,6 +26,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
 		if(password_verify($password, $hashedPass))
 		{
 			$userid = $row['id'];
+			$cipherKey = $row['cipher_key'];
 			
 			//generate a random string as temporary access token
 			$token = RandomToken();
@@ -34,7 +35,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
 			$query = "UPDATE users SET token = '$token' WHERE id = '$userid'";
 			mysqli_query($connect, $query) or die('Server connection error');
 			
-			die($userid . '|' . $token);			
+			die($userid . '|' . $token . '|' . $cipherKey);			
 		}
 		else
 		{ 

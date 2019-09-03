@@ -40,8 +40,8 @@ namespace MyCost.View
             string username = Properties.Settings.Default.Username;
             string password = Properties.Settings.Default.Password;
 
-            //if the user opted to auto login by checking the remmeberMeCheckBox 
-            if (username != "" && password != "")
+            //if the user opted to auto login by checking the remmeberMeCheckBox during last login
+            if (!string.IsNullOrEmpty(username) && !string.IsNullOrEmpty(password))
             {
                 //make the text color black so that the login method 
                 //doesn't detect the texts as placeholder texts
@@ -72,7 +72,7 @@ namespace MyCost.View
         {
             if (UsernameTextBox.ForeColor != Color.Black)
             {
-                //remove the placeholder
+                //remove the placeholder text
                 UsernameTextBox.Text = "";
                 UsernameTextBox.ForeColor = Color.Black;
             }
@@ -82,7 +82,7 @@ namespace MyCost.View
         {
             if (PasswordTextBox.ForeColor != Color.Black)
             {
-                //remove the placeholder
+                //remove the placeholder text
                 PasswordTextBox.Text = "";
                 PasswordTextBox.ForeColor = Color.Black;
                 PasswordTextBox.PasswordChar = '*';
@@ -93,7 +93,7 @@ namespace MyCost.View
         {
             if (ConfirmPasswordTextBox.ForeColor != Color.Black)
             {
-                //remove the placeholder
+                //remove the placeholder text
                 ConfirmPasswordTextBox.Text = "";
                 ConfirmPasswordTextBox.ForeColor = Color.Black;
                 ConfirmPasswordTextBox.PasswordChar = '*';
@@ -104,7 +104,7 @@ namespace MyCost.View
         {
             if(ActivationCodeTextBox.ForeColor != Color.Black)
             {
-                //remove the placeholder
+                //remove the placeholder text
                 ActivationCodeTextBox.Text = "";
                 ActivationCodeTextBox.ForeColor = Color.Black;
             }
@@ -329,12 +329,16 @@ namespace MyCost.View
             progressViewer.Show();
             _progressViewerObject = progressViewer;
 
+            //generate a unique cypher key for this user for encrypting this user's info
+            //save the encrypted version of the cypher key in database
+            string cypherKey = StringCipher.Encrypt(GenerateRandomCypherKey(70), password);
+
             //send web request to create new user account
             WebHandler webRequest = new WebHandler();
             webRequest.WebRequestSuccessEventHandler += OnRegisterSuccess;
             webRequest.WebRequestFailedEventHandler += OnRegisterFailed;
             _webHandlerObject = webRequest;
-            webRequest.RegisterNewUser(username, password, activationCode);
+            webRequest.RegisterNewUser(username, password, activationCode, cypherKey);
         }
 
         private void OnRegisterSuccess(object sender, EventArgs e)
@@ -354,14 +358,15 @@ namespace MyCost.View
             string[] data = result.Split('|');
 
             //if the registration process succeeds, 
-            //user's id and an unique access token are retured
+            //user's id, an unique server access token and 
+            //a cypher key for decryption are retured
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
             {
                 GlobalSpace.UserID = userId;
                 GlobalSpace.Username = UsernameTextBox.Text;
                 GlobalSpace.AccessToken = data[1];
-                GlobalSpace.CypherKey = PasswordTextBox.Text;
+                GlobalSpace.CypherKey = StringCipher.Decrypt(data[2], PasswordTextBox.Text);
 
                 if (RememberMeCheckBox.Checked)
                 {
@@ -445,21 +450,21 @@ namespace MyCost.View
             {
                 string[] cols = row.Split('|');
 
-                int day = Convert.ToInt16(StringCypher.Decrypt(cols[0], GlobalSpace.CypherKey));
-                int month = Convert.ToInt16(StringCypher.Decrypt(cols[1], GlobalSpace.CypherKey));
-                int year = Convert.ToInt32(StringCypher.Decrypt(cols[2], GlobalSpace.CypherKey));
+                int day = Convert.ToInt16(StringCipher.Decrypt(cols[0], GlobalSpace.CypherKey));
+                int month = Convert.ToInt16(StringCipher.Decrypt(cols[1], GlobalSpace.CypherKey));
+                int year = Convert.ToInt32(StringCipher.Decrypt(cols[2], GlobalSpace.CypherKey));
 
-                string note = StringCypher.Decrypt(cols[3], GlobalSpace.CypherKey);
-                string[] expenseReasons = StringCypher.Decrypt(cols[4], GlobalSpace.CypherKey).Split('~');
-                string[] expenseAmounts = StringCypher.Decrypt(cols[5], GlobalSpace.CypherKey).Split('~');
-                string[] expenseCategories = StringCypher.Decrypt(cols[6], GlobalSpace.CypherKey).Split('~');
-                string[] expenseComments = StringCypher.Decrypt(cols[7], GlobalSpace.CypherKey).Split('~');
-                string[] earningSources = StringCypher.Decrypt(cols[8], GlobalSpace.CypherKey).Split('~');
-                string[] earningAmounts = StringCypher.Decrypt(cols[9], GlobalSpace.CypherKey).Split('~');
-                string[] earningCategories = StringCypher.Decrypt(cols[10], GlobalSpace.CypherKey).Split('~');
-                string[] earningComments = StringCypher.Decrypt(cols[11], GlobalSpace.CypherKey).Split('~');
-                string totalExpense = StringCypher.Decrypt(cols[12], GlobalSpace.CypherKey);
-                string totalEarning = StringCypher.Decrypt(cols[13], GlobalSpace.CypherKey);
+                string note = StringCipher.Decrypt(cols[3], GlobalSpace.CypherKey);
+                string[] expenseReasons = StringCipher.Decrypt(cols[4], GlobalSpace.CypherKey).Split('~');
+                string[] expenseAmounts = StringCipher.Decrypt(cols[5], GlobalSpace.CypherKey).Split('~');
+                string[] expenseCategories = StringCipher.Decrypt(cols[6], GlobalSpace.CypherKey).Split('~');
+                string[] expenseComments = StringCipher.Decrypt(cols[7], GlobalSpace.CypherKey).Split('~');
+                string[] earningSources = StringCipher.Decrypt(cols[8], GlobalSpace.CypherKey).Split('~');
+                string[] earningAmounts = StringCipher.Decrypt(cols[9], GlobalSpace.CypherKey).Split('~');
+                string[] earningCategories = StringCipher.Decrypt(cols[10], GlobalSpace.CypherKey).Split('~');
+                string[] earningComments = StringCipher.Decrypt(cols[11], GlobalSpace.CypherKey).Split('~');
+                string totalExpense = StringCipher.Decrypt(cols[12], GlobalSpace.CypherKey);
+                string totalEarning = StringCipher.Decrypt(cols[13], GlobalSpace.CypherKey);
 
                 DailyInfo daily = new DailyInfo
                 {
@@ -630,6 +635,8 @@ namespace MyCost.View
         {
             foreach(Control control in this.Controls)
             {
+                //disabling AppLogoLabel changes the background color of App Logo 
+                //which is unexpected and disabling AppLogoLabel is unnecessary as well
                 if (control.Name != "AppLogoLabel")
                 {
                     control.Enabled = false;
@@ -641,6 +648,22 @@ namespace MyCost.View
         {
             StatusLabel.Text = message;
             StatusLabel.ForeColor = Color.Red;
+        }
+
+        private string GenerateRandomCypherKey(int length)
+        {
+            string charList = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+            string randomStr = "";
+
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                randomStr += charList[random.Next(charList.Length)];
+            }
+
+            return randomStr;
         }
         #endregion
     }
