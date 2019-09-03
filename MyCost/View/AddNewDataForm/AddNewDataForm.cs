@@ -18,7 +18,6 @@ namespace MyCost.View
 
         private bool _quitAppOnFormClosing;
         private bool _hasUnsavedChanges;
-        private bool _isAutoSaveAlreadyAttempted;
         private bool _isRedundantTriggerOfEventHandler;
 
         public AddNewDataForm()
@@ -45,7 +44,6 @@ namespace MyCost.View
         {
             _quitAppOnFormClosing = true;
             _hasUnsavedChanges = false;
-            _isAutoSaveAlreadyAttempted = false;
             _isRedundantTriggerOfEventHandler = false;
 
             for (int i = 2018; i < _selectedYear + 3; i++)
@@ -78,16 +76,17 @@ namespace MyCost.View
         {
             if (!_isRedundantTriggerOfEventHandler)
             {
-                if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
+                if (_hasUnsavedChanges)
                 {
-                    if (!AutoSaveDailyInfo())
+                    DialogResult userResponse = ShowUnsavedChangesWarning();
+
+                    if(userResponse == DialogResult.No)
                     {
                         //Since we are changing selected index in this block, 
                         //this will trigger this method again which is unexpected.
                         //Setting _isRedundantTriggerOfEventHandler = true will prevent that
                         _isRedundantTriggerOfEventHandler = true;
 
-                        _isAutoSaveAlreadyAttempted = false;
                         DayComboBox.SelectedIndex = _dayComboBoxPrevSelectedIndex;
                         return;
                     }
@@ -112,16 +111,17 @@ namespace MyCost.View
         {
             if (!_isRedundantTriggerOfEventHandler)
             {
-                if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
+                if (_hasUnsavedChanges)
                 {
-                    if (!AutoSaveDailyInfo())
+                    DialogResult userResponse = ShowUnsavedChangesWarning();
+
+                    if (userResponse == DialogResult.No)
                     {
                         //Since we are changing selected index in this block, 
                         //this will trigger this method again which is unexpected.
                         //Setting _isRedundantTriggerOfEventHandler = true will prevent
                         _isRedundantTriggerOfEventHandler = true;
 
-                        _isAutoSaveAlreadyAttempted = false;
                         MonthComboBox.SelectedIndex = _monthComboBoxPrevSelectedIndex;
                         return;
                     }
@@ -146,16 +146,17 @@ namespace MyCost.View
         {
             if (!_isRedundantTriggerOfEventHandler)
             {
-                if (_hasUnsavedChanges && !_isAutoSaveAlreadyAttempted)
+                if (_hasUnsavedChanges)
                 {
-                    if (!AutoSaveDailyInfo())
+                    DialogResult userResponse = ShowUnsavedChangesWarning();
+
+                    if (userResponse == DialogResult.No)
                     {
                         //Since we are changing selected index in this block, 
                         //this will trigger this method again which is unexpected.
                         //Setting _isRedundantTriggerOfEventHandler = true will prevent
                         _isRedundantTriggerOfEventHandler = true;
 
-                        _isAutoSaveAlreadyAttempted = false;
                         YearComboBox.SelectedIndex = _yearComboBoxPrevSelectedIndex;
                         return;
                     }
@@ -300,15 +301,6 @@ namespace MyCost.View
 
         private void MenuButtonsClicked(object sender, EventArgs e)
         {
-            if (_hasUnsavedChanges)
-            {
-                if(!AutoSaveDailyInfo())
-                {
-                    //if auto saving is not successful
-                    return;
-                }
-            }
-
             Button button = (Button)sender;
 
             if (button.Name == "HomeButton")
@@ -345,17 +337,21 @@ namespace MyCost.View
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
-            CloseOpenedCategoryForm();            
+            CloseOpenedCategoryForm();
+
+            if (_hasUnsavedChanges)
+            {
+                DialogResult userResponse = ShowUnsavedChangesWarning();
+
+                if (userResponse == DialogResult.No)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
 
             if (_quitAppOnFormClosing)
             {
-                if (_hasUnsavedChanges && !AutoSaveDailyInfo())
-                {
-                     //if auto saving is not successful
-                     e.Cancel = true;
-                     return;
-                }
-
                 Application.Exit();
             }
         }
@@ -753,35 +749,6 @@ namespace MyCost.View
             return result;
         }
 
-        private bool AutoSaveDailyInfo()
-        {
-            _isAutoSaveAlreadyAttempted = true;
-
-            string result = SaveDailyInfo();
-
-            if(result == "Terminated by user")
-            {
-                return false;
-            }
-            else if (result == "Server connection error")
-            {
-                //if the info is not successfully saved
-                string message = "Could not perform the automatic saving operation. ";
-                message += "It is recommended that you check your internet connection ";
-                message += "and try to save again. Continuing this page without saving might ";
-                message += "cause the unsaved changes to be permanently lost.\n\n";
-                message += "Do you want to continue without saving?";
-
-                DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                if (dlgResult == DialogResult.No)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         private void OpenCategoryListForm(DataGridView dgv)
         {
             CloseOpenedCategoryForm();
@@ -835,7 +802,6 @@ namespace MyCost.View
         
         private void ResetEverything()
         {
-            _isAutoSaveAlreadyAttempted = false;
             _hasUnsavedChanges = false;
             SaveButton.Enabled = false;
             SaveButton.BackColor = Color.LightBlue;
@@ -850,6 +816,16 @@ namespace MyCost.View
             string filteredString = str.Replace('~', '-');
 
             return filteredString;
+        }
+
+        private DialogResult ShowUnsavedChangesWarning()
+        {
+            string message = @"You have unsaved changes. Changing this page
+                might cause permanent loss of current changes. Do you still want to  change this page?";
+
+            DialogResult dlgRes = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo);
+
+            return dlgRes;
         }
 
         #endregion            
