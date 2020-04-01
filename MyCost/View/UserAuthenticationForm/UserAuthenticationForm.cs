@@ -11,6 +11,8 @@ namespace MyCost.View
     {
         private bool _quitAppOnFormClosing;
 
+        private string _activationCode;
+
         private WebHandler _webHandlerObject;
         private WebHandler _webHandlerToGetActivationCode;
         private ProgressViewerForm _progressViewerObject;
@@ -100,13 +102,13 @@ namespace MyCost.View
             }
         }
 
-        private void ActivationCodeTextBoxClicked(object sender, MouseEventArgs e)
+        private void EmailTextBoxClicked(object sender, MouseEventArgs e)
         {
-            if(ActivationCodeTextBox.ForeColor != Color.Black)
+            if(EmailTextBox.ForeColor != Color.Black)
             {
                 //remove the placeholder text
-                ActivationCodeTextBox.Text = "";
-                ActivationCodeTextBox.ForeColor = Color.Black;
+                EmailTextBox.Text = "";
+                EmailTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -177,15 +179,13 @@ namespace MyCost.View
             ShowLoginPanelButton.BackColor = Color.White;
             ShowLoginPanelButton.ForeColor = Color.Black;
 
-            GetActivationCodeButton.Visible = false;
-            GetActivationCodeButton.Enabled = false;
             SubmitButton.Text = "Log in";
             SubmitButton.Location = new Point(280, 280);
 
             ConfirmPasswordTextBox.Visible = false;
             ConfirmPasswordTextBox.Enabled = false;
-            ActivationCodeTextBox.Visible = false;
-            ActivationCodeTextBox.Enabled = false;
+            EmailTextBox.Visible = false;
+            EmailTextBox.Enabled = false;
 
             RememberMeCheckBox.Location = new Point(146, 250);
             LicenseLabel.Location = new Point(260, 345);
@@ -202,15 +202,13 @@ namespace MyCost.View
             ShowLoginPanelButton.BackColor = Color.RoyalBlue;
             ShowLoginPanelButton.ForeColor = Color.White;
 
-            GetActivationCodeButton.Visible = true;
-            GetActivationCodeButton.Enabled = true;
             SubmitButton.Text = "Register";
             SubmitButton.Location = new Point(280, 368);
 
             ConfirmPasswordTextBox.Visible = true;
             ConfirmPasswordTextBox.Enabled = true;
-            ActivationCodeTextBox.Visible = true;
-            ActivationCodeTextBox.Enabled = true;
+            EmailTextBox.Visible = true;
+            EmailTextBox.Enabled = true;
 
             RememberMeCheckBox.Location = new Point(146, 343);
             LicenseLabel.Location = new Point(260, 421);
@@ -231,8 +229,8 @@ namespace MyCost.View
             ConfirmPasswordTextBox.Text = "Confirm Password";
             ConfirmPasswordTextBox.ForeColor = Color.DarkGray;
             ConfirmPasswordTextBox.PasswordChar = '\0';
-            ActivationCodeTextBox.Text = "Activation Code";
-            ActivationCodeTextBox.ForeColor = Color.DarkGray;
+            EmailTextBox.Text = "Email";
+            EmailTextBox.ForeColor = Color.DarkGray;
         }
 
         private void LoginUser()
@@ -294,8 +292,12 @@ namespace MyCost.View
                 PasswordTextBox.Text : "";
             string confirmPassword = ConfirmPasswordTextBox.ForeColor == Color.Black?
                 ConfirmPasswordTextBox.Text : "";
-            string activationCode = ActivationCodeTextBox.ForeColor == Color.Black ?
-                ActivationCodeTextBox.Text : "";
+            string email = EmailTextBox.ForeColor == Color.Black ? EmailTextBox.Text : "";
+
+            //make server request to generate a new activation code
+            //and assign the new activation code to the private variable _activationCode
+            _activationCode = "";
+            GetActivationCode();
 
             if (username.Length < 1)
             {
@@ -311,10 +313,15 @@ namespace MyCost.View
             {
                 ShowErrorMessage("Password does not match.");
                 return;
-            }
-            else if(activationCode.Length < 1)
+            } 
+            else if(_activationCode.Length < 1)
             {
-                ShowErrorMessage("Press the [Get Code] button to generate a valid activation code");
+                //error message is already shown when the call to get activation code failed
+                return;
+            }
+            else if(email.Length < 1 || !IsValidEmail(email))
+            {
+                ShowErrorMessage("The email address you have provided is not vaild.");
                 return;
             }
 
@@ -331,14 +338,18 @@ namespace MyCost.View
 
             //generate a unique cypher key for this user for encrypting this user's info
             //save the encrypted version of the cypher key in database
-            string cypherKey = StringCipher.Encrypt(GenerateRandomCypherKey(70), password);
+            string cypherKey = GenerateRandomCypherKey(70);
+            string encryptedCypherKey = StringCipher.Encrypt(cypherKey, password);
+
+            //encrypt the email with the original cypher key
+            email = StringCipher.Encrypt(email, cypherKey);
 
             //send web request to create new user account
             WebHandler webRequest = new WebHandler();
             webRequest.WebRequestSuccessEventHandler += OnRegisterSuccess;
             webRequest.WebRequestFailedEventHandler += OnRegisterFailed;
             _webHandlerObject = webRequest;
-            webRequest.RegisterNewUser(username, password, activationCode, cypherKey);
+            webRequest.RegisterNewUser(username, password, _activationCode, encryptedCypherKey, email);
         }
 
         private void OnRegisterSuccess(object sender, EventArgs e)
@@ -610,15 +621,12 @@ namespace MyCost.View
 
         private void ActionUponGetActivationCodeSuccess()
         {
-            string code = _webHandlerToGetActivationCode.Response;
-
-            ActivationCodeTextBox.ForeColor = Color.Black;
-            ActivationCodeTextBox.Text = code;
+            _activationCode = _webHandlerToGetActivationCode.Response;
         }
 
         private void ActionUponGetActivationCodeFailed()
         {
-            string status = "Could not generate activation code. Please check your internet connection.";
+            string status = "Could not get the required activation code. Please check your internet connection.";
 
             StatusLabel.Text = status;
         }
@@ -664,6 +672,19 @@ namespace MyCost.View
             }
 
             return randomStr;
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var correctEmail = new System.Net.Mail.MailAddress(email);
+                return correctEmail.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
     }

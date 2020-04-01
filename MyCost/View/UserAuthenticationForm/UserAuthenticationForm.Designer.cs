@@ -38,10 +38,9 @@
             this.UsernameTextBox = new System.Windows.Forms.TextBox();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
-            this.ActivationCodeTextBox = new System.Windows.Forms.TextBox();
+            this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.LicenseLabel = new System.Windows.Forms.Label();
             this.HelpButton = new System.Windows.Forms.Button();
-            this.GetActivationCodeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ShowRegisterPanelButton
@@ -166,19 +165,19 @@
             this.RememberMeCheckBox.Text = "Remember me";
             this.RememberMeCheckBox.UseVisualStyleBackColor = true;
             // 
-            // ActivationCodeTextBox
+            // EmailTextBox
             // 
-            this.ActivationCodeTextBox.BackColor = System.Drawing.Color.White;
-            this.ActivationCodeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ActivationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivationCodeTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ActivationCodeTextBox.Location = new System.Drawing.Point(146, 298);
-            this.ActivationCodeTextBox.Multiline = true;
-            this.ActivationCodeTextBox.Name = "ActivationCodeTextBox";
-            this.ActivationCodeTextBox.Size = new System.Drawing.Size(394, 30);
-            this.ActivationCodeTextBox.TabIndex = 16;
-            this.ActivationCodeTextBox.Text = "Activation Code";
-            this.ActivationCodeTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ActivationCodeTextBoxClicked);
+            this.EmailTextBox.BackColor = System.Drawing.Color.White;
+            this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.EmailTextBox.Location = new System.Drawing.Point(146, 298);
+            this.EmailTextBox.Multiline = true;
+            this.EmailTextBox.Name = "EmailTextBox";
+            this.EmailTextBox.Size = new System.Drawing.Size(500, 30);
+            this.EmailTextBox.TabIndex = 16;
+            this.EmailTextBox.Text = "Email";
+            this.EmailTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EmailTextBoxClicked);
             // 
             // LicenseLabel
             // 
@@ -203,30 +202,15 @@
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButtonClicked);
             // 
-            // GetActivationCodeButton
-            // 
-            this.GetActivationCodeButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.GetActivationCodeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GetActivationCodeButton.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GetActivationCodeButton.ForeColor = System.Drawing.Color.White;
-            this.GetActivationCodeButton.Location = new System.Drawing.Point(546, 298);
-            this.GetActivationCodeButton.Name = "GetActivationCodeButton";
-            this.GetActivationCodeButton.Size = new System.Drawing.Size(100, 32);
-            this.GetActivationCodeButton.TabIndex = 19;
-            this.GetActivationCodeButton.Text = "Get Code";
-            this.GetActivationCodeButton.UseVisualStyleBackColor = false;
-            this.GetActivationCodeButton.Click += new System.EventHandler(this.GetActivationCodeButtonClicked);
-            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 449);
-            this.Controls.Add(this.GetActivationCodeButton);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.LicenseLabel);
-            this.Controls.Add(this.ActivationCodeTextBox);
+            this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.RememberMeCheckBox);
             this.Controls.Add(this.StatusLabel);
             this.Controls.Add(this.SubmitButton);
@@ -261,10 +245,9 @@
         private System.Windows.Forms.TextBox UsernameTextBox;
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.CheckBox RememberMeCheckBox;
-        private System.Windows.Forms.TextBox ActivationCodeTextBox;
+        private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label LicenseLabel;
         private System.Windows.Forms.Button HelpButton;
-        private System.Windows.Forms.Button GetActivationCodeButton;
     }
 }
 

@@ -63,13 +63,13 @@ namespace MyCost.Common.WebHandler
             WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
-        public void RegisterNewUser(string username, string password, string activationCode, string cypherKey)
+        public void RegisterNewUser(string username, string password, string activationCode, string cypherKey, string email)
         {
-            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode, cypherKey));
+            Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode, cypherKey, email));
             thread.Start();
         }
 
-        private void WebRequestToRegisterUser(string username, string password, string activationCode, string cypherKey)
+        private void WebRequestToRegisterUser(string username, string password, string activationCode, string cypherKey, string email)
         {
             WebClient www = new WebClient();
 
@@ -80,6 +80,7 @@ namespace MyCost.Common.WebHandler
             queryData.Add("password", password);
             queryData.Add("activationCode", activationCode);
             queryData.Add("cipherKey", cypherKey);
+            queryData.Add("email", email);
 
             try
             {
