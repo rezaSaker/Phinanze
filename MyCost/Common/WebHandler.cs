@@ -258,9 +258,9 @@ namespace MyCost.Common.WebHandler
             queryData.Add("token", GlobalSpace.AccessToken);
             queryData.Add("userid", GlobalSpace.UserID.ToString());
             queryData.Add("note", StringCipher.Encrypt(daily.Note, GlobalSpace.CypherKey));
-            queryData.Add("day", StringCipher.Encrypt(daily.Day.ToString(), GlobalSpace.CypherKey));
-            queryData.Add("month", StringCipher.Encrypt(daily.Month.ToString(), GlobalSpace.CypherKey));
-            queryData.Add("year", StringCipher.Encrypt(daily.Year.ToString(), GlobalSpace.CypherKey));
+            queryData.Add("day", daily.Day.ToString());
+            queryData.Add("month", daily.Month.ToString());
+            queryData.Add("year", daily.Year.ToString());
             queryData.Add("expenseReasons", StringCipher.Encrypt(expenseReasons, GlobalSpace.CypherKey));
             queryData.Add("expenseAmounts", StringCipher.Encrypt(expenseAmounts, GlobalSpace.CypherKey));
             queryData.Add("expenseCategories", StringCipher.Encrypt(expenseCategories, GlobalSpace.CypherKey));

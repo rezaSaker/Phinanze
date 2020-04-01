@@ -129,7 +129,6 @@
             this.PasswordTextBox.TabIndex = 11;
             this.PasswordTextBox.Text = "Password";
             this.PasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextboxClicked);
-            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
             // 
             // UsernameTextBox
             // 
@@ -144,7 +143,6 @@
             this.UsernameTextBox.TabIndex = 10;
             this.UsernameTextBox.Text = "Username";
             this.UsernameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UsernameTextBoxClicked);
-            this.UsernameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UsernameTextBox_KeyDown);
             // 
             // StatusLabel
             // 

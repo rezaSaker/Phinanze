@@ -431,14 +431,17 @@ namespace MyCost.View
                 NoteTextBox.Text = daily.Note;
                 NoteTextBox.ForeColor = Color.Black;
 
+                //last column in the grid is an invisible coulmn that keep record of whether 
+                //the info is is previously saved (old) info or new info so that we don't 
+                //save the same info twice
                 foreach (ExpenseInfo expense in daily.ExpenseList)
-                {
-                    ExpenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
+                {         
+                    ExpenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment, "old");
                 }               
 
                 foreach (EarningInfo earning in daily.EarningList)
                 {
-                    EarningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
+                    EarningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment, "old");
                 }
             }
             ExpenseDataGridView.Rows[0].Cells[0].Selected = false;
@@ -779,16 +782,9 @@ namespace MyCost.View
             }
         }
 
-        private bool IsLastEmptyRow(DataGridView dgv, int rowindex)
+        private bool IsLastEmptyRow(DataGridView dgv, int rowIndex)
         {
-            if (rowindex == dgv.Rows.Count - 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return rowIndex == dgv.Rows.Count - 1? true: false;
         }
 
         private void OpenNewForm(Form form)

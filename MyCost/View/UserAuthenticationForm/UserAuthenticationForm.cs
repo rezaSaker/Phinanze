@@ -450,9 +450,9 @@ namespace MyCost.View
             {
                 string[] cols = row.Split('|');
 
-                int day = Convert.ToInt16(StringCipher.Decrypt(cols[0], GlobalSpace.CypherKey));
-                int month = Convert.ToInt16(StringCipher.Decrypt(cols[1], GlobalSpace.CypherKey));
-                int year = Convert.ToInt32(StringCipher.Decrypt(cols[2], GlobalSpace.CypherKey));
+                int day = Convert.ToInt16(cols[0]);
+                int month = Convert.ToInt16(cols[1]);
+                int year = Convert.ToInt16(cols[2]);
 
                 string note = StringCipher.Decrypt(cols[3], GlobalSpace.CypherKey);
                 string[] expenseReasons = StringCipher.Decrypt(cols[4], GlobalSpace.CypherKey).Split('~');
