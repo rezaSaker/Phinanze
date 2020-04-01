@@ -13,6 +13,7 @@ namespace MyCost.View
         private int _selectedYear;
 
         private bool _quitAppOnFormClosing;
+        private bool _isInitializationCall;
 
         private List<string> _monthList;
 
@@ -48,6 +49,10 @@ namespace MyCost.View
             }
             
             MonthComboBox.SelectedIndex = _selectedMonth - 1;
+
+            //_isInitializationCall = true will prevent calling PlotDailyInfo() method
+            //a second time which is called when index of month or year combobox is changed
+            _isInitializationCall = true;
             YearComboBox.SelectedIndex = YearComboBox.Items.IndexOf(_selectedYear.ToString());           
         }
 
@@ -60,7 +65,15 @@ namespace MyCost.View
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
             _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
-            PlotDailyInfo();
+
+            if (!_isInitializationCall)
+            {
+                PlotDailyInfo();
+            }
+            else
+            {
+                _isInitializationCall = false;
+            }
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
