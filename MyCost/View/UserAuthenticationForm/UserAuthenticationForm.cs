@@ -2,6 +2,9 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Mail;
+using System.Collections.Generic;
 using MyCost.Common;
 using MyCost.Common.WebHandler;
 

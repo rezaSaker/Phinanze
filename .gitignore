@@ -3,3 +3,4 @@ MyCost/bin/*
 .vs
 MyCost/Resources/*.pptx
 MyCost/Common/Server.cs
+MyCost/Common/Mailer.cs
