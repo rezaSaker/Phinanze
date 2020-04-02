@@ -19,12 +19,14 @@ namespace MyCost.View
         private WebHandler _webHandlerObject;
         private WebHandler _webHandlerToGetActivationCode;
         private ProgressViewerForm _progressViewerObject;
+        private Mailer _mailerObject;
 
         private delegate void UserAuthenticationDelegate();
         private delegate void UserRegistrationDelegate();
         private delegate void FetchDailyInfoDelegate();
         private delegate void FetchCategoriesDelegate();
         private delegate void GetActivationCodeDelegate();
+        private delegate void SendEmailDelegate();
 
         public UserAuthenticationForm()
         {
@@ -296,6 +298,8 @@ namespace MyCost.View
             string confirmPassword = ConfirmPasswordTextBox.ForeColor == Color.Black?
                 ConfirmPasswordTextBox.Text : "";
             string email = EmailTextBox.ForeColor == Color.Black ? EmailTextBox.Text : "";
+            string emailVerificationCode = GenerateRandomNumberString(6);
+
 
             //make server request to generate a new activation code
             //and assign the new activation code to the private variable _activationCode
@@ -341,7 +345,7 @@ namespace MyCost.View
 
             //generate a unique cypher key for this user for encrypting this user's info
             //save the encrypted version of the cypher key in database
-            string cypherKey = GenerateRandomCypherKey(70);
+            string cypherKey = GenerateRandomString(70);
             string encryptedCypherKey = StringCipher.Encrypt(cypherKey, password);
 
             //encrypt the email with the original cypher key
@@ -352,7 +356,7 @@ namespace MyCost.View
             webRequest.WebRequestSuccessEventHandler += OnRegisterSuccess;
             webRequest.WebRequestFailedEventHandler += OnRegisterFailed;
             _webHandlerObject = webRequest;
-            webRequest.RegisterNewUser(username, password, _activationCode, encryptedCypherKey, email);
+            webRequest.RegisterNewUser(username, password, _activationCode, encryptedCypherKey, email, emailVerificationCode);
         }
 
         private void OnRegisterSuccess(object sender, EventArgs e)
@@ -377,20 +381,33 @@ namespace MyCost.View
             //otherwise, the error message is returned
             if (int.TryParse(data[0], out int userId))
             {
-                GlobalSpace.UserID = userId;
                 GlobalSpace.Username = UsernameTextBox.Text;
+                GlobalSpace.UserID = userId;
                 GlobalSpace.AccessToken = data[1];
                 GlobalSpace.CypherKey = StringCipher.Decrypt(data[2], PasswordTextBox.Text);
-
+                GlobalSpace.Email = StringCipher.Decrypt(data[3], GlobalSpace.CypherKey);
+                
                 if (RememberMeCheckBox.Checked)
                 {
                     Properties.Settings.Default.Username = UsernameTextBox.Text;
                     Properties.Settings.Default.Password = PasswordTextBox.Text;
                     Properties.Settings.Default.Save();
                 }
-
-                //get daily info of this user from database
-                FetchDailyInfo();
+                
+                //if the account has just been registered,
+                //send an email verification code to the user's email
+                if(data[4] == "New User")
+                {
+                    string verificationCode = data[5];
+                    MailAddress from = new MailAddress("contact@rezasaker.com");
+                    MailAddress to = new MailAddress(GlobalSpace.Email);
+                    SendVerificationEmail(from, to, verificationCode);
+                }
+                else //if exisitng user logging in
+                {
+                    //get daily info of this user from database
+                    FetchDailyInfo();
+                }
             }
             else
             {
@@ -409,6 +426,60 @@ namespace MyCost.View
 
             //enable all controls so that the user can attempt to login again
             EnableAllControls();           
+        }
+
+        private void SendVerificationEmail(MailAddress from, MailAddress to, string verificationCode)
+        {
+            string status = "Sending verification code, please wait...";
+            _progressViewerObject.UpdateStatus(status);
+
+            //email subject and body
+            string subject = "Email Verification for MyCost";
+            string message = @"Dear User,
+Thanks for registering account with MyCost Finance Management App. 
+Your email verification code is " + verificationCode + ".\n\n" +
+            "PLease ignore this email if it is not intended for you.\n\n" +
+            "Thank you\n\n" +
+            "MyCost Team";
+
+            //send verification code to user's email
+            Mailer mailer = new Mailer
+            {
+                From = from,
+                To = to,
+                Subject = subject,
+                Message = message
+            };
+
+            mailer.EmailSendingSuccessEventHandler += OnSendingVerificationEmailSuccess;
+            mailer.EmailSendingFailedEventHandler += OnSendingVerificationEmailFailed;
+            _mailerObject = mailer;
+            mailer.SendEmail();
+        }
+
+        private void OnSendingVerificationEmailSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new SendEmailDelegate(ActionUponEmailSendingSuccess), new object[] { });
+        }
+
+        private void OnSendingVerificationEmailFailed(object sender, EventArgs e)
+        {
+            this.Invoke(new SendEmailDelegate(ActionUponEmailSendingFailed), new object[] { });
+        }
+
+        private void ActionUponEmailSendingSuccess()
+        {
+            //get daily info of this user from database
+            FetchDailyInfo();
+        }
+
+        private void ActionUponEmailSendingFailed()
+        {
+            //even though the email sending wasn't successful, 
+            //we would continue with the next step and
+            //log the user in and prompt later to ask for verification code
+            //get daily info of this user from database
+            FetchDailyInfo();
         }
 
         private void FetchDailyInfo()
@@ -661,9 +732,25 @@ namespace MyCost.View
             StatusLabel.ForeColor = Color.Red;
         }
 
-        private string GenerateRandomCypherKey(int length)
+        private string GenerateRandomString(int length)
         {
             string charList = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+            string randomStr = "";
+
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                randomStr += charList[random.Next(charList.Length)];
+            }
+
+            return randomStr;
+        }
+
+        private string GenerateRandomNumberString(int length)
+        {
+            string charList = "1234567890";
 
             string randomStr = "";
 
