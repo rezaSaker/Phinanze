@@ -129,7 +129,7 @@ namespace MyCost.View
             }
         }
 
-        private void HelpButtonClicked(object sender, EventArgs e)
+        new private void HelpButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -158,11 +158,6 @@ namespace MyCost.View
                     MessageBox.Show("Sorry, could not open your default browser");
                 }
             }
-        }
-
-        private void GetActivationCodeButtonClicked(object sender, EventArgs e)
-        {
-            GetActivationCode();
         }
 
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
@@ -349,14 +344,14 @@ namespace MyCost.View
             string encryptedCypherKey = StringCipher.Encrypt(cypherKey, password);
 
             //encrypt the email with the original cypher key
-            email = StringCipher.Encrypt(email, cypherKey);
+            string encryptedEmail = StringCipher.Encrypt(email, cypherKey);
 
             //send web request to create new user account
             WebHandler webRequest = new WebHandler();
             webRequest.WebRequestSuccessEventHandler += OnRegisterSuccess;
             webRequest.WebRequestFailedEventHandler += OnRegisterFailed;
             _webHandlerObject = webRequest;
-            webRequest.RegisterNewUser(username, password, _activationCode, encryptedCypherKey, email, emailVerificationCode);
+            webRequest.RegisterNewUser(username, password, _activationCode, encryptedCypherKey, encryptedEmail, email, emailVerificationCode);
         }
 
         private void OnRegisterSuccess(object sender, EventArgs e)

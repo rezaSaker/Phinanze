@@ -15,7 +15,8 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	$password       = mysqli_real_escape_string($connect, $_POST['password']);
 	$activationCode = mysqli_real_escape_string($connect, $_POST['activationCode']);
 	$cipherKey      = mysqli_real_escape_string($connect, $_POST['cipherKey']);
-	$email          = mysqli_real_escape_string($connect, $_POST['email']);
+	$encryptedEmail = mysqli_real_escape_string($connect, $_POST['encryptedEmail']);
+	$originalEmail  = mysqli_real_escape_string($connect, $_POST['originalEmail']);
 	$emailVerificationCode = mysqli_real_escape_string($connect, $_POST['emailVerificationCode']);
 
 	//verify the request
@@ -43,7 +44,19 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	
 	if($count > 0)
 	{
-		die('This username already exists');
+		die('This username is taken. Please choose a different username.');
+	}
+
+	//check if the email already exists in the database
+	$query  = "SELECT comparable_email FROM users";
+	$result = mysqli_query($connect, $query) or die('Server connection error');
+
+	while($row = mysqli_fetch_array($result))
+	{
+		if(password_verify($originalEmail, $row['comparable_email']))
+		{
+			die('This email is associated with another account. Please choose a different email.');
+		}
 	}
 	
 	//generate a random string as temporary access token
@@ -51,10 +64,10 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	
 	//hash password
 	$password = password_hash($password, PASSWORD_DEFAULT);
-	
+	$comparableEmail = password_hash($originalEmail, PASSWORD_DEFAULT);
+
 	//save the user info
-	$query  = "INSERT INTO users (username, password, token, cipher_key, email, verification_code) 
-			  VALUES ('$username', '$password', '$token', '$cipherKey', '$email', '$emailVerificationCode')";
+	$query  = "INSERT INTO users (username, password, token, cipher_key, decryptable_email, comparable_email, verification_code) VALUES ('$username', '$password', '$token', '$cipherKey', '$encryptedEmail', '$comparableEmail','$emailVerificationCode')";
 	$result = mysqli_query($connect, $query) or die('Server connection error');	
 	$userid = mysqli_insert_id($connect);
 	
@@ -72,7 +85,7 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	$result = mysqli_query($connect, $query) or die('Server connection error');
 	
 	//return the userid, the access token and the cypher key for user's data decryption 
-	die($userid . '|' . $token . '|' . $cipherKey . '|' . $email . '|' . 'New User' . '|' . $emailVerificationCode);	
+	die($userid . '|' . $token . '|' . $cipherKey . '|' . $encryptedEmail . '|' . 'New User' . '|' . $emailVerificationCode);	
 }
 else
 { 
@@ -94,6 +107,5 @@ function RandomToken()
 	
 	return $randStr;
 }
-
 
 ?>

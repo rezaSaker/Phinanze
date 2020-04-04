@@ -27,7 +27,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
 		{
 			$userid = $row['id'];
 			$cipherKey = $row['cipher_key'];
-			$email = $row['email'];
+			$email = $row['decryptable_email'];
 			
 			//generate a random string as temporary access token
 			$token = RandomToken();

@@ -64,15 +64,15 @@ namespace MyCost.Common.WebHandler
         }
 
         public void RegisterNewUser(string username, string password, string activationCode, 
-            string cypherKey, string email, string emailVerificationCode)
+            string cypherKey, string encryptedEmail, string originalEmail, string emailVerificationCode)
         {
             Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode,
-                cypherKey, email, emailVerificationCode));
+                cypherKey, encryptedEmail, originalEmail, emailVerificationCode));
             thread.Start();
         }
 
         private void WebRequestToRegisterUser(string username, string password, string activationCode, 
-            string cypherKey, string email, string emailVerificationCode)
+            string cypherKey, string encryptedEmail, string originalEmail, string emailVerificationCode)
         {
             WebClient www = new WebClient();
 
@@ -83,7 +83,8 @@ namespace MyCost.Common.WebHandler
             queryData.Add("password", password);
             queryData.Add("activationCode", activationCode);
             queryData.Add("cipherKey", cypherKey);
-            queryData.Add("email", email);
+            queryData.Add("encryptedEmail", encryptedEmail);
+            queryData.Add("originalEmail", originalEmail);
             queryData.Add("emailVerificationCode", emailVerificationCode);
 
             try
