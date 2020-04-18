@@ -36,7 +36,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StatisticsForm));
             this.LogOutButton = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
+            this.ProfileButton = new System.Windows.Forms.Button();
             this.StatisticsButton = new System.Windows.Forms.Button();
             this.MonthlyReportButton = new System.Windows.Forms.Button();
             this.AddNewDataButton = new System.Windows.Forms.Button();
@@ -87,26 +87,26 @@
             this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
             this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // SettingsButton
+            // ProfileButton
             // 
-            this.SettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SettingsButton.BackColor = System.Drawing.Color.White;
-            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SettingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.SettingsButton.Location = new System.Drawing.Point(537, 12);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(123, 38);
-            this.SettingsButton.TabIndex = 51;
-            this.SettingsButton.Text = "Settings";
-            this.SettingsButton.UseVisualStyleBackColor = false;
-            this.SettingsButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.SettingsButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.SettingsButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
+            this.ProfileButton.BackColor = System.Drawing.Color.White;
+            this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProfileButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileButton.ForeColor = System.Drawing.Color.ForestGreen;
+            this.ProfileButton.Location = new System.Drawing.Point(537, 12);
+            this.ProfileButton.Name = "ProfileButton";
+            this.ProfileButton.Size = new System.Drawing.Size(123, 38);
+            this.ProfileButton.TabIndex = 51;
+            this.ProfileButton.Text = "Profile";
+            this.ProfileButton.UseVisualStyleBackColor = false;
+            this.ProfileButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.ProfileButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
+            this.ProfileButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // StatisticsButton
             // 
@@ -463,7 +463,7 @@
             this.Controls.Add(this.Panel1);
             this.Controls.Add(this.YearlyReportChart);
             this.Controls.Add(this.LogOutButton);
-            this.Controls.Add(this.SettingsButton);
+            this.Controls.Add(this.ProfileButton);
             this.Controls.Add(this.StatisticsButton);
             this.Controls.Add(this.MonthlyReportButton);
             this.Controls.Add(this.AddNewDataButton);
@@ -492,7 +492,7 @@
         #endregion
 
         private System.Windows.Forms.Button LogOutButton;
-        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.Button StatisticsButton;
         private System.Windows.Forms.Button MonthlyReportButton;
         private System.Windows.Forms.Button AddNewDataButton;

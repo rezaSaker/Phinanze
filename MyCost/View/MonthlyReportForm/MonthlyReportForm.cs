@@ -127,9 +127,9 @@ namespace MyCost.View
             {
                 OpenNewForm(new StatisticsForm());
             }
-            else if (button.Name == "SettingsButton")
+            else if (button.Name == "ProfileButton")
             {
-                OpenNewForm(new SettingsForm());
+                OpenNewForm(new ProfileForm());
             }
             else if (button.Name == "LogOutButton")
             {
