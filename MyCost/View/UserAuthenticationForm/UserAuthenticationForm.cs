@@ -449,7 +449,7 @@ Your email verification code is " + verificationCode + ".\n\n" +
             mailer.EmailSendingSuccessEventHandler += OnSendingVerificationEmailSuccess;
             mailer.EmailSendingFailedEventHandler += OnSendingVerificationEmailFailed;
             _mailerObject = mailer;
-            mailer.SendEmail();
+            mailer.SendVerificationEmail();
         }
 
         private void OnSendingVerificationEmailSuccess(object sender, EventArgs e)
