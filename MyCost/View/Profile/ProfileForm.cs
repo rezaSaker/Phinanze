@@ -7,11 +7,11 @@ using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
-    public partial class SettingsForm : Form
+    public partial class ProfileForm : Form
     {
         private bool _quitAppOnFormClosing;
 
-        public SettingsForm()
+        public ProfileForm()
         {
             InitializeComponent();
 
@@ -135,6 +135,11 @@ namespace MyCost.View
             }
         }
 
+        private void UpdateEmailButtonClicked(object sender, EventArgs e)
+        {
+
+        }
+
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -241,5 +246,7 @@ namespace MyCost.View
             _quitAppOnFormClosing = false;
             this.Close();
         }
+
+        
     }
 }

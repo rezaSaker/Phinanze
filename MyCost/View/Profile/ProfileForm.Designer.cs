@@ -1,6 +1,6 @@
 ﻿namespace MyCost.View
 {
-    partial class SettingsForm
+    partial class ProfileForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileForm));
             this.UserNameLaabel = new System.Windows.Forms.Label();
             this.ChangeUsernameLabel = new System.Windows.Forms.Label();
             this.CurrentUserNameTextBox = new System.Windows.Forms.TextBox();
@@ -46,13 +46,18 @@
             this.HelpButton = new System.Windows.Forms.Button();
             this.AboutAppButton = new System.Windows.Forms.Button();
             this.LogOutButton = new System.Windows.Forms.Button();
-            this.SettingsButton = new System.Windows.Forms.Button();
+            this.ProfileButton = new System.Windows.Forms.Button();
             this.StatisticsButton = new System.Windows.Forms.Button();
             this.MonthlyReportButton = new System.Windows.Forms.Button();
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ViewSourceButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.NewEmailTextBox = new System.Windows.Forms.TextBox();
+            this.UpdateEmailButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,9 +75,9 @@
             // ChangeUsernameLabel
             // 
             this.ChangeUsernameLabel.AutoSize = true;
-            this.ChangeUsernameLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangeUsernameLabel.ForeColor = System.Drawing.Color.Black;
-            this.ChangeUsernameLabel.Location = new System.Drawing.Point(2, 53);
+            this.ChangeUsernameLabel.Font = new System.Drawing.Font("Arabic Transparent", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeUsernameLabel.ForeColor = System.Drawing.Color.DarkCyan;
+            this.ChangeUsernameLabel.Location = new System.Drawing.Point(4, 49);
             this.ChangeUsernameLabel.Name = "ChangeUsernameLabel";
             this.ChangeUsernameLabel.Size = new System.Drawing.Size(139, 18);
             this.ChangeUsernameLabel.TabIndex = 47;
@@ -84,9 +89,9 @@
             this.CurrentUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CurrentUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CurrentUserNameTextBox.Location = new System.Drawing.Point(5, 98);
+            this.CurrentUserNameTextBox.Location = new System.Drawing.Point(7, 80);
             this.CurrentUserNameTextBox.Name = "CurrentUserNameTextBox";
-            this.CurrentUserNameTextBox.Size = new System.Drawing.Size(346, 26);
+            this.CurrentUserNameTextBox.Size = new System.Drawing.Size(371, 26);
             this.CurrentUserNameTextBox.TabIndex = 48;
             this.CurrentUserNameTextBox.Text = "Current username";
             this.CurrentUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
@@ -98,9 +103,9 @@
             this.NewUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.NewUserNameTextBox.Location = new System.Drawing.Point(6, 147);
+            this.NewUserNameTextBox.Location = new System.Drawing.Point(7, 125);
             this.NewUserNameTextBox.Name = "NewUserNameTextBox";
-            this.NewUserNameTextBox.Size = new System.Drawing.Size(345, 26);
+            this.NewUserNameTextBox.Size = new System.Drawing.Size(371, 26);
             this.NewUserNameTextBox.TabIndex = 49;
             this.NewUserNameTextBox.Text = "New username";
             this.NewUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
@@ -112,9 +117,9 @@
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.PasswordTextBox.Location = new System.Drawing.Point(6, 195);
+            this.PasswordTextBox.Location = new System.Drawing.Point(7, 170);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(345, 26);
+            this.PasswordTextBox.Size = new System.Drawing.Size(371, 26);
             this.PasswordTextBox.TabIndex = 50;
             this.PasswordTextBox.Text = "Password";
             this.PasswordTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
@@ -128,9 +133,9 @@
             this.UpdateUsernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateUsernameButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateUsernameButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateUsernameButton.Location = new System.Drawing.Point(6, 249);
+            this.UpdateUsernameButton.Location = new System.Drawing.Point(7, 219);
             this.UpdateUsernameButton.Name = "UpdateUsernameButton";
-            this.UpdateUsernameButton.Size = new System.Drawing.Size(345, 35);
+            this.UpdateUsernameButton.Size = new System.Drawing.Size(371, 35);
             this.UpdateUsernameButton.TabIndex = 51;
             this.UpdateUsernameButton.Text = "Update Username";
             this.UpdateUsernameButton.UseVisualStyleBackColor = false;
@@ -144,9 +149,9 @@
             this.UpdatePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdatePasswordButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatePasswordButton.ForeColor = System.Drawing.Color.White;
-            this.UpdatePasswordButton.Location = new System.Drawing.Point(434, 249);
+            this.UpdatePasswordButton.Location = new System.Drawing.Point(431, 219);
             this.UpdatePasswordButton.Name = "UpdatePasswordButton";
-            this.UpdatePasswordButton.Size = new System.Drawing.Size(340, 35);
+            this.UpdatePasswordButton.Size = new System.Drawing.Size(341, 35);
             this.UpdatePasswordButton.TabIndex = 56;
             this.UpdatePasswordButton.Text = "Update Password";
             this.UpdatePasswordButton.UseVisualStyleBackColor = false;
@@ -158,7 +163,7 @@
             this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(434, 195);
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(431, 125);
             this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
             this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(340, 26);
             this.ConfirmPasswordTextBox.TabIndex = 55;
@@ -172,9 +177,9 @@
             this.NewPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.NewPasswordTextBox.Location = new System.Drawing.Point(435, 147);
+            this.NewPasswordTextBox.Location = new System.Drawing.Point(431, 80);
             this.NewPasswordTextBox.Name = "NewPasswordTextBox";
-            this.NewPasswordTextBox.Size = new System.Drawing.Size(340, 26);
+            this.NewPasswordTextBox.Size = new System.Drawing.Size(341, 26);
             this.NewPasswordTextBox.TabIndex = 54;
             this.NewPasswordTextBox.Text = "New password";
             this.NewPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
@@ -186,9 +191,9 @@
             this.CurrentPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CurrentPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CurrentPasswordTextBox.Location = new System.Drawing.Point(433, 98);
+            this.CurrentPasswordTextBox.Location = new System.Drawing.Point(431, 170);
             this.CurrentPasswordTextBox.Name = "CurrentPasswordTextBox";
-            this.CurrentPasswordTextBox.Size = new System.Drawing.Size(341, 26);
+            this.CurrentPasswordTextBox.Size = new System.Drawing.Size(340, 26);
             this.CurrentPasswordTextBox.TabIndex = 53;
             this.CurrentPasswordTextBox.Text = "Current password";
             this.CurrentPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
@@ -198,8 +203,8 @@
             // 
             this.ChangePasswordLabel.AutoSize = true;
             this.ChangePasswordLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangePasswordLabel.ForeColor = System.Drawing.Color.Black;
-            this.ChangePasswordLabel.Location = new System.Drawing.Point(432, 53);
+            this.ChangePasswordLabel.ForeColor = System.Drawing.Color.DarkCyan;
+            this.ChangePasswordLabel.Location = new System.Drawing.Point(428, 49);
             this.ChangePasswordLabel.Name = "ChangePasswordLabel";
             this.ChangePasswordLabel.Size = new System.Drawing.Size(137, 18);
             this.ChangePasswordLabel.TabIndex = 52;
@@ -210,23 +215,23 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(389, 74);
+            this.label3.Location = new System.Drawing.Point(403, 53);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 198);
             this.label3.TabIndex = 57;
-            this.label3.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n";
+            this.label3.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(12, 373);
+            this.label4.Location = new System.Drawing.Point(7, 257);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(782, 18);
+            this.label4.Size = new System.Drawing.Size(764, 18);
             this.label4.TabIndex = 58;
             this.label4.Text = "_________________________________________________________________________________" +
-    "_____";
+    "___";
             // 
             // ReportIssueButton
             // 
@@ -236,7 +241,7 @@
             this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ReportIssueButton.Location = new System.Drawing.Point(235, 431);
+            this.ReportIssueButton.Location = new System.Drawing.Point(619, 326);
             this.ReportIssueButton.Name = "ReportIssueButton";
             this.ReportIssueButton.Size = new System.Drawing.Size(153, 31);
             this.ReportIssueButton.TabIndex = 64;
@@ -252,7 +257,7 @@
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.HelpButton.Location = new System.Drawing.Point(15, 431);
+            this.HelpButton.Location = new System.Drawing.Point(436, 326);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(146, 31);
             this.HelpButton.TabIndex = 65;
@@ -268,7 +273,7 @@
             this.AboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AboutAppButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutAppButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.AboutAppButton.Location = new System.Drawing.Point(443, 431);
+            this.AboutAppButton.Location = new System.Drawing.Point(436, 372);
             this.AboutAppButton.Name = "AboutAppButton";
             this.AboutAppButton.Size = new System.Drawing.Size(148, 31);
             this.AboutAppButton.TabIndex = 66;
@@ -285,9 +290,9 @@
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LogOutButton.Location = new System.Drawing.Point(662, 12);
+            this.LogOutButton.Location = new System.Drawing.Point(675, 12);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(123, 38);
+            this.LogOutButton.Size = new System.Drawing.Size(118, 38);
             this.LogOutButton.TabIndex = 73;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
@@ -295,20 +300,20 @@
             this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
             this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
-            // SettingsButton
+            // ProfileButton
             // 
-            this.SettingsButton.BackColor = System.Drawing.Color.ForestGreen;
-            this.SettingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SettingsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.SettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SettingsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsButton.ForeColor = System.Drawing.Color.White;
-            this.SettingsButton.Location = new System.Drawing.Point(535, 12);
-            this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(121, 38);
-            this.SettingsButton.TabIndex = 72;
-            this.SettingsButton.Text = "Settings";
-            this.SettingsButton.UseVisualStyleBackColor = false;
+            this.ProfileButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProfileButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileButton.ForeColor = System.Drawing.Color.White;
+            this.ProfileButton.Location = new System.Drawing.Point(535, 12);
+            this.ProfileButton.Name = "ProfileButton";
+            this.ProfileButton.Size = new System.Drawing.Size(134, 38);
+            this.ProfileButton.TabIndex = 72;
+            this.ProfileButton.Text = "Profile";
+            this.ProfileButton.UseVisualStyleBackColor = false;
             // 
             // StatisticsButton
             // 
@@ -387,21 +392,32 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.UpdateEmailButton);
+            this.panel1.Controls.Add(this.NewEmailTextBox);
+            this.panel1.Controls.Add(this.ViewSourceButton);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.UpdatePasswordButton);
             this.panel1.Controls.Add(this.ConfirmPasswordTextBox);
             this.panel1.Controls.Add(this.NewPasswordTextBox);
             this.panel1.Controls.Add(this.CurrentPasswordTextBox);
             this.panel1.Controls.Add(this.ChangePasswordLabel);
+            this.panel1.Controls.Add(this.AboutAppButton);
             this.panel1.Controls.Add(this.UpdateUsernameButton);
+            this.panel1.Controls.Add(this.ReportIssueButton);
+            this.panel1.Controls.Add(this.HelpButton);
             this.panel1.Controls.Add(this.PasswordTextBox);
             this.panel1.Controls.Add(this.NewUserNameTextBox);
             this.panel1.Controls.Add(this.CurrentUserNameTextBox);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ChangeUsernameLabel);
             this.panel1.Controls.Add(this.UserNameLaabel);
             this.panel1.Location = new System.Drawing.Point(10, 61);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(783, 312);
+            this.panel1.Size = new System.Drawing.Size(783, 414);
             this.panel1.TabIndex = 74;
             // 
             // ViewSourceButton
@@ -412,36 +428,92 @@
             this.ViewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ViewSourceButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewSourceButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ViewSourceButton.Location = new System.Drawing.Point(640, 431);
+            this.ViewSourceButton.Location = new System.Drawing.Point(619, 372);
             this.ViewSourceButton.Name = "ViewSourceButton";
-            this.ViewSourceButton.Size = new System.Drawing.Size(148, 31);
+            this.ViewSourceButton.Size = new System.Drawing.Size(153, 31);
             this.ViewSourceButton.TabIndex = 75;
             this.ViewSourceButton.Text = "View Source";
             this.ViewSourceButton.UseVisualStyleBackColor = false;
             this.ViewSourceButton.Click += new System.EventHandler(this.ViewSourceButtonClicked);
             // 
-            // SettingsForm
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arabic Transparent", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label1.Location = new System.Drawing.Point(4, 295);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Change Email";
+            // 
+            // NewEmailTextBox
+            // 
+            this.NewEmailTextBox.BackColor = System.Drawing.Color.White;
+            this.NewEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NewEmailTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.NewEmailTextBox.Location = new System.Drawing.Point(7, 326);
+            this.NewEmailTextBox.Name = "NewEmailTextBox";
+            this.NewEmailTextBox.Size = new System.Drawing.Size(371, 26);
+            this.NewEmailTextBox.TabIndex = 76;
+            this.NewEmailTextBox.Text = "New Email";
+            // 
+            // UpdateEmailButton
+            // 
+            this.UpdateEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateEmailButton.Enabled = false;
+            this.UpdateEmailButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmailButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmailButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateEmailButton.Location = new System.Drawing.Point(7, 368);
+            this.UpdateEmailButton.Name = "UpdateEmailButton";
+            this.UpdateEmailButton.Size = new System.Drawing.Size(371, 35);
+            this.UpdateEmailButton.TabIndex = 77;
+            this.UpdateEmailButton.Text = "Update Email";
+            this.UpdateEmailButton.UseVisualStyleBackColor = false;
+            this.UpdateEmailButton.Click += new System.EventHandler(this.UpdateEmailButtonClicked);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arabic Transparent", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label2.Location = new System.Drawing.Point(433, 295);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 18);
+            this.label2.TabIndex = 78;
+            this.label2.Text = "Important Links";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(403, 205);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 198);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|";
+            // 
+            // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 487);
-            this.Controls.Add(this.ViewSourceButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LogOutButton);
-            this.Controls.Add(this.SettingsButton);
+            this.Controls.Add(this.ProfileButton);
             this.Controls.Add(this.StatisticsButton);
             this.Controls.Add(this.MonthlyReportButton);
             this.Controls.Add(this.AddNewDataButton);
             this.Controls.Add(this.HomeButton);
-            this.Controls.Add(this.AboutAppButton);
-            this.Controls.Add(this.HelpButton);
-            this.Controls.Add(this.ReportIssueButton);
-            this.Controls.Add(this.label4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "SettingsForm";
+            this.Name = "ProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MyCost - Settings";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
@@ -449,7 +521,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -471,12 +542,17 @@
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.Button AboutAppButton;
         private System.Windows.Forms.Button LogOutButton;
-        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.Button StatisticsButton;
         private System.Windows.Forms.Button MonthlyReportButton;
         private System.Windows.Forms.Button AddNewDataButton;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button ViewSourceButton;
+        private System.Windows.Forms.Button UpdateEmailButton;
+        private System.Windows.Forms.TextBox NewEmailTextBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label2;
     }
 }
