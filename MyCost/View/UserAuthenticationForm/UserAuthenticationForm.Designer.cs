@@ -76,7 +76,7 @@
             // AppLogoLabel
             // 
             this.AppLogoLabel.AutoSize = true;
-            this.AppLogoLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.AppLogoLabel.BackColor = System.Drawing.Color.White;
             this.AppLogoLabel.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AppLogoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.AppLogoLabel.Location = new System.Drawing.Point(286, 9);
