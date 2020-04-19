@@ -381,7 +381,12 @@ namespace MyCost.View
                 GlobalSpace.AccessToken = data[1];
                 GlobalSpace.CypherKey = StringCipher.Decrypt(data[2], PasswordTextBox.Text);
                 GlobalSpace.Email = StringCipher.Decrypt(data[3], GlobalSpace.CypherKey);
-                
+
+                if (!Boolean.TryParse(data[4], out GlobalSpace.IsEmailVarified))
+                {
+                    GlobalSpace.IsEmailVarified = false;
+                }
+
                 if (RememberMeCheckBox.Checked)
                 {
                     Properties.Settings.Default.Username = UsernameTextBox.Text;
@@ -391,9 +396,9 @@ namespace MyCost.View
                 
                 //if the account has just been registered,
                 //send an email verification code to the user's email
-                if(data[4] == "New User")
+                if(data[5] == "New User")
                 {
-                    string verificationCode = data[5];
+                    string verificationCode = data[6];
                     MailAddress from = new MailAddress("contact@rezasaker.com");
                     MailAddress to = new MailAddress(GlobalSpace.Email);
                     SendVerificationEmail(from, to, verificationCode);
@@ -430,11 +435,11 @@ namespace MyCost.View
 
             //email subject and body
             string subject = "Email Verification for MyCost";
-            string message = @"Dear User,
+            string message = @"Dear User\n,
 Thanks for registering account with MyCost Finance Management App. 
 Your email verification code is " + verificationCode + ".\n\n" +
-            "PLease ignore this email if it is not intended for you.\n\n" +
-            "Thank you\n\n" +
+            "Please ignore this email if it is not intended for you.\n\n" +
+            "Thank you\n" +
             "MyCost Team";
 
             //send verification code to user's email

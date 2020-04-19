@@ -278,17 +278,17 @@ namespace MyCost.Common.WebHandler
             queryData.Add("totalExpense", StringCipher.Encrypt(daily.TotalExpense.ToString(), GlobalSpace.CypherKey));
             queryData.Add("totalEarning", StringCipher.Encrypt(daily.TotalEarning.ToString(), GlobalSpace.CypherKey));
 
-            //try
-            //{
+            try
+            {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "saveDailyInfo.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;      
-            //}
-            //catch
-            //{
-            //    return "Server connection error";
-            //}
+            }
+            catch
+            {
+                return "Server connection error";
+            }
         }
 
         public static string SaveCategory(string categoryNames, string categoryType)
@@ -439,6 +439,58 @@ namespace MyCost.Common.WebHandler
         private void OnGetActivationCodeFailed()
         {
             GetActivationCodeFailedEventHandler?.Invoke(this, null);
+        }
+
+        public void UpdateEmail(string originalEmail, string encryptedEmail,
+            string emailVerificationCode, string password)
+        {
+            Thread thread = new Thread(() =>
+            WebRequestToUpdateEmail(originalEmail, encryptedEmail,
+            emailVerificationCode, password));
+
+            thread.Start();
+        }
+
+        private void WebRequestToUpdateEmail(string originalEmail, string encryptedEmail,
+            string emailVerificationCode, string password)
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("username", GlobalSpace.Username);
+            queryData.Add("password", password);
+            queryData.Add("encryptedEmail", encryptedEmail);
+            queryData.Add("originalEmail", originalEmail);
+            queryData.Add("emailVerificationCode", emailVerificationCode);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "updateEmail.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+                _webResponse = resultData;
+
+                OnUpdateEmailSuccess();
+            }
+            catch
+            {
+                _webResponse = "Server connection error";
+
+                OnUpdateEmailFailed();
+            }
+        }
+
+        private void OnUpdateEmailSuccess()
+        {
+            WebRequestSuccessEventHandler?.Invoke(this, null);
+        }
+
+        private void OnUpdateEmailFailed()
+        {
+            WebRequestFailedEventHandler?.Invoke(this, null);
         }
     }
 }
