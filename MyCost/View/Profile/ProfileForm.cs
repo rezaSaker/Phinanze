@@ -28,8 +28,24 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            UserNameLaabel.Text = "username: " + GlobalSpace.Username;
-            UserNameLaabel.Text += "     Email: " + GlobalSpace.Email;
+            UserNameLabel.Text = "username: " + GlobalSpace.Username;
+            UserNameLabel.Text += "     Email: " + GlobalSpace.Email;
+
+            //this label would be placed right after the email
+            EmailVerificationStatusLabel.Location = 
+                new Point(UserNameLabel.Location.X + UserNameLabel.Size.Width,
+                            UserNameLabel.Location.Y);
+
+            if(GlobalSpace.IsEmailVarified)
+            {
+                EmailVerificationStatusLabel.ForeColor = Color.ForestGreen;
+                EmailVerificationStatusLabel.Text = "(Verified)";
+            }
+            else
+            {
+                EmailVerificationStatusLabel.ForeColor = Color.Red;
+                EmailVerificationStatusLabel.Text = "(Not Verified)";
+            }
         }
 
         private void UsernameTextBoxesClicked(object sender, EventArgs e)
@@ -274,8 +290,8 @@ Your email verification code is " + verificationCode + ".\n\n" +
 
         private void ActionUponSendVerificationEmailSuccess()
         {
-            UserNameLaabel.Text = "username: " + GlobalSpace.Username;
-            UserNameLaabel.Text += "     Email: " + GlobalSpace.Email;
+            UserNameLabel.Text = "username: " + GlobalSpace.Username;
+            UserNameLabel.Text += "     Email: " + GlobalSpace.Email;
 
             _progressViewerObject.StopProgress();
             EnableAllControls();
@@ -288,8 +304,8 @@ Your email verification code is " + verificationCode + ".\n\n" +
             //even though the email sending wasn't successful, 
             //we would continue with the next step and
             //prompt the user later to ask for verification code
-            UserNameLaabel.Text = "username: " + GlobalSpace.Username;
-            UserNameLaabel.Text += "     Email: " + GlobalSpace.Email;
+            UserNameLabel.Text = "username: " + GlobalSpace.Username;
+            UserNameLabel.Text += "     Email: " + GlobalSpace.Email;
 
             _progressViewerObject.StopProgress();
             EnableAllControls();

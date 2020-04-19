@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileForm));
-            this.UserNameLaabel = new System.Windows.Forms.Label();
+            this.UserNameLabel = new System.Windows.Forms.Label();
             this.ChangeUsernameLabel = new System.Windows.Forms.Label();
             this.CurrentUserNameTextBox = new System.Windows.Forms.TextBox();
             this.NewUserNameTextBox = new System.Windows.Forms.TextBox();
@@ -60,19 +60,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.PasswordForEmailTextBox = new System.Windows.Forms.TextBox();
             this.DeleteAccountButton = new System.Windows.Forms.Button();
+            this.EmailVerificationStatusLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // UserNameLaabel
+            // UserNameLabel
             // 
-            this.UserNameLaabel.AutoSize = true;
-            this.UserNameLaabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserNameLaabel.ForeColor = System.Drawing.Color.Black;
-            this.UserNameLaabel.Location = new System.Drawing.Point(3, 15);
-            this.UserNameLaabel.Name = "UserNameLaabel";
-            this.UserNameLaabel.Size = new System.Drawing.Size(97, 19);
-            this.UserNameLaabel.TabIndex = 46;
-            this.UserNameLaabel.Text = "Username: ";
+            this.UserNameLabel.AutoSize = true;
+            this.UserNameLabel.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameLabel.ForeColor = System.Drawing.Color.Black;
+            this.UserNameLabel.Location = new System.Drawing.Point(3, 12);
+            this.UserNameLabel.Name = "UserNameLabel";
+            this.UserNameLabel.Size = new System.Drawing.Size(92, 21);
+            this.UserNameLabel.TabIndex = 46;
+            this.UserNameLabel.Text = "Username: ";
             // 
             // ChangeUsernameLabel
             // 
@@ -395,6 +396,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.EmailVerificationStatusLabel);
             this.panel1.Controls.Add(this.DeleteAccountButton);
             this.panel1.Controls.Add(this.PasswordForEmailTextBox);
             this.panel1.Controls.Add(this.label5);
@@ -418,7 +420,7 @@
             this.panel1.Controls.Add(this.CurrentUserNameTextBox);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ChangeUsernameLabel);
-            this.panel1.Controls.Add(this.UserNameLaabel);
+            this.panel1.Controls.Add(this.UserNameLabel);
             this.panel1.Location = new System.Drawing.Point(10, 61);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(783, 414);
@@ -531,6 +533,17 @@
             this.DeleteAccountButton.Text = "Permanently Delete My Account";
             this.DeleteAccountButton.UseVisualStyleBackColor = false;
             // 
+            // EmailVerificationStatusLabel
+            // 
+            this.EmailVerificationStatusLabel.AutoSize = true;
+            this.EmailVerificationStatusLabel.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailVerificationStatusLabel.ForeColor = System.Drawing.Color.Black;
+            this.EmailVerificationStatusLabel.Location = new System.Drawing.Point(301, 12);
+            this.EmailVerificationStatusLabel.Name = "EmailVerificationStatusLabel";
+            this.EmailVerificationStatusLabel.Size = new System.Drawing.Size(219, 21);
+            this.EmailVerificationStatusLabel.TabIndex = 82;
+            this.EmailVerificationStatusLabel.Text = "Email verification Status Label";
+            // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -559,7 +572,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label UserNameLaabel;
+        private System.Windows.Forms.Label UserNameLabel;
         private System.Windows.Forms.Label ChangeUsernameLabel;
         private System.Windows.Forms.TextBox CurrentUserNameTextBox;
         private System.Windows.Forms.TextBox NewUserNameTextBox;
@@ -590,5 +603,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PasswordForEmailTextBox;
         private System.Windows.Forms.Button DeleteAccountButton;
+        private System.Windows.Forms.Label EmailVerificationStatusLabel;
     }
 }
