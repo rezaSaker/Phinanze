@@ -19,6 +19,7 @@ namespace MyCost.View
         private bool _quitAppOnFormClosing;
         private bool _hasUnsavedChanges;
         private bool _isRedundantTriggerOfEventHandler;
+        private bool _isUnsavedChangesWarningAlreadyShown;
 
         public AddNewDataForm()
         {
@@ -44,6 +45,7 @@ namespace MyCost.View
         {
             _quitAppOnFormClosing = true;
             _hasUnsavedChanges = false;
+            _isUnsavedChangesWarningAlreadyShown = false;
             _isRedundantTriggerOfEventHandler = false;
 
             for (int i = 2018; i < _selectedYear + 3; i++)
@@ -339,7 +341,7 @@ namespace MyCost.View
         {
             CloseOpenedCategoryForm();
 
-            if (_hasUnsavedChanges)
+            if (_hasUnsavedChanges && !_isUnsavedChangesWarningAlreadyShown)
             {
                 DialogResult userResponse = ShowUnsavedChangesWarning();
 
@@ -789,11 +791,28 @@ namespace MyCost.View
 
         private void OpenNewForm(Form form)
         {
-            form.Location = this.Location;
-            form.Show();
+            if (_hasUnsavedChanges)
+            {
+                DialogResult userResponse = ShowUnsavedChangesWarning();
 
-            _quitAppOnFormClosing = false;
-            this.Close();
+                if (userResponse == DialogResult.Yes)
+                {
+                    form.Location = this.Location;
+                    form.Show();
+
+                    _isUnsavedChangesWarningAlreadyShown = true;
+                    _quitAppOnFormClosing = false;
+                    this.Close();
+                }
+            }
+            else
+            {
+                form.Location = this.Location;
+                form.Show();
+
+                _quitAppOnFormClosing = false;
+                this.Close();
+            }
         } 
         
         private void ResetEverything()
@@ -816,8 +835,9 @@ namespace MyCost.View
 
         private DialogResult ShowUnsavedChangesWarning()
         {
-            string message = @"You have unsaved changes. Changing this page
-                might cause permanent loss of current changes. Do you still want to  change this page?";
+            string message = "You have unsaved changes. Changing this page" + 
+                             "might cause permanent loss of current changes." +
+                             "Do you still want to change this page?";
 
             DialogResult dlgRes = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo);
 
