@@ -129,18 +129,6 @@ namespace MyCost.View
             }
         }
 
-        new private void HelpButtonClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                Process.Start(GlobalSpace.HelpPath);
-            }
-            catch
-            {
-                MessageBox.Show("Sorry, could not open your default browser");
-            }
-        }
-
         private void LicenseLabelClicked(object sender, EventArgs e)
         {
             string message = "Do you want to see the full license?";
@@ -180,7 +168,7 @@ namespace MyCost.View
             ShowLoginPanelButton.ForeColor = Color.Black;
 
             SubmitButton.Text = "Log in";
-            SubmitButton.Location = new Point(280, 280);
+            SubmitButton.Location = new Point(324, 280);
 
             ConfirmPasswordTextBox.Visible = false;
             ConfirmPasswordTextBox.Enabled = false;
@@ -203,7 +191,7 @@ namespace MyCost.View
             ShowLoginPanelButton.ForeColor = Color.White;
 
             SubmitButton.Text = "Register";
-            SubmitButton.Location = new Point(280, 368);
+            SubmitButton.Location = new Point(324, 368);
 
             ConfirmPasswordTextBox.Visible = true;
             ConfirmPasswordTextBox.Enabled = true;

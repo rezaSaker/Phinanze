@@ -52,37 +52,37 @@
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.EmailVerificationStatusLabel = new System.Windows.Forms.Label();
+            this.DeleteAccountButton = new System.Windows.Forms.Button();
+            this.PasswordForEmailTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.UpdateEmailButton = new System.Windows.Forms.Button();
+            this.NewEmailTextBox = new System.Windows.Forms.TextBox();
             this.ViewSourceButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.NewEmailTextBox = new System.Windows.Forms.TextBox();
-            this.UpdateEmailButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.PasswordForEmailTextBox = new System.Windows.Forms.TextBox();
-            this.DeleteAccountButton = new System.Windows.Forms.Button();
-            this.EmailVerificationStatusLabel = new System.Windows.Forms.Label();
+            this.LogoButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // UserNameLabel
             // 
             this.UserNameLabel.AutoSize = true;
-            this.UserNameLabel.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserNameLabel.ForeColor = System.Drawing.Color.Black;
             this.UserNameLabel.Location = new System.Drawing.Point(3, 12);
             this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(92, 21);
+            this.UserNameLabel.Size = new System.Drawing.Size(96, 21);
             this.UserNameLabel.TabIndex = 46;
             this.UserNameLabel.Text = "Username: ";
             // 
             // ChangeUsernameLabel
             // 
             this.ChangeUsernameLabel.AutoSize = true;
-            this.ChangeUsernameLabel.Font = new System.Drawing.Font("Arabic Transparent", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeUsernameLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangeUsernameLabel.ForeColor = System.Drawing.Color.DarkCyan;
             this.ChangeUsernameLabel.Location = new System.Drawing.Point(4, 49);
             this.ChangeUsernameLabel.Name = "ChangeUsernameLabel";
-            this.ChangeUsernameLabel.Size = new System.Drawing.Size(139, 18);
+            this.ChangeUsernameLabel.Size = new System.Drawing.Size(157, 21);
             this.ChangeUsernameLabel.TabIndex = 47;
             this.ChangeUsernameLabel.Text = "Change Username";
             // 
@@ -90,11 +90,11 @@
             // 
             this.CurrentUserNameTextBox.BackColor = System.Drawing.Color.White;
             this.CurrentUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CurrentUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentUserNameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CurrentUserNameTextBox.Location = new System.Drawing.Point(7, 80);
+            this.CurrentUserNameTextBox.Location = new System.Drawing.Point(8, 80);
             this.CurrentUserNameTextBox.Name = "CurrentUserNameTextBox";
-            this.CurrentUserNameTextBox.Size = new System.Drawing.Size(356, 26);
+            this.CurrentUserNameTextBox.Size = new System.Drawing.Size(356, 27);
             this.CurrentUserNameTextBox.TabIndex = 48;
             this.CurrentUserNameTextBox.Text = "Current username";
             this.CurrentUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
@@ -104,11 +104,11 @@
             // 
             this.NewUserNameTextBox.BackColor = System.Drawing.Color.White;
             this.NewUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NewUserNameTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewUserNameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.NewUserNameTextBox.Location = new System.Drawing.Point(7, 112);
+            this.NewUserNameTextBox.Location = new System.Drawing.Point(8, 113);
             this.NewUserNameTextBox.Name = "NewUserNameTextBox";
-            this.NewUserNameTextBox.Size = new System.Drawing.Size(356, 26);
+            this.NewUserNameTextBox.Size = new System.Drawing.Size(356, 27);
             this.NewUserNameTextBox.TabIndex = 49;
             this.NewUserNameTextBox.Text = "New username";
             this.NewUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
@@ -118,11 +118,11 @@
             // 
             this.PasswordTextBox.BackColor = System.Drawing.Color.White;
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.PasswordTextBox.Location = new System.Drawing.Point(7, 144);
+            this.PasswordTextBox.Location = new System.Drawing.Point(8, 144);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(356, 26);
+            this.PasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.PasswordTextBox.TabIndex = 50;
             this.PasswordTextBox.Text = "Password";
             this.PasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
@@ -134,9 +134,9 @@
             this.UpdateUsernameButton.Enabled = false;
             this.UpdateUsernameButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.UpdateUsernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateUsernameButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateUsernameButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateUsernameButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateUsernameButton.Location = new System.Drawing.Point(7, 185);
+            this.UpdateUsernameButton.Location = new System.Drawing.Point(8, 185);
             this.UpdateUsernameButton.Name = "UpdateUsernameButton";
             this.UpdateUsernameButton.Size = new System.Drawing.Size(356, 35);
             this.UpdateUsernameButton.TabIndex = 51;
@@ -150,9 +150,9 @@
             this.UpdatePasswordButton.Enabled = false;
             this.UpdatePasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.UpdatePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdatePasswordButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdatePasswordButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatePasswordButton.ForeColor = System.Drawing.Color.White;
-            this.UpdatePasswordButton.Location = new System.Drawing.Point(415, 185);
+            this.UpdatePasswordButton.Location = new System.Drawing.Point(447, 185);
             this.UpdatePasswordButton.Name = "UpdatePasswordButton";
             this.UpdatePasswordButton.Size = new System.Drawing.Size(356, 35);
             this.UpdatePasswordButton.TabIndex = 56;
@@ -164,11 +164,11 @@
             // 
             this.ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(415, 112);
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(447, 111);
             this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
-            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(356, 26);
+            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.ConfirmPasswordTextBox.TabIndex = 55;
             this.ConfirmPasswordTextBox.Text = "Confirm new password";
             this.ConfirmPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
@@ -178,11 +178,11 @@
             // 
             this.NewPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.NewPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NewPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NewPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.NewPasswordTextBox.Location = new System.Drawing.Point(415, 80);
+            this.NewPasswordTextBox.Location = new System.Drawing.Point(447, 80);
             this.NewPasswordTextBox.Name = "NewPasswordTextBox";
-            this.NewPasswordTextBox.Size = new System.Drawing.Size(356, 26);
+            this.NewPasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.NewPasswordTextBox.TabIndex = 54;
             this.NewPasswordTextBox.Text = "New password";
             this.NewPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
@@ -192,11 +192,11 @@
             // 
             this.CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.CurrentPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CurrentPasswordTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CurrentPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CurrentPasswordTextBox.Location = new System.Drawing.Point(415, 144);
+            this.CurrentPasswordTextBox.Location = new System.Drawing.Point(447, 144);
             this.CurrentPasswordTextBox.Name = "CurrentPasswordTextBox";
-            this.CurrentPasswordTextBox.Size = new System.Drawing.Size(356, 26);
+            this.CurrentPasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.CurrentPasswordTextBox.TabIndex = 53;
             this.CurrentPasswordTextBox.Text = "Current password";
             this.CurrentPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
@@ -205,11 +205,11 @@
             // ChangePasswordLabel
             // 
             this.ChangePasswordLabel.AutoSize = true;
-            this.ChangePasswordLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangePasswordLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangePasswordLabel.ForeColor = System.Drawing.Color.DarkCyan;
-            this.ChangePasswordLabel.Location = new System.Drawing.Point(412, 48);
+            this.ChangePasswordLabel.Location = new System.Drawing.Point(443, 49);
             this.ChangePasswordLabel.Name = "ChangePasswordLabel";
-            this.ChangePasswordLabel.Size = new System.Drawing.Size(137, 18);
+            this.ChangePasswordLabel.Size = new System.Drawing.Size(151, 21);
             this.ChangePasswordLabel.TabIndex = 52;
             this.ChangePasswordLabel.Text = "Change Password";
             // 
@@ -218,7 +218,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(386, 49);
+            this.label3.Location = new System.Drawing.Point(403, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 198);
             this.label3.TabIndex = 57;
@@ -231,10 +231,10 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(4, 223);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(764, 18);
+            this.label4.Size = new System.Drawing.Size(800, 18);
             this.label4.TabIndex = 58;
             this.label4.Text = "_________________________________________________________________________________" +
-    "___";
+    "_______";
             // 
             // ReportIssueButton
             // 
@@ -242,11 +242,11 @@
             this.ReportIssueButton.BackColor = System.Drawing.Color.White;
             this.ReportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReportIssueButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReportIssueButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ReportIssueButton.Location = new System.Drawing.Point(593, 292);
+            this.ReportIssueButton.Location = new System.Drawing.Point(625, 262);
             this.ReportIssueButton.Name = "ReportIssueButton";
-            this.ReportIssueButton.Size = new System.Drawing.Size(178, 26);
+            this.ReportIssueButton.Size = new System.Drawing.Size(178, 35);
             this.ReportIssueButton.TabIndex = 64;
             this.ReportIssueButton.Text = "Report Issues";
             this.ReportIssueButton.UseVisualStyleBackColor = false;
@@ -258,11 +258,11 @@
             this.HelpButton.BackColor = System.Drawing.Color.White;
             this.HelpButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HelpButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HelpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.HelpButton.Location = new System.Drawing.Point(415, 292);
+            this.HelpButton.Location = new System.Drawing.Point(447, 262);
             this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(172, 26);
+            this.HelpButton.Size = new System.Drawing.Size(172, 34);
             this.HelpButton.TabIndex = 65;
             this.HelpButton.Text = "Help";
             this.HelpButton.UseVisualStyleBackColor = false;
@@ -274,11 +274,11 @@
             this.AboutAppButton.BackColor = System.Drawing.Color.White;
             this.AboutAppButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.AboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AboutAppButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutAppButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutAppButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.AboutAppButton.Location = new System.Drawing.Point(415, 326);
+            this.AboutAppButton.Location = new System.Drawing.Point(447, 302);
             this.AboutAppButton.Name = "AboutAppButton";
-            this.AboutAppButton.Size = new System.Drawing.Size(172, 26);
+            this.AboutAppButton.Size = new System.Drawing.Size(172, 36);
             this.AboutAppButton.TabIndex = 66;
             this.AboutAppButton.Text = "About";
             this.AboutAppButton.UseVisualStyleBackColor = false;
@@ -291,11 +291,11 @@
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogOutButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LogOutButton.Location = new System.Drawing.Point(675, 12);
+            this.LogOutButton.Location = new System.Drawing.Point(712, 9);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(118, 38);
+            this.LogOutButton.Size = new System.Drawing.Size(115, 35);
             this.LogOutButton.TabIndex = 73;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
@@ -309,11 +309,11 @@
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ProfileButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.White;
-            this.ProfileButton.Location = new System.Drawing.Point(535, 12);
+            this.ProfileButton.Location = new System.Drawing.Point(590, 9);
             this.ProfileButton.Name = "ProfileButton";
-            this.ProfileButton.Size = new System.Drawing.Size(134, 38);
+            this.ProfileButton.Size = new System.Drawing.Size(116, 35);
             this.ProfileButton.TabIndex = 72;
             this.ProfileButton.Text = "Profile";
             this.ProfileButton.UseVisualStyleBackColor = false;
@@ -324,11 +324,11 @@
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StatisticsButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.StatisticsButton.Location = new System.Drawing.Point(406, 12);
+            this.StatisticsButton.Location = new System.Drawing.Point(465, 9);
             this.StatisticsButton.Name = "StatisticsButton";
-            this.StatisticsButton.Size = new System.Drawing.Size(123, 38);
+            this.StatisticsButton.Size = new System.Drawing.Size(119, 35);
             this.StatisticsButton.TabIndex = 71;
             this.StatisticsButton.Text = "Statistics";
             this.StatisticsButton.UseVisualStyleBackColor = false;
@@ -342,11 +342,11 @@
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MonthlyReportButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.MonthlyReportButton.Location = new System.Drawing.Point(264, 12);
+            this.MonthlyReportButton.Location = new System.Drawing.Point(309, 9);
             this.MonthlyReportButton.Name = "MonthlyReportButton";
-            this.MonthlyReportButton.Size = new System.Drawing.Size(136, 38);
+            this.MonthlyReportButton.Size = new System.Drawing.Size(150, 35);
             this.MonthlyReportButton.TabIndex = 70;
             this.MonthlyReportButton.Text = "Monthly Report";
             this.MonthlyReportButton.UseVisualStyleBackColor = false;
@@ -360,11 +360,11 @@
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddNewDataButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.AddNewDataButton.Location = new System.Drawing.Point(135, 12);
+            this.AddNewDataButton.Location = new System.Drawing.Point(188, 9);
             this.AddNewDataButton.Name = "AddNewDataButton";
-            this.AddNewDataButton.Size = new System.Drawing.Size(123, 38);
+            this.AddNewDataButton.Size = new System.Drawing.Size(115, 35);
             this.AddNewDataButton.TabIndex = 69;
             this.AddNewDataButton.Text = "Add New";
             this.AddNewDataButton.UseVisualStyleBackColor = false;
@@ -378,11 +378,11 @@
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HomeButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.HomeButton.Location = new System.Drawing.Point(10, 12);
+            this.HomeButton.Location = new System.Drawing.Point(67, 9);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(119, 38);
+            this.HomeButton.Size = new System.Drawing.Size(115, 35);
             this.HomeButton.TabIndex = 68;
             this.HomeButton.Text = "Home";
             this.HomeButton.UseVisualStyleBackColor = false;
@@ -400,7 +400,6 @@
             this.panel1.Controls.Add(this.DeleteAccountButton);
             this.panel1.Controls.Add(this.PasswordForEmailTextBox);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.UpdateEmailButton);
             this.panel1.Controls.Add(this.NewEmailTextBox);
             this.panel1.Controls.Add(this.ViewSourceButton);
@@ -421,10 +420,90 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ChangeUsernameLabel);
             this.panel1.Controls.Add(this.UserNameLabel);
-            this.panel1.Location = new System.Drawing.Point(10, 61);
+            this.panel1.Location = new System.Drawing.Point(12, 61);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(783, 414);
+            this.panel1.Size = new System.Drawing.Size(815, 418);
             this.panel1.TabIndex = 74;
+            // 
+            // EmailVerificationStatusLabel
+            // 
+            this.EmailVerificationStatusLabel.AutoSize = true;
+            this.EmailVerificationStatusLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailVerificationStatusLabel.ForeColor = System.Drawing.Color.Black;
+            this.EmailVerificationStatusLabel.Location = new System.Drawing.Point(301, 12);
+            this.EmailVerificationStatusLabel.Name = "EmailVerificationStatusLabel";
+            this.EmailVerificationStatusLabel.Size = new System.Drawing.Size(241, 21);
+            this.EmailVerificationStatusLabel.TabIndex = 82;
+            this.EmailVerificationStatusLabel.Text = "Email verification Status Label";
+            // 
+            // DeleteAccountButton
+            // 
+            this.DeleteAccountButton.BackColor = System.Drawing.Color.Tomato;
+            this.DeleteAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
+            this.DeleteAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteAccountButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteAccountButton.ForeColor = System.Drawing.Color.White;
+            this.DeleteAccountButton.Location = new System.Drawing.Point(447, 368);
+            this.DeleteAccountButton.Name = "DeleteAccountButton";
+            this.DeleteAccountButton.Size = new System.Drawing.Size(356, 35);
+            this.DeleteAccountButton.TabIndex = 81;
+            this.DeleteAccountButton.Text = "Permanently Delete My Account";
+            this.DeleteAccountButton.UseVisualStyleBackColor = false;
+            // 
+            // PasswordForEmailTextBox
+            // 
+            this.PasswordForEmailTextBox.BackColor = System.Drawing.Color.White;
+            this.PasswordForEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PasswordForEmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordForEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.PasswordForEmailTextBox.Location = new System.Drawing.Point(8, 326);
+            this.PasswordForEmailTextBox.Name = "PasswordForEmailTextBox";
+            this.PasswordForEmailTextBox.Size = new System.Drawing.Size(356, 27);
+            this.PasswordForEmailTextBox.TabIndex = 80;
+            this.PasswordForEmailTextBox.Text = "Passowrd";
+            this.PasswordForEmailTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
+            this.PasswordForEmailTextBox.TextChanged += new System.EventHandler(this.ChangeEmailTextBoxesTextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(403, 205);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(11, 198);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|";
+            // 
+            // UpdateEmailButton
+            // 
+            this.UpdateEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateEmailButton.Enabled = false;
+            this.UpdateEmailButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UpdateEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateEmailButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateEmailButton.Location = new System.Drawing.Point(8, 368);
+            this.UpdateEmailButton.Name = "UpdateEmailButton";
+            this.UpdateEmailButton.Size = new System.Drawing.Size(356, 35);
+            this.UpdateEmailButton.TabIndex = 77;
+            this.UpdateEmailButton.Text = "Update Email";
+            this.UpdateEmailButton.UseVisualStyleBackColor = false;
+            this.UpdateEmailButton.Click += new System.EventHandler(this.UpdateEmailButtonClicked);
+            // 
+            // NewEmailTextBox
+            // 
+            this.NewEmailTextBox.BackColor = System.Drawing.Color.White;
+            this.NewEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.NewEmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.NewEmailTextBox.Location = new System.Drawing.Point(8, 293);
+            this.NewEmailTextBox.Name = "NewEmailTextBox";
+            this.NewEmailTextBox.Size = new System.Drawing.Size(356, 27);
+            this.NewEmailTextBox.TabIndex = 76;
+            this.NewEmailTextBox.Text = "New Email";
+            this.NewEmailTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            this.NewEmailTextBox.TextChanged += new System.EventHandler(this.ChangeEmailTextBoxesTextChanged);
             // 
             // ViewSourceButton
             // 
@@ -432,11 +511,11 @@
             this.ViewSourceButton.BackColor = System.Drawing.Color.White;
             this.ViewSourceButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ViewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ViewSourceButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ViewSourceButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewSourceButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ViewSourceButton.Location = new System.Drawing.Point(593, 326);
+            this.ViewSourceButton.Location = new System.Drawing.Point(625, 303);
             this.ViewSourceButton.Name = "ViewSourceButton";
-            this.ViewSourceButton.Size = new System.Drawing.Size(178, 26);
+            this.ViewSourceButton.Size = new System.Drawing.Size(178, 35);
             this.ViewSourceButton.TabIndex = 75;
             this.ViewSourceButton.Text = "View Source";
             this.ViewSourceButton.UseVisualStyleBackColor = false;
@@ -445,111 +524,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arabic Transparent", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
             this.label1.Location = new System.Drawing.Point(3, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 18);
+            this.label1.Size = new System.Drawing.Size(120, 21);
             this.label1.TabIndex = 58;
             this.label1.Text = "Change Email";
             // 
-            // NewEmailTextBox
+            // LogoButton
             // 
-            this.NewEmailTextBox.BackColor = System.Drawing.Color.White;
-            this.NewEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NewEmailTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.NewEmailTextBox.Location = new System.Drawing.Point(7, 294);
-            this.NewEmailTextBox.Name = "NewEmailTextBox";
-            this.NewEmailTextBox.Size = new System.Drawing.Size(356, 26);
-            this.NewEmailTextBox.TabIndex = 76;
-            this.NewEmailTextBox.Text = "New Email";
-            this.NewEmailTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.NewEmailTextBox.TextChanged += new System.EventHandler(this.ChangeEmailTextBoxesTextChanged);
-            // 
-            // UpdateEmailButton
-            // 
-            this.UpdateEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.UpdateEmailButton.Enabled = false;
-            this.UpdateEmailButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.UpdateEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateEmailButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateEmailButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateEmailButton.Location = new System.Drawing.Point(7, 368);
-            this.UpdateEmailButton.Name = "UpdateEmailButton";
-            this.UpdateEmailButton.Size = new System.Drawing.Size(356, 35);
-            this.UpdateEmailButton.TabIndex = 77;
-            this.UpdateEmailButton.Text = "Update Email";
-            this.UpdateEmailButton.UseVisualStyleBackColor = false;
-            this.UpdateEmailButton.Click += new System.EventHandler(this.UpdateEmailButtonClicked);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arabic Transparent", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label2.Location = new System.Drawing.Point(412, 262);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 18);
-            this.label2.TabIndex = 78;
-            this.label2.Text = "Important Links";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(386, 205);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(11, 198);
-            this.label5.TabIndex = 79;
-            this.label5.Text = "|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|\r\n|";
-            // 
-            // PasswordForEmailTextBox
-            // 
-            this.PasswordForEmailTextBox.BackColor = System.Drawing.Color.White;
-            this.PasswordForEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PasswordForEmailTextBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordForEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.PasswordForEmailTextBox.Location = new System.Drawing.Point(7, 326);
-            this.PasswordForEmailTextBox.Name = "PasswordForEmailTextBox";
-            this.PasswordForEmailTextBox.Size = new System.Drawing.Size(356, 26);
-            this.PasswordForEmailTextBox.TabIndex = 80;
-            this.PasswordForEmailTextBox.Text = "Passowrd";
-            this.PasswordForEmailTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.PasswordForEmailTextBox.TextChanged += new System.EventHandler(this.ChangeEmailTextBoxesTextChanged);
-            // 
-            // DeleteAccountButton
-            // 
-            this.DeleteAccountButton.BackColor = System.Drawing.Color.Tomato;
-            this.DeleteAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
-            this.DeleteAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteAccountButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteAccountButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteAccountButton.Location = new System.Drawing.Point(415, 368);
-            this.DeleteAccountButton.Name = "DeleteAccountButton";
-            this.DeleteAccountButton.Size = new System.Drawing.Size(356, 35);
-            this.DeleteAccountButton.TabIndex = 81;
-            this.DeleteAccountButton.Text = "Permanently Delete My Account";
-            this.DeleteAccountButton.UseVisualStyleBackColor = false;
-            // 
-            // EmailVerificationStatusLabel
-            // 
-            this.EmailVerificationStatusLabel.AutoSize = true;
-            this.EmailVerificationStatusLabel.Font = new System.Drawing.Font("Arial Unicode MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailVerificationStatusLabel.ForeColor = System.Drawing.Color.Black;
-            this.EmailVerificationStatusLabel.Location = new System.Drawing.Point(301, 12);
-            this.EmailVerificationStatusLabel.Name = "EmailVerificationStatusLabel";
-            this.EmailVerificationStatusLabel.Size = new System.Drawing.Size(219, 21);
-            this.EmailVerificationStatusLabel.TabIndex = 82;
-            this.EmailVerificationStatusLabel.Text = "Email verification Status Label";
+            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogoButton.BackgroundImage = global::MyCost.Properties.Resources.AppIcon;
+            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogoButton.FlatAppearance.BorderSize = 0;
+            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoButton.ForeColor = System.Drawing.Color.White;
+            this.LogoButton.Location = new System.Drawing.Point(12, 8);
+            this.LogoButton.Name = "LogoButton";
+            this.LogoButton.Size = new System.Drawing.Size(49, 38);
+            this.LogoButton.TabIndex = 83;
+            this.LogoButton.UseVisualStyleBackColor = false;
             // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(800, 487);
+            this.ClientSize = new System.Drawing.Size(840, 491);
+            this.Controls.Add(this.LogoButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.ProfileButton);
@@ -600,9 +605,9 @@
         private System.Windows.Forms.TextBox NewEmailTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox PasswordForEmailTextBox;
         private System.Windows.Forms.Button DeleteAccountButton;
         private System.Windows.Forms.Label EmailVerificationStatusLabel;
+        private System.Windows.Forms.Button LogoButton;
     }
 }

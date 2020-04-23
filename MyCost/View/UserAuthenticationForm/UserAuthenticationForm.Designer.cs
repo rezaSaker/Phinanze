@@ -40,7 +40,6 @@
             this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.LicenseLabel = new System.Windows.Forms.Label();
-            this.HelpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ShowRegisterPanelButton
@@ -48,7 +47,7 @@
             this.ShowRegisterPanelButton.AutoSize = true;
             this.ShowRegisterPanelButton.BackColor = System.Drawing.Color.White;
             this.ShowRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
             this.ShowRegisterPanelButton.Location = new System.Drawing.Point(146, 106);
             this.ShowRegisterPanelButton.Name = "ShowRegisterPanelButton";
@@ -63,7 +62,7 @@
             this.ShowLoginPanelButton.AutoSize = true;
             this.ShowLoginPanelButton.BackColor = System.Drawing.Color.White;
             this.ShowLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowLoginPanelButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShowLoginPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ShowLoginPanelButton.Location = new System.Drawing.Point(400, 106);
             this.ShowLoginPanelButton.Name = "ShowLoginPanelButton";
@@ -91,11 +90,11 @@
             this.SubmitButton.BackColor = System.Drawing.Color.RoyalBlue;
             this.SubmitButton.FlatAppearance.BorderSize = 0;
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SubmitButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
-            this.SubmitButton.Location = new System.Drawing.Point(280, 368);
+            this.SubmitButton.Location = new System.Drawing.Point(324, 367);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(246, 36);
+            this.SubmitButton.Size = new System.Drawing.Size(142, 36);
             this.SubmitButton.TabIndex = 13;
             this.SubmitButton.Text = "Log in";
             this.SubmitButton.UseVisualStyleBackColor = false;
@@ -105,7 +104,7 @@
             // 
             this.ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(146, 250);
             this.ConfirmPasswordTextBox.Multiline = true;
@@ -119,7 +118,7 @@
             // 
             this.PasswordTextBox.BackColor = System.Drawing.Color.White;
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.PasswordTextBox.Location = new System.Drawing.Point(146, 204);
             this.PasswordTextBox.Multiline = true;
@@ -133,7 +132,7 @@
             // 
             this.UsernameTextBox.BackColor = System.Drawing.Color.White;
             this.UsernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UsernameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.UsernameTextBox.Location = new System.Drawing.Point(146, 158);
             this.UsernameTextBox.Multiline = true;
@@ -146,10 +145,10 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLabel.Location = new System.Drawing.Point(142, 74);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(82, 20);
+            this.StatusLabel.Size = new System.Drawing.Size(105, 21);
             this.StatusLabel.TabIndex = 14;
             this.StatusLabel.Text = "Label Status";
             this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,10 +156,10 @@
             // RememberMeCheckBox
             // 
             this.RememberMeCheckBox.AutoSize = true;
-            this.RememberMeCheckBox.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RememberMeCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RememberMeCheckBox.Location = new System.Drawing.Point(146, 343);
             this.RememberMeCheckBox.Name = "RememberMeCheckBox";
-            this.RememberMeCheckBox.Size = new System.Drawing.Size(126, 21);
+            this.RememberMeCheckBox.Size = new System.Drawing.Size(144, 25);
             this.RememberMeCheckBox.TabIndex = 15;
             this.RememberMeCheckBox.Text = "Remember me";
             this.RememberMeCheckBox.UseVisualStyleBackColor = true;
@@ -169,7 +168,7 @@
             // 
             this.EmailTextBox.BackColor = System.Drawing.Color.White;
             this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.EmailTextBox.Location = new System.Drawing.Point(146, 298);
             this.EmailTextBox.Multiline = true;
@@ -192,23 +191,12 @@
             this.LicenseLabel.Text = "This application is provided under MIT License";
             this.LicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
             // 
-            // HelpButton
-            // 
-            this.HelpButton.Location = new System.Drawing.Point(716, 9);
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(56, 25);
-            this.HelpButton.TabIndex = 18;
-            this.HelpButton.Text = "Help";
-            this.HelpButton.UseVisualStyleBackColor = true;
-            this.HelpButton.Click += new System.EventHandler(this.HelpButtonClicked);
-            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 449);
-            this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.LicenseLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.RememberMeCheckBox);
@@ -247,7 +235,6 @@
         private System.Windows.Forms.CheckBox RememberMeCheckBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label LicenseLabel;
-        private System.Windows.Forms.Button HelpButton;
     }
 }
 

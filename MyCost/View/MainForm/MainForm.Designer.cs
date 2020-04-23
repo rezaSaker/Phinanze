@@ -323,35 +323,35 @@
             // 
             // Column1
             // 
-            this.Column1.FillWeight = 56.44736F;
+            this.Column1.FillWeight = 57.1535F;
             this.Column1.HeaderText = "Year";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Column5
             // 
-            this.Column5.FillWeight = 152.2843F;
+            this.Column5.FillWeight = 119.7502F;
             this.Column5.HeaderText = "Month";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.FillWeight = 97.08945F;
+            this.Column2.FillWeight = 110.5791F;
             this.Column2.HeaderText = "Earning";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
-            this.Column3.FillWeight = 97.08945F;
+            this.Column3.FillWeight = 114.2132F;
             this.Column3.HeaderText = "Expense";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
-            this.Column4.FillWeight = 97.08945F;
+            this.Column4.FillWeight = 98.30402F;
             this.Column4.HeaderText = "Overview";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;

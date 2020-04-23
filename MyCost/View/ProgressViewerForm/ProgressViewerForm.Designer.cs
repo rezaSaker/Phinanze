@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProgressViewerForm));
             this.StatusLabel = new System.Windows.Forms.Label();
             this.UI_ProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
@@ -35,10 +36,10 @@
             // StatusLabel
             // 
             this.StatusLabel.AutoSize = true;
-            this.StatusLabel.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatusLabel.Location = new System.Drawing.Point(12, 9);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(58, 20);
+            this.StatusLabel.Size = new System.Drawing.Size(72, 21);
             this.StatusLabel.TabIndex = 0;
             this.StatusLabel.Text = "Progress";
             // 
@@ -58,12 +59,12 @@
             this.Controls.Add(this.UI_ProgressBar);
             this.Controls.Add(this.StatusLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressViewerForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost";
+            this.Text = "MyCost - Action in Progress";
             this.Load += new System.EventHandler(this.ProgressViewerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
