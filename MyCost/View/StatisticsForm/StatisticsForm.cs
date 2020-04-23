@@ -273,7 +273,7 @@ namespace MyCost.View
             }
             else
             {
-                IDictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
+                Dictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
                 dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
@@ -295,7 +295,7 @@ namespace MyCost.View
 
             if (ShowEarningReportRadioButton.Checked)
             {
-                IDictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
+                Dictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
                 dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)
@@ -310,7 +310,7 @@ namespace MyCost.View
             }
             else
             {
-                IDictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
+                Dictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
                 dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
 
                 foreach (DailyInfo daily in dailyInfoList)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Diagnostics;
+using System.Windows.Forms.DataVisualization.Charting;
 using MyCost.Common;
 
 namespace MyCost.View
@@ -43,6 +43,9 @@ namespace MyCost.View
         private void ThisFormLoading(object sender, EventArgs e)
         {             
             MonthlyInfo.Fetch();
+
+            BarChart.Series["Earning"].Color = Color.ForestGreen;
+            BarChart.Series["Expense"].Color = Color.OrangeRed;
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
             {
@@ -131,9 +134,27 @@ namespace MyCost.View
 
         private void PlotMonthlyInfo()
         {
-            HomeDataGridView.Rows.Clear();
+            ResetAllDataFields();
 
             int rowIndex = 0;
+
+            double totalEarning = 0.0;
+            double totalExpense = 0.0;
+
+            //initializing each month.s earning and expense with 0.0
+            Dictionary<string, double> totalEarningDictionary = new Dictionary<string, double>()
+            {
+                {"January", 0.0 }, {"February", 0.0 }, {"March", 0.0 }, {"April", 0.0 },
+                {"May", 0.0 }, {"June", 0.0 }, {"July", 0.0 }, {"August", 0.0 },
+                {"September", 0.0 }, {"October", 0.0 }, {"November", 0.0 }, {"December", 0.0 }
+            };
+
+            Dictionary<string, double> totalExpenseDictionary = new Dictionary<string, double>()
+            {
+                {"January", 0.0 }, {"February", 0.0 }, {"March", 0.0 }, {"April", 0.0 },
+                {"May", 0.0 }, {"June", 0.0 }, {"July", 0.0 }, {"August", 0.0 },
+                {"September", 0.0 }, {"October", 0.0 }, {"November", 0.0 }, {"December", 0.0 }
+            };
 
             foreach (MonthlyInfo monthly in GlobalSpace.MonthlyInfoList)
             {
@@ -147,12 +168,29 @@ namespace MyCost.View
                     //show info for all years
                     HomeDataGridView.Rows.Add(year, month, earning, expense);
                     ShowOverview(monthly, rowIndex);
+
+                    //Add up earning and expense for same months of all years
+                    //and plot them on the bar chart at the end of this method
+                    totalEarningDictionary[month] += monthly.Earning;
+                    totalExpenseDictionary[month] += monthly.Expense;
+
+                    //add up all earning and expense for the pie chart
+                    totalEarning += monthly.Earning;
+                    totalExpense += monthly.Expense;
                 }
                 else if (_selectedYear == monthly.Year)
                 {
                     // show info only for selected year
                     HomeDataGridView.Rows.Add(year, month, earning, expense);
                     ShowOverview(monthly, rowIndex);
+
+                    //directly plot the data on the bar chart
+                    AddDataToBarChart("Earning", month, monthly.Earning);
+                    AddDataToBarChart("Expense", month, monthly.Expense);
+
+                    //add up all earning and expense for the pie chart
+                    totalEarning += monthly.Earning;
+                    totalExpense += monthly.Expense;
                 }
                 rowIndex++;
             }
@@ -160,7 +198,43 @@ namespace MyCost.View
             if(HomeDataGridView.Rows.Count > 0)
             {
                 HomeDataGridView.Rows[0].Cells[0].Selected = false;
-            }            
+            }  
+            
+            if(_selectedYear == 0)  //if user selected all years
+            {
+                //plot the data in the bar chart
+                foreach(KeyValuePair<string, double> earning in totalEarningDictionary)
+                {
+                    AddDataToBarChart("Earning", earning.Key, earning.Value);
+                }
+
+                foreach (KeyValuePair<string, double> expense in totalExpenseDictionary)
+                {
+                    AddDataToBarChart("Expense", expense.Key, expense.Value);
+                }
+            }
+
+            //plot the pie chart
+            DataPoint point1 = new DataPoint();
+            point1.Color = Color.YellowGreen;
+            point1.ToolTip = String.Format("Total Earning: ${0:00}", totalEarning);
+            point1.SetValueXY("Earning", totalEarning);
+            PieChart.Series["Series1"].Points.Add(point1);
+
+            DataPoint point2 = new DataPoint();
+            point2.Color = Color.Tomato;
+            point2.ToolTip = String.Format("Total Expense: ${0:00}", totalExpense);
+            point2.SetValueXY("Expense", totalExpense);
+            PieChart.Series["Series1"].Points.Add(point2);
+
+            double savings = totalEarning - totalExpense;
+            savings = savings > 0 ? savings : 0.00;
+            DataPoint point3 = new DataPoint();
+            point3.Color = Color.SkyBlue;
+            point3.ToolTip = String.Format("Total Savings: ${0:00}", savings);
+            point3.SetValueXY("Savings", savings);
+            PieChart.Series["Series1"].Points.Add(point3);
+
         }
 
         private void ShowOverview(MonthlyInfo monthly, int row)
@@ -191,6 +265,27 @@ namespace MyCost.View
 
             _quitAppOnFormClosing = false;
             this.Close();
+        }
+
+        private void AddDataToBarChart(string seriesName, string month, double value)
+        {
+            DataPoint point = new DataPoint();
+            point.SetValueXY(month, value);
+            point.ToolTip = String.Format("${0:00}", value);
+            BarChart.Series[seriesName].Points.Add(point);
+        }
+
+        private void ResetAllDataFields()
+        {
+            //clear dataGridView
+            HomeDataGridView.Rows.Clear();
+
+            //clear bar chart
+            BarChart.Series["Earning"].Points.Clear();
+            BarChart.Series["Expense"].Points.Clear();
+
+            //clear pie chart
+            PieChart.Series["Series1"].Points.Clear();
         }
         #endregion
     }
