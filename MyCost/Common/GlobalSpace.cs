@@ -24,6 +24,7 @@ namespace MyCost.Common
         public static string Username;
         public static string Email;
         public static bool IsEmailVarified;
+        public static string EmailVerificationCode;
 
         public static List<string> ExpenseCategories = new List<string>();
         public static List<string> EarningCategories = new List<string>();

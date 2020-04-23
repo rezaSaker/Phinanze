@@ -46,6 +46,7 @@
             // 
             this.ShowRegisterPanelButton.AutoSize = true;
             this.ShowRegisterPanelButton.BackColor = System.Drawing.Color.White;
+            this.ShowRegisterPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ShowRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
@@ -61,6 +62,7 @@
             // 
             this.ShowLoginPanelButton.AutoSize = true;
             this.ShowLoginPanelButton.BackColor = System.Drawing.Color.White;
+            this.ShowLoginPanelButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ShowLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowLoginPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Net;
 using System.Threading;
 
-namespace MyCost.Common.WebHandler
+namespace MyCost.Common
 {
     class WebHandler
     {
@@ -489,6 +489,57 @@ namespace MyCost.Common.WebHandler
         }
 
         private void OnUpdateEmailFailed()
+        {
+            WebRequestFailedEventHandler?.Invoke(this, null);
+        }
+
+        public void VerifyEmail(string code)
+        {
+            Thread thread = new Thread(() => WebRequestToVerifyEmail(code));
+
+            thread.Start();
+        }
+
+        private void WebRequestToVerifyEmail(string code)
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("userid", GlobalSpace.UserID.ToString());
+            queryData.Add("token", GlobalSpace.AccessToken);
+            queryData.Add("code", code);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "verifyEmail.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+                _webResponse = resultData;
+
+                if(resultData == "SUCCESS")
+                {
+                    OnEmailVerificationSuccess();
+                }
+                else
+                {
+                    OnEmaiLVerificationFailed();
+                }
+            }
+            catch
+            {
+                _webResponse = "Server connection error";
+
+                OnEmaiLVerificationFailed();
+            }
+        }
+
+        private void OnEmailVerificationSuccess()
+        {
+            WebRequestSuccessEventHandler?.Invoke(this, null);
+        }
+
+        private void OnEmaiLVerificationFailed()
         {
             WebRequestFailedEventHandler?.Invoke(this, null);
         }

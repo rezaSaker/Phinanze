@@ -56,6 +56,17 @@ namespace MyCost.View
             VersionLabel.Text = "Version: " + Application.ProductVersion;
         }
 
+        private void ThisFormShown(object sender, EventArgs e)
+        {
+            //prompt user to verify email
+            if(!GlobalSpace.IsEmailVarified)
+            {
+                EmailVerificationForm form = new EmailVerificationForm();
+                form.Location = new Point(this.Location.X + 153, this.Location.Y + 120);
+                form.Show();
+            }
+        }
+
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
             if (YearComboBox.SelectedItem.ToString() == "All years")

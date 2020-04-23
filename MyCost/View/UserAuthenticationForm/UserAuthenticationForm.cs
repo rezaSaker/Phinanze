@@ -2,11 +2,8 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.Net;
 using System.Net.Mail;
-using System.Collections.Generic;
 using MyCost.Common;
-using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
@@ -163,6 +160,7 @@ namespace MyCost.View
         {
             //reset everything so the panel appears as a login form 
             ShowRegisterPanelButton.BackColor = Color.RoyalBlue;
+            ShowRegisterPanelButton.FlatAppearance.BorderColor = Color.RoyalBlue;
             ShowRegisterPanelButton.ForeColor = Color.White;
             ShowLoginPanelButton.BackColor = Color.White;
             ShowLoginPanelButton.ForeColor = Color.Black;
@@ -188,6 +186,7 @@ namespace MyCost.View
             ShowRegisterPanelButton.BackColor = Color.White;
             ShowRegisterPanelButton.ForeColor = Color.Black;
             ShowLoginPanelButton.BackColor = Color.RoyalBlue;
+            ShowLoginPanelButton.FlatAppearance.BorderColor = Color.RoyalBlue;
             ShowLoginPanelButton.ForeColor = Color.White;
 
             SubmitButton.Text = "Register";
@@ -369,11 +368,8 @@ namespace MyCost.View
                 GlobalSpace.AccessToken = data[1];
                 GlobalSpace.CypherKey = StringCipher.Decrypt(data[2], PasswordTextBox.Text);
                 GlobalSpace.Email = StringCipher.Decrypt(data[3], GlobalSpace.CypherKey);
-
-                if (!Boolean.TryParse(data[4], out GlobalSpace.IsEmailVarified))
-                {
-                    GlobalSpace.IsEmailVarified = false;
-                }
+                GlobalSpace.IsEmailVarified = data[4] == "1" ? true : false;
+                
 
                 if (RememberMeCheckBox.Checked)
                 {
@@ -381,15 +377,16 @@ namespace MyCost.View
                     Properties.Settings.Default.Password = PasswordTextBox.Text;
                     Properties.Settings.Default.Save();
                 }
+
+                GlobalSpace.EmailVerificationCode = data[5];
                 
                 //if the account has just been registered,
                 //send an email verification code to the user's email
-                if(data[5] == "New User")
+                if(data[6] == "New User")
                 {
-                    string verificationCode = data[6];
                     MailAddress from = new MailAddress("contact@rezasaker.com");
                     MailAddress to = new MailAddress(GlobalSpace.Email);
-                    SendVerificationEmail(from, to, verificationCode);
+                    SendVerificationEmail(from, to, GlobalSpace.EmailVerificationCode);
                 }
                 else //if exisitng user logging in
                 {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 using MyCost.Common;
-using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {

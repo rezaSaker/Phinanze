@@ -85,7 +85,7 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	$result = mysqli_query($connect, $query) or die('Server connection error');
 	
 	//return the userid, the access token and the cypher key for user's data decryption 
-	die($userid . '|' . $token . '|' . $cipherKey . '|' . $encryptedEmail . '|' . $isEmailVerified . '|' . 'New User' . '|' . $emailVerificationCode);	
+	die($userid . '|' . $token . '|' . $cipherKey . '|' . $encryptedEmail . '|' . $isEmailVerified . '|' . $emailVerificationCode . '|' . 'New User');	
 }
 else
 { 

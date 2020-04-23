@@ -29,6 +29,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
 			$cipherKey = $row['cipher_key'];
 			$email = $row['decryptable_email'];
 			$isEmailVerified = $row['is_email_verified'];
+			$verificationCode = $row['verification_code'];
 
 			//generate a random string as temporary access token
 			$token = RandomToken();
@@ -37,7 +38,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
 			$query = "UPDATE users SET token = '$token' WHERE id = '$userid'";
 			mysqli_query($connect, $query) or die('Server connection error');
 			
-			die($userid . '|' . $token . '|' . $cipherKey . '|' . $email .'|' . $isEmailVerified . '|' .  'Existing User'); 
+			die($userid . '|' . $token . '|' . $cipherKey . '|' . $email .'|' . $isEmailVerified . '|' . $verificationCode . '|' .  'Existing User'); 
 			//sending 'Existing user' will prevent the app from sending 
 			//verification email to the user's email			
 		}

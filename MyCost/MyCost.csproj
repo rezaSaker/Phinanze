@@ -120,6 +120,12 @@
     <Compile Include="Common\DailyInfo.cs" />
     <Compile Include="Common\EarningInfo.cs" />
     <Compile Include="Common\ExpenseInfo.cs" />
+    <Compile Include="View\EmailVerificationForm\EmailVerificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmailVerificationForm\EmailVerificationForm.Designer.cs">
+      <DependentUpon>EmailVerificationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MainForm\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,12 +167,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\WebHandler.cs" />
     <Compile Include="Common\GlobalSpace.cs" />
-    <Compile Include="View\Verification\EmailVerification.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Verification\EmailVerification.Designer.cs">
-      <DependentUpon>EmailVerification.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="View\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CategoryListForm\CategoryListForm.resx">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmailVerificationForm\EmailVerificationForm.resx">
+      <DependentUpon>EmailVerificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -204,9 +207,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="View\Verification\EmailVerification.resx">
-      <DependentUpon>EmailVerification.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="MyCost_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />

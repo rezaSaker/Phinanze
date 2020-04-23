@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Net.Mail;
 using MyCost.Common;
-using MyCost.Common.WebHandler;
 
 namespace MyCost.View
 {
