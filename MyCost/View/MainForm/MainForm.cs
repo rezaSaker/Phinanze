@@ -44,7 +44,7 @@ namespace MyCost.View
         {             
             MonthlyInfo.Fetch();
 
-            BarChart.Series["Earning"].Color = Color.ForestGreen;
+            BarChart.Series["Earning"].Color = Color.YellowGreen;
             BarChart.Series["Expense"].Color = Color.OrangeRed;
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
@@ -222,7 +222,7 @@ namespace MyCost.View
             PieChart.Series["Series1"].Points.Add(point1);
 
             DataPoint point2 = new DataPoint();
-            point2.Color = Color.Tomato;
+            point2.Color = Color.OrangeRed;
             point2.ToolTip = String.Format("Total Expense: ${0:00}", totalExpense);
             point2.SetValueXY("Expense", totalExpense);
             PieChart.Series["Series1"].Points.Add(point2);

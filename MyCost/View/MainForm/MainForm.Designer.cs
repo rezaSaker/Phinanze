@@ -32,19 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.HomeDataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearComboBox = new System.Windows.Forms.ComboBox();
             this.VersionLabel = new System.Windows.Forms.Label();
             this.HomeButton = new System.Windows.Forms.Button();
@@ -57,6 +51,11 @@
             this.LogoButton = new System.Windows.Forms.Button();
             this.BarChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.HomeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PieChart)).BeginInit();
@@ -114,41 +113,6 @@
             this.HomeDataGridView.Size = new System.Drawing.Size(466, 182);
             this.HomeDataGridView.TabIndex = 6;
             this.HomeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 86.29442F;
-            this.Column1.HeaderText = "Year";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 103.4264F;
-            this.Column5.HeaderText = "Month";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 103.4264F;
-            this.Column2.HeaderText = "Earning";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 103.4264F;
-            this.Column3.HeaderText = "Expense";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 103.4264F;
-            this.Column4.HeaderText = "Overview";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             // 
             // YearComboBox
             // 
@@ -318,20 +282,14 @@
             chartArea1.AxisX.Interval = 1D;
             chartArea1.Name = "ChartArea1";
             this.BarChart.ChartAreas.Add(chartArea1);
-            legend1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend1.IsTextAutoFit = false;
-            legend1.Name = "Legend1";
-            this.BarChart.Legends.Add(legend1);
             this.BarChart.Location = new System.Drawing.Point(12, 275);
             this.BarChart.Name = "BarChart";
             this.BarChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
             series1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series1.Legend = "Legend1";
             series1.Name = "Earning";
             series2.ChartArea = "ChartArea1";
             series2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series2.Legend = "Legend1";
             series2.Name = "Expense";
             this.BarChart.Series.Add(series1);
             this.BarChart.Series.Add(series2);
@@ -345,10 +303,10 @@
             this.PieChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea2.Name = "ChartArea1";
             this.PieChart.ChartAreas.Add(chartArea2);
-            legend2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend2.IsTextAutoFit = false;
-            legend2.Name = "Legend1";
-            this.PieChart.Legends.Add(legend2);
+            legend1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            this.PieChart.Legends.Add(legend1);
             this.PieChart.Location = new System.Drawing.Point(484, 87);
             this.PieChart.Name = "PieChart";
             this.PieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
@@ -362,6 +320,41 @@
             this.PieChart.Size = new System.Drawing.Size(343, 182);
             this.PieChart.TabIndex = 50;
             this.PieChart.Text = "Pie Chart";
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 56.44736F;
+            this.Column1.HeaderText = "Year";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 152.2843F;
+            this.Column5.HeaderText = "Month";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 97.08945F;
+            this.Column2.HeaderText = "Earning";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 97.08945F;
+            this.Column3.HeaderText = "Expense";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 97.08945F;
+            this.Column4.HeaderText = "Overview";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -412,12 +405,12 @@
         private System.Windows.Forms.Button LogOutButton;
         private System.Windows.Forms.Label LicenseLabel;
         private System.Windows.Forms.Button LogoButton;
+        private System.Windows.Forms.DataVisualization.Charting.Chart BarChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart PieChart;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart BarChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart PieChart;
     }
 }
