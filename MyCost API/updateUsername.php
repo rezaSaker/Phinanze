@@ -17,7 +17,7 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 	if(IsAuthenticRequest($connect, $userid, $token))//request verified as authentic
 	{		
 		$currentUsername = mysqli_real_escape_string($connect, $_POST['currentUsername']);
-		$newUsername     = mysqli_real_escape_string($connect, $_POST['newUsername']);
+		$newUsername = mysqli_real_escape_string($connect, $_POST['newUsername']);
 		$password        = mysqli_real_escape_string($connect, $_POST['password']);
 		
 		//verify password
@@ -28,12 +28,10 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 	
 	    if(password_verify($password, $hashedPass))
 	    {
-			//check if new username cotains risky characters
-			$checkedNewUsername = mysqli_real_escape_string($connect, $newUsername);
-			
-			if($checkedNewUsername != $newUsername)
+			//check if new username cotains risky characters			
+			if($_POST['newUsername'] != $newUsername)
 			{
-				die('Please choose a different username');
+				die('Please choose a different username.');
 			}
 			
 			//check if new username is already taken 
