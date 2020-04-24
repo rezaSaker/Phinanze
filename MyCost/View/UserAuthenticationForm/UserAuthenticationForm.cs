@@ -152,6 +152,13 @@ namespace MyCost.View
                 Application.Exit();
             }
         }
+
+        private void ForgotPasswordTextBoxClicked(object sender, EventArgs e)
+        {
+            PasswordResetForm form = new View.PasswordResetForm();
+            form.Location = new Point(this.Location.X + 107, this.Location.Y + 158);
+            form.Show();
+        }
         #endregion
 
         #region General Private Methods
@@ -173,7 +180,7 @@ namespace MyCost.View
             EmailTextBox.Visible = false;
             EmailTextBox.Enabled = false;
 
-            RememberMeCheckBox.Location = new Point(146, 250);
+            RememberMeCheckBox.Location = new Point(146, 245);
             LicenseLabel.Location = new Point(260, 345);
             this.Size = new Size(800, 430);
 
@@ -196,8 +203,9 @@ namespace MyCost.View
             ConfirmPasswordTextBox.Enabled = true;
             EmailTextBox.Visible = true;
             EmailTextBox.Enabled = true;
+            ForgotPasswordTextBox.Visible = false;
 
-            RememberMeCheckBox.Location = new Point(146, 343);
+            RememberMeCheckBox.Location = new Point(146, 334);
             LicenseLabel.Location = new Point(260, 421);
             this.Size = new Size(800, 500);
 

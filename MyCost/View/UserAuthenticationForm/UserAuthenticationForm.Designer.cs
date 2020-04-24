@@ -40,6 +40,7 @@
             this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.LicenseLabel = new System.Windows.Forms.Label();
+            this.ForgotPasswordTextBox = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ShowRegisterPanelButton
@@ -159,7 +160,7 @@
             // 
             this.RememberMeCheckBox.AutoSize = true;
             this.RememberMeCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RememberMeCheckBox.Location = new System.Drawing.Point(146, 343);
+            this.RememberMeCheckBox.Location = new System.Drawing.Point(146, 334);
             this.RememberMeCheckBox.Name = "RememberMeCheckBox";
             this.RememberMeCheckBox.Size = new System.Drawing.Size(144, 25);
             this.RememberMeCheckBox.TabIndex = 15;
@@ -193,12 +194,27 @@
             this.LicenseLabel.Text = "This application is provided under MIT License";
             this.LicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
             // 
+            // ForgotPasswordTextBox
+            // 
+            this.ForgotPasswordTextBox.AutoSize = true;
+            this.ForgotPasswordTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ForgotPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForgotPasswordTextBox.ForeColor = System.Drawing.Color.Red;
+            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(415, 245);
+            this.ForgotPasswordTextBox.Name = "ForgotPasswordTextBox";
+            this.ForgotPasswordTextBox.Size = new System.Drawing.Size(231, 21);
+            this.ForgotPasswordTextBox.TabIndex = 18;
+            this.ForgotPasswordTextBox.Text = "Forgot Password/Username?";
+            this.ForgotPasswordTextBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ForgotPasswordTextBox.Click += new System.EventHandler(this.ForgotPasswordTextBoxClicked);
+            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 449);
+            this.Controls.Add(this.ForgotPasswordTextBox);
             this.Controls.Add(this.LicenseLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.RememberMeCheckBox);
@@ -237,6 +253,7 @@
         private System.Windows.Forms.CheckBox RememberMeCheckBox;
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label LicenseLabel;
+        private System.Windows.Forms.Label ForgotPasswordTextBox;
     }
 }
 

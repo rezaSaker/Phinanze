@@ -132,6 +132,12 @@
     <Compile Include="View\MainForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\PasswordResetForm\PasswordResetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PasswordResetForm\PasswordResetForm.Designer.cs">
+      <DependentUpon>PasswordResetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ProgressViewerForm\ProgressViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PasswordResetForm\PasswordResetForm.resx">
+      <DependentUpon>PasswordResetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ProgressViewerForm\ProgressViewerForm.resx">
       <DependentUpon>ProgressViewerForm.cs</DependentUpon>
