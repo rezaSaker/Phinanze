@@ -16,5 +16,19 @@ namespace MyCost.View
         {
             InitializeComponent();
         }
+
+        private void ThisFormLoading(object sender, EventArgs e)
+        {
+            EmailTextBox.Text = "Enter your email";
+        }
+
+        private void EmailTextBoxClicked(object sender, MouseEventArgs e)
+        {
+            if (EmailTextBox.ForeColor != Color.Black)
+            {
+                EmailTextBox.Text = "";
+                EmailTextBox.ForeColor = Color.Black;
+            }
+        }
     }
 }

@@ -179,6 +179,7 @@ namespace MyCost.View
             ConfirmPasswordTextBox.Enabled = false;
             EmailTextBox.Visible = false;
             EmailTextBox.Enabled = false;
+            ForgotPasswordTextBox.Visible = true;
 
             RememberMeCheckBox.Location = new Point(146, 245);
             LicenseLabel.Location = new Point(260, 345);
