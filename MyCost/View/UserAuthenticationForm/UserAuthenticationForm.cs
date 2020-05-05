@@ -171,6 +171,8 @@ namespace MyCost.View
             ShowRegisterPanelButton.ForeColor = Color.White;
             ShowLoginPanelButton.BackColor = Color.White;
             ShowLoginPanelButton.ForeColor = Color.Black;
+            ShowLoginPanelButton.Enabled = false;
+            ShowRegisterPanelButton.Enabled = true;
 
             SubmitButton.Text = "Log in";
             SubmitButton.Location = new Point(324, 280);
@@ -196,6 +198,8 @@ namespace MyCost.View
             ShowLoginPanelButton.BackColor = Color.RoyalBlue;
             ShowLoginPanelButton.FlatAppearance.BorderColor = Color.RoyalBlue;
             ShowLoginPanelButton.ForeColor = Color.White;
+            ShowRegisterPanelButton.Enabled = false;
+            ShowLoginPanelButton.Enabled = true;
 
             SubmitButton.Text = "Register";
             SubmitButton.Location = new Point(324, 368);

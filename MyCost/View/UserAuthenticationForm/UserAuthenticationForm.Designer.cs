@@ -132,6 +132,7 @@
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(666, 32);
             this.PasswordTextBox.TabIndex = 11;
+            this.PasswordTextBox.TabStop = false;
             this.PasswordTextBox.Text = "Password";
             this.PasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextboxClicked);
             // 
@@ -146,6 +147,7 @@
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(666, 32);
             this.UsernameTextBox.TabIndex = 10;
+            this.UsernameTextBox.TabStop = false;
             this.UsernameTextBox.Text = "Username";
             this.UsernameTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.UsernameTextBoxClicked);
             // 
@@ -184,6 +186,7 @@
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(666, 32);
             this.EmailTextBox.TabIndex = 16;
+            this.EmailTextBox.TabStop = false;
             this.EmailTextBox.Text = "Email";
             this.EmailTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EmailTextBoxClicked);
             // 
@@ -205,12 +208,12 @@
             // 
             this.ForgotPasswordTextBox.AutoSize = true;
             this.ForgotPasswordTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ForgotPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForgotPasswordTextBox.Font = new System.Drawing.Font("Bell MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForgotPasswordTextBox.ForeColor = System.Drawing.Color.Red;
-            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(571, 297);
+            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(604, 297);
             this.ForgotPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ForgotPasswordTextBox.Name = "ForgotPasswordTextBox";
-            this.ForgotPasswordTextBox.Size = new System.Drawing.Size(290, 23);
+            this.ForgotPasswordTextBox.Size = new System.Drawing.Size(257, 23);
             this.ForgotPasswordTextBox.TabIndex = 18;
             this.ForgotPasswordTextBox.Text = "Forgot Password/Username?";
             this.ForgotPasswordTextBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
