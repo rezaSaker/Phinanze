@@ -356,6 +356,49 @@ namespace MyCost.View
                 Application.Exit();
             }
         }
+
+        private void DeleteButtonClicked(object sender, EventArgs e)
+        {
+            if(ExpenseDataGridView.SelectedRows.Count < 1 && EarningDataGridView.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("No row selected. Please select the row that you want to delete.");
+            }
+            else
+            {
+                string warningMsg = "Selected rows will be permanently deleted. " +
+                    "Are you sure you want to delete the selected rows?";
+                DialogResult dlgResult = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo);
+
+                if(dlgResult == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in ExpenseDataGridView.SelectedRows)
+                    {
+                        ExpenseDataGridView.Rows.Remove(row);
+                    }
+
+                    foreach (DataGridViewRow row in EarningDataGridView.SelectedRows)
+                    {
+                        EarningDataGridView.Rows.Remove(row);
+                    }
+
+                    UpdateTotalEarningLabel();
+                    UpdateTotalExpenseLabel();
+
+                    string result = SaveDailyInfo();
+
+                    if (result == "Server connection error")
+                    {
+                        string message = "Could not save the information to database. ";
+                        message += "Please check your internet connection and try again.";
+                        MessageBox.Show(message);
+
+                        //following method will refresh the page and reload data that could not be deleted
+                        PlotDailyInfo();
+                    }
+                }
+            }
+
+        }
         #endregion
 
         #region General Private Methods
@@ -843,6 +886,6 @@ namespace MyCost.View
             return dlgRes;
         }
 
-        #endregion            
+        #endregion
     }
 }
