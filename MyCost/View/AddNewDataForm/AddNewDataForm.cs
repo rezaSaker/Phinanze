@@ -526,6 +526,8 @@ namespace MyCost.View
                 }
             }
             TotalExpenseLabel.Text = string.Format("{0:0.00}", total);
+
+            UpdateStatusLabel();
         }
 
         private void UpdateTotalEarningLabel()
@@ -560,7 +562,28 @@ namespace MyCost.View
                 }
             }
             TotalEarningLabel.Text = string.Format("{0:0.00}", total);
+
+            UpdateStatusLabel();
         }  
+
+        private void UpdateStatusLabel()
+        {
+            double earning = double.Parse(TotalEarningLabel.Text);
+            double expense = double.Parse(TotalExpenseLabel.Text);
+
+            if(earning == expense)
+            {
+                StatusLabelButton.BackColor = Color.Orange;
+            }
+            else if(earning > expense)
+            {
+                StatusLabelButton.BackColor = Color.ForestGreen;
+            }
+            else
+            {
+                StatusLabelButton.BackColor = Color.Red;
+            }
+        }
         
         private void ResetAmountColumnColorToDeafault(DataGridView dgv, int rowIndex)
         {
