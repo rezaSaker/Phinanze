@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
+using System.Net;
+using System.Text;
 using System.Net.Mail;
 using MyCost.Common;
 
@@ -17,6 +19,7 @@ namespace MyCost.View
 
         private delegate void UpdateEmailDelegate();
         private delegate void SendVerificationEmailDelegate();
+        private delegate void UserDeleteSuccessDelegate();
 
         public ProfileForm()
         {
@@ -471,6 +474,40 @@ Your email verification code is " + verificationCode + ".\n\n" +
             PasswordForEmailTextBox.ForeColor = Color.DimGray;
             PasswordForEmailTextBox.PasswordChar = '\0';
             UpdateEmailButton.Enabled = false;
+        }
+
+        private void DeleteProfileButtonClicked(object sender, EventArgs e)
+        {
+            string msg = "You will not be able to recover your account once you delete your profile and thus you will lost all saved data" +
+                "permanently. Do you still want to delete your account?";
+
+            DialogResult userChoice = MessageBox.Show(msg, "warning", MessageBoxButtons.YesNo);
+
+            if (userChoice == DialogResult.Yes)
+            {
+                DeleteUserProfileForm form = new DeleteUserProfileForm();
+
+                form.UserDeleteSuccessEventHandler += UserDeleteSuccess;
+
+                form.Location = new Point(this.Location.X + 135, this.Location.Y + 179);
+                form.Show();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void UserDeleteSuccess(object sender, EventArgs e)
+        {
+            this.Invoke(new UserDeleteSuccessDelegate(ActionUponUserDeleteSuccess), new object[] { });
+        }
+
+        private void ActionUponUserDeleteSuccess()
+        {
+            GlobalSpace.LogOutUser();
+            _quitAppOnFormClosing = false;
+            this.Close();
         }
     }
 }

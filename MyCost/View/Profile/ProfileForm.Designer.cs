@@ -449,6 +449,7 @@
             this.DeleteAccountButton.TabIndex = 81;
             this.DeleteAccountButton.Text = "Permanently Delete My Account";
             this.DeleteAccountButton.UseVisualStyleBackColor = false;
+            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteProfileButtonClicked);
             // 
             // PasswordForEmailTextBox
             // 

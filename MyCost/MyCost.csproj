@@ -120,6 +120,12 @@
     <Compile Include="Common\DailyInfo.cs" />
     <Compile Include="Common\EarningInfo.cs" />
     <Compile Include="Common\ExpenseInfo.cs" />
+    <Compile Include="View\DeleteUserProfileForm\DeleteUserProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DeleteUserProfileForm\DeleteUserProfileForm.Designer.cs">
+      <DependentUpon>DeleteUserProfileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\EmailVerificationForm\EmailVerificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\CategoryListForm\CategoryListForm.resx">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DeleteUserProfileForm\DeleteUserProfileForm.resx">
+      <DependentUpon>DeleteUserProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\EmailVerificationForm\EmailVerificationForm.resx">
       <DependentUpon>EmailVerificationForm.cs</DependentUpon>

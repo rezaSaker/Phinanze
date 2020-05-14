@@ -30,5 +30,17 @@ namespace MyCost.View
                 EmailTextBox.ForeColor = Color.Black;
             }
         }
+
+        private void ResetPasswordButtonClicked(object sender, EventArgs e)
+        {
+            //this method will be completed in later version of the app
+            this.Close();
+        }
+
+        private void ResetUsernameButtonClicked(object sender, EventArgs e)
+        {
+            //this method will be completed in later version of the app
+            this.Close();
+        }
     }
 }
