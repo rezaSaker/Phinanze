@@ -114,7 +114,7 @@ namespace MyCost.View
             //show progress bar
             string status = "Sending new verification code, please wait...";
             ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-            progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 100);
+            progressViewer.Location = new Point(this.Location.X - 55, this.Location.Y + 60);
             progressViewer.Show();
             _progressViewerObject = progressViewer;
 
