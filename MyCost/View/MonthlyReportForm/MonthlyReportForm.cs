@@ -99,15 +99,13 @@ namespace MyCost.View
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.BackColor = Color.ForestGreen;
-            button.ForeColor = Color.White;
+            button.FlatAppearance.BorderColor = Color.Orange;
         }
 
         private void MenuButtonsMouseLeaving(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.BackColor = Color.White;
-            button.ForeColor = Color.ForestGreen;
+            button.FlatAppearance.BorderColor = Color.LimeGreen;
         }
 
         private void MenuButtonsClicked(object sender, EventArgs e)
