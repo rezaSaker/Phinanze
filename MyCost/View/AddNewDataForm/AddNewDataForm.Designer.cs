@@ -113,12 +113,14 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ExpenseDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.ExpenseDataGridView.RowHeadersVisible = false;
             this.ExpenseDataGridView.RowHeadersWidth = 30;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.ExpenseDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.ExpenseDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ExpenseDataGridView.Size = new System.Drawing.Size(815, 155);
             this.ExpenseDataGridView.TabIndex = 3;
             this.ExpenseDataGridView.TabStop = false;
@@ -296,6 +298,7 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.EarningDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.EarningDataGridView.RowHeadersVisible = false;
             this.EarningDataGridView.RowHeadersWidth = 30;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -303,6 +306,7 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.EarningDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.EarningDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.EarningDataGridView.Size = new System.Drawing.Size(816, 163);
             this.EarningDataGridView.TabIndex = 23;
             this.EarningDataGridView.TabStop = false;

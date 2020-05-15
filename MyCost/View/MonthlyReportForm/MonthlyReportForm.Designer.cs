@@ -53,7 +53,10 @@
             // 
             // MonthComboBox
             // 
+            this.MonthComboBox.BackColor = System.Drawing.Color.White;
+            this.MonthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MonthComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthComboBox.ForeColor = System.Drawing.Color.Black;
             this.MonthComboBox.FormattingEnabled = true;
             this.MonthComboBox.Items.AddRange(new object[] {
             "January",
@@ -103,6 +106,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MonthlyReportDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            this.MonthlyReportDataGridView.GridColor = System.Drawing.Color.Black;
             this.MonthlyReportDataGridView.Location = new System.Drawing.Point(15, 96);
             this.MonthlyReportDataGridView.Name = "MonthlyReportDataGridView";
             this.MonthlyReportDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -114,7 +118,9 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MonthlyReportDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.MonthlyReportDataGridView.RowHeadersVisible = false;
             this.MonthlyReportDataGridView.RowHeadersWidth = 30;
+            this.MonthlyReportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.MonthlyReportDataGridView.Size = new System.Drawing.Size(812, 343);
             this.MonthlyReportDataGridView.TabIndex = 5;
             this.MonthlyReportDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
@@ -146,7 +152,10 @@
             // 
             // YearComboBox
             // 
+            this.YearComboBox.BackColor = System.Drawing.Color.White;
+            this.YearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.YearComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.YearComboBox.ForeColor = System.Drawing.Color.Black;
             this.YearComboBox.FormattingEnabled = true;
             this.YearComboBox.Location = new System.Drawing.Point(747, 59);
             this.YearComboBox.Name = "YearComboBox";
@@ -315,7 +324,7 @@
             this.LogoButton.ForeColor = System.Drawing.Color.White;
             this.LogoButton.Location = new System.Drawing.Point(12, 8);
             this.LogoButton.Name = "LogoButton";
-            this.LogoButton.Size = new System.Drawing.Size(49, 38);
+            this.LogoButton.Size = new System.Drawing.Size(49, 36);
             this.LogoButton.TabIndex = 53;
             this.LogoButton.UseVisualStyleBackColor = false;
             // 

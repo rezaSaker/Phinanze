@@ -638,9 +638,9 @@ namespace MyCost.View
 
                 try
                 {
-                    if(double.TryParse(ExpenseDataGridView.Rows[row.Index].Cells[1].Value.ToString(), out amount))
+                    if(!double.TryParse(ExpenseDataGridView.Rows[row.Index].Cells[1].Value.ToString(), out amount))
                     {
-                        string message = "The value for amount is way too large on row";
+                        string message = "The value for amount is not correct on row";
                         message += (row.Index + 1) + " in the expense table. Please correct" +
                             " the amount in order to save.";
 
@@ -718,7 +718,7 @@ namespace MyCost.View
                 {
                     if(!double.TryParse(EarningDataGridView.Rows[row.Index].Cells[1].Value.ToString(), out amount))
                     {
-                        string message = "The value for amount is way too large on row" + (row.Index + 1) + 
+                        string message = "The value for amount is not correct on row" + (row.Index + 1) + 
                             " in the earning table. Please correct the amount in order to save.";
 
                         MessageBox.Show(message);

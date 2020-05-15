@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryListForm));
             this.CategoryDataGridView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.SelectButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,20 +67,16 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.CategoryDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CategoryDataGridView.Location = new System.Drawing.Point(1, 64);
+            this.CategoryDataGridView.Location = new System.Drawing.Point(1, 73);
             this.CategoryDataGridView.MultiSelect = false;
             this.CategoryDataGridView.Name = "CategoryDataGridView";
             this.CategoryDataGridView.RowHeadersWidth = 30;
-            this.CategoryDataGridView.Size = new System.Drawing.Size(266, 299);
+            this.CategoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.CategoryDataGridView.Size = new System.Drawing.Size(266, 290);
             this.CategoryDataGridView.TabIndex = 0;
             this.CategoryDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             this.CategoryDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellEditEnded);
             this.CategoryDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridViewUserDeletedRow);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Categories";
-            this.Column1.Name = "Column1";
             // 
             // label1
             // 
@@ -132,6 +128,11 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Categories";
+            this.Column1.Name = "Column1";
+            // 
             // CategoryListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,10 +161,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView CategoryDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button SelectButton;
         private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
