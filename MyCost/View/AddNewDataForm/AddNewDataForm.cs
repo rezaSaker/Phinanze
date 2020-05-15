@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Windows.Forms;
 using MyCost.Common;
 
@@ -47,7 +48,7 @@ namespace MyCost.View
             _isUnsavedChangesWarningAlreadyShown = false;
             _isRedundantTriggerOfEventHandler = false;
 
-            for (int i = 2018; i < _selectedYear + 3; i++)
+            for (int i = 2018; i <= DateTime.Now.Year + 1; i++)
             {
                 YearComboBox.Items.Add(i.ToString());
             }
@@ -100,7 +101,7 @@ namespace MyCost.View
                 _selectedDay = DayComboBox.SelectedIndex + 1;
                 PlotDailyInfo();
 
-                ResetEverything();
+                _hasUnsavedChanges = false;
             }
             else
             {
@@ -135,7 +136,7 @@ namespace MyCost.View
                 _selectedMonth = MonthComboBox.SelectedIndex + 1;
                 AddItemsToDayComboBox();
 
-                ResetEverything();
+                _hasUnsavedChanges = false;
             }
             else
             {
@@ -170,7 +171,7 @@ namespace MyCost.View
                 _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
                 AddItemsToDayComboBox();
 
-                ResetEverything();
+                _hasUnsavedChanges = false;
             }
             else
             {
@@ -185,7 +186,7 @@ namespace MyCost.View
             if (NoteTextBox.ForeColor == Color.Gray)
             {
                 NoteTextBox.Text = "";
-                NoteTextBox.ForeColor = Color.Black;
+                NoteTextBox.ForeColor = Color.Maroon;
             }
         }
 
@@ -289,15 +290,13 @@ namespace MyCost.View
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.BackColor = Color.ForestGreen;
-            button.ForeColor = Color.White;
+            button.FlatAppearance.BorderColor = Color.Orange;
         }
 
         private void MenuButtonsMouseLeaving(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.BackColor = Color.White;
-            button.ForeColor = Color.ForestGreen;
+            button.FlatAppearance.BorderColor = Color.LimeGreen;
         }
 
         private void MenuButtonsClicked(object sender, EventArgs e)
@@ -367,9 +366,9 @@ namespace MyCost.View
             {
                 string warningMsg = "Selected rows will be permanently deleted. " +
                     "Are you sure you want to delete the selected rows?";
-                DialogResult dlgResult = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo);
+                DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo);
 
-                if(dlgResult == DialogResult.Yes)
+                if(userResponse == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow row in ExpenseDataGridView.SelectedRows)
                     {
@@ -388,7 +387,7 @@ namespace MyCost.View
 
                     if (result == "Server connection error")
                     {
-                        string message = "Could not save the information to database. ";
+                        string message = "Could not delete the information from database. ";
                         message += "Please check your internet connection and try again.";
                         MessageBox.Show(message);
 
@@ -497,7 +496,7 @@ namespace MyCost.View
         private void UpdateTotalExpenseLabel()
         {
             double amount;
-            double total = .0;
+            double total = 0.0;
 
             //go through each row in expense datagridView and add up the amounts
             foreach (DataGridViewRow row in ExpenseDataGridView.Rows)
@@ -509,31 +508,39 @@ namespace MyCost.View
 
                 try
                 {
-                    amount = Convert.ToDouble(row.Cells[1].Value.ToString());
-                    total += amount;
-                }
-                catch (FormatException)
-                {
-                    //make column color red so the user can easily notice the error
-                    row.Cells[1].Style.BackColor = Color.Red;
-                    row.Cells[1].Style.ForeColor = Color.White;
+                    if(double.TryParse(row.Cells[1].Value.ToString(), out amount))
+                    {
+                        total += amount;
+                    }
+                    else
+                    {
+                        string message = "The amount on row " + (row.Index + 1) +
+                            " in the expense table is not correct. Please correct the amount.";
+                        MessageBox.Show(message);
+
+                        //make column color yellow so the user can easily notice the error
+                        row.Cells[1].Style.BackColor = Color.Red;
+                        row.Cells[1].Style.ForeColor = Color.White;
+                    }
                 }
                 catch (NullReferenceException)
                 {
+                    string message = "The amount on row " + (row.Index + 1) +
+                            " in the expense table is empty.";
+                    MessageBox.Show(message);
+
                     //make column color yellow so the user can easily notice the error
                     row.Cells[1].Style.BackColor = Color.Yellow;
-                    row.Cells[1].Value = "0.00";
                 }
             }
-            TotalExpenseLabel.Text = string.Format("{0:0.00}", total);
 
-            UpdateStatusLabel();
+            TotalExpenseLabel.Text = string.Format("{0:0.00}", total);
         }
 
         private void UpdateTotalEarningLabel()
         {
             double amount;
-            double total = .0;
+            double total = 0.0;
 
             //go through each row in expense datagridView and add up the amounts
             foreach (DataGridViewRow row in EarningDataGridView.Rows)
@@ -545,45 +552,34 @@ namespace MyCost.View
 
                 try
                 {
-                    amount = Convert.ToDouble(row.Cells[1].Value.ToString());
-                    total += amount;
-                }
-                catch (FormatException)
-                {
-                    //make column color red so the user can easily point out
-                    row.Cells[1].Style.BackColor = Color.Red;
-                    row.Cells[1].Style.ForeColor = Color.White;
+                    if(double.TryParse(row.Cells[1].Value.ToString(), out amount))
+                    {
+                        total += amount;
+                    }
+                    else
+                    {
+                        string message = "The amount on row " + (row.Index + 1) +
+                            " in the earning table is not correct. Please correct the amount.";
+                        MessageBox.Show(message);
+
+                        //make column color yellow so the user can easily notice the error
+                        row.Cells[1].Style.BackColor = Color.Red;
+                        row.Cells[1].Style.ForeColor = Color.White;
+                    }
                 }
                 catch (NullReferenceException)
                 {
+                    string message = "The amount on row " + (row.Index + 1) +
+                            " in the earning table is empty.";
+                    MessageBox.Show(message);
+
                     //make column color yellow so the user can easily point out
                     row.Cells[1].Style.BackColor = Color.Yellow;
-                    row.Cells[1].Value = "0.00";
                 }
             }
+
             TotalEarningLabel.Text = string.Format("{0:0.00}", total);
-
-            UpdateStatusLabel();
         }  
-
-        private void UpdateStatusLabel()
-        {
-            double earning = double.Parse(TotalEarningLabel.Text);
-            double expense = double.Parse(TotalExpenseLabel.Text);
-
-            if(earning == expense)
-            {
-                StatusLabelButton.BackColor = Color.Orange;
-            }
-            else if(earning > expense)
-            {
-                StatusLabelButton.BackColor = Color.ForestGreen;
-            }
-            else
-            {
-                StatusLabelButton.BackColor = Color.Red;
-            }
-        }
         
         private void ResetAmountColumnColorToDeafault(DataGridView dgv, int rowIndex)
         {
@@ -604,6 +600,11 @@ namespace MyCost.View
 
         private string SaveDailyInfo()
         {
+            if(!_hasUnsavedChanges)
+            {
+                return "No changes to save.";
+            }
+
             DailyInfo daily = new DailyInfo();
             daily.Note = NoteTextBox.ForeColor == Color.Black ? NoteTextBox.Text : "No note";
             daily.Day = _selectedDay;
@@ -637,44 +638,34 @@ namespace MyCost.View
 
                 try
                 {
-                    amount = Convert.ToDouble(ExpenseDataGridView.Rows[row.Index].Cells[1].Value.ToString());
+                    if(double.TryParse(ExpenseDataGridView.Rows[row.Index].Cells[1].Value.ToString(), out amount))
+                    {
+                        string message = "The value for amount is way too large on row";
+                        message += (row.Index + 1) + " in the expense table. Please correct" +
+                            " the amount in order to save.";
+
+                        MessageBox.Show(message);
+                        return "Invalid value entered";
+                    }
                 }
                 catch (NullReferenceException)
                 {
                     string message;
                     message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + " In expense table.\n\n";
-                    message += "Do you want to continue saving without changing the amount?";
+                    message += (row.Index + 1) + " in the expense table. ";
+                    message += "Do you want to save without changing the amount?";
 
                     DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
                     if (dlgResult == DialogResult.Yes)
                     {
-                        amount = .0;
+                        amount = 0;
                     }
                     else
                     {
                         return "Terminated by user";
                     }
-                }
-                catch (FormatException)
-                {
-                    string message;
-                    message = "Looks like the amount is not correct on row ";
-                    message += (row.Index + 1) + " in expense table. Amount can only contain digit.\n\n";
-                    message += "Do you want to continue saving without changing amount?";
-
-                    DialogResult dlgResult = MessageBox.Show(message,"Alert", MessageBoxButtons.YesNo);
-                    
-                    if(dlgResult == DialogResult.Yes)
-                    {
-                        amount = 0.0;
-                    }
-                    else
-                    {
-                        return "Terminated by user";
-                    }
-                }
+                }            
 
                 try
                 {
@@ -725,37 +716,25 @@ namespace MyCost.View
 
                 try
                 {
-                    amount = Convert.ToDouble(EarningDataGridView.Rows[row.Index].Cells[1].Value.ToString());
+                    if(!double.TryParse(EarningDataGridView.Rows[row.Index].Cells[1].Value.ToString(), out amount))
+                    {
+                        string message = "The value for amount is way too large on row" + (row.Index + 1) + 
+                            " in the earning table. Please correct the amount in order to save.";
+
+                        MessageBox.Show(message);
+                        return "Invalid value entered";
+                    }
                 }
                 catch (NullReferenceException)
                 {
-                    string message = "Looks like you forgot to enter amount on row ";
-                    message += (row.Index + 1) + " in Earning table. \n\n";
-                    message += "Do you want to continue saving without changing the amount?";
+                    string message = "Looks like you forgot to enter amount on row " + (row.Index + 1) + 
+                        " in the earning table. Do you want to save without changing the amount?";
 
                     DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
 
                     if (dlgResult == DialogResult.Yes)
                     {
-                        amount = .0;
-                    }
-                    else
-                    {
-                        return "Terminated by user";
-                    }
-                }
-                catch (FormatException)
-                {
-                    string message;
-                    message = "Looks like the amount is not correct on row ";
-                    message += (row.Index + 1) + " in earning table.\n\n";
-                    message += "Do you want to continue saving without changing the amount?";
-
-                    DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
-
-                    if (dlgResult == DialogResult.Yes)
-                    {
-                        amount = 0.0;
+                        amount = 0;
                     }
                     else
                     {
@@ -814,8 +793,10 @@ namespace MyCost.View
                 //monthly info should change accordingly since daily info has been modified
                 MonthlyInfo.Fetch();
 
-                ResetEverything();
+                MessageBox.Show("Information has been successfully saved.");
+                _hasUnsavedChanges = false;
             }
+
             return result;
         }
 
@@ -878,14 +859,7 @@ namespace MyCost.View
                 _quitAppOnFormClosing = false;
                 this.Close();
             }
-        } 
-        
-        private void ResetEverything()
-        {
-            _hasUnsavedChanges = false;
-            SaveButton.Enabled = false;
-            SaveButton.BackColor = Color.LightBlue;
-        }
+        }    
 
         private string FilterString(string str)
         {
@@ -901,7 +875,7 @@ namespace MyCost.View
         private DialogResult ShowUnsavedChangesWarning()
         {
             string message = "You have unsaved changes. Changing this page" + 
-                             "might cause permanent loss of current changes." +
+                             "might  cause permanent loss of current changes. " +
                              "Do you still want to change this page?";
 
             DialogResult dlgRes = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo);

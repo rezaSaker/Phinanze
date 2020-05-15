@@ -120,9 +120,9 @@ namespace MyCost.View
 
             //email subject and body
             string subject = "Email Verification for MyCost";
-            string message = @"Dear User\n,
-Thanks for registering account with MyCost Finance Management App. 
-Your email verification code is " + verificationCode + ".\n\n" +
+            string message = "Dear User,\n\n" +
+            "Thanks for registering account with MyCost Finance Management App." + 
+            "Your email verification code is " + verificationCode + ".\n\n" +
             "Please ignore this email if it is not intended for you.\n\n" +
             "Thank you\n" +
             "MyCost Team";
