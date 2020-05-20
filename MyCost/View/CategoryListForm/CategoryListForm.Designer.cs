@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CategoryListForm));
             this.CategoryDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.SelectButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CategoryDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,6 +70,7 @@
             this.CategoryDataGridView.Location = new System.Drawing.Point(1, 73);
             this.CategoryDataGridView.MultiSelect = false;
             this.CategoryDataGridView.Name = "CategoryDataGridView";
+            this.CategoryDataGridView.RowHeadersVisible = false;
             this.CategoryDataGridView.RowHeadersWidth = 30;
             this.CategoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CategoryDataGridView.Size = new System.Drawing.Size(266, 290);
@@ -77,6 +78,11 @@
             this.CategoryDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             this.CategoryDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellEditEnded);
             this.CategoryDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridViewUserDeletedRow);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Categories";
+            this.Column1.Name = "Column1";
             // 
             // label1
             // 
@@ -127,11 +133,6 @@
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Categories";
-            this.Column1.Name = "Column1";
             // 
             // CategoryListForm
             // 

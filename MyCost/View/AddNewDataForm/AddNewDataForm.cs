@@ -20,6 +20,7 @@ namespace MyCost.View
         private bool _hasUnsavedChanges;
         private bool _isRedundantTriggerOfEventHandler;
         private bool _isUnsavedChangesWarningAlreadyShown;
+        private bool _isRedundantCallOfPlotDailyInfo;
 
         public AddNewDataForm()
         {
@@ -47,6 +48,7 @@ namespace MyCost.View
             _hasUnsavedChanges = false;
             _isUnsavedChangesWarningAlreadyShown = false;
             _isRedundantTriggerOfEventHandler = false;
+            _isRedundantCallOfPlotDailyInfo = true;
 
             for (int i = 2018; i <= DateTime.Now.Year + 1; i++)
             {
@@ -99,7 +101,13 @@ namespace MyCost.View
                 _dayComboBoxPrevSelectedIndex = DayComboBox.SelectedIndex;
 
                 _selectedDay = DayComboBox.SelectedIndex + 1;
-                PlotDailyInfo();
+                
+                //when the form loads this method is triggered twice but both time for the same date
+                //checking with _isRedundantCallOfPlotDailyInfo will prevent that
+                if(!_isRedundantCallOfPlotDailyInfo)
+                {
+                    PlotDailyInfo();
+                }
 
                 _hasUnsavedChanges = false;
             }
@@ -141,6 +149,11 @@ namespace MyCost.View
             else
             {
                 _isRedundantTriggerOfEventHandler = false;
+            }
+
+            if(_isRedundantCallOfPlotDailyInfo)
+            {
+                _isRedundantCallOfPlotDailyInfo = false;
             }
         }
 
@@ -264,6 +277,18 @@ namespace MyCost.View
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
+            if(ExpenseDataGridView.Rows.Count < 1 
+                && EarningDataGridView.Rows.Count < 1
+                && (NoteTextBox.ForeColor != Color.Black || NoteTextBox.Text.Length < 1))
+            {
+                //that means the user didn't edit anything and there's nothing to save
+                string message = "No data to save. Please enter new data to save.";
+
+                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
+            }
+
             string result = SaveDailyInfo();
 
             if(result == "Server connection error")
@@ -376,12 +401,18 @@ namespace MyCost.View
                 {
                     foreach (DataGridViewRow row in ExpenseDataGridView.SelectedRows)
                     {
-                        ExpenseDataGridView.Rows.Remove(row);
+                        if(!IsLastEmptyRow(ExpenseDataGridView, row.Index))
+                        {
+                            ExpenseDataGridView.Rows.Remove(row);
+                        }
                     }
 
                     foreach (DataGridViewRow row in EarningDataGridView.SelectedRows)
                     {
-                        EarningDataGridView.Rows.Remove(row);
+                        if(!IsLastEmptyRow(EarningDataGridView, row.Index))
+                        {
+                            EarningDataGridView.Rows.Remove(row);
+                        }
                     }
 
                     UpdateTotalEarningLabel();
@@ -402,6 +433,32 @@ namespace MyCost.View
                 }
             }
 
+        }
+
+        private void ExpenseDataGridView_MouseClick(object sender, MouseEventArgs e)
+        {
+            foreach (DataGridViewRow row in EarningDataGridView.Rows)
+            {
+                row.Selected = false;
+            }
+        }
+
+        private void EarningDataGridView_MouseClick(object sender, MouseEventArgs e)
+        {
+            foreach (DataGridViewRow row in ExpenseDataGridView.Rows)
+            {
+                row.Selected = false;
+            }
+        }
+
+        private void EarningDataGridView_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            UpdateTotalEarningLabel();
+        }
+
+        private void ExpenseDataGridView_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            UpdateTotalExpenseLabel();
         }
         #endregion
 
@@ -479,23 +536,23 @@ namespace MyCost.View
                 NoteTextBox.Text = daily.Note;
                 NoteTextBox.ForeColor = Color.Black;
 
-                //last column in the grid is an invisible coulmn that keep record of whether 
-                //the info is is previously saved (old) info or new info so that we don't 
-                //save the same info twice
                 foreach (ExpenseInfo expense in daily.ExpenseList)
                 {         
-                    ExpenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment, "old");
+                    ExpenseDataGridView.Rows.Add(expense.Reason, expense.Amount, expense.Category, expense.Comment);
                 }               
 
                 foreach (EarningInfo earning in daily.EarningList)
                 {
-                    EarningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment, "old");
+                    EarningDataGridView.Rows.Add(earning.Source, earning.Amount, earning.Category, earning.Comment);
                 }
             }
-            ExpenseDataGridView.Rows[0].Cells[0].Selected = false;
-
+           
             UpdateTotalExpenseLabel();
             UpdateTotalEarningLabel();
+
+            ExpenseDataGridView.Rows[0].Cells[0].Selected = false;
+            EarningDataGridView.Rows[0].Cells[0].Selected = false;
+
         }
 
         private void UpdateTotalExpenseLabel()
@@ -804,7 +861,7 @@ namespace MyCost.View
                 //monthly info should change accordingly since daily info has been modified
                 MonthlyInfo.Fetch();
 
-                MessageBox.Show("The info has been successfully saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("The info has been successfully saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _hasUnsavedChanges = false;
             }

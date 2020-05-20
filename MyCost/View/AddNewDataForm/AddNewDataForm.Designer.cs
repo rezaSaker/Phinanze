@@ -106,27 +106,27 @@
             this.ExpenseDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.ExpenseDataGridView.Name = "ExpenseDataGridView";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ExpenseDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.ExpenseDataGridView.RowHeadersVisible = false;
             this.ExpenseDataGridView.RowHeadersWidth = 30;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.ExpenseDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.ExpenseDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ExpenseDataGridView.Size = new System.Drawing.Size(815, 155);
-            this.ExpenseDataGridView.TabIndex = 3;
+            this.ExpenseDataGridView.TabIndex = 5;
             this.ExpenseDataGridView.TabStop = false;
             this.ExpenseDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ExpenseDGVEditBegan);
             this.ExpenseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDataGridViewCellClicked);
             this.ExpenseDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDGVEditEnded);
+            this.ExpenseDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ExpenseDataGridView_UserDeletedRow);
+            this.ExpenseDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ExpenseDataGridView_MouseClick);
             // 
             // Column1
             // 
@@ -182,7 +182,7 @@
             this.lbl_status.BackColor = System.Drawing.Color.White;
             this.lbl_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_status.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(209, 5);
+            this.lbl_status.Location = new System.Drawing.Point(228, 5);
             this.lbl_status.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_status.Name = "lbl_status";
             this.lbl_status.Size = new System.Drawing.Size(117, 21);
@@ -287,18 +287,17 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.EarningDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.EarningDataGridView.Location = new System.Drawing.Point(11, 267);
+            this.EarningDataGridView.Location = new System.Drawing.Point(11, 264);
             this.EarningDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.EarningDataGridView.Name = "EarningDataGridView";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.EarningDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.EarningDataGridView.RowHeadersVisible = false;
             this.EarningDataGridView.RowHeadersWidth = 30;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -306,13 +305,14 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.EarningDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.EarningDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EarningDataGridView.Size = new System.Drawing.Size(816, 163);
-            this.EarningDataGridView.TabIndex = 23;
+            this.EarningDataGridView.Size = new System.Drawing.Size(816, 166);
+            this.EarningDataGridView.TabIndex = 5;
             this.EarningDataGridView.TabStop = false;
             this.EarningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
             this.EarningDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDataGridViewCellClicked);
             this.EarningDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDGVEditEnded);
+            this.EarningDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.EarningDataGridView_UserDeletedRow);
+            this.EarningDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EarningDataGridView_MouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -355,10 +355,10 @@
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(722, 447);
+            this.SaveButton.Location = new System.Drawing.Point(737, 447);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(104, 33);
+            this.SaveButton.Size = new System.Drawing.Size(89, 33);
             this.SaveButton.TabIndex = 25;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
@@ -386,7 +386,7 @@
             this.TotalExpenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TotalExpenseLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalExpenseLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.TotalExpenseLabel.Location = new System.Drawing.Point(323, 5);
+            this.TotalExpenseLabel.Location = new System.Drawing.Point(340, 5);
             this.TotalExpenseLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TotalExpenseLabel.Name = "TotalExpenseLabel";
             this.TotalExpenseLabel.Size = new System.Drawing.Size(41, 21);
@@ -402,10 +402,10 @@
             this.ApplyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ApplyCategoryButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ApplyCategoryButton.ForeColor = System.Drawing.Color.Black;
-            this.ApplyCategoryButton.Location = new System.Drawing.Point(455, 447);
+            this.ApplyCategoryButton.Location = new System.Drawing.Point(501, 447);
             this.ApplyCategoryButton.Margin = new System.Windows.Forms.Padding(2);
             this.ApplyCategoryButton.Name = "ApplyCategoryButton";
-            this.ApplyCategoryButton.Size = new System.Drawing.Size(155, 33);
+            this.ApplyCategoryButton.Size = new System.Drawing.Size(144, 33);
             this.ApplyCategoryButton.TabIndex = 46;
             this.ApplyCategoryButton.Text = "Apply category";
             this.ApplyCategoryButton.UseVisualStyleBackColor = false;
@@ -537,10 +537,10 @@
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.Color.Black;
-            this.DeleteButton.Location = new System.Drawing.Point(614, 447);
+            this.DeleteButton.Location = new System.Drawing.Point(649, 447);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(104, 33);
+            this.DeleteButton.Size = new System.Drawing.Size(84, 33);
             this.DeleteButton.TabIndex = 54;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
@@ -556,7 +556,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 447);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(439, 33);
+            this.panel1.Size = new System.Drawing.Size(485, 33);
             this.panel1.TabIndex = 55;
             // 
             // LogoButton
