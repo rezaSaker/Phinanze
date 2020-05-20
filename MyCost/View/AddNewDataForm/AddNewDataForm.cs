@@ -270,7 +270,8 @@ namespace MyCost.View
             {
                 string message = "Could not save the information to database. ";
                 message += "Please check your internet connection and try again.";
-                MessageBox.Show(message);
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
       
@@ -360,13 +361,16 @@ namespace MyCost.View
         {
             if(ExpenseDataGridView.SelectedRows.Count < 1 && EarningDataGridView.SelectedRows.Count < 1)
             {
-                MessageBox.Show("No row selected. Please select the row that you want to delete.");
+                string message = "No row selected. Please select the rows that you want to delete.";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 string warningMsg = "Selected rows will be permanently deleted. " +
                     "Are you sure you want to delete the selected rows?";
-                DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo);
+
+                DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if(userResponse == DialogResult.Yes)
                 {
@@ -389,7 +393,8 @@ namespace MyCost.View
                     {
                         string message = "Could not delete the information from database. ";
                         message += "Please check your internet connection and try again.";
-                        MessageBox.Show(message);
+
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         //following method will refresh the page and reload data that could not be deleted
                         PlotDailyInfo();
@@ -516,7 +521,8 @@ namespace MyCost.View
                     {
                         string message = "The amount on row " + (row.Index + 1) +
                             " in the expense table is not correct. Please correct the amount.";
-                        MessageBox.Show(message);
+
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         //make column color yellow so the user can easily notice the error
                         row.Cells[1].Style.BackColor = Color.Red;
@@ -527,7 +533,8 @@ namespace MyCost.View
                 {
                     string message = "The amount on row " + (row.Index + 1) +
                             " in the expense table is empty.";
-                    MessageBox.Show(message);
+
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     //make column color yellow so the user can easily notice the error
                     row.Cells[1].Style.BackColor = Color.Yellow;
@@ -560,7 +567,8 @@ namespace MyCost.View
                     {
                         string message = "The amount on row " + (row.Index + 1) +
                             " in the earning table is not correct. Please correct the amount.";
-                        MessageBox.Show(message);
+                        
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         //make column color yellow so the user can easily notice the error
                         row.Cells[1].Style.BackColor = Color.Red;
@@ -571,7 +579,8 @@ namespace MyCost.View
                 {
                     string message = "The amount on row " + (row.Index + 1) +
                             " in the earning table is empty.";
-                    MessageBox.Show(message);
+
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     //make column color yellow so the user can easily point out
                     row.Cells[1].Style.BackColor = Color.Yellow;
@@ -644,7 +653,8 @@ namespace MyCost.View
                         message += (row.Index + 1) + " in the expense table. Please correct" +
                             " the amount in order to save.";
 
-                        MessageBox.Show(message);
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                         return "Invalid value entered";
                     }
                 }
@@ -655,7 +665,7 @@ namespace MyCost.View
                     message += (row.Index + 1) + " in the expense table. ";
                     message += "Do you want to save without changing the amount?";
 
-                    DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dlgResult = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (dlgResult == DialogResult.Yes)
                     {
@@ -721,7 +731,8 @@ namespace MyCost.View
                         string message = "The value for amount is not correct on row" + (row.Index + 1) + 
                             " in the earning table. Please correct the amount in order to save.";
 
-                        MessageBox.Show(message);
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                         return "Invalid value entered";
                     }
                 }
@@ -730,7 +741,7 @@ namespace MyCost.View
                     string message = "Looks like you forgot to enter amount on row " + (row.Index + 1) + 
                         " in the earning table. Do you want to save without changing the amount?";
 
-                    DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+                    DialogResult dlgResult = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (dlgResult == DialogResult.Yes)
                     {
@@ -793,7 +804,8 @@ namespace MyCost.View
                 //monthly info should change accordingly since daily info has been modified
                 MonthlyInfo.Fetch();
 
-                MessageBox.Show("Information has been successfully saved.");
+                MessageBox.Show("The info has been successfully saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                 _hasUnsavedChanges = false;
             }
 

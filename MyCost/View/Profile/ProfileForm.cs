@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
-using System.Net;
-using System.Text;
 using System.Net.Mail;
 using MyCost.Common;
 
