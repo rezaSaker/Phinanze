@@ -11,12 +11,13 @@ require_once('connectDB.php');
 if(isset($_POST['username']) && isset($_POST['password']) 
 	&& isset($_POST['activationCode']) && isset($_POST['cipherKey']))
 {	
-	$username       = mysqli_real_escape_string($connect, $_POST['username']);
-	$password       = mysqli_real_escape_string($connect, $_POST['password']);
-	$activationCode = mysqli_real_escape_string($connect, $_POST['activationCode']);
-	$cipherKey      = mysqli_real_escape_string($connect, $_POST['cipherKey']);
-	$encryptedEmail = mysqli_real_escape_string($connect, $_POST['encryptedEmail']);
-	$originalEmail  = mysqli_real_escape_string($connect, $_POST['originalEmail']);
+	$username              = mysqli_real_escape_string($connect, $_POST['username']);
+	$password              = mysqli_real_escape_string($connect, $_POST['password']);
+	$activationCode        = mysqli_real_escape_string($connect, $_POST['activationCode']);
+	$cipherKey             = mysqli_real_escape_string($connect, $_POST['cipherKey']);
+	$emergencyCipherKey    = mysqli_real_escape_string($connect, $_POST['emergencyCipherKey']);
+	$encryptedEmail        = mysqli_real_escape_string($connect, $_POST['encryptedEmail']);
+	$originalEmail         = mysqli_real_escape_string($connect, $_POST['originalEmail']);
 	$emailVerificationCode = mysqli_real_escape_string($connect, $_POST['emailVerificationCode']);
 
 	//verify the request
@@ -67,7 +68,7 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	$comparableEmail = password_hash($originalEmail, PASSWORD_DEFAULT);
 
 	//save the user info
-	$query  = "INSERT INTO users (username, password, token, cipher_key, decryptable_email, comparable_email, verification_code) VALUES ('$username', '$password', '$token', '$cipherKey', '$encryptedEmail', '$comparableEmail','$emailVerificationCode')";
+	$query  = "INSERT INTO users (username, password, token, cipher_key, emergency_cipher_key, decryptable_email, comparable_email, verification_code) VALUES ('$username', '$password', '$token', '$cipherKey', '$emergencyCipherKey', '$encryptedEmail', '$comparableEmail','$emailVerificationCode')";
 	$result = mysqli_query($connect, $query) or die('Server connection error');	
 	$userid = mysqli_insert_id($connect);
 	
@@ -85,7 +86,7 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	$result = mysqli_query($connect, $query) or die('Server connection error');
 	
 	//return the userid, the access token and the cypher key for user's data decryption 
-	die($userid . '|' . $token . '|' . $cipherKey . '|' . $encryptedEmail . '|' . $isEmailVerified . '|' . $emailVerificationCode . '|' . 'New User');	
+	die($userid . '|' . $token . '|' . $cipherKey . '|' . $encryptedEmail . '|' . '0' . '|' . $emailVerificationCode . '|' . 'New User');	
 }
 else
 { 

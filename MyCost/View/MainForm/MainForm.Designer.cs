@@ -97,7 +97,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.HomeDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.HomeDataGridView.Location = new System.Drawing.Point(12, 87);
+            this.HomeDataGridView.Location = new System.Drawing.Point(16, 107);
+            this.HomeDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HomeDataGridView.Name = "HomeDataGridView";
             this.HomeDataGridView.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -109,8 +110,9 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.HomeDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.HomeDataGridView.RowHeadersVisible = false;
+            this.HomeDataGridView.RowHeadersWidth = 51;
             this.HomeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HomeDataGridView.Size = new System.Drawing.Size(466, 182);
+            this.HomeDataGridView.Size = new System.Drawing.Size(621, 224);
             this.HomeDataGridView.TabIndex = 6;
             this.HomeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             // 
@@ -118,6 +120,7 @@
             // 
             this.Column1.FillWeight = 57.1535F;
             this.Column1.HeaderText = "Year";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -125,6 +128,7 @@
             // 
             this.Column5.FillWeight = 119.7502F;
             this.Column5.HeaderText = "Month";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
@@ -132,6 +136,7 @@
             // 
             this.Column2.FillWeight = 110.5791F;
             this.Column2.HeaderText = "Earning";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
@@ -139,6 +144,7 @@
             // 
             this.Column3.FillWeight = 114.2132F;
             this.Column3.HeaderText = "Expense";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
@@ -146,6 +152,7 @@
             // 
             this.Column4.FillWeight = 98.30402F;
             this.Column4.HeaderText = "Overview";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
@@ -156,9 +163,10 @@
             this.YearComboBox.FormattingEnabled = true;
             this.YearComboBox.Items.AddRange(new object[] {
             "All years"});
-            this.YearComboBox.Location = new System.Drawing.Point(12, 52);
+            this.YearComboBox.Location = new System.Drawing.Point(16, 64);
+            this.YearComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.YearComboBox.Name = "YearComboBox";
-            this.YearComboBox.Size = new System.Drawing.Size(188, 29);
+            this.YearComboBox.Size = new System.Drawing.Size(249, 31);
             this.YearComboBox.TabIndex = 33;
             this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
@@ -168,39 +176,44 @@
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VersionLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.Location = new System.Drawing.Point(9, 467);
+            this.VersionLabel.Location = new System.Drawing.Point(12, 575);
+            this.VersionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.VersionLabel.Name = "VersionLabel";
-            this.VersionLabel.Size = new System.Drawing.Size(44, 16);
+            this.VersionLabel.Size = new System.Drawing.Size(58, 22);
             this.VersionLabel.TabIndex = 38;
             this.VersionLabel.Text = "Version";
             this.VersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // HomeButton
             // 
-            this.HomeButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.BackColor = System.Drawing.Color.White;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.Location = new System.Drawing.Point(67, 9);
+            this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomeButton.ForeColor = System.Drawing.Color.LimeGreen;
+            this.HomeButton.Location = new System.Drawing.Point(89, 11);
+            this.HomeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(115, 35);
+            this.HomeButton.Size = new System.Drawing.Size(153, 43);
             this.HomeButton.TabIndex = 1;
             this.HomeButton.Text = "Home";
             this.HomeButton.UseVisualStyleBackColor = false;
             // 
             // AddNewDataButton
             // 
-            this.AddNewDataButton.BackColor = System.Drawing.Color.White;
+            this.AddNewDataButton.BackColor = System.Drawing.Color.LimeGreen;
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNewDataButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.AddNewDataButton.Location = new System.Drawing.Point(188, 9);
+            this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddNewDataButton.ForeColor = System.Drawing.Color.White;
+            this.AddNewDataButton.Location = new System.Drawing.Point(251, 11);
+            this.AddNewDataButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddNewDataButton.Name = "AddNewDataButton";
-            this.AddNewDataButton.Size = new System.Drawing.Size(115, 35);
+            this.AddNewDataButton.Size = new System.Drawing.Size(153, 43);
             this.AddNewDataButton.TabIndex = 42;
             this.AddNewDataButton.Text = "Add New";
             this.AddNewDataButton.UseVisualStyleBackColor = false;
@@ -210,15 +223,17 @@
             // 
             // MonthlyReportButton
             // 
-            this.MonthlyReportButton.BackColor = System.Drawing.Color.White;
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MonthlyReportButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.MonthlyReportButton.Location = new System.Drawing.Point(309, 9);
+            this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthlyReportButton.ForeColor = System.Drawing.Color.White;
+            this.MonthlyReportButton.Location = new System.Drawing.Point(412, 11);
+            this.MonthlyReportButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MonthlyReportButton.Name = "MonthlyReportButton";
-            this.MonthlyReportButton.Size = new System.Drawing.Size(150, 35);
+            this.MonthlyReportButton.Size = new System.Drawing.Size(200, 43);
             this.MonthlyReportButton.TabIndex = 43;
             this.MonthlyReportButton.Text = "Monthly Report";
             this.MonthlyReportButton.UseVisualStyleBackColor = false;
@@ -228,15 +243,17 @@
             // 
             // StatisticsButton
             // 
-            this.StatisticsButton.BackColor = System.Drawing.Color.White;
+            this.StatisticsButton.BackColor = System.Drawing.Color.LimeGreen;
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatisticsButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.StatisticsButton.Location = new System.Drawing.Point(465, 9);
+            this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatisticsButton.ForeColor = System.Drawing.Color.White;
+            this.StatisticsButton.Location = new System.Drawing.Point(620, 11);
+            this.StatisticsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StatisticsButton.Name = "StatisticsButton";
-            this.StatisticsButton.Size = new System.Drawing.Size(119, 35);
+            this.StatisticsButton.Size = new System.Drawing.Size(159, 43);
             this.StatisticsButton.TabIndex = 44;
             this.StatisticsButton.Text = "Statistics";
             this.StatisticsButton.UseVisualStyleBackColor = false;
@@ -246,15 +263,17 @@
             // 
             // ProfileButton
             // 
-            this.ProfileButton.BackColor = System.Drawing.Color.White;
+            this.ProfileButton.BackColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.ProfileButton.Location = new System.Drawing.Point(590, 9);
+            this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProfileButton.ForeColor = System.Drawing.Color.White;
+            this.ProfileButton.Location = new System.Drawing.Point(787, 11);
+            this.ProfileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ProfileButton.Name = "ProfileButton";
-            this.ProfileButton.Size = new System.Drawing.Size(116, 35);
+            this.ProfileButton.Size = new System.Drawing.Size(155, 43);
             this.ProfileButton.TabIndex = 45;
             this.ProfileButton.Text = "Profile";
             this.ProfileButton.UseVisualStyleBackColor = false;
@@ -265,15 +284,17 @@
             // LogOutButton
             // 
             this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogOutButton.BackColor = System.Drawing.Color.White;
+            this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogOutButton.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LogOutButton.Location = new System.Drawing.Point(712, 9);
+            this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogOutButton.ForeColor = System.Drawing.Color.White;
+            this.LogOutButton.Location = new System.Drawing.Point(949, 11);
+            this.LogOutButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(115, 35);
+            this.LogOutButton.Size = new System.Drawing.Size(153, 43);
             this.LogOutButton.TabIndex = 46;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
@@ -287,9 +308,10 @@
             this.LicenseLabel.AutoSize = true;
             this.LicenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LicenseLabel.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LicenseLabel.Location = new System.Drawing.Point(601, 467);
+            this.LicenseLabel.Location = new System.Drawing.Point(801, 575);
+            this.LicenseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LicenseLabel.Name = "LicenseLabel";
-            this.LicenseLabel.Size = new System.Drawing.Size(227, 16);
+            this.LicenseLabel.Size = new System.Drawing.Size(304, 22);
             this.LicenseLabel.TabIndex = 47;
             this.LicenseLabel.Text = "This application is provided under MIT License";
             this.LicenseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -304,9 +326,10 @@
             this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogoButton.ForeColor = System.Drawing.Color.White;
-            this.LogoButton.Location = new System.Drawing.Point(12, 8);
+            this.LogoButton.Location = new System.Drawing.Point(16, 10);
+            this.LogoButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LogoButton.Name = "LogoButton";
-            this.LogoButton.Size = new System.Drawing.Size(49, 38);
+            this.LogoButton.Size = new System.Drawing.Size(65, 44);
             this.LogoButton.TabIndex = 48;
             this.LogoButton.UseVisualStyleBackColor = false;
             // 
@@ -317,7 +340,8 @@
             chartArea1.AxisX.Interval = 1D;
             chartArea1.Name = "ChartArea1";
             this.BarChart.ChartAreas.Add(chartArea1);
-            this.BarChart.Location = new System.Drawing.Point(12, 275);
+            this.BarChart.Location = new System.Drawing.Point(16, 338);
+            this.BarChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BarChart.Name = "BarChart";
             this.BarChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
@@ -328,7 +352,7 @@
             series2.Name = "Expense";
             this.BarChart.Series.Add(series1);
             this.BarChart.Series.Add(series2);
-            this.BarChart.Size = new System.Drawing.Size(815, 189);
+            this.BarChart.Size = new System.Drawing.Size(1086, 233);
             this.BarChart.TabIndex = 49;
             this.BarChart.Text = "Bar Chart";
             // 
@@ -342,7 +366,8 @@
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
             this.PieChart.Legends.Add(legend1);
-            this.PieChart.Location = new System.Drawing.Point(484, 87);
+            this.PieChart.Location = new System.Drawing.Point(645, 107);
+            this.PieChart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PieChart.Name = "PieChart";
             this.PieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series3.ChartArea = "ChartArea1";
@@ -352,16 +377,16 @@
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.PieChart.Series.Add(series3);
-            this.PieChart.Size = new System.Drawing.Size(343, 182);
+            this.PieChart.Size = new System.Drawing.Size(457, 224);
             this.PieChart.TabIndex = 50;
             this.PieChart.Text = "Pie Chart";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(840, 491);
+            this.ClientSize = new System.Drawing.Size(1120, 604);
             this.Controls.Add(this.PieChart);
             this.Controls.Add(this.BarChart);
             this.Controls.Add(this.LogoButton);
@@ -378,8 +403,9 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(816, 526);
+            this.MinimumSize = new System.Drawing.Size(1082, 637);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MyCost - Home";

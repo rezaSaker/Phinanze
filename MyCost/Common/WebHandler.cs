@@ -62,16 +62,16 @@ namespace MyCost.Common
             WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
-        public void RegisterNewUser(string username, string password, string activationCode, 
-            string cypherKey, string encryptedEmail, string originalEmail, string emailVerificationCode)
+        public void RegisterNewUser(string username, string password, string activationCode, string cypherKey, 
+            string emergencyCypherKey, string encryptedEmail, string originalEmail, string emailVerificationCode)
         {
             Thread thread = new Thread(() => WebRequestToRegisterUser(username, password, activationCode,
-                cypherKey, encryptedEmail, originalEmail, emailVerificationCode));
+                cypherKey, emergencyCypherKey, encryptedEmail, originalEmail, emailVerificationCode));
             thread.Start();
         }
 
-        private void WebRequestToRegisterUser(string username, string password, string activationCode, 
-            string cypherKey, string encryptedEmail, string originalEmail, string emailVerificationCode)
+        private void WebRequestToRegisterUser(string username, string password, string activationCode, string cypherKey, 
+            string emergencyCypherKey, string encryptedEmail, string originalEmail, string emailVerificationCode)
         {
             WebClient www = new WebClient();
 
@@ -82,6 +82,7 @@ namespace MyCost.Common
             queryData.Add("password", password);
             queryData.Add("activationCode", activationCode);
             queryData.Add("cipherKey", cypherKey);
+            queryData.Add("emergencyCipherKey", emergencyCypherKey);
             queryData.Add("encryptedEmail", encryptedEmail);
             queryData.Add("originalEmail", originalEmail);
             queryData.Add("emailVerificationCode", emailVerificationCode);
@@ -541,6 +542,29 @@ namespace MyCost.Common
         private void OnEmaiLVerificationFailed()
         {
             WebRequestFailedEventHandler?.Invoke(this, null);
+        }
+
+        public string WebRequestToResetPassword(string email, string tempPassword)
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("email", email);
+            queryData.Add("tempPassword", tempPassword);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "resetPassword.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch
+            {
+                return "Server connection error";
+            }
         }
     }
 }
