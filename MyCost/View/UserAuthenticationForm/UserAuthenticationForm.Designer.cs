@@ -51,10 +51,9 @@
             this.ShowRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
-            this.ShowRegisterPanelButton.Location = new System.Drawing.Point(195, 130);
-            this.ShowRegisterPanelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShowRegisterPanelButton.Location = new System.Drawing.Point(146, 106);
             this.ShowRegisterPanelButton.Name = "ShowRegisterPanelButton";
-            this.ShowRegisterPanelButton.Size = new System.Drawing.Size(328, 44);
+            this.ShowRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
             this.ShowRegisterPanelButton.TabIndex = 0;
             this.ShowRegisterPanelButton.Text = "Register";
             this.ShowRegisterPanelButton.UseVisualStyleBackColor = false;
@@ -68,10 +67,9 @@
             this.ShowLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowLoginPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ShowLoginPanelButton.Location = new System.Drawing.Point(533, 130);
-            this.ShowLoginPanelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShowLoginPanelButton.Location = new System.Drawing.Point(400, 106);
             this.ShowLoginPanelButton.Name = "ShowLoginPanelButton";
-            this.ShowLoginPanelButton.Size = new System.Drawing.Size(328, 44);
+            this.ShowLoginPanelButton.Size = new System.Drawing.Size(246, 36);
             this.ShowLoginPanelButton.TabIndex = 1;
             this.ShowLoginPanelButton.Text = "Log in";
             this.ShowLoginPanelButton.UseVisualStyleBackColor = false;
@@ -83,10 +81,9 @@
             this.AppLogoLabel.BackColor = System.Drawing.Color.White;
             this.AppLogoLabel.Font = new System.Drawing.Font("Bauhaus 93", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AppLogoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.AppLogoLabel.Location = new System.Drawing.Point(381, 11);
-            this.AppLogoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AppLogoLabel.Location = new System.Drawing.Point(286, 9);
             this.AppLogoLabel.Name = "AppLogoLabel";
-            this.AppLogoLabel.Size = new System.Drawing.Size(260, 68);
+            this.AppLogoLabel.Size = new System.Drawing.Size(209, 54);
             this.AppLogoLabel.TabIndex = 3;
             this.AppLogoLabel.Text = "MYCOST";
             // 
@@ -98,10 +95,9 @@
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
-            this.SubmitButton.Location = new System.Drawing.Point(432, 452);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Location = new System.Drawing.Point(324, 367);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(189, 44);
+            this.SubmitButton.Size = new System.Drawing.Size(142, 36);
             this.SubmitButton.TabIndex = 13;
             this.SubmitButton.Text = "Log in";
             this.SubmitButton.UseVisualStyleBackColor = false;
@@ -113,10 +109,9 @@
             this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(195, 308);
-            this.ConfirmPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(146, 250);
             this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
-            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(666, 32);
+            this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(500, 27);
             this.ConfirmPasswordTextBox.TabIndex = 12;
             this.ConfirmPasswordTextBox.Text = "Confirm password";
             this.ConfirmPasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ConfirmPasswordTextBoxClicked);
@@ -127,10 +122,9 @@
             this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PasswordTextBox.Location = new System.Drawing.Point(195, 251);
-            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PasswordTextBox.Location = new System.Drawing.Point(146, 204);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(666, 32);
+            this.PasswordTextBox.Size = new System.Drawing.Size(500, 27);
             this.PasswordTextBox.TabIndex = 11;
             this.PasswordTextBox.TabStop = false;
             this.PasswordTextBox.Text = "Password";
@@ -142,10 +136,9 @@
             this.UsernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UsernameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.UsernameTextBox.Location = new System.Drawing.Point(195, 194);
-            this.UsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UsernameTextBox.Location = new System.Drawing.Point(146, 158);
             this.UsernameTextBox.Name = "UsernameTextBox";
-            this.UsernameTextBox.Size = new System.Drawing.Size(666, 32);
+            this.UsernameTextBox.Size = new System.Drawing.Size(500, 27);
             this.UsernameTextBox.TabIndex = 10;
             this.UsernameTextBox.TabStop = false;
             this.UsernameTextBox.Text = "Username";
@@ -155,10 +148,9 @@
             // 
             this.StatusLabel.AutoSize = true;
             this.StatusLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLabel.Location = new System.Drawing.Point(189, 91);
-            this.StatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.StatusLabel.Location = new System.Drawing.Point(142, 74);
             this.StatusLabel.Name = "StatusLabel";
-            this.StatusLabel.Size = new System.Drawing.Size(129, 23);
+            this.StatusLabel.Size = new System.Drawing.Size(105, 21);
             this.StatusLabel.TabIndex = 14;
             this.StatusLabel.Text = "Label Status";
             this.StatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,10 +159,9 @@
             // 
             this.RememberMeCheckBox.AutoSize = true;
             this.RememberMeCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RememberMeCheckBox.Location = new System.Drawing.Point(195, 411);
-            this.RememberMeCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RememberMeCheckBox.Location = new System.Drawing.Point(146, 334);
             this.RememberMeCheckBox.Name = "RememberMeCheckBox";
-            this.RememberMeCheckBox.Size = new System.Drawing.Size(179, 27);
+            this.RememberMeCheckBox.Size = new System.Drawing.Size(144, 25);
             this.RememberMeCheckBox.TabIndex = 15;
             this.RememberMeCheckBox.Text = "Remember me";
             this.RememberMeCheckBox.UseVisualStyleBackColor = true;
@@ -181,10 +172,9 @@
             this.EmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.EmailTextBox.Location = new System.Drawing.Point(195, 367);
-            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EmailTextBox.Location = new System.Drawing.Point(146, 298);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(666, 32);
+            this.EmailTextBox.Size = new System.Drawing.Size(500, 27);
             this.EmailTextBox.TabIndex = 16;
             this.EmailTextBox.TabStop = false;
             this.EmailTextBox.Text = "Email";
@@ -196,10 +186,9 @@
             this.LicenseLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LicenseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LicenseLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.LicenseLabel.Location = new System.Drawing.Point(347, 518);
-            this.LicenseLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LicenseLabel.Location = new System.Drawing.Point(260, 421);
             this.LicenseLabel.Name = "LicenseLabel";
-            this.LicenseLabel.Size = new System.Drawing.Size(356, 20);
+            this.LicenseLabel.Size = new System.Drawing.Size(286, 16);
             this.LicenseLabel.TabIndex = 17;
             this.LicenseLabel.Text = "This application is provided under MIT License";
             this.LicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
@@ -208,23 +197,22 @@
             // 
             this.ForgotPasswordTextBox.AutoSize = true;
             this.ForgotPasswordTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ForgotPasswordTextBox.Font = new System.Drawing.Font("Bell MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForgotPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForgotPasswordTextBox.ForeColor = System.Drawing.Color.Red;
-            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(604, 297);
-            this.ForgotPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(407, 245);
             this.ForgotPasswordTextBox.Name = "ForgotPasswordTextBox";
-            this.ForgotPasswordTextBox.Size = new System.Drawing.Size(257, 23);
+            this.ForgotPasswordTextBox.Size = new System.Drawing.Size(239, 21);
             this.ForgotPasswordTextBox.TabIndex = 18;
-            this.ForgotPasswordTextBox.Text = "Forgot Password/Username?";
+            this.ForgotPasswordTextBox.Text = "Forgot Password / Username?";
             this.ForgotPasswordTextBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ForgotPasswordTextBox.Click += new System.EventHandler(this.ForgotPasswordTextBoxClicked);
             // 
             // UserAuthenticationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1045, 553);
+            this.ClientSize = new System.Drawing.Size(784, 449);
             this.Controls.Add(this.ForgotPasswordTextBox);
             this.Controls.Add(this.LicenseLabel);
             this.Controls.Add(this.EmailTextBox);
@@ -239,7 +227,6 @@
             this.Controls.Add(this.ShowRegisterPanelButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "UserAuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

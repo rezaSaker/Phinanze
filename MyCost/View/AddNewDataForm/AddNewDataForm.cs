@@ -291,13 +291,13 @@ namespace MyCost.View
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.LimeGreen;
+            button.FlatAppearance.BorderColor = Color.Orange;
         }
 
         private void MenuButtonsMouseLeaving(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.RoyalBlue;
+            button.FlatAppearance.BorderColor = Color.LimeGreen;
         }
 
         private void MenuButtonsClicked(object sender, EventArgs e)

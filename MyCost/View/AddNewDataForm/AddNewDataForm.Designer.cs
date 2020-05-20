@@ -416,7 +416,7 @@
             this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -429,13 +429,14 @@
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
             this.LogOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
+            this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
             this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // ProfileButton
             // 
             this.ProfileButton.BackColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -455,7 +456,7 @@
             // 
             this.MonthlyReportButton.BackColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -475,7 +476,7 @@
             // 
             this.StatisticsButton.BackColor = System.Drawing.Color.LimeGreen;
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -495,7 +496,7 @@
             // 
             this.HomeButton.BackColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
