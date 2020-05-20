@@ -3,10 +3,10 @@
 require_once('../../../../../cnct/connectDB.php');
 require_once('../../../../../cnct/requestVerification.php');
 
-if(isset($_POST['email']) && isset($_POST['tempPassword']))
+if(isset($_POST['email']) && isset($_POST['tempUsername']))
 {
 	$email = mysqli_real_escape_string($connect, $_POST['email']);
-	$tempPassword = mysqli_real_escape_string($connect, $_POST['tempPassword']);
+	$tempUsername = mysqli_real_escape_string($connect, $_POST['tempUsername']);
 
 	$query = "SELECT * FROM users";
 	$result = mysqli_query($connect, $query) or die('Server connection error');
@@ -16,16 +16,11 @@ if(isset($_POST['email']) && isset($_POST['tempPassword']))
 		if(password_verify($email, $row['comparable_email']))
 		{
 			$id = $row['id'];
-			$username = $row['username'];
-			$token = $row['token'];
-			$emergencyCipherKey = $row['emergency_cipher_key'];
 
-			$newPassword = password_hash($tempPassword, PASSWORD_DEFAULT);
-
-			$query = "UPDATE users SET password = '$newPassword' WHERE id = '$id'";
+			$query = "UPDATE users SET username = '$tempUsername' WHERE id = '$id'";
 			mysqli_query($connect, $query) or die('Server connection error');
 
-			die($id . '|' . $token . '|' . $username . '|' . $emergencyCipherKey);
+			die('SUCCESS');
 		}
 	}
 

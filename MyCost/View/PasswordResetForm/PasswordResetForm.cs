@@ -47,9 +47,7 @@ namespace MyCost.View
             {
                 string tempPassword = GenerateRandomPassword();
 
-                WebHandler webHandler = new WebHandler();
-
-                string result = webHandler.WebRequestToResetPassword(email, tempPassword);
+                string result = WebHandler.WebRequestToResetPassword(email, tempPassword);
 
                 string[] data = result.Split('|');
 
@@ -59,14 +57,12 @@ namespace MyCost.View
                     GlobalSpace.AccessToken = data[1];
                     GlobalSpace.Username = data[2];
                     GlobalSpace.CypherKey = StringCipher.Decrypt(data[3], email);
-
-                    //the line of code below will encryptthe cipher key with new password and update the cipher key in database
                     
                     if(WebHandler.UpdatePassword(tempPassword, tempPassword) == "SUCCESS")
                     {
                         MailAddress from = new MailAddress("contact@rezasaker.com");
                         MailAddress to = new MailAddress(email);
-                        SendVerificationEmail(from, to, tempPassword);
+                        SendPasswordResetEmail(from, to, tempPassword);
                     }
                     else
                     {
@@ -80,7 +76,7 @@ namespace MyCost.View
             }
         }
 
-        private void SendVerificationEmail(MailAddress from, MailAddress to, string tempPassword)
+        private void SendPasswordResetEmail(MailAddress from, MailAddress to, string tempPassword)
         {
             //email subject and body
             string subject = "MyCost Password Reset";
@@ -101,23 +97,23 @@ namespace MyCost.View
                 Message = message
             };
 
-            mailer.EmailSendingSuccessEventHandler += OnSendingVerificationEmailSuccess; ;
-            mailer.EmailSendingFailedEventHandler += OnSendingVerificationEmailFailed; ;
+            mailer.EmailSendingSuccessEventHandler += OnSendingPasswordResetEmailSuccess; ;
+            mailer.EmailSendingFailedEventHandler += OnSendingPasswordResetEmailFailed; ;
             _mailerObject = mailer;
-            mailer.SendVerificationEmail();
+            mailer.SendEmail();
         }
 
-        private void OnSendingVerificationEmailSuccess(object sender, EventArgs e)
-        {
-            this?.Invoke(new SendMailDelegate(ActionUponSendMailSuccess), new object[] { });
+        private void OnSendingPasswordResetEmailSuccess(object sender, EventArgs e)
+        {          
+            this?.Invoke(new SendMailDelegate(ActionUponSendPasswordResetEmailSuccess), new object[] {  });
         }
 
-        private void OnSendingVerificationEmailFailed(object sender, EventArgs e)
-        {
-            this?.Invoke(new SendMailDelegate(ActionUponSendMailFailed), new object[] { });
+        private void OnSendingPasswordResetEmailFailed(object sender, EventArgs e)
+        {         
+            this?.Invoke(new SendMailDelegate(ActionUponSendPasswordResetEmailFailed), new object[] {});
         }
 
-        private void ActionUponSendMailSuccess()
+        private void ActionUponSendPasswordResetEmailSuccess()
         {
             string message = "A temporary password has been sent to your email address. " +
                 "Use the temporary password to log in to your MyCost account. " +
@@ -128,7 +124,7 @@ namespace MyCost.View
             this.Close();
         }
 
-        private void ActionUponSendMailFailed()
+        private void ActionUponSendPasswordResetEmailFailed()
         {
             MessageBox.Show("Sorry could not complete the procedure. Please check your internet connection and try again.");
         }
@@ -146,6 +142,76 @@ namespace MyCost.View
             {
                 EmailTextBox.ForeColor = Color.Red;
             }
+            else
+            {
+                string tempUsername = GenerateRandomUsername();
+
+                string result = WebHandler.WebRequestToResetUsername(email, tempUsername);
+
+                if (result == "SUCCESS")
+                {
+                    MailAddress from = new MailAddress("contact@rezasaker.com");
+                    MailAddress to = new MailAddress(email);
+                    SendUsernameResetEmail(from, to, tempUsername);
+                }
+                else
+                {
+                    MessageBox.Show(result);
+                }
+            }
+        }
+
+        private void SendUsernameResetEmail(MailAddress from, MailAddress to, string tempUsername)
+        {
+            //email subject and body
+            string subject = "MyCost Username Reset";
+            string message = "Dear MyCost User,\n\n" +
+            "Your MyCost account username has been automatically reset to allow you to recover your account as you requested. \n\n" +
+            "Your new username is: " + tempUsername + "\n\n Please use this temporary username to log in to your MyCost account. " +
+            "It is highly recommended that you change your username as soon as you log in with this temporary username.\n\n" +
+            "For additional help or question, please contact us via help.mycost@rezasaker.com.\n\n" +
+            "Thank you\n" +
+            "MyCost Team";
+
+            //send verification code to user's email
+            Mailer mailer = new Mailer
+            {
+                From = from,
+                To = to,
+                Subject = subject,
+                Message = message
+            };
+
+            mailer.EmailSendingSuccessEventHandler += OnSendingUsernameResetEmailSuccess; ;
+            mailer.EmailSendingFailedEventHandler += OnSendingUsernameResetEmailFailed; ;
+            _mailerObject = mailer;
+            mailer.SendEmail();
+        }
+
+        private void OnSendingUsernameResetEmailSuccess(object sender, EventArgs e)
+        {
+            this?.Invoke(new SendMailDelegate(ActionUponSendUsernameResetEmailSuccess), new object[] { });
+        }
+
+        private void OnSendingUsernameResetEmailFailed(object sender, EventArgs e)
+        {
+            this?.Invoke(new SendMailDelegate(ActionUponSendUsernameResetEmailFailed), new object[] { });
+        }
+
+        private void ActionUponSendUsernameResetEmailSuccess()
+        {
+            string message = "A temporary username has been sent to your email address. " +
+                "Use the temporary username to log in to your MyCost account. " +
+                "Please allow up to 12 hours for the email to be delivered and also check your spam folder. " +
+                "Note that it is highly recommended that you change your username as soon as you log in to your account.";
+
+            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+        private void ActionUponSendUsernameResetEmailFailed()
+        {
+            MessageBox.Show("Sorry could not complete the procedure. Please check your internet connection and try again.");
         }
 
         private bool IsValidEmail(string email)
@@ -169,6 +235,29 @@ namespace MyCost.View
                 "abcdefghijkmnopqrstuvwxyz", 
                 "1234567890", 
                 "!@#$^&*"
+            };
+
+            string randomStr = "";
+            int randPos;
+
+            Random random = new Random();
+
+            for (int i = 0; i < 9; i++)
+            {
+                randPos = random.Next(4);
+                randomStr += charList[randPos][random.Next(charList[randPos].Length)];
+            }
+
+            return randomStr;
+        }
+
+        private string GenerateRandomUsername()
+        {
+            string[] charList = new string[]
+            {
+                "ABCDEFGHJKLMNOPQRSTUVWXYZ",
+                "abcdefghijkmnopqrstuvwxyz",
+                "1234567890"
             };
 
             string randomStr = "";

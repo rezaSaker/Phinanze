@@ -544,7 +544,7 @@ namespace MyCost.Common
             WebRequestFailedEventHandler?.Invoke(this, null);
         }
 
-        public string WebRequestToResetPassword(string email, string tempPassword)
+        public static string WebRequestToResetPassword(string email, string tempPassword)
         {
             WebClient www = new WebClient();
 
@@ -557,6 +557,29 @@ namespace MyCost.Common
             try
             {
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "resetPassword.php", "POST", queryData);
+                string resultData = Encoding.UTF8.GetString(resultBytes);
+
+                return resultData;
+            }
+            catch
+            {
+                return "Server connection error";
+            }
+        }
+
+        public static string WebRequestToResetUsername(string email, string tempUsername)
+        {
+            WebClient www = new WebClient();
+
+            System.Collections.Specialized.NameValueCollection queryData;
+            queryData = new System.Collections.Specialized.NameValueCollection();
+
+            queryData.Add("email", email);
+            queryData.Add("tempUsername", tempUsername);
+
+            try
+            {
+                byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "resetUsername.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
 
                 return resultData;

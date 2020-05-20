@@ -139,7 +139,7 @@ namespace MyCost.View
             mailer.EmailSendingSuccessEventHandler += OnSendingVerificationEmailSuccess;
             mailer.EmailSendingFailedEventHandler += OnSendingVerificationEmailFailed;
             _mailerObject = mailer;
-            mailer.SendVerificationEmail();
+            mailer.SendEmail();
         }
 
         private void OnSendingVerificationEmailSuccess(object sender, EventArgs e)
