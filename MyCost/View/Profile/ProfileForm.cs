@@ -130,11 +130,15 @@ namespace MyCost.View
                 MessageBox.Show("Current username is incorrect");
                 return;
             }
+            
 
             string result = WebHandler.UpdateUsername(NewUserNameTextBox.Text, PasswordTextBox.Text);
 
             if (result == "SUCCESS")
             {
+                MessageBox.Show("Your username has been successfully changed. " +
+                    "We are logging you out of the current session. Log in with the new username to continue. ");
+
                  //log out user from the current session                    
                  GlobalSpace.LogOutUser();
                  _quitAppOnFormClosing = false;
@@ -159,6 +163,9 @@ namespace MyCost.View
 
                 if (result == "SUCCESS")
                 {
+                    MessageBox.Show("Your password has been successfully changed. " +
+                    "We are logging you out of the current session. Log in with the new password to continue. ");
+
                     //log out user from the current session                   
                     GlobalSpace.LogOutUser();
                     _quitAppOnFormClosing = false;
@@ -317,15 +324,13 @@ Your email verification code is " + verificationCode + ".\n\n" +
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.BackColor = Color.ForestGreen;
-            button.ForeColor = Color.White;
+            button.FlatAppearance.BorderColor = Color.Orange;
         }
 
         private void MenuButtonsMouseLeaving(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            button.BackColor = Color.White;
-            button.ForeColor = Color.ForestGreen;
+            button.FlatAppearance.BorderColor = Color.LimeGreen;
         }
 
         private void MenuButtonsClicked(object sender, EventArgs e)
