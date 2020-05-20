@@ -256,7 +256,7 @@ namespace MyCost.View
                 else
                 {
                     //if the deleting doesn't succeed, the error info is returned
-                    MessageBox.Show(result);
+                    MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

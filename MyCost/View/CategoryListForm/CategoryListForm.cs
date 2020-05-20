@@ -164,7 +164,7 @@ namespace MyCost.View
             if(result != "SUCCESS")
             {
                 //if not succeeds, the error message is returned
-                MessageBox.Show(result);
+                MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }     
 

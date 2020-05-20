@@ -54,7 +54,9 @@ namespace MyCost.View
 
             GlobalSpace.IsEmailVarified = true;
 
-            MessageBox.Show("Your email address has been successfully verified. Thank you.");
+            string message = "Your email address has been successfully verified. Thank you.";
+
+            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             this.Close();
         }
@@ -65,11 +67,13 @@ namespace MyCost.View
 
             if (_webHandlerObject.Response == "Server connection error")
             {
-                MessageBox.Show("Could not complete the operation. Please check your internet connection and try again.");
+                string message = "Could not complete the operation. Please check your internet connection and try again.";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show(_webHandlerObject.Response);
+                MessageBox.Show(_webHandlerObject.Response, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //open a new verification form so that user can try again
@@ -156,8 +160,10 @@ namespace MyCost.View
         {
             _progressViewerObject.StopProgress();
 
-            MessageBox.Show("We have sent a new verification code to your email address. " +
-                "Please wait allow up to 24 hours to recieve the code and check your spam folder.");
+            string message = "We have sent a new verification code to your email address. " +
+                "Please allow up to 12 hours to recieve the code and check your spam folder as well.";
+
+            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             this.Close();
         }
@@ -166,8 +172,10 @@ namespace MyCost.View
         {
             _progressViewerObject.StopProgress();
 
-            MessageBox.Show("Could not complete the operation. Please check your email address " +
-                "and your internet connection as well.");
+            string message = "Could not complete the process. Please check your email address " +
+                "and your internet connection.";
+
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             this.Close();
         }

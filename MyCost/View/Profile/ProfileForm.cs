@@ -125,7 +125,10 @@ namespace MyCost.View
         {
             if (CurrentUserNameTextBox.Text != GlobalSpace.Username)
             {
-                MessageBox.Show("Current username is incorrect");
+                string message = "Current username is incorrect";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 return;
             }
             
@@ -134,18 +137,21 @@ namespace MyCost.View
 
             if (result == "SUCCESS")
             {
-                MessageBox.Show("Your username has been successfully changed. " +
-                    "We are logging you out of the current session. Log in with the new username to continue. ");
+                string message = "Your username has been successfully changed. " +
+                    "We are logging you out of the current session. " +
+                    "Log in with the new username to continue. ";
 
-                 //log out user from the current session                    
-                 GlobalSpace.LogOutUser();
+                MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //log out user from the current session                    
+                GlobalSpace.LogOutUser();
                  _quitAppOnFormClosing = false;
                  this.Close();
             }
             else
             {
-                 //if the update doesn't succeed, the error message is returned
-                 MessageBox.Show(result);
+                //if the update doesn't succeed, the error message is returned
+                MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -153,7 +159,9 @@ namespace MyCost.View
         {
             if (NewPasswordTextBox.Text != ConfirmPasswordTextBox.Text)
             {
-                MessageBox.Show("Password doesn't match!");
+                string message = "Password doesn't match!";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else //all fields are correctly filled
             {
@@ -161,8 +169,11 @@ namespace MyCost.View
 
                 if (result == "SUCCESS")
                 {
-                    MessageBox.Show("Your password has been successfully changed. " +
-                    "We are logging you out of the current session. Log in with the new password to continue. ");
+                    string message = "Your password has been successfully changed. " +
+                    "We are logging you out of the current session. " +
+                    "Log in with the new password to continue. ";
+
+                    MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //log out user from the current session                   
                     GlobalSpace.LogOutUser();
@@ -172,7 +183,7 @@ namespace MyCost.View
                 else
                 {
                     //if the update doesn't succeed, error message is returned
-                    MessageBox.Show(result);
+                    MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -185,7 +196,10 @@ namespace MyCost.View
 
             if(!IsValidEmail(NewEmailTextBox.Text))
             {
-                MessageBox.Show("Invalid Email. Please check your email address again.");
+                string message = "Invalid Email. Please check your email address again.";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 EnableAllControls();
                 return;
             }
@@ -243,7 +257,9 @@ namespace MyCost.View
             else
             {
                 _progressViewerObject.StopProgress();
-                MessageBox.Show(result);
+
+                MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 EnableAllControls();
             }
         }
@@ -252,7 +268,9 @@ namespace MyCost.View
         {
             string result = _webHandlerObject.Response;
             _progressViewerObject.StopProgress();
-            MessageBox.Show(result);
+
+            MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             EnableAllControls();
         }
 
@@ -367,7 +385,9 @@ Your email verification code is " + verificationCode + ".\n\n" +
             }
             catch
             {
-                MessageBox.Show("Could not open default browser!");
+                string message = "Could not open default browser!";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -379,7 +399,9 @@ Your email verification code is " + verificationCode + ".\n\n" +
             }
             catch
             {
-                MessageBox.Show("Could not open the default browser!");
+                string message = "Could not open the default browser!";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -391,7 +413,9 @@ Your email verification code is " + verificationCode + ".\n\n" +
             }
             catch
             {
-                MessageBox.Show("Could not open the default browser!");
+                string message = "Could not open the default browser!";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -403,7 +427,9 @@ Your email verification code is " + verificationCode + ".\n\n" +
             }
             catch
             {
-                MessageBox.Show("Could not open the default browser!");
+                string message = "Could not open the default browser!";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -484,7 +510,7 @@ Your email verification code is " + verificationCode + ".\n\n" +
             string msg = "You will not be able to recover your account once you delete your profile and thus you will lost all saved data" +
                 "permanently. Do you still want to delete your account?";
 
-            DialogResult userChoice = MessageBox.Show(msg, "warning", MessageBoxButtons.YesNo);
+            DialogResult userChoice = MessageBox.Show(msg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (userChoice == DialogResult.Yes)
             {

@@ -66,12 +66,15 @@ namespace MyCost.View
                     }
                     else
                     {
-                        MessageBox.Show("Sorry could not complete the procedure. Please check your internet connection and try again.");
+                        string message = "Sorry could not complete the procedure. " +
+                            "Please check your internet connection and try again.";
+
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show(result);
+                    MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }            
             }
         }
@@ -126,7 +129,10 @@ namespace MyCost.View
 
         private void ActionUponSendPasswordResetEmailFailed()
         {
-            MessageBox.Show("Sorry could not complete the procedure. Please check your internet connection and try again.");
+            string message = "Sorry could not complete the procedure. " +
+                "Please check your internet connection and try again.";
+
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void ResetUsernameButtonClicked(object sender, EventArgs e)
@@ -156,7 +162,7 @@ namespace MyCost.View
                 }
                 else
                 {
-                    MessageBox.Show(result);
+                    MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -211,7 +217,10 @@ namespace MyCost.View
 
         private void ActionUponSendUsernameResetEmailFailed()
         {
-            MessageBox.Show("Sorry could not complete the procedure. Please check your internet connection and try again.");
+            string message = "Sorry could not complete the procedure. " +
+                "Please check your internet connection and try again.";
+
+            MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private bool IsValidEmail(string email)

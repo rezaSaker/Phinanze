@@ -130,7 +130,7 @@ namespace MyCost.View
         {
             string message = "Do you want to see the full license?";
 
-            DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo);
+            DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dlgResult == DialogResult.Yes)
             {
@@ -140,7 +140,9 @@ namespace MyCost.View
                 }
                 catch
                 {
-                    MessageBox.Show("Sorry, could not open your default browser");
+                    message = "Sorry, could not open your default browser";
+
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
