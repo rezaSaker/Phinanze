@@ -69,7 +69,7 @@ namespace MyCost.View
                 else if (control is DataGridView)
                 {
                     ((DataGridView)control).UserAddedRow += ControlChanged;
-                    ((DataGridView)control).UserDeletedRow += ControlChanged;
+                    ((DataGridView)control).RowsRemoved += ControlChanged;
                     ((DataGridView)control).CellEndEdit += ControlChanged;
                     ((DataGridView)control).CellBeginEdit += ControlChanged;
                 }

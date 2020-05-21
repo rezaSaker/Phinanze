@@ -397,11 +397,12 @@
             // ApplyCategoryButton
             // 
             this.ApplyCategoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ApplyCategoryButton.BackColor = System.Drawing.Color.White;
-            this.ApplyCategoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ApplyCategoryButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.ApplyCategoryButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ApplyCategoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ApplyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ApplyCategoryButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ApplyCategoryButton.ForeColor = System.Drawing.Color.Black;
+            this.ApplyCategoryButton.ForeColor = System.Drawing.Color.White;
             this.ApplyCategoryButton.Location = new System.Drawing.Point(501, 447);
             this.ApplyCategoryButton.Margin = new System.Windows.Forms.Padding(2);
             this.ApplyCategoryButton.Name = "ApplyCategoryButton";
@@ -532,11 +533,12 @@
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.BackColor = System.Drawing.Color.White;
-            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.DeleteButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.ForeColor = System.Drawing.Color.Black;
+            this.DeleteButton.ForeColor = System.Drawing.Color.White;
             this.DeleteButton.Location = new System.Drawing.Point(649, 447);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteButton.Name = "DeleteButton";
