@@ -93,7 +93,9 @@ namespace MyCost.View
 
         private void DataGridViewUserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            DeleteDailyInfo();
+            e.Cancel = true;
+
+            DeleteDailyInfo(true);
         }
 
         private void MenuButtonsMouseHovering(object sender, EventArgs e)
@@ -253,10 +255,15 @@ namespace MyCost.View
 
         private void DeleteDailyInfo(bool manuallyRemoveRow = false)
         {
-            string status = "Deleting daily infomation...";
-            ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-            progressViewer.Location = new Point(this.Location.X + 78, this.Location.Y + 180);
-            progressViewer.Show();
+            string message = "Selected information will be permanently deleted. " +
+                "Are you sure you want to delete the selected information?";
+
+            DialogResult userResponse = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(userResponse == DialogResult.No)
+            {
+                return;
+            }
 
             foreach (DataGridViewRow row in MonthlyReportDataGridView.SelectedRows)
             {
@@ -275,21 +282,20 @@ namespace MyCost.View
                     }
 
                     GlobalSpace.DailyInfoList.RemoveAll(
-                        d => d.Day == day && d.Month == _selectedMonth && d.Year == _selectedYear);
-
-                    //monthly info should change accordingly since daily info has been modified
-                    MonthlyInfo.Fetch();
+                        d => d.Day == day && d.Month == _selectedMonth && d.Year == _selectedYear);                    
                 }
                 else
                 {
                     //if the deleting doesn't succeed, the error info is returned
-                    MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something went wrong! Please check your internet connection and try again.", 
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            UpdateTotalEarningAndExpenseLabel();
+            //monthly info should change accordingly since daily info has been modified
+            MonthlyInfo.Fetch();
 
-            progressViewer.StopProgress();
+            UpdateTotalEarningAndExpenseLabel();
         }
 
         private void OpenNewForm(Form form)

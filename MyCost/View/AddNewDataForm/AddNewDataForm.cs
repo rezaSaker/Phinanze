@@ -282,7 +282,7 @@ namespace MyCost.View
                 && (NoteTextBox.ForeColor != Color.Black || NoteTextBox.Text.Length < 1))
             {
                 //that means the user didn't edit anything and there's nothing to save
-                string message = "No data to save. Please enter new data to save.";
+                string message = "Nothing to save on this page. Please enter new data to save.";
 
                 MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
@@ -395,7 +395,7 @@ namespace MyCost.View
                 string warningMsg = "Selected rows will be permanently deleted. " +
                     "Are you sure you want to delete the selected rows?";
 
-                DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (userResponse == DialogResult.Yes)
                 {
@@ -427,7 +427,8 @@ namespace MyCost.View
 
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        //following method will refresh the page and reload data that could not be deleted
+                        //following method will refresh the page and reload data that was 
+                        //manually removed but could not be permanently deleted
                         PlotDailyInfo();
                     }
                 }
@@ -453,11 +454,75 @@ namespace MyCost.View
         private void ExpenseDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             e.Cancel = true;
+
+            string warningMsg = "Selected rows will be permanently deleted. " +
+                    "Are you sure you want to delete the selected rows?";
+
+            DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (userResponse == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in ExpenseDataGridView.SelectedRows)
+                {
+                    if (!IsLastEmptyRow(ExpenseDataGridView, row.Index))
+                    {
+                        ExpenseDataGridView.Rows.Remove(row);
+                    }
+                }
+
+                UpdateTotalExpenseLabel();
+
+                string result = SaveDailyInfo();
+
+                if (result == "Server connection error")
+                {
+                    string message = "Could not delete the information from database. ";
+                    message += "Please check your internet connection and try again.";
+
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    //following method will refresh the page and reload data that was 
+                    //manually removed but could not be permanently deleted
+                    PlotDailyInfo();
+                }
+            }
         }
 
         private void EarningDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             e.Cancel = true;
+
+            string warningMsg = "Selected rows will be permanently deleted. " +
+                    "Are you sure you want to delete the selected rows?";
+
+            DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (userResponse == DialogResult.Yes)
+            {
+                foreach (DataGridViewRow row in EarningDataGridView.SelectedRows)
+                {
+                    if (!IsLastEmptyRow(EarningDataGridView, row.Index))
+                    {
+                        EarningDataGridView.Rows.Remove(row);
+                    }
+                }
+
+                UpdateTotalEarningLabel();
+
+                string result = SaveDailyInfo();
+
+                if (result == "Server connection error")
+                {
+                    string message = "Could not delete the information from database. ";
+                    message += "Please check your internet connection and try again.";
+
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    //following method will refresh the page and reload data that was 
+                    //manually removed but could not be permanently deleted
+                    PlotDailyInfo();
+                }
+            }
         }
         #endregion
 
@@ -868,7 +933,7 @@ namespace MyCost.View
                 //monthly info should change accordingly since daily info has been modified
                 MonthlyInfo.Fetch();
 
-                MessageBox.Show("The info has been successfully saved", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("The data has been successfully saved!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 _hasUnsavedChanges = false;
             }

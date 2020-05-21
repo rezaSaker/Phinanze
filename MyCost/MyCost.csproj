@@ -162,6 +162,12 @@
     <Compile Include="View\StatisticsForm\StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SuccessMessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SuccessMessageForm.Designer.cs">
+      <DependentUpon>SuccessMessageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\UserAuthenticationForm\UserAuthenticationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     <EmbeddedResource Include="View\StatisticsForm\StatisticsForm.resx">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SuccessMessageForm.resx">
+      <DependentUpon>SuccessMessageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UserAuthenticationForm\UserAuthenticationForm.resx">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -255,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppIcon.ico" />
+    <None Include="Resources\MyCostLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

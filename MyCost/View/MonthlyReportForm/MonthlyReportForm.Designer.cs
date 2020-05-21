@@ -194,7 +194,7 @@
             this.DeleteButton.ForeColor = System.Drawing.Color.White;
             this.DeleteButton.Location = new System.Drawing.Point(588, 447);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(114, 33);
+            this.DeleteButton.Size = new System.Drawing.Size(118, 33);
             this.DeleteButton.TabIndex = 46;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
@@ -353,9 +353,9 @@
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.Color.White;
-            this.EditButton.Location = new System.Drawing.Point(708, 447);
+            this.EditButton.Location = new System.Drawing.Point(712, 447);
             this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(119, 33);
+            this.EditButton.Size = new System.Drawing.Size(115, 33);
             this.EditButton.TabIndex = 54;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = false;
