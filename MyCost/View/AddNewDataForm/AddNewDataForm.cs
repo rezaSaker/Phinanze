@@ -384,7 +384,7 @@ namespace MyCost.View
 
         private void DeleteButtonClicked(object sender, EventArgs e)
         {
-            if(ExpenseDataGridView.SelectedRows.Count < 1 && EarningDataGridView.SelectedRows.Count < 1)
+            if (ExpenseDataGridView.SelectedRows.Count < 1 && EarningDataGridView.SelectedRows.Count < 1)
             {
                 string message = "No row selected. Please select the rows that you want to delete.";
 
@@ -397,11 +397,11 @@ namespace MyCost.View
 
                 DialogResult userResponse = MessageBox.Show(warningMsg, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if(userResponse == DialogResult.Yes)
+                if (userResponse == DialogResult.Yes)
                 {
                     foreach (DataGridViewRow row in ExpenseDataGridView.SelectedRows)
                     {
-                        if(!IsLastEmptyRow(ExpenseDataGridView, row.Index))
+                        if (!IsLastEmptyRow(ExpenseDataGridView, row.Index))
                         {
                             ExpenseDataGridView.Rows.Remove(row);
                         }
@@ -409,7 +409,7 @@ namespace MyCost.View
 
                     foreach (DataGridViewRow row in EarningDataGridView.SelectedRows)
                     {
-                        if(!IsLastEmptyRow(EarningDataGridView, row.Index))
+                        if (!IsLastEmptyRow(EarningDataGridView, row.Index))
                         {
                             EarningDataGridView.Rows.Remove(row);
                         }
@@ -432,7 +432,6 @@ namespace MyCost.View
                     }
                 }
             }
-
         }
 
         private void ExpenseDataGridView_MouseClick(object sender, MouseEventArgs e)
@@ -451,14 +450,14 @@ namespace MyCost.View
             }
         }
 
-        private void EarningDataGridView_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        private void ExpenseDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            UpdateTotalEarningLabel();
+            e.Cancel = true;
         }
 
-        private void ExpenseDataGridView_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        private void EarningDataGridView_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            UpdateTotalExpenseLabel();
+            e.Cancel = true;
         }
         #endregion
 
@@ -951,7 +950,6 @@ namespace MyCost.View
 
             return dlgRes;
         }
-
         #endregion
     }
 }

@@ -45,6 +45,7 @@
             // 
             // UI_ProgressBar
             // 
+            this.UI_ProgressBar.ForeColor = System.Drawing.Color.LimeGreen;
             this.UI_ProgressBar.Location = new System.Drawing.Point(16, 52);
             this.UI_ProgressBar.Name = "UI_ProgressBar";
             this.UI_ProgressBar.Size = new System.Drawing.Size(616, 23);
@@ -55,9 +56,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(644, 124);
             this.Controls.Add(this.UI_ProgressBar);
             this.Controls.Add(this.StatusLabel);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

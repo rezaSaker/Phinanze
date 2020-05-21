@@ -54,8 +54,10 @@
             // 
             // GuidelineTextBox
             // 
+            this.GuidelineTextBox.BackColor = System.Drawing.Color.White;
             this.GuidelineTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.GuidelineTextBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuidelineTextBox.ForeColor = System.Drawing.Color.Black;
             this.GuidelineTextBox.Location = new System.Drawing.Point(12, 189);
             this.GuidelineTextBox.Name = "GuidelineTextBox";
             this.GuidelineTextBox.ReadOnly = true;
@@ -116,6 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 208);
             this.Controls.Add(this.NotNowButton);
             this.Controls.Add(this.GuidelineTextBox);
@@ -123,6 +126,7 @@
             this.Controls.Add(this.VerifyEmailButton);
             this.Controls.Add(this.HeaderLabel);
             this.Controls.Add(this.VerificationCodeTextBox);
+            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "EmailVerificationForm";

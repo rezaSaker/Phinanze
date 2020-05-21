@@ -125,7 +125,7 @@
             this.ExpenseDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ExpenseDGVEditBegan);
             this.ExpenseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDataGridViewCellClicked);
             this.ExpenseDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDGVEditEnded);
-            this.ExpenseDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.ExpenseDataGridView_UserDeletedRow);
+            this.ExpenseDataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ExpenseDataGridView_UserDeletingRow);
             this.ExpenseDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ExpenseDataGridView_MouseClick);
             // 
             // Column1
@@ -311,7 +311,7 @@
             this.EarningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
             this.EarningDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDataGridViewCellClicked);
             this.EarningDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDGVEditEnded);
-            this.EarningDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.EarningDataGridView_UserDeletedRow);
+            this.EarningDataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.EarningDataGridView_UserDeletingRow);
             this.EarningDataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EarningDataGridView_MouseClick);
             // 
             // dataGridViewTextBoxColumn1

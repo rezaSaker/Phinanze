@@ -136,6 +136,31 @@ namespace MyCost.View
             }
         }
 
+        private void EditButtonClicked(object sender, EventArgs e)
+        {
+            if(MonthlyReportDataGridView.SelectedRows.Count == 1)
+            {
+                int rowIndex = MonthlyReportDataGridView.CurrentCell.RowIndex;
+                int day = Convert.ToInt32(MonthlyReportDataGridView.Rows[rowIndex].Cells[0].Value.ToString().Split(' ')[0]);
+                int month = _selectedMonth;
+                int year = _selectedYear;
+
+                OpenNewForm(new AddNewDataForm(day, month, year));
+            }
+            else if (MonthlyReportDataGridView.SelectedRows.Count > 1)
+            {
+                string message = "You cannot select more than one row at a time for edit.";
+
+                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else 
+            {
+                string message = "No row is selected. Select a row to edit.";
+
+                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_quitAppOnFormClosing)
@@ -192,6 +217,8 @@ namespace MyCost.View
             if(MonthlyReportDataGridView.Rows.Count > 0)
             {
                 MonthlyReportDataGridView.Rows[0].Cells[0].Selected = false;
+
+                UpdateTotalEarningAndExpenseLabel();
             }          
         }
 
@@ -260,6 +287,8 @@ namespace MyCost.View
                 }
             }
 
+            UpdateTotalEarningAndExpenseLabel();
+
             progressViewer.StopProgress();
         }
 
@@ -270,6 +299,28 @@ namespace MyCost.View
 
             _quitAppOnFormClosing = false;
             this.Close();
+        }
+
+        private void UpdateTotalEarningAndExpenseLabel()
+        {
+            double earning, totalEarning = 0.0;
+            double expense, totalExpense = 0.0;
+
+            foreach(DataGridViewRow row in MonthlyReportDataGridView.Rows)
+            {
+                if(double.TryParse(row.Cells[2].Value.ToString(), out earning))
+                {
+                    totalEarning += earning;
+                }
+                
+                if(double.TryParse(row.Cells[3].Value.ToString(), out expense))
+                {
+                    totalExpense += expense;
+                }
+            }
+
+            TotalEarningLabel.Text = string.Format("{0:00}", totalEarning);
+            TotalExpenseLabel.Text = string.Format("{0:00}", totalExpense);
         }
         #endregion
     }
