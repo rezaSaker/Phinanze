@@ -72,6 +72,7 @@ namespace MyCost.View
                     ((DataGridView)control).RowsRemoved += ControlChanged;
                     ((DataGridView)control).CellEndEdit += ControlChanged;
                     ((DataGridView)control).CellBeginEdit += ControlChanged;
+                    ((DataGridView)control).CellValueChanged += ControlChanged;
                 }
             }
         }
