@@ -567,33 +567,37 @@ namespace MyCost.View
                     break;
                 }
 
-                try
+                if (double.TryParse(row.Cells[1].Value.ToString(), out amount))
                 {
-                    if(double.TryParse(row.Cells[1].Value.ToString(), out amount))
+                    if(amount < 1000000000)
                     {
                         total += amount;
                     }
-                    else
+                    else 
                     {
                         string message = "The amount on row " + (row.Index + 1) +
-                            " in the expense table is not correct. Please correct the amount.";
+                        " in the expense table is too big. Please re-enter the correct amount.";
 
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        //make column color yellow so the user can easily notice the error
-                        row.Cells[1].Style.BackColor = Color.Red;
+                        //make the maount 0.00
+                        row.Cells[1].Value = "0.00";
+
+                        //make cell color orange so the user can easily notice the error
+                        row.Cells[1].Style.BackColor = Color.Orange;
                         row.Cells[1].Style.ForeColor = Color.White;
                     }
                 }
-                catch (NullReferenceException)
+                else
                 {
                     string message = "The amount on row " + (row.Index + 1) +
-                            " in the expense table is empty.";
+                        " in the expense table is not correct. Please correct the amount.";
 
                     MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    //make column color yellow so the user can easily notice the error
-                    row.Cells[1].Style.BackColor = Color.Yellow;
+                    //make cell color red so the user can easily notice the error
+                    row.Cells[1].Style.BackColor = Color.Red;
+                    row.Cells[1].Style.ForeColor = Color.White;
                 }
             }
 
@@ -613,33 +617,37 @@ namespace MyCost.View
                     break;
                 }
 
-                try
+                if (double.TryParse(row.Cells[1].Value.ToString(), out amount))
                 {
-                    if(double.TryParse(row.Cells[1].Value.ToString(), out amount))
+                    if(amount < 1000000000)
                     {
                         total += amount;
                     }
                     else
                     {
                         string message = "The amount on row " + (row.Index + 1) +
-                            " in the earning table is not correct. Please correct the amount.";
-                        
+                        " in the earning table is too big. Please re-enter the correct amount.";
+
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                        //make column color yellow so the user can easily notice the error
-                        row.Cells[1].Style.BackColor = Color.Red;
+                        //make the maount 0.00
+                        row.Cells[1].Value = "0.00";
+
+                        //make cell color orange so the user can easily notice the error
+                        row.Cells[1].Style.BackColor = Color.Orange;
                         row.Cells[1].Style.ForeColor = Color.White;
                     }
                 }
-                catch (NullReferenceException)
+                else
                 {
                     string message = "The amount on row " + (row.Index + 1) +
-                            " in the earning table is empty.";
+                        " in the earning table is not correct. Please correct the amount.";
 
                     MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    //make column color yellow so the user can easily point out
-                    row.Cells[1].Style.BackColor = Color.Yellow;
+                    //make cell color red so the user can easily notice the error
+                    row.Cells[1].Style.BackColor = Color.Red;
+                    row.Cells[1].Style.ForeColor = Color.White;
                 }
             }
 

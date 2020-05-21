@@ -287,7 +287,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.EarningDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.EarningDataGridView.Location = new System.Drawing.Point(11, 264);
+            this.EarningDataGridView.Location = new System.Drawing.Point(12, 264);
             this.EarningDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.EarningDataGridView.Name = "EarningDataGridView";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -305,7 +305,7 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.EarningDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.EarningDataGridView.Size = new System.Drawing.Size(816, 166);
+            this.EarningDataGridView.Size = new System.Drawing.Size(815, 166);
             this.EarningDataGridView.TabIndex = 5;
             this.EarningDataGridView.TabStop = false;
             this.EarningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
