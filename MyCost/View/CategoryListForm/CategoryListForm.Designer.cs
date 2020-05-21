@@ -128,7 +128,7 @@
             this.CancelButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.Location = new System.Drawing.Point(94, 369);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(72, 27);
+            this.CancelButton.Size = new System.Drawing.Size(76, 27);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;

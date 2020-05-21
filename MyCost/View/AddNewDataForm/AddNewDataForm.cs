@@ -213,11 +213,28 @@ namespace MyCost.View
             //if it's category column
             if (e.ColumnIndex == 2)
             {
+                //first close if any CategoryList form is already open
+                Form openCateForm = new Form();
+                FormCollection openForms = Application.OpenForms;
+
+                foreach(Form form in openForms)
+                {
+                    if(form.Name == "CategoryListForm")
+                    {
+                        openCateForm = form;
+                    }
+                }
+
+                if(openCateForm != null)
+                {
+                    openCateForm.Close();
+                }
+
                 List<int> rowIndexList = new List<int>();
                 rowIndexList.Add(e.RowIndex);
-                CategoryListForm form = new CategoryListForm(ExpenseDataGridView, rowIndexList);
-                form.Location = new Point(this.Location.X + 300, this.Location.Y);
-                form.Show();
+                CategoryListForm CatForm = new CategoryListForm(ExpenseDataGridView, rowIndexList);
+                CatForm.Location = new Point(this.Location.X + 300, this.Location.Y);
+                CatForm.Show();
             }
         }
 
@@ -249,11 +266,28 @@ namespace MyCost.View
             //if it's category column
             if (e.ColumnIndex == 2)
             {
+                //first close if any CategoryList form is already open
+                Form openCateForm = new Form();
+                FormCollection openForms = Application.OpenForms;
+
+                foreach (Form form in openForms)
+                {
+                    if (form.Name == "CategoryListForm")
+                    {
+                        openCateForm = form;
+                    }
+                }
+
+                if (openCateForm != null)
+                {
+                    openCateForm.Close();
+                }
+
                 List<int> rowIndexList = new List<int>();
                 rowIndexList.Add(e.RowIndex);
-                CategoryListForm form = new CategoryListForm(EarningDataGridView, rowIndexList);
-                form.Location = new Point(this.Location.X + 300, this.Location.Y);
-                form.Show();
+                CategoryListForm catForm = new CategoryListForm(EarningDataGridView, rowIndexList);
+                catForm.Location = new Point(this.Location.X + 300, this.Location.Y);
+                catForm.Show();
             }
         }
 

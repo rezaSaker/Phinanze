@@ -325,8 +325,8 @@ namespace MyCost.View
                 }
             }
 
-            TotalEarningLabel.Text = string.Format("{0:00}", totalEarning);
-            TotalExpenseLabel.Text = string.Format("{0:00}", totalExpense);
+            TotalEarningLabel.Text = string.Format("${0:00}", totalEarning);
+            TotalExpenseLabel.Text = string.Format("${0:00}", totalExpense);
         }
         #endregion
     }

@@ -42,6 +42,8 @@ namespace MyCost.View
                 }
                 _categoryType = "Earning";
             }
+
+            CategoryDataGridView.Rows[0].Selected = false;
         }
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
