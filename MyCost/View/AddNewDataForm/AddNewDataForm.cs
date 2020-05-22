@@ -342,9 +342,26 @@ namespace MyCost.View
             }
             else if (button.Name == "LogOutButton")
             {
-                GlobalSpace.LogOutUser();
-                _quitAppOnFormClosing = false;
-                this.Close();
+                if(_hasUnsavedChanges)
+                {
+                    DialogResult userResponse = ShowUnsavedChangesWarning();
+
+                    if(userResponse == DialogResult.Yes)
+                    {
+                        //the following line will prevent showing warning message again from 
+                        //ThisFormClosing method that is triggered during the form closing
+                        _hasUnsavedChanges = false;
+                        GlobalSpace.LogOutUser();
+                        _quitAppOnFormClosing = false;
+                        this.Close();
+                    }
+                }
+                else
+                {
+                    GlobalSpace.LogOutUser();
+                    _quitAppOnFormClosing = false;
+                    this.Close();
+                }
             }
         }
 
