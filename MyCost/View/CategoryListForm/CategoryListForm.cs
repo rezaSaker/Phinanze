@@ -74,17 +74,62 @@ namespace MyCost.View
 
         private void DataGridViewCellEditEnded(object sender, DataGridViewCellEventArgs e)
         {
-            if(CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value != null 
-                && CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Length >= 1)
+            var cellValue = CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value;
+
+            if(_previousCellValue != null && cellValue.ToString() == _previousCellValue)
+            {
+                //if the user didin't actually change the previous value
+                return;
+            }
+            else if(_previousCellValue != null && 
+                cellValue.ToString().ToLower().Trim() == _previousCellValue.ToLower().Trim())
+            {
+                //if the user just changed the character case of the category name but 
+                //didn't change the actual name of the category or added some unneccesary space
+                //after the category name, then we have to just trim the unnecessary spaces and then save it
+                CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value = cellValue.ToString().ToLower().Trim();
+                UpdateCategories();
+
+                return;
+            }
+
+            //we have to check if another category with the same name already exists
+            //we will not allow user to add two categories with identical names
+            foreach (string categoryName in _categoryType == "Expense" ?
+                GlobalSpace.ExpenseCategories : GlobalSpace.EarningCategories)
+            {
+                if (categoryName.ToLower().Trim() == cellValue.ToString().ToLower().Trim())
+                {
+                    string message = "A category called " + categoryName + " already exists in the category list.";
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    if(_previousCellValue == null)
+                    {
+                        //if the user was attempting to add a new category
+                        //remove the new row from the DGV
+                        CategoryDataGridView.Rows.RemoveAt(e.RowIndex);
+                    }
+                    else
+                    {
+                        //if the user was attempting to edit an existing row,
+                        //set the cell value to previous value
+                        CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value = _previousCellValue;
+                    }
+
+                    return;
+                }
+            }
+
+            if (cellValue != null && cellValue.ToString().Length >= 1)
             {
                 if (_previousCellValue == null)
                 {
-                    //that means, user is adding a new category and no action is required other than saving the new category
+                    //if the user is adding a new category
                     UpdateCategories();
                 }
-                else if(CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString() != _previousCellValue)
+                else
                 {
-                    //that means, user is editing an exisiting row and we need to give an warning before editing
+                    //if the user is editing an exisiting row and we need to give an warning before editing
                     //the category in our system
                     string message = "Please note that '" + _previousCellValue +
                     "' category might be associated with some existing daily information and editing this category " +
