@@ -169,12 +169,14 @@ namespace MyCost.View
         {
             //reset everything so the panel appears as a login form 
             ShowRegisterPanelButton.BackColor = Color.RoyalBlue;
-            ShowRegisterPanelButton.FlatAppearance.BorderColor = Color.RoyalBlue;
+            ShowRegisterPanelButton.FlatAppearance.BorderSize = 0;
+            ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
             ShowRegisterPanelButton.ForeColor = Color.White;
+            ShowRegisterPanelButton.Enabled = true;
             ShowLoginPanelButton.BackColor = Color.White;
             ShowLoginPanelButton.ForeColor = Color.Black;
+            ShowLoginPanelButton.FlatAppearance.BorderSize = 1;
             ShowLoginPanelButton.Enabled = false;
-            ShowRegisterPanelButton.Enabled = true;
 
             SubmitButton.Text = "Log in";
             SubmitButton.Location = new Point(324, 280);
@@ -197,11 +199,14 @@ namespace MyCost.View
             //reset everything so the panel appears as a register form
             ShowRegisterPanelButton.BackColor = Color.White;
             ShowRegisterPanelButton.ForeColor = Color.Black;
-            ShowLoginPanelButton.BackColor = Color.RoyalBlue;
-            ShowLoginPanelButton.FlatAppearance.BorderColor = Color.RoyalBlue;
-            ShowLoginPanelButton.ForeColor = Color.White;
             ShowRegisterPanelButton.Enabled = false;
+            ShowRegisterPanelButton.FlatAppearance.BorderSize = 1;
+            ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.White;
+            ShowLoginPanelButton.BackColor = Color.RoyalBlue;
+            ShowLoginPanelButton.FlatAppearance.BorderSize = 0;
+            ShowLoginPanelButton.ForeColor = Color.White;           
             ShowLoginPanelButton.Enabled = true;
+            ShowLoginPanelButton.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
 
             SubmitButton.Text = "Register";
             SubmitButton.Location = new Point(324, 368);

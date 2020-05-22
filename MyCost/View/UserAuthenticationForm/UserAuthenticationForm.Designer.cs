@@ -92,6 +92,7 @@
             this.SubmitButton.AutoSize = true;
             this.SubmitButton.BackColor = System.Drawing.Color.RoyalBlue;
             this.SubmitButton.FlatAppearance.BorderSize = 0;
+            this.SubmitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
