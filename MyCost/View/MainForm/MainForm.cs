@@ -174,6 +174,8 @@ namespace MyCost.View
                     //add up all earning and expense for the pie chart
                     totalEarning += monthly.Earning;
                     totalExpense += monthly.Expense;
+
+                    rowIndex++;
                 }
                 else if (_selectedYear == monthly.Year)
                 {
@@ -188,8 +190,9 @@ namespace MyCost.View
                     //add up all earning and expense for the pie chart
                     totalEarning += monthly.Earning;
                     totalExpense += monthly.Expense;
-                }
-                rowIndex++;
+
+                    rowIndex++;
+                }             
             }
 
             if(HomeDataGridView.Rows.Count > 0)

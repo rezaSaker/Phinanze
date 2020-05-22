@@ -348,7 +348,6 @@
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.SaveButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.SaveButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -396,7 +395,6 @@
             // 
             this.ApplyCategoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ApplyCategoryButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ApplyCategoryButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ApplyCategoryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ApplyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ApplyCategoryButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -517,7 +515,6 @@
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

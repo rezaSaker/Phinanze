@@ -61,7 +61,7 @@ namespace MyCost.Common
             int recentYear = GlobalSpace.DailyInfoList[0].Year;
             int oldestYear = GlobalSpace.DailyInfoList[GlobalSpace.DailyInfoList.Count - 1].Year;
 
-            for (int year = recentYear; year <= oldestYear; year++)
+            for (int year = oldestYear; year <= recentYear; year++)
             {
                 for (int month = 1; month <= 12; month++)
                 {
