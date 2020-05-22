@@ -215,21 +215,7 @@ namespace MyCost.View
             if (e.ColumnIndex == 2)
             {
                 //first close if any CategoryList form is already open
-                Form openCateForm = new Form();
-                FormCollection openForms = Application.OpenForms;
-
-                foreach(Form form in openForms)
-                {
-                    if(form.Name == "CategoryListForm")
-                    {
-                        openCateForm = form;
-                    }
-                }
-
-                if(openCateForm != null)
-                {
-                    openCateForm.Close();
-                }
+                CloseOpenedCategoryForm();
 
                 List<int> rowIndexList = new List<int>();
                 rowIndexList.Add(e.RowIndex);
@@ -268,21 +254,7 @@ namespace MyCost.View
             if (e.ColumnIndex == 2)
             {
                 //first close if any CategoryList form is already open
-                Form openCateForm = new Form();
-                FormCollection openForms = Application.OpenForms;
-
-                foreach (Form form in openForms)
-                {
-                    if (form.Name == "CategoryListForm")
-                    {
-                        openCateForm = form;
-                    }
-                }
-
-                if (openCateForm != null)
-                {
-                    openCateForm.Close();
-                }
+                CloseOpenedCategoryForm();
 
                 List<int> rowIndexList = new List<int>();
                 rowIndexList.Add(e.RowIndex);
@@ -379,8 +351,6 @@ namespace MyCost.View
         private void ControlChanged(object sender, EventArgs e)
         {
             //this method is triggered when any editable control on this form is edited
-            SaveButton.Enabled = true;
-            SaveButton.BackColor = Color.RoyalBlue;
             _hasUnsavedChanges = true;
         }    
 
@@ -396,6 +366,10 @@ namespace MyCost.View
                 {
                     e.Cancel = true;
                     return;
+                }
+                else
+                {
+                    _isUnsavedChangesWarningAlreadyShown = true;
                 }
             }
 
@@ -1038,7 +1012,7 @@ namespace MyCost.View
 
         private DialogResult ShowUnsavedChangesWarning()
         {
-            string message = "You have unsaved changes. Changing this page" + 
+            string message = "You have unsaved changes. Changing this page " + 
                              "might  cause permanent loss of current changes. " +
                              "Do you still want to change this page?";
 

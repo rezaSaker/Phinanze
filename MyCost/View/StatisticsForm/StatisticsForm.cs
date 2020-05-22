@@ -247,6 +247,21 @@ namespace MyCost.View
                 IDictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
                 dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x, x => 0.0);
 
+                string extraCategory = "Other";
+
+                if(!dictCategorywiseEarning.ContainsKey("Other"))
+                {
+                    if(!dictCategorywiseEarning.ContainsKey("other"))
+                    {
+                        dictCategorywiseEarning.Keys.Add(extraCategory);
+                        dictCategorywiseEarning[extraCategory] = 0.0;
+                    }
+                    else
+                    {
+                        extraCategory = "other";
+                    }
+                }
+
                 foreach (DailyInfo daily in dailyInfoList)
                 {
                     foreach (EarningInfo earning in daily.EarningList)
@@ -255,7 +270,10 @@ namespace MyCost.View
                         {
                             dictCategorywiseEarning[earning.Category] += earning.Amount;
                         }
-                        //else
+                        else
+                        {
+                            dictCategorywiseEarning[extraCategory] += earning.Amount;
+                        }
                     }
                 }
 
@@ -263,14 +281,36 @@ namespace MyCost.View
             }
             else
             {
-                Dictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
+                IDictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
                 dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
+
+                string extraCategory = "Other";
+
+                if (!dictCategorywiseExpense.ContainsKey("Other"))
+                {
+                    if (!dictCategorywiseExpense.ContainsKey("other"))
+                    {
+                        dictCategorywiseExpense.Keys.Add(extraCategory);
+                        dictCategorywiseExpense[extraCategory] = 0.0;
+                    }
+                    else
+                    {
+                        extraCategory = "other";
+                    }
+                }
 
                 foreach (DailyInfo daily in dailyInfoList)
                 {
                     foreach (ExpenseInfo expense in daily.ExpenseList)
                     {
-                        dictCategorywiseExpense[expense.Category] += expense.Amount;
+                        if(dictCategorywiseExpense.ContainsKey(expense.Category))
+                        {
+                            dictCategorywiseExpense[expense.Category] += expense.Amount;
+                        }
+                        else
+                        {
+                            dictCategorywiseExpense[extraCategory] += expense.Amount;
+                        }
                     }
                 }
 
