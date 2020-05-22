@@ -49,7 +49,6 @@
             // ResetpasswordButton
             // 
             this.ResetpasswordButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ResetpasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ResetpasswordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ResetpasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetpasswordButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -65,7 +64,6 @@
             // ResetUsernameButton
             // 
             this.ResetUsernameButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ResetUsernameButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ResetUsernameButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ResetUsernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ResetUsernameButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

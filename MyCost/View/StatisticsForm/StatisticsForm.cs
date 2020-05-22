@@ -136,18 +136,6 @@ namespace MyCost.View
             ShowReports();
         }
 
-        private void MenuButtonsMouseHovering(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.Orange;
-        }
-
-        private void MenuButtonsMouseLeaving(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.LimeGreen;
-        }
-
         private void MenuButtonsClicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -263,10 +251,14 @@ namespace MyCost.View
                 {
                     foreach (EarningInfo earning in daily.EarningList)
                     {
-                        dictCategorywiseEarning[earning.Category] += earning.Amount;
+                        if(dictCategorywiseEarning.ContainsKey(earning.Category))
+                        {
+                            dictCategorywiseEarning[earning.Category] += earning.Amount;
+                        }
+                        //else
                     }
                 }
-               
+
                 PlotCategorywiseYearlyEarningDataOnChart(dictCategorywiseEarning);
             }
             else

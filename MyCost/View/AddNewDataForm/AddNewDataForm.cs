@@ -87,10 +87,10 @@ namespace MyCost.View
 
                     if(userResponse == DialogResult.No)
                     {
-                        //Since we are changing selected index in this block, 
-                        //this will trigger this method again which is unexpected.
-                        //Setting _isRedundantTriggerOfEventHandler = true will prevent that
-                        _isRedundantTriggerOfEventHandler = true;
+                        //Since we are changing selected index in this block,   
+                        //this will trigger this method again which is unexpected.  
+                        //Setting _isRedundantTriggerOfEventHandler = true will prevent that  
+                        _isRedundantTriggerOfEventHandler = true;  
 
                         DayComboBox.SelectedIndex = _dayComboBoxPrevSelectedIndex;
                         return;
@@ -346,18 +346,6 @@ namespace MyCost.View
             {
                 OpenCategoryListForm(EarningDataGridView);
             }
-        }
-
-        private void MenuButtonsMouseHovering(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.Orange;
-        }
-
-        private void MenuButtonsMouseLeaving(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.LimeGreen;
         }
 
         private void MenuButtonsClicked(object sender, EventArgs e)

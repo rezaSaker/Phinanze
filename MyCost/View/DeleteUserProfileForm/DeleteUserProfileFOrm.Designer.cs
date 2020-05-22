@@ -36,16 +36,17 @@
             // 
             // DeleteAccountButton
             // 
-            this.DeleteAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.DeleteAccountButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.DeleteAccountButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.DeleteAccountButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.DeleteAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteAccountButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteAccountButton.ForeColor = System.Drawing.Color.White;
             this.DeleteAccountButton.Location = new System.Drawing.Point(148, 103);
             this.DeleteAccountButton.Name = "DeleteAccountButton";
             this.DeleteAccountButton.Size = new System.Drawing.Size(275, 35);
             this.DeleteAccountButton.TabIndex = 6;
             this.DeleteAccountButton.Text = "Delete Account Permanently";
-            this.DeleteAccountButton.UseVisualStyleBackColor = true;
+            this.DeleteAccountButton.UseVisualStyleBackColor = false;
             this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButtonClicked);
             // 
             // PasswordTextBox

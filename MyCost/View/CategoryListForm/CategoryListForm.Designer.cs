@@ -75,9 +75,11 @@
             this.CategoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CategoryDataGridView.Size = new System.Drawing.Size(266, 290);
             this.CategoryDataGridView.TabIndex = 0;
+            this.CategoryDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridViewCellEditBegan);
             this.CategoryDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             this.CategoryDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellEditEnded);
             this.CategoryDataGridView.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.DataGridViewUserDeletedRow);
+            this.CategoryDataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DataGridViewUserDeletingRow);
             // 
             // Column1
             // 
@@ -98,25 +100,30 @@
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteButton.ForeColor = System.Drawing.Color.White;
             this.DeleteButton.Location = new System.Drawing.Point(1, 369);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(72, 27);
+            this.DeleteButton.Size = new System.Drawing.Size(87, 27);
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButtonClicked);
             // 
             // SelectButton
             // 
             this.SelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.SelectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.SelectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectButton.ForeColor = System.Drawing.Color.White;
-            this.SelectButton.Location = new System.Drawing.Point(189, 369);
+            this.SelectButton.Location = new System.Drawing.Point(188, 369);
             this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(78, 27);
+            this.SelectButton.Size = new System.Drawing.Size(79, 27);
             this.SelectButton.TabIndex = 3;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = false;
@@ -125,13 +132,17 @@
             // CancelButton
             // 
             this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CancelButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.CancelButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelButton.ForeColor = System.Drawing.Color.White;
             this.CancelButton.Location = new System.Drawing.Point(94, 369);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(76, 27);
+            this.CancelButton.Size = new System.Drawing.Size(88, 27);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButtonClicked);
             // 
             // CategoryListForm

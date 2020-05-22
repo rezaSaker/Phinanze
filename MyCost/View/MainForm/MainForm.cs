@@ -87,19 +87,7 @@ namespace MyCost.View
             int month = _monthList.IndexOf(HomeDataGridView.Rows[e.RowIndex].Cells[1].Value.ToString()) + 1;
 
             OpenNewForm(new MonthlyReportForm(month, year));           
-        }
-                          
-        private void MenuButtonsMouseHovering(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.Orange;
-        }
-
-        private void MenuButtonsMouseLeaving(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            button.FlatAppearance.BorderColor = Color.LimeGreen;
-        }
+        }                       
 
         private void MenuButtonsClicked(object sender, EventArgs e)
         {

@@ -39,16 +39,16 @@
             // 
             // NotNowButton
             // 
-            this.NotNowButton.BackColor = System.Drawing.Color.Transparent;
-            this.NotNowButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.NotNowButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.NotNowButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.NotNowButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NotNowButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotNowButton.ForeColor = System.Drawing.Color.Black;
+            this.NotNowButton.ForeColor = System.Drawing.Color.White;
             this.NotNowButton.Location = new System.Drawing.Point(283, 89);
             this.NotNowButton.Name = "NotNowButton";
             this.NotNowButton.Size = new System.Drawing.Size(129, 33);
             this.NotNowButton.TabIndex = 11;
-            this.NotNowButton.Text = "Not Now";
+            this.NotNowButton.Text = "Skip";
             this.NotNowButton.UseVisualStyleBackColor = false;
             this.NotNowButton.Click += new System.EventHandler(this.NotNowButtonClicked);
             // 
@@ -68,11 +68,12 @@
             // 
             // CodeResendButton
             // 
-            this.CodeResendButton.BackColor = System.Drawing.Color.Transparent;
-            this.CodeResendButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.CodeResendButton.BackColor = System.Drawing.Color.Orange;
+            this.CodeResendButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CodeResendButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
             this.CodeResendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CodeResendButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CodeResendButton.ForeColor = System.Drawing.Color.Black;
+            this.CodeResendButton.ForeColor = System.Drawing.Color.White;
             this.CodeResendButton.Location = new System.Drawing.Point(137, 150);
             this.CodeResendButton.Name = "CodeResendButton";
             this.CodeResendButton.Size = new System.Drawing.Size(275, 33);
@@ -84,7 +85,7 @@
             // VerifyEmailButton
             // 
             this.VerifyEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.VerifyEmailButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.VerifyEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.VerifyEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VerifyEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerifyEmailButton.ForeColor = System.Drawing.Color.White;
@@ -92,7 +93,7 @@
             this.VerifyEmailButton.Name = "VerifyEmailButton";
             this.VerifyEmailButton.Size = new System.Drawing.Size(140, 33);
             this.VerifyEmailButton.TabIndex = 8;
-            this.VerifyEmailButton.Text = "Verify My Email";
+            this.VerifyEmailButton.Text = "Verify  ";
             this.VerifyEmailButton.UseVisualStyleBackColor = false;
             this.VerifyEmailButton.Click += new System.EventHandler(this.VerifyEmailButtonClicked);
             // 
@@ -129,6 +130,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EmailVerificationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MyCost - Email Verification";

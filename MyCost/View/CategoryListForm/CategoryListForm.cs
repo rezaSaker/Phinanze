@@ -10,6 +10,7 @@ namespace MyCost.View
         private List<int> _rowIndexList;
 
         private string _categoryType;
+        private string _previousCellValue;
 
         private DataGridView _dgv;
 
@@ -56,31 +57,106 @@ namespace MyCost.View
             OpenSelectedCategory();
         }
 
+        private void DataGridViewCellEditBegan(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            //If the user is attempting to edit a row with valid category value,
+            //we would keep the current value of the cell before user makes any change
+            //so that we can get back the previous value if user wish not to change it
+            if (!IsLastEmptyRow(e.RowIndex))
+            {
+                _previousCellValue = CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString();
+            }
+            else
+            {
+                _previousCellValue = null;
+            }
+        }
+
         private void DataGridViewCellEditEnded(object sender, DataGridViewCellEventArgs e)
         {
-            UpdateCategories();
+            if(CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value != null 
+                && CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Length >= 1)
+            {
+                if (_previousCellValue == null)
+                {
+                    //that means, user is adding a new category and no action is required other than saving the new category
+                    UpdateCategories();
+                }
+                else if(CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString() != _previousCellValue)
+                {
+                    //that means, user is editing an exisiting row and we need to give an warning before editing
+                    //the category in our system
+                    string message = "Please note that '" + _previousCellValue +
+                    "' category might be associated with some existing daily information and editing this category " +
+                    "will not automatically update this category in the existing daily information. Moreover, all daily " +
+                    "information that use this category will appear under the 'Other' category on the Statistics page. " +
+                    "Do you still want to edit this category? ";
+
+                    DialogResult userResponse = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (userResponse == DialogResult.No)
+                    {
+                        CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value = _previousCellValue;
+                    }
+                    else
+                    {
+                        UpdateCategories();
+                    }
+                }
+            }
+        }
+
+        private void DataGridViewUserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if(!IsLastEmptyRow(e.Row.Index))
+            {
+                string message = "Please note that '" + CategoryDataGridView.Rows[e.Row.Index].Cells[0].Value.ToString() +
+                   "' category might be associated with some existing daily information and deleting this category " +
+                   "will not automatically remove this category from the existing daily information. Moreover, all daily " +
+                   "information that use this category will appear under the 'Other' category on the Statistics page. " +
+                   "Do you still want to delete this category? ";
+
+                DialogResult userResponse = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (userResponse == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+            }
         }
 
         private void DataGridViewUserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            UpdateCategories();
+            if(!IsLastEmptyRow(e.Row.Index))
+            {
+                UpdateCategories();
+            }
         }
 
         private void DeleteButtonClicked(object sender, EventArgs e)
         {
             int rowIndex = CategoryDataGridView.CurrentCell.RowIndex;
 
-            if (IsLastEmptyRow(rowIndex))
+            if (!IsLastEmptyRow(rowIndex))
             {
-                return;
-            }
+                string message = "Please note that the selected category " +
+                   " might be associated with some existing daily information and deleting this category " +
+                   "will not automatically remove this category from the existing daily information. Moreover, all daily " +
+                   "information that use this category will appear under the 'Other' category on the Statistics page. " +
+                   "Do you still want to delete this category? ";
 
-            foreach (DataGridViewRow row in CategoryDataGridView.SelectedRows)
-            {
-                CategoryDataGridView.Rows.Remove(row);
-            }
+                DialogResult userResponse = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            UpdateCategories();
+                if (userResponse == DialogResult.Yes)
+                {
+                    foreach (DataGridViewRow row in CategoryDataGridView.SelectedRows)
+                    {
+                        CategoryDataGridView.Rows.Remove(row);
+                    }
+
+                    UpdateCategories();
+                }
+            }
         }
 
         private void CancelButtonClicked(object sender, EventArgs e)
@@ -122,19 +198,17 @@ namespace MyCost.View
 
                 foreach (DataGridViewRow row in CategoryDataGridView.Rows)
                 {
-                    if (IsLastEmptyRow(row.Index))
+                    if (!IsLastEmptyRow(row.Index))
                     {
-                        break;
-                    }
+                        category = FilterString(row.Cells[0].Value.ToString());
+                        GlobalSpace.ExpenseCategories.Add(category);
+                        categoryNames += category;
 
-                    category = FilterString(row.Cells[0].Value.ToString());
-                    GlobalSpace.ExpenseCategories.Add(category);
-                    categoryNames += category;
-
-                    //add a splitting character after each category except the last one
-                    if (row.Index < CategoryDataGridView.Rows.Count - 2)
-                    {
-                        categoryNames += "|";
+                        //add a splitting character after each category except the last one
+                        if (row.Index < CategoryDataGridView.Rows.Count - 2)
+                        {
+                            categoryNames += "|";
+                        }
                     }
                 }
             }
@@ -144,20 +218,18 @@ namespace MyCost.View
 
                 foreach (DataGridViewRow row in CategoryDataGridView.Rows)
                 {
-                    if (IsLastEmptyRow(row.Index))
+                    if (!IsLastEmptyRow(row.Index))
                     {
-                        break;
-                    }
+                        category = FilterString(row.Cells[0].Value.ToString());
+                        GlobalSpace.EarningCategories.Add(category);
+                        categoryNames += category;
 
-                    category = FilterString(row.Cells[0].Value.ToString());
-                    GlobalSpace.EarningCategories.Add(category);
-                    categoryNames += category;
-
-                    //add a splitting character after each category except the last one
-                    if (row.Index < CategoryDataGridView.Rows.Count - 2)
-                    {
-                        categoryNames += "|";
-                    }
+                        //add a splitting character after each category except the last one
+                        if (row.Index < CategoryDataGridView.Rows.Count - 2)
+                        {
+                            categoryNames += "|";
+                        }
+                    }                  
                 }
             }
 

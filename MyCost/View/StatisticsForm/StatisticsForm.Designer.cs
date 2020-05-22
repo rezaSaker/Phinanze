@@ -74,20 +74,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
-            this.LogOutButton.Location = new System.Drawing.Point(712, 9);
+            this.LogOutButton.Location = new System.Drawing.Point(710, 8);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(115, 35);
+            this.LogOutButton.Size = new System.Drawing.Size(117, 33);
             this.LogOutButton.TabIndex = 52;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
             this.LogOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.LogOutButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.LogOutButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // ProfileButton
             // 
@@ -96,20 +93,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ProfileButton.BackColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.White;
-            this.ProfileButton.Location = new System.Drawing.Point(590, 9);
+            this.ProfileButton.Location = new System.Drawing.Point(588, 8);
             this.ProfileButton.Name = "ProfileButton";
-            this.ProfileButton.Size = new System.Drawing.Size(116, 35);
+            this.ProfileButton.Size = new System.Drawing.Size(118, 33);
             this.ProfileButton.TabIndex = 51;
             this.ProfileButton.Text = "Profile";
             this.ProfileButton.UseVisualStyleBackColor = false;
             this.ProfileButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.ProfileButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.ProfileButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // StatisticsButton
             // 
@@ -123,9 +117,9 @@
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticsButton.ForeColor = System.Drawing.Color.LimeGreen;
-            this.StatisticsButton.Location = new System.Drawing.Point(465, 9);
+            this.StatisticsButton.Location = new System.Drawing.Point(463, 8);
             this.StatisticsButton.Name = "StatisticsButton";
-            this.StatisticsButton.Size = new System.Drawing.Size(119, 35);
+            this.StatisticsButton.Size = new System.Drawing.Size(121, 33);
             this.StatisticsButton.TabIndex = 50;
             this.StatisticsButton.Text = "Statistics";
             this.StatisticsButton.UseVisualStyleBackColor = false;
@@ -137,20 +131,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MonthlyReportButton.BackColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyReportButton.ForeColor = System.Drawing.Color.White;
-            this.MonthlyReportButton.Location = new System.Drawing.Point(309, 9);
+            this.MonthlyReportButton.Location = new System.Drawing.Point(307, 8);
             this.MonthlyReportButton.Name = "MonthlyReportButton";
-            this.MonthlyReportButton.Size = new System.Drawing.Size(150, 35);
+            this.MonthlyReportButton.Size = new System.Drawing.Size(152, 33);
             this.MonthlyReportButton.TabIndex = 49;
             this.MonthlyReportButton.Text = "Monthly Report";
             this.MonthlyReportButton.UseVisualStyleBackColor = false;
             this.MonthlyReportButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.MonthlyReportButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.MonthlyReportButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // AddNewDataButton
             // 
@@ -159,20 +150,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AddNewDataButton.BackColor = System.Drawing.Color.LimeGreen;
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewDataButton.ForeColor = System.Drawing.Color.White;
-            this.AddNewDataButton.Location = new System.Drawing.Point(188, 9);
+            this.AddNewDataButton.Location = new System.Drawing.Point(188, 8);
             this.AddNewDataButton.Name = "AddNewDataButton";
-            this.AddNewDataButton.Size = new System.Drawing.Size(115, 35);
+            this.AddNewDataButton.Size = new System.Drawing.Size(115, 33);
             this.AddNewDataButton.TabIndex = 48;
             this.AddNewDataButton.Text = "Add New";
             this.AddNewDataButton.UseVisualStyleBackColor = false;
             this.AddNewDataButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.AddNewDataButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.AddNewDataButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // HomeButton
             // 
@@ -181,20 +169,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HomeButton.BackColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
-            this.HomeButton.Location = new System.Drawing.Point(67, 9);
+            this.HomeButton.Location = new System.Drawing.Point(67, 8);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(115, 35);
+            this.HomeButton.Size = new System.Drawing.Size(117, 33);
             this.HomeButton.TabIndex = 47;
             this.HomeButton.Text = "Home";
             this.HomeButton.UseVisualStyleBackColor = false;
             this.HomeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            this.HomeButton.MouseLeave += new System.EventHandler(this.MenuButtonsMouseLeaving);
-            this.HomeButton.MouseHover += new System.EventHandler(this.MenuButtonsMouseHovering);
             // 
             // YearlyReportChart
             // 
@@ -202,6 +187,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.YearlyReportChart.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.Text;
+            this.YearlyReportChart.BorderlineColor = System.Drawing.Color.Gray;
+            this.YearlyReportChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.AxisX.MajorGrid.Enabled = false;
             chartArea1.Name = "ChartArea1";
             this.YearlyReportChart.ChartAreas.Add(chartArea1);
@@ -394,10 +381,12 @@
             // 
             // MonthlyReportChart
             // 
+            this.MonthlyReportChart.BorderlineColor = System.Drawing.Color.Gray;
+            this.MonthlyReportChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea2.AxisX.MajorGrid.Enabled = false;
             chartArea2.Name = "ChartArea1";
             this.MonthlyReportChart.ChartAreas.Add(chartArea2);
-            this.MonthlyReportChart.Location = new System.Drawing.Point(12, 154);
+            this.MonthlyReportChart.Location = new System.Drawing.Point(12, 152);
             this.MonthlyReportChart.Name = "MonthlyReportChart";
             this.MonthlyReportChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
             series3.BorderWidth = 2;
@@ -412,7 +401,7 @@
             series4.Name = "expense";
             this.MonthlyReportChart.Series.Add(series3);
             this.MonthlyReportChart.Series.Add(series4);
-            this.MonthlyReportChart.Size = new System.Drawing.Size(815, 321);
+            this.MonthlyReportChart.Size = new System.Drawing.Size(815, 327);
             this.MonthlyReportChart.TabIndex = 66;
             this.MonthlyReportChart.Visible = false;
             // 
@@ -454,6 +443,7 @@
             // 
             this.ExpenseLabel.AutoSize = true;
             this.ExpenseLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpenseLabel.ForeColor = System.Drawing.Color.Black;
             this.ExpenseLabel.Location = new System.Drawing.Point(753, 125);
             this.ExpenseLabel.Name = "ExpenseLabel";
             this.ExpenseLabel.Size = new System.Drawing.Size(74, 21);
@@ -472,7 +462,7 @@
             this.LogoButton.ForeColor = System.Drawing.Color.White;
             this.LogoButton.Location = new System.Drawing.Point(12, 8);
             this.LogoButton.Name = "LogoButton";
-            this.LogoButton.Size = new System.Drawing.Size(49, 38);
+            this.LogoButton.Size = new System.Drawing.Size(49, 33);
             this.LogoButton.TabIndex = 71;
             this.LogoButton.UseVisualStyleBackColor = false;
             // 
@@ -498,6 +488,7 @@
             this.Controls.Add(this.MonthlyReportButton);
             this.Controls.Add(this.AddNewDataButton);
             this.Controls.Add(this.HomeButton);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

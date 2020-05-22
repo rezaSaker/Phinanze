@@ -68,7 +68,7 @@ namespace MyCost.View
             catch
             {
                 statusLabel.ForeColor = Color.Red;
-                statusLabel.Text = "Could not delete your account. Please check your internet connection and try again.";
+                statusLabel.Text = "Please check your internet connection and try again.";
             }
         }
     }
