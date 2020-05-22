@@ -51,7 +51,7 @@
             this.ShowRegisterPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
-            this.ShowRegisterPanelButton.Location = new System.Drawing.Point(146, 106);
+            this.ShowRegisterPanelButton.Location = new System.Drawing.Point(400, 106);
             this.ShowRegisterPanelButton.Name = "ShowRegisterPanelButton";
             this.ShowRegisterPanelButton.Size = new System.Drawing.Size(246, 36);
             this.ShowRegisterPanelButton.TabIndex = 0;
@@ -67,7 +67,7 @@
             this.ShowLoginPanelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowLoginPanelButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ShowLoginPanelButton.Location = new System.Drawing.Point(400, 106);
+            this.ShowLoginPanelButton.Location = new System.Drawing.Point(146, 106);
             this.ShowLoginPanelButton.Name = "ShowLoginPanelButton";
             this.ShowLoginPanelButton.Size = new System.Drawing.Size(246, 36);
             this.ShowLoginPanelButton.TabIndex = 1;
