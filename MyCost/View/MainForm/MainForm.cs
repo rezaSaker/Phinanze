@@ -183,9 +183,10 @@ namespace MyCost.View
                     HomeDataGridView.Rows.Add(year, month, earning, expense);
                     ShowOverview(monthly, rowIndex);
 
-                    //directly plot the data on the bar chart
-                    AddDataToBarChart("Earning", month, monthly.Earning);
-                    AddDataToBarChart("Expense", month, monthly.Expense);
+                    //Add up earning and expense for same months of all years
+                    //and plot them on the bar chart at the end of this method
+                    totalEarningDictionary[month] += monthly.Earning;
+                    totalExpenseDictionary[month] += monthly.Expense;
 
                     //add up all earning and expense for the pie chart
                     totalEarning += monthly.Earning;
@@ -198,20 +199,17 @@ namespace MyCost.View
             if(HomeDataGridView.Rows.Count > 0)
             {
                 HomeDataGridView.Rows[0].Cells[0].Selected = false;
-            }  
-            
-            if(_selectedYear == 0)  //if user selected all years
-            {
-                //plot the data in the bar chart
-                foreach(KeyValuePair<string, double> earning in totalEarningDictionary)
-                {
-                    AddDataToBarChart("Earning", earning.Key, earning.Value);
-                }
+            }
 
-                foreach (KeyValuePair<string, double> expense in totalExpenseDictionary)
-                {
-                    AddDataToBarChart("Expense", expense.Key, expense.Value);
-                }
+            //plot the data in the bar chart
+            foreach (KeyValuePair<string, double> earning in totalEarningDictionary)
+            {
+                AddDataToBarChart("Earning", earning.Key, earning.Value);
+            }
+
+            foreach (KeyValuePair<string, double> expense in totalExpenseDictionary)
+            {
+                AddDataToBarChart("Expense", expense.Key, expense.Value);
             }
 
             //plot the pie chart
