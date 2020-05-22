@@ -110,38 +110,36 @@ namespace MyCost.View
         {
             if (YearComboBox.SelectedItem.ToString() == "All years")
             {
-                _selectedYear = 0;
-
-                if(!_isFirstCall && GlobalSpace.MonthlyInfoList.Count < 1)
-                {
-                    //if there's no data to show
-                    string message = "Currently you do not have any saved information to appear on this page. " +
-                            "Add your today's earning and expense and see the magic happen. Ready?";
-
-                    DialogResult userResponse = MessageBox.Show(message, "Message",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                    if (userResponse == DialogResult.Yes)
-                    {
-                        AddNewDataButton.PerformClick();
-                    }
-                }
+                _selectedYear = 0;                
             }
             else
             {
-                _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
-
-                
-                if(!_isFirstCall && HomeDataGridView.Rows.Count < 1)
-                {
-                    string message = "Currently you do not have any saved information for " + _selectedYear + ".";
-
-                    DialogResult userResponse = MessageBox.Show(message, "Message",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());                            
             }
 
-            PlotMonthlyInfo(); 
+            PlotMonthlyInfo();
+
+            if (!_isFirstCall && GlobalSpace.MonthlyInfoList.Count < 1)
+            {
+                //if there's no data to show
+                string message = "Currently you do not have any saved information to appear on this page. " +
+                        "Add your today's earning and expense and see the magic happen. Ready?";
+
+                DialogResult userResponse = MessageBox.Show(message, "Message",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                if (userResponse == DialogResult.Yes)
+                {
+                    AddNewDataButton.PerformClick();
+                }
+            }
+            else if (!_isFirstCall && HomeDataGridView.Rows.Count < 1)
+            {
+                string message = "Currently you do not have any saved information for " + _selectedYear + ".";
+
+                DialogResult userResponse = MessageBox.Show(message, "Message",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }             
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)

@@ -56,7 +56,7 @@ if(isset($_POST['username']) && isset($_POST['password'])
 	{
 		if(password_verify($originalEmail, $row['comparable_email']))
 		{
-			die('This email is associated with another account. Please choose a different email.');
+			die('This email is already in use. Please choose a different email.');
 		}
 	}
 	

@@ -39,7 +39,7 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 			{
 				if(password_verify($originalEmail, $row['comparable_email']))
 				{
-					die('This email is associated with another account. Please choose a different email.');
+					die('This email is already in use. Please choose a different email.');
 				}
 			}
 
