@@ -28,23 +28,33 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
+            LoadBasicInformation();
+        }
+
+        private void LoadBasicInformation()
+        {
             UserNameLabel.Text = "username: " + GlobalSpace.Username;
             UserNameLabel.Text += "     Email: " + GlobalSpace.Email;
 
             //this label would be placed right after the email
-            EmailVerificationStatusLabel.Location = 
+            EmailVerificationStatusLabel.Location =
                 new Point(UserNameLabel.Location.X + UserNameLabel.Size.Width,
                             UserNameLabel.Location.Y);
 
-            if(GlobalSpace.IsEmailVarified)
+            if (GlobalSpace.IsEmailVarified)
             {
                 EmailVerificationStatusLabel.ForeColor = Color.ForestGreen;
                 EmailVerificationStatusLabel.Text = "(Verified)";
+                VerifyEmailButton.Visible = false;
             }
             else
             {
                 EmailVerificationStatusLabel.ForeColor = Color.Red;
                 EmailVerificationStatusLabel.Text = "(Not Verified)";
+                VerifyEmailButton.Location = new Point(
+                    EmailVerificationStatusLabel.Location.X + EmailVerificationStatusLabel.Size.Width + 5,
+                    VerifyEmailButton.Location.Y);
+                VerifyEmailButton.Visible = true;
             }
         }
 
@@ -246,8 +256,9 @@ namespace MyCost.View
             if(int.TryParse(result, out int emailVerificationCode)
                 && emailVerificationCode.ToString().Length == 6)
             {
-                //change local value of email
+                //change local value of email 
                 GlobalSpace.Email = NewEmailTextBox.Text;
+                GlobalSpace.IsEmailVarified = false;
 
                 //send verification email to the new email address
                 MailAddress from = new MailAddress("contact@rezasaker.com");
@@ -281,10 +292,12 @@ namespace MyCost.View
 
             //email subject and body
             string subject = "Email Verification for MyCost";
-            string message = @"Dear User\n,
-Thanks for registering account with MyCost Finance Management App. 
-Your email verification code is " + verificationCode + ".\n\n" +
-            "Pease ignore this email if it is not intended for you.\n\n" +
+            string message = "Dear User,\n\n" + 
+            "Thank you for registering account with MyCost Finance Management App. " +
+            "Please use the following verification code to verify your email from MyCost app. \n\n" +
+            "Your email verification code is: " + verificationCode + ".\n\n" +
+            "Verifying your email is important because if you ever forget your password / username, " +
+            "you will not be able to recover your password / username without a verified email. \n\n" +
             "Thank you\n" +
             "MyCost Team";
 
@@ -315,8 +328,7 @@ Your email verification code is " + verificationCode + ".\n\n" +
 
         private void ActionUponSendVerificationEmailSuccess()
         {
-            UserNameLabel.Text = "username: " + GlobalSpace.Username;
-            UserNameLabel.Text += "     Email: " + GlobalSpace.Email;
+            LoadBasicInformation();
 
             _progressViewerObject.StopProgress();
             EnableAllControls();
@@ -329,8 +341,7 @@ Your email verification code is " + verificationCode + ".\n\n" +
             //even though the email sending wasn't successful, 
             //we would continue with the next step and
             //prompt the user later to ask for verification code
-            UserNameLabel.Text = "username: " + GlobalSpace.Username;
-            UserNameLabel.Text += "     Email: " + GlobalSpace.Email;
+            LoadBasicInformation();
 
             _progressViewerObject.StopProgress();
             EnableAllControls();
@@ -525,6 +536,22 @@ Your email verification code is " + verificationCode + ".\n\n" +
             GlobalSpace.LogOutUser();
             _quitAppOnFormClosing = false;
             this.Close();
+        }
+
+        private void VerifyEmailButtonClicked(object sender, EventArgs e)
+        {
+            if (!GlobalSpace.IsEmailVarified)
+            {
+                EmailVerificationForm form = new EmailVerificationForm();
+                form.FormClosingEventHandler += EmailVerificationFormClosed;
+                form.Location = new Point(this.Location.X + 153, this.Location.Y + 120);
+                form.Show();
+            }
+        }
+
+        private void EmailVerificationFormClosed(object sender, EventArgs e)
+        {
+            LoadBasicInformation();
         }
     }
 }

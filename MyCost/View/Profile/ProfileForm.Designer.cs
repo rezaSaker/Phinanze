@@ -61,6 +61,7 @@
             this.ViewSourceButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LogoButton = new System.Windows.Forms.Button();
+            this.VerifyEmailButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -387,6 +388,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.VerifyEmailButton);
             this.panel1.Controls.Add(this.EmailVerificationStatusLabel);
             this.panel1.Controls.Add(this.DeleteAccountButton);
             this.panel1.Controls.Add(this.PasswordForEmailTextBox);
@@ -540,6 +542,22 @@
             this.LogoButton.TabIndex = 83;
             this.LogoButton.UseVisualStyleBackColor = false;
             // 
+            // VerifyEmailButton
+            // 
+            this.VerifyEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.VerifyEmailButton.FlatAppearance.BorderSize = 0;
+            this.VerifyEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.VerifyEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VerifyEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VerifyEmailButton.ForeColor = System.Drawing.Color.White;
+            this.VerifyEmailButton.Location = new System.Drawing.Point(551, 8);
+            this.VerifyEmailButton.Name = "VerifyEmailButton";
+            this.VerifyEmailButton.Size = new System.Drawing.Size(125, 28);
+            this.VerifyEmailButton.TabIndex = 83;
+            this.VerifyEmailButton.Text = "Verify Email";
+            this.VerifyEmailButton.UseVisualStyleBackColor = false;
+            this.VerifyEmailButton.Click += new System.EventHandler(this.VerifyEmailButtonClicked);
+            // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,5 +619,6 @@
         private System.Windows.Forms.Button DeleteAccountButton;
         private System.Windows.Forms.Label EmailVerificationStatusLabel;
         private System.Windows.Forms.Button LogoButton;
+        private System.Windows.Forms.Button VerifyEmailButton;
     }
 }

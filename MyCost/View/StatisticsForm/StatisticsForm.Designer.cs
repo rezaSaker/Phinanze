@@ -497,6 +497,7 @@
             this.Text = "MyCost - Earning and Expense Statistics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
+            this.Shown += new System.EventHandler(this.ThisFormShown);
             ((System.ComponentModel.ISupportInitialize)(this.YearlyReportChart)).EndInit();
             this.Panel1.ResumeLayout(false);
             this.Panel1.PerformLayout();

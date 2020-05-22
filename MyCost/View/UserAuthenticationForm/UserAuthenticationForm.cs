@@ -666,7 +666,7 @@ namespace MyCost.View
 
             _progressViewerObject.StopProgress();
 
-            MainForm form = new MainForm();
+            MainForm form = new MainForm(true);
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Show();
 

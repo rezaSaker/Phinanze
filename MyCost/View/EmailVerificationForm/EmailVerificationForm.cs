@@ -15,6 +15,8 @@ namespace MyCost.View
         private delegate void SendEmailDelegate();
         private delegate void VerifyEmailDelegate();
 
+        public event EventHandler FormClosingEventHandler;
+
         public EmailVerificationForm()
         {
             InitializeComponent();
@@ -178,6 +180,12 @@ namespace MyCost.View
             MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             this.Close();
+        }
+
+        private void EmailVerificationFormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            FormClosingEventHandler?.Invoke(this, null);
         }
     }
 }

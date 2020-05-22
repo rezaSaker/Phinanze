@@ -134,6 +134,7 @@
             this.Name = "EmailVerificationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MyCost - Email Verification";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmailVerificationFormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

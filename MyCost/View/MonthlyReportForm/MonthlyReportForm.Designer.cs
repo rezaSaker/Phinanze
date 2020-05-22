@@ -443,6 +443,7 @@
             this.Text = "MyCost - Monthly Report";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
+            this.Shown += new System.EventHandler(this.ThisFormShown);
             ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

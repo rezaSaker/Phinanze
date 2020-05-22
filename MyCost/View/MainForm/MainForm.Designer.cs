@@ -312,6 +312,8 @@
             this.BarChart.BorderlineColor = System.Drawing.Color.Black;
             this.BarChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.AxisX.Interval = 1D;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             chartArea1.Name = "ChartArea1";
             this.BarChart.ChartAreas.Add(chartArea1);
             this.BarChart.Location = new System.Drawing.Point(12, 275);

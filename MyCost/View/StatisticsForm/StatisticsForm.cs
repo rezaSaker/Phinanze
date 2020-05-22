@@ -49,6 +49,25 @@ namespace MyCost.View
             YearComboBox.SelectedIndex = YearComboBox.Items.IndexOf(_selectedYear.ToString());
         }
 
+        private void ThisFormShown(object sender, EventArgs e)
+        {
+
+            if (GlobalSpace.MonthlyInfoList.Count < 1)
+            {
+                //if there's no data to show
+                string message = "Currently you do not have any saved information to appear on this page. " +
+                        "Add your today's earning and expense and see the magic happen. Ready?";
+
+                DialogResult userResponse = MessageBox.Show(message, "Message",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                if (userResponse == DialogResult.Yes)
+                {
+                    AddNewDataButton.PerformClick();
+                }
+            }
+        }
+
         private void YearComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
