@@ -50,7 +50,7 @@ namespace MyCost.View
             _isRedundantTriggerOfEventHandler = false;
             _isRedundantCallOfPlotDailyInfo = true;
 
-            for (int i = 2018; i <= DateTime.Now.Year + 1; i++)
+            for (int i = 2018; i <= DateTime.Now.Year + 3; i++)
             {
                 YearComboBox.Items.Add(i.ToString());
             }

@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Drawing;
+using System.Text.RegularExpressions;
 using MyCost.Common;
+using System.Linq;
 
 namespace MyCost.View
 {
@@ -42,10 +43,11 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            for (int i = 2018; i <= _selectedYear + 3; i++)
+            for (int i = 2018; i <= DateTime.Now.Year + 3; i++)
             {
                 YearComboBox.Items.Add(i.ToString());
             }
+            YearComboBox.Items.Add("All Years");
             
             MonthComboBox.SelectedIndex = _selectedMonth - 1;
 
@@ -81,7 +83,14 @@ namespace MyCost.View
 
         private void YearComboBoxIndexChanged(object sender, EventArgs e)
         {
-            _selectedYear = Convert.ToInt32(YearComboBox.SelectedItem.ToString());
+            if(int.TryParse(YearComboBox.SelectedItem.ToString(), out int year))
+            {
+                _selectedYear = year;
+            }
+            else
+            {
+                _selectedYear = 0;
+            }
 
             if (!_isInitializationCall)
             {
@@ -95,9 +104,10 @@ namespace MyCost.View
 
         private void DataGridViewCellDoubleClicked(object sender, DataGridViewCellEventArgs e)
         {
-            int day = Convert.ToInt32(MonthlyReportDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Split(' ')[0]);
-            int month = _selectedMonth;
-            int year = _selectedYear;
+            string[] date = MonthlyReportDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString().Split(' ');
+            int day = Convert.ToInt32(date[0]);
+            int month = _monthList.IndexOf(date[1].Replace(",", "")) + 1;
+            int year = Convert.ToInt32(date[2]);
 
             OpenNewForm(new AddNewDataForm(day, month, year));
         }
@@ -203,23 +213,45 @@ namespace MyCost.View
             MonthlyReportDataGridView.Rows.Clear();
 
             HeaderLabel.Text = "Showing monthly information for ";
-            HeaderLabel.Text += _monthList[_selectedMonth - 1] + " " + _selectedYear.ToString();
-
-            int numberOfDays = GetNumberOfDaysInMonth();
+            HeaderLabel.Text += (_selectedMonth <= 12?_monthList[_selectedMonth - 1] : "all months of ") + 
+                " " + (_selectedYear != 0? _selectedYear.ToString(): " all years");
             
-            List<DailyInfo> dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
-                d => d.Month == _selectedMonth && d.Year == _selectedYear);
+            List<DailyInfo> dailyInfoList;
 
-            //plot info in ascending order of day
-            for (int day = 1; day <= numberOfDays; day++)
+            if(_selectedYear == 0 && _selectedMonth == 13)
             {
-                DailyInfo daily = dailyInfoList.Find(d => d.Day == day);
+                //if user selected all years and all months
+                dailyInfoList = GlobalSpace.DailyInfoList.ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Day).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Month).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Year).ToList();               
+            }
+            else if(_selectedYear == 0 && _selectedMonth != 13)
+            {
+                //if user selected all years and a specific month
+                dailyInfoList = GlobalSpace.DailyInfoList.FindAll(d => d.Month == _selectedMonth).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Day).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Year).ToList();
+            }
+            else if (_selectedYear != 0 && _selectedMonth == 13)
+            {
+                //if user selected a specific year and all months
+                dailyInfoList = GlobalSpace.DailyInfoList.FindAll(d => d.Year == _selectedYear).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Day).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Month).ToList();
+            }
+            else
+            {
+                //if user selected a specific month and a specific year
+                dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
+                d => d.Month == _selectedMonth && d.Year == _selectedYear).ToList();
+                dailyInfoList = dailyInfoList.OrderBy(d => d.Day).ToList();
+            }           
 
-                if(daily != null)
-                {
-                    string date = daily.Day + " " + _monthList[_selectedMonth - 1] + ", " + _selectedYear.ToString();
-                    MonthlyReportDataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
-                }
+            foreach (DailyInfo daily in dailyInfoList)
+            {
+                string date = daily.Day + " " + _monthList[daily.Month - 1] + ", " + daily.Year.ToString();
+                MonthlyReportDataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
             }
 
             if(MonthlyReportDataGridView.Rows.Count > 0)
@@ -228,35 +260,6 @@ namespace MyCost.View
 
                 UpdateTotalEarningAndExpenseLabel();
             }          
-        }
-
-        private int GetNumberOfDaysInMonth()
-        {
-            //calculates the number of days according to month
-            if (_selectedMonth == 2 && DateTime.IsLeapYear(_selectedYear))
-            {
-                return 29;
-            }
-            else if (_selectedMonth == 2 && !DateTime.IsLeapYear(_selectedYear))
-            {
-                return 28;
-            }
-            else if (_selectedMonth <= 7 && _selectedMonth % 2 == 1)
-            {
-                return 31;
-            }
-            else if (_selectedMonth <= 7 && _selectedMonth % 2 == 0)
-            {
-                return 30;
-            }
-            else if (_selectedMonth > 7 && _selectedMonth % 2 == 1)
-            {
-                return 30;
-            }
-            else
-            {
-                return 31;
-            }
         }
 
         private void DeleteDailyInfo(bool manuallyRemoveRow = false)

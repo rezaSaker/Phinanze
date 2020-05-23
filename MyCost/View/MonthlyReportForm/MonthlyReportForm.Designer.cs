@@ -54,6 +54,10 @@
             this.TotalEarningLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_status = new System.Windows.Forms.Label();
+            this.ExpenseSearchTextBox = new System.Windows.Forms.TextBox();
+            this.EarningSearchTextBox = new System.Windows.Forms.TextBox();
+            this.NoteSearchTextBox = new System.Windows.Forms.TextBox();
+            this.DateSearchTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -77,8 +81,9 @@
             "September",
             "October",
             "November",
-            "December"});
-            this.MonthComboBox.Location = new System.Drawing.Point(588, 59);
+            "December",
+            "All Months"});
+            this.MonthComboBox.Location = new System.Drawing.Point(588, 47);
             this.MonthComboBox.Name = "MonthComboBox";
             this.MonthComboBox.Size = new System.Drawing.Size(153, 29);
             this.MonthComboBox.TabIndex = 3;
@@ -114,7 +119,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MonthlyReportDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.MonthlyReportDataGridView.GridColor = System.Drawing.Color.Black;
-            this.MonthlyReportDataGridView.Location = new System.Drawing.Point(15, 96);
+            this.MonthlyReportDataGridView.Location = new System.Drawing.Point(15, 117);
             this.MonthlyReportDataGridView.Name = "MonthlyReportDataGridView";
             this.MonthlyReportDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -128,7 +133,7 @@
             this.MonthlyReportDataGridView.RowHeadersVisible = false;
             this.MonthlyReportDataGridView.RowHeadersWidth = 30;
             this.MonthlyReportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MonthlyReportDataGridView.Size = new System.Drawing.Size(812, 343);
+            this.MonthlyReportDataGridView.Size = new System.Drawing.Size(812, 322);
             this.MonthlyReportDataGridView.TabIndex = 5;
             this.MonthlyReportDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             this.MonthlyReportDataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DataGridViewUserDeletingRow);
@@ -168,7 +173,7 @@
             this.YearComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.YearComboBox.ForeColor = System.Drawing.Color.Black;
             this.YearComboBox.FormattingEnabled = true;
-            this.YearComboBox.Location = new System.Drawing.Point(747, 59);
+            this.YearComboBox.Location = new System.Drawing.Point(747, 47);
             this.YearComboBox.Name = "YearComboBox";
             this.YearComboBox.Size = new System.Drawing.Size(80, 29);
             this.YearComboBox.TabIndex = 9;
@@ -178,7 +183,7 @@
             // 
             this.HeaderLabel.AutoSize = true;
             this.HeaderLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeaderLabel.Location = new System.Drawing.Point(12, 64);
+            this.HeaderLabel.Location = new System.Drawing.Point(12, 47);
             this.HeaderLabel.Name = "HeaderLabel";
             this.HeaderLabel.Size = new System.Drawing.Size(110, 21);
             this.HeaderLabel.TabIndex = 10;
@@ -414,12 +419,57 @@
             this.lbl_status.Text = "Total Expense";
             this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ExpenseSearchTextBox
+            // 
+            this.ExpenseSearchTextBox.BackColor = System.Drawing.Color.White;
+            this.ExpenseSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExpenseSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.ExpenseSearchTextBox.Location = new System.Drawing.Point(626, 82);
+            this.ExpenseSearchTextBox.Name = "ExpenseSearchTextBox";
+            this.ExpenseSearchTextBox.Size = new System.Drawing.Size(201, 27);
+            this.ExpenseSearchTextBox.TabIndex = 57;
+            // 
+            // EarningSearchTextBox
+            // 
+            this.EarningSearchTextBox.BackColor = System.Drawing.Color.White;
+            this.EarningSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EarningSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.EarningSearchTextBox.Location = new System.Drawing.Point(425, 82);
+            this.EarningSearchTextBox.Name = "EarningSearchTextBox";
+            this.EarningSearchTextBox.Size = new System.Drawing.Size(195, 27);
+            this.EarningSearchTextBox.TabIndex = 58;
+            // 
+            // NoteSearchTextBox
+            // 
+            this.NoteSearchTextBox.BackColor = System.Drawing.Color.White;
+            this.NoteSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoteSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.NoteSearchTextBox.Location = new System.Drawing.Point(219, 82);
+            this.NoteSearchTextBox.Name = "NoteSearchTextBox";
+            this.NoteSearchTextBox.Size = new System.Drawing.Size(200, 27);
+            this.NoteSearchTextBox.TabIndex = 59;
+            // 
+            // DateSearchTextBox
+            // 
+            this.DateSearchTextBox.BackColor = System.Drawing.Color.White;
+            this.DateSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.DateSearchTextBox.Location = new System.Drawing.Point(15, 82);
+            this.DateSearchTextBox.Name = "DateSearchTextBox";
+            this.DateSearchTextBox.Size = new System.Drawing.Size(198, 27);
+            this.DateSearchTextBox.TabIndex = 60;
+            this.DateSearchTextBox.Text = "Search by Date";
+            // 
             // MonthlyReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(840, 491);
+            this.Controls.Add(this.DateSearchTextBox);
+            this.Controls.Add(this.NoteSearchTextBox);
+            this.Controls.Add(this.EarningSearchTextBox);
+            this.Controls.Add(this.ExpenseSearchTextBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.LogoButton);
@@ -476,5 +526,9 @@
         private System.Windows.Forms.Label TotalEarningLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.TextBox ExpenseSearchTextBox;
+        private System.Windows.Forms.TextBox EarningSearchTextBox;
+        private System.Windows.Forms.TextBox NoteSearchTextBox;
+        private System.Windows.Forms.TextBox DateSearchTextBox;
     }
 }
