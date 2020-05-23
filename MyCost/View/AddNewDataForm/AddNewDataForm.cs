@@ -70,8 +70,6 @@ namespace MyCost.View
                 {
                     ((DataGridView)control).UserAddedRow += ControlChanged;
                     ((DataGridView)control).RowsRemoved += ControlChanged;
-                    ((DataGridView)control).CellEndEdit += ControlChanged;
-                    ((DataGridView)control).CellBeginEdit += ControlChanged;
                     ((DataGridView)control).CellValueChanged += ControlChanged;
                 }
             }

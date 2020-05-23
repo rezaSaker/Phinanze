@@ -111,7 +111,7 @@
             this.HomeDataGridView.RowHeadersVisible = false;
             this.HomeDataGridView.RowHeadersWidth = 51;
             this.HomeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HomeDataGridView.Size = new System.Drawing.Size(506, 182);
+            this.HomeDataGridView.Size = new System.Drawing.Size(498, 182);
             this.HomeDataGridView.TabIndex = 6;
             this.HomeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             // 
@@ -276,7 +276,7 @@
             chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             chartArea1.Name = "ChartArea1";
             this.BarChart.ChartAreas.Add(chartArea1);
-            this.BarChart.Location = new System.Drawing.Point(12, 267);
+            this.BarChart.Location = new System.Drawing.Point(12, 273);
             this.BarChart.Name = "BarChart";
             this.BarChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series1.ChartArea = "ChartArea1";
@@ -287,7 +287,7 @@
             series2.Name = "Expense";
             this.BarChart.Series.Add(series1);
             this.BarChart.Series.Add(series2);
-            this.BarChart.Size = new System.Drawing.Size(815, 197);
+            this.BarChart.Size = new System.Drawing.Size(815, 191);
             this.BarChart.TabIndex = 49;
             this.BarChart.Text = "Bar Chart";
             // 
@@ -311,7 +311,7 @@
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.PieChart.Series.Add(series3);
-            this.PieChart.Size = new System.Drawing.Size(311, 180);
+            this.PieChart.Size = new System.Drawing.Size(311, 182);
             this.PieChart.TabIndex = 50;
             this.PieChart.Text = "Pie Chart";
             // 

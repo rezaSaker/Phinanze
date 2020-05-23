@@ -49,7 +49,7 @@ namespace MyCost.View
             MonthlyInfo.Fetch();
 
             BarChart.Series["Earning"].Color = Color.YellowGreen;
-            BarChart.Series["Expense"].Color = Color.OrangeRed;
+            BarChart.Series["Expense"].Color = Color.DarkOrange;
 
             for (int year = 2018; year <= _selectedYear + 3; year++)
             {
@@ -94,7 +94,7 @@ namespace MyCost.View
             {
                 //if there's no data to show
                 string message = "Currently you do not have any saved information to appear on this page. " +
-                        "Add your today's earning and expense and see the magic happen. Ready?";
+                        "Add your today's earning and expense and see the magic happen. Are you ready?";
 
                 DialogResult userResponse = MessageBox.Show(message, "Message",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -123,7 +123,7 @@ namespace MyCost.View
             {
                 //if there's no data to show
                 string message = "Currently you do not have any saved information to appear on this page. " +
-                        "Add your today's earning and expense and see the magic happen. Ready?";
+                        "Add your today's earning and expense and see the magic happen. Are you ready?";
 
                 DialogResult userResponse = MessageBox.Show(message, "Message",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -285,6 +285,7 @@ namespace MyCost.View
             {
                 DataPoint point1 = new DataPoint();
                 point1.Color = Color.YellowGreen;
+                point1.LabelForeColor = Color.White;
                 point1.ToolTip = String.Format("Total Earning: ${0:00}", totalEarning);
                 point1.SetValueXY("Earning", totalEarning);
                 PieChart.Series["Series1"].Points.Add(point1);
@@ -293,7 +294,8 @@ namespace MyCost.View
             if(totalExpense > 0)
             {
                 DataPoint point2 = new DataPoint();
-                point2.Color = Color.OrangeRed;
+                point2.Color = Color.DarkOrange;
+                point2.LabelForeColor = Color.White;
                 point2.ToolTip = String.Format("Total Expense: ${0:00}", totalExpense);
                 point2.SetValueXY("Expense", totalExpense);
                 PieChart.Series["Series1"].Points.Add(point2);
@@ -304,7 +306,8 @@ namespace MyCost.View
                 double savings = totalEarning - totalExpense;
                 savings = savings > 0 ? savings : 0.00;
                 DataPoint point3 = new DataPoint();
-                point3.Color = Color.SkyBlue;
+                point3.Color = Color.CornflowerBlue;
+                point3.LabelForeColor = Color.White;
                 point3.ToolTip = String.Format("Total Savings: ${0:00}", savings);
                 point3.SetValueXY("Savings", savings);
                 PieChart.Series["Series1"].Points.Add(point3);

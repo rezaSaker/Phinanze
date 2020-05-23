@@ -305,6 +305,7 @@
             this.EarningDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.EarningDataGridView.Size = new System.Drawing.Size(815, 179);
             this.EarningDataGridView.TabIndex = 5;
+            this.EarningDataGridView.TabStop = false;
             this.EarningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
             this.EarningDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDataGridViewCellClicked);
             this.EarningDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDGVEditEnded);

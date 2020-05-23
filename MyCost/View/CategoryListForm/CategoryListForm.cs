@@ -87,7 +87,7 @@ namespace MyCost.View
                 //if the user just changed the character case of the category name but 
                 //didn't change the actual name of the category or added some unneccesary space
                 //after the category name, then we have to just trim the unnecessary spaces and then save it
-                CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value = cellValue.ToString().ToLower().Trim();
+                CategoryDataGridView.Rows[e.RowIndex].Cells[0].Value = cellValue.ToString().Trim();
                 UpdateCategories();
 
                 return;

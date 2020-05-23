@@ -75,13 +75,6 @@ namespace MyCost.View
             {
                 MessageBox.Show(_webHandlerObject.Response, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //open a new verification form so that user can try again
-            EmailVerificationForm newForm = new EmailVerificationForm();
-            newForm.Location = this.Location;
-            newForm.Show();
-
-            this.Close();
         }
 
         private void NotNowButtonClicked(object sender, EventArgs e)
