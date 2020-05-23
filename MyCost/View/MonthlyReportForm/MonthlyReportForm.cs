@@ -276,9 +276,12 @@ namespace MyCost.View
 
             foreach (DataGridViewRow row in MonthlyReportDataGridView.SelectedRows)
             {
-                int day = Convert.ToInt32(MonthlyReportDataGridView.Rows[row.Index].Cells[0].Value.ToString().Split(' ')[0]);
+                string[] date = row.Cells[0].Value.ToString().Split(' ');
+                int day = Convert.ToInt32(date[0]);
+                int month = _monthList.IndexOf(date[1].Replace(",", "")) + 1;
+                int year = Convert.ToInt32(date[2]);
 
-                string result = WebHandler.DeleteDailyInfo(day, _selectedMonth, _selectedYear);
+                string result = WebHandler.DeleteDailyInfo(day, month, year);
 
                 if (result == "SUCCESS")
                 {
@@ -291,7 +294,7 @@ namespace MyCost.View
                     }
 
                     GlobalSpace.DailyInfoList.RemoveAll(
-                        d => d.Day == day && d.Month == _selectedMonth && d.Year == _selectedYear);                    
+                        d => d.Day == day && d.Month == month && d.Year == year);                    
                 }
                 else
                 {
