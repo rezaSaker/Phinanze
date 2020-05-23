@@ -83,9 +83,9 @@
             "November",
             "December",
             "All Months"});
-            this.MonthComboBox.Location = new System.Drawing.Point(588, 47);
+            this.MonthComboBox.Location = new System.Drawing.Point(569, 47);
             this.MonthComboBox.Name = "MonthComboBox";
-            this.MonthComboBox.Size = new System.Drawing.Size(153, 29);
+            this.MonthComboBox.Size = new System.Drawing.Size(137, 29);
             this.MonthComboBox.TabIndex = 3;
             this.MonthComboBox.SelectedIndexChanged += new System.EventHandler(this.MonthComboBoxIndexChanged);
             // 
@@ -173,9 +173,9 @@
             this.YearComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.YearComboBox.ForeColor = System.Drawing.Color.Black;
             this.YearComboBox.FormattingEnabled = true;
-            this.YearComboBox.Location = new System.Drawing.Point(747, 47);
+            this.YearComboBox.Location = new System.Drawing.Point(712, 47);
             this.YearComboBox.Name = "YearComboBox";
-            this.YearComboBox.Size = new System.Drawing.Size(80, 29);
+            this.YearComboBox.Size = new System.Drawing.Size(115, 29);
             this.YearComboBox.TabIndex = 9;
             this.YearComboBox.SelectedIndexChanged += new System.EventHandler(this.YearComboBoxIndexChanged);
             // 
@@ -423,42 +423,53 @@
             // 
             this.ExpenseSearchTextBox.BackColor = System.Drawing.Color.White;
             this.ExpenseSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExpenseSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.ExpenseSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.ExpenseSearchTextBox.Location = new System.Drawing.Point(626, 82);
             this.ExpenseSearchTextBox.Name = "ExpenseSearchTextBox";
             this.ExpenseSearchTextBox.Size = new System.Drawing.Size(201, 27);
             this.ExpenseSearchTextBox.TabIndex = 57;
+            this.ExpenseSearchTextBox.Text = "Search by Expense";
+            this.ExpenseSearchTextBox.Click += new System.EventHandler(this.ExpenseSearchTextBox_Click);
+            this.ExpenseSearchTextBox.TextChanged += new System.EventHandler(this.ExpenseSearchTextBox_TextChanged);
             // 
             // EarningSearchTextBox
             // 
             this.EarningSearchTextBox.BackColor = System.Drawing.Color.White;
             this.EarningSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EarningSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.EarningSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.EarningSearchTextBox.Location = new System.Drawing.Point(425, 82);
             this.EarningSearchTextBox.Name = "EarningSearchTextBox";
             this.EarningSearchTextBox.Size = new System.Drawing.Size(195, 27);
             this.EarningSearchTextBox.TabIndex = 58;
+            this.EarningSearchTextBox.Text = "Search by Earning";
+            this.EarningSearchTextBox.Click += new System.EventHandler(this.EarningSearchTextBox_Click);
+            this.EarningSearchTextBox.TextChanged += new System.EventHandler(this.EarningSearchTextBox_TextChanged);
             // 
             // NoteSearchTextBox
             // 
             this.NoteSearchTextBox.BackColor = System.Drawing.Color.White;
             this.NoteSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoteSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.NoteSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.NoteSearchTextBox.Location = new System.Drawing.Point(219, 82);
             this.NoteSearchTextBox.Name = "NoteSearchTextBox";
             this.NoteSearchTextBox.Size = new System.Drawing.Size(200, 27);
             this.NoteSearchTextBox.TabIndex = 59;
+            this.NoteSearchTextBox.Text = "Search by Note";
+            this.NoteSearchTextBox.Click += new System.EventHandler(this.NoteSearchTextBox_Click);
+            this.NoteSearchTextBox.TextChanged += new System.EventHandler(this.NoteSearchTextBox_TextChanged);
             // 
             // DateSearchTextBox
             // 
             this.DateSearchTextBox.BackColor = System.Drawing.Color.White;
             this.DateSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateSearchTextBox.ForeColor = System.Drawing.Color.Black;
+            this.DateSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.DateSearchTextBox.Location = new System.Drawing.Point(15, 82);
             this.DateSearchTextBox.Name = "DateSearchTextBox";
             this.DateSearchTextBox.Size = new System.Drawing.Size(198, 27);
             this.DateSearchTextBox.TabIndex = 60;
             this.DateSearchTextBox.Text = "Search by Date";
+            this.DateSearchTextBox.Click += new System.EventHandler(this.DateSearchTextBox_Click);
+            this.DateSearchTextBox.TextChanged += new System.EventHandler(this.DateSearchTextBox_TextChanged);
             // 
             // MonthlyReportForm
             // 

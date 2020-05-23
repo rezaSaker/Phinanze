@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using MyCost.Common;
 using System.Linq;
+using System.Drawing;
 
 namespace MyCost.View
 {
@@ -179,6 +180,63 @@ namespace MyCost.View
             }
         }
 
+
+        private void DateSearchTextBox_Click(object sender, EventArgs e)
+        {
+            if(DateSearchTextBox.ForeColor != Color.Black)
+            {
+                DateSearchTextBox.ForeColor = Color.Black;
+                DateSearchTextBox.Text = "";
+            }
+        }
+
+        private void DateSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PlotDailyInfo();
+        }
+
+        private void NoteSearchTextBox_Click(object sender, EventArgs e)
+        {
+            if (NoteSearchTextBox.ForeColor != Color.Black)
+            {
+                NoteSearchTextBox.ForeColor = Color.Black;
+                NoteSearchTextBox.Text = "";
+            }
+        }
+
+        private void NoteSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PlotDailyInfo();
+        }
+
+        private void EarningSearchTextBox_Click(object sender, EventArgs e)
+        {
+            if (EarningSearchTextBox.ForeColor != Color.Black)
+            {
+                EarningSearchTextBox.ForeColor = Color.Black;
+                EarningSearchTextBox.Text = "";
+            }
+        }
+
+        private void EarningSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PlotDailyInfo();
+        }
+
+        private void ExpenseSearchTextBox_Click(object sender, EventArgs e)
+        {
+            if (ExpenseSearchTextBox.ForeColor != Color.Black)
+            {
+                ExpenseSearchTextBox.ForeColor = Color.Black;
+                ExpenseSearchTextBox.Text = "";
+            }
+        }
+
+        private void ExpenseSearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            PlotDailyInfo();
+        }
+
         private void ThisFormClosing(object sender, FormClosingEventArgs e)
         {
             if (_quitAppOnFormClosing)
@@ -246,12 +304,57 @@ namespace MyCost.View
                 dailyInfoList = GlobalSpace.DailyInfoList.FindAll(
                 d => d.Month == _selectedMonth && d.Year == _selectedYear).ToList();
                 dailyInfoList = dailyInfoList.OrderBy(d => d.Day).ToList();
-            }           
+            }                   
 
             foreach (DailyInfo daily in dailyInfoList)
             {
                 string date = daily.Day + " " + _monthList[daily.Month - 1] + ", " + daily.Year.ToString();
-                MonthlyReportDataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
+                bool addRow = true;
+
+                //check for filtering by date
+                if (DateSearchTextBox.ForeColor == Color.Black 
+                    && DateSearchTextBox.Text.Length > 0)
+                {
+                   if(!date.ToLower().Contains(DateSearchTextBox.Text.ToLower()))
+                    {
+                        addRow = false;
+                    }
+                }
+
+                //check for filtering by note
+                if (NoteSearchTextBox.ForeColor == Color.Black
+                    && NoteSearchTextBox.Text.Length > 0)
+                {
+                    if (!daily.Note.ToLower().Contains(NoteSearchTextBox.Text.ToLower()))
+                    {
+                        addRow = false;
+                    }
+                }
+
+                //check for filtering by earning
+                if (EarningSearchTextBox.ForeColor == Color.Black
+                    && EarningSearchTextBox.Text.Length > 0)
+                {
+                    if (!daily.TotalEarning.ToString().Equals(EarningSearchTextBox.Text))
+                    {
+                        addRow = false;
+                    }
+                }
+
+                //check for filtering by expense
+                if (ExpenseSearchTextBox.ForeColor == Color.Black
+                    && ExpenseSearchTextBox.Text.Length > 0)
+                {
+                    if (!daily.TotalExpense.ToString().Equals(ExpenseSearchTextBox.Text))
+                    {
+                        addRow = false;
+                    }
+                }
+
+                if(addRow)
+                {
+                    MonthlyReportDataGridView.Rows.Add(date, daily.Note, daily.TotalEarning.ToString(), daily.TotalExpense.ToString());
+                }
             }
 
             if(MonthlyReportDataGridView.Rows.Count > 0)
