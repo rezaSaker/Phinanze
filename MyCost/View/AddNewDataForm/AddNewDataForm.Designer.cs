@@ -102,7 +102,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ExpenseDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ExpenseDataGridView.Location = new System.Drawing.Point(12, 92);
+            this.ExpenseDataGridView.Location = new System.Drawing.Point(12, 81);
             this.ExpenseDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.ExpenseDataGridView.Name = "ExpenseDataGridView";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -119,7 +119,7 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.ExpenseDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.ExpenseDataGridView.Size = new System.Drawing.Size(815, 155);
+            this.ExpenseDataGridView.Size = new System.Drawing.Size(815, 179);
             this.ExpenseDataGridView.TabIndex = 5;
             this.ExpenseDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ExpenseDGVEditBegan);
             this.ExpenseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDataGridViewCellClicked);
@@ -168,9 +168,8 @@
             this.NoteTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
             this.NoteTextBox.Location = new System.Drawing.Point(228, 48);
             this.NoteTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.NoteTextBox.Multiline = true;
             this.NoteTextBox.Name = "NoteTextBox";
-            this.NoteTextBox.Size = new System.Drawing.Size(599, 29);
+            this.NoteTextBox.Size = new System.Drawing.Size(599, 27);
             this.NoteTextBox.TabIndex = 6;
             this.NoteTextBox.Text = "Note";
             this.NoteTextBox.Click += new System.EventHandler(this.NoteTextBoxClicked);
@@ -286,7 +285,7 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.EarningDataGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            this.EarningDataGridView.Location = new System.Drawing.Point(11, 264);
+            this.EarningDataGridView.Location = new System.Drawing.Point(12, 264);
             this.EarningDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.EarningDataGridView.Name = "EarningDataGridView";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -304,7 +303,7 @@
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.EarningDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.EarningDataGridView.Size = new System.Drawing.Size(816, 166);
+            this.EarningDataGridView.Size = new System.Drawing.Size(815, 179);
             this.EarningDataGridView.TabIndex = 5;
             this.EarningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
             this.EarningDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDataGridViewCellClicked);
@@ -352,10 +351,10 @@
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(737, 447);
+            this.SaveButton.Location = new System.Drawing.Point(737, 446);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(89, 33);
+            this.SaveButton.Size = new System.Drawing.Size(90, 35);
             this.SaveButton.TabIndex = 25;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
@@ -399,10 +398,10 @@
             this.ApplyCategoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ApplyCategoryButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ApplyCategoryButton.ForeColor = System.Drawing.Color.White;
-            this.ApplyCategoryButton.Location = new System.Drawing.Point(501, 447);
+            this.ApplyCategoryButton.Location = new System.Drawing.Point(501, 446);
             this.ApplyCategoryButton.Margin = new System.Windows.Forms.Padding(2);
             this.ApplyCategoryButton.Name = "ApplyCategoryButton";
-            this.ApplyCategoryButton.Size = new System.Drawing.Size(144, 33);
+            this.ApplyCategoryButton.Size = new System.Drawing.Size(144, 35);
             this.ApplyCategoryButton.TabIndex = 46;
             this.ApplyCategoryButton.Text = "Apply category";
             this.ApplyCategoryButton.UseVisualStyleBackColor = false;
@@ -519,10 +518,10 @@
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteButton.Location = new System.Drawing.Point(649, 447);
+            this.DeleteButton.Location = new System.Drawing.Point(649, 446);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(84, 33);
+            this.DeleteButton.Size = new System.Drawing.Size(84, 35);
             this.DeleteButton.TabIndex = 54;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
