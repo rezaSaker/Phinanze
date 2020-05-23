@@ -70,23 +70,6 @@ namespace MyCost.View
             }
         }
 
-        private void UserNameTextBoxesTextChanged(object sender, EventArgs e)
-        {
-            if (CurrentUserNameTextBox.ForeColor == Color.Black
-                && CurrentUserNameTextBox.Text != ""
-                && NewUserNameTextBox.ForeColor == Color.Black
-                && NewUserNameTextBox.Text != ""
-                && PasswordTextBox.ForeColor == Color.Black
-                && PasswordTextBox.Text != "")
-            {
-                UpdateUsernameButton.Enabled = true;
-            }
-            else
-            {
-                UpdateUsernameButton.Enabled = false;
-            }
-        }
-
         private void PasswordTextBoxesClicked(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -99,77 +82,83 @@ namespace MyCost.View
             }
         }
 
-        private void PasswordTextBoxesTextChanged(object sender, EventArgs e)
-        {
-            if (CurrentPasswordTextBox.ForeColor == Color.Black
-               && CurrentPasswordTextBox.Text != ""
-               && NewPasswordTextBox.ForeColor == Color.Black
-               && NewPasswordTextBox.Text != ""
-               && ConfirmPasswordTextBox.ForeColor == Color.Black
-               && ConfirmPasswordTextBox.Text != "")
-            {
-                UpdatePasswordButton.Enabled = true;
-            }
-            else
-            {
-                UpdatePasswordButton.Enabled = false;
-            }
-        }
-
-        private void ChangeEmailTextBoxesTextChanged(object sender, EventArgs e)
-        {
-            if(NewEmailTextBox.ForeColor == Color.Black 
-                && NewEmailTextBox.Text != ""
-                && PasswordForEmailTextBox.ForeColor == Color.Black
-                &&PasswordForEmailTextBox.Text != "")
-            {
-                UpdateEmailButton.Enabled = true;
-            }
-            else
-            {
-                UpdateEmailButton.Enabled = false;
-            }
-        }
-
         private void SubmitNewUsernameButtonClicked(object sender, EventArgs e)
         {
-            if (CurrentUserNameTextBox.Text != GlobalSpace.Username)
+            if(NewUserNameTextBox.ForeColor != Color.Black || NewUserNameTextBox.Text.Length < 1)
             {
-                string message = "Current username is incorrect";
+                NewUserNameTextBox.Text = "New Username";
+                NewUserNameTextBox.ForeColor = Color.Red;
+            }
+            else if(ConfirmUserNameTextBox.ForeColor != Color.Black || ConfirmUserNameTextBox.Text.Length < 1)
+            {
+                ConfirmUserNameTextBox.Text = "Confirm New Username";
+                ConfirmUserNameTextBox.ForeColor = Color.Red;
+            }
+            else if(PasswordForUsernameChangeTextBox.ForeColor != Color.Black 
+                || PasswordForUsernameChangeTextBox.Text.Length < 1)
+            {
+                PasswordForUsernameChangeTextBox.ForeColor = Color.Red;
+                PasswordForUsernameChangeTextBox.Text = "Password";
+                PasswordForUsernameChangeTextBox.PasswordChar = '\0';
+            }
+            else if(NewUserNameTextBox.Text != ConfirmUserNameTextBox.Text)
+            {
+                NewUserNameTextBox.ForeColor = ConfirmUserNameTextBox.ForeColor = Color.Red;
+
+                string message = "Usernames do not match.";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;
             }
-            
-
-            string result = WebHandler.UpdateUsername(NewUserNameTextBox.Text, PasswordTextBox.Text);
-
-            if (result == "SUCCESS")
+            else //all fields are correctly filled
             {
-                string message = "Your username has been successfully changed. " +
-                    "We are logging you out of the current session. " +
-                    "Log in with the new username to continue. ";
+                string result = WebHandler.UpdateUsername(ConfirmUserNameTextBox.Text, PasswordForUsernameChangeTextBox.Text);
 
-                MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (result == "SUCCESS")
+                {
+                    string message = "Your username has been successfully changed. " +
+                        "We are logging you out of the current session. " +
+                        "Log in with the new username to continue. ";
 
-                //log out user from the current session                    
-                GlobalSpace.LogOutUser();
-                 _quitAppOnFormClosing = false;
-                 this.Close();
-            }
-            else
-            {
-                //if the update doesn't succeed, the error message is returned
-                MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //log out user from the current session                    
+                    GlobalSpace.LogOutUser();
+                    _quitAppOnFormClosing = false;
+                    this.Close();
+                }
+                else
+                {
+                    //if the update doesn't succeed, the error message is returned
+                    MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }           
         }
 
         private void SubmitNewPasswordButtonClicked(object sender, EventArgs e)
         {
-            if (NewPasswordTextBox.Text != ConfirmPasswordTextBox.Text)
+            if (NewPasswordTextBox.ForeColor != Color.Black || NewPasswordTextBox.Text.Length < 1)
             {
-                string message = "Password doesn't match!";
+                NewPasswordTextBox.Text = "New Password";
+                NewPasswordTextBox.ForeColor = Color.Red;
+                NewPasswordTextBox.PasswordChar = '\0';
+            }
+            else if (ConfirmPasswordTextBox.ForeColor != Color.Black || ConfirmPasswordTextBox.Text.Length < 1)
+            {
+                ConfirmPasswordTextBox.Text = "Confirm New Password";
+                ConfirmPasswordTextBox.ForeColor = Color.Red;
+                ConfirmPasswordTextBox.PasswordChar = '\0';
+            }
+            else if (CurrentPasswordTextBox.ForeColor != Color.Black || CurrentPasswordTextBox.Text.Length < 1)
+            {
+                CurrentPasswordTextBox.ForeColor = Color.Red;
+                CurrentPasswordTextBox.Text = "Current Password";
+                CurrentPasswordTextBox.PasswordChar = '\0';
+            }
+            else if (NewPasswordTextBox.Text != ConfirmPasswordTextBox.Text)
+            {
+                NewPasswordTextBox.ForeColor = ConfirmPasswordTextBox.ForeColor = Color.Red;
+
+                string message = "Passwords do not match!";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -200,40 +189,52 @@ namespace MyCost.View
 
         private void UpdateEmailButtonClicked(object sender, EventArgs e)
         {
-            //disable all controls so that user cannot change anything 
-            //after the button is pressed
-            DisableAllControls();
-
-            if(!IsValidEmail(NewEmailTextBox.Text))
+            if (NewEmailTextBox.ForeColor != Color.Black || NewEmailTextBox.Text.Length < 1)
             {
+                NewEmailTextBox.Text = "New Email";
+                NewEmailTextBox.ForeColor = Color.Red;
+            }
+            else if (PasswordForEmailTextBox.ForeColor != Color.Black || PasswordForEmailTextBox.Text.Length < 1)
+            {
+                PasswordForEmailTextBox.Text = "Password";
+                PasswordForEmailTextBox.ForeColor = Color.Red;
+                PasswordForEmailTextBox.PasswordChar = '\0';
+            }
+            else if (!IsValidEmail(NewEmailTextBox.Text))
+            {
+                NewEmailTextBox.ForeColor = Color.Red;
+
                 string message = "Invalid Email. Please check your email address again.";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                EnableAllControls();
-                return;
             }
+            else
+            {
+                //disable all controls so that user cannot change anything 
+                //after the button is pressed
+                DisableAllControls();
 
-            string originalEmail = NewEmailTextBox.Text;
-            string emailVerificationCode = GenerateRandomNumberString(6);
-            string password = PasswordForEmailTextBox.Text;
+                string originalEmail = NewEmailTextBox.Text;
+                string emailVerificationCode = GenerateRandomNumberString(6);
+                string password = PasswordForEmailTextBox.Text;
 
-            //encrypt the email with the original cypher key
-            string encryptedEmail = StringCipher.Encrypt(originalEmail, GlobalSpace.CypherKey);
+                //encrypt the email with the original cypher key
+                string encryptedEmail = StringCipher.Encrypt(originalEmail, GlobalSpace.CypherKey);
 
-            //show progress bar
-            string status = "Updating your email, please wait...";
-            ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-            progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 200);
-            progressViewer.Show();
-            _progressViewerObject = progressViewer;
+                //show progress bar
+                string status = "Updating your email, please wait...";
+                ProgressViewerForm progressViewer = new ProgressViewerForm(status);
+                progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 200);
+                progressViewer.Show();
+                _progressViewerObject = progressViewer;
 
-            //send webrequest to update email
-            WebHandler webRequest = new WebHandler();
-            webRequest.WebRequestSuccessEventHandler += OnUpdateEmailSuccess;
-            webRequest.WebRequestFailedEventHandler += OnUpdateEmailFailed;
-            webRequest.UpdateEmail(originalEmail, encryptedEmail, emailVerificationCode, password);
-            _webHandlerObject = webRequest;
+                //send webrequest to update email
+                WebHandler webRequest = new WebHandler();
+                webRequest.WebRequestSuccessEventHandler += OnUpdateEmailSuccess;
+                webRequest.WebRequestFailedEventHandler += OnUpdateEmailFailed;
+                webRequest.UpdateEmail(originalEmail, encryptedEmail, emailVerificationCode, password);
+                _webHandlerObject = webRequest;
+            }          
         }
 
         private void OnUpdateEmailSuccess(object sender, EventArgs e)
@@ -261,7 +262,7 @@ namespace MyCost.View
                 GlobalSpace.IsEmailVarified = false;
 
                 //send verification email to the new email address
-                MailAddress from = new MailAddress("contact@rezasaker.com");
+                MailAddress from = new MailAddress("mycost.noreply@rezasaker.com");
                 MailAddress to = new MailAddress(GlobalSpace.Email);
                 SendVerificationEmail(from, to, emailVerificationCode.ToString());
             }
@@ -278,6 +279,7 @@ namespace MyCost.View
         private void ActionUponUpdateEmailFailed()
         {
             string result = _webHandlerObject.Response;
+
             _progressViewerObject.StopProgress();
 
             MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -329,7 +331,6 @@ namespace MyCost.View
         private void ActionUponSendVerificationEmailSuccess()
         {
             LoadBasicInformation();
-
             _progressViewerObject.StopProgress();
             EnableAllControls();
             ResetChangeEmailControlProperties();
@@ -342,7 +343,6 @@ namespace MyCost.View
             //we would continue with the next step and
             //prompt the user later to ask for verification code
             LoadBasicInformation();
-
             _progressViewerObject.StopProgress();
             EnableAllControls();
             ResetChangeEmailControlProperties();

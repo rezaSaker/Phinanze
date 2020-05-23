@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileForm));
             this.UserNameLabel = new System.Windows.Forms.Label();
             this.ChangeUsernameLabel = new System.Windows.Forms.Label();
-            this.CurrentUserNameTextBox = new System.Windows.Forms.TextBox();
             this.NewUserNameTextBox = new System.Windows.Forms.TextBox();
-            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.ConfirmUserNameTextBox = new System.Windows.Forms.TextBox();
+            this.PasswordForUsernameChangeTextBox = new System.Windows.Forms.TextBox();
             this.UpdateUsernameButton = new System.Windows.Forms.Button();
             this.UpdatePasswordButton = new System.Windows.Forms.Button();
             this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -52,6 +52,7 @@
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.VerifyEmailButton = new System.Windows.Forms.Button();
             this.EmailVerificationStatusLabel = new System.Windows.Forms.Label();
             this.DeleteAccountButton = new System.Windows.Forms.Button();
             this.PasswordForEmailTextBox = new System.Windows.Forms.TextBox();
@@ -61,7 +62,6 @@
             this.ViewSourceButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LogoButton = new System.Windows.Forms.Button();
-            this.VerifyEmailButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,59 +87,55 @@
             this.ChangeUsernameLabel.TabIndex = 47;
             this.ChangeUsernameLabel.Text = "Change Username";
             // 
-            // CurrentUserNameTextBox
-            // 
-            this.CurrentUserNameTextBox.BackColor = System.Drawing.Color.White;
-            this.CurrentUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CurrentUserNameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.CurrentUserNameTextBox.Location = new System.Drawing.Point(8, 80);
-            this.CurrentUserNameTextBox.Name = "CurrentUserNameTextBox";
-            this.CurrentUserNameTextBox.Size = new System.Drawing.Size(356, 27);
-            this.CurrentUserNameTextBox.TabIndex = 48;
-            this.CurrentUserNameTextBox.Text = "Current username";
-            this.CurrentUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.CurrentUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
-            // 
             // NewUserNameTextBox
             // 
             this.NewUserNameTextBox.BackColor = System.Drawing.Color.White;
             this.NewUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewUserNameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewUserNameTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.NewUserNameTextBox.Location = new System.Drawing.Point(8, 113);
+            this.NewUserNameTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.NewUserNameTextBox.Location = new System.Drawing.Point(8, 80);
             this.NewUserNameTextBox.Name = "NewUserNameTextBox";
             this.NewUserNameTextBox.Size = new System.Drawing.Size(356, 27);
-            this.NewUserNameTextBox.TabIndex = 49;
-            this.NewUserNameTextBox.Text = "New username";
+            this.NewUserNameTextBox.TabIndex = 48;
+            this.NewUserNameTextBox.Text = "New Username";
             this.NewUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.NewUserNameTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
             // 
-            // PasswordTextBox
+            // ConfirmUserNameTextBox
             // 
-            this.PasswordTextBox.BackColor = System.Drawing.Color.White;
-            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.PasswordTextBox.Location = new System.Drawing.Point(8, 144);
-            this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(356, 27);
-            this.PasswordTextBox.TabIndex = 50;
-            this.PasswordTextBox.Text = "Password";
-            this.PasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.PasswordTextBox.TextChanged += new System.EventHandler(this.UserNameTextBoxesTextChanged);
+            this.ConfirmUserNameTextBox.BackColor = System.Drawing.Color.White;
+            this.ConfirmUserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConfirmUserNameTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmUserNameTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.ConfirmUserNameTextBox.Location = new System.Drawing.Point(8, 113);
+            this.ConfirmUserNameTextBox.Name = "ConfirmUserNameTextBox";
+            this.ConfirmUserNameTextBox.Size = new System.Drawing.Size(356, 27);
+            this.ConfirmUserNameTextBox.TabIndex = 49;
+            this.ConfirmUserNameTextBox.Text = "Confirm New Username";
+            this.ConfirmUserNameTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
+            // 
+            // PasswordForUsernameChangeTextBox
+            // 
+            this.PasswordForUsernameChangeTextBox.BackColor = System.Drawing.Color.White;
+            this.PasswordForUsernameChangeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PasswordForUsernameChangeTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordForUsernameChangeTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.PasswordForUsernameChangeTextBox.Location = new System.Drawing.Point(8, 144);
+            this.PasswordForUsernameChangeTextBox.Name = "PasswordForUsernameChangeTextBox";
+            this.PasswordForUsernameChangeTextBox.Size = new System.Drawing.Size(356, 27);
+            this.PasswordForUsernameChangeTextBox.TabIndex = 50;
+            this.PasswordForUsernameChangeTextBox.Text = "Password";
+            this.PasswordForUsernameChangeTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
             // 
             // UpdateUsernameButton
             // 
             this.UpdateUsernameButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.UpdateUsernameButton.Enabled = false;
-            this.UpdateUsernameButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateUsernameButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.UpdateUsernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateUsernameButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateUsernameButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateUsernameButton.Location = new System.Drawing.Point(8, 185);
+            this.UpdateUsernameButton.Location = new System.Drawing.Point(7, 185);
             this.UpdateUsernameButton.Name = "UpdateUsernameButton";
-            this.UpdateUsernameButton.Size = new System.Drawing.Size(356, 35);
+            this.UpdateUsernameButton.Size = new System.Drawing.Size(357, 35);
             this.UpdateUsernameButton.TabIndex = 51;
             this.UpdateUsernameButton.Text = "Update Username";
             this.UpdateUsernameButton.UseVisualStyleBackColor = false;
@@ -148,8 +144,7 @@
             // UpdatePasswordButton
             // 
             this.UpdatePasswordButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.UpdatePasswordButton.Enabled = false;
-            this.UpdatePasswordButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdatePasswordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.UpdatePasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdatePasswordButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatePasswordButton.ForeColor = System.Drawing.Color.White;
@@ -166,42 +161,39 @@
             this.ConfirmPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.ConfirmPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.ConfirmPasswordTextBox.ForeColor = System.Drawing.Color.Gray;
             this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(447, 111);
             this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
             this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.ConfirmPasswordTextBox.TabIndex = 55;
-            this.ConfirmPasswordTextBox.Text = "Confirm new password";
+            this.ConfirmPasswordTextBox.Text = "Confirm New Password";
             this.ConfirmPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.ConfirmPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
             // NewPasswordTextBox
             // 
             this.NewPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.NewPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.NewPasswordTextBox.ForeColor = System.Drawing.Color.Gray;
             this.NewPasswordTextBox.Location = new System.Drawing.Point(447, 80);
             this.NewPasswordTextBox.Name = "NewPasswordTextBox";
             this.NewPasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.NewPasswordTextBox.TabIndex = 54;
-            this.NewPasswordTextBox.Text = "New password";
+            this.NewPasswordTextBox.Text = "New Password";
             this.NewPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.NewPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
             // CurrentPasswordTextBox
             // 
             this.CurrentPasswordTextBox.BackColor = System.Drawing.Color.White;
             this.CurrentPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CurrentPasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentPasswordTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.CurrentPasswordTextBox.ForeColor = System.Drawing.Color.Gray;
             this.CurrentPasswordTextBox.Location = new System.Drawing.Point(447, 144);
             this.CurrentPasswordTextBox.Name = "CurrentPasswordTextBox";
             this.CurrentPasswordTextBox.Size = new System.Drawing.Size(356, 27);
             this.CurrentPasswordTextBox.TabIndex = 53;
-            this.CurrentPasswordTextBox.Text = "Current password";
+            this.CurrentPasswordTextBox.Text = "Current Password";
             this.CurrentPasswordTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.CurrentPasswordTextBox.TextChanged += new System.EventHandler(this.PasswordTextBoxesTextChanged);
             // 
             // ChangePasswordLabel
             // 
@@ -407,9 +399,9 @@
             this.panel1.Controls.Add(this.UpdateUsernameButton);
             this.panel1.Controls.Add(this.ReportIssueButton);
             this.panel1.Controls.Add(this.HelpButton);
-            this.panel1.Controls.Add(this.PasswordTextBox);
+            this.panel1.Controls.Add(this.PasswordForUsernameChangeTextBox);
+            this.panel1.Controls.Add(this.ConfirmUserNameTextBox);
             this.panel1.Controls.Add(this.NewUserNameTextBox);
-            this.panel1.Controls.Add(this.CurrentUserNameTextBox);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.ChangeUsernameLabel);
             this.panel1.Controls.Add(this.UserNameLabel);
@@ -417,6 +409,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(815, 418);
             this.panel1.TabIndex = 74;
+            // 
+            // VerifyEmailButton
+            // 
+            this.VerifyEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.VerifyEmailButton.FlatAppearance.BorderSize = 0;
+            this.VerifyEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.VerifyEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VerifyEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VerifyEmailButton.ForeColor = System.Drawing.Color.White;
+            this.VerifyEmailButton.Location = new System.Drawing.Point(551, 8);
+            this.VerifyEmailButton.Name = "VerifyEmailButton";
+            this.VerifyEmailButton.Size = new System.Drawing.Size(125, 28);
+            this.VerifyEmailButton.TabIndex = 83;
+            this.VerifyEmailButton.Text = "Verify Email";
+            this.VerifyEmailButton.UseVisualStyleBackColor = false;
+            this.VerifyEmailButton.Click += new System.EventHandler(this.VerifyEmailButtonClicked);
             // 
             // EmailVerificationStatusLabel
             // 
@@ -432,7 +440,7 @@
             // DeleteAccountButton
             // 
             this.DeleteAccountButton.BackColor = System.Drawing.Color.Tomato;
-            this.DeleteAccountButton.FlatAppearance.BorderColor = System.Drawing.Color.Tomato;
+            this.DeleteAccountButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.DeleteAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteAccountButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteAccountButton.ForeColor = System.Drawing.Color.White;
@@ -449,14 +457,13 @@
             this.PasswordForEmailTextBox.BackColor = System.Drawing.Color.White;
             this.PasswordForEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PasswordForEmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordForEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.PasswordForEmailTextBox.ForeColor = System.Drawing.Color.Gray;
             this.PasswordForEmailTextBox.Location = new System.Drawing.Point(8, 326);
             this.PasswordForEmailTextBox.Name = "PasswordForEmailTextBox";
             this.PasswordForEmailTextBox.Size = new System.Drawing.Size(356, 27);
             this.PasswordForEmailTextBox.TabIndex = 80;
             this.PasswordForEmailTextBox.Text = "Passowrd";
             this.PasswordForEmailTextBox.Click += new System.EventHandler(this.PasswordTextBoxesClicked);
-            this.PasswordForEmailTextBox.TextChanged += new System.EventHandler(this.ChangeEmailTextBoxesTextChanged);
             // 
             // label5
             // 
@@ -472,14 +479,13 @@
             // UpdateEmailButton
             // 
             this.UpdateEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.UpdateEmailButton.Enabled = false;
-            this.UpdateEmailButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.UpdateEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.UpdateEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UpdateEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateEmailButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateEmailButton.Location = new System.Drawing.Point(8, 368);
+            this.UpdateEmailButton.Location = new System.Drawing.Point(7, 368);
             this.UpdateEmailButton.Name = "UpdateEmailButton";
-            this.UpdateEmailButton.Size = new System.Drawing.Size(356, 35);
+            this.UpdateEmailButton.Size = new System.Drawing.Size(357, 35);
             this.UpdateEmailButton.TabIndex = 77;
             this.UpdateEmailButton.Text = "Update Email";
             this.UpdateEmailButton.UseVisualStyleBackColor = false;
@@ -490,14 +496,13 @@
             this.NewEmailTextBox.BackColor = System.Drawing.Color.White;
             this.NewEmailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NewEmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewEmailTextBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.NewEmailTextBox.ForeColor = System.Drawing.Color.Gray;
             this.NewEmailTextBox.Location = new System.Drawing.Point(8, 293);
             this.NewEmailTextBox.Name = "NewEmailTextBox";
             this.NewEmailTextBox.Size = new System.Drawing.Size(356, 27);
             this.NewEmailTextBox.TabIndex = 76;
             this.NewEmailTextBox.Text = "New Email";
             this.NewEmailTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
-            this.NewEmailTextBox.TextChanged += new System.EventHandler(this.ChangeEmailTextBoxesTextChanged);
             // 
             // ViewSourceButton
             // 
@@ -542,22 +547,6 @@
             this.LogoButton.TabIndex = 83;
             this.LogoButton.UseVisualStyleBackColor = false;
             // 
-            // VerifyEmailButton
-            // 
-            this.VerifyEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.VerifyEmailButton.FlatAppearance.BorderSize = 0;
-            this.VerifyEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
-            this.VerifyEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VerifyEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VerifyEmailButton.ForeColor = System.Drawing.Color.White;
-            this.VerifyEmailButton.Location = new System.Drawing.Point(551, 8);
-            this.VerifyEmailButton.Name = "VerifyEmailButton";
-            this.VerifyEmailButton.Size = new System.Drawing.Size(125, 28);
-            this.VerifyEmailButton.TabIndex = 83;
-            this.VerifyEmailButton.Text = "Verify Email";
-            this.VerifyEmailButton.UseVisualStyleBackColor = false;
-            this.VerifyEmailButton.Click += new System.EventHandler(this.VerifyEmailButtonClicked);
-            // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,9 +578,9 @@
         #endregion
         private System.Windows.Forms.Label UserNameLabel;
         private System.Windows.Forms.Label ChangeUsernameLabel;
-        private System.Windows.Forms.TextBox CurrentUserNameTextBox;
         private System.Windows.Forms.TextBox NewUserNameTextBox;
-        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.TextBox ConfirmUserNameTextBox;
+        private System.Windows.Forms.TextBox PasswordForUsernameChangeTextBox;
         private System.Windows.Forms.Button UpdateUsernameButton;
         private System.Windows.Forms.Button UpdatePasswordButton;
         private System.Windows.Forms.TextBox ConfirmPasswordTextBox;

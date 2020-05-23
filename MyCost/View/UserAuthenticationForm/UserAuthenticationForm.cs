@@ -405,7 +405,7 @@ namespace MyCost.View
                 //send an email verification code to the user's email
                 if(data[6] == "New User")
                 {
-                    MailAddress from = new MailAddress("contact@rezasaker.com");
+                    MailAddress from = new MailAddress("mycost.noreply@rezasaker.com");
                     MailAddress to = new MailAddress(GlobalSpace.Email);
                     SendVerificationEmail(from, to, GlobalSpace.EmailVerificationCode);
                 }
@@ -441,10 +441,12 @@ namespace MyCost.View
 
             //email subject and body
             string subject = "Email Verification for MyCost";
-            string message = "Dear User\n\n," +
-            "Thanks for registering account with MyCost Finance Management App. " +
-            "Your email verification code is " + verificationCode + ".\n\n" +
-            "Please ignore this email if it is not intended for you.\n\n" +
+            string message = "Dear User,\n\n" +
+            "Thank you for registering account with MyCost Finance Management App. " +
+            "Please use the following verification code to verify your email from MyCost app. \n\n" +
+            "Your email verification code is: " + verificationCode + ".\n\n" +
+            "Verifying your email is important because if you ever forget your password / username, " +
+            "you will not be able to recover your password / username without a verified email. \n\n" +
             "Thank you\n" +
             "MyCost Team";
 

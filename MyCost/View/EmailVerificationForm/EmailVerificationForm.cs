@@ -40,14 +40,12 @@ namespace MyCost.View
 
         private void OnEmailVerificationSuccess(object sender, EventArgs e)
         {
-            this.Invoke(new VerifyEmailDelegate(ActionUponEmailVerificationSuccess),
-                new object[] { });
+            this.Invoke(new VerifyEmailDelegate(ActionUponEmailVerificationSuccess), new object[] { });
         }
 
         private void OnEmailVerificationFailed(object sender, EventArgs e)
         {
-            this.Invoke(new VerifyEmailDelegate(ActionUponEmailVerificationFailed),
-                new object[] { });
+            this.Invoke(new VerifyEmailDelegate(ActionUponEmailVerificationFailed), new object[] { });
         }
 
         private void ActionUponEmailVerificationSuccess()
@@ -58,7 +56,7 @@ namespace MyCost.View
 
             string message = "Your email address has been successfully verified. Thank you.";
 
-            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(message, "Thank you", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
         }
@@ -95,7 +93,7 @@ namespace MyCost.View
         {
             if (CodeResendButton.Text == "Resend Verification Code")
             {
-                MailAddress from = new MailAddress("contact@rezasaker.com");
+                MailAddress from = new MailAddress("mycost.noreply@rezasaker.com");
                 MailAddress to = new MailAddress(GlobalSpace.Email);
                 SendVerificationEmail(from, to, GlobalSpace.EmailVerificationCode);
             }
@@ -127,9 +125,11 @@ namespace MyCost.View
             //email subject and body
             string subject = "Email Verification for MyCost";
             string message = "Dear User,\n\n" +
-            "Thanks for registering account with MyCost Finance Management App." + 
-            "Your email verification code is " + verificationCode + ".\n\n" +
-            "Please ignore this email if it is not intended for you.\n\n" +
+            "Thank you for registering account with MyCost Finance Management App. " +
+            "Please use the following verification code to verify your email from MyCost app. \n\n" +
+            "Your email verification code is: " + verificationCode + ".\n\n" +
+            "Verifying your email is important because if you ever forget your password / username, " +
+            "you will not be able to recover your password / username without a verified email. \n\n" +
             "Thank you\n" +
             "MyCost Team";
 

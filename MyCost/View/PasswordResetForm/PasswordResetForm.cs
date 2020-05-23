@@ -60,7 +60,7 @@ namespace MyCost.View
                     
                     if(WebHandler.UpdatePassword(tempPassword, tempPassword) == "SUCCESS")
                     {
-                        MailAddress from = new MailAddress("contact@rezasaker.com");
+                        MailAddress from = new MailAddress("mycost.noreply@rezasaker.com");
                         MailAddress to = new MailAddress(email);
                         SendPasswordResetEmail(from, to, tempPassword);
                     }
@@ -83,7 +83,7 @@ namespace MyCost.View
         {
             //email subject and body
             string subject = "MyCost Password Reset";
-            string message = "Dear MyCost User,\n\n" + 
+            string message = "Dear User,\n\n" + 
             "Your MyCost account password has been automatically reset to allow you to recover your account as you requested. \n\n" +
             "Your new password is: " + tempPassword + "\n\n Please use this temporary password to log in to your MyCost account. " +
             "It is highly recommended that you change your password as soon as you log in with this temporary password.\n\n" +
@@ -156,7 +156,7 @@ namespace MyCost.View
 
                 if (result == "SUCCESS")
                 {
-                    MailAddress from = new MailAddress("contact@rezasaker.com");
+                    MailAddress from = new MailAddress("mycost.noreply@rezasaker.com");
                     MailAddress to = new MailAddress(email);
                     SendUsernameResetEmail(from, to, tempUsername);
                 }

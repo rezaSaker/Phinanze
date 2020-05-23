@@ -271,7 +271,7 @@ namespace MyCost.View
             MonthlyReportDataGridView.Rows.Clear();
 
             HeaderLabel.Text = "Showing monthly information for ";
-            HeaderLabel.Text += (_selectedMonth <= 12?_monthList[_selectedMonth - 1] : "all months of ") + 
+            HeaderLabel.Text += (_selectedMonth <= 12?_monthList[_selectedMonth - 1] : "all months of") + 
                 " " + (_selectedYear != 0? _selectedYear.ToString(): " all years");
             
             List<DailyInfo> dailyInfoList;
