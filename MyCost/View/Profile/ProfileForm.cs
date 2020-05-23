@@ -418,11 +418,11 @@ namespace MyCost.View
             }
         }
 
-        private void ViewSourceButtonClicked(object sender, EventArgs e)
+        private void VideoTutorialButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                Process.Start(GlobalSpace.SourceCodePath);
+                Process.Start(GlobalSpace.VideoTutorialPath);
             }
             catch
             {

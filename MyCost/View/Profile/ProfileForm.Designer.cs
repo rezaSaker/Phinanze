@@ -52,6 +52,8 @@
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ContactButton = new System.Windows.Forms.Button();
             this.VerifyEmailButton = new System.Windows.Forms.Button();
             this.EmailVerificationStatusLabel = new System.Windows.Forms.Label();
             this.DeleteAccountButton = new System.Windows.Forms.Button();
@@ -59,7 +61,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.UpdateEmailButton = new System.Windows.Forms.Button();
             this.NewEmailTextBox = new System.Windows.Forms.TextBox();
-            this.ViewSourceButton = new System.Windows.Forms.Button();
+            this.VideoTutorialButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LogoButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -232,12 +234,13 @@
             // ReportIssueButton
             // 
             this.ReportIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReportIssueButton.BackColor = System.Drawing.Color.White;
-            this.ReportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ReportIssueButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.ReportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.ReportIssueButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
             this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportIssueButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportIssueButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ReportIssueButton.Location = new System.Drawing.Point(625, 262);
+            this.ReportIssueButton.ForeColor = System.Drawing.Color.Black;
+            this.ReportIssueButton.Location = new System.Drawing.Point(625, 248);
             this.ReportIssueButton.Name = "ReportIssueButton";
             this.ReportIssueButton.Size = new System.Drawing.Size(178, 35);
             this.ReportIssueButton.TabIndex = 64;
@@ -248,12 +251,13 @@
             // HelpButton
             // 
             this.HelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.HelpButton.BackColor = System.Drawing.Color.White;
-            this.HelpButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.HelpButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.HelpButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.HelpButton.Location = new System.Drawing.Point(447, 262);
+            this.HelpButton.ForeColor = System.Drawing.Color.Black;
+            this.HelpButton.Location = new System.Drawing.Point(447, 249);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(172, 34);
             this.HelpButton.TabIndex = 65;
@@ -264,12 +268,13 @@
             // AboutAppButton
             // 
             this.AboutAppButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AboutAppButton.BackColor = System.Drawing.Color.White;
-            this.AboutAppButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.AboutAppButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.AboutAppButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.AboutAppButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
             this.AboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AboutAppButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AboutAppButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.AboutAppButton.Location = new System.Drawing.Point(447, 302);
+            this.AboutAppButton.ForeColor = System.Drawing.Color.Black;
+            this.AboutAppButton.Location = new System.Drawing.Point(447, 289);
             this.AboutAppButton.Name = "AboutAppButton";
             this.AboutAppButton.Size = new System.Drawing.Size(172, 36);
             this.AboutAppButton.TabIndex = 66;
@@ -288,7 +293,7 @@
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
             this.LogOutButton.Location = new System.Drawing.Point(710, 9);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(117, 35);
+            this.LogOutButton.Size = new System.Drawing.Size(117, 33);
             this.LogOutButton.TabIndex = 73;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
@@ -380,6 +385,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.ContactButton);
             this.panel1.Controls.Add(this.VerifyEmailButton);
             this.panel1.Controls.Add(this.EmailVerificationStatusLabel);
             this.panel1.Controls.Add(this.DeleteAccountButton);
@@ -387,7 +394,7 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.UpdateEmailButton);
             this.panel1.Controls.Add(this.NewEmailTextBox);
-            this.panel1.Controls.Add(this.ViewSourceButton);
+            this.panel1.Controls.Add(this.VideoTutorialButton);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.UpdatePasswordButton);
@@ -409,6 +416,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(815, 418);
             this.panel1.TabIndex = 74;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.PaleGreen;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(625, 331);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(178, 31);
+            this.button2.TabIndex = 85;
+            this.button2.Text = "Donate";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // ContactButton
+            // 
+            this.ContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ContactButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.ContactButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.ContactButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.ContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ContactButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContactButton.ForeColor = System.Drawing.Color.Black;
+            this.ContactButton.Location = new System.Drawing.Point(447, 331);
+            this.ContactButton.Name = "ContactButton";
+            this.ContactButton.Size = new System.Drawing.Size(172, 31);
+            this.ContactButton.TabIndex = 84;
+            this.ContactButton.Text = "Contact";
+            this.ContactButton.UseVisualStyleBackColor = false;
             // 
             // VerifyEmailButton
             // 
@@ -504,21 +543,22 @@
             this.NewEmailTextBox.Text = "New Email";
             this.NewEmailTextBox.Click += new System.EventHandler(this.UsernameTextBoxesClicked);
             // 
-            // ViewSourceButton
+            // VideoTutorialButton
             // 
-            this.ViewSourceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ViewSourceButton.BackColor = System.Drawing.Color.White;
-            this.ViewSourceButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.ViewSourceButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ViewSourceButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ViewSourceButton.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.ViewSourceButton.Location = new System.Drawing.Point(625, 303);
-            this.ViewSourceButton.Name = "ViewSourceButton";
-            this.ViewSourceButton.Size = new System.Drawing.Size(178, 35);
-            this.ViewSourceButton.TabIndex = 75;
-            this.ViewSourceButton.Text = "View Source";
-            this.ViewSourceButton.UseVisualStyleBackColor = false;
-            this.ViewSourceButton.Click += new System.EventHandler(this.ViewSourceButtonClicked);
+            this.VideoTutorialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.VideoTutorialButton.BackColor = System.Drawing.Color.PaleGreen;
+            this.VideoTutorialButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.VideoTutorialButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.VideoTutorialButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VideoTutorialButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VideoTutorialButton.ForeColor = System.Drawing.Color.Black;
+            this.VideoTutorialButton.Location = new System.Drawing.Point(625, 290);
+            this.VideoTutorialButton.Name = "VideoTutorialButton";
+            this.VideoTutorialButton.Size = new System.Drawing.Size(178, 35);
+            this.VideoTutorialButton.TabIndex = 75;
+            this.VideoTutorialButton.Text = "Video Tutorial";
+            this.VideoTutorialButton.UseVisualStyleBackColor = false;
+            this.VideoTutorialButton.Click += new System.EventHandler(this.VideoTutorialButtonClicked);
             // 
             // label1
             // 
@@ -599,7 +639,7 @@
         private System.Windows.Forms.Button AddNewDataButton;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ViewSourceButton;
+        private System.Windows.Forms.Button VideoTutorialButton;
         private System.Windows.Forms.Button UpdateEmailButton;
         private System.Windows.Forms.TextBox NewEmailTextBox;
         private System.Windows.Forms.Label label1;
@@ -609,5 +649,7 @@
         private System.Windows.Forms.Label EmailVerificationStatusLabel;
         private System.Windows.Forms.Button LogoButton;
         private System.Windows.Forms.Button VerifyEmailButton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button ContactButton;
     }
 }

@@ -12,7 +12,7 @@ namespace MyCost.Common
         public const string AboutAppPath = Server.AboutAppPath;
         public const string HelpPath = Server.HelpPath;
         public const string ReportIssuePath = Server.ReportIssuePath;
-        public const string SourceCodePath = Server.SourceCodePath;
+        public const string VideoTutorialPath = Server.VideoTutorialPath;
         public const string LicensePath = Server.LicensePath;
         //-------------------------------------------------------------------
 
