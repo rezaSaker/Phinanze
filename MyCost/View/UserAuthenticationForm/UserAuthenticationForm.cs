@@ -140,7 +140,7 @@ namespace MyCost.View
                 }
                 catch
                 {
-                    message = "Sorry, could not open your default browser";
+                    message = "Sorry, could not open your default browser.";
 
                     MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

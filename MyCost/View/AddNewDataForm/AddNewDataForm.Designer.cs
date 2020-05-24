@@ -120,7 +120,8 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             this.ExpenseDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.ExpenseDataGridView.Size = new System.Drawing.Size(815, 179);
-            this.ExpenseDataGridView.TabIndex = 5;
+            this.ExpenseDataGridView.TabIndex = 0;
+            this.ExpenseDataGridView.TabStop = false;
             this.ExpenseDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.ExpenseDGVEditBegan);
             this.ExpenseDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDataGridViewCellClicked);
             this.ExpenseDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.ExpenseDGVEditEnded);
@@ -304,7 +305,7 @@
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             this.EarningDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.EarningDataGridView.Size = new System.Drawing.Size(815, 179);
-            this.EarningDataGridView.TabIndex = 5;
+            this.EarningDataGridView.TabIndex = 0;
             this.EarningDataGridView.TabStop = false;
             this.EarningDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EarningDGVEditBegan);
             this.EarningDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EarningDataGridViewCellClicked);

@@ -22,9 +22,10 @@ namespace MyCost.Common
         public static string AccessToken;
         public static string CypherKey;
         public static string Username;
-        public static string Email;
-        public static bool IsEmailVarified;
+        public static string Email;       
         public static string EmailVerificationCode;
+
+        public static bool IsEmailVarified;
 
         public static List<string> ExpenseCategories = new List<string>();
         public static List<string> EarningCategories = new List<string>();

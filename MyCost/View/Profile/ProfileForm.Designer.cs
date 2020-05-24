@@ -278,7 +278,7 @@
             this.AboutAppButton.Name = "AboutAppButton";
             this.AboutAppButton.Size = new System.Drawing.Size(172, 36);
             this.AboutAppButton.TabIndex = 66;
-            this.AboutAppButton.Text = "About";
+            this.AboutAppButton.Text = "About ";
             this.AboutAppButton.UseVisualStyleBackColor = false;
             this.AboutAppButton.Click += new System.EventHandler(this.AboutAppButtonClicked);
             // 
@@ -430,8 +430,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(178, 31);
             this.button2.TabIndex = 85;
-            this.button2.Text = "Donate";
+            this.button2.Text = "View License";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ContactButton
             // 
@@ -448,6 +449,7 @@
             this.ContactButton.TabIndex = 84;
             this.ContactButton.Text = "Contact";
             this.ContactButton.UseVisualStyleBackColor = false;
+            this.ContactButton.Click += new System.EventHandler(this.ContactButton_Click);
             // 
             // VerifyEmailButton
             // 

@@ -384,7 +384,7 @@ namespace MyCost.View
             }
             catch
             {
-                string message = "Could not open default browser!";
+                string message = "Sorry, could not open default browser.";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -398,7 +398,7 @@ namespace MyCost.View
             }
             catch
             {
-                string message = "Could not open the default browser!";
+                string message = "Sorry, could not open the default browser.";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -412,7 +412,7 @@ namespace MyCost.View
             }
             catch
             {
-                string message = "Could not open the default browser!";
+                string message = "Sorry, could not open the default browser.";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -426,7 +426,7 @@ namespace MyCost.View
             }
             catch
             {
-                string message = "Could not open the default browser!";
+                string message = "Sorry, could not open the default browser!";
 
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -552,6 +552,41 @@ namespace MyCost.View
         private void EmailVerificationFormClosed(object sender, EventArgs e)
         {
             LoadBasicInformation();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string message = "Do you want to see the full license?";
+
+            DialogResult dlgResult = MessageBox.Show(message, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dlgResult == DialogResult.Yes)
+            {
+                try
+                {
+                    Process.Start(GlobalSpace.LicensePath);
+                }
+                catch
+                {
+                    message = "Sorry, could not open your default browser.";
+
+                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ContactButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start("https://rezasaker.com/contact/");
+            }
+            catch
+            {
+                string message = "Sorry, could not open your default browser.";
+
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
