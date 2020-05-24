@@ -2,7 +2,7 @@
 <img src="MyCost/Resources/MyCostLogo.png" width=180 height=90 style="border: 2px solid dimgray"/>
 </html>
 
-![issues badge](https://img.shields.io/github/issues/rezaSaker/MyCost.svg)       ![forks badge](https://img.shields.io/github/forks/rezaSaker/MyCost.svg)  ![stars badge](https://img.shields.io/github/stars/rezaSaker/MyCost.svg)  ![version badge](https://img.shields.io/github/license/rezaSaker/MyCost.svg)   ![alt text](https://img.shields.io/badge/Version-1.1.1.5-green.svg)
+![issues badge](https://img.shields.io/github/issues/rezaSaker/MyCost.svg)       ![forks badge](https://img.shields.io/github/forks/rezaSaker/MyCost.svg)  ![stars badge](https://img.shields.io/github/stars/rezaSaker/MyCost.svg)  ![version badge](https://img.shields.io/github/license/rezaSaker/MyCost)   ![alt text](https://img.shields.io/badge/Version-1.1.1.5-green.svg)
 ## Welcome to MyCost
 MyCost is a simple personal finance management application for Windows OS. Users can use the application to keep record of their earnings and expenses and see yearly or monthly statistics. It is a Windows Form Application that uses C#, .NET on the client side and PHP on the server side.
 
