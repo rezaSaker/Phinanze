@@ -130,7 +130,7 @@ namespace MyCost.View
         {
             string message = "Do you want to see the full license?";
 
-            DialogResult dlgResult = MessageBox.Show(message, "Alert", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dlgResult = MessageBox.Show(message, "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dlgResult == DialogResult.Yes)
             {
@@ -179,7 +179,7 @@ namespace MyCost.View
             ShowLoginPanelButton.Enabled = false;
 
             SubmitButton.Text = "Log in";
-            SubmitButton.Location = new Point(324, 280);
+            SubmitButton.Location = new Point(324, 290);
 
             ConfirmPasswordTextBox.Visible = false;
             ConfirmPasswordTextBox.Enabled = false;
@@ -187,8 +187,10 @@ namespace MyCost.View
             EmailTextBox.Enabled = false;
             ForgotPasswordTextBox.Visible = true;
 
+            AgreeLicenseLabel.Visible = false;
+            AgreeCheckBox.Visible = false;
             RememberMeCheckBox.Location = new Point(146, 245);
-            LicenseLabel.Location = new Point(260, 345);
+            LicenseLabel.Location = new Point(250, 345);
             this.Size = new Size(800, 430);
 
             ResetTextBoxProperties();
@@ -209,7 +211,7 @@ namespace MyCost.View
             ShowLoginPanelButton.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
 
             SubmitButton.Text = "Register";
-            SubmitButton.Location = new Point(324, 368);
+            SubmitButton.Location = new Point(324, 379);
 
             ConfirmPasswordTextBox.Visible = true;
             ConfirmPasswordTextBox.Enabled = true;
@@ -217,8 +219,10 @@ namespace MyCost.View
             EmailTextBox.Enabled = true;
             ForgotPasswordTextBox.Visible = false;
 
+            AgreeLicenseLabel.Visible = true;
+            AgreeCheckBox.Visible = true;
             RememberMeCheckBox.Location = new Point(146, 334);
-            LicenseLabel.Location = new Point(260, 421);
+            LicenseLabel.Location = new Point(250, 431);
             this.Size = new Size(800, 500);
 
             ResetTextBoxProperties();
@@ -331,6 +335,11 @@ namespace MyCost.View
             else if(email.Length < 1 || !IsValidEmail(email))
             {
                 ShowErrorMessage("The email address you have provided is not vaild.");
+                return;
+            }
+            else if(!AgreeCheckBox.Checked)
+            {
+                ShowErrorMessage("You need to agree to our terms and policy to register.");
                 return;
             }
 

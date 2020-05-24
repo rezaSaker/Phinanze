@@ -41,6 +41,8 @@
             this.EmailTextBox = new System.Windows.Forms.TextBox();
             this.LicenseLabel = new System.Windows.Forms.Label();
             this.ForgotPasswordTextBox = new System.Windows.Forms.Label();
+            this.AgreeCheckBox = new System.Windows.Forms.CheckBox();
+            this.AgreeLicenseLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ShowRegisterPanelButton
@@ -96,7 +98,7 @@
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
-            this.SubmitButton.Location = new System.Drawing.Point(324, 367);
+            this.SubmitButton.Location = new System.Drawing.Point(324, 379);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(142, 36);
             this.SubmitButton.TabIndex = 13;
@@ -186,8 +188,8 @@
             this.LicenseLabel.AutoSize = true;
             this.LicenseLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LicenseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LicenseLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.LicenseLabel.Location = new System.Drawing.Point(260, 421);
+            this.LicenseLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.LicenseLabel.Location = new System.Drawing.Point(250, 433);
             this.LicenseLabel.Name = "LicenseLabel";
             this.LicenseLabel.Size = new System.Drawing.Size(286, 16);
             this.LicenseLabel.TabIndex = 17;
@@ -208,12 +210,38 @@
             this.ForgotPasswordTextBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ForgotPasswordTextBox.Click += new System.EventHandler(this.ForgotPasswordTextBoxClicked);
             // 
+            // AgreeCheckBox
+            // 
+            this.AgreeCheckBox.AutoSize = true;
+            this.AgreeCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AgreeCheckBox.Location = new System.Drawing.Point(453, 334);
+            this.AgreeCheckBox.Name = "AgreeCheckBox";
+            this.AgreeCheckBox.Size = new System.Drawing.Size(137, 25);
+            this.AgreeCheckBox.TabIndex = 19;
+            this.AgreeCheckBox.Text = "I agree to the";
+            this.AgreeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // AgreeLicenseLabel
+            // 
+            this.AgreeLicenseLabel.AutoSize = true;
+            this.AgreeLicenseLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AgreeLicenseLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AgreeLicenseLabel.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.AgreeLicenseLabel.Location = new System.Drawing.Point(585, 335);
+            this.AgreeLicenseLabel.Name = "AgreeLicenseLabel";
+            this.AgreeLicenseLabel.Size = new System.Drawing.Size(66, 21);
+            this.AgreeLicenseLabel.TabIndex = 20;
+            this.AgreeLicenseLabel.Text = "License";
+            this.AgreeLicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
+            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(784, 449);
+            this.ClientSize = new System.Drawing.Size(784, 471);
+            this.Controls.Add(this.AgreeLicenseLabel);
+            this.Controls.Add(this.AgreeCheckBox);
             this.Controls.Add(this.ForgotPasswordTextBox);
             this.Controls.Add(this.LicenseLabel);
             this.Controls.Add(this.EmailTextBox);
@@ -254,6 +282,8 @@
         private System.Windows.Forms.TextBox EmailTextBox;
         private System.Windows.Forms.Label LicenseLabel;
         private System.Windows.Forms.Label ForgotPasswordTextBox;
+        private System.Windows.Forms.CheckBox AgreeCheckBox;
+        private System.Windows.Forms.Label AgreeLicenseLabel;
     }
 }
 
