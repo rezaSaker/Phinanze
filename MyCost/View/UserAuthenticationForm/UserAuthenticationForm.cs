@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net.Mail;
 using MyCost.Common;
+using System.ComponentModel;
 
 namespace MyCost.View
 {
@@ -36,6 +37,7 @@ namespace MyCost.View
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
+            VersionLabel.Text = "Version: " + Application.ProductVersion;
             DisplayLoginPanel();
         }
 
@@ -190,7 +192,7 @@ namespace MyCost.View
             AgreeLicenseLabel.Visible = false;
             AgreeCheckBox.Visible = false;
             RememberMeCheckBox.Location = new Point(146, 245);
-            LicenseLabel.Location = new Point(250, 345);
+            VersionLabel.Location = new Point(VersionLabel.Location.X, 360);
             this.Size = new Size(800, 430);
 
             ResetTextBoxProperties();
@@ -222,7 +224,7 @@ namespace MyCost.View
             AgreeLicenseLabel.Visible = true;
             AgreeCheckBox.Visible = true;
             RememberMeCheckBox.Location = new Point(146, 334);
-            LicenseLabel.Location = new Point(250, 431);
+            VersionLabel.Location = new Point(VersionLabel.Location.X, 435);
             this.Size = new Size(800, 500);
 
             ResetTextBoxProperties();

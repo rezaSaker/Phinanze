@@ -34,6 +34,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonthlyReportForm));
             this.MonthComboBox = new System.Windows.Forms.ComboBox();
             this.MonthlyReportDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearComboBox = new System.Windows.Forms.ComboBox();
             this.HeaderLabel = new System.Windows.Forms.Label();
             this.DeleteButton = new System.Windows.Forms.Button();
@@ -54,10 +58,6 @@
             this.EarningSearchTextBox = new System.Windows.Forms.TextBox();
             this.NoteSearchTextBox = new System.Windows.Forms.TextBox();
             this.DateSearchTextBox = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -139,6 +139,38 @@
             this.MonthlyReportDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             this.MonthlyReportDataGridView.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.DataGridViewUserDeletingRow);
             // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 101.5228F;
+            this.Column1.HeaderText = "Date";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.FillWeight = 157.3161F;
+            this.Column4.HeaderText = "Note";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 69.41014F;
+            this.Column2.HeaderText = "Earning";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 71.7509F;
+            this.Column3.HeaderText = "Expense";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // YearComboBox
             // 
             this.YearComboBox.BackColor = System.Drawing.Color.White;
@@ -182,9 +214,9 @@
             this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.LogOutButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
@@ -201,9 +233,9 @@
             this.ProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProfileButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.ProfileButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.White;
@@ -220,9 +252,9 @@
             this.StatisticsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatisticsButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.StatisticsButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticsButton.ForeColor = System.Drawing.Color.White;
@@ -241,11 +273,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MonthlyReportButton.BackColor = System.Drawing.Color.White;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.MonthlyReportButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MonthlyReportButton.ForeColor = System.Drawing.Color.LimeGreen;
+            this.MonthlyReportButton.ForeColor = System.Drawing.Color.RoyalBlue;
             this.MonthlyReportButton.Location = new System.Drawing.Point(307, 8);
             this.MonthlyReportButton.Name = "MonthlyReportButton";
             this.MonthlyReportButton.Size = new System.Drawing.Size(152, 33);
@@ -258,9 +290,9 @@
             this.AddNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddNewDataButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.AddNewDataButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewDataButton.ForeColor = System.Drawing.Color.White;
@@ -277,9 +309,9 @@
             this.HomeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HomeButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.HomeButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
@@ -443,38 +475,6 @@
             this.DateSearchTextBox.Text = "Search by Date";
             this.DateSearchTextBox.Click += new System.EventHandler(this.DateSearchTextBox_Click);
             this.DateSearchTextBox.TextChanged += new System.EventHandler(this.DateSearchTextBox_TextChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 101.5228F;
-            this.Column1.HeaderText = "Date";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 157.3161F;
-            this.Column4.HeaderText = "Note";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 69.41014F;
-            this.Column2.HeaderText = "Earning";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 71.7509F;
-            this.Column3.HeaderText = "Expense";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // MonthlyReportForm
             // 

@@ -72,9 +72,9 @@
             this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.LogOutButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
@@ -91,9 +91,9 @@
             this.ProfileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProfileButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.ProfileButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.White;
@@ -112,11 +112,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatisticsButton.BackColor = System.Drawing.Color.White;
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.StatisticsButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatisticsButton.ForeColor = System.Drawing.Color.LimeGreen;
+            this.StatisticsButton.ForeColor = System.Drawing.Color.RoyalBlue;
             this.StatisticsButton.Location = new System.Drawing.Point(463, 8);
             this.StatisticsButton.Name = "StatisticsButton";
             this.StatisticsButton.Size = new System.Drawing.Size(121, 33);
@@ -129,9 +129,9 @@
             this.MonthlyReportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MonthlyReportButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyReportButton.ForeColor = System.Drawing.Color.White;
@@ -148,9 +148,9 @@
             this.AddNewDataButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddNewDataButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.AddNewDataButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewDataButton.ForeColor = System.Drawing.Color.White;
@@ -167,9 +167,9 @@
             this.HomeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.HomeButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.HomeButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;

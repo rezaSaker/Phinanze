@@ -167,10 +167,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NoteTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NoteTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.NoteTextBox.Location = new System.Drawing.Point(228, 48);
+            this.NoteTextBox.Location = new System.Drawing.Point(245, 48);
             this.NoteTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.NoteTextBox.Name = "NoteTextBox";
-            this.NoteTextBox.Size = new System.Drawing.Size(599, 27);
+            this.NoteTextBox.Size = new System.Drawing.Size(582, 27);
             this.NoteTextBox.TabIndex = 6;
             this.NoteTextBox.Text = "Note";
             this.NoteTextBox.Click += new System.EventHandler(this.NoteTextBoxClicked);
@@ -226,7 +226,7 @@
             this.MonthComboBox.Location = new System.Drawing.Point(57, 48);
             this.MonthComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.MonthComboBox.Name = "MonthComboBox";
-            this.MonthComboBox.Size = new System.Drawing.Size(102, 29);
+            this.MonthComboBox.Size = new System.Drawing.Size(121, 29);
             this.MonthComboBox.TabIndex = 20;
             this.MonthComboBox.SelectedIndexChanged += new System.EventHandler(this.MonthComboBoxIndexChanged);
             // 
@@ -237,7 +237,7 @@
             this.YearComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.YearComboBox.ForeColor = System.Drawing.Color.Black;
             this.YearComboBox.FormattingEnabled = true;
-            this.YearComboBox.Location = new System.Drawing.Point(163, 48);
+            this.YearComboBox.Location = new System.Drawing.Point(182, 48);
             this.YearComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.YearComboBox.Name = "YearComboBox";
             this.YearComboBox.Size = new System.Drawing.Size(59, 29);
@@ -412,9 +412,9 @@
             // LogOutButton
             // 
             this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.LogOutButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
@@ -429,9 +429,9 @@
             // 
             // ProfileButton
             // 
-            this.ProfileButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.ProfileButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.White;
@@ -446,9 +446,9 @@
             // 
             // MonthlyReportButton
             // 
-            this.MonthlyReportButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyReportButton.ForeColor = System.Drawing.Color.White;
@@ -463,9 +463,9 @@
             // 
             // StatisticsButton
             // 
-            this.StatisticsButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.StatisticsButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticsButton.ForeColor = System.Drawing.Color.White;
@@ -480,9 +480,9 @@
             // 
             // HomeButton
             // 
-            this.HomeButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.HomeButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
@@ -499,11 +499,11 @@
             // 
             this.AddNewDataButton.BackColor = System.Drawing.Color.White;
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.AddNewDataButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddNewDataButton.ForeColor = System.Drawing.Color.LimeGreen;
+            this.AddNewDataButton.ForeColor = System.Drawing.Color.RoyalBlue;
             this.AddNewDataButton.Location = new System.Drawing.Point(188, 8);
             this.AddNewDataButton.Margin = new System.Windows.Forms.Padding(2);
             this.AddNewDataButton.Name = "AddNewDataButton";

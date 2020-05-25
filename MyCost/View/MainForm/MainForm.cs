@@ -57,7 +57,6 @@ namespace MyCost.View
             }
 
             YearComboBox.SelectedIndex = 0;
-            VersionLabel.Text = "Version: " + Application.ProductVersion;
 
             _isFirstCall = false;
         }

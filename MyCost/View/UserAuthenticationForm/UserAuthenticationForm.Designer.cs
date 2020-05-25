@@ -39,7 +39,7 @@
             this.StatusLabel = new System.Windows.Forms.Label();
             this.RememberMeCheckBox = new System.Windows.Forms.CheckBox();
             this.EmailTextBox = new System.Windows.Forms.TextBox();
-            this.LicenseLabel = new System.Windows.Forms.Label();
+            this.VersionLabel = new System.Windows.Forms.Label();
             this.ForgotPasswordTextBox = new System.Windows.Forms.Label();
             this.AgreeCheckBox = new System.Windows.Forms.CheckBox();
             this.AgreeLicenseLabel = new System.Windows.Forms.Label();
@@ -183,18 +183,17 @@
             this.EmailTextBox.Text = "Email";
             this.EmailTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.EmailTextBoxClicked);
             // 
-            // LicenseLabel
+            // VersionLabel
             // 
-            this.LicenseLabel.AutoSize = true;
-            this.LicenseLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LicenseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LicenseLabel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LicenseLabel.Location = new System.Drawing.Point(250, 433);
-            this.LicenseLabel.Name = "LicenseLabel";
-            this.LicenseLabel.Size = new System.Drawing.Size(286, 16);
-            this.LicenseLabel.TabIndex = 17;
-            this.LicenseLabel.Text = "This application is provided under MIT License";
-            this.LicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
+            this.VersionLabel.AutoSize = true;
+            this.VersionLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.VersionLabel.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLabel.ForeColor = System.Drawing.Color.Black;
+            this.VersionLabel.Location = new System.Drawing.Point(341, 445);
+            this.VersionLabel.Name = "VersionLabel";
+            this.VersionLabel.Size = new System.Drawing.Size(102, 17);
+            this.VersionLabel.TabIndex = 17;
+            this.VersionLabel.Text = "Version: 1.1.1.5";
             // 
             // ForgotPasswordTextBox
             // 
@@ -243,7 +242,7 @@
             this.Controls.Add(this.AgreeLicenseLabel);
             this.Controls.Add(this.AgreeCheckBox);
             this.Controls.Add(this.ForgotPasswordTextBox);
-            this.Controls.Add(this.LicenseLabel);
+            this.Controls.Add(this.VersionLabel);
             this.Controls.Add(this.EmailTextBox);
             this.Controls.Add(this.RememberMeCheckBox);
             this.Controls.Add(this.StatusLabel);
@@ -254,6 +253,7 @@
             this.Controls.Add(this.AppLogoLabel);
             this.Controls.Add(this.ShowLoginPanelButton);
             this.Controls.Add(this.ShowRegisterPanelButton);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -280,7 +280,7 @@
         private System.Windows.Forms.Label StatusLabel;
         private System.Windows.Forms.CheckBox RememberMeCheckBox;
         private System.Windows.Forms.TextBox EmailTextBox;
-        private System.Windows.Forms.Label LicenseLabel;
+        private System.Windows.Forms.Label VersionLabel;
         private System.Windows.Forms.Label ForgotPasswordTextBox;
         private System.Windows.Forms.CheckBox AgreeCheckBox;
         private System.Windows.Forms.Label AgreeLicenseLabel;

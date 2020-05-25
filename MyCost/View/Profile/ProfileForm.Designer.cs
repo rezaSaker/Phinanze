@@ -234,12 +234,13 @@
             // ReportIssueButton
             // 
             this.ReportIssueButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReportIssueButton.BackColor = System.Drawing.Color.PaleGreen;
-            this.ReportIssueButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.ReportIssueButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.ReportIssueButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.ReportIssueButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReportIssueButton.FlatAppearance.BorderSize = 0;
+            this.ReportIssueButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.ReportIssueButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReportIssueButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReportIssueButton.ForeColor = System.Drawing.Color.Black;
+            this.ReportIssueButton.ForeColor = System.Drawing.Color.White;
             this.ReportIssueButton.Location = new System.Drawing.Point(625, 248);
             this.ReportIssueButton.Name = "ReportIssueButton";
             this.ReportIssueButton.Size = new System.Drawing.Size(178, 35);
@@ -251,12 +252,13 @@
             // HelpButton
             // 
             this.HelpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.HelpButton.BackColor = System.Drawing.Color.PaleGreen;
-            this.HelpButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.HelpButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.HelpButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HelpButton.FlatAppearance.BorderSize = 0;
+            this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpButton.ForeColor = System.Drawing.Color.Black;
+            this.HelpButton.ForeColor = System.Drawing.Color.White;
             this.HelpButton.Location = new System.Drawing.Point(447, 249);
             this.HelpButton.Name = "HelpButton";
             this.HelpButton.Size = new System.Drawing.Size(172, 34);
@@ -268,12 +270,13 @@
             // AboutAppButton
             // 
             this.AboutAppButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AboutAppButton.BackColor = System.Drawing.Color.PaleGreen;
-            this.AboutAppButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.AboutAppButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.AboutAppButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.AboutAppButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AboutAppButton.FlatAppearance.BorderSize = 0;
+            this.AboutAppButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.AboutAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AboutAppButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AboutAppButton.ForeColor = System.Drawing.Color.Black;
+            this.AboutAppButton.ForeColor = System.Drawing.Color.White;
             this.AboutAppButton.Location = new System.Drawing.Point(447, 289);
             this.AboutAppButton.Name = "AboutAppButton";
             this.AboutAppButton.Size = new System.Drawing.Size(172, 36);
@@ -285,9 +288,9 @@
             // LogOutButton
             // 
             this.LogOutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LogOutButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.LogOutButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LogOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.LogOutButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.LogOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogOutButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
@@ -303,11 +306,11 @@
             // 
             this.ProfileButton.BackColor = System.Drawing.Color.White;
             this.ProfileButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.ProfileButton.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
             this.ProfileButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.ProfileButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ProfileButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProfileButton.ForeColor = System.Drawing.Color.LimeGreen;
+            this.ProfileButton.ForeColor = System.Drawing.Color.RoyalBlue;
             this.ProfileButton.Location = new System.Drawing.Point(588, 8);
             this.ProfileButton.Name = "ProfileButton";
             this.ProfileButton.Size = new System.Drawing.Size(118, 33);
@@ -317,9 +320,9 @@
             // 
             // StatisticsButton
             // 
-            this.StatisticsButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.StatisticsButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.StatisticsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.StatisticsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.StatisticsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StatisticsButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticsButton.ForeColor = System.Drawing.Color.White;
@@ -333,9 +336,9 @@
             // 
             // MonthlyReportButton
             // 
-            this.MonthlyReportButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.MonthlyReportButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.MonthlyReportButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.MonthlyReportButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.MonthlyReportButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MonthlyReportButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyReportButton.ForeColor = System.Drawing.Color.White;
@@ -349,9 +352,9 @@
             // 
             // AddNewDataButton
             // 
-            this.AddNewDataButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.AddNewDataButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.AddNewDataButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.AddNewDataButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.AddNewDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddNewDataButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewDataButton.ForeColor = System.Drawing.Color.White;
@@ -365,9 +368,9 @@
             // 
             // HomeButton
             // 
-            this.HomeButton.BackColor = System.Drawing.Color.LimeGreen;
+            this.HomeButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.HomeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.HomeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
             this.HomeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HomeButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
@@ -420,12 +423,13 @@
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.PaleGreen;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(625, 331);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(178, 31);
@@ -437,12 +441,13 @@
             // ContactButton
             // 
             this.ContactButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ContactButton.BackColor = System.Drawing.Color.PaleGreen;
-            this.ContactButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.ContactButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.ContactButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.ContactButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ContactButton.FlatAppearance.BorderSize = 0;
+            this.ContactButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.ContactButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ContactButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContactButton.ForeColor = System.Drawing.Color.Black;
+            this.ContactButton.ForeColor = System.Drawing.Color.White;
             this.ContactButton.Location = new System.Drawing.Point(447, 331);
             this.ContactButton.Name = "ContactButton";
             this.ContactButton.Size = new System.Drawing.Size(172, 31);
@@ -548,12 +553,13 @@
             // VideoTutorialButton
             // 
             this.VideoTutorialButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.VideoTutorialButton.BackColor = System.Drawing.Color.PaleGreen;
-            this.VideoTutorialButton.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
-            this.VideoTutorialButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
+            this.VideoTutorialButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.VideoTutorialButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VideoTutorialButton.FlatAppearance.BorderSize = 0;
+            this.VideoTutorialButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.VideoTutorialButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.VideoTutorialButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VideoTutorialButton.ForeColor = System.Drawing.Color.Black;
+            this.VideoTutorialButton.ForeColor = System.Drawing.Color.White;
             this.VideoTutorialButton.Location = new System.Drawing.Point(625, 290);
             this.VideoTutorialButton.Name = "VideoTutorialButton";
             this.VideoTutorialButton.Size = new System.Drawing.Size(178, 35);

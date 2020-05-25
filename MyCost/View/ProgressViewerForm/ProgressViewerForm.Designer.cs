@@ -68,6 +68,7 @@
             this.Name = "ProgressViewerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "MyCost - Action in Progress";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ProgressViewerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

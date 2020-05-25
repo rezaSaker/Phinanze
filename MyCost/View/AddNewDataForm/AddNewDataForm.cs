@@ -198,7 +198,7 @@ namespace MyCost.View
             if (NoteTextBox.ForeColor == Color.Gray)
             {
                 NoteTextBox.Text = "";
-                NoteTextBox.ForeColor = Color.Maroon;
+                NoteTextBox.ForeColor = Color.Black;
             }
         }
 
@@ -644,7 +644,7 @@ namespace MyCost.View
                     break;
                 }
 
-                if (double.TryParse(row.Cells[1].Value.ToString(), out amount))
+                if (row.Cells[1].Value!= null && double.TryParse(row.Cells[1].Value.ToString(), out amount))
                 {
                     if(amount < 1000000000)
                     {
@@ -694,7 +694,7 @@ namespace MyCost.View
                     break;
                 }
 
-                if (double.TryParse(row.Cells[1].Value.ToString(), out amount))
+                if (row.Cells[1].Value != null && double.TryParse(row.Cells[1].Value.ToString(), out amount))
                 {
                     if(amount < 1000000000)
                     {

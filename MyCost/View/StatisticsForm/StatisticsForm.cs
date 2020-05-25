@@ -264,7 +264,7 @@ namespace MyCost.View
             if (ShowEarningReportRadioButton.Checked)
             {
                 Dictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
-                dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x.ToLower(), x => 0.0);
 
                 string extraCategory = "Other";
 
@@ -284,9 +284,9 @@ namespace MyCost.View
                 {
                     foreach (EarningInfo earning in daily.EarningList)
                     {
-                        if(dictCategorywiseEarning.ContainsKey(earning.Category))
+                        if(dictCategorywiseEarning.ContainsKey(earning.Category.ToLower()))
                         {
-                            dictCategorywiseEarning[earning.Category] += earning.Amount;
+                            dictCategorywiseEarning[earning.Category.ToLower()] += earning.Amount;
                         }
                         else
                         {
@@ -300,7 +300,7 @@ namespace MyCost.View
             else
             {
                 Dictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
-                dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x.ToLower(), x => 0.0);
 
                 string extraCategory = "Other";
 
@@ -320,9 +320,9 @@ namespace MyCost.View
                 {
                     foreach (ExpenseInfo expense in daily.ExpenseList)
                     {
-                        if(dictCategorywiseExpense.ContainsKey(expense.Category))
+                        if(dictCategorywiseExpense.ContainsKey(expense.Category.ToLower()))
                         {
-                            dictCategorywiseExpense[expense.Category] += expense.Amount;
+                            dictCategorywiseExpense[expense.Category.ToLower()] += expense.Amount;
                         }
                         else
                         {
@@ -343,7 +343,7 @@ namespace MyCost.View
             if (ShowEarningReportRadioButton.Checked)
             {
                 Dictionary<string, double> dictCategorywiseEarning = new Dictionary<string, double>();
-                dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseEarning = GlobalSpace.EarningCategories.ToDictionary(x => x.ToLower(), x => 0.0);
 
                 string extraCategory = "Other";
 
@@ -363,9 +363,9 @@ namespace MyCost.View
                 {
                     foreach (EarningInfo earning in daily.EarningList)
                     {
-                        if (dictCategorywiseEarning.ContainsKey(earning.Category))
+                        if (dictCategorywiseEarning.ContainsKey(earning.Category.ToLower()))
                         {
-                            dictCategorywiseEarning[earning.Category] += earning.Amount;
+                            dictCategorywiseEarning[earning.Category.ToLower()] += earning.Amount;
                         }
                         else
                         {
@@ -379,7 +379,7 @@ namespace MyCost.View
             else
             {
                 Dictionary<string, double> dictCategorywiseExpense = new Dictionary<string, double>();
-                dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x, x => 0.0);
+                dictCategorywiseExpense = GlobalSpace.ExpenseCategories.ToDictionary(x => x.ToLower(), x => 0.0);
 
                 string extraCategory = "Other";
 
@@ -399,9 +399,9 @@ namespace MyCost.View
                 {
                     foreach (ExpenseInfo expense in daily.ExpenseList)
                     {
-                        if (dictCategorywiseExpense.ContainsKey(expense.Category))
+                        if (dictCategorywiseExpense.ContainsKey(expense.Category.ToLower()))
                         {
-                            dictCategorywiseExpense[expense.Category] += expense.Amount;
+                            dictCategorywiseExpense[expense.Category.ToLower()] += expense.Amount;
                         }
                         else
                         {
