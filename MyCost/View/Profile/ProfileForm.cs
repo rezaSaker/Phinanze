@@ -224,7 +224,7 @@ namespace MyCost.View
                 //show progress bar
                 string status = "Updating your email, please wait...";
                 ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-                progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 200);
+                progressViewer.Location = new Point(this.Location.X + 98, this.Location.Y + 200);
                 progressViewer.Show();
                 _progressViewerObject = progressViewer;
 
@@ -232,8 +232,8 @@ namespace MyCost.View
                 WebHandler webRequest = new WebHandler();
                 webRequest.WebRequestSuccessEventHandler += OnUpdateEmailSuccess;
                 webRequest.WebRequestFailedEventHandler += OnUpdateEmailFailed;
-                webRequest.UpdateEmail(originalEmail, encryptedEmail, emailVerificationCode, password);
                 _webHandlerObject = webRequest;
+                webRequest.UpdateEmail(originalEmail, encryptedEmail, emailVerificationCode, password);               
             }          
         }
 
@@ -260,6 +260,7 @@ namespace MyCost.View
                 //change local value of email 
                 GlobalSpace.Email = NewEmailTextBox.Text;
                 GlobalSpace.IsEmailVarified = false;
+                GlobalSpace.EmailVerificationCode = emailVerificationCode.ToString();
 
                 //send verification email to the new email address
                 MailAddress from = new MailAddress("mycost.noreply@rezasaker.com");
@@ -330,11 +331,17 @@ namespace MyCost.View
 
         private void ActionUponSendVerificationEmailSuccess()
         {
-            LoadBasicInformation();
             _progressViewerObject.StopProgress();
+
+            string message = "You email has been successfully changed and  a new verification code" +
+                " has been sent to your email address. Please allow up to 3 hours to recieve the code" +
+                " and check your spam folder as well.";
+
+            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            LoadBasicInformation();           
             EnableAllControls();
-            ResetChangeEmailControlProperties();
-            
+            ResetChangeEmailControlProperties();            
         }
 
         private void ActionUponSendVerificationEmailFailed()

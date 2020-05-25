@@ -158,7 +158,7 @@ namespace MyCost.View
             string message = "We have sent a new verification code to your email address. " +
                 "Please allow up to 12 hours to recieve the code and check your spam folder as well.";
 
-            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show(message, "Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             this.Close();
         }
