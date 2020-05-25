@@ -18,7 +18,15 @@ namespace MyCost
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AppLoaderForm());
+            try
+            {
+                Application.Run(new AppLoaderForm());
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong. Please restart the application.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

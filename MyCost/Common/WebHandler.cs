@@ -442,17 +442,17 @@ namespace MyCost.Common
         }
 
         public void UpdateEmail(string originalEmail, string encryptedEmail,
-            string emailVerificationCode, string password)
+            string emailVerificationCode, string password, string emergencyCipherKey)
         {
             Thread thread = new Thread(() =>
             WebRequestToUpdateEmail(originalEmail, encryptedEmail,
-            emailVerificationCode, password));
+            emailVerificationCode, password, emergencyCipherKey));
 
             thread.Start();
         }
 
         private void WebRequestToUpdateEmail(string originalEmail, string encryptedEmail,
-            string emailVerificationCode, string password)
+            string emailVerificationCode, string password, string emergencyCipherKey)
         {
             WebClient www = new WebClient();
 
@@ -466,6 +466,7 @@ namespace MyCost.Common
             queryData.Add("encryptedEmail", encryptedEmail);
             queryData.Add("originalEmail", originalEmail);
             queryData.Add("emailVerificationCode", emailVerificationCode);
+            queryData.Add("emergencyCipherKey", emergencyCipherKey);
 
             try
             {

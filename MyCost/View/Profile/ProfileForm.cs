@@ -220,6 +220,7 @@ namespace MyCost.View
 
                 //encrypt the email with the original cypher key
                 string encryptedEmail = StringCipher.Encrypt(originalEmail, GlobalSpace.CypherKey);
+                string encryptedEmergencyCypherKey = StringCipher.Encrypt(GlobalSpace.CypherKey, originalEmail);
 
                 //show progress bar
                 string status = "Updating your email, please wait...";
@@ -233,7 +234,7 @@ namespace MyCost.View
                 webRequest.WebRequestSuccessEventHandler += OnUpdateEmailSuccess;
                 webRequest.WebRequestFailedEventHandler += OnUpdateEmailFailed;
                 _webHandlerObject = webRequest;
-                webRequest.UpdateEmail(originalEmail, encryptedEmail, emailVerificationCode, password);               
+                webRequest.UpdateEmail(originalEmail, encryptedEmail, emailVerificationCode, password, encryptedEmergencyCypherKey);               
             }          
         }
 
@@ -254,8 +255,7 @@ namespace MyCost.View
             //if the email was ssuccessfully updated, 
             //the six digit verification code is returned by the server script
             //otherwise the error message is returned
-            if(int.TryParse(result, out int emailVerificationCode)
-                && emailVerificationCode.ToString().Length == 6)
+            if(int.TryParse(result, out int emailVerificationCode) && result.Length == 6)
             {
                 //change local value of email 
                 GlobalSpace.Email = NewEmailTextBox.Text;
@@ -274,7 +274,7 @@ namespace MyCost.View
                 MessageBox.Show(result, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 EnableAllControls();
-            }
+            }          
         }
 
         private void ActionUponUpdateEmailFailed()
@@ -508,7 +508,6 @@ namespace MyCost.View
             PasswordForEmailTextBox.Text = "Password";
             PasswordForEmailTextBox.ForeColor = Color.DimGray;
             PasswordForEmailTextBox.PasswordChar = '\0';
-            UpdateEmailButton.Enabled = false;
         }
 
         private void DeleteProfileButtonClicked(object sender, EventArgs e)

@@ -21,7 +21,7 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 		$decryptableEmail = mysqli_real_escape_string($connect, $_POST['encryptedEmail']);
 		$originalEmail    = mysqli_real_escape_string($connect, $_POST['originalEmail']);
 		$emailVerificationCode = mysqli_real_escape_string($connect, $_POST['emailVerificationCode']);
-		
+		$emergencyCipherKey = mysqli_real_escape_string($connect, $_POST['emergencyCipherKey']);
 		//verify password
 		$query  = "SELECT * FROM users WHERE username = '$username' AND id = '$userid' LIMIT 1";
 		$result = mysqli_query($connect, $query) or die('Server connection error');;		
@@ -47,7 +47,7 @@ if(isset($_POST['token']) && isset($_POST['userid']))
 			$comparableEmail = password_hash($originalEmail, PASSWORD_DEFAULT);
 
 			//update the current email with the new email
-			$query = "UPDATE users SET comparable_email = '$comparableEmail', decryptable_email = '$decryptableEmail', verification_code = '$emailVerificationCode', is_email_verified = '0' WHERE username = '$username' AND id = '$userid'";
+			$query = "UPDATE users SET emergency_cipher_key = '$emergencyCipherKey', comparable_email = '$comparableEmail', decryptable_email = '$decryptableEmail', verification_code = '$emailVerificationCode', is_email_verified = '0' WHERE username = '$username' AND id = '$userid'";
 			mysqli_query($connect, $query) or die('Server connection error');
 			
 			die($emailVerificationCode);
@@ -66,3 +66,5 @@ else
 {
 	die('Server connection error');
 }
+
+?>
