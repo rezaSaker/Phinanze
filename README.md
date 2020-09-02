@@ -14,14 +14,10 @@ The application is distributed under [MIT License](https://github.com/rezaSaker/
 
 ## Installation
 
- - It is a Visual Studio project. [Click here](https://visualstudio.microsoft.com/downloads/) to install the latest version of Visual Studio.
- - This project requires .NET Framework 4.6.1
- - if cloned for modification, following change in the project's ```GlobalSpace.cs``` class is required
-    ```
-    public const string ServerAddress = "Your own server address (Ex: localhost)";
-    ```
- - All PHP files in **MyCost API** folder have to be uploaded to the server address defined in ```GlobalSpace.cs``` class.
+ - [Click here](https://visualstudio.microsoft.com/downloads/) to install the latest version of MyCost Application.
 
-## Output Examples
-![Screenshot of output 1](MyCost/Resources/Screenshot1.jpg)
-![Screenshot of output 1](MyCost/Resources/Screenshot2.jpg)
+## Screenshots of the Application
+![Screenshot of output 1](MyCost/Resources/Screenshot1.png)
+![Screenshot of output 1](MyCost/Resources/Screenshot2.png)
+![Screenshot of output 1](MyCost/Resources/Screenshot3.png)
+![Screenshot of output 1](MyCost/Resources/Screenshot4.png)
