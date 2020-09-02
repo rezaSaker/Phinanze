@@ -4,3 +4,4 @@ MyCost/bin/*
 MyCost/Resources/*.pptx
 MyCost/Common/Server.cs
 MyCost/Common/Mailer.cs
+MyCost Installer/*
