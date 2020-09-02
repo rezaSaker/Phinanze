@@ -222,7 +222,7 @@
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
             this.LogOutButton.Location = new System.Drawing.Point(710, 8);
             this.LogOutButton.Name = "LogOutButton";
-            this.LogOutButton.Size = new System.Drawing.Size(117, 33);
+            this.LogOutButton.Size = new System.Drawing.Size(118, 33);
             this.LogOutButton.TabIndex = 52;
             this.LogOutButton.Text = "Log Out";
             this.LogOutButton.UseVisualStyleBackColor = false;
@@ -429,9 +429,9 @@
             this.ExpenseSearchTextBox.BackColor = System.Drawing.Color.White;
             this.ExpenseSearchTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpenseSearchTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.ExpenseSearchTextBox.Location = new System.Drawing.Point(626, 82);
+            this.ExpenseSearchTextBox.Location = new System.Drawing.Point(629, 82);
             this.ExpenseSearchTextBox.Name = "ExpenseSearchTextBox";
-            this.ExpenseSearchTextBox.Size = new System.Drawing.Size(201, 27);
+            this.ExpenseSearchTextBox.Size = new System.Drawing.Size(198, 27);
             this.ExpenseSearchTextBox.TabIndex = 57;
             this.ExpenseSearchTextBox.Text = "Search by Expense";
             this.ExpenseSearchTextBox.Click += new System.EventHandler(this.ExpenseSearchTextBox_Click);
@@ -444,7 +444,7 @@
             this.EarningSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.EarningSearchTextBox.Location = new System.Drawing.Point(425, 82);
             this.EarningSearchTextBox.Name = "EarningSearchTextBox";
-            this.EarningSearchTextBox.Size = new System.Drawing.Size(195, 27);
+            this.EarningSearchTextBox.Size = new System.Drawing.Size(198, 27);
             this.EarningSearchTextBox.TabIndex = 58;
             this.EarningSearchTextBox.Text = "Search by Earning";
             this.EarningSearchTextBox.Click += new System.EventHandler(this.EarningSearchTextBox_Click);

@@ -110,7 +110,7 @@
             this.HomeDataGridView.RowHeadersVisible = false;
             this.HomeDataGridView.RowHeadersWidth = 51;
             this.HomeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.HomeDataGridView.Size = new System.Drawing.Size(498, 222);
+            this.HomeDataGridView.Size = new System.Drawing.Size(498, 220);
             this.HomeDataGridView.TabIndex = 6;
             this.HomeDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
             // 

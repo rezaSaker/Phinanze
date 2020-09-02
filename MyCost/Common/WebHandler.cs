@@ -408,8 +408,8 @@ namespace MyCost.Common
             System.Collections.Specialized.NameValueCollection queryData;
             queryData = new System.Collections.Specialized.NameValueCollection();
 
-            try
-            {
+            //try
+            //{
                 byte[] resultBytes = www.UploadValues(GlobalSpace.ServerAddress + "generateActivationCode.php", "POST", queryData);
                 string resultData = Encoding.UTF8.GetString(resultBytes);
                 _webResponse = resultData;
@@ -422,13 +422,13 @@ namespace MyCost.Common
                 {
                     OnGetActivationCodeFailed();
                 }               
-            }
-            catch
-            {
-                _webResponse = "Server connection error";
+            //}
+            //catch
+            //{
+                //_webResponse = "Server connection error";
 
-                OnGetActivationCodeFailed();
-            }
+                //OnGetActivationCodeFailed();
+            //}
         }
 
         private void OnGetActivationCodeSuccessful()
