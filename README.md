@@ -17,8 +17,8 @@ The application is distributed under [MIT License](https://github.com/rezaSaker/
  - [Click here](https://rezasaker.com/rezasdev/dev/soft/mycost/) to install the latest version of MyCost Application.
 
 ## Screenshots of the Application
- - Blurred due to resolution
- 
+ - Images below might appear blurred due to image resolution.
+
 ![Screenshot of output 1](MyCost/Resources/Screenshot1.png)
 ![Screenshot of output 1](MyCost/Resources/Screenshot2.png)
 ![Screenshot of output 1](MyCost/Resources/Screenshot3.png)
