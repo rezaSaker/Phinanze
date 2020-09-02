@@ -14,9 +14,11 @@ The application is distributed under [MIT License](https://github.com/rezaSaker/
 
 ## Installation
 
- - [Click here](https://visualstudio.microsoft.com/downloads/) to install the latest version of MyCost Application.
+ - [Click here](https://rezasaker.com/rezasdev/dev/soft/mycost/) to install the latest version of MyCost Application.
 
 ## Screenshots of the Application
+ - Blurred due to resolution
+ 
 ![Screenshot of output 1](MyCost/Resources/Screenshot1.png)
 ![Screenshot of output 1](MyCost/Resources/Screenshot2.png)
 ![Screenshot of output 1](MyCost/Resources/Screenshot3.png)
