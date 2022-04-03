@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCost", "MyCost\MyCost.csproj", "{5FADA697-8FC0-490C-8C26-700B42E70351}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "MyCost Installer", "MyCost Installer\MyCost Installer.vdproj", "{39128189-2B40-4395-934F-70CBACE84791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +15,6 @@ Global
 		{5FADA697-8FC0-490C-8C26-700B42E70351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FADA697-8FC0-490C-8C26-700B42E70351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FADA697-8FC0-490C-8C26-700B42E70351}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39128189-2B40-4395-934F-70CBACE84791}.Debug|Any CPU.ActiveCfg = Debug
-		{39128189-2B40-4395-934F-70CBACE84791}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -170,9 +170,9 @@ namespace MyCost.View
         private void DisplayLoginPanel()
         {
             //reset everything so the panel appears as a login form 
-            ShowRegisterPanelButton.BackColor = Color.RoyalBlue;
+            ShowRegisterPanelButton.BackColor = Color.CornflowerBlue;
             ShowRegisterPanelButton.FlatAppearance.BorderSize = 0;
-            ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
+            ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.ForestGreen;
             ShowRegisterPanelButton.ForeColor = Color.White;
             ShowRegisterPanelButton.Enabled = true;
             ShowLoginPanelButton.BackColor = Color.White;
@@ -206,11 +206,11 @@ namespace MyCost.View
             ShowRegisterPanelButton.Enabled = false;
             ShowRegisterPanelButton.FlatAppearance.BorderSize = 1;
             ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.White;
-            ShowLoginPanelButton.BackColor = Color.RoyalBlue;
+            ShowLoginPanelButton.BackColor = Color.CornflowerBlue;
             ShowLoginPanelButton.FlatAppearance.BorderSize = 0;
             ShowLoginPanelButton.ForeColor = Color.White;           
             ShowLoginPanelButton.Enabled = true;
-            ShowLoginPanelButton.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
+            ShowLoginPanelButton.FlatAppearance.MouseOverBackColor = Color.ForestGreen;
 
             SubmitButton.Text = "Register";
             SubmitButton.Location = new Point(324, 379);
