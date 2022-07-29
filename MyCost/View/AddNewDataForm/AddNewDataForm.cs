@@ -1036,5 +1036,15 @@ namespace MyCost.View
             return dlgRes;
         }
         #endregion
+
+        private void TotalEarningLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExpenseDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

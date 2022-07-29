@@ -365,5 +365,10 @@ namespace MyCost.View
             PieChart.Series["Series1"].Points.Clear();
         }
         #endregion
+
+        private void PieChart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
