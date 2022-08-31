@@ -20,6 +20,8 @@ namespace MyCost
             Application.SetCompatibleTextRenderingDefault(false);
             try
             {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new AppLoaderForm());
             }
             catch
