@@ -42,23 +42,25 @@
             // LoaderLabel
             // 
             this.LoaderLabel.AutoSize = true;
-            this.LoaderLabel.Font = new System.Drawing.Font("Bauhaus 93", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoaderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.LoaderLabel.Location = new System.Drawing.Point(122, 60);
+            this.LoaderLabel.Location = new System.Drawing.Point(163, 74);
+            this.LoaderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LoaderLabel.Name = "LoaderLabel";
-            this.LoaderLabel.Size = new System.Drawing.Size(271, 73);
+            this.LoaderLabel.Size = new System.Drawing.Size(381, 91);
             this.LoaderLabel.TabIndex = 0;
             this.LoaderLabel.Text = "MYCOST";
             // 
             // AppLoaderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(514, 213);
+            this.ClientSize = new System.Drawing.Size(685, 262);
             this.Controls.Add(this.LoaderLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AppLoaderForm";

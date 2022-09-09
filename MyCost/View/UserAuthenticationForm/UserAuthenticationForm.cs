@@ -170,7 +170,7 @@ namespace MyCost.View
         private void DisplayLoginPanel()
         {
             //reset everything so the panel appears as a login form 
-            ShowRegisterPanelButton.BackColor = Color.CornflowerBlue;
+            ShowRegisterPanelButton.BackColor = Color.RoyalBlue;
             ShowRegisterPanelButton.FlatAppearance.BorderSize = 0;
             ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.ForestGreen;
             ShowRegisterPanelButton.ForeColor = Color.White;
@@ -181,7 +181,7 @@ namespace MyCost.View
             ShowLoginPanelButton.Enabled = false;
 
             SubmitButton.Text = "Log in";
-            SubmitButton.Location = new Point(324, 290);
+            SubmitButton.Location = new Point(SubmitButton.Location.X, 340);
 
             ConfirmPasswordTextBox.Visible = false;
             ConfirmPasswordTextBox.Enabled = false;
@@ -191,9 +191,9 @@ namespace MyCost.View
 
             AgreeLicenseLabel.Visible = false;
             AgreeCheckBox.Visible = false;
-            RememberMeCheckBox.Location = new Point(146, 245);
-            VersionLabel.Location = new Point(VersionLabel.Location.X, 360);
-            this.Size = new Size(800, 430);
+            RememberMeCheckBox.Location = new Point(RememberMeCheckBox.Location.X, 297);
+            VersionLabel.Location = new Point(VersionLabel.Location.X, 450);
+            this.Size = new Size(1063, 550);
 
             ResetTextBoxProperties();
         }
@@ -206,14 +206,14 @@ namespace MyCost.View
             ShowRegisterPanelButton.Enabled = false;
             ShowRegisterPanelButton.FlatAppearance.BorderSize = 1;
             ShowRegisterPanelButton.FlatAppearance.MouseOverBackColor = Color.White;
-            ShowLoginPanelButton.BackColor = Color.CornflowerBlue;
+            ShowLoginPanelButton.BackColor = Color.RoyalBlue;
             ShowLoginPanelButton.FlatAppearance.BorderSize = 0;
             ShowLoginPanelButton.ForeColor = Color.White;           
             ShowLoginPanelButton.Enabled = true;
             ShowLoginPanelButton.FlatAppearance.MouseOverBackColor = Color.ForestGreen;
 
             SubmitButton.Text = "Register";
-            SubmitButton.Location = new Point(324, 379);
+            SubmitButton.Location = new Point(SubmitButton.Location.X, 466);
 
             ConfirmPasswordTextBox.Visible = true;
             ConfirmPasswordTextBox.Enabled = true;
@@ -223,9 +223,9 @@ namespace MyCost.View
 
             AgreeLicenseLabel.Visible = true;
             AgreeCheckBox.Visible = true;
-            RememberMeCheckBox.Location = new Point(146, 334);
-            VersionLabel.Location = new Point(VersionLabel.Location.X, 435);
-            this.Size = new Size(800, 500);
+            RememberMeCheckBox.Location = new Point(RememberMeCheckBox.Location.X, 411);
+            VersionLabel.Location = new Point(VersionLabel.Location.X, 548);
+            this.Size = new Size(1063, 627);
 
             ResetTextBoxProperties();
         }

@@ -68,7 +68,7 @@ namespace MyCost.View
             {
                 EmailVerificationForm form = new EmailVerificationForm();
                 form.FormClosingEventHandler += EmailVerificationFormClosed;
-                form.Location = new Point(this.Location.X + 153, this.Location.Y + 120);
+                form.Location = new Point(this.Location.X + 300, this.Location.Y + 224);
                 form.Show();
             }
             else if (GlobalSpace.MonthlyInfoList.Count < 1)
@@ -338,6 +338,7 @@ namespace MyCost.View
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
+            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;

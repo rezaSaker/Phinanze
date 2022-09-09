@@ -40,13 +40,14 @@
             // NotNowButton
             // 
             this.NotNowButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.NotNowButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.NotNowButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.NotNowButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NotNowButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotNowButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NotNowButton.ForeColor = System.Drawing.Color.White;
-            this.NotNowButton.Location = new System.Drawing.Point(283, 89);
+            this.NotNowButton.Location = new System.Drawing.Point(377, 110);
+            this.NotNowButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NotNowButton.Name = "NotNowButton";
-            this.NotNowButton.Size = new System.Drawing.Size(129, 33);
+            this.NotNowButton.Size = new System.Drawing.Size(172, 41);
             this.NotNowButton.TabIndex = 11;
             this.NotNowButton.Text = "Skip";
             this.NotNowButton.UseVisualStyleBackColor = false;
@@ -56,27 +57,28 @@
             // 
             this.GuidelineTextBox.BackColor = System.Drawing.Color.White;
             this.GuidelineTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.GuidelineTextBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuidelineTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GuidelineTextBox.ForeColor = System.Drawing.Color.Black;
-            this.GuidelineTextBox.Location = new System.Drawing.Point(12, 189);
+            this.GuidelineTextBox.Location = new System.Drawing.Point(16, 233);
+            this.GuidelineTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GuidelineTextBox.Name = "GuidelineTextBox";
             this.GuidelineTextBox.ReadOnly = true;
-            this.GuidelineTextBox.Size = new System.Drawing.Size(509, 147);
+            this.GuidelineTextBox.Size = new System.Drawing.Size(679, 181);
             this.GuidelineTextBox.TabIndex = 10;
             this.GuidelineTextBox.Text = resources.GetString("GuidelineTextBox.Text");
             this.GuidelineTextBox.Visible = false;
             // 
             // CodeResendButton
             // 
-            this.CodeResendButton.BackColor = System.Drawing.Color.Orange;
-            this.CodeResendButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.CodeResendButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.RoyalBlue;
+            this.CodeResendButton.BackColor = System.Drawing.Color.Transparent;
+            this.CodeResendButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CodeResendButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CodeResendButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CodeResendButton.ForeColor = System.Drawing.Color.White;
-            this.CodeResendButton.Location = new System.Drawing.Point(137, 150);
+            this.CodeResendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodeResendButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.CodeResendButton.Location = new System.Drawing.Point(183, 185);
+            this.CodeResendButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CodeResendButton.Name = "CodeResendButton";
-            this.CodeResendButton.Size = new System.Drawing.Size(275, 33);
+            this.CodeResendButton.Size = new System.Drawing.Size(367, 41);
             this.CodeResendButton.TabIndex = 9;
             this.CodeResendButton.Text = "I did not recieve any code";
             this.CodeResendButton.UseVisualStyleBackColor = false;
@@ -85,13 +87,14 @@
             // VerifyEmailButton
             // 
             this.VerifyEmailButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.VerifyEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.VerifyEmailButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.VerifyEmailButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VerifyEmailButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VerifyEmailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerifyEmailButton.ForeColor = System.Drawing.Color.White;
-            this.VerifyEmailButton.Location = new System.Drawing.Point(137, 89);
+            this.VerifyEmailButton.Location = new System.Drawing.Point(183, 110);
+            this.VerifyEmailButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.VerifyEmailButton.Name = "VerifyEmailButton";
-            this.VerifyEmailButton.Size = new System.Drawing.Size(140, 33);
+            this.VerifyEmailButton.Size = new System.Drawing.Size(187, 41);
             this.VerifyEmailButton.TabIndex = 8;
             this.VerifyEmailButton.Text = "Verify  ";
             this.VerifyEmailButton.UseVisualStyleBackColor = false;
@@ -100,27 +103,29 @@
             // HeaderLabel
             // 
             this.HeaderLabel.AutoSize = true;
-            this.HeaderLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeaderLabel.Location = new System.Drawing.Point(26, 18);
+            this.HeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeaderLabel.Location = new System.Drawing.Point(35, 22);
+            this.HeaderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HeaderLabel.Name = "HeaderLabel";
-            this.HeaderLabel.Size = new System.Drawing.Size(495, 21);
+            this.HeaderLabel.Size = new System.Drawing.Size(543, 25);
             this.HeaderLabel.TabIndex = 7;
             this.HeaderLabel.Text = "Please enter the verification code that was sent to your email: ";
             // 
             // VerificationCodeTextBox
             // 
-            this.VerificationCodeTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VerificationCodeTextBox.Location = new System.Drawing.Point(137, 56);
+            this.VerificationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VerificationCodeTextBox.Location = new System.Drawing.Point(183, 69);
+            this.VerificationCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.VerificationCodeTextBox.Name = "VerificationCodeTextBox";
-            this.VerificationCodeTextBox.Size = new System.Drawing.Size(275, 27);
+            this.VerificationCodeTextBox.Size = new System.Drawing.Size(365, 30);
             this.VerificationCodeTextBox.TabIndex = 6;
             // 
             // EmailVerificationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(534, 208);
+            this.ClientSize = new System.Drawing.Size(712, 261);
             this.Controls.Add(this.NotNowButton);
             this.Controls.Add(this.GuidelineTextBox);
             this.Controls.Add(this.CodeResendButton);
@@ -129,6 +134,7 @@
             this.Controls.Add(this.VerificationCodeTextBox);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EmailVerificationForm";

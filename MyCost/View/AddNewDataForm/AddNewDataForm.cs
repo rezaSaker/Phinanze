@@ -1007,6 +1007,7 @@ namespace MyCost.View
             else
             {
                 form.Location = this.Location;
+                form.Size = this.Size;
                 form.Show();
 
                 _quitAppOnFormClosing = false;
@@ -1036,15 +1037,5 @@ namespace MyCost.View
             return dlgRes;
         }
         #endregion
-
-        private void TotalEarningLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ExpenseDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

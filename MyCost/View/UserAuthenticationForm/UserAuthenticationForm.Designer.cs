@@ -54,7 +54,7 @@
             this.ShowRegisterPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowRegisterPanelButton.ForeColor = System.Drawing.Color.Black;
             this.ShowRegisterPanelButton.Location = new System.Drawing.Point(533, 130);
-            this.ShowRegisterPanelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShowRegisterPanelButton.Margin = new System.Windows.Forms.Padding(4);
             this.ShowRegisterPanelButton.Name = "ShowRegisterPanelButton";
             this.ShowRegisterPanelButton.Size = new System.Drawing.Size(328, 44);
             this.ShowRegisterPanelButton.TabIndex = 0;
@@ -71,7 +71,7 @@
             this.ShowLoginPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowLoginPanelButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ShowLoginPanelButton.Location = new System.Drawing.Point(195, 130);
-            this.ShowLoginPanelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ShowLoginPanelButton.Margin = new System.Windows.Forms.Padding(4);
             this.ShowLoginPanelButton.Name = "ShowLoginPanelButton";
             this.ShowLoginPanelButton.Size = new System.Drawing.Size(328, 44);
             this.ShowLoginPanelButton.TabIndex = 1;
@@ -95,15 +95,15 @@
             // SubmitButton
             // 
             this.SubmitButton.AutoSize = true;
-            this.SubmitButton.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.SubmitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SubmitButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.SubmitButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.SubmitButton.FlatAppearance.BorderSize = 0;
-            this.SubmitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.SubmitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.SubmitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
             this.SubmitButton.Location = new System.Drawing.Point(432, 466);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(189, 44);
             this.SubmitButton.TabIndex = 13;
@@ -118,7 +118,7 @@
             this.ConfirmPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmPasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ConfirmPasswordTextBox.Location = new System.Drawing.Point(195, 308);
-            this.ConfirmPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmPasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmPasswordTextBox.Name = "ConfirmPasswordTextBox";
             this.ConfirmPasswordTextBox.Size = new System.Drawing.Size(666, 30);
             this.ConfirmPasswordTextBox.TabIndex = 12;
@@ -132,7 +132,7 @@
             this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.PasswordTextBox.Location = new System.Drawing.Point(195, 251);
-            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.Size = new System.Drawing.Size(666, 30);
             this.PasswordTextBox.TabIndex = 11;
@@ -147,7 +147,7 @@
             this.UsernameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.UsernameTextBox.Location = new System.Drawing.Point(195, 194);
-            this.UsernameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UsernameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.UsernameTextBox.Name = "UsernameTextBox";
             this.UsernameTextBox.Size = new System.Drawing.Size(666, 30);
             this.UsernameTextBox.TabIndex = 10;
@@ -172,7 +172,7 @@
             this.RememberMeCheckBox.AutoSize = true;
             this.RememberMeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RememberMeCheckBox.Location = new System.Drawing.Point(195, 411);
-            this.RememberMeCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RememberMeCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.RememberMeCheckBox.Name = "RememberMeCheckBox";
             this.RememberMeCheckBox.Size = new System.Drawing.Size(161, 29);
             this.RememberMeCheckBox.TabIndex = 15;
@@ -186,7 +186,7 @@
             this.EmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.EmailTextBox.Location = new System.Drawing.Point(195, 367);
-            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.EmailTextBox.Name = "EmailTextBox";
             this.EmailTextBox.Size = new System.Drawing.Size(666, 30);
             this.EmailTextBox.TabIndex = 16;
@@ -213,7 +213,7 @@
             this.ForgotPasswordTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ForgotPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForgotPasswordTextBox.ForeColor = System.Drawing.Color.SlateBlue;
-            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(584, 298);
+            this.ForgotPasswordTextBox.Location = new System.Drawing.Point(600, 297);
             this.ForgotPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ForgotPasswordTextBox.Name = "ForgotPasswordTextBox";
             this.ForgotPasswordTextBox.Size = new System.Drawing.Size(261, 25);
@@ -227,7 +227,7 @@
             this.AgreeCheckBox.AutoSize = true;
             this.AgreeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AgreeCheckBox.Location = new System.Drawing.Point(640, 411);
-            this.AgreeCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AgreeCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.AgreeCheckBox.Name = "AgreeCheckBox";
             this.AgreeCheckBox.Size = new System.Drawing.Size(147, 29);
             this.AgreeCheckBox.TabIndex = 19;
@@ -252,6 +252,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1045, 580);
             this.Controls.Add(this.AgreeLicenseLabel);
@@ -269,10 +271,8 @@
             this.Controls.Add(this.ShowLoginPanelButton);
             this.Controls.Add(this.ShowRegisterPanelButton);
             this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserAuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MyCost - Login or Register";

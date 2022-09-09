@@ -36,11 +36,12 @@
             // 
             // EmailTextBox
             // 
-            this.EmailTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.EmailTextBox.Location = new System.Drawing.Point(90, 28);
+            this.EmailTextBox.Location = new System.Drawing.Point(120, 34);
+            this.EmailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.EmailTextBox.Name = "EmailTextBox";
-            this.EmailTextBox.Size = new System.Drawing.Size(389, 27);
+            this.EmailTextBox.Size = new System.Drawing.Size(517, 30);
             this.EmailTextBox.TabIndex = 0;
             this.EmailTextBox.TabStop = false;
             this.EmailTextBox.Text = "Type your email";
@@ -49,13 +50,14 @@
             // ResetpasswordButton
             // 
             this.ResetpasswordButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ResetpasswordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.ResetpasswordButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.ResetpasswordButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetpasswordButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetpasswordButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetpasswordButton.ForeColor = System.Drawing.Color.White;
-            this.ResetpasswordButton.Location = new System.Drawing.Point(90, 74);
+            this.ResetpasswordButton.Location = new System.Drawing.Point(120, 91);
+            this.ResetpasswordButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ResetpasswordButton.Name = "ResetpasswordButton";
-            this.ResetpasswordButton.Size = new System.Drawing.Size(190, 35);
+            this.ResetpasswordButton.Size = new System.Drawing.Size(253, 43);
             this.ResetpasswordButton.TabIndex = 3;
             this.ResetpasswordButton.Text = "Reset Password";
             this.ResetpasswordButton.UseVisualStyleBackColor = false;
@@ -64,13 +66,14 @@
             // ResetUsernameButton
             // 
             this.ResetUsernameButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.ResetUsernameButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.ResetUsernameButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.ResetUsernameButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ResetUsernameButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResetUsernameButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetUsernameButton.ForeColor = System.Drawing.Color.White;
-            this.ResetUsernameButton.Location = new System.Drawing.Point(289, 74);
+            this.ResetUsernameButton.Location = new System.Drawing.Point(385, 91);
+            this.ResetUsernameButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ResetUsernameButton.Name = "ResetUsernameButton";
-            this.ResetUsernameButton.Size = new System.Drawing.Size(190, 35);
+            this.ResetUsernameButton.Size = new System.Drawing.Size(253, 43);
             this.ResetUsernameButton.TabIndex = 4;
             this.ResetUsernameButton.Text = "Reset Username";
             this.ResetUsernameButton.UseVisualStyleBackColor = false;
@@ -78,15 +81,16 @@
             // 
             // PasswordResetForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(570, 134);
+            this.ClientSize = new System.Drawing.Size(760, 165);
             this.Controls.Add(this.ResetUsernameButton);
             this.Controls.Add(this.ResetpasswordButton);
             this.Controls.Add(this.EmailTextBox);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PasswordResetForm";
