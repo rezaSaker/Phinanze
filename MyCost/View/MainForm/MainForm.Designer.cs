@@ -31,13 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.HomeDataGridView = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,12 +51,12 @@
             this.StatisticsButton = new System.Windows.Forms.Button();
             this.ProfileButton = new System.Windows.Forms.Button();
             this.LogOutButton = new System.Windows.Forms.Button();
-            this.LogoButton = new System.Windows.Forms.Button();
             this.BarChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.PieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.StatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.LogoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HomeDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PieChart)).BeginInit();
@@ -277,23 +277,6 @@
             this.LogOutButton.UseVisualStyleBackColor = false;
             this.LogOutButton.Click += new System.EventHandler(this.MenuButtonsClicked);
             // 
-            // LogoButton
-            // 
-            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
-            this.LogoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoButton.BackgroundImage")));
-            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.LogoButton.FlatAppearance.BorderSize = 0;
-            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoButton.ForeColor = System.Drawing.Color.White;
-            this.LogoButton.Location = new System.Drawing.Point(13, 10);
-            this.LogoButton.Margin = new System.Windows.Forms.Padding(4);
-            this.LogoButton.Name = "LogoButton";
-            this.LogoButton.Size = new System.Drawing.Size(65, 40);
-            this.LogoButton.TabIndex = 48;
-            this.LogoButton.UseVisualStyleBackColor = false;
-            // 
             // BarChart
             // 
             this.BarChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -397,6 +380,23 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1313, 589);
             this.tableLayoutPanel2.TabIndex = 51;
             // 
+            // LogoButton
+            // 
+            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogoButton.BackgroundImage = global::MyCost.Properties.Resources.AppIcon1;
+            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogoButton.FlatAppearance.BorderSize = 0;
+            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoButton.ForeColor = System.Drawing.Color.White;
+            this.LogoButton.Location = new System.Drawing.Point(13, 10);
+            this.LogoButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LogoButton.Name = "LogoButton";
+            this.LogoButton.Size = new System.Drawing.Size(65, 40);
+            this.LogoButton.TabIndex = 48;
+            this.LogoButton.UseVisualStyleBackColor = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -416,10 +416,10 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1082, 635);
+            this.MinimumSize = new System.Drawing.Size(1359, 757);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost - Home";
+            this.Text = "Phinanze - Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
             this.Shown += new System.EventHandler(this.ThisFormShown);

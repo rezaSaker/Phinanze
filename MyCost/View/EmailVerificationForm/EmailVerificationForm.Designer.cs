@@ -45,7 +45,7 @@
             this.NotNowButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NotNowButton.ForeColor = System.Drawing.Color.White;
             this.NotNowButton.Location = new System.Drawing.Point(377, 110);
-            this.NotNowButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NotNowButton.Margin = new System.Windows.Forms.Padding(4);
             this.NotNowButton.Name = "NotNowButton";
             this.NotNowButton.Size = new System.Drawing.Size(172, 41);
             this.NotNowButton.TabIndex = 11;
@@ -60,7 +60,7 @@
             this.GuidelineTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GuidelineTextBox.ForeColor = System.Drawing.Color.Black;
             this.GuidelineTextBox.Location = new System.Drawing.Point(16, 233);
-            this.GuidelineTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GuidelineTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.GuidelineTextBox.Name = "GuidelineTextBox";
             this.GuidelineTextBox.ReadOnly = true;
             this.GuidelineTextBox.Size = new System.Drawing.Size(679, 181);
@@ -76,7 +76,7 @@
             this.CodeResendButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodeResendButton.ForeColor = System.Drawing.Color.RoyalBlue;
             this.CodeResendButton.Location = new System.Drawing.Point(183, 185);
-            this.CodeResendButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CodeResendButton.Margin = new System.Windows.Forms.Padding(4);
             this.CodeResendButton.Name = "CodeResendButton";
             this.CodeResendButton.Size = new System.Drawing.Size(367, 41);
             this.CodeResendButton.TabIndex = 9;
@@ -92,7 +92,7 @@
             this.VerifyEmailButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerifyEmailButton.ForeColor = System.Drawing.Color.White;
             this.VerifyEmailButton.Location = new System.Drawing.Point(183, 110);
-            this.VerifyEmailButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VerifyEmailButton.Margin = new System.Windows.Forms.Padding(4);
             this.VerifyEmailButton.Name = "VerifyEmailButton";
             this.VerifyEmailButton.Size = new System.Drawing.Size(187, 41);
             this.VerifyEmailButton.TabIndex = 8;
@@ -115,7 +115,7 @@
             // 
             this.VerificationCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VerificationCodeTextBox.Location = new System.Drawing.Point(183, 69);
-            this.VerificationCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VerificationCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.VerificationCodeTextBox.Name = "VerificationCodeTextBox";
             this.VerificationCodeTextBox.Size = new System.Drawing.Size(365, 30);
             this.VerificationCodeTextBox.TabIndex = 6;
@@ -133,13 +133,14 @@
             this.Controls.Add(this.HeaderLabel);
             this.Controls.Add(this.VerificationCodeTextBox);
             this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EmailVerificationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost - Email Verification";
+            this.Text = "Phinanze - Email Verification";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmailVerificationFormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

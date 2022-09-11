@@ -73,6 +73,26 @@ namespace MyCost.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AppIcon1 {
+            get {
+                object obj = ResourceManager.GetObject("AppIcon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AppIcon2 {
+            get {
+                object obj = ResourceManager.GetObject("AppIcon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MyCostLogo {
             get {
                 object obj = ResourceManager.GetObject("MyCostLogo", resourceCulture);

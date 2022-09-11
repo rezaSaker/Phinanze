@@ -70,8 +70,8 @@
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.LogoButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.LogoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EarningDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -89,7 +89,7 @@
             this.ExpenseDataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -104,7 +104,7 @@
             this.type});
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -281,7 +281,7 @@
             this.EarningDataGridView.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -296,7 +296,7 @@
             this.dataGridViewTextBoxColumn5});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -559,23 +559,6 @@
             this.panel1.Size = new System.Drawing.Size(626, 46);
             this.panel1.TabIndex = 55;
             // 
-            // LogoButton
-            // 
-            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
-            this.LogoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LogoButton.BackgroundImage")));
-            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.LogoButton.FlatAppearance.BorderSize = 0;
-            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoButton.ForeColor = System.Drawing.Color.White;
-            this.LogoButton.Location = new System.Drawing.Point(13, 10);
-            this.LogoButton.Margin = new System.Windows.Forms.Padding(2);
-            this.LogoButton.Name = "LogoButton";
-            this.LogoButton.Size = new System.Drawing.Size(65, 40);
-            this.LogoButton.TabIndex = 53;
-            this.LogoButton.UseVisualStyleBackColor = false;
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -593,6 +576,23 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1310, 422);
             this.tableLayoutPanel1.TabIndex = 56;
+            // 
+            // LogoButton
+            // 
+            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogoButton.BackgroundImage = global::MyCost.Properties.Resources.AppIcon1;
+            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogoButton.FlatAppearance.BorderSize = 0;
+            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoButton.ForeColor = System.Drawing.Color.White;
+            this.LogoButton.Location = new System.Drawing.Point(13, 10);
+            this.LogoButton.Margin = new System.Windows.Forms.Padding(2);
+            this.LogoButton.Name = "LogoButton";
+            this.LogoButton.Size = new System.Drawing.Size(65, 40);
+            this.LogoButton.TabIndex = 53;
+            this.LogoButton.UseVisualStyleBackColor = false;
             // 
             // AddNewDataForm
             // 
@@ -619,14 +619,13 @@
             this.Controls.Add(this.NoteTextBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(466, 288);
+            this.MinimumSize = new System.Drawing.Size(1357, 656);
             this.Name = "AddNewDataForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost - Daily Expense and Earning";
+            this.Text = "Phinanze - Daily Expense and Earning";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.ExpenseDataGridView)).EndInit();

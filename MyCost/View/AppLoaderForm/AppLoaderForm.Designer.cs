@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppLoaderForm));
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.LoaderLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer
@@ -39,25 +38,14 @@
             this.timer.Interval = 1000;
             this.timer.Tick += new System.EventHandler(this.TimerTick);
             // 
-            // LoaderLabel
-            // 
-            this.LoaderLabel.AutoSize = true;
-            this.LoaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoaderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.LoaderLabel.Location = new System.Drawing.Point(163, 74);
-            this.LoaderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LoaderLabel.Name = "LoaderLabel";
-            this.LoaderLabel.Size = new System.Drawing.Size(381, 91);
-            this.LoaderLabel.TabIndex = 0;
-            this.LoaderLabel.Text = "MYCOST";
-            // 
             // AppLoaderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = global::MyCost.Properties.Resources.MyCostLogo;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(685, 262);
-            this.Controls.Add(this.LoaderLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -69,13 +57,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Shown += new System.EventHandler(this.AppLoaderFormShown);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.Label LoaderLabel;
     }
 }

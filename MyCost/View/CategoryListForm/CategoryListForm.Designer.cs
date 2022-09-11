@@ -169,7 +169,7 @@
             this.MinimizeBox = false;
             this.Name = "CategoryListForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost - Category List";
+            this.Text = "Phinanze - Category List";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ThisFormLoading);
             ((System.ComponentModel.ISupportInitialize)(this.CategoryDataGridView)).EndInit();

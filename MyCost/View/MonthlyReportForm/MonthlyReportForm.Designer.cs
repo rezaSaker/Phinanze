@@ -47,7 +47,6 @@
             this.MonthlyReportButton = new System.Windows.Forms.Button();
             this.AddNewDataButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
-            this.LogoButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.TotalExpenseLabel = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.EarningSearchTextBox = new System.Windows.Forms.TextBox();
             this.NoteSearchTextBox = new System.Windows.Forms.TextBox();
             this.DateSearchTextBox = new System.Windows.Forms.TextBox();
+            this.LogoButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             "December",
             "All Months"});
             this.MonthComboBox.Location = new System.Drawing.Point(919, 58);
-            this.MonthComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MonthComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.MonthComboBox.Name = "MonthComboBox";
             this.MonthComboBox.Size = new System.Drawing.Size(236, 33);
             this.MonthComboBox.TabIndex = 3;
@@ -126,7 +126,7 @@
             this.MonthlyReportDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.MonthlyReportDataGridView.GridColor = System.Drawing.Color.Black;
             this.MonthlyReportDataGridView.Location = new System.Drawing.Point(20, 144);
-            this.MonthlyReportDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MonthlyReportDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.MonthlyReportDataGridView.Name = "MonthlyReportDataGridView";
             this.MonthlyReportDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -186,7 +186,7 @@
             this.YearComboBox.ForeColor = System.Drawing.Color.Black;
             this.YearComboBox.FormattingEnabled = true;
             this.YearComboBox.Location = new System.Drawing.Point(1163, 58);
-            this.YearComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.YearComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.YearComboBox.Name = "YearComboBox";
             this.YearComboBox.Size = new System.Drawing.Size(161, 33);
             this.YearComboBox.TabIndex = 9;
@@ -212,7 +212,7 @@
             this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.Color.White;
             this.DeleteButton.Location = new System.Drawing.Point(1019, 550);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(157, 43);
             this.DeleteButton.TabIndex = 46;
@@ -229,7 +229,7 @@
             this.LogOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LogOutButton.ForeColor = System.Drawing.Color.White;
             this.LogOutButton.Location = new System.Drawing.Point(1124, 10);
-            this.LogOutButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LogOutButton.Margin = new System.Windows.Forms.Padding(4);
             this.LogOutButton.Name = "LogOutButton";
             this.LogOutButton.Size = new System.Drawing.Size(200, 40);
             this.LogOutButton.TabIndex = 52;
@@ -246,7 +246,7 @@
             this.ProfileButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProfileButton.ForeColor = System.Drawing.Color.White;
             this.ProfileButton.Location = new System.Drawing.Point(919, 10);
-            this.ProfileButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ProfileButton.Margin = new System.Windows.Forms.Padding(4);
             this.ProfileButton.Name = "ProfileButton";
             this.ProfileButton.Size = new System.Drawing.Size(200, 40);
             this.ProfileButton.TabIndex = 51;
@@ -263,7 +263,7 @@
             this.StatisticsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.StatisticsButton.ForeColor = System.Drawing.Color.White;
             this.StatisticsButton.Location = new System.Drawing.Point(712, 10);
-            this.StatisticsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StatisticsButton.Margin = new System.Windows.Forms.Padding(4);
             this.StatisticsButton.Name = "StatisticsButton";
             this.StatisticsButton.Size = new System.Drawing.Size(200, 40);
             this.StatisticsButton.TabIndex = 50;
@@ -282,7 +282,7 @@
             this.MonthlyReportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MonthlyReportButton.ForeColor = System.Drawing.Color.RoyalBlue;
             this.MonthlyReportButton.Location = new System.Drawing.Point(503, 10);
-            this.MonthlyReportButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MonthlyReportButton.Margin = new System.Windows.Forms.Padding(4);
             this.MonthlyReportButton.Name = "MonthlyReportButton";
             this.MonthlyReportButton.Size = new System.Drawing.Size(200, 40);
             this.MonthlyReportButton.TabIndex = 49;
@@ -298,7 +298,7 @@
             this.AddNewDataButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddNewDataButton.ForeColor = System.Drawing.Color.White;
             this.AddNewDataButton.Location = new System.Drawing.Point(297, 10);
-            this.AddNewDataButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddNewDataButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddNewDataButton.Name = "AddNewDataButton";
             this.AddNewDataButton.Size = new System.Drawing.Size(200, 40);
             this.AddNewDataButton.TabIndex = 48;
@@ -315,30 +315,13 @@
             this.HomeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HomeButton.ForeColor = System.Drawing.Color.White;
             this.HomeButton.Location = new System.Drawing.Point(89, 10);
-            this.HomeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HomeButton.Margin = new System.Windows.Forms.Padding(4);
             this.HomeButton.Name = "HomeButton";
             this.HomeButton.Size = new System.Drawing.Size(200, 40);
             this.HomeButton.TabIndex = 47;
             this.HomeButton.Text = "Home";
             this.HomeButton.UseVisualStyleBackColor = false;
             this.HomeButton.Click += new System.EventHandler(this.MenuButtonsClicked);
-            // 
-            // LogoButton
-            // 
-            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
-            this.LogoButton.BackgroundImage = global::MyCost.Properties.Resources.AppIcon;
-            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
-            this.LogoButton.FlatAppearance.BorderSize = 0;
-            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoButton.ForeColor = System.Drawing.Color.White;
-            this.LogoButton.Location = new System.Drawing.Point(13, 10);
-            this.LogoButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.LogoButton.Name = "LogoButton";
-            this.LogoButton.Size = new System.Drawing.Size(65, 40);
-            this.LogoButton.TabIndex = 53;
-            this.LogoButton.UseVisualStyleBackColor = false;
             // 
             // EditButton
             // 
@@ -349,7 +332,7 @@
             this.EditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditButton.ForeColor = System.Drawing.Color.White;
             this.EditButton.Location = new System.Drawing.Point(1184, 549);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EditButton.Margin = new System.Windows.Forms.Padding(4);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(138, 43);
             this.EditButton.TabIndex = 54;
@@ -431,7 +414,7 @@
             this.ExpenseSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpenseSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.ExpenseSearchTextBox.Location = new System.Drawing.Point(989, 106);
-            this.ExpenseSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ExpenseSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.ExpenseSearchTextBox.Name = "ExpenseSearchTextBox";
             this.ExpenseSearchTextBox.Size = new System.Drawing.Size(333, 30);
             this.ExpenseSearchTextBox.TabIndex = 57;
@@ -446,7 +429,7 @@
             this.EarningSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EarningSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.EarningSearchTextBox.Location = new System.Drawing.Point(654, 106);
-            this.EarningSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EarningSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.EarningSearchTextBox.Name = "EarningSearchTextBox";
             this.EarningSearchTextBox.Size = new System.Drawing.Size(327, 30);
             this.EarningSearchTextBox.TabIndex = 58;
@@ -461,7 +444,7 @@
             this.NoteSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NoteSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.NoteSearchTextBox.Location = new System.Drawing.Point(336, 106);
-            this.NoteSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NoteSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.NoteSearchTextBox.Name = "NoteSearchTextBox";
             this.NoteSearchTextBox.Size = new System.Drawing.Size(310, 30);
             this.NoteSearchTextBox.TabIndex = 59;
@@ -476,13 +459,30 @@
             this.DateSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateSearchTextBox.ForeColor = System.Drawing.Color.Gray;
             this.DateSearchTextBox.Location = new System.Drawing.Point(21, 106);
-            this.DateSearchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DateSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.DateSearchTextBox.Name = "DateSearchTextBox";
             this.DateSearchTextBox.Size = new System.Drawing.Size(307, 30);
             this.DateSearchTextBox.TabIndex = 60;
             this.DateSearchTextBox.Text = "Search by Date";
             this.DateSearchTextBox.Click += new System.EventHandler(this.DateSearchTextBox_Click);
             this.DateSearchTextBox.TextChanged += new System.EventHandler(this.DateSearchTextBox_TextChanged);
+            // 
+            // LogoButton
+            // 
+            this.LogoButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogoButton.BackgroundImage = global::MyCost.Properties.Resources.AppIcon1;
+            this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.LogoButton.FlatAppearance.BorderSize = 0;
+            this.LogoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LogoButton.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoButton.ForeColor = System.Drawing.Color.White;
+            this.LogoButton.Location = new System.Drawing.Point(13, 10);
+            this.LogoButton.Margin = new System.Windows.Forms.Padding(4);
+            this.LogoButton.Name = "LogoButton";
+            this.LogoButton.Size = new System.Drawing.Size(65, 40);
+            this.LogoButton.TabIndex = 53;
+            this.LogoButton.UseVisualStyleBackColor = false;
             // 
             // MonthlyReportForm
             // 
@@ -509,12 +509,12 @@
             this.Controls.Add(this.MonthlyReportDataGridView);
             this.Controls.Add(this.MonthComboBox);
             this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1358, 651);
             this.Name = "MonthlyReportForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost - Monthly Report";
+            this.Text = "Phinanze - Monthly Report";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
             this.Shown += new System.EventHandler(this.ThisFormShown);

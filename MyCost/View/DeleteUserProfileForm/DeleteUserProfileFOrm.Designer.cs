@@ -60,7 +60,7 @@
             this.PasswordTextBox.Size = new System.Drawing.Size(517, 30);
             this.PasswordTextBox.TabIndex = 5;
             this.PasswordTextBox.TabStop = false;
-            this.PasswordTextBox.Text = "Type your password";
+            this.PasswordTextBox.Text = "Password";
             this.PasswordTextBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PasswordTextBoxClicked);
             // 
             // statusLabel
@@ -85,13 +85,14 @@
             this.Controls.Add(this.DeleteAccountButton);
             this.Controls.Add(this.PasswordTextBox);
             this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DeleteUserProfileForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "MyCost - Permanently Delete Account";
+            this.Text = "Phinanze - Permanently Delete Account";
             this.ResumeLayout(false);
             this.PerformLayout();
 

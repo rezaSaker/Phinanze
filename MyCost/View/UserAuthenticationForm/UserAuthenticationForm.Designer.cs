@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAuthenticationForm));
             this.ShowRegisterPanelButton = new System.Windows.Forms.Button();
             this.ShowLoginPanelButton = new System.Windows.Forms.Button();
-            this.AppLogoLabel = new System.Windows.Forms.Label();
             this.SubmitButton = new System.Windows.Forms.Button();
             this.ConfirmPasswordTextBox = new System.Windows.Forms.TextBox();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
@@ -43,6 +42,8 @@
             this.ForgotPasswordTextBox = new System.Windows.Forms.Label();
             this.AgreeCheckBox = new System.Windows.Forms.CheckBox();
             this.AgreeLicenseLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ShowRegisterPanelButton
@@ -78,19 +79,6 @@
             this.ShowLoginPanelButton.Text = "Log in";
             this.ShowLoginPanelButton.UseVisualStyleBackColor = false;
             this.ShowLoginPanelButton.Click += new System.EventHandler(this.ShowLoginPanelButoonClicked);
-            // 
-            // AppLogoLabel
-            // 
-            this.AppLogoLabel.AutoSize = true;
-            this.AppLogoLabel.BackColor = System.Drawing.Color.White;
-            this.AppLogoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AppLogoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.AppLogoLabel.Location = new System.Drawing.Point(381, 11);
-            this.AppLogoLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.AppLogoLabel.Name = "AppLogoLabel";
-            this.AppLogoLabel.Size = new System.Drawing.Size(293, 69);
-            this.AppLogoLabel.TabIndex = 3;
-            this.AppLogoLabel.Text = "MYCOST";
             // 
             // SubmitButton
             // 
@@ -248,6 +236,21 @@
             this.AgreeLicenseLabel.Text = "License";
             this.AgreeLicenseLabel.Click += new System.EventHandler(this.LicenseLabelClicked);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = global::MyCost.Properties.Resources.MyCostLogo;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.ErrorImage = global::MyCost.Properties.Resources.MyCostLogo;
+            this.pictureBox1.Image = global::MyCost.Properties.Resources.MyCostLogo;
+            this.pictureBox1.InitialImage = global::MyCost.Properties.Resources.MyCostLogo;
+            this.pictureBox1.Location = new System.Drawing.Point(379, -11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(277, 127);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
+            // 
             // UserAuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,6 +259,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1045, 580);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.AgreeLicenseLabel);
             this.Controls.Add(this.AgreeCheckBox);
             this.Controls.Add(this.ForgotPasswordTextBox);
@@ -267,19 +271,21 @@
             this.Controls.Add(this.ConfirmPasswordTextBox);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.UsernameTextBox);
-            this.Controls.Add(this.AppLogoLabel);
             this.Controls.Add(this.ShowLoginPanelButton);
             this.Controls.Add(this.ShowRegisterPanelButton);
             this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1063, 627);
             this.Name = "UserAuthenticationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MyCost - Login or Register";
+            this.Text = "Phinanze - Login or Register";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ThisFormClosing);
             this.Load += new System.EventHandler(this.ThisFormLoading);
             this.Shown += new System.EventHandler(this.ThisFormShown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,7 +295,6 @@
 
         private System.Windows.Forms.Button ShowRegisterPanelButton;
         private System.Windows.Forms.Button ShowLoginPanelButton;
-        private System.Windows.Forms.Label AppLogoLabel;
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.TextBox ConfirmPasswordTextBox;
         private System.Windows.Forms.TextBox PasswordTextBox;
@@ -301,6 +306,7 @@
         private System.Windows.Forms.Label ForgotPasswordTextBox;
         private System.Windows.Forms.CheckBox AgreeCheckBox;
         private System.Windows.Forms.Label AgreeLicenseLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
