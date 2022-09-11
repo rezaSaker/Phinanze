@@ -67,13 +67,14 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.CategoryDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.CategoryDataGridView.Location = new System.Drawing.Point(1, 73);
+            this.CategoryDataGridView.Location = new System.Drawing.Point(1, 90);
+            this.CategoryDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CategoryDataGridView.MultiSelect = false;
             this.CategoryDataGridView.Name = "CategoryDataGridView";
             this.CategoryDataGridView.RowHeadersVisible = false;
             this.CategoryDataGridView.RowHeadersWidth = 30;
             this.CategoryDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CategoryDataGridView.Size = new System.Drawing.Size(266, 290);
+            this.CategoryDataGridView.Size = new System.Drawing.Size(355, 357);
             this.CategoryDataGridView.TabIndex = 0;
             this.CategoryDataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DataGridViewCellEditBegan);
             this.CategoryDataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewCellDoubleClicked);
@@ -84,14 +85,16 @@
             // Column1
             // 
             this.Column1.HeaderText = "Categories";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(4, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 52);
+            this.label1.Size = new System.Drawing.Size(321, 64);
             this.label1.TabIndex = 1;
             this.label1.Text = "1. Double click on a row to select that category\r\n2. Slowly double click to edit " +
     "category\r\n3. Double click on an empty row to add new category \r\n4. Select a row " +
@@ -101,13 +104,14 @@
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Orange;
+            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteButton.Location = new System.Drawing.Point(1, 369);
+            this.DeleteButton.Location = new System.Drawing.Point(1, 454);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(87, 27);
+            this.DeleteButton.Size = new System.Drawing.Size(116, 33);
             this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
@@ -117,13 +121,14 @@
             // 
             this.SelectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SelectButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.SelectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LimeGreen;
+            this.SelectButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.ForestGreen;
             this.SelectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SelectButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectButton.ForeColor = System.Drawing.Color.White;
-            this.SelectButton.Location = new System.Drawing.Point(188, 369);
+            this.SelectButton.Location = new System.Drawing.Point(251, 454);
+            this.SelectButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SelectButton.Name = "SelectButton";
-            this.SelectButton.Size = new System.Drawing.Size(79, 27);
+            this.SelectButton.Size = new System.Drawing.Size(105, 33);
             this.SelectButton.TabIndex = 3;
             this.SelectButton.Text = "Select";
             this.SelectButton.UseVisualStyleBackColor = false;
@@ -137,9 +142,10 @@
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelButton.ForeColor = System.Drawing.Color.White;
-            this.CancelButton.Location = new System.Drawing.Point(94, 369);
+            this.CancelButton.Location = new System.Drawing.Point(125, 454);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(88, 27);
+            this.CancelButton.Size = new System.Drawing.Size(117, 33);
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
@@ -147,9 +153,9 @@
             // 
             // CategoryListForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 401);
+            this.ClientSize = new System.Drawing.Size(360, 494);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.DeleteButton);
@@ -158,6 +164,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CategoryListForm";

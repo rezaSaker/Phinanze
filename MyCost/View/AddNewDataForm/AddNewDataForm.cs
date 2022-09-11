@@ -60,19 +60,13 @@ namespace MyCost.View
 
             //Add an event handler method to each editable control on the form
             //so that we can detect if there's any unsaved changes when closing the form
-            foreach (Control control in this.Controls)
-            {
-                if (control is TextBox)
-                {
-                    ((TextBox)control).TextChanged += ControlChanged;
-                }
-                else if (control is DataGridView)
-                {
-                    ((DataGridView)control).UserAddedRow += ControlChanged;
-                    ((DataGridView)control).RowsRemoved += ControlChanged;
-                    ((DataGridView)control).CellValueChanged += ControlChanged;
-                }
-            }
+            NoteTextBox.TextChanged += ControlChanged;
+            ExpenseDataGridView.UserAddedRow += ControlChanged;
+            ExpenseDataGridView.RowsRemoved += ControlChanged;
+            ExpenseDataGridView.CellValueChanged += ControlChanged;
+            EarningDataGridView.UserAddedRow += ControlChanged;
+            EarningDataGridView.RowsRemoved += ControlChanged;
+            EarningDataGridView.CellValueChanged += ControlChanged;
         }
 
         private void DayComboBoxIndexChanged(object sender, EventArgs e)
@@ -282,25 +276,35 @@ namespace MyCost.View
 
         private void SaveButtonClicked(object sender, EventArgs e)
         {
-            if(ExpenseDataGridView.Rows.Count < 1 
+            if((ExpenseDataGridView.Rows.Count < 1 
                 && EarningDataGridView.Rows.Count < 1
                 && (NoteTextBox.ForeColor != Color.Black || NoteTextBox.Text.Length < 1))
+                || !_hasUnsavedChanges)
             {
                 //that means the user didn't edit anything and there's nothing to save
-                string message = "Nothing to save on this page. Please enter new data to save.";
+                string message = "Nothing to save. Please enter new data to save.";
 
-                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
 
             string result = SaveDailyInfo();
 
-            if(result == "Server connection error")
+            if(result == "SUCCESS")
             {
-                string message = "Could not save the information to database. ";
+                string message = "Information has been successfully saved.";
+                MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if(result == "Server connection error")
+            {
+                string message = "Could not save the information. ";
                 message += "Please check your internet connection and try again.";
-
+                MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                string message = "Unknown error occurred. Please try again.";
                 MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -432,11 +436,24 @@ namespace MyCost.View
 
                     string result = SaveDailyInfo();
 
-                    if (result == "Server connection error")
+                    if (result == "SUCCESS")
                     {
-                        string message = "Could not delete the information from database. ";
+                        string message = "Information has been successfully saved.";
+                        MessageBox.Show(message, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (result == "Server connection error")
+                    {
+                        string message = "Could not delete the information permanently. ";
                         message += "Please check your internet connection and try again.";
+                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                        //following method will refresh the page and reload data that was 
+                        //manually removed but could not be permanently deleted
+                        PlotDailyInfo();
+                    }
+                    else
+                    {
+                        string message = "unknown error occurred. Please try again";
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         //following method will refresh the page and reload data that was 
@@ -678,7 +695,7 @@ namespace MyCost.View
                 }
             }
 
-            TotalExpenseLabel.Text = string.Format("{0:0.00}", total);
+            TotalExpenseLabel.Text = string.Format("${0:0.00}", total);
         }
 
         private void UpdateTotalEarningLabel()
@@ -728,7 +745,7 @@ namespace MyCost.View
                 }
             }
 
-            TotalEarningLabel.Text = string.Format("{0:0.00}", total);
+            TotalEarningLabel.Text = string.Format("${0:0.00}", total);
         }  
         
         private void ResetAmountColumnColorToDeafault(DataGridView dgv, int rowIndex)
@@ -760,8 +777,8 @@ namespace MyCost.View
             daily.Day = _selectedDay;
             daily.Month = _selectedMonth;
             daily.Year = _selectedYear;
-            daily.TotalEarning = Convert.ToDouble(TotalEarningLabel.Text);
-            daily.TotalExpense = Convert.ToDouble(TotalExpenseLabel.Text);
+            daily.TotalEarning = Convert.ToDouble(TotalEarningLabel.Text.Trim('$'));
+            daily.TotalExpense = Convert.ToDouble(TotalExpenseLabel.Text.Trim('$'));
 
             string source;
             string reason;
@@ -776,12 +793,12 @@ namespace MyCost.View
                     break;
                 }
 
-                try
+                if(ExpenseDataGridView.Rows[row.Index].Cells[0].Value != null)
                 {
                     reason = ExpenseDataGridView.Rows[row.Index].Cells[0].Value.ToString();
                     reason = FilterString(reason);
                 }
-                catch
+                else
                 {
                     reason = "";
                 }
@@ -799,7 +816,7 @@ namespace MyCost.View
                         return "Invalid value entered";
                     }
                 }
-                catch (NullReferenceException)
+                catch (NullReferenceException e)
                 {
                     string message;
                     message = "Looks like you forgot to enter amount on row ";
@@ -818,22 +835,22 @@ namespace MyCost.View
                     }
                 }            
 
-                try
+                if(ExpenseDataGridView.Rows[row.Index].Cells[2].Value != null)
                 {
                     category = ExpenseDataGridView.Rows[row.Index].Cells[2].Value.ToString();
                     category = FilterString(category);
                 }
-                catch
+                else
                 {
                     category = "Other";
                 }
 
-                try
+                if(ExpenseDataGridView.Rows[row.Index].Cells[3].Value != null)
                 {
                     comment = ExpenseDataGridView.Rows[row.Index].Cells[3].Value.ToString();
                     comment = FilterString(comment);
                 }
-                catch
+                else
                 {
                     comment = "";
                 }
@@ -855,12 +872,12 @@ namespace MyCost.View
                     break;
                 }
 
-                try
+                if(EarningDataGridView.Rows[row.Index].Cells[0].Value != null)
                 {
                     source = EarningDataGridView.Rows[row.Index].Cells[0].Value.ToString();
                     source = FilterString(source);
                 }
-                catch
+                else
                 {
                     source = "";
                 }
@@ -894,22 +911,22 @@ namespace MyCost.View
                     }
                 }
 
-                try
+                if(EarningDataGridView.Rows[row.Index].Cells[2].Value != null)
                 {
                     category = EarningDataGridView.Rows[row.Index].Cells[2].Value.ToString();
                     category = FilterString(category);
                 }
-                catch
+                else
                 {
                     category = "Other";
                 }
 
-                try
+                if(EarningDataGridView.Rows[row.Index].Cells[3].Value != null)
                 {
                     comment = EarningDataGridView.Rows[row.Index].Cells[3].Value.ToString();
                     comment = FilterString(comment);
                 }
-                catch
+                else
                 {
                     comment = "";
                 }
@@ -969,7 +986,7 @@ namespace MyCost.View
             }
 
             CategoryListForm form = new CategoryListForm(dgv, rowIndexList);
-            form.Location = new Point(this.Location.X + 300, this.Location.Y);
+            form.Location = new Point(this.Location.X + 100, this.Location.Y);
             form.Show();
         }           
         

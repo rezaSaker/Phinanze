@@ -416,6 +416,7 @@ namespace MyCost.View
         private void OpenNewForm(Form form)
         {
             form.Location = this.Location;
+            form.Size = this.Size;
             form.Show();
 
             _quitAppOnFormClosing = false;

@@ -36,14 +36,15 @@
             // 
             // DeleteAccountButton
             // 
-            this.DeleteAccountButton.BackColor = System.Drawing.Color.DarkOrange;
-            this.DeleteAccountButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
+            this.DeleteAccountButton.BackColor = System.Drawing.Color.Brown;
+            this.DeleteAccountButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.DeleteAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteAccountButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteAccountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteAccountButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteAccountButton.Location = new System.Drawing.Point(148, 103);
+            this.DeleteAccountButton.Location = new System.Drawing.Point(197, 127);
+            this.DeleteAccountButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DeleteAccountButton.Name = "DeleteAccountButton";
-            this.DeleteAccountButton.Size = new System.Drawing.Size(275, 35);
+            this.DeleteAccountButton.Size = new System.Drawing.Size(367, 43);
             this.DeleteAccountButton.TabIndex = 6;
             this.DeleteAccountButton.Text = "Delete Account Permanently";
             this.DeleteAccountButton.UseVisualStyleBackColor = false;
@@ -51,11 +52,12 @@
             // 
             // PasswordTextBox
             // 
-            this.PasswordTextBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordTextBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.PasswordTextBox.Location = new System.Drawing.Point(91, 56);
+            this.PasswordTextBox.Location = new System.Drawing.Point(121, 69);
+            this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PasswordTextBox.Name = "PasswordTextBox";
-            this.PasswordTextBox.Size = new System.Drawing.Size(389, 27);
+            this.PasswordTextBox.Size = new System.Drawing.Size(517, 30);
             this.PasswordTextBox.TabIndex = 5;
             this.PasswordTextBox.TabStop = false;
             this.PasswordTextBox.Text = "Type your password";
@@ -64,25 +66,27 @@
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusLabel.ForeColor = System.Drawing.Color.Black;
-            this.statusLabel.Location = new System.Drawing.Point(88, 23);
+            this.statusLabel.Location = new System.Drawing.Point(117, 28);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(257, 21);
+            this.statusLabel.Size = new System.Drawing.Size(289, 25);
             this.statusLabel.TabIndex = 7;
             this.statusLabel.Text = "Type your password to continue";
             // 
             // DeleteUserProfileForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(570, 186);
+            this.ClientSize = new System.Drawing.Size(760, 229);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.DeleteAccountButton);
             this.Controls.Add(this.PasswordTextBox);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DeleteUserProfileForm";

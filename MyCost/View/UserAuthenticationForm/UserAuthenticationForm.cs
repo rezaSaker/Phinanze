@@ -273,7 +273,7 @@ namespace MyCost.View
             //show progress bar
             string status = "Verifying your login credentials, please wait...";
             ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-            progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 100);
+            progressViewer.Location = new Point(this.Location.X + 93, this.Location.Y + 175);
             progressViewer.Show();
             _progressViewerObject = progressViewer;
 
@@ -352,7 +352,7 @@ namespace MyCost.View
             //show progress bar
             string status = "Creating your account, please wait...";
             ProgressViewerForm progressViewer = new ProgressViewerForm(status);
-            progressViewer.Location = new Point(this.Location.X + 70, this.Location.Y + 200);
+            progressViewer.Location = new Point(this.Location.X + 93, this.Location.Y + 200);
             progressViewer.Show();
             _progressViewerObject = progressViewer;
 
