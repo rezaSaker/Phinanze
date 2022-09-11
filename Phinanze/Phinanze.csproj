@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5FADA697-8FC0-490C-8C26-700B42E70351}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MyCost</RootNamespace>
+    <AssemblyName>MyCost</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>C:\MyCost\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>true</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>https://rezasdev.000webhostapp.com/dev/soft/mycost/download/</InstallUrl>
+    <SupportUrl>https://rezasdev.000webhostapp.com/dev/soft/mycost/help</SupportUrl>
+    <TargetCulture>en-CA</TargetCulture>
+    <ProductName>MyCost</ProductName>
+    <PublisherName>Reza Saker</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>index.php</WebPage>
+    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>7A8C7758FEA70CE45D9F96B7B900058B897D0A2F</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MyCost_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Messaging" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Mailer.cs" />
+    <Compile Include="Common\Server.cs" />
+    <Compile Include="Common\StringCipher.cs" />
+    <Compile Include="View\AppLoaderForm\AppLoaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AppLoaderForm\AppLoaderForm.Designer.cs">
+      <DependentUpon>AppLoaderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddNewDataForm\AddNewDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\AddNewDataForm\AddNewDataForm.Designer.cs">
+      <DependentUpon>AddNewDataForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\CategoryListForm\CategoryListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CategoryListForm\CategoryListForm.Designer.cs">
+      <DependentUpon>CategoryListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DailyInfo.cs" />
+    <Compile Include="Common\EarningInfo.cs" />
+    <Compile Include="Common\ExpenseInfo.cs" />
+    <Compile Include="View\DeleteUserProfileForm\DeleteUserProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DeleteUserProfileForm\DeleteUserProfileForm.Designer.cs">
+      <DependentUpon>DeleteUserProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmailVerificationForm\EmailVerificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmailVerificationForm\EmailVerificationForm.Designer.cs">
+      <DependentUpon>EmailVerificationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PasswordResetForm\PasswordResetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PasswordResetForm\PasswordResetForm.Designer.cs">
+      <DependentUpon>PasswordResetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgressViewerForm\ProgressViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ProgressViewerForm\ProgressViewerForm.Designer.cs">
+      <DependentUpon>ProgressViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Profile\ProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Profile\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\StatisticsForm\StatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\StatisticsForm\StatisticsForm.Designer.cs">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserAuthenticationForm\UserAuthenticationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\UserAuthenticationForm\UserAuthenticationForm.Designer.cs">
+      <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\MonthlyInfo.cs" />
+    <Compile Include="View\MonthlyReportForm\MonthlyReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MonthlyReportForm\MonthlyReportForm.Designer.cs">
+      <DependentUpon>MonthlyReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\WebHandler.cs" />
+    <Compile Include="Common\GlobalSpace.cs" />
+    <EmbeddedResource Include="View\AppLoaderForm\AppLoaderForm.resx">
+      <DependentUpon>AppLoaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\AddNewDataForm\AddNewDataForm.resx">
+      <DependentUpon>AddNewDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CategoryListForm\CategoryListForm.resx">
+      <DependentUpon>CategoryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DeleteUserProfileForm\DeleteUserProfileForm.resx">
+      <DependentUpon>DeleteUserProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EmailVerificationForm\EmailVerificationForm.resx">
+      <DependentUpon>EmailVerificationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PasswordResetForm\PasswordResetForm.resx">
+      <DependentUpon>PasswordResetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ProgressViewerForm\ProgressViewerForm.resx">
+      <DependentUpon>ProgressViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Profile\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\StatisticsForm\StatisticsForm.resx">
+      <DependentUpon>StatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UserAuthenticationForm\UserAuthenticationForm.resx">
+      <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MonthlyReportForm\MonthlyReportForm.resx">
+      <DependentUpon>MonthlyReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppIcon.ico" />
+    <None Include="Resources\PhinanzeLogoCropped.png" />
+    <None Include="Resources\PhinanzeLogo.png" />
+    <None Include="Resources\AppIcon.png" />
+    <None Include="Resources\MyCostLogo.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

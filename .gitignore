@@ -1,7 +1,9 @@
-MyCost/obj/*
-MyCost/bin/*
+Phinanze/obj/*
+Phinanze/bin/*
 .vs
-MyCost/Resources/*.pptx
-MyCost/Common/Server.cs
-MyCost/Common/Mailer.cs
-MyCost Installer/*
+Phinanze/Resources/*.pptx
+Phinanze/Common/Server.cs
+Phinanze/Common/Mailer.cs
+Phinanze Installer/*
+bin/*
+obj/*
