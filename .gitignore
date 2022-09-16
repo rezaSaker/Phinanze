@@ -2,8 +2,8 @@ Phinanze/obj/*
 Phinanze/bin/*
 .vs
 Phinanze/Resources/*.pptx
-Phinanze/Common/Server.cs
-Phinanze/Common/Mailer.cs
+Phinanze/Utils/Server.cs
+Phinanze/Utils/Mailer.cs
 Phinanze Installer/*
 bin/*
 obj/*

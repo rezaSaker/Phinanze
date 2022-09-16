@@ -100,123 +100,123 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Mailer.cs" />
-    <Compile Include="Common\Server.cs" />
-    <Compile Include="Common\StringCipher.cs" />
-    <Compile Include="View\AppLoaderForm\AppLoaderForm.cs">
+    <Compile Include="Utils\Mailer.cs" />
+    <Compile Include="Utils\Server.cs" />
+    <Compile Include="Utils\StringCipher.cs" />
+    <Compile Include="Forms\AppLoaderForm\AppLoaderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AppLoaderForm\AppLoaderForm.Designer.cs">
+    <Compile Include="Forms\AppLoaderForm\AppLoaderForm.Designer.cs">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\AddNewDataForm\AddNewDataForm.cs">
+    <Compile Include="Forms\AddNewDataForm\AddNewDataForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\AddNewDataForm\AddNewDataForm.Designer.cs">
+    <Compile Include="Forms\AddNewDataForm\AddNewDataForm.Designer.cs">
       <DependentUpon>AddNewDataForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\CategoryListForm\CategoryListForm.cs">
+    <Compile Include="Forms\CategoryListForm\CategoryListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\CategoryListForm\CategoryListForm.Designer.cs">
+    <Compile Include="Forms\CategoryListForm\CategoryListForm.Designer.cs">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\DailyInfo.cs" />
-    <Compile Include="Common\EarningInfo.cs" />
-    <Compile Include="Common\ExpenseInfo.cs" />
-    <Compile Include="View\DeleteUserProfileForm\DeleteUserProfileForm.cs">
+    <Compile Include="Utils\DailyInfo.cs" />
+    <Compile Include="Utils\EarningInfo.cs" />
+    <Compile Include="Utils\ExpenseInfo.cs" />
+    <Compile Include="Forms\DeleteUserProfileForm\DeleteUserProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\DeleteUserProfileForm\DeleteUserProfileForm.Designer.cs">
+    <Compile Include="Forms\DeleteUserProfileForm\DeleteUserProfileForm.Designer.cs">
       <DependentUpon>DeleteUserProfileForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\EmailVerificationForm\EmailVerificationForm.cs">
+    <Compile Include="Forms\EmailVerificationForm\EmailVerificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\EmailVerificationForm\EmailVerificationForm.Designer.cs">
+    <Compile Include="Forms\EmailVerificationForm\EmailVerificationForm.Designer.cs">
       <DependentUpon>EmailVerificationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainForm\MainForm.cs">
+    <Compile Include="Forms\MainForm\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainForm\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\PasswordResetForm\PasswordResetForm.cs">
+    <Compile Include="Forms\PasswordResetForm\PasswordResetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\PasswordResetForm\PasswordResetForm.Designer.cs">
+    <Compile Include="Forms\PasswordResetForm\PasswordResetForm.Designer.cs">
       <DependentUpon>PasswordResetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ProgressViewerForm\ProgressViewerForm.cs">
+    <Compile Include="Forms\ProgressViewerForm\ProgressViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ProgressViewerForm\ProgressViewerForm.Designer.cs">
+    <Compile Include="Forms\ProgressViewerForm\ProgressViewerForm.Designer.cs">
       <DependentUpon>ProgressViewerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Profile\ProfileForm.cs">
+    <Compile Include="Forms\Profile\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Profile\ProfileForm.Designer.cs">
+    <Compile Include="Forms\Profile\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\StatisticsForm\StatisticsForm.cs">
+    <Compile Include="Forms\StatisticsForm\StatisticsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\StatisticsForm\StatisticsForm.Designer.cs">
+    <Compile Include="Forms\StatisticsForm\StatisticsForm.Designer.cs">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UserAuthenticationForm\UserAuthenticationForm.cs">
+    <Compile Include="Forms\UserAuthenticationForm\UserAuthenticationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\UserAuthenticationForm\UserAuthenticationForm.Designer.cs">
+    <Compile Include="Forms\UserAuthenticationForm\UserAuthenticationForm.Designer.cs">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\MonthlyInfo.cs" />
-    <Compile Include="View\MonthlyReportForm\MonthlyReportForm.cs">
+    <Compile Include="Utils\MonthlyInfo.cs" />
+    <Compile Include="Forms\MonthlyReportForm\MonthlyReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MonthlyReportForm\MonthlyReportForm.Designer.cs">
+    <Compile Include="Forms\MonthlyReportForm\MonthlyReportForm.Designer.cs">
       <DependentUpon>MonthlyReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\WebHandler.cs" />
-    <Compile Include="Common\GlobalSpace.cs" />
-    <EmbeddedResource Include="View\AppLoaderForm\AppLoaderForm.resx">
+    <Compile Include="Utils\WebHandler.cs" />
+    <Compile Include="Utils\GlobalSettings.cs" />
+    <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\AddNewDataForm\AddNewDataForm.resx">
+    <EmbeddedResource Include="Forms\AddNewDataForm\AddNewDataForm.resx">
       <DependentUpon>AddNewDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\CategoryListForm\CategoryListForm.resx">
+    <EmbeddedResource Include="Forms\CategoryListForm\CategoryListForm.resx">
       <DependentUpon>CategoryListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\DeleteUserProfileForm\DeleteUserProfileForm.resx">
+    <EmbeddedResource Include="Forms\DeleteUserProfileForm\DeleteUserProfileForm.resx">
       <DependentUpon>DeleteUserProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\EmailVerificationForm\EmailVerificationForm.resx">
+    <EmbeddedResource Include="Forms\EmailVerificationForm\EmailVerificationForm.resx">
       <DependentUpon>EmailVerificationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainForm\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PasswordResetForm\PasswordResetForm.resx">
+    <EmbeddedResource Include="Forms\PasswordResetForm\PasswordResetForm.resx">
       <DependentUpon>PasswordResetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ProgressViewerForm\ProgressViewerForm.resx">
+    <EmbeddedResource Include="Forms\ProgressViewerForm\ProgressViewerForm.resx">
       <DependentUpon>ProgressViewerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Profile\ProfileForm.resx">
+    <EmbeddedResource Include="Forms\Profile\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\StatisticsForm\StatisticsForm.resx">
+    <EmbeddedResource Include="Forms\StatisticsForm\StatisticsForm.resx">
       <DependentUpon>StatisticsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UserAuthenticationForm\UserAuthenticationForm.resx">
+    <EmbeddedResource Include="Forms\UserAuthenticationForm\UserAuthenticationForm.resx">
       <DependentUpon>UserAuthenticationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MonthlyReportForm\MonthlyReportForm.resx">
+    <EmbeddedResource Include="Forms\MonthlyReportForm\MonthlyReportForm.resx">
       <DependentUpon>MonthlyReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
