@@ -10,7 +10,7 @@ Phinanze is a Windows PC application for personal finance management that can be
 Phinanze is distributed under [MIT License](https://github.com/rezaSaker/Phinanze/blob/master/LICENSE).
 
 ## Download the application 
-[Click here](https://rezasaker.com/rezasdev/dev/soft/mycost/app/) to install the demo version of Phinanze.
+[Click here](https://rezasaker.com/rezasdev/phinanze/) to install the demo version of Phinanze.
 
 ## Upcoming Feature
 Budget feature that allows users to set budget for various time periods and categories. 

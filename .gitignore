@@ -1,5 +1,6 @@
 Phinanze/obj/*
 Phinanze/bin/*
+Phinanze/release/*
 .vs
 Phinanze/Resources/*.pptx
 Phinanze/Utils/Server.cs

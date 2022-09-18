@@ -239,7 +239,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::MyCost.Properties.Resources.PhinanzeLogoCropped;
+            this.pictureBox1.Image = global::Phinanze.Properties.Resources.PhinanzeLogoCropped;
             this.pictureBox1.Location = new System.Drawing.Point(379, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(277, 53);

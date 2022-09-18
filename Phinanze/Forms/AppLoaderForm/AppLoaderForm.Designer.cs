@@ -43,7 +43,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::MyCost.Properties.Resources.PhinanzeLogo;
+            this.BackgroundImage = global::Phinanze.Properties.Resources.PhinanzeLogo;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(685, 262);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

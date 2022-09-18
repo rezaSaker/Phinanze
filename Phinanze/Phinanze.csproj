@@ -6,14 +6,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5FADA697-8FC0-490C-8C26-700B42E70351}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MyCost</RootNamespace>
-    <AssemblyName>MyCost</AssemblyName>
+    <RootNamespace>Phinanze</RootNamespace>
+    <AssemblyName>Phinanze</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>C:\MyCost\</PublishUrl>
+    <PublishUrl>release\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -23,15 +23,15 @@
     <UpdatePeriodically>true</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://rezasdev.000webhostapp.com/dev/soft/mycost/download/</InstallUrl>
+    <InstallUrl>https://rezasaker.com/rezasdev/phinanze/</InstallUrl>
     <SupportUrl>https://rezasdev.000webhostapp.com/dev/soft/mycost/help</SupportUrl>
     <TargetCulture>en-CA</TargetCulture>
     <ProductName>MyCost</ProductName>
     <PublisherName>Reza Saker</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.php</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>2.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>

@@ -816,7 +816,7 @@ namespace Phinanze.Forms
                         return "Invalid value entered";
                     }
                 }
-                catch (NullReferenceException e)
+                catch (NullReferenceException)
                 {
                     string message;
                     message = "Looks like you forgot to enter amount on row ";
