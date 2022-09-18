@@ -95,7 +95,6 @@
             // 
             this.MonthlyReportDataGridView.AllowUserToAddRows = false;
             this.MonthlyReportDataGridView.AllowUserToResizeColumns = false;
-            this.MonthlyReportDataGridView.AllowUserToResizeRows = false;
             this.MonthlyReportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -104,7 +103,7 @@
             this.MonthlyReportDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -118,7 +117,7 @@
             this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -361,7 +360,7 @@
             this.TotalExpenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TotalExpenseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalExpenseLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.TotalExpenseLabel.Location = new System.Drawing.Point(489, 6);
+            this.TotalExpenseLabel.Location = new System.Drawing.Point(476, 7);
             this.TotalExpenseLabel.Name = "TotalExpenseLabel";
             this.TotalExpenseLabel.Size = new System.Drawing.Size(50, 25);
             this.TotalExpenseLabel.TabIndex = 36;
@@ -375,7 +374,7 @@
             this.TotalEarningLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TotalEarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalEarningLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.TotalEarningLabel.Location = new System.Drawing.Point(147, 6);
+            this.TotalEarningLabel.Location = new System.Drawing.Point(127, 8);
             this.TotalEarningLabel.Name = "TotalEarningLabel";
             this.TotalEarningLabel.Size = new System.Drawing.Size(50, 25);
             this.TotalEarningLabel.TabIndex = 35;
