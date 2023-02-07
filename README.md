@@ -4,7 +4,7 @@
 
 ![issues badge](https://img.shields.io/github/issues/rezaSaker/MyCost.svg)       ![forks badge](https://img.shields.io/github/forks/rezaSaker/MyCost.svg)  ![stars badge](https://img.shields.io/github/stars/rezaSaker/MyCost.svg)  ![License badge](https://img.shields.io/github/license/rezaSaker/mycost)   ![alt text](https://img.shields.io/badge/Version-1.1.1.5-green.svg)
 ## Welcome to Phinanze
-Phinanze is a Windows PC application for personal finance management that can be used for tracking earning and expense records, managing records with dynamic search and filter options, and generating useful reports and statistics. Interactive and easy-to-use design makes the app a convenient tool for simple personal finance management. I developed this application as a hobby project in 2019 summer and made minor chages ocassionally afterwards to improve the app's UI and overall functionalities.
+Phinanze is a Windows PC application for personal finance management that can be used for tracking earning and expense records, managing records with dynamic search and filter options, and generating useful reports and statistics. Interactive and easy-to-use design makes the app a convenient tool for simple personal finance management. I developed this application as a hobby project in 2019 summer and made minor chages ocassionally afterward to improve the app's UI and overall functionalities.
 
 ## License
 Phinanze is distributed under [MIT License](https://github.com/rezaSaker/Phinanze/blob/master/LICENSE).
