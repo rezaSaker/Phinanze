@@ -7,7 +7,7 @@
 Phinanze is a Windows PC application for personal finance management that can be used for tracking earning and expense records, managing records with dynamic search and filter options, and generating useful reports and statistics. Interactive and easy-to-use design makes the app a convenient tool for simple personal finance management. I developed this application as a hobby project in 2019 summer and made minor chages ocassionally afterward to improve the app's UI and overall functionalities.
 
 ## License
-Phinanze is distributed under [MIT License](https://github.com/rezaSaker/Phinanze/blob/master/LICENSE).
+Phinanze is distributed under the [MIT License](https://github.com/rezaSaker/Phinanze/blob/master/LICENSE).
 
 ## Download the application 
 [Click here](https://rezasaker.com/rezasdev/phinanze/) to install the demo version of Phinanze.
