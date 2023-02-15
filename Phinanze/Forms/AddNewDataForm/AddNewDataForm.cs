@@ -101,7 +101,6 @@ namespace Phinanze.Forms
                 {
                     PlotDailyInfo();
                 }
-
                 _hasUnsavedChanges = false;
             }
             else
