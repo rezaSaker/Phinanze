@@ -226,13 +226,16 @@ AppPackages/
 #####
 
 
-Phinanze/obj/*
-Phinanze/bin/*
-Phinanze/release/*
-.vs
+Phinanze/obj
+Phinanze/bin
+Phinanze/release
+Phinanze/App.config
+Phinanze/Phinanze.sln
+Phinanze/app.manifest
 Phinanze/Utils/Server.cs
 Phinanze/Utils/Mailer.cs
 Phinanze Installer/*
+Phinanze/*.vs
 bin/*
 obj/*
 
