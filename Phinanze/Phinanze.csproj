@@ -100,6 +100,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Data\MonthlyInfoData.cs" />
+    <Compile Include="Models\Model\IModel.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryType.cs" />
+    <Compile Include="Models\Model\Model.cs" />
+    <Compile Include="Models\MonthlyInfo.cs" />
+    <Compile Include="Models\DailyInfo.cs" />
+    <Compile Include="Models\Earning.cs" />
+    <Compile Include="Models\Expense.cs" />
+    <Compile Include="Utils\CategoryType.cs" />
     <Compile Include="Utils\Mailer.cs" />
     <Compile Include="Utils\Server.cs" />
     <Compile Include="Utils\StringCipher.cs" />
@@ -262,7 +272,6 @@
     <None Include="Resources\PhinanzeLogoCropped.png" />
     <None Include="Resources\PhinanzeLogo.png" />
     <None Include="Resources\AppIcon.png" />
-    <None Include="Resources\MyCostLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
