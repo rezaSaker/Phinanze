@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net.Mail;
 using Phinanze.Utils;
+using System.Runtime.InteropServices;
+using Phinanze.Models;
 
 namespace Phinanze.Forms
 {

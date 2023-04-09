@@ -8,7 +8,7 @@ namespace Phinanze.Models.Data
 {
     public class MonthlyInfoData
     {
-        private static MonthlyInfoData _instance = null;
+        private static MonthlyInfoData _instance;
         private List<MonthlyInfo> _monthlyInfoList;
 
         private MonthlyInfoData() 
