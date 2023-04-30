@@ -82,11 +82,55 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Abstractions.6.29.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.6.29.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.6.29.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.6.29.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
     <Reference Include="System.Messaging" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -100,15 +144,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Data\MonthlyInfoData.cs" />
-    <Compile Include="Models\Model\IModel.cs" />
+    <Compile Include="Auth\Auth.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\CategoryType.cs" />
-    <Compile Include="Models\Model\Model.cs" />
-    <Compile Include="Models\MonthlyInfo.cs" />
-    <Compile Include="Models\DailyInfo.cs" />
+    <Compile Include="Models\DBContext\DB.cs" />
+    <Compile Include="Models\DBContext\Host.cs" />
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\DailyInfo2.cs" />
     <Compile Include="Models\Earning.cs" />
     <Compile Include="Models\Expense.cs" />
+    <Compile Include="Models\Repositories\BaseRepository.cs" />
+    <Compile Include="Models\Repositories\CategoryRepository.cs" />
+    <Compile Include="Models\Repositories\DailyInfoRepository.cs" />
+    <Compile Include="Models\Repositories\EarningRepository.cs" />
+    <Compile Include="Models\Repositories\ExpenseRepository.cs" />
+    <Compile Include="Models\Repositories\Http\HttpRequest.cs" />
+    <Compile Include="Models\Statics\CategoryType.cs" />
+    <Compile Include="Models\Validations\EntityValidationResult.cs" />
+    <Compile Include="Models\Validations\EntityValidator.cs" />
+    <Compile Include="Models\Validations\ValidationError.cs" />
     <Compile Include="Utils\CategoryType.cs" />
     <Compile Include="Utils\Mailer.cs" />
     <Compile Include="Utils\Server.cs" />
@@ -193,6 +246,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\WebHandler.cs" />
     <Compile Include="Utils\GlobalSettings.cs" />
+    <Compile Include="Views\ContainerView\ContainerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ContainerView\ContainerView.Designer.cs">
+      <DependentUpon>ContainerView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,8 +298,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\ContainerView\ContainerView.resx">
+      <DependentUpon>ContainerView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -269,6 +332,9 @@
     <None Include="Resources\PhinanzeLogoCropped.png" />
     <None Include="Resources\PhinanzeLogo.png" />
     <None Include="Resources\AppIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Presenters\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

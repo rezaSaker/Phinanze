@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Phinanze.Models
+namespace Phinanze.Auth
 {
-    public class CategoryType
+    public class Auth
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

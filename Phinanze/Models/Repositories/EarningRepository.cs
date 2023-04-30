@@ -1,38 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Phinanze.Models.Data;
 
 namespace Phinanze.Models.Repositories
 {
     public class EarningRepository: BaseRepository<Earning>
     {
-        private readonly EarningData _earningData;
+        public EarningRepository() { _model = null; }
 
-        public EarningRepository()
-        {
-            _earningData = EarningData.GetInstance();
-        }
-        public override List<Earning> All()
-        {
-            return _earningData.EarningList;
-        }
+        private Earning _model;
 
-        public override object Find(int id)
+        protected Earning Model
         {
-            return new object();
-        }
-
-        public override object Update(int id, object model)
-        {
-            return new object();
+            set
+            {
+                if(_model == null)
+                {
+                    _model = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Model is already assigned");
+                }
+            }
         }
 
-        public override object Delete(int id)
+        public bool Save()
         {
-            return new object();
+            return base.Save(_model, nameof(Earning));
+        }
+
+        public static List<Earning> GetAll()
+        {
+            return BaseRepository<Earning>.GetAll(nameof(Earning));
+        }
+
+        public static Earning Find(int id)
+        {
+            return BaseRepository<Earning>.GetBy("Id", id.ToString(), nameof(Earning));
+        }
+
+        public static bool Delete(ref Earning e)
+        {
+            if(BaseRepository<Earning>.Delete(e, nameof(Earning)))
+            {
+                e = null;
+            }
+            return e == null;
         }
     }
 }

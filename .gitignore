@@ -234,6 +234,7 @@ Phinanze/Phinanze.sln
 Phinanze/app.manifest
 Phinanze/Utils/Server.cs
 Phinanze/Utils/Mailer.cs
+Phinanze/Models/DBContext/Host.cs
 Phinanze Installer/*
 Phinanze/*.vs
 bin/*

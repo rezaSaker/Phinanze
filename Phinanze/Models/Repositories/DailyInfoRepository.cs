@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Phinanze.Models.Repositories
+{
+    public class DailyInfoRepository: BaseRepository<DailyInfo2>
+    {
+        public DailyInfoRepository() { _model = null; }
+
+        private DailyInfo2 _model;
+        protected DailyInfo2 Model
+        {
+            set
+            {
+                if (_model == null)
+                {
+                    _model = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Model is already assigned");
+                }
+            }
+        }
+
+        public bool Save()
+        {
+            return base.Save(_model, nameof(DailyInfo2));
+        }
+
+        public static List<DailyInfo2> GetAll()
+        {
+            return BaseRepository<DailyInfo2>.GetAll(nameof(DailyInfo2));
+        }
+
+        public static DailyInfo2 Find(int id)
+        {
+            return BaseRepository<DailyInfo2>.GetBy("Id", id.ToString(), nameof(DailyInfo2));
+        }
+
+        public static bool Delete(ref DailyInfo2 d)
+        {
+            if(BaseRepository<DailyInfo2>.Delete(d, nameof(DailyInfo2)))
+            {
+                d = null;
+            }
+            return d == null;
+        }
+    }
+}

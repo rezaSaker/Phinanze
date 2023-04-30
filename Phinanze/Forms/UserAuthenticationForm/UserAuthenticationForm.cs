@@ -3,9 +3,10 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Net.Mail;
+using System.Collections.Generic;
 using Phinanze.Utils;
-using System.Runtime.InteropServices;
 using Phinanze.Models;
+using Phinanze.Models.Repositories;
 
 namespace Phinanze.Forms
 {
@@ -38,8 +39,42 @@ namespace Phinanze.Forms
 
         private void ThisFormLoading(object sender, EventArgs e)
         {
-            VersionLabel.Text = "Version: " + Application.ProductVersion + "  |  Developed by: Reza Saker";
+            VersionLabel.Text = "Version: " + Application.ProductVersion + "  |  Developed by: Reza Hossain";
             DisplayLoginPanel();
+
+            //Earning.DeleteAll();
+
+            //List<Earning> l = Earning.GetAll();
+
+            //Earning earn1 = new Earning()
+            //{
+            //    Amount = 10,
+            //    CategoryId = 1,
+            //    DailyInfoId = 1,
+            //    Comment = "Hello"
+            //};
+
+
+            //Earning earn2 = new Earning()
+            //{
+            //    Amount = 12,
+            //    CategoryId = 2,
+            //    DailyInfoId = 2,
+            //    Comment = "Hello 2"
+            //};
+            //earn1.Save();
+
+            //l = Earning.GetAll();
+
+            //earn2.Save();
+
+            //l = Earning.GetAll();
+            //Earning er = EarningRepository.Find(1);
+            //Earning.Delete(er);
+            //l = Earning.GetAll();
+            //List<Earning> l = Earning.GetAll();
+
+
         }
 
         private void ThisFormShown(object sender, EventArgs e)
