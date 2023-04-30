@@ -5,6 +5,9 @@ using System;
 
 namespace Phinanze.Auth
 {
+    /// <summary>
+    /// Authentication class for all authentication related operations
+    /// </summary>
     public class Auth
     {
         /// <summary>
@@ -58,13 +61,21 @@ namespace Phinanze.Auth
         }
 
         /// <summary>
-        /// Credentials used to verify a login request
+        /// Set neccessary credentials to verify a login request
         /// </summary>
+        /// <param name="email">Email</param>
+        /// <param name="password">Password</param>
         /// <returns>This Auth object</returns>
         public static Auth Credentials(string email, string password)
         {
             return new Auth(new LoginCredentials(email, password));
         }
+
+        /// <summary>
+        /// The credential object (with Email and password properties) used for last login attempt. 
+        /// Value is null if the last login attempt was successful.
+        /// </summary>
+        public LoginCredentials UsedCredentials { get => _loginCredentials; }
 
         /// <summary>
         /// Attempts login with the associated login credentials
@@ -85,6 +96,7 @@ namespace Phinanze.Auth
             if(http.Post().IsSuccessful)
             {
                 Auth.User = http.JsonToObject(http.PostSuccessResponse);
+                _loginCredentials = null;
             }
 
             _isSuccessful = Auth.User != null;
@@ -100,6 +112,5 @@ namespace Phinanze.Auth
         {
             throw new NotImplementedException("Logout method is not yet implemented");
         }
-
     }
 }
