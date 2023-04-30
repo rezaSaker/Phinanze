@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Phinanze.Models;
-using System;
 
 namespace Phinanze.Test.Web
 {
     [TestClass]
-    public class HtttpRequestTest
+    public class HttpRequestCRUDTest
     {
         /// <summary>
         /// Earning Model CRUD Test
@@ -119,7 +118,7 @@ namespace Phinanze.Test.Web
 
         private void DeleteAllEarnings()
         {
-            foreach(Earning e in Earning.GetAll())
+            foreach (Earning e in Earning.GetAll())
             {
                 Earning temp = e;
                 Earning.Delete(ref temp);
@@ -134,6 +133,5 @@ namespace Phinanze.Test.Web
                 Expense.Delete(ref temp);
             }
         }
-
     }
 }

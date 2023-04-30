@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16B8012C-DCBA-4DB3-9D9A-D61F9511A72C}</ProjectGuid>
+    <ProjectGuid>{2E9DCAAA-2C71-4BD3-8770-DCBD8E031E8B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Phinanze.Test.Web</RootNamespace>
@@ -50,7 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HtttpRequestTest.cs" />
+    <Compile Include="HttpRequestCRUDTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
