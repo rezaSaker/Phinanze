@@ -203,6 +203,12 @@ namespace Phinanze.Models.Repositories.Http
             return Post();
         }
 
+        public T JsonToObject(string json)
+        {
+            JavaScriptSerializer js = new JavaScriptSerializer();
+            return (T)js.DeserializeObject(json);
+        }
+
         /**
          * Private utility methods
          */
