@@ -40,7 +40,7 @@ namespace Phinanze.Test.ValidationTest
                 yield return new TestCaseData(DateTime.Today, "", true, "").SetName("Validation Test 3");
 
                 //Note validation test cases
-                yield return new TestCaseData(DateTime.Today, "", true, "").SetName("Validation Test 4");
+                yield return new TestCaseData(DateTime.Today.Date, "", true, "").SetName("Validation Test 4");
                 yield return new TestCaseData(DateTime.Today, null, true, "").SetName("Validation Test 5");
                 yield return new TestCaseData(DateTime.Today, StrGenerator.Rand(256), false, "Note cannot exceed 255 characters").SetName("Validation Test 6");
             }

@@ -34,12 +34,15 @@ namespace Phinanze.Models
             }
         }
 
+        /// <summary>
+        /// Date property - only accepts default DateTime format (yyyy-mm-dd hh:mm:ss AM) or (yyyy-mm-dd)
+        /// </summary>
         [Required(ErrorMessage = "Date is required for daily info")]
         [CustomValidation(typeof(CustomValidations), "ValidDate")]
         public DateTime Date
         {
             get => _date; 
-            set => _date = value; 
+            set => _date = value.Date; 
         }
 
         [StringLength(255, ErrorMessage = "Note cannot exceed 255 characters")]

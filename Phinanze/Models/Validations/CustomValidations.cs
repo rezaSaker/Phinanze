@@ -16,7 +16,7 @@ namespace Phinanze.Models.Validations
                 int month = Convert.ToInt32(dateArr[1]);
                 int day = Convert.ToInt32(dateArr[2]);
 
-                if (year < 2000 || year > 2100 || month > 12 || month < 1 || day < 1 || day > 31)
+                if (year < 2000 || year > 2100 || month > 12 || month < 1 || day < 1 || day > DateTime.DaysInMonth(year, month))
                 {
                     return new ValidationResult("Invalid date");
                 }
