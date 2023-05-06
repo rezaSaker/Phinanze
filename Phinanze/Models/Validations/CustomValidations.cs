@@ -1,10 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Phinanze.Models.Validations
 {
     public class CustomValidations
     {
+        /// <summary>
+        /// Validates the date format for DailyInfo model
+        /// </summary>
+        /// <param name="date">The date to be validated</param>
+        /// <returns></returns>
         public static ValidationResult ValidDate(DateTime date)
         {
             string[] dateTime = date.ToString().Split(' ');
@@ -24,6 +31,20 @@ namespace Phinanze.Models.Validations
             catch
             {
                 return new ValidationResult("Invalid date");
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Validates the CategoryType property of category model
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
+        public static ValidationResult ValidCategoryType(string category)
+        {
+            if(category != Statics.CategoryType.EARNING && category != Statics.CategoryType.EXPENSE)
+            {
+                return new ValidationResult("Invalid category type");
             }
             return null;
         }

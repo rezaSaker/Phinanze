@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Phinanze.Models.Repositories;
+using Phinanze.Models.Validations;
 
 namespace Phinanze.Models
 {
@@ -42,8 +43,7 @@ namespace Phinanze.Models
         }
 
         [Required(ErrorMessage = "Category type is required")]
-        [RegularExpression("(" + Statics.CategoryType.EARNING + "|" + Statics.CategoryType.EXPENSE + ")",
-                            ErrorMessage = "Invalid category type - neither Earning nor Expense")]
+        [CustomValidation(typeof(CustomValidations), "ValidCategoryType")]
         public string CategoryType
         {
             get => _categoryType;
