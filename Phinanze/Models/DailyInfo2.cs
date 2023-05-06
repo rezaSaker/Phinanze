@@ -41,7 +41,7 @@ namespace Phinanze.Models
         [CustomValidation(typeof(CustomValidations), "ValidDate")]
         public DateTime Date
         {
-            get => _date; 
+            get => _date.Date; 
             set => _date = value.Date; 
         }
 
