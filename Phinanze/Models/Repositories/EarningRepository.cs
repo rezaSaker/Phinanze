@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Phinanze.Models.Repositories
 {
@@ -36,7 +37,12 @@ namespace Phinanze.Models.Repositories
 
         public static Earning Find(int id)
         {
-            return BaseRepository<Earning>.GetBy("Id", id.ToString(), nameof(Earning));
+            return BaseRepository<Earning>.GetBy("id", id.ToString(), nameof(Earning)).FirstOrDefault();
+        }
+
+        public static List<Earning> GetBy(string param, string value)
+        {
+            return BaseRepository<Earning>.GetBy(param, value, nameof(Earning));
         }
 
         public static bool Delete(ref Earning e)

@@ -91,19 +91,20 @@ namespace Phinanze.Models.Repositories
         /// <param name="value">Value of field to search for</param>
         /// <param name="modelName">Name of the associated model</param>
         /// <returns>The specific entry from the table associated with Model T, or null if no data found for given id</returns>
-        protected static T GetBy(string param, string value, string modelName)
+        protected static List<T> GetBy(string param, string value, string modelName)
         {
             HttpRequest<T> http = HttpRequest<T>.URL(DB.GetBy_Url(modelName));
 
-            http.AddQueryParams(param, value);
+            http.AddQueryParams("param", param);
+            http.AddQueryParams("value", value);
 
             if (http.Get().IsSuccessful)
             {
-                return http.ResponseValues.FirstOrDefault();
+                return http.ResponseValues;
             }
 
             //TODO: Implement unsuccessful request handler here
-            return default(T);
+            return new List<T>();
         }
 
         /// <summary>

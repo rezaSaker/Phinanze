@@ -161,6 +161,7 @@
     <Compile Include="Models\Repositories\UserRepository.cs" />
     <Compile Include="Models\Statics\CategoryType.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Validations\CustomValidations.cs" />
     <Compile Include="Models\Validations\EntityValidationResult.cs" />
     <Compile Include="Models\Validations\EntityValidator.cs" />
     <Compile Include="Models\Validations\ValidationError.cs" />

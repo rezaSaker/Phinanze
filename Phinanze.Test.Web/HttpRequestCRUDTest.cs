@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Phinanze.Models;
+using System.Linq;
 
 namespace Phinanze.Test.Web
 {
@@ -30,16 +31,21 @@ namespace Phinanze.Test.Web
                 earningId_testcase[i] = earning.Id;
             }
             Assert.AreEqual(Earning.GetAll().Count, 100);
+
+            // Field insertion accuracy test
             Assert.AreEqual(Earning.Find(earningId_testcase[0]).DailyInfoId, 1);
             Assert.AreEqual(Earning.Find(earningId_testcase[0]).CategoryId, 1);
             Assert.AreEqual(Earning.Find(earningId_testcase[0]).Amount, 10);
             Assert.AreEqual(Earning.Find(earningId_testcase[0]).Comment, "None");
 
-            //Lookup test
+            // Lookup test
             Assert.AreEqual(Earning.Find(earningId_testcase[0]).DailyInfoId, 1);
             Assert.AreEqual(Earning.Find(earningId_testcase[99]).DailyInfoId, 100);
 
-            //Update test
+            // Get by specific field value test
+            Assert.IsNotNull(Earning.GetBy("dailyinfo_id", "100").FirstOrDefault());
+
+            // Update test
             Earning e = Earning.Find(earningId_testcase[0]);
             Assert.IsNotNull(e);
             Assert.AreEqual(e.Comment, "None");
@@ -85,6 +91,8 @@ namespace Phinanze.Test.Web
                 expenseId_testcase[i] = expense.Id;
             }
             Assert.AreEqual(Expense.GetAll().Count, 100);
+
+            // Field insertion accuracy test
             Assert.AreEqual(Expense.Find(expenseId_testcase[0]).DailyInfoId, 1);
             Assert.AreEqual(Expense.Find(expenseId_testcase[0]).CategoryId, 1);
             Assert.AreEqual(Expense.Find(expenseId_testcase[0]).Amount, 10);
@@ -93,6 +101,9 @@ namespace Phinanze.Test.Web
             //Lookup test
             Assert.AreEqual(Expense.Find(expenseId_testcase[0]).DailyInfoId, 1);
             Assert.AreEqual(Expense.Find(expenseId_testcase[99]).DailyInfoId, 100);
+
+            // Get by specific field value test
+            Assert.IsNotNull(Expense.GetBy("dailyinfo_id", "100").FirstOrDefault());
 
             //Update test
             Expense e = Expense.Find(expenseId_testcase[0]);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Phinanze.Models.Repositories
 {
@@ -36,7 +37,12 @@ namespace Phinanze.Models.Repositories
 
         public static Category Find(int id)
         {
-            return BaseRepository<Category>.GetBy("Id", id.ToString(), nameof(Category));
+            return BaseRepository<Category>.GetBy("id", id.ToString(), nameof(Category)).FirstOrDefault();
+        }
+
+        public static List<Category> GetBy(string param, string value)
+        {
+            return BaseRepository<Category>.GetBy(param, value, nameof(Category));
         }
 
         public static bool Delete(ref Category c)

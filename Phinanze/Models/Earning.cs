@@ -1,8 +1,7 @@
-﻿using Phinanze.Models.Repositories;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Xml.Linq;
+using Phinanze.Models.Repositories;
 
 namespace Phinanze.Models
 {

@@ -1,7 +1,7 @@
-﻿using Phinanze.Models.Repositories;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
+using Phinanze.Models.Repositories;
+using Phinanze.Models.Validations;
 
 namespace Phinanze.Models
 {
@@ -17,6 +17,7 @@ namespace Phinanze.Models
         private DateTime _date;
         private string _note;
 
+        [Key]
         public int Id
         {
             get => _id;
@@ -34,6 +35,7 @@ namespace Phinanze.Models
         }
 
         [Required(ErrorMessage = "Date is required for daily info")]
+        [CustomValidation(typeof(CustomValidations), "ValidDate")]
         public DateTime Date
         {
             get => _date; 
