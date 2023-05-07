@@ -61,15 +61,11 @@ namespace Phinanze.Test.Web
 
             // Delete test
             e = Earning.Find(earningId_testcase[99]);
-            Earning.Delete(ref e);
-            Assert.IsNull(e);
+            Earning.Delete(e);
             Assert.IsNull(Earning.Find(earningId_testcase[99]));
 
             //Delete multiple
-            e = Earning.Find(earningId_testcase[10]);
-            Assert.IsNotNull(e);
             DeleteAllEarnings();
-            //Assert.IsNull(e);
             Assert.AreEqual(Earning.GetAll().Count, 0);
         }
 
@@ -123,15 +119,11 @@ namespace Phinanze.Test.Web
 
             // Delete test
             e = Expense.Find(expenseId_testcase[99]);
-            Expense.Delete(ref e);
-            Assert.IsNull(e);
+            Expense.Delete(e);
             Assert.IsNull(Expense.Find(expenseId_testcase[99]));
 
             //Delete multiple
-            e = Expense.Find(expenseId_testcase[10]);
-            Assert.IsNotNull(e);
             DeleteAllExpenses();
-            //Assert.IsNull(e);
             Assert.AreEqual(Expense.GetAll().Count, 0);
         }
 
@@ -183,15 +175,11 @@ namespace Phinanze.Test.Web
 
             // Delete test
             d = DailyInfo2.Find(dailyinfoId_testcase[99]);
-            DailyInfo2.Delete(ref d);
-            Assert.IsNull(d);
+            DailyInfo2.Delete(d);
             Assert.IsNull(DailyInfo2.Find(dailyinfoId_testcase[99]));
 
             // Delete multiple
-            d = DailyInfo2.Find(dailyinfoId_testcase[10]);
-            Assert.IsNotNull(d);
             DeleteAllDailyinfo();
-            //Assert.IsNull(e);
             Assert.AreEqual(DailyInfo2.GetAll().Count, 0);
         }
 
@@ -242,15 +230,11 @@ namespace Phinanze.Test.Web
 
             // Delete test
             c = Category.Find(categoryId_testcase[99]);
-            Category.Delete(ref c);
-            Assert.IsNull(c);
+            Category.Delete(c);
             Assert.IsNull(Category.Find(categoryId_testcase[99]));
 
             // Delete multiple
-            c = Category.Find(categoryId_testcase[10]);
-            Assert.IsNotNull(c);
             DeleteAllCategories();
-            //Assert.IsNull(e);
             Assert.AreEqual(Category.GetAll().Count, 0);
         }
 
@@ -259,8 +243,7 @@ namespace Phinanze.Test.Web
         {
             foreach (Earning e in Earning.GetAll())
             {
-                Earning temp = e;
-                Earning.Delete(ref temp);
+                Earning.Delete(e);
             }
         }
 
@@ -268,8 +251,7 @@ namespace Phinanze.Test.Web
         {
             foreach (Expense e in Expense.GetAll())
             {
-                Expense temp = e;
-                Expense.Delete(ref temp);
+                Expense.Delete(e);
             }
         }
 
@@ -277,8 +259,7 @@ namespace Phinanze.Test.Web
         {
             foreach (DailyInfo2 d in DailyInfo2.GetAll())
             {
-                DailyInfo2 temp = d;
-                DailyInfo2.Delete(ref temp);
+                DailyInfo2.Delete(d);
             }
         }
 
@@ -286,8 +267,7 @@ namespace Phinanze.Test.Web
         {
             foreach (Category c in Category.GetAll())
             {
-                Category temp = c;
-                Category.Delete(ref temp);
+                Category.Delete(c);
             }
         }
     }

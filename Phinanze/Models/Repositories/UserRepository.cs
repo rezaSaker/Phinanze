@@ -19,13 +19,9 @@ namespace Phinanze.Models.Repositories
             return base.Save(_model, nameof(Category));
         }
 
-        public static bool Delete(ref Category c)
+        public static bool Delete(Category c)
         {
-            if (BaseRepository<Category>.Delete(c, nameof(Category)))
-            {
-                c = null;
-            }
-            return c == null;
+            return BaseRepository<Category>.Delete(c, nameof(Category));
         }
     }
 }

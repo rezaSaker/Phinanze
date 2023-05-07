@@ -44,13 +44,9 @@ namespace Phinanze.Models.Repositories
             return BaseRepository<DailyInfo2>.GetBy(param, value, nameof(DailyInfo2));
         }
 
-        public static bool Delete(ref DailyInfo2 d)
+        public static bool Delete(DailyInfo2 d)
         {
-            if(BaseRepository<DailyInfo2>.Delete(d, nameof(DailyInfo2)))
-            {
-                d = null;
-            }
-            return d == null;
+            return BaseRepository<DailyInfo2>.Delete(d, nameof(DailyInfo2));
         }
     }
 }

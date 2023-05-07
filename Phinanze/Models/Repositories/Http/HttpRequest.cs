@@ -8,28 +8,18 @@ using System.Collections.Specialized;
 namespace Phinanze.Models.Repositories.Http
 {
     /// <summary>
-    /// A class to make Http requests using a builder design pattern
+    /// A class to inititate and handle HTTP web requests
     /// </summary>
     /// <typeparam name="T">Genric of IModel type</typeparam>
     public class HttpRequest<T> where T : IModel
     {
-        private class Error
-        {
-            public string Type { get; set; }
-            public string Message { get; set; }
-        }
-
         //Fields
         private string _url;
-        private string _postSuccessResponse;
-        private bool _isSuccessful;
-        private List<T> _responseValues;
-        private List<Error> _errors;
-        private NameValueCollection _queryParams;
+        private NameValueCollection _defaultRequestParams;
+        private HttpResponseTypes _responseType;
 
-        //Properties
         /// <summary>
-        /// Starts a new HttpRequest with the given URL
+        /// Creates a new HttpRequest object with the given URL. The URL cannot be modified later. 
         /// </summary>
         /// <param name="url">The Url to be used by the HttpRequest</param>
         /// <returns>A new HttpRequest<typeparamref name="T"/> object</returns>
@@ -54,63 +44,56 @@ namespace Phinanze.Models.Repositories.Http
         /// <summary>
         /// Indicates if the http operation was successful
         /// </summary>
-        public bool IsSuccessful { get => _isSuccessful; }
-
-        public List<T> ResponseValues {  get => _responseValues; }
+        public bool IsSuccessful { get; private set; }
 
         /// <summary>
-        /// The list of errors from the last http operation in the <error-code, error-message> format
+        /// The response returned from the last HTTP request, if ResponseType is ListOfIModel
         /// </summary>
-        public Dictionary<string, string> Errors
-        {
-            get
-            {
-                Dictionary<string, string> errors = new Dictionary<string, string>();
-                foreach(Error e in _errors)
-                {
-                    errors[e.Type] = e.Message;
-                }
-                return errors;
-            }
-        }
+        public List<T> ResponseModelList { get; private set; }
 
         /// <summary>
-        /// API response of the last successful POST request
+        /// The response returned from the last HTTP request, if ResponseType is SingleIModel
         /// </summary>
-        public string PostSuccessResponse { get => _postSuccessResponse; }
+        public T ResponseModel { get; private set; }
 
         /// <summary>
-        /// Set parameters to send with a http request. Auto-cleared after the request is returned. 
+        /// The response returned from the last HTTP request, if ResponseType is String
         /// </summary>
-        /// <param name="key">The name of the parameter</param>
-        /// <param name="value">The value of the parameter</param>
-        /// <exception cref="ArgumentException">Thrown when adding unauthorized parameters</exception>
-        public void AddQueryParams(string key, string value)
-        {
-            if(key.Equals("_UserId") || key.Equals("_AuthToken"))
-            {
-                throw new ArgumentException("Unauthorized query parameter");
-            }
-            else { _queryParams[key] = value; }
-        }
+        public string ResponseString { get; private set; }
 
         /// <summary>
-        /// Constructor
+        /// The list of errors from the last http operation in the <\error-code, error-message> format
         /// </summary>
-        /// <param name="url">The Url to be assigned to this HttpRequest object</param>
+        public Dictionary<string, string> Errors { get; private set; }
+
+        /// <summary>
+        /// NameValueCollection object to add parameters to send with HTTP request. 
+        /// Auto-cleared after the request is completed. 
+        /// </summary>
+        public NameValueCollection RequestParams { get; private set; }
+
+        public HttpResponseTypes GetResponseType { get => _responseType; }
+
         private HttpRequest(string url)
         {
             _url = url;
-            _responseValues = new List<T>();
-            _errors = new List<Error>();
-            _isSuccessful = false;
-            _postSuccessResponse = string.Empty;
+            ResponseModelList = new List<T>();
+            Errors = new Dictionary<string, string>();
+            RequestParams = new NameValueCollection();
+            IsSuccessful = false;
+            _responseType = null;
 
-            _queryParams = new NameValueCollection()
+            _defaultRequestParams = new NameValueCollection()
             {
                 ["_UserId"] = "1",
                 ["_AuthToken"] = "1"
             };
+        }
+
+        public HttpRequest<T> ResponseType(HttpResponseTypes resType)
+        {
+            _responseType = resType;
+            return this;
         }
 
         /// <summary>
@@ -118,37 +101,35 @@ namespace Phinanze.Models.Repositories.Http
         /// </summary>
         /// <returns>This HttpRequest object</returns>
         public HttpRequest<T> Get()
-        {
-            PreRequestSetup();
+        {   
+            PreRequestConfig();
 
             try
             {
                 WebClient webClient = new WebClient();
-                NameValueCollection query = new NameValueCollection();
 
-                foreach (string key in _queryParams.Keys)
+                foreach(string key in RequestParams.Keys)
                 {
-                    webClient.QueryString.Add(key, _queryParams[key]);
+                    webClient.QueryString.Add(key, RequestParams[key]);
+                }
+                foreach(string key in _defaultRequestParams.Keys)
+                {
+                    webClient.QueryString.Add(key, _defaultRequestParams[key]);
                 }
 
                 byte[] resultBytes = webClient.DownloadData(_url);
-                string resultJson = Encoding.UTF8.GetString(resultBytes);
 
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                _responseValues = js.Deserialize<List<T>>(resultJson);
-
-                _isSuccessful = true;
+                ProcessResponse(resultBytes);
+                PostRequestConfig();
             }
             catch(WebException e)
             {
-                _errors.Add(new Error() { Type = "Web", Message = e.Message });       
+                Errors.Add("Web", e.Message);       
             }
             catch(Exception e)
             {
-                _errors.Add(new Error() { Type = "App", Message = e.Message });
+                Errors.Add("App", e.Message);
             }
-
-            PostRequestConfig();
             return this;
         }
 
@@ -158,28 +139,30 @@ namespace Phinanze.Models.Repositories.Http
         /// <returns>This HttpRequest<typeparamref name="T"/> object</returns>
         public HttpRequest<T> Post()
         {
-            PreRequestSetup();
+            PreRequestConfig();
 
-            try
-            {
+            //try
+            //{
                 WebClient webClient = new WebClient();
 
-                byte[] resultBytes = webClient.UploadValues(_url, "POST", _queryParams);
-                string resultString = Encoding.UTF8.GetString(resultBytes);
+                foreach(string key in _defaultRequestParams.Keys)
+                {
+                    RequestParams.Add(key, _defaultRequestParams[key]);
+                }
 
-                _isSuccessful = true;
-                _postSuccessResponse = resultString;
-            }
-            catch (WebException e)
-            {
-                _errors.Add(new Error() { Type = "Web", Message = e.Message });
-            }
-            catch (Exception e)
-            {
-                _errors.Add(new Error() { Type = "App", Message = e.Message });
-            }
+                byte[] resultBytes = webClient.UploadValues(_url, "POST", RequestParams);
 
-            PostRequestConfig();
+                ProcessResponse(resultBytes);
+                PostRequestConfig();
+            //}
+            ////catch (WebException e)
+            //{
+            //    Errors.Add("Web", e.Message);
+            //}
+            //catch (Exception e)
+            //{
+            //    Errors.Add("App", e.Message);
+            //}
             return this;
         }
         
@@ -201,37 +184,59 @@ namespace Phinanze.Models.Repositories.Http
             return Post();
         }
 
-        public T JsonToObject(string json)
+        private void ProcessResponse(byte[] bytes)
         {
+            string responseStr = Encoding.UTF8.GetString(bytes);
             JavaScriptSerializer js = new JavaScriptSerializer();
-            return (T)js.DeserializeObject(json);
+
+            if (_responseType.Type == HttpResponseTypes.ListOfIModelType)
+            {
+                ResponseModelList = js.Deserialize<List<T>>(responseStr); ;
+                ResponseModel = default(T);
+                ResponseString = responseStr;
+            }
+            else if (_responseType.Type == HttpResponseTypes.SingleIModelType)
+            {
+                ResponseModel = js.Deserialize<T>(responseStr);
+                ResponseModelList.Add(ResponseModel);
+                ResponseString = responseStr;
+            }
+            else if (_responseType.Type == HttpResponseTypes.StringType)
+            {
+                ResponseString = responseStr;
+            }
+            IsSuccessful = true;
         }
 
-        /**
-         * Private utility methods
-         */
-        private void PreRequestSetup()
+        /// <summary>
+        /// Configuration prior to initiating a HTTP request
+        /// </summary>
+        private void PreRequestConfig()
         {
-            _isSuccessful = false;
-            _responseValues.Clear();
-            _errors.Clear();
-            _postSuccessResponse = string.Empty;
+            if (_responseType == null)
+            {
+                throw new ArgumentNullException("ResponseType must be selected before making a HTTP request");
+            }
+
+            IsSuccessful = false;
+            ResponseModelList.Clear();
+            ResponseModel = default(T);
+            ResponseString = null;
+            Errors.Clear();
         }
 
+        /// <summary>
+        /// Configuration after a HTTP request is completed
+        /// </summary>
         private void PostRequestConfig()
         {
-            NameValueCollection nvc = new NameValueCollection();
-
-            foreach(string key in _queryParams.Keys)
-            {
-                if(!key.Equals("_UserId") && !key.Equals("_AuthToken"))
-                {
-                    nvc.Add(key, _queryParams[key]);
-                }
-            }
-            _queryParams = nvc;
+            RequestParams.Clear();
         }
 
+        /// <summary>
+        /// Checkes if a url is of acceptable format
+        /// </summary>
+        /// <param name="url"></param>
         private static bool IsValidURL(string url)
         {
             return url.Split(':')[0].Equals("https");

@@ -45,13 +45,9 @@ namespace Phinanze.Models.Repositories
             return BaseRepository<Earning>.GetBy(param, value, nameof(Earning));
         }
 
-        public static bool Delete(ref Earning e)
+        public static bool Delete(Earning e)
         {
-            if(BaseRepository<Earning>.Delete(e, nameof(Earning)))
-            {
-                e = null;
-            }
-            return e == null;
+            return BaseRepository<Earning>.Delete(e, nameof(Earning));
         }
     }
 }

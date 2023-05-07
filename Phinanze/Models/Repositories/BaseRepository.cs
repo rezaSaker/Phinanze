@@ -37,12 +37,12 @@ namespace Phinanze.Models.Repositories
 
             if(model.Id == 0) // if it is a new entry for insert
             {
-                http = HttpRequest<T>.URL(DB.Insert_Url(modelName));
+                http = HttpRequest<T>.URL(DB.Insert_Url(modelName)).ResponseType(HttpResponseTypes.SingleIModel());
             }
             else // if it is an existing entry for update
             {
-                http = HttpRequest<T>.URL(DB.Update_Url(modelName));
-                http.AddQueryParams("Id", model.Id.ToString());
+                http = HttpRequest<T>.URL(DB.Update_Url(modelName)).ResponseType(HttpResponseTypes.String());
+                http.RequestParams.Add("Id", model.Id.ToString());
             }
 
             PropertyInfo[] properties = typeof(T).GetProperties();
@@ -50,20 +50,18 @@ namespace Phinanze.Models.Repositories
             {
                 if(property.Name != "Id")
                 {
-                    http.AddQueryParams(property.Name, property.GetValue((object)model).ToString());
+                    http.RequestParams.Add(property.Name, property.GetValue((object)model).ToString());
                 }
             }
 
             if(http.Post().IsSuccessful)
             {
-                if(model.Id == 0)
+                if(http.GetResponseType.Type == HttpResponseTypes.SingleIModelType && model.Id == 0)
                 {
-                    Int32.TryParse(http.PostSuccessResponse, out int id);
-                    model.Id = id;
+                    model.Id = http.ResponseModel.Id;
                 }
-                return true;
             }
-            return false;
+            return model.Id == 0;
         }
 
         /// <summary>
@@ -75,9 +73,9 @@ namespace Phinanze.Models.Repositories
         {
             HttpRequest<T> http = HttpRequest<T>.URL(DB.GetAll_Url(modelName));
             
-            if(http.Get().IsSuccessful)
+            if(http.ResponseType(HttpResponseTypes.ListOfIModel()).Get().IsSuccessful)
             {
-                return http.ResponseValues;
+                return http.ResponseModelList;
             }
 
             //TODO: Implement unsuccessful request handler here
@@ -95,12 +93,12 @@ namespace Phinanze.Models.Repositories
         {
             HttpRequest<T> http = HttpRequest<T>.URL(DB.GetBy_Url(modelName));
 
-            http.AddQueryParams("param", param);
-            http.AddQueryParams("value", value);
+            http.RequestParams.Add("param", param);
+            http.RequestParams.Add("value", value);
 
-            if (http.Get().IsSuccessful)
+            if (http.ResponseType(HttpResponseTypes.ListOfIModel()).Get().IsSuccessful)
             {
-                return http.ResponseValues;
+                return http.ResponseModelList;
             }
 
             //TODO: Implement unsuccessful request handler here
@@ -115,8 +113,8 @@ namespace Phinanze.Models.Repositories
         protected static bool Delete(T model, string modelName)
         {
             HttpRequest<T> http = HttpRequest<T>.URL(DB.Delete_Url(modelName));
-            http.AddQueryParams("Id", model.Id.ToString());
-            return http.Delete().IsSuccessful;
+            http.RequestParams.Add("Id", model.Id.ToString());
+            return http.ResponseType(HttpResponseTypes.String()).Delete().IsSuccessful;
         }
     }
 }

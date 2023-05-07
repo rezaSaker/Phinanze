@@ -158,6 +158,7 @@
     <Compile Include="Models\Repositories\EarningRepository.cs" />
     <Compile Include="Models\Repositories\ExpenseRepository.cs" />
     <Compile Include="Models\Repositories\Http\HttpRequest.cs" />
+    <Compile Include="Models\Repositories\Http\HttpResponseTypes.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />
     <Compile Include="Models\Statics\CategoryType.cs" />
     <Compile Include="Models\User.cs" />
