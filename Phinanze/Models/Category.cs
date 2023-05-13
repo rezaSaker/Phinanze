@@ -7,47 +7,14 @@ namespace Phinanze.Models
 {
     public class Category: CategoryRepository, IModel
     {
-        public Category() 
-        {
-            _id = 0;
-            Model = this; 
-        }
-
-        private int _id;
-        private string _categoryType;
-        private string _name;
-
-        [Key]
-        public int Id
-        {
-            get => _id;
-            set
-            {
-                if(_id == 0)
-                {
-                    _id = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Model id property cannot be changed");
-                }
-            }
-        }
+        public Category()  { Model = this; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Category name is required")]
         [StringLength(50, ErrorMessage = "Category name cannot exceed 50 characters")]
-        public string Name
-        {
-            get => _name; 
-            set => _name = value; 
-        }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Category type is required")]
         [CustomValidation(typeof(CustomValidations), "ValidCategoryType")]
-        public string CategoryType
-        {
-            get => _categoryType;
-            set => _categoryType = value;
-        }
+        public string CategoryType { get; set; }
     }
 }

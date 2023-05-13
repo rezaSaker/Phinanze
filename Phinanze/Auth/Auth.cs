@@ -1,5 +1,5 @@
 ﻿using Phinanze.Models;
-using Phinanze.Models.DBContext;
+using Phinanze.Models.DBInfo;
 using Phinanze.Models.Repositories.Http;
 using System;
 using System.Collections.Generic;

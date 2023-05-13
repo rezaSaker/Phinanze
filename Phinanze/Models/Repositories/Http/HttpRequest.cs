@@ -141,8 +141,8 @@ namespace Phinanze.Models.Repositories.Http
         {
             PreRequestConfig();
 
-            //try
-            //{
+            try
+            {
                 WebClient webClient = new WebClient();
 
                 foreach(string key in _defaultRequestParams.Keys)
@@ -154,15 +154,15 @@ namespace Phinanze.Models.Repositories.Http
 
                 ProcessResponse(resultBytes);
                 PostRequestConfig();
-            //}
-            ////catch (WebException e)
-            //{
-            //    Errors.Add("Web", e.Message);
-            //}
-            //catch (Exception e)
-            //{
-            //    Errors.Add("App", e.Message);
-            //}
+        }
+            catch (WebException e)
+            {
+                Errors.Add("Web", e.Message);
+            }
+            catch (Exception e)
+            {
+                Errors.Add("App", e.Message);
+            }
             return this;
         }
         

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Phinanze.Forms;
+using Phinanze.Views;
 
 namespace Phinanze
 {
@@ -18,14 +15,16 @@ namespace Phinanze
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             try
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new AppLoaderForm());
+                Application.Run(AppLoaderView.Instance);
             }
-            catch
+            catch(Exception e)
             {
+                MessageBox.Show(e.Message);
                 MessageBox.Show("Something went wrong. Please restart the application.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

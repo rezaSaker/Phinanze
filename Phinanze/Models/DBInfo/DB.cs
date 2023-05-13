@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phinanze.Models.DBContext
+namespace Phinanze.Models.DBInfo
 {
     public class DB: Host
     {

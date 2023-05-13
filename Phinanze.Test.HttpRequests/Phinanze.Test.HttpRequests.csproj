@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E9DCAAA-2C71-4BD3-8770-DCBD8E031E8B}</ProjectGuid>
+    <ProjectGuid>{A53BF2DA-4932-43CE-98FB-3C8AAB25BE36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phinanze.Test.Web</RootNamespace>
-    <AssemblyName>Phinanze.Test.Http</AssemblyName>
+    <RootNamespace>Phinanze.Test.HttpRequests</RootNamespace>
+    <AssemblyName>Phinanze.Test.HttpRequests</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryHttpCRUDTest.cs" />
-    <Compile Include="HttpRequestCRUDTest.cs" />
+    <Compile Include="DailyInfoHttpCRUDTest.cs" />
+    <Compile Include="EarningHttpCRUDTest.cs" />
+    <Compile Include="ExpenseHttpCRUDTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

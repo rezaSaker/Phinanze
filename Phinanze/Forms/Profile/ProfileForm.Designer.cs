@@ -631,7 +631,7 @@
             // LogoButton
             // 
             this.LogoButton.BackColor = System.Drawing.Color.Transparent;
-            this.LogoButton.BackgroundImage = global::Phinanze.Properties.Resources.AppIcon3;
+            this.LogoButton.BackgroundImage = global::Phinanze.Properties.Resources.AppIcon;
             this.LogoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LogoButton.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
             this.LogoButton.FlatAppearance.BorderSize = 0;

@@ -14,6 +14,6 @@ namespace Phinanze.Models
     public interface IModel
     {
         [Key]
-        int Id { get; set; }
+        int Id { get; } // Models that extend BaseRepository do not need to define Id as BaseRepository already contains definition for Id method.
     }
 }

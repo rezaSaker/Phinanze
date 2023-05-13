@@ -8,13 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Phinanze.Views.ContainerView
+namespace Phinanze.Views
 {
-    public partial class ContainerView : Form
+    public partial class ContainerView : Form, IView
     {
-        public ContainerView()
+        private static ContainerView _instance;
+
+        private ContainerView()
         {
-            InitializeComponent();
+            InitializeComponent();        
         }
+
+        public static ContainerView Instance
+        {
+            get => _instance != null ? _instance : new ContainerView();
+        }
+
+        public Button HeaderBar { get => this.headerBar; }
     }
 }

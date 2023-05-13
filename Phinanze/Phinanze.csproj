@@ -146,13 +146,13 @@
   <ItemGroup>
     <Compile Include="Auth\Auth.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\DBContext\DB.cs" />
-    <Compile Include="Models\DBContext\Host.cs" />
+    <Compile Include="Models\DBInfo\DB.cs" />
+    <Compile Include="Models\DBInfo\Host.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\DailyInfo2.cs" />
     <Compile Include="Models\Earning.cs" />
     <Compile Include="Models\Expense.cs" />
-    <Compile Include="Models\Repositories\BaseRepository.cs" />
+    <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Repositories\DailyInfoRepository.cs" />
     <Compile Include="Models\Repositories\EarningRepository.cs" />
@@ -166,6 +166,14 @@
     <Compile Include="Models\Validations\EntityValidationResult.cs" />
     <Compile Include="Models\Validations\EntityValidator.cs" />
     <Compile Include="Models\Validations\ValidationError.cs" />
+    <Compile Include="Presenters\BasePresenter.cs" />
+    <Compile Include="Presenters\DashboardPresenter.cs" />
+    <Compile Include="Presenters\MDIContainerPresenter.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CategoryType.cs" />
     <Compile Include="Utils\Mailer.cs" />
     <Compile Include="Utils\Server.cs" />
@@ -250,10 +258,23 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\WebHandler.cs" />
     <Compile Include="Utils\GlobalSettings.cs" />
-    <Compile Include="Views\ContainerView\ContainerView.cs">
+    <Compile Include="Views\AppLoaderView\AppLoaderView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ContainerView\ContainerView.Designer.cs">
+    <Compile Include="Views\AppLoaderView\AppLoaderView.Designer.cs">
+      <DependentUpon>AppLoaderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardView\DashboardView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DashboardView\DashboardView.Designer.cs">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\ContainerVIew\ContainerView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ContainerVIew\ContainerView.Designer.cs">
       <DependentUpon>ContainerView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
@@ -294,15 +315,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Views\ContainerView\ContainerView.resx">
+    <EmbeddedResource Include="Views\AppLoaderView\AppLoaderView.resx">
+      <DependentUpon>AppLoaderView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\DashboardView\DashboardView.resx">
+      <DependentUpon>DashboardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ContainerVIew\ContainerView.resx">
       <DependentUpon>ContainerView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -337,8 +359,6 @@
     <None Include="Resources\PhinanzeLogo.png" />
     <None Include="Resources\AppIcon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Presenters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

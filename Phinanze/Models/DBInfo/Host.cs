@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Phinanze.Models.Repositories
+namespace Phinanze.Models.DBInfo
 {
-    public class UserRepository: Repository<User>
+    public class Host
     {
-
+        protected const string URL = "http://localhost/phinanze2/";
     }
 }
