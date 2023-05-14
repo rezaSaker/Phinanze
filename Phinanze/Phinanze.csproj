@@ -146,12 +146,14 @@
   <ItemGroup>
     <Compile Include="Auth\Auth.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\DBInfo\DB.cs" />
+    <Compile Include="Models\DBInfo\API_URL.cs" />
+    <Compile Include="Models\DBInfo\DBReflection.cs" />
     <Compile Include="Models\DBInfo\Host.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\DailyInfo2.cs" />
     <Compile Include="Models\Earning.cs" />
     <Compile Include="Models\Expense.cs" />
+    <Compile Include="Models\ITransaction.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Repositories\DailyInfoRepository.cs" />
@@ -271,11 +273,11 @@
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IView.cs" />
-    <Compile Include="Views\ContainerVIew\ContainerView.cs">
+    <Compile Include="Views\MDIContainerView\MDIContainerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ContainerVIew\ContainerView.Designer.cs">
-      <DependentUpon>ContainerView.cs</DependentUpon>
+    <Compile Include="Views\MDIContainerView\MDIContainerView.Designer.cs">
+      <DependentUpon>MDIContainerView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
@@ -324,8 +326,8 @@
     <EmbeddedResource Include="Views\DashboardView\DashboardView.resx">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ContainerVIew\ContainerView.resx">
-      <DependentUpon>ContainerView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MDIContainerView\MDIContainerView.resx">
+      <DependentUpon>MDIContainerView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />

@@ -6,6 +6,6 @@ namespace Phinanze.Models.Repositories
 {
     public class CategoryRepository: Repository<Category>
     {
-        public static Repository<Category> Get { get => new Repository<Category>(); }
+        public static Repository<Category> Get => new Repository<Category>(); 
     }
 }

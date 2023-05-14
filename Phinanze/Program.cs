@@ -16,18 +16,18 @@ namespace Phinanze
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            try
-            {
+            //try
+            //{
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(AppLoaderView.Instance);
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.Message);
-                MessageBox.Show("Something went wrong. Please restart the application.", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch(Exception e)
+            //{
+            //    MessageBox.Show(e.Message);
+            //    MessageBox.Show("Something went wrong. Please restart the application.", "Error",
+            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

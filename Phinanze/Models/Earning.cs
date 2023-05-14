@@ -5,7 +5,7 @@ using Phinanze.Models.Repositories;
 
 namespace Phinanze.Models
 {
-    public class Earning: EarningRepository, IModel
+    public class Earning: EarningRepository, IModel, ITransaction
     {
         public Earning() { Model = this; }
 

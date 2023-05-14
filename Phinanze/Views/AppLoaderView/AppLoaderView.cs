@@ -21,7 +21,7 @@ namespace Phinanze.Views
 
         public static AppLoaderView Instance
         {
-            get => _instance != null ? _instance : new AppLoaderView();
+            get => _instance ?? (_instance = new AppLoaderView());
         }
 
         public new void Show()

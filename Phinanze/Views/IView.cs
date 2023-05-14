@@ -9,8 +9,7 @@ using System.Windows.Forms;
 namespace Phinanze.Views
 {
     public interface IView
-    {
-        void Show();
-        Form MdiParent { get; set; }
+    {   
+        
     }
 }

@@ -29,7 +29,7 @@ namespace Phinanze.Auth
                 return false;
             }
 
-            HttpRequest<User> http = HttpRequest<User>.URL(DB.Authentication_Url);
+            HttpRequest<User> http = HttpRequest<User>.URL(API_URL.Authentication_Url);
 
             http.RequestParams.Add("email", email);
             http.RequestParams.Add("password", password);

@@ -9,29 +9,24 @@ using System.Windows.Forms;
 
 namespace Phinanze.Presenters
 {
-    public class MDIContainerPresenter : BasePresenter
+    public class MDIContainerPresenter
     {
-        private ContainerView _view;
+        private MDIContainerView _view;
         private bool _moveForm;
         private Point _prevMousePosition;
 
-        public MDIContainerPresenter(BasePresenter mdiChildPresenter = null)
+        public MDIContainerPresenter()
         {     
             _moveForm = false;
             _prevMousePosition = new Point();
 
-            _view = ContainerView.Instance;
-            _view.HeaderBar.MouseDown += OnMouseDown;
-            _view.HeaderBar.MouseUp += OnMouseUp;
-            _view.HeaderBar.MouseMove += OnMouseMove;
+            _view = MDIContainerView.Instance;
+            _view.HeaderPanel.MouseDown += OnMouseDown;
+            _view.HeaderPanel.MouseUp += OnMouseUp;
+            _view.HeaderPanel.MouseMove += OnMouseMove;
+            _view.Shown += OnViewShown;
 
-            if(mdiChildPresenter == null)
-            {
-                mdiChildPresenter = new DashboardPresenter();
-            }
-
-            Show();
-            ShowMDIChild(mdiChildPresenter);
+            _view.Show();
         }
 
         #region EventHandler Methods
@@ -56,19 +51,16 @@ namespace Phinanze.Presenters
             }
             _prevMousePosition = Cursor.Position;
         }
+
+        public void OnViewShown(object sender, EventArgs e)
+        {
+            DashboardPresenter dashboardPresenter = new DashboardPresenter();
+            dashboardPresenter.ShowViewInContainer(_view);
+        }
         #endregion
 
 
         #region Utility Methods
-        public override void Show(IView mdiParent = null)
-        {
-            _view.Show();
-        }
-
-        private void ShowMDIChild(BasePresenter presenter)
-        {
-            presenter.Show(_view);
-        }
 
         #endregion
 

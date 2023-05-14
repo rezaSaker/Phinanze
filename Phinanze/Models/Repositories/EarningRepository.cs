@@ -6,6 +6,6 @@ namespace Phinanze.Models.Repositories
 {
     public class EarningRepository: Repository<Earning>
     {
-        public static Repository<Earning> Get { get => new Repository<Earning>(); }
+        public static Repository<Earning> Get => new Repository<Earning>(); 
     }
 }

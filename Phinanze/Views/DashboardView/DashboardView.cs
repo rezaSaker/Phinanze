@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Phinanze.Views
 {
@@ -19,9 +20,15 @@ namespace Phinanze.Views
             InitializeComponent();
         }
 
-        public static DashboardView Instance
-        {
-            get => _instance != null ? _instance : new DashboardView(); 
-        }
+        public static DashboardView Instance => _instance != null? _instance : (_instance = new DashboardView());
+
+        public Chart PieChart => this.dashboardPieChart; 
+
+        public Chart BarChart => this.dashboardBarChat; 
+
+        public DataGridView OverviewDGV => this.dashboardDGV; 
+
+        public ComboBox YearComboBox => this.yearComboBox; 
+        
     }
 }

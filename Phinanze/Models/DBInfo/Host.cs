@@ -9,5 +9,6 @@ namespace Phinanze.Models.DBInfo
     public class Host
     {
         protected const string URL = "http://localhost/phinanze2/";
+        protected const string EXT = ".php";
     }
 }

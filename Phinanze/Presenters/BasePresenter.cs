@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace Phinanze.Presenters
 {
-    public abstract class BasePresenter
+    public interface BasePresenter
     {
-        public abstract void Show(IView mdiParent = null);
+        //void ShowView();
 
-
+        void ShowViewInContainer(Form mdiContainer);
     }
 }

@@ -63,11 +63,11 @@ namespace Phinanze.Models.Repositories
 
             if(_id == null) // if it is a new entry for insert
             {
-                http = HttpRequest<T>.URL(DB.Insert_Url(_model.GetType().Name)).ResponseType(HttpResponseTypes.SingleIModel());
+                http = HttpRequest<T>.URL(API_URL.Insert_Url(_model.GetType().Name)).ResponseType(HttpResponseTypes.SingleIModel());
             }
             else // if it is an existing entry for update
             {
-                http = HttpRequest<T>.URL(DB.Update_Url(_model.GetType().Name)).ResponseType(HttpResponseTypes.String());
+                http = HttpRequest<T>.URL(API_URL.Update_Url(_model.GetType().Name)).ResponseType(HttpResponseTypes.String());
                 http.RequestParams.Add("Id", _id.ToString());
             }
 
@@ -96,7 +96,7 @@ namespace Phinanze.Models.Repositories
         /// <returns>True for successful delete, or false.</returns>
         public bool Delete()
         {
-            HttpRequest<T> http = HttpRequest<T>.URL(DB.Delete_Url(_model.GetType().Name));
+            HttpRequest<T> http = HttpRequest<T>.URL(API_URL.Delete_Url(_model.GetType().Name));
             http.RequestParams.Add("Id", Id.ToString());
             return http.ResponseType(HttpResponseTypes.String()).Delete().IsSuccessful;
         }
@@ -108,7 +108,7 @@ namespace Phinanze.Models.Repositories
         public List<T> All()
         {
             return HttpRequest<T>
-               .URL(DB.GetAll_Url(typeof(T).Name))
+               .URL(API_URL.GetAll_Url(typeof(T).Name))
                .ResponseType(HttpResponseTypes
                .ListOfIModel())
                .Get()
@@ -128,7 +128,7 @@ namespace Phinanze.Models.Repositories
         /// <returns>All entires from the table that match the search criteria, or null if no entry is found</returns>
         public List<T> Where(string param, string value)
         {
-            HttpRequest<T> http = HttpRequest<T>.URL(DB.GetBy_Url(typeof(T).Name));
+            HttpRequest<T> http = HttpRequest<T>.URL(API_URL.GetBy_Url(typeof(T).Name));
 
             http.RequestParams.Add("param", param);
             http.RequestParams.Add("value", value);

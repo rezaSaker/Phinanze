@@ -4,7 +4,7 @@ using Phinanze.Models.Repositories;
 
 namespace Phinanze.Models
 {
-    public class Expense: ExpenseRepository, IModel
+    public class Expense: ExpenseRepository, IModel, ITransaction
     {
         public Expense() { Model = this; }
 
