@@ -89,10 +89,10 @@ namespace Phinanze.Presenters
                 AddRowToViewDGV(int.Parse(_view.YearComboBox.SelectedItem.ToString()));
             }
 
-            _view.PieChart.Series.Add("Earning");
-            _view.PieChart.Series.Add("Expense");
-            _view.PieChart.Series[CategoryType.EARNING].Points.AddXY("Earning", 50);
-            _view.PieChart.Series[CategoryType.EXPENSE].Points.AddXY("Expense", 50);
+            //_view.PieChart.Series.Add("Earning");
+            //_view.PieChart.Series.Add("Expense");
+            //_view.PieChart.Series[CategoryType.EARNING].Points.AddXY("Earning", 50);
+            //_view.PieChart.Series[CategoryType.EXPENSE].Points.AddXY("Expense", 50);
         }
 
         private void AddDataPointOnViewBarChart(int month, double value, string seriesName)
