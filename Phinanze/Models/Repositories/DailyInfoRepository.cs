@@ -23,12 +23,12 @@ namespace Phinanze.Models.Repositories
 
         public List<Earning> Earnings()
         {
-            return Earning.Get.Where("dailyinfo_id", Id);
+            return Earning.Get.All().FindAll(e => e.DailyInfoId == Id);
         }
 
         public List<Expense> Expenses()
         {
-            return Expense.Get.Where("dailyinfo_id", Id);
+            return Expense.Get.All().FindAll(e => e.DailyInfoId == Id);
         }
 
         public double TotalExpense()
