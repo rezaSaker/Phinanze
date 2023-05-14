@@ -1,13 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Phinanze.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Phinanze.Test.HttpRequests
 {
-    ///////////////////////////////////////////////////////////
-    // UNCOMMENT THE FOLLOWING LINE FOR TESTING HTTP REQUESTS
+    //-----------------------------------------------------------------------------
+    // Uncomment the following line ([TestClass]) for testing category http requests
     // [TestClass]
-    ///////////////////////////////////////////////////////////
+    //-----------------------------------------------------------------------------
     public class CategoryHttpCRUDTest
     {
         [TestMethod]
@@ -28,38 +29,46 @@ namespace Phinanze.Test.HttpRequests
                 category.Save();
                 categoryId_testcase[i] = category.Id;
             }
-            Assert.AreEqual(Category.Get.All().Count, 100);
+            Assert.AreEqual(100, Category.Get.All().Count);
 
             // Field insertion accuracy test
-            Assert.AreEqual(Category.Get.One(categoryId_testcase[0]).Name, "Category 1");
-            Assert.AreEqual(Category.Get.One(categoryId_testcase[0]).CategoryType, "Earning");
+            Assert.AreEqual("Category 1", Category.Get.One(categoryId_testcase[0]).Name);
+            Assert.AreEqual("Earning", Category.Get.One(categoryId_testcase[0]).CategoryType);
 
             // Lookup test
-            Assert.AreEqual(Category.Get.One(categoryId_testcase[99]).Name, "Category 100");
-            Assert.AreEqual(Category.Get.One(categoryId_testcase[99]).CategoryType, "Expense");
+            Assert.AreEqual("Category 100", Category.Get.One(categoryId_testcase[99]).Name);
+            Assert.AreEqual("Expense", Category.Get.One(categoryId_testcase[99]).CategoryType);
 
             // Get by specific field value test
             Assert.IsNotNull(Category.Get.Where("name", "Category 1").FirstOrDefault());
-            Assert.AreEqual(Category.Get.Where("category_type", "Earning").Count, 50);
-            Assert.AreEqual(Category.Get.Where("name", "Category 51").FirstOrDefault().CategoryType, "Expense");
+            Assert.AreEqual(50, Category.Get.Where("category_type", "Earning").Count);
+            Assert.AreEqual("Expense", Category.Get.Where("name", "Category 51").FirstOrDefault().CategoryType);
 
             // Update test
             Category c = Category.Get.One(categoryId_testcase[0]);
             Assert.IsNotNull(c);
-            Assert.AreEqual(c.Name, "Category 1");
+            Assert.AreEqual("Category 1", c.Name);
             c.Name = "Category Updated";
             c.Save();
             c = Category.Get.One(categoryId_testcase[0]);
-            Assert.AreEqual(c.Name, "Category Updated");
+            Assert.AreEqual("Category Updated", c.Name);
 
             // Delete test
             c = Category.Get.One(categoryId_testcase[99]);
             c.Delete();
             Assert.IsNull(Category.Get.One(categoryId_testcase[99]));
 
+            // Local copy modification test (should not modify local copy of all cateogry entries unless the change is saved using Save() method
+            c = Category.Get.All().First();
+            Assert.IsNotNull(c);
+            string name = c.Name;
+            c.Name = "New Name";
+            Assert.AreEqual(name, Category.Get.All().First().Name);
+
+
             // Delete multiple
             DeleteAllCategories();
-            Assert.AreEqual(Category.Get.All().Count, 0);
+            Assert.AreEqual(0, Category.Get.All().Count);
         }
 
         private void DeleteAllCategories()

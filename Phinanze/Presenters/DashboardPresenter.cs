@@ -67,6 +67,7 @@ namespace Phinanze.Presenters
         {
             _view.BarChart.Series[CategoryType.EARNING].Points.Clear();
             _view.BarChart.Series[CategoryType.EXPENSE].Points.Clear();
+            _view.OverviewDGV.Rows.Clear();
 
             int? selectedYear = int.TryParse(_view.YearComboBox.SelectedItem.ToString(), out int temp) ? (int?)temp : null; // Null for item "Show All Years"
             
@@ -87,6 +88,11 @@ namespace Phinanze.Presenters
             {
                 AddRowToViewDGV(int.Parse(_view.YearComboBox.SelectedItem.ToString()));
             }
+
+            _view.PieChart.Series.Add("Earning");
+            _view.PieChart.Series.Add("Expense");
+            _view.PieChart.Series[CategoryType.EARNING].Points.AddXY("Earning", 50);
+            _view.PieChart.Series[CategoryType.EXPENSE].Points.AddXY("Expense", 50);
         }
 
         private void AddDataPointOnViewBarChart(int month, double value, string seriesName)

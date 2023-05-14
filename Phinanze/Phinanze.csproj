@@ -147,7 +147,6 @@
     <Compile Include="Auth\Auth.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\DBInfo\API_URL.cs" />
-    <Compile Include="Models\DBInfo\DBReflection.cs" />
     <Compile Include="Models\DBInfo\Host.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\DailyInfo2.cs" />

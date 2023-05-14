@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace Phinanze.Test.HttpRequests
 {
-    ///////////////////////////////////////////////////////////
-    // UNCOMMENT THE FOLLOWING LINE FOR TESTING HTTP REQUESTS
+    //-----------------------------------------------------------------------------
+    // Uncomment the following line ([TestClass]) for testing Earning http requests
     // [TestClass]
-    ///////////////////////////////////////////////////////////
+    //-----------------------------------------------------------------------------
     public class EarningHttpCRUDTest
     {
         [TestMethod]
@@ -30,40 +30,47 @@ namespace Phinanze.Test.HttpRequests
                 earning.Save();
                 earningId_testcase[i] = earning.Id;
             }
-            Assert.AreEqual(Earning.Get.All().Count, 100);
+            Assert.AreEqual(100, Earning.Get.All().Count);
 
             // Field insertion accuracy test
-            Assert.AreEqual(Earning.Get.One(earningId_testcase[0]).DailyInfoId, 1);
-            Assert.AreEqual(Earning.Get.One(earningId_testcase[0]).CategoryId, 1);
-            Assert.AreEqual(Earning.Get.One(earningId_testcase[0]).Amount, 10);
-            Assert.AreEqual(Earning.Get.One(earningId_testcase[0]).Comment, "None");
+            Assert.AreEqual(1, Earning.Get.One(earningId_testcase[0]).DailyInfoId);
+            Assert.AreEqual(1, Earning.Get.One(earningId_testcase[0]).CategoryId);
+            Assert.AreEqual(10, Earning.Get.One(earningId_testcase[0]).Amount);
+            Assert.AreEqual("None", Earning.Get.One(earningId_testcase[0]).Comment);
 
             // Lookup test
-            Assert.AreEqual(Earning.Get.One(earningId_testcase[0]).DailyInfoId, 1);
-            Assert.AreEqual(Earning.Get.One(earningId_testcase[99]).DailyInfoId, 100);
+            Assert.AreEqual(1, Earning.Get.One(earningId_testcase[0]).DailyInfoId);
+            Assert.AreEqual(100, Earning.Get.One(earningId_testcase[99]).DailyInfoId);
 
             // Get by specific field value test
             Assert.IsNotNull(Earning.Get.Where("dailyinfo_id", "100").FirstOrDefault());
-            Assert.AreEqual(Earning.Get.Where("dailyinfo_id", "100").FirstOrDefault().DailyInfoId, 100);
-            Assert.AreEqual(Earning.Get.Where("amount", 11).FirstOrDefault().Amount, 11);
+            Assert.AreEqual(100, Earning.Get.Where("dailyinfo_id", "100").FirstOrDefault().DailyInfoId);
+            Assert.AreEqual(11, Earning.Get.Where("amount", 11).FirstOrDefault().Amount);
 
             // Update test
             Earning e = Earning.Get.One(earningId_testcase[0]);
             Assert.IsNotNull(e);
-            Assert.AreEqual(e.Comment, "None");
+            Assert.AreEqual("None", e.Comment);
             e.Comment = "Update";
             e.Save();
             e = Earning.Get.One(earningId_testcase[0]);
-            Assert.AreEqual(e.Comment, "Update");
+            Assert.AreEqual("Update", e.Comment);
 
             // Delete test
             e = Earning.Get.One(earningId_testcase[99]);
             e.Delete();
             Assert.IsNull(Earning.Get.One(earningId_testcase[99]));
 
+            // Local copy modification test (should not modify local copy of all earning entries unless the change is saved using Save() method
+            e = Earning.Get.All().First();
+            Assert.IsNotNull(e);
+            string comment = e.Comment;
+            e.Comment = "New Comment";
+            Assert.AreEqual(comment, Earning.Get.All().First().Comment);
+
             //Delete multiple
             DeleteAllEarnings();
-            Assert.AreEqual(Earning.Get.All().Count, 0);
+            Assert.AreEqual(0, Earning.Get.All().Count);
         }
 
         private void DeleteAllEarnings()

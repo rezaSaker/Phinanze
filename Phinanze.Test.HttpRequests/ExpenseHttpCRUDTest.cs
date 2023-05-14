@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace Phinanze.Test.HttpRequests
 {
-    ///////////////////////////////////////////////////////////
-    // UNCOMMENT THE FOLLOWING LINE FOR TESTING HTTP REQUESTS
+    //-----------------------------------------------------------------------------
+    // Uncomment the following line ([TestClass]) for testing Expense http requests
     // [TestClass]
-    ///////////////////////////////////////////////////////////
+    //-----------------------------------------------------------------------------
     public class ExpenseHttpCRUDTest
     {
         [TestMethod]
@@ -33,37 +33,44 @@ namespace Phinanze.Test.HttpRequests
             Assert.AreEqual(Expense.Get.All().Count, 100);
 
             // Field insertion accuracy test
-            Assert.AreEqual(Expense.Get.One(expenseId_testcase[0]).DailyInfoId, 1);
-            Assert.AreEqual(Expense.Get.One(expenseId_testcase[0]).CategoryId, 1);
-            Assert.AreEqual(Expense.Get.One(expenseId_testcase[0]).Amount, 10);
-            Assert.AreEqual(Expense.Get.One(expenseId_testcase[0]).Comment, "None");
+            Assert.AreEqual(1, Expense.Get.One(expenseId_testcase[0]).DailyInfoId);
+            Assert.AreEqual(1, Expense.Get.One(expenseId_testcase[0]).CategoryId);
+            Assert.AreEqual(10, Expense.Get.One(expenseId_testcase[0]).Amount);
+            Assert.AreEqual("None", Expense.Get.One(expenseId_testcase[0]).Comment);
 
             //Lookup test
-            Assert.AreEqual(Expense.Get.One(expenseId_testcase[0]).DailyInfoId, 1);
-            Assert.AreEqual(Expense.Get.One(expenseId_testcase[99]).DailyInfoId, 100);
-            Assert.AreEqual(Expense.Get.Where("amount", 11).FirstOrDefault().Amount, 11);
+            Assert.AreEqual(1, Expense.Get.One(expenseId_testcase[0]).DailyInfoId);
+            Assert.AreEqual(100, Expense.Get.One(expenseId_testcase[99]).DailyInfoId);
+            Assert.AreEqual(11, Expense.Get.Where("amount", 11).FirstOrDefault().Amount);
 
             // Get by specific field value test
             Assert.IsNotNull(Expense.Get.Where("dailyinfo_id", "100").FirstOrDefault());
-            Assert.AreEqual(Expense.Get.Where("dailyinfo_id", "100").FirstOrDefault().DailyInfoId, 100);
+            Assert.AreEqual(100, Expense.Get.Where("dailyinfo_id", "100").FirstOrDefault().DailyInfoId);
 
             //Update test
             Expense e = Expense.Get.One(expenseId_testcase[0]);
             Assert.IsNotNull(e);
-            Assert.AreEqual(e.Comment, "None");
+            Assert.AreEqual("None", e.Comment);
             e.Comment = "Update";
             e.Save();
             e = Expense.Get.One(expenseId_testcase[0]);
-            Assert.AreEqual(e.Comment, "Update");
+            Assert.AreEqual("Update", e.Comment);
 
             // Delete test
             e = Expense.Get.One(expenseId_testcase[99]);
             e.Delete();
             Assert.IsNull(Expense.Get.One(expenseId_testcase[99]));
 
+            // Local copy modification test (should not modify local copy of all expense entries unless the change is saved using Save() method
+            e = Expense.Get.All().First();
+            Assert.IsNotNull(e);
+            string comment = e.Comment;
+            e.Comment = "New Comment";
+            Assert.AreEqual(comment, Expense.Get.All().First().Comment);
+
             //Delete multiple
             DeleteAllExpenses();
-            Assert.AreEqual(Expense.Get.All().Count, 0);
+            Assert.AreEqual(0, Expense.Get.All().Count);
         }
 
         private void DeleteAllExpenses()

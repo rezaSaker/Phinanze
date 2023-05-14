@@ -5,10 +5,10 @@ using System.Linq;
 
 namespace Phinanze.Test.HttpRequests
 {
-    ///////////////////////////////////////////////////////////
-    // UNCOMMENT THE FOLLOWING LINE FOR TESTING HTTP REQUESTS
+    //-----------------------------------------------------------------------------
+    // Uncomment the following line ([TestClass]) for testing DailyInfo http requests
     // [TestClass]
-    ///////////////////////////////////////////////////////////
+    //-----------------------------------------------------------------------------
     public class DailyInfoHttpCRUDTest
     {
         [TestMethod]
@@ -31,37 +31,44 @@ namespace Phinanze.Test.HttpRequests
                 dailyinfo.Save();
                 dailyinfoId_testcase[i] = dailyinfo.Id;
             }
-            Assert.AreEqual(DailyInfo2.Get.All().Count, 100);
+            Assert.AreEqual(100, DailyInfo2.Get.All().Count);
 
             // Field insertion accuracy test
-            Assert.AreEqual(DailyInfo2.Get.One(dailyinfoId_testcase[0]).Date, dailyinfoDate_testcase[0].Date);
-            Assert.AreEqual(DailyInfo2.Get.One(dailyinfoId_testcase[0]).Note, "Note 1");
+            Assert.AreEqual(dailyinfoDate_testcase[0].Date, DailyInfo2.Get.One(dailyinfoId_testcase[0]).Date);
+            Assert.AreEqual("Note 1", DailyInfo2.Get.One(dailyinfoId_testcase[0]).Note);
 
             // Lookup test
-            Assert.AreEqual(DailyInfo2.Get.One(dailyinfoId_testcase[99]).Date, dailyinfoDate_testcase[99].Date);
-            Assert.AreEqual(DailyInfo2.Get.One(dailyinfoId_testcase[99]).Note, "Note 100");
+            Assert.AreEqual(dailyinfoDate_testcase[99].Date, DailyInfo2.Get.One(dailyinfoId_testcase[99]).Date);
+            Assert.AreEqual("Note 100", DailyInfo2.Get.One(dailyinfoId_testcase[99]).Note);
 
             // Get by specific field value test
             Assert.IsNotNull(DailyInfo2.Get.Where("Note", "Note 100").FirstOrDefault());
-            Assert.AreEqual(DailyInfo2.Get.Where("Note", "Note 100").FirstOrDefault().Note, "Note 100");
+            Assert.AreEqual("Note 100", DailyInfo2.Get.Where("Note", "Note 100").FirstOrDefault().Note);
 
             // Update test
             DailyInfo2 d = DailyInfo2.Get.One(dailyinfoId_testcase[0]);
             Assert.IsNotNull(d);
-            Assert.AreEqual(d.Note, "Note 1");
+            Assert.AreEqual("Note 1", d.Note);
             d.Note = "Note Updated";
             d.Save();
             d = DailyInfo2.Get.One(dailyinfoId_testcase[0]);
-            Assert.AreEqual(d.Note, "Note Updated");
+            Assert.AreEqual("Note Updated", d.Note);
 
             // Delete test
             d = DailyInfo2.Get.One(dailyinfoId_testcase[99]);
             d.Delete();
             Assert.IsNull(DailyInfo2.Get.One(dailyinfoId_testcase[99]));
 
+            // Local copy modification test (should not modify local copy of all dailyinfo entries unless the change is saved using Save() method
+            d = DailyInfo2.Get.All().First();
+            Assert.IsNotNull(d);
+            string note = d.Note;
+            d.Note = "New Note";
+            Assert.AreEqual(note, DailyInfo2.Get.All().First().Note);
+
             // Delete multiple
             DeleteAllDailyinfo();
-            Assert.AreEqual(DailyInfo2.Get.All().Count, 0);
+            Assert.AreEqual(0, DailyInfo2.Get.All().Count);
         }
 
         private void DeleteAllDailyinfo()

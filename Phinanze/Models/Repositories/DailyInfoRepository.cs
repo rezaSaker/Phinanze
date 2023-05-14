@@ -8,24 +8,46 @@ namespace Phinanze.Models.Repositories
 {
     public class DailyInfoRepository: Repository<DailyInfo2>
     {
+        private static Repository<DailyInfo2> _repository;
+        public static Repository<DailyInfo2> Get
+        {
+            get
+            {
+                if(_repository == null)
+                {
+                    _repository = new Repository<DailyInfo2>();
+                }
+                return _repository;
+            }
+        }
 
-        public static Repository<DailyInfo2> Get => new Repository<DailyInfo2>(); 
+        public List<Earning> Earnings()
+        {
+            return Earning.Get.Where("dailyinfo_id", Id);
+        }
 
-        public List<Earning> Earnings => Earning.Get.Where("dailyinfo_id", Id);
+        public List<Expense> Expenses()
+        {
+            return Expense.Get.Where("dailyinfo_id", Id);
+        }
 
-        public List<Expense> Expenses => Expense.Get.Where("dailyinfo_id", Id);
+        public double TotalExpense()
+        {
+            return Expenses().Sum(e => e.Amount);
+        }
 
-        public double TotalExpense => Expenses.Sum(e => e.Amount);
-
-        public double TotalEarning => Earnings.Sum(e => e.Amount);
+        public double TotalEarning()
+        {
+            return Earnings().Sum(e => e.Amount);
+        }
 
         public static List<DailyInfo2> GetAllFromMonth(int month, int? year = null)
         {
             if(year == null)
             {
-                return GetAll().FindAll(d => d.Date.Month == month);
+                return Get.All().FindAll(d => d.Date.Month == month);
             }
-            return GetAll().FindAll(d => d.Date.Month == month && d.Date.Year == year);
+            return Get.All().FindAll(d => d.Date.Month == month && d.Date.Year == year);
         }
 
         public static double GetTotalEarningsByMonth(int month, int? year = null)
@@ -34,11 +56,11 @@ namespace Phinanze.Models.Repositories
 
             if(year == null)
             {
-                GetAllFromMonth(month).ForEach(d => total += d.Earnings.Sum(e => e.Amount));
+                GetAllFromMonth(month).ForEach(d => total += d.Earnings().Sum(e => e.Amount));
             }
             else
             {
-                GetAllFromMonth(month, year).ForEach(d => total += d.Earnings.Sum(e => e.Amount));
+                GetAllFromMonth(month, year).ForEach(d => total += d.Earnings().Sum(e => e.Amount));
             }
             return total;
         }
@@ -49,19 +71,13 @@ namespace Phinanze.Models.Repositories
 
             if (year == null)
             {
-                GetAllFromMonth(month).ForEach(d => total += d.Expenses.Sum(e => e.Amount));
+                GetAllFromMonth(month).ForEach(d => total += d.Expenses().Sum(e => e.Amount));
             }
             else
             {
-                GetAllFromMonth(month, year).ForEach(d => total += d.Expenses.Sum(e => e.Amount));
+                GetAllFromMonth(month, year).ForEach(d => total += d.Expenses().Sum(e => e.Amount));
             }
             return total;
-        }
-
-        public static List<DailyInfo2> GetAll()
-        {
-            if (DBReflection.DailyInfoModels.Count == 0) DBReflection.DailyInfoModels = Get.All();
-            return DBReflection.DailyInfoModels;
         }
     }
 }

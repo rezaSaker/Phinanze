@@ -15,5 +15,7 @@ namespace Phinanze.Models
     {
         [Key]
         int Id { get; } // Models that extend BaseRepository do not need to define Id as BaseRepository already contains definition for Id method.
+
+
     }
 }

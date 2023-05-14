@@ -6,6 +6,8 @@ using Phinanze.Models.Validations;
 using Phinanze.Models.Repositories.Http;
 using System.Runtime.InteropServices;
 using System.Linq;
+using Microsoft.IdentityModel.Tokens;
+using static System.Net.WebRequestMethods;
 
 namespace Phinanze.Models.Repositories
 {
@@ -15,14 +17,17 @@ namespace Phinanze.Models.Repositories
     /// <typeparam name="T">The model associated with the child repository class</typeparam>
     public class Repository<T> where T : IModel
     {
-        private int? _id;
-        private IModel _model;
+        private int? _id;  // _id of the child model T
+        private T _model;  // the child T model 
+        private List<T> _localCopyOfAllEntries;   // Local copy of all DB entries of child T model associated with the current user
+
+        private static bool _resetLocalCopyOfAllEntries = true; // Indicates whether _localCopyOfAllEntries needs to be reset
 
         // The Id of the associated model object (NULL if the model object hasn't been saved into DB)
-        public int Id 
+        public int Id
         {
             get { return (int)_id; }
-            set 
+            set
             {
                 if (_id == null) _id = (int?)value;
                 else throw new ArgumentException("Model id property cannot be changed");
@@ -30,7 +35,7 @@ namespace Phinanze.Models.Repositories
         }
 
         // The model that extends the Base Repository through the Model's specific repository
-        protected IModel Model
+        protected T Model
         {
             set
             {
@@ -45,7 +50,7 @@ namespace Phinanze.Models.Repositories
         public Repository() 
         {
             _id = null;
-            _model = null;
+            _model = default(T);
         }
 
         /// <summary>
@@ -86,6 +91,7 @@ namespace Phinanze.Models.Repositories
                 {
                     _id = http.ResponseModel.Id;
                 }
+                _resetLocalCopyOfAllEntries = true;
             }
             return http.IsSuccessful;
         }
@@ -98,7 +104,12 @@ namespace Phinanze.Models.Repositories
         {
             HttpRequest<T> http = HttpRequest<T>.URL(API_URL.Delete_Url(_model.GetType().Name));
             http.RequestParams.Add("Id", Id.ToString());
-            return http.ResponseType(HttpResponseTypes.String()).Delete().IsSuccessful;
+
+            if(http.ResponseType(HttpResponseTypes.String()).Delete().IsSuccessful)
+            {
+                _resetLocalCopyOfAllEntries = true;
+            }
+            return http.IsSuccessful;
         }
 
         /// <summary>
@@ -107,17 +118,29 @@ namespace Phinanze.Models.Repositories
         /// <returns>All entries associated with the current user from the associated DB table</returns>
         public List<T> All()
         {
-            return HttpRequest<T>
-               .URL(API_URL.GetAll_Url(typeof(T).Name))
-               .ResponseType(HttpResponseTypes
-               .ListOfIModel())
-               .Get()
-               .ResponseModelList;
+            if(_localCopyOfAllEntries.IsNullOrEmpty() || _resetLocalCopyOfAllEntries)
+            {
+                _localCopyOfAllEntries = HttpRequest<T>
+                    .URL(API_URL.GetAll_Url(typeof(T).Name))
+                    .ResponseType(HttpResponseTypes
+                    .ListOfIModel())
+                    .Get()
+                    .ResponseModelList;
+
+                _resetLocalCopyOfAllEntries = false;
+            }
+            return _localCopyOfAllEntries.Select(e => Clone(e)).ToList();
         }
 
         public T One(int id)
         {
-            return Where("id", id.ToString()).FirstOrDefault();
+            if (_localCopyOfAllEntries.IsNullOrEmpty() || _resetLocalCopyOfAllEntries)
+            {
+                return Where("id", id.ToString()).FirstOrDefault();
+            }
+
+            T entry = _localCopyOfAllEntries.Find(e => e.Id == id);
+            return entry != null ? Clone(entry) : default(T);
         }
 
         /// <summary>
@@ -167,6 +190,18 @@ namespace Phinanze.Models.Repositories
         public List<T> Where(string param, bool value)
         {
             return Where(param, value.ToString());
+        }
+
+        public T Clone(T original)
+        {
+            T newObject = (T)Activator.CreateInstance(original.GetType());
+
+            foreach (var originalProp in original.GetType().GetProperties())
+            {
+                originalProp.SetValue(newObject, originalProp.GetValue(original));
+            }
+
+            return newObject;
         }
     }
 }

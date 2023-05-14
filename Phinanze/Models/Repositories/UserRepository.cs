@@ -8,6 +8,6 @@ namespace Phinanze.Models.Repositories
 {
     public class UserRepository: Repository<User>
     {
-
+        public static Repository<User> Get => new Repository<User>();
     }
 }
