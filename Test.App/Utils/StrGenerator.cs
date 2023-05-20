@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phinanze.Test.App.Utils
+namespace App.Test.Utils
 {
     public class StrGenerator
     {

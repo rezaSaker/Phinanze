@@ -1,10 +1,10 @@
 ﻿using Phinanze.Models;
 using Phinanze.Models.Validations;
-using Phinanze.Test.App.Utils;
+using App.Test.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
-namespace Phinanze.Test.App.ValidationTest
+namespace App.Test.ValidationTest
 {
     [TestClass]
     public class EarningValidationTest

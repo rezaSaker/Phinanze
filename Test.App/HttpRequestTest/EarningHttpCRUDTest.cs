@@ -2,7 +2,7 @@
 using Phinanze.Models;
 using System.Linq;
 
-namespace Phinanze.Test.App.HttpRequestTest
+namespace App.Test.HttpRequestTest
 {
     // [TestClass]
     public class EarningHttpCRUDTest

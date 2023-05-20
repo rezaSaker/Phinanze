@@ -1,21 +1,24 @@
-﻿using Phinanze.Models.Validations;
-using Phinanze.Models;
-using Phinanze.Test.App.Utils;
+﻿using Phinanze.Models;
+using Phinanze.Models.Validations;
+using App.Test.Utils;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
-namespace Phinanze.Test.App.ValidationTest
+namespace App.Test.ValidationTest
 {
+    [TestClass]
     public class ExpenseValidationTest
     {
-        [Theory]
-        [MemberData(nameof(TestCases))]
+        [DataTestMethod]
+        [DynamicData(nameof(TestCases), DynamicDataSourceType.Method)]
         public void TestExpenseModelValidations(Expense e, bool expectValid, string msg)
         {
             EntityValidationResult validationResult = EntityValidator.Validate(e);
-            Assert.Equal(expectValid, validationResult.IsValid);
+            Assert.AreEqual(expectValid, validationResult.IsValid);
 
             if (!validationResult.IsValid)
             {
-                Assert.Equal(msg, validationResult.Errors[0].ErrorMessage);
+                Assert.AreEqual(msg, validationResult.Errors[0].ErrorMessage);
             }
         }
 

@@ -1,27 +1,31 @@
-﻿using Phinanze.Models.Validations;
+﻿using System;
 using Phinanze.Models;
-using Phinanze.Test.App.Utils;
+using Phinanze.Models.Validations;
+using App.Test.Utils;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
-namespace Phinanze.Test.App.ValidationTest
+namespace App.Test.ValidationTest
 {
+    [TestClass]
     public class DailyInfoValidationTest
     {
-        [Theory]
-        [MemberData(nameof(TestCases))]
+        [DataTestMethod]
+        [DynamicData(nameof(TestCases), DynamicDataSourceType.Method)]
         public void TestDailyInfoModelValidations(DateTime date, string note, bool expectValid, string msg)
         {
-            DailyInfo2 d = new()
+            DailyInfo2 d = new DailyInfo2()
             {
                 Date = date,
                 Note = note
             };
 
             EntityValidationResult validationResult = EntityValidator.Validate(d);
-            Assert.Equal(expectValid, validationResult.IsValid);
+            Assert.AreEqual(expectValid, validationResult.IsValid);
 
             if (!validationResult.IsValid)
             {
-                Assert.Equal(msg, validationResult.Errors[0].ErrorMessage);
+                Assert.AreEqual(msg, validationResult.Errors[0].ErrorMessage);
             }
         }
 
