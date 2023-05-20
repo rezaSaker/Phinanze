@@ -8,8 +8,8 @@
     <ProjectGuid>{A53BF2DA-4932-43CE-98FB-3C8AAB25BE36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Phinanze.Test.HttpRequests</RootNamespace>
-    <AssemblyName>Phinanze.Test.HttpRequests</AssemblyName>
+    <RootNamespace>Phinanze.Test.App</RootNamespace>
+    <AssemblyName>Phinanze.Test.App</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -48,13 +48,23 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryHttpCRUDTest.cs" />
-    <Compile Include="DailyInfoHttpCRUDTest.cs" />
-    <Compile Include="EarningHttpCRUDTest.cs" />
-    <Compile Include="ExpenseHttpCRUDTest.cs" />
+    <Compile Include="HttpRequestTest\CategoryHttpCRUDTest.cs" />
+    <Compile Include="HttpRequestTest\DailyInfoHttpCRUDTest.cs" />
+    <Compile Include="HttpRequestTest\EarningHttpCRUDTest.cs" />
+    <Compile Include="HttpRequestTest\ExpenseHttpCRUDTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\StrGenerator.cs" />
+    <Compile Include="ValidationTest\CategoryValidationTest.cs" />
+    <Compile Include="ValidationTest\DailyInfoValidationTest.cs" />
+    <Compile Include="ValidationTest\EarningValidationTest.cs" />
+    <Compile Include="ValidationTest\ExpenseValidationTest.cs" />
+    <Compile Include="ViewTest\DashboardViewTest.cs" />
+    <Compile Include="ViewTest\MDIContainerViewTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

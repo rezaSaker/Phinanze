@@ -1,39 +1,30 @@
-﻿using Newtonsoft.Json.Linq;
-using Phinanze.Models;
-using Phinanze.Models.Statics;
-using Phinanze.Views;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Phinanze.Models;
+using Phinanze.Models.Statics;
+using Phinanze.Views;
 
 namespace Phinanze.Presenters
 {
-    public class DashboardPresenter : BasePresenter
+    public class DashboardPresenter : Presenter
     {
-        private DashboardView _view;
+        private IDashboardView _view;
+        private IView _containerView;
 
-        public DashboardPresenter() 
+        public DashboardPresenter(IView view, IView containerView = null)
         {
-            _view = DashboardView.Instance;
+            _view = (IDashboardView)view;
+            _containerView = containerView;
 
-            _view.Load += OnViewLoad;
-            _view.Shown += OnViewShown;
-            _view.YearComboBox.SelectedIndexChanged += OnViewYearComboBoxChanged;
+            _view.ViewLoading += OnViewLoad;
+            _view.ViewShown += OnViewShown;
+            _view.YearComboBoxSelectedIndexChanged += OnYearComboBoxSelectedIndexChanged;
+
+            Show(_view, _containerView);
         }
-
-        public void ShowViewInContainer(Form mdiContainer)
-        {
-            _view.MdiParent = mdiContainer;
-            _view.Dock = DockStyle.Fill;
-            _view.Show();
-        }
-
 
         #region EventHandler Methods
 
@@ -43,10 +34,10 @@ namespace Phinanze.Presenters
             {
                 _view.YearComboBox.Items.Add(year.ToString());
             }
-            _view.YearComboBox.Items.Add("Show All Years");
+            _view.YearComboBox.Items.Add("All Years");
             
-            _view.BarChart.Series[CategoryType.EARNING].Color = Color.Green;
-            _view.BarChart.Series[CategoryType.EXPENSE].Color = Color.Red;
+            _view.OverviewBarChart.Series[CategoryType.EARNING].Color = Color.Green;
+            _view.OverviewBarChart.Series[CategoryType.EXPENSE].Color = Color.Red;
         }
 
         public void OnViewShown(object sender, EventArgs e)
@@ -54,7 +45,7 @@ namespace Phinanze.Presenters
             _view.YearComboBox.SelectedIndex = _view.YearComboBox.Items.Count - 1;
         }
 
-        public void OnViewYearComboBoxChanged(object sender, EventArgs e)
+        public void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDashboardData();
         }
@@ -65,11 +56,12 @@ namespace Phinanze.Presenters
 
         private void LoadDashboardData()
         {
-            _view.BarChart.Series[CategoryType.EARNING].Points.Clear();
-            _view.BarChart.Series[CategoryType.EXPENSE].Points.Clear();
+            _view.OverviewPieChart.Series["DefaultSeries"].Points.Clear();
+            _view.OverviewBarChart.Series[CategoryType.EARNING].Points.Clear();
+            _view.OverviewBarChart.Series[CategoryType.EXPENSE].Points.Clear();
             _view.OverviewDGV.Rows.Clear();
 
-            int? selectedYear = int.TryParse(_view.YearComboBox.SelectedItem.ToString(), out int temp) ? (int?)temp : null; // Null for item "Show All Years"
+            int? selectedYear = int.TryParse(_view.YearComboBox.SelectedItem.ToString(), out int temp) ? (int?)temp : null; // Null for item "All Years"
             
             for (int month = 1; month <= 12; month++)
             {
@@ -77,22 +69,33 @@ namespace Phinanze.Presenters
                 AddDataPointOnViewBarChart(month, DailyInfo2.GetTotalExpensesByMonth(month, selectedYear), CategoryType.EXPENSE);
             }
 
-            if(selectedYear == null) // If selected item is "Show All Years"
+            double totalEarning = 0.0;
+            double totalExpense = 0.0;
+
+            if(selectedYear == null) // If selected item is "All Years"
             {
                 for(int i = _view.YearComboBox.Items.Count - 2; i >= 0 ; i--)
                 {
                     AddRowToViewDGV(int.Parse(_view.YearComboBox.Items[i].ToString()));
                 }
+
+                totalEarning = Earning.Get.All().Sum(e => e.Amount);
+                totalExpense = Expense.Get.All().Sum(e => e.Amount);
             }
             else
             {
                 AddRowToViewDGV(int.Parse(_view.YearComboBox.SelectedItem.ToString()));
+
+                totalEarning = Earning.Get.All().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
+                totalExpense = Expense.Get.All().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
             }
 
-            //_view.PieChart.Series.Add("Earning");
-            //_view.PieChart.Series.Add("Expense");
-            //_view.PieChart.Series[CategoryType.EARNING].Points.AddXY("Earning", 50);
-            //_view.PieChart.Series[CategoryType.EXPENSE].Points.AddXY("Expense", 50);
+            
+            double totalSavings = totalEarning > totalExpense ? totalEarning - totalExpense : 0.0;
+
+            _view.OverviewPieChart.Series["DefaultSeries"].Points.AddXY("Earning", totalEarning);
+            _view.OverviewPieChart.Series["DefaultSeries"].Points.AddXY("Expense", totalExpense);
+            _view.OverviewPieChart.Series["DefaultSeries"].Points.AddXY("Savings", totalSavings);
         }
 
         private void AddDataPointOnViewBarChart(int month, double value, string seriesName)
@@ -100,7 +103,7 @@ namespace Phinanze.Presenters
             DataPoint point = new DataPoint();
             point.SetValueXY(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month), value);
             point.ToolTip = string.Format("${0:00}", value);
-            _view.BarChart.Series[seriesName].Points.Add(point);
+            _view.OverviewBarChart.Series[seriesName].Points.Add(point);
         }
 
         private void AddRowToViewDGV(int year)

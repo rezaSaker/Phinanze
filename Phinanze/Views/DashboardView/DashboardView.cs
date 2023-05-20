@@ -1,34 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Phinanze.Views
 {
-    public partial class DashboardView : Form, IView
+    public partial class DashboardView : Form, IDashboardView
     {
         private static DashboardView _instance;
 
         private DashboardView()
         {
             InitializeComponent();
+
+            this.Load += delegate { ViewLoading?.Invoke(this, EventArgs.Empty); };
+            this.Shown += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
+            this.yearComboBox.SelectedIndexChanged += delegate { YearComboBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty); };
         }
 
         public static DashboardView Instance => _instance != null? _instance : (_instance = new DashboardView());
 
-        public Chart PieChart => this.dashboardPieChart; 
+        public Chart OverviewPieChart => this.overviewPieChart; 
 
-        public Chart BarChart => this.dashboardBarChat; 
+        public Chart OverviewBarChart => this.overviewBarChart; 
 
-        public DataGridView OverviewDGV => this.dashboardDGV; 
+        public DataGridView OverviewDGV => this.overviewDGV; 
 
-        public ComboBox YearComboBox => this.yearComboBox; 
+        public ComboBox YearComboBox => this.yearComboBox;
+
+
+        public event EventHandler ViewLoading;
+        public event EventHandler ViewShown;
+        public event EventHandler YearComboBoxSelectedIndexChanged;
         
     }
 }

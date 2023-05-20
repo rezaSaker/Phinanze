@@ -1,14 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Phinanze.Models;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace Phinanze.Test.HttpRequests
+namespace Phinanze.Test.App.HttpRequestTest
 {
-    //-----------------------------------------------------------------------------
-    // Uncomment the following line ([TestClass]) for testing category http requests
     // [TestClass]
-    //-----------------------------------------------------------------------------
     public class CategoryHttpCRUDTest
     {
         [TestMethod]

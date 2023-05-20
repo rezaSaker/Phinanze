@@ -9,7 +9,7 @@ namespace Phinanze.Models.Statics
     /// <summary>
     /// A class that declares CategoryType constansts to prevent errors caused by spelling mistakes
     /// </summary>
-    class CategoryType
+    public class CategoryType
     {
         public const string EXPENSE = "Expense";
         public const string EARNING = "Earning";

@@ -4,10 +4,8 @@ using System.Reflection;
 using Phinanze.Models.DBInfo;
 using Phinanze.Models.Validations;
 using Phinanze.Models.Repositories.Http;
-using System.Runtime.InteropServices;
 using System.Linq;
 using Microsoft.IdentityModel.Tokens;
-using static System.Net.WebRequestMethods;
 
 namespace Phinanze.Models.Repositories
 {

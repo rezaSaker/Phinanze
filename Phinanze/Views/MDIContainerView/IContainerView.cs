@@ -8,8 +8,12 @@ using System.Windows.Forms;
 
 namespace Phinanze.Views
 {
-    public interface IView
+    public interface IContainerView : IView
     {
-        //void Show(IView containerView = null);
+        Panel HeaderPanel { get; }
+
+        Point ViewLocation { get; set; }
+
+        event EventHandler ViewShown;
     }
 }

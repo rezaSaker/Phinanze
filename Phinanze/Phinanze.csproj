@@ -167,9 +167,9 @@
     <Compile Include="Models\Validations\EntityValidationResult.cs" />
     <Compile Include="Models\Validations\EntityValidator.cs" />
     <Compile Include="Models\Validations\ValidationError.cs" />
-    <Compile Include="Presenters\BasePresenter.cs" />
     <Compile Include="Presenters\DashboardPresenter.cs" />
     <Compile Include="Presenters\MDIContainerPresenter.cs" />
+    <Compile Include="Presenters\Presenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -271,7 +271,9 @@
     <Compile Include="Views\DashboardView\DashboardView.Designer.cs">
       <DependentUpon>DashboardView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\DashboardView\IDashboardView.cs" />
     <Compile Include="Views\IView.cs" />
+    <Compile Include="Views\MDIContainerView\IContainerView.cs" />
     <Compile Include="Views\MDIContainerView\MDIContainerView.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -39,7 +39,7 @@ namespace Phinanze.Views
         {
             if(_secondsCount == 2)
             {
-                MDIContainerPresenter presenter = new MDIContainerPresenter();
+                MDIContainerPresenter presenter = new MDIContainerPresenter(MDIContainerView.Instance);
                 this.Hide();
             }
             _secondsCount++;

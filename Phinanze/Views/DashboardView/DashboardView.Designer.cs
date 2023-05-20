@@ -39,15 +39,10 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.LogoButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dashboardDGV = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dashboardPieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.overviewDGV = new System.Windows.Forms.DataGridView();
+            this.overviewPieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.statusLabel = new System.Windows.Forms.Label();
-            this.dashboardBarChat = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.overviewBarChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LogOutButton = new System.Windows.Forms.Button();
             this.ProfileButton = new System.Windows.Forms.Button();
@@ -56,10 +51,15 @@
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.HomeButton = new System.Windows.Forms.Button();
             this.AddNewDataButton = new System.Windows.Forms.Button();
+            this.yearColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monthColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.earningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expenseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overviewColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dashboardDGV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dashboardPieChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dashboardBarChat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewPieChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewBarChart)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,28 +88,29 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.dashboardDGV, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dashboardPieChart, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.overviewDGV, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.overviewPieChart, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1308, 268);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1308, 340);
             this.tableLayoutPanel1.TabIndex = 52;
             // 
-            // dashboardDGV
+            // overviewDGV
             // 
-            this.dashboardDGV.AllowDrop = true;
-            this.dashboardDGV.AllowUserToAddRows = false;
-            this.dashboardDGV.AllowUserToDeleteRows = false;
-            this.dashboardDGV.AllowUserToResizeColumns = false;
-            this.dashboardDGV.AllowUserToResizeRows = false;
-            this.dashboardDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.overviewDGV.AllowDrop = true;
+            this.overviewDGV.AllowUserToAddRows = false;
+            this.overviewDGV.AllowUserToDeleteRows = false;
+            this.overviewDGV.AllowUserToResizeColumns = false;
+            this.overviewDGV.AllowUserToResizeRows = false;
+            this.overviewDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dashboardDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dashboardDGV.BackgroundColor = System.Drawing.Color.White;
-            this.dashboardDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.overviewDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.overviewDGV.BackgroundColor = System.Drawing.Color.White;
+            this.overviewDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,14 +118,14 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dashboardDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dashboardDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dashboardDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column5,
-            this.Column2,
-            this.Column3,
-            this.Column4});
+            this.overviewDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.overviewDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.overviewDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.yearColumn,
+            this.monthColumn,
+            this.earningColumn,
+            this.expenseColumn,
+            this.overviewColumn});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,11 +133,11 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dashboardDGV.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dashboardDGV.Location = new System.Drawing.Point(401, 4);
-            this.dashboardDGV.Margin = new System.Windows.Forms.Padding(4);
-            this.dashboardDGV.Name = "dashboardDGV";
-            this.dashboardDGV.ReadOnly = true;
+            this.overviewDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.overviewDGV.Location = new System.Drawing.Point(401, 4);
+            this.overviewDGV.Margin = new System.Windows.Forms.Padding(4);
+            this.overviewDGV.Name = "overviewDGV";
+            this.overviewDGV.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,80 +145,40 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dashboardDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dashboardDGV.RowHeadersVisible = false;
-            this.dashboardDGV.RowHeadersWidth = 51;
-            this.dashboardDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dashboardDGV.Size = new System.Drawing.Size(903, 260);
-            this.dashboardDGV.TabIndex = 6;
+            this.overviewDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.overviewDGV.RowHeadersVisible = false;
+            this.overviewDGV.RowHeadersWidth = 51;
+            this.overviewDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.overviewDGV.Size = new System.Drawing.Size(903, 323);
+            this.overviewDGV.TabIndex = 6;
             // 
-            // Column1
+            // overviewPieChart
             // 
-            this.Column1.FillWeight = 59.89317F;
-            this.Column1.HeaderText = "Year";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 101.5228F;
-            this.Column5.HeaderText = "Month";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 115.8797F;
-            this.Column2.HeaderText = "Earning";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 119.688F;
-            this.Column3.HeaderText = "Expense";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 103.0162F;
-            this.Column4.HeaderText = "Overview";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // dashboardPieChart
-            // 
-            this.dashboardPieChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.overviewPieChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dashboardPieChart.BorderlineColor = System.Drawing.Color.Black;
-            this.dashboardPieChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.overviewPieChart.BorderlineColor = System.Drawing.Color.Black;
+            this.overviewPieChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.Name = "ChartArea1";
-            this.dashboardPieChart.ChartAreas.Add(chartArea1);
+            this.overviewPieChart.ChartAreas.Add(chartArea1);
             legend1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             legend1.IsTextAutoFit = false;
             legend1.Name = "Legend1";
-            this.dashboardPieChart.Legends.Add(legend1);
-            this.dashboardPieChart.Location = new System.Drawing.Point(4, 4);
-            this.dashboardPieChart.Margin = new System.Windows.Forms.Padding(4);
-            this.dashboardPieChart.Name = "dashboardPieChart";
-            this.dashboardPieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.overviewPieChart.Legends.Add(legend1);
+            this.overviewPieChart.Location = new System.Drawing.Point(4, 4);
+            this.overviewPieChart.Margin = new System.Windows.Forms.Padding(4);
+            this.overviewPieChart.Name = "overviewPieChart";
+            this.overviewPieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series1.IsValueShownAsLabel = true;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.dashboardPieChart.Series.Add(series1);
-            this.dashboardPieChart.Size = new System.Drawing.Size(389, 260);
-            this.dashboardPieChart.TabIndex = 50;
-            this.dashboardPieChart.Text = "Pie Chart";
+            series1.Name = "DefaultSeries";
+            this.overviewPieChart.Series.Add(series1);
+            this.overviewPieChart.Size = new System.Drawing.Size(389, 323);
+            this.overviewPieChart.TabIndex = 50;
+            this.overviewPieChart.Text = "Pie Chart";
             // 
             // statusLabel
             // 
@@ -231,33 +192,33 @@
             this.statusLabel.Text = "Showing information for";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dashboardBarChat
+            // overviewBarChart
             // 
-            this.dashboardBarChat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.overviewBarChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dashboardBarChat.BorderlineColor = System.Drawing.Color.Black;
-            this.dashboardBarChat.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.overviewBarChart.BorderlineColor = System.Drawing.Color.Black;
+            this.overviewBarChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea2.AxisX.Interval = 1D;
             chartArea2.AxisX.MajorGrid.Enabled = false;
             chartArea2.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
             chartArea2.Name = "ChartArea1";
-            this.dashboardBarChat.ChartAreas.Add(chartArea2);
-            this.dashboardBarChat.Location = new System.Drawing.Point(4, 278);
-            this.dashboardBarChat.Margin = new System.Windows.Forms.Padding(4);
-            this.dashboardBarChat.Name = "dashboardBarChat";
-            this.dashboardBarChat.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            this.overviewBarChart.ChartAreas.Add(chartArea2);
+            this.overviewBarChart.Location = new System.Drawing.Point(4, 350);
+            this.overviewBarChart.Margin = new System.Windows.Forms.Padding(4);
+            this.overviewBarChart.Name = "overviewBarChart";
+            this.overviewBarChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             series2.ChartArea = "ChartArea1";
             series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series2.Name = "Earning";
             series3.ChartArea = "ChartArea1";
             series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             series3.Name = "Expense";
-            this.dashboardBarChat.Series.Add(series2);
-            this.dashboardBarChat.Series.Add(series3);
-            this.dashboardBarChat.Size = new System.Drawing.Size(1306, 271);
-            this.dashboardBarChat.TabIndex = 49;
-            this.dashboardBarChat.Text = "Bar Chart";
+            this.overviewBarChart.Series.Add(series2);
+            this.overviewBarChart.Series.Add(series3);
+            this.overviewBarChart.Size = new System.Drawing.Size(1306, 354);
+            this.overviewBarChart.TabIndex = 49;
+            this.overviewBarChart.Text = "Bar Chart";
             // 
             // tableLayoutPanel2
             // 
@@ -266,14 +227,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.dashboardBarChat, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.overviewBarChart, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(22, 135);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.68288F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.31712F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1314, 553);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.87006F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.12994F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1314, 708);
             this.tableLayoutPanel2.TabIndex = 61;
             // 
             // LogOutButton
@@ -386,12 +347,52 @@
             this.AddNewDataButton.Text = "Add Daily Info";
             this.AddNewDataButton.UseVisualStyleBackColor = false;
             // 
+            // yearColumn
+            // 
+            this.yearColumn.FillWeight = 59.89317F;
+            this.yearColumn.HeaderText = "Year";
+            this.yearColumn.MinimumWidth = 6;
+            this.yearColumn.Name = "yearColumn";
+            this.yearColumn.ReadOnly = true;
+            // 
+            // monthColumn
+            // 
+            this.monthColumn.FillWeight = 101.5228F;
+            this.monthColumn.HeaderText = "Month";
+            this.monthColumn.MinimumWidth = 6;
+            this.monthColumn.Name = "monthColumn";
+            this.monthColumn.ReadOnly = true;
+            // 
+            // earningColumn
+            // 
+            this.earningColumn.FillWeight = 115.8797F;
+            this.earningColumn.HeaderText = "Earning";
+            this.earningColumn.MinimumWidth = 6;
+            this.earningColumn.Name = "earningColumn";
+            this.earningColumn.ReadOnly = true;
+            // 
+            // expenseColumn
+            // 
+            this.expenseColumn.FillWeight = 119.688F;
+            this.expenseColumn.HeaderText = "Expense";
+            this.expenseColumn.MinimumWidth = 6;
+            this.expenseColumn.Name = "expenseColumn";
+            this.expenseColumn.ReadOnly = true;
+            // 
+            // overviewColumn
+            // 
+            this.overviewColumn.FillWeight = 103.0162F;
+            this.overviewColumn.HeaderText = "Overview";
+            this.overviewColumn.MinimumWidth = 6;
+            this.overviewColumn.Name = "overviewColumn";
+            this.overviewColumn.ReadOnly = true;
+            // 
             // DashboardView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 700);
+            this.ClientSize = new System.Drawing.Size(1370, 855);
             this.ControlBox = false;
             this.Controls.Add(this.LogoButton);
             this.Controls.Add(this.statusLabel);
@@ -407,9 +408,9 @@
             this.Name = "DashboardView";
             this.Text = "DashboardView";
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dashboardDGV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dashboardPieChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dashboardBarChat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewPieChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewBarChart)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -421,15 +422,10 @@
 
         private System.Windows.Forms.Button LogoButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView dashboardDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dashboardPieChart;
+        private System.Windows.Forms.DataGridView overviewDGV;
+        private System.Windows.Forms.DataVisualization.Charting.Chart overviewPieChart;
         private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.DataVisualization.Charting.Chart dashboardBarChat;
+        private System.Windows.Forms.DataVisualization.Charting.Chart overviewBarChart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button LogOutButton;
         private System.Windows.Forms.Button ProfileButton;
@@ -438,5 +434,10 @@
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Button AddNewDataButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yearColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monthColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn earningColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expenseColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn overviewColumn;
     }
 }

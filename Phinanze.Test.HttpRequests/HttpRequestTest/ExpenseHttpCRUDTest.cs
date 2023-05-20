@@ -2,12 +2,9 @@
 using Phinanze.Models;
 using System.Linq;
 
-namespace Phinanze.Test.HttpRequests
+namespace Phinanze.Test.App.HttpRequestTest
 {
-    //-----------------------------------------------------------------------------
-    // Uncomment the following line ([TestClass]) for testing Expense http requests
     // [TestClass]
-    //-----------------------------------------------------------------------------
     public class ExpenseHttpCRUDTest
     {
         [TestMethod]
