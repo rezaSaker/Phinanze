@@ -26,20 +26,20 @@ namespace Test.App.PresenterTest
 
             pvtObj.Invoke("OnMouseDown", args); // Should allow form movement on mouse movement
 
-            Point prevViewLocation = MDIContainerView.Instance.Location;
+            Point prevViewLocation = MDIContainerView.Instance.ViewLocation;
             Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y + 10);
 
             pvtObj.Invoke("OnMouseMove", args); // Should move the form on mouse movement
 
-            Assert.AreNotEqual(prevViewLocation, MDIContainerView.Instance.Location);
+            Assert.AreNotEqual(prevViewLocation, MDIContainerView.Instance.ViewLocation);
 
             pvtObj.Invoke("OnMouseUp", args); // Should make the form not movable on mouse movement
 
-            prevViewLocation.X = MDIContainerView.Instance.Location.X;
-            prevViewLocation.Y = MDIContainerView.Instance.Location.Y;
+            prevViewLocation.X = MDIContainerView.Instance.ViewLocation.X;
+            prevViewLocation.Y = MDIContainerView.Instance.ViewLocation.Y;
 
             Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y + 10);
-            Assert.AreEqual(prevViewLocation, MDIContainerView.Instance.Location);
+            Assert.AreEqual(prevViewLocation, MDIContainerView.Instance.ViewLocation);
         }
     }
 }

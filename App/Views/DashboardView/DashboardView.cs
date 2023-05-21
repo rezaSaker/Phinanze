@@ -17,7 +17,7 @@ namespace Phinanze.Views
         }
 
         private static DashboardView _instance;
-        public static DashboardView Instance => _instance != null? _instance : (_instance = new DashboardView());
+        public static DashboardView Instance => _instance ?? (_instance = new DashboardView());
 
         public Chart OverviewPieChart => this.overviewPieChart; 
 

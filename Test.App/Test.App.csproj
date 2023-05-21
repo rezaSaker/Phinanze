@@ -67,6 +67,7 @@
     <Compile Include="ValidationTest\ExpenseValidationTest.cs" />
     <Compile Include="ViewTest\DashboardViewTest.cs" />
     <Compile Include="ViewTest\MDIContainerViewTest.cs" />
+    <Compile Include="ViewTest\MonthlyReportViewTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -31,74 +31,27 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.NoteSearchTextBox = new System.Windows.Forms.TextBox();
-            this.EarningSearchTextBox = new System.Windows.Forms.TextBox();
-            this.ExpenseSearchTextBox = new System.Windows.Forms.TextBox();
             this.LogoButton = new System.Windows.Forms.Button();
-            this.TotalExpenseLabel = new System.Windows.Forms.Label();
-            this.TotalEarningLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_status = new System.Windows.Forms.Label();
-            this.DateSearchTextBox = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.EditButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.editButton = new System.Windows.Forms.Button();
             this.LogOutButton = new System.Windows.Forms.Button();
             this.ProfileButton = new System.Windows.Forms.Button();
             this.StatisticsButton = new System.Windows.Forms.Button();
             this.MonthlyReportButton = new System.Windows.Forms.Button();
             this.AddNewDataButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.HeaderLabel = new System.Windows.Forms.Label();
-            this.YearComboBox = new System.Windows.Forms.ComboBox();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.headerLabel = new System.Windows.Forms.Label();
+            this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HomeButton = new System.Windows.Forms.Button();
-            this.MonthlyReportDataGridView = new System.Windows.Forms.DataGridView();
-            this.MonthComboBox = new System.Windows.Forms.ComboBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportDataGridView)).BeginInit();
+            this.monthlyReportDGV = new System.Windows.Forms.DataGridView();
+            this.monthComboBox = new System.Windows.Forms.ComboBox();
+            this.totalTransactionLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.monthlyReportDGV)).BeginInit();
             this.SuspendLayout();
-            // 
-            // NoteSearchTextBox
-            // 
-            this.NoteSearchTextBox.BackColor = System.Drawing.Color.White;
-            this.NoteSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NoteSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NoteSearchTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.NoteSearchTextBox.Location = new System.Drawing.Point(270, 123);
-            this.NoteSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.NoteSearchTextBox.Name = "NoteSearchTextBox";
-            this.NoteSearchTextBox.Size = new System.Drawing.Size(310, 30);
-            this.NoteSearchTextBox.TabIndex = 77;
-            this.NoteSearchTextBox.Text = "Search by Note";
-            // 
-            // EarningSearchTextBox
-            // 
-            this.EarningSearchTextBox.BackColor = System.Drawing.Color.White;
-            this.EarningSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.EarningSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EarningSearchTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.EarningSearchTextBox.Location = new System.Drawing.Point(588, 123);
-            this.EarningSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.EarningSearchTextBox.Name = "EarningSearchTextBox";
-            this.EarningSearchTextBox.Size = new System.Drawing.Size(327, 30);
-            this.EarningSearchTextBox.TabIndex = 76;
-            this.EarningSearchTextBox.Text = "Search by Earning";
-            // 
-            // ExpenseSearchTextBox
-            // 
-            this.ExpenseSearchTextBox.BackColor = System.Drawing.Color.White;
-            this.ExpenseSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ExpenseSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExpenseSearchTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.ExpenseSearchTextBox.Location = new System.Drawing.Point(923, 123);
-            this.ExpenseSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.ExpenseSearchTextBox.Name = "ExpenseSearchTextBox";
-            this.ExpenseSearchTextBox.Size = new System.Drawing.Size(333, 30);
-            this.ExpenseSearchTextBox.TabIndex = 75;
-            this.ExpenseSearchTextBox.Text = "Search by Expense";
             // 
             // LogoButton
             // 
@@ -117,101 +70,34 @@
             this.LogoButton.TabIndex = 72;
             this.LogoButton.UseVisualStyleBackColor = false;
             // 
-            // TotalExpenseLabel
+            // searchTextBox
             // 
-            this.TotalExpenseLabel.AutoSize = true;
-            this.TotalExpenseLabel.BackColor = System.Drawing.Color.White;
-            this.TotalExpenseLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TotalExpenseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalExpenseLabel.ForeColor = System.Drawing.Color.OrangeRed;
-            this.TotalExpenseLabel.Location = new System.Drawing.Point(476, 7);
-            this.TotalExpenseLabel.Name = "TotalExpenseLabel";
-            this.TotalExpenseLabel.Size = new System.Drawing.Size(50, 25);
-            this.TotalExpenseLabel.TabIndex = 36;
-            this.TotalExpenseLabel.Text = "0.00";
-            this.TotalExpenseLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.searchTextBox.BackColor = System.Drawing.Color.White;
+            this.searchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchTextBox.ForeColor = System.Drawing.Color.Gray;
+            this.searchTextBox.Location = new System.Drawing.Point(22, 125);
+            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(1259, 30);
+            this.searchTextBox.TabIndex = 78;
+            this.searchTextBox.Text = "Search by Date";
             // 
-            // TotalEarningLabel
+            // editButton
             // 
-            this.TotalEarningLabel.AutoSize = true;
-            this.TotalEarningLabel.BackColor = System.Drawing.Color.White;
-            this.TotalEarningLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TotalEarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalEarningLabel.ForeColor = System.Drawing.Color.ForestGreen;
-            this.TotalEarningLabel.Location = new System.Drawing.Point(127, 8);
-            this.TotalEarningLabel.Name = "TotalEarningLabel";
-            this.TotalEarningLabel.Size = new System.Drawing.Size(50, 25);
-            this.TotalEarningLabel.TabIndex = 35;
-            this.TotalEarningLabel.Text = "0.00";
-            this.TotalEarningLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 25);
-            this.label1.TabIndex = 24;
-            this.label1.Text = "Total Earning";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbl_status
-            // 
-            this.lbl_status.AutoSize = true;
-            this.lbl_status.BackColor = System.Drawing.Color.White;
-            this.lbl_status.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(341, 6);
-            this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(138, 25);
-            this.lbl_status.TabIndex = 15;
-            this.lbl_status.Text = "Total Expense";
-            this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DateSearchTextBox
-            // 
-            this.DateSearchTextBox.BackColor = System.Drawing.Color.White;
-            this.DateSearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DateSearchTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateSearchTextBox.ForeColor = System.Drawing.Color.Gray;
-            this.DateSearchTextBox.Location = new System.Drawing.Point(-45, 123);
-            this.DateSearchTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.DateSearchTextBox.Name = "DateSearchTextBox";
-            this.DateSearchTextBox.Size = new System.Drawing.Size(307, 30);
-            this.DateSearchTextBox.TabIndex = 78;
-            this.DateSearchTextBox.Text = "Search by Date";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.TotalExpenseLabel);
-            this.panel1.Controls.Add(this.TotalEarningLabel);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.lbl_status);
-            this.panel1.Location = new System.Drawing.Point(-45, 567);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(755, 40);
-            this.panel1.TabIndex = 74;
-            // 
-            // EditButton
-            // 
-            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.EditButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
-            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditButton.ForeColor = System.Drawing.Color.White;
-            this.EditButton.Location = new System.Drawing.Point(1118, 566);
-            this.EditButton.Margin = new System.Windows.Forms.Padding(4);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Size = new System.Drawing.Size(138, 43);
-            this.EditButton.TabIndex = 73;
-            this.EditButton.Text = "Edit";
-            this.EditButton.UseVisualStyleBackColor = false;
+            this.editButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.editButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.editButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.editButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editButton.ForeColor = System.Drawing.Color.White;
+            this.editButton.Location = new System.Drawing.Point(1238, 694);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(138, 43);
+            this.editButton.TabIndex = 73;
+            this.editButton.Text = "Edit";
+            this.editButton.UseVisualStyleBackColor = false;
             // 
             // LogOutButton
             // 
@@ -295,46 +181,46 @@
             this.AddNewDataButton.Text = "Add Daily Info";
             this.AddNewDataButton.UseVisualStyleBackColor = false;
             // 
-            // DeleteButton
+            // deleteButton
             // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.BackColor = System.Drawing.Color.RoyalBlue;
-            this.DeleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteButton.ForeColor = System.Drawing.Color.White;
-            this.DeleteButton.Location = new System.Drawing.Point(953, 567);
-            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(157, 43);
-            this.DeleteButton.TabIndex = 65;
-            this.DeleteButton.Text = "Delete";
-            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.deleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteButton.BackColor = System.Drawing.Color.RoyalBlue;
+            this.deleteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Brown;
+            this.deleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteButton.ForeColor = System.Drawing.Color.White;
+            this.deleteButton.Location = new System.Drawing.Point(1073, 695);
+            this.deleteButton.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(157, 43);
+            this.deleteButton.TabIndex = 65;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = false;
             // 
-            // HeaderLabel
+            // headerLabel
             // 
-            this.HeaderLabel.AutoSize = true;
-            this.HeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeaderLabel.Location = new System.Drawing.Point(-50, 77);
-            this.HeaderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.HeaderLabel.Name = "HeaderLabel";
-            this.HeaderLabel.Size = new System.Drawing.Size(122, 25);
-            this.HeaderLabel.TabIndex = 64;
-            this.HeaderLabel.Text = "Header label";
+            this.headerLabel.AutoSize = true;
+            this.headerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerLabel.Location = new System.Drawing.Point(18, 83);
+            this.headerLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.headerLabel.Name = "headerLabel";
+            this.headerLabel.Size = new System.Drawing.Size(122, 25);
+            this.headerLabel.TabIndex = 64;
+            this.headerLabel.Text = "Header label";
             // 
-            // YearComboBox
+            // yearComboBox
             // 
-            this.YearComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.YearComboBox.BackColor = System.Drawing.Color.White;
-            this.YearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.YearComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.YearComboBox.ForeColor = System.Drawing.Color.Black;
-            this.YearComboBox.FormattingEnabled = true;
-            this.YearComboBox.Location = new System.Drawing.Point(1097, 75);
-            this.YearComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.YearComboBox.Name = "YearComboBox";
-            this.YearComboBox.Size = new System.Drawing.Size(161, 33);
-            this.YearComboBox.TabIndex = 63;
+            this.yearComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.yearComboBox.BackColor = System.Drawing.Color.White;
+            this.yearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yearComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yearComboBox.ForeColor = System.Drawing.Color.Black;
+            this.yearComboBox.FormattingEnabled = true;
+            this.yearComboBox.Location = new System.Drawing.Point(789, 75);
+            this.yearComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.yearComboBox.Name = "yearComboBox";
+            this.yearComboBox.Size = new System.Drawing.Size(161, 33);
+            this.yearComboBox.TabIndex = 63;
             // 
             // Column3
             // 
@@ -384,16 +270,16 @@
             this.HomeButton.Text = "Home";
             this.HomeButton.UseVisualStyleBackColor = false;
             // 
-            // MonthlyReportDataGridView
+            // monthlyReportDGV
             // 
-            this.MonthlyReportDataGridView.AllowUserToAddRows = false;
-            this.MonthlyReportDataGridView.AllowUserToResizeColumns = false;
-            this.MonthlyReportDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.monthlyReportDGV.AllowUserToAddRows = false;
+            this.monthlyReportDGV.AllowUserToResizeColumns = false;
+            this.monthlyReportDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MonthlyReportDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.MonthlyReportDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.MonthlyReportDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            this.monthlyReportDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.monthlyReportDGV.BackgroundColor = System.Drawing.Color.White;
+            this.monthlyReportDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -401,9 +287,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MonthlyReportDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.MonthlyReportDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MonthlyReportDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.monthlyReportDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.monthlyReportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.monthlyReportDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column4,
             this.Column2,
@@ -415,12 +301,12 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MonthlyReportDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MonthlyReportDataGridView.GridColor = System.Drawing.Color.Black;
-            this.MonthlyReportDataGridView.Location = new System.Drawing.Point(-46, 161);
-            this.MonthlyReportDataGridView.Margin = new System.Windows.Forms.Padding(4);
-            this.MonthlyReportDataGridView.Name = "MonthlyReportDataGridView";
-            this.MonthlyReportDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.monthlyReportDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.monthlyReportDGV.GridColor = System.Drawing.Color.Black;
+            this.monthlyReportDGV.Location = new System.Drawing.Point(23, 163);
+            this.monthlyReportDGV.Margin = new System.Windows.Forms.Padding(4);
+            this.monthlyReportDGV.Name = "monthlyReportDGV";
+            this.monthlyReportDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -428,22 +314,22 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.MonthlyReportDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.MonthlyReportDataGridView.RowHeadersVisible = false;
-            this.MonthlyReportDataGridView.RowHeadersWidth = 30;
-            this.MonthlyReportDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MonthlyReportDataGridView.Size = new System.Drawing.Size(1302, 396);
-            this.MonthlyReportDataGridView.TabIndex = 62;
+            this.monthlyReportDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.monthlyReportDGV.RowHeadersVisible = false;
+            this.monthlyReportDGV.RowHeadersWidth = 30;
+            this.monthlyReportDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.monthlyReportDGV.Size = new System.Drawing.Size(1258, 516);
+            this.monthlyReportDGV.TabIndex = 62;
             // 
-            // MonthComboBox
+            // monthComboBox
             // 
-            this.MonthComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MonthComboBox.BackColor = System.Drawing.Color.White;
-            this.MonthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MonthComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MonthComboBox.ForeColor = System.Drawing.Color.Black;
-            this.MonthComboBox.FormattingEnabled = true;
-            this.MonthComboBox.Items.AddRange(new object[] {
+            this.monthComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.monthComboBox.BackColor = System.Drawing.Color.White;
+            this.monthComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monthComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthComboBox.ForeColor = System.Drawing.Color.Black;
+            this.monthComboBox.FormattingEnabled = true;
+            this.monthComboBox.Items.AddRange(new object[] {
             "January",
             "February",
             "March",
@@ -457,72 +343,69 @@
             "November",
             "December",
             "All Months"});
-            this.MonthComboBox.Location = new System.Drawing.Point(853, 75);
-            this.MonthComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.MonthComboBox.Name = "MonthComboBox";
-            this.MonthComboBox.Size = new System.Drawing.Size(236, 33);
-            this.MonthComboBox.TabIndex = 61;
+            this.monthComboBox.Location = new System.Drawing.Point(971, 75);
+            this.monthComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.monthComboBox.Name = "monthComboBox";
+            this.monthComboBox.Size = new System.Drawing.Size(236, 33);
+            this.monthComboBox.TabIndex = 61;
+            // 
+            // totalTransactionLabel
+            // 
+            this.totalTransactionLabel.AutoSize = true;
+            this.totalTransactionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalTransactionLabel.Location = new System.Drawing.Point(19, 705);
+            this.totalTransactionLabel.Name = "totalTransactionLabel";
+            this.totalTransactionLabel.Size = new System.Drawing.Size(232, 22);
+            this.totalTransactionLabel.TabIndex = 79;
+            this.totalTransactionLabel.Text = "Earning: 0.00 Expense 0.00";
             // 
             // MonthlyReportView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1205, 637);
-            this.Controls.Add(this.NoteSearchTextBox);
-            this.Controls.Add(this.EarningSearchTextBox);
-            this.Controls.Add(this.ExpenseSearchTextBox);
+            this.ClientSize = new System.Drawing.Size(1413, 757);
+            this.Controls.Add(this.totalTransactionLabel);
             this.Controls.Add(this.LogoButton);
-            this.Controls.Add(this.DateSearchTextBox);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.searchTextBox);
+            this.Controls.Add(this.editButton);
             this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.ProfileButton);
             this.Controls.Add(this.StatisticsButton);
             this.Controls.Add(this.MonthlyReportButton);
             this.Controls.Add(this.AddNewDataButton);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.HeaderLabel);
-            this.Controls.Add(this.YearComboBox);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.headerLabel);
+            this.Controls.Add(this.yearComboBox);
             this.Controls.Add(this.HomeButton);
-            this.Controls.Add(this.MonthlyReportDataGridView);
-            this.Controls.Add(this.MonthComboBox);
+            this.Controls.Add(this.monthlyReportDGV);
+            this.Controls.Add(this.monthComboBox);
             this.Name = "MonthlyReportView";
             this.Text = "MonthlyReportView";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MonthlyReportDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monthlyReportDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox NoteSearchTextBox;
-        private System.Windows.Forms.TextBox EarningSearchTextBox;
-        private System.Windows.Forms.TextBox ExpenseSearchTextBox;
         private System.Windows.Forms.Button LogoButton;
-        private System.Windows.Forms.Label TotalExpenseLabel;
-        private System.Windows.Forms.Label TotalEarningLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbl_status;
-        private System.Windows.Forms.TextBox DateSearchTextBox;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button LogOutButton;
         private System.Windows.Forms.Button ProfileButton;
         private System.Windows.Forms.Button StatisticsButton;
         private System.Windows.Forms.Button MonthlyReportButton;
         private System.Windows.Forms.Button AddNewDataButton;
-        private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Label HeaderLabel;
-        private System.Windows.Forms.ComboBox YearComboBox;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Label headerLabel;
+        private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Button HomeButton;
-        private System.Windows.Forms.DataGridView MonthlyReportDataGridView;
-        private System.Windows.Forms.ComboBox MonthComboBox;
+        private System.Windows.Forms.DataGridView monthlyReportDGV;
+        private System.Windows.Forms.ComboBox monthComboBox;
+        private System.Windows.Forms.Label totalTransactionLabel;
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using Phinanze.Views;
+using System.Diagnostics;
 
 namespace Phinanze.Views
 {
@@ -57,5 +58,8 @@ namespace Phinanze.Views
             }
             _secondsCount++;
         }
+
+        public event EventHandler ViewShown;
+        public event EventHandler ViewLoading;
     }
 }

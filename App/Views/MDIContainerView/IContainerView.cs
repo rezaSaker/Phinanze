@@ -13,7 +13,5 @@ namespace Phinanze.Views
         Panel HeaderPanel { get; }
 
         Point ViewLocation { get; set; }
-
-        event EventHandler ViewShown;
     }
 }

@@ -11,10 +11,11 @@ namespace Phinanze.Views
             InitializeComponent();
 
             this.Shown += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
+            this.Load += delegate { ViewLoading?.Invoke(this, EventArgs.Empty); };
         }
 
         private static MDIContainerView _instance;
-        public static MDIContainerView Instance => _instance != null ? _instance : (_instance = new MDIContainerView());
+        public static MDIContainerView Instance => _instance ?? (_instance = new MDIContainerView());
 
         public Panel HeaderPanel => this.headerPanel;
 
@@ -42,6 +43,7 @@ namespace Phinanze.Views
             base.Hide();
         }
 
+        public event EventHandler ViewLoading;
         public event EventHandler ViewShown;
     }
 }

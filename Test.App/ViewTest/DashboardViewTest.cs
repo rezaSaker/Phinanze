@@ -11,7 +11,7 @@ namespace Phinanze.Test.App.ViewTest
         public static IDashboardView view = DashboardView.Instance;
 
         [TestMethod]
-        public void TestDashboardView()
+        public void TestDashboardViewInitAndObjectRelations()
         {
             IView view1 = DashboardView.Instance;
             IDashboardView view2 = DashboardView.Instance;
@@ -25,7 +25,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestDashboardView_BarChart()
+        public void TestOverviewBarChart()
         {
             Assert.IsNotNull(view.OverviewBarChart);
             Assert.AreEqual(2, view.OverviewBarChart.Series.Count);
@@ -38,7 +38,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestDashboardView_PieChart()
+        public void TestOverviewPieChart()
         {
             Assert.IsNotNull(view.OverviewPieChart);
             Assert.AreEqual(1, view.OverviewPieChart.Series.Count);
@@ -48,7 +48,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestDashboardView_DataGridView()
+        public void TestOverviewDataGridView()
         {
             Assert.IsNotNull(view.OverviewDGV);
             Assert.AreEqual(5, view.OverviewDGV.ColumnCount);

@@ -3,11 +3,6 @@ using Phinanze.Models;
 using Phinanze.Presenters;
 using Phinanze.Views;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Test.App.PresenterTest
