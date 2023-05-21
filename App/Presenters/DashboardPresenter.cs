@@ -14,9 +14,9 @@ namespace Phinanze.Presenters
         private IDashboardView _view;
         private IView _containerView;
 
-        public DashboardPresenter(IView view, IView containerView = null)
+        public DashboardPresenter(IDashboardView view, IView containerView = null)
         {
-            _view = (IDashboardView)view;
+            _view = view;
             _containerView = containerView;
 
             _view.ViewLoading += OnViewLoad;
@@ -28,7 +28,7 @@ namespace Phinanze.Presenters
 
         #region EventHandler Methods
 
-        public void OnViewLoad(object sender, EventArgs e)
+        private void OnViewLoad(object sender, EventArgs e)
         {
             for(int year = 2018; year <= DateTime.Today.Year; year++)
             {
@@ -40,19 +40,19 @@ namespace Phinanze.Presenters
             _view.OverviewBarChart.Series[CategoryType.EXPENSE].Color = Color.Red;
         }
 
-        public void OnViewShown(object sender, EventArgs e)
+        private void OnViewShown(object sender, EventArgs e)
         {
             _view.YearComboBox.SelectedIndex = _view.YearComboBox.Items.Count - 1;
         }
 
-        public void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
+        private void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDashboardData();
         }
 
         #endregion
 
-        #region Utility Methods
+        #region Data Handler Methods
 
         private void LoadDashboardData()
         {

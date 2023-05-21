@@ -57,6 +57,8 @@
     <Compile Include="HttpRequestTest\DailyInfoHttpCRUDTest.cs" />
     <Compile Include="HttpRequestTest\EarningHttpCRUDTest.cs" />
     <Compile Include="HttpRequestTest\ExpenseHttpCRUDTest.cs" />
+    <Compile Include="PresenterTest\MDIContainerPresenterTest.cs" />
+    <Compile Include="PresenterTest\DashboardPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\StrGenerator.cs" />
     <Compile Include="ValidationTest\CategoryValidationTest.cs" />

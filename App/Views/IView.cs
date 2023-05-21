@@ -10,6 +10,12 @@ namespace Phinanze.Views
 {
     public interface IView
     {
-        //void Show(IView containerView = null);
+        new void Show();
+
+        new void Hide();
+
+        bool IsOpen { get; }
+
+        bool IsHidden { get; }
     }
 }

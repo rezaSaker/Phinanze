@@ -27,6 +27,24 @@ namespace Phinanze.Views
 
         public ComboBox YearComboBox => this.yearComboBox;
 
+        public bool IsOpen { get; private set; }
+
+        public bool IsHidden { get; private set; }
+
+        public new void Show()
+        {
+            this.IsOpen = true;
+            this.IsHidden = false;
+            base.Show();
+        }
+
+        public new void Hide()
+        {
+            this.IsOpen = false;
+            this.IsHidden = true;
+            base.Hide();
+        }
+
 
         public event EventHandler ViewLoading;
         public event EventHandler ViewShown;

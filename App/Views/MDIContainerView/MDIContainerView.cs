@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Phinanze.Views
 {
-    public partial class MDIContainerView : Form, IView, IContainerView
+    public partial class MDIContainerView : Form, IContainerView
     {
         public MDIContainerView()
         {
@@ -25,6 +25,23 @@ namespace Phinanze.Views
             set => this.Location = value;
         }
 
+        public bool IsOpen { get; private set; }
+
+        public bool IsHidden { get; private set; }
+
+        public new void Show()
+        {
+            this.IsOpen = true;
+            this.IsHidden = false;
+            base.Show();
+        }
+
+        public new void Hide()
+        {
+            this.IsOpen = false;
+            this.IsHidden = true;
+            base.Hide();
+        }
 
         public event EventHandler ViewShown;
     }

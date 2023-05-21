@@ -23,6 +23,7 @@ namespace Phinanze.Test.App.ViewTest
             Assert.IsNotNull(view2.HeaderPanel);
 
             Assert.AreEqual(((IContainerView)view1).ViewLocation, view2.ViewLocation);
+            Assert.IsInstanceOfType(view1, typeof(Form));
         }
     }
 }

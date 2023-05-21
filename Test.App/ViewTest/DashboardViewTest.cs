@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Windows.Forms.DataVisualization.Charting;
 using Phinanze.Views;
+using System.Windows.Forms;
 
 namespace Phinanze.Test.App.ViewTest
 {
@@ -19,10 +20,12 @@ namespace Phinanze.Test.App.ViewTest
 
             view2 = view1 as IDashboardView;
             Assert.AreSame(view1, view2);
+
+            Assert.IsInstanceOfType(view1, typeof(Form));
         }
 
         [TestMethod]
-        public void TestDashboardBarChart()
+        public void TestDashboardView_BarChart()
         {
             Assert.IsNotNull(view.OverviewBarChart);
             Assert.AreEqual(2, view.OverviewBarChart.Series.Count);
@@ -35,7 +38,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestDashboardPieChart()
+        public void TestDashboardView_PieChart()
         {
             Assert.IsNotNull(view.OverviewPieChart);
             Assert.AreEqual(1, view.OverviewPieChart.Series.Count);
@@ -45,7 +48,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestDashboardDataGridView()
+        public void TestDashboardView_DataGridView()
         {
             Assert.IsNotNull(view.OverviewDGV);
             Assert.AreEqual(5, view.OverviewDGV.ColumnCount);

@@ -24,9 +24,22 @@ namespace Phinanze.Views
             get => _instance ?? (_instance = new AppLoaderView());
         }
 
+        public bool IsOpen { get; private set; }
+
+        public bool IsHidden { get; private set; }
+
         public new void Show()
         {
-            if (!_isShown) base.Show();
+            this.IsOpen = true;
+            this.IsHidden = false;
+            if (!_isShown) base.Show(); // Prevent showing this form more than once
+        }
+
+        public new void Hide()
+        {
+            this.IsOpen = false;
+            this.IsHidden = true;
+            base.Hide();
         }
 
         private void AppLoaderView_Shown(object sender, EventArgs e)
