@@ -6,8 +6,6 @@ namespace Phinanze.Views
 {
     public partial class DashboardView : Form, IDashboardView
     {
-        private static DashboardView _instance;
-
         private DashboardView()
         {
             InitializeComponent();
@@ -15,8 +13,10 @@ namespace Phinanze.Views
             this.Load += delegate { ViewLoading?.Invoke(this, EventArgs.Empty); };
             this.Shown += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
             this.yearComboBox.SelectedIndexChanged += delegate { YearComboBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty); };
+            this.OverviewDGV.CellDoubleClick += delegate { OverviewDGVRowDoubleClick?.Invoke(this, EventArgs.Empty); };
         }
 
+        private static DashboardView _instance;
         public static DashboardView Instance => _instance != null? _instance : (_instance = new DashboardView());
 
         public Chart OverviewPieChart => this.overviewPieChart; 
@@ -49,6 +49,6 @@ namespace Phinanze.Views
         public event EventHandler ViewLoading;
         public event EventHandler ViewShown;
         public event EventHandler YearComboBoxSelectedIndexChanged;
-        
+        public event EventHandler OverviewDGVRowDoubleClick;
     }
 }

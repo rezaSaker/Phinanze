@@ -169,6 +169,7 @@
     <Compile Include="Models\Validations\ValidationError.cs" />
     <Compile Include="Presenters\DashboardPresenter.cs" />
     <Compile Include="Presenters\MDIContainerPresenter.cs" />
+    <Compile Include="Presenters\MonthlyReportPresenter.cs" />
     <Compile Include="Presenters\Presenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -280,6 +281,13 @@
     <Compile Include="Views\MDIContainerView\MDIContainerView.Designer.cs">
       <DependentUpon>MDIContainerView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\MonthlyReportView\IMonthlyReportView.cs" />
+    <Compile Include="Views\MonthlyReportView\MonthlyReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MonthlyReportView\MonthlyReportView.Designer.cs">
+      <DependentUpon>MonthlyReportView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\MDIContainerView\MDIContainerView.resx">
       <DependentUpon>MDIContainerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MonthlyReportView\MonthlyReportView.resx">
+      <DependentUpon>MonthlyReportView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />

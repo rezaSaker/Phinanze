@@ -14,7 +14,6 @@ namespace Phinanze.Views
         }
 
         private static MDIContainerView _instance;
-
         public static MDIContainerView Instance => _instance != null ? _instance : (_instance = new MDIContainerView());
 
         public Panel HeaderPanel => this.headerPanel;

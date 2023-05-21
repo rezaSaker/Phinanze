@@ -19,6 +19,6 @@ namespace Phinanze.Views
         event EventHandler ViewLoading;
         event EventHandler ViewShown;
         event EventHandler YearComboBoxSelectedIndexChanged;
-
+        event EventHandler OverviewDGVRowDoubleClick;
     }
 }

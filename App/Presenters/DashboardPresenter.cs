@@ -6,6 +6,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Phinanze.Models;
 using Phinanze.Models.Statics;
 using Phinanze.Views;
+using Phinanze.Views.MonthlyReportView;
 
 namespace Phinanze.Presenters
 {
@@ -22,6 +23,7 @@ namespace Phinanze.Presenters
             _view.ViewLoading += OnViewLoad;
             _view.ViewShown += OnViewShown;
             _view.YearComboBoxSelectedIndexChanged += OnYearComboBoxSelectedIndexChanged;
+            _view.OverviewDGVRowDoubleClick += OnOverviewDGVRowDoubleClick;
 
             Show(_view, _containerView);
         }
@@ -48,6 +50,12 @@ namespace Phinanze.Presenters
         private void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             LoadDashboardData();
+        }
+
+        private void OnOverviewDGVRowDoubleClick(object sender, EventArgs e)
+        {
+            MonthlyReportPresenter presenter = new MonthlyReportPresenter(MonthlyReportView.Instance, MDIContainerView.Instance);
+            _view.Hide();
         }
 
         #endregion
