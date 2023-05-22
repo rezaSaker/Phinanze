@@ -14,7 +14,6 @@ namespace Phinanze.Models.ViewModels
 
         public double Y { get; set; }
 
-        [Required]
         public Color BackColor { get; set; }
 
         public Color ForeColor { get; set; }

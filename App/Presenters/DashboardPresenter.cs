@@ -49,7 +49,7 @@ namespace Phinanze.Presenters
 
         private void OnViewShown(object sender, EventArgs e)
         {
-            
+            _view.YearListSelectedItem = "All Years";
         }
 
         private void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
@@ -59,12 +59,21 @@ namespace Phinanze.Presenters
 
         private void OnOverviewDGVRowDoubleClick(object sender, EventArgs e)
         {
-            Console.WriteLine(sender.ToString());
-            MonthlyReportPresenter presenter = new MonthlyReportPresenter(MonthlyReportView.Instance, MDIContainerView.Instance);
+            var selectedRow = ((DataGridView)sender).SelectedRows[0];
+            int? year = int.TryParse(selectedRow.Cells[0].Value.ToString(), out int y) ? (int?)y : null;
+            int? month = null;
+
+            if(year != null)
+            {
+                try { month = Month.MonthNumber(selectedRow.Cells[1].Value.ToString()); }
+                catch { month = null; }
+            }
+
+            MonthlyReportPresenter presenter = new MonthlyReportPresenter(MonthlyReportView.Instance, MDIContainerView.Instance, year, month);
             _view.Hide();
         }
-
         #endregion
+
 
         #region Data Processing Methods
 
@@ -72,7 +81,7 @@ namespace Phinanze.Presenters
         {
             _view.ClearData();
 
-            int? selectedYear = Int32.TryParse(_view.SelectedYear, out int temp) ? (int?)temp : null;
+            int? selectedYear = Int32.TryParse(_view.YearListSelectedItem, out int temp) ? (int?)temp : null;
 
             double totalEarning = 0.0;
             double totalExpense = 0.0;
@@ -120,12 +129,12 @@ namespace Phinanze.Presenters
                 string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
                 barChartPointsDict[CategoryType.EARNING].Add(new BarChartPoint()
                 {
-                    X = monthName, Y = DailyInfo2.GetTotalEarningsByMonth(month, selectedYear), BackColor = Color.Green
+                    X = monthName, Y = DailyInfo2.GetTotalEarningsByMonth(month, selectedYear)
                 });
 
                 barChartPointsDict[CategoryType.EXPENSE].Add(new BarChartPoint()
                 {
-                    X = monthName, Y = DailyInfo2.GetTotalExpensesByMonth(month, selectedYear), BackColor = Color.Red
+                    X = monthName, Y = DailyInfo2.GetTotalExpensesByMonth(month, selectedYear)
                 });
             }
 
@@ -142,20 +151,18 @@ namespace Phinanze.Presenters
                     continue;
                 }
 
-                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
                 double totalEarning = DailyInfo2.GetTotalEarningsByMonth(month, year);
                 double totalExpense = DailyInfo2.GetTotalExpensesByMonth(month, year);
-                //_view.OverviewDGV.Rows.Add(year, monthName, totalEarning, totalExpense, (totalEarning - totalExpense));
+
                 monthlyOverviews.Add(new MonthlyOverview() 
                 { 
                     Year = year,
-                    Month = monthName,
+                    Month = Month.MonthName(month),
                     TotalEarning = totalEarning,
                     TotalExpense = totalExpense,
                     Difference = totalEarning - totalExpense,
                 });
             }
-
         }
 
         #endregion

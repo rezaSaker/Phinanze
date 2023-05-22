@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Phinanze.Views.MonthlyReportView
@@ -18,12 +11,12 @@ namespace Phinanze.Views.MonthlyReportView
 
             this.Load += delegate { ViewLoading?.Invoke(this, EventArgs.Empty); };
             this.Shown += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
-            this.monthComboBox.SelectedIndexChanged += delegate { MonthComboBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty); };
-            this.yearComboBox.SelectedIndexChanged += delegate { YearComboBoxSelectedIndexChanged?.Invoke(this, EventArgs.Empty); };
-            this.searchTextBox.TextChanged += delegate { SearchTextBoxInputChanged?.Invoke(this, EventArgs.Empty); };
-            this.monthlyReportDGV.CellDoubleClick += delegate { MonthlyReportDGVRowDoubleClick?.Invoke(this, EventArgs.Empty); };
-            this.editButton.Click += delegate { EditButtonClick?.Invoke(this, EventArgs.Empty); };
-            this.deleteButton.Click += delegate { DeleteButtonClick?.Invoke(this, EventArgs.Empty); };
+            this.monthComboBox.SelectedIndexChanged += delegate { MonthComboBoxSelectedIndexChanged?.Invoke(this.monthComboBox, EventArgs.Empty); };
+            this.yearComboBox.SelectedIndexChanged += delegate { YearComboBoxSelectedIndexChanged?.Invoke(this.yearComboBox, EventArgs.Empty); };
+            this.searchTextBox.TextChanged += delegate { SearchTextBoxInputChanged?.Invoke(this.searchTextBox, EventArgs.Empty); };
+            this.monthlyReportDGV.CellDoubleClick += delegate { MonthlyReportDGVRowDoubleClick?.Invoke(this.monthlyReportDGV, EventArgs.Empty); };
+            this.editButton.Click += delegate { EditButtonClick?.Invoke(this.editButton, EventArgs.Empty); };
+            this.deleteButton.Click += delegate { DeleteButtonClick?.Invoke(this.deleteButton, EventArgs.Empty); };
         }
 
         private static MonthlyReportView _instance;

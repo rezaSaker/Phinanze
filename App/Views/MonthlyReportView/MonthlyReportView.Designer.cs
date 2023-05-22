@@ -42,10 +42,6 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.headerLabel = new System.Windows.Forms.Label();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HomeButton = new System.Windows.Forms.Button();
             this.monthlyReportDGV = new System.Windows.Forms.DataGridView();
             this.monthComboBox = new System.Windows.Forms.ComboBox();
@@ -222,38 +218,6 @@
             this.yearComboBox.Size = new System.Drawing.Size(161, 33);
             this.yearComboBox.TabIndex = 63;
             // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 71.7509F;
-            this.Column3.HeaderText = "Expense";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 69.41014F;
-            this.Column2.HeaderText = "Earning";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 157.3161F;
-            this.Column4.HeaderText = "Note";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 101.5228F;
-            this.Column1.HeaderText = "Date";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // HomeButton
             // 
             this.HomeButton.BackColor = System.Drawing.Color.RoyalBlue;
@@ -289,11 +253,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.monthlyReportDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.monthlyReportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.monthlyReportDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column4,
-            this.Column2,
-            this.Column3});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -399,10 +358,6 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.ComboBox yearComboBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.DataGridView monthlyReportDGV;
         private System.Windows.Forms.ComboBox monthComboBox;

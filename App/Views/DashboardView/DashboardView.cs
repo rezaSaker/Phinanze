@@ -29,7 +29,11 @@ namespace Phinanze.Views
 
         public bool IsHidden { get; private set; }
 
-        public string SelectedYear => yearComboBox.SelectedItem.ToString();
+        public string YearListSelectedItem
+        {  
+            get => yearComboBox.SelectedItem.ToString();
+            set => yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(value);
+        }
 
         public new void Show()
         {
@@ -51,8 +55,6 @@ namespace Phinanze.Views
 
             overviewBarChart.Series[CategoryType.EARNING].Color = Color.Green;
             overviewBarChart.Series[CategoryType.EXPENSE].Color = Color.Red;
-
-            yearComboBox.SelectedIndex = yearComboBox.Items.Count - 1;
         }
 
         public void PlotData(params object[] data)
