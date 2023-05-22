@@ -16,8 +16,8 @@ namespace Phinanze.Presenters
 {
     public class DashboardPresenter : Presenter
     {
-        private IDashboardView _view;
-        private IView _containerView;
+        private readonly IDashboardView _view;
+        private readonly IView _containerView;
 
         public DashboardPresenter(IDashboardView view, IView containerView = null)
         {

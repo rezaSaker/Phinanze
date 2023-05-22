@@ -7,16 +7,11 @@ namespace Phinanze.Presenters
 {
     public class MDIContainerPresenter : Presenter
     {
-        private IContainerView _view;
-        private IView _containerView;
-        private bool _allowFormMovement;
-        private Point _prevMousePosition;
+        private readonly IContainerView _view;
+        private readonly IView _containerView;
 
         public MDIContainerPresenter(IContainerView view, IView containerView = null)
         {
-            _allowFormMovement = false;
-            _prevMousePosition = new Point();
-
             _view = view;
             _containerView = containerView;
             _view.ViewShown += OnViewShown;

@@ -16,30 +16,5 @@ namespace Test.App.PresenterTest
             Assert.IsTrue(MDIContainerView.Instance.IsOpen);
             Assert.IsNull(MDIContainerView.Instance.MdiParent);
         }
-
-        [TestMethod]
-        public void TestMDIContainerPresenter_ViewMovement()
-        {
-            MDIContainerPresenter presenter = new MDIContainerPresenter(MDIContainerView.Instance);
-            PrivateObject pvtObj = new PrivateObject(presenter);
-            object[] args = new object[] { this, null };
-
-            pvtObj.Invoke("OnMouseDown", args); // Should allow form movement on mouse movement
-
-            Point prevViewLocation = MDIContainerView.Instance.ViewLocation;
-            Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y + 10);
-
-            pvtObj.Invoke("OnMouseMove", args); // Should move the form on mouse movement
-
-            Assert.AreNotEqual(prevViewLocation, MDIContainerView.Instance.ViewLocation);
-
-            pvtObj.Invoke("OnMouseUp", args); // Should make the form not movable on mouse movement
-
-            prevViewLocation.X = MDIContainerView.Instance.ViewLocation.X;
-            prevViewLocation.Y = MDIContainerView.Instance.ViewLocation.Y;
-
-            Cursor.Position = new Point(Cursor.Position.X + 10, Cursor.Position.Y + 10);
-            Assert.AreEqual(prevViewLocation, MDIContainerView.Instance.ViewLocation);
-        }
     }
 }

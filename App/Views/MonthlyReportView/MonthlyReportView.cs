@@ -57,7 +57,7 @@ namespace Phinanze.Views.MonthlyReportView
 
         public void ClearData()
         {
-            throw new NotImplementedException();
+            monthlyReportDGV.DataSource = null;
         }
 
         public event EventHandler ViewLoading;

@@ -15,8 +15,8 @@ namespace Phinanze.Presenters
 {
     public class MonthlyReportPresenter : Presenter
     {
-        private IMonthlyReportView _view;
-        private IView _containerView;
+        private readonly IMonthlyReportView _view;
+        private readonly IView _containerView;
 
         private int _selectedMonth;
         private int _selectedYear;
@@ -53,7 +53,6 @@ namespace Phinanze.Presenters
 
         private void OnViewLoading(object sender, EventArgs e)
         {
-            List<string> months = new List<string>();
             List<int> years = new List<int>();
 
             for(int year = 2018; year <= DateTime.Now.Year; year++)

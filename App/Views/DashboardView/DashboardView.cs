@@ -59,20 +59,28 @@ namespace Phinanze.Views
 
         public void PlotData(params object[] data)
         {
-            this.overviewDGV.DataSource = new BindingList<MonthlyOverview>((List<MonthlyOverview>)data[0]);
+            List<MonthlyOverview> dgvData = (List<MonthlyOverview>)data[0];
+            List<PieChartPoint> pieChartData = (List<PieChartPoint>)data[1];
+            Dictionary<string, List<BarChartPoint>> barChartData = (Dictionary<string, List<BarChartPoint>>)data[2];
+      
+            this.overviewDGV.DataSource = dgvData;
 
-            foreach (PieChartPoint point in (List<PieChartPoint>)data[1])
+            foreach (PieChartPoint point in pieChartData)
             {
                 DataPoint dataPoint = new DataPoint() { Color = point.BackColor, LabelForeColor = point.ForeColor, ToolTip = String.Format("${0:00}", point.Y) };
                 dataPoint.SetValueXY(point.X, point.Y);
                 overviewPieChart.Series.First().Points.Add(dataPoint);
             }
 
-            List<BarChartPoint> earningPoints = (List<BarChartPoint>)((Dictionary<string, List<BarChartPoint>>)data[2])[CategoryType.EARNING];
-            List<BarChartPoint> expensePoints = (List<BarChartPoint>)((Dictionary<string, List<BarChartPoint>>)data[2])[CategoryType.EXPENSE];
+            if(barChartData.ContainsKey(CategoryType.EARNING))
+            {
+                PlotOverviewBarChart(CategoryType.EARNING, (List<BarChartPoint>)barChartData[CategoryType.EARNING]);
+            }
 
-            PlotOverviewBarChart(CategoryType.EARNING, earningPoints);
-            PlotOverviewBarChart(CategoryType.EXPENSE, expensePoints);
+            if (barChartData.ContainsKey(CategoryType.EXPENSE))
+            {
+                PlotOverviewBarChart(CategoryType.EXPENSE, (List<BarChartPoint>)barChartData[CategoryType.EXPENSE]);
+            }
         }
 
         public void ClearData()
@@ -80,7 +88,7 @@ namespace Phinanze.Views
             overviewPieChart.Series["DefaultSeries"].Points.Clear();
             overviewBarChart.Series[CategoryType.EARNING].Points.Clear();
             overviewBarChart.Series[CategoryType.EXPENSE].Points.Clear();
-            overviewDGV.Rows.Clear();
+            overviewDGV.DataSource = null;
         }
 
         public event EventHandler ViewLoading;

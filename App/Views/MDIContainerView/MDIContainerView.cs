@@ -25,12 +25,6 @@ namespace Phinanze.Views
 
         public Panel HeaderPanel => this.headerPanel;
 
-        public Point ViewLocation
-        {
-            get => this.Location;
-            set => this.Location = value;
-        }
-
         public bool IsOpen { get; private set; }
 
         public bool IsHidden { get; private set; }

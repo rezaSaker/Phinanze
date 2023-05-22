@@ -1,6 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Phinanze.Models.ViewModels;
 using Phinanze.Views;
 using Phinanze.Views.MonthlyReportView;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Phinanze.Test.App.ViewTest
@@ -8,8 +11,6 @@ namespace Phinanze.Test.App.ViewTest
     [TestClass]
     public class MonthlyReportViewTest
     {
-        public static IMonthlyReportView view = MonthlyReportView.Instance;
-
         [TestMethod]
         public void TestMonthlyReportViewInitAndObjectRelations()
         {
@@ -27,11 +28,35 @@ namespace Phinanze.Test.App.ViewTest
         [TestMethod]
         public void TestMonthlyReportDGV()
         {
-            //Assert.AreEqual(4, view.MonthlyReportDGV.ColumnCount);
-            //Assert.AreEqual("Date", view.MonthlyReportDGV.Columns[0].HeaderCell.Value);
-            //Assert.AreEqual("Note", view.MonthlyReportDGV.Columns[1].HeaderCell.Value);
-            //Assert.AreEqual("Earning", view.MonthlyReportDGV.Columns[2].HeaderCell.Value);
-            //Assert.AreEqual("Expense", view.MonthlyReportDGV.Columns[3].HeaderCell.Value);
+            PrivateObject pvtObj = new PrivateObject(MonthlyReportView.Instance);
+            DataGridView monthlyReportDGV = (DataGridView)pvtObj.GetFieldOrProperty("monthlyReportDGV");
+
+            Assert.AreEqual(0, monthlyReportDGV.ColumnCount);
+            Assert.AreEqual(0, monthlyReportDGV.RowCount);
+        }
+
+        [TestMethod]
+        public void TestPlotData()
+        {
+            PrivateObject pvtObj = new PrivateObject(MonthlyReportView.Instance);
+            DataGridView monthlyReportDGV = (DataGridView)pvtObj.GetFieldOrProperty("monthlyReportDGV");
+
+            Assert.AreEqual(0, monthlyReportDGV.RowCount);
+            List<DailyOverview> dgvData = new List<DailyOverview>()
+            {
+                new DailyOverview() { Date = DateTime.Today.Date, Note = "Note", TotalEarning = 100, TotalExpense = 50 },
+                new DailyOverview() { Date = DateTime.Today.Date, Note = null, TotalEarning = 100.5, TotalExpense = -50.7 }
+            };
+            MonthlyReportView.Instance.PlotData(dgvData);
+
+            Assert.AreEqual(2, monthlyReportDGV.RowCount);
+            Assert.AreEqual(4, monthlyReportDGV.ColumnCount);
+            Assert.AreEqual(DateTime.Today.Date, monthlyReportDGV.Rows[0].Cells[0].Value);
+            Assert.AreEqual("Note", monthlyReportDGV.Rows[0].Cells[1].Value);
+
+            MonthlyReportView.Instance.ClearData();
+
+            Assert.AreEqual(0, monthlyReportDGV.RowCount);
         }
     }
 }
