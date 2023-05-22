@@ -41,7 +41,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.overviewDGV = new System.Windows.Forms.DataGridView();
             this.overviewPieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.overviewBarChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LogOutButton = new System.Windows.Forms.Button();
@@ -169,18 +168,6 @@
             this.overviewPieChart.TabIndex = 50;
             this.overviewPieChart.Text = "Pie Chart";
             // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusLabel.Location = new System.Drawing.Point(17, 90);
-            this.statusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(215, 25);
-            this.statusLabel.TabIndex = 60;
-            this.statusLabel.Text = "Showing information for";
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // overviewBarChart
             // 
             this.overviewBarChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -296,10 +283,10 @@
             this.yearComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yearComboBox.ForeColor = System.Drawing.Color.Black;
             this.yearComboBox.FormattingEnabled = true;
-            this.yearComboBox.Location = new System.Drawing.Point(240, 87);
+            this.yearComboBox.Location = new System.Drawing.Point(26, 84);
             this.yearComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.yearComboBox.Name = "yearComboBox";
-            this.yearComboBox.Size = new System.Drawing.Size(234, 33);
+            this.yearComboBox.Size = new System.Drawing.Size(392, 33);
             this.yearComboBox.TabIndex = 53;
             // 
             // HomeButton
@@ -344,7 +331,6 @@
             this.ClientSize = new System.Drawing.Size(1370, 855);
             this.ControlBox = false;
             this.Controls.Add(this.LogoButton);
-            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.LogOutButton);
             this.Controls.Add(this.ProfileButton);
@@ -362,7 +348,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.overviewBarChart)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -373,7 +358,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView overviewDGV;
         private System.Windows.Forms.DataVisualization.Charting.Chart overviewPieChart;
-        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart overviewBarChart;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button LogOutButton;
