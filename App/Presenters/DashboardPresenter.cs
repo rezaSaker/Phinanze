@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Phinanze.Models;
 using Phinanze.Models.Statics;
+using Phinanze.Models.ViewModels;
 using Phinanze.Views;
 using Phinanze.Views.MonthlyReportView;
 
@@ -32,19 +36,20 @@ namespace Phinanze.Presenters
 
         private void OnViewLoad(object sender, EventArgs e)
         {
-            for(int year = 2018; year <= DateTime.Today.Year; year++)
+            List<string> years = new List<string>();
+
+            for(int year = DateTime.Today.Year; year >= 2018 ; year--)
             {
-                _view.YearComboBox.Items.Add(year.ToString());
+                years.Add(year.ToString());
             }
-            _view.YearComboBox.Items.Add("All Years");
-            
-            _view.OverviewBarChart.Series[CategoryType.EARNING].Color = Color.Green;
-            _view.OverviewBarChart.Series[CategoryType.EXPENSE].Color = Color.Red;
+            years.Add("All Years");
+
+            _view.InitializeComponents(years);
         }
 
         private void OnViewShown(object sender, EventArgs e)
         {
-            _view.YearComboBox.SelectedIndex = _view.YearComboBox.Items.Count - 1;
+            
         }
 
         private void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
@@ -54,37 +59,30 @@ namespace Phinanze.Presenters
 
         private void OnOverviewDGVRowDoubleClick(object sender, EventArgs e)
         {
+            Console.WriteLine(sender.ToString());
             MonthlyReportPresenter presenter = new MonthlyReportPresenter(MonthlyReportView.Instance, MDIContainerView.Instance);
             _view.Hide();
         }
 
         #endregion
 
-        #region Data Handler Methods
+        #region Data Processing Methods
 
         private void LoadDashboardData()
         {
-            _view.OverviewPieChart.Series["DefaultSeries"].Points.Clear();
-            _view.OverviewBarChart.Series[CategoryType.EARNING].Points.Clear();
-            _view.OverviewBarChart.Series[CategoryType.EXPENSE].Points.Clear();
-            _view.OverviewDGV.Rows.Clear();
+            _view.ClearData();
 
-            int? selectedYear = int.TryParse(_view.YearComboBox.SelectedItem.ToString(), out int temp) ? (int?)temp : null; // Null for item "All Years"
-            
-            for (int month = 1; month <= 12; month++)
-            {
-                AddDataPointOnViewBarChart(month, DailyInfo2.GetTotalEarningsByMonth(month, selectedYear), CategoryType.EARNING);
-                AddDataPointOnViewBarChart(month, DailyInfo2.GetTotalExpensesByMonth(month, selectedYear), CategoryType.EXPENSE);
-            }
+            int? selectedYear = Int32.TryParse(_view.SelectedYear, out int temp) ? (int?)temp : null;
 
             double totalEarning = 0.0;
             double totalExpense = 0.0;
+            List<MonthlyOverview> monthlyOverviews = new List<MonthlyOverview>();
 
-            if(selectedYear == null) // If selected item is "All Years"
+            if(selectedYear == null) // Show data for all years 
             {
-                for(int i = _view.YearComboBox.Items.Count - 2; i >= 0 ; i--)
+                for(int year = DateTime.Now.Year; year >= 2018; year--)
                 {
-                    AddRowToViewDGV(int.Parse(_view.YearComboBox.Items[i].ToString()));
+                    ListMonthlyOverviewsByYear(year, ref monthlyOverviews);
                 }
 
                 totalEarning = Earning.Get.All().Sum(e => e.Amount);
@@ -92,29 +90,50 @@ namespace Phinanze.Presenters
             }
             else
             {
-                AddRowToViewDGV(int.Parse(_view.YearComboBox.SelectedItem.ToString()));
+                ListMonthlyOverviewsByYear((int)selectedYear, ref monthlyOverviews);
 
                 totalEarning = Earning.Get.All().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
                 totalExpense = Expense.Get.All().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
             }
 
+            List<PieChartPoint> pieChartPoints = new List<PieChartPoint>()
+            {
+                new PieChartPoint() { X = CategoryType.EARNING, Y = totalEarning, BackColor = Color.Green, ForeColor = Color.White },
+                new PieChartPoint() { X = CategoryType.EXPENSE, Y = totalExpense, BackColor = Color.Red, ForeColor = Color.White  },
+                new PieChartPoint() 
+                { 
+                    X = CategoryType.SAVINGS, 
+                    Y = totalEarning > totalExpense ? totalEarning - totalExpense : 0.0, 
+                    BackColor = Color.YellowGreen, 
+                    ForeColor = Color.White  
+                }
+            };
+
+            Dictionary<string, List<BarChartPoint>> barChartPointsDict = new Dictionary<string, List<BarChartPoint>>()
+            {
+                [CategoryType.EARNING] = new List<BarChartPoint>(),
+                [CategoryType.EXPENSE] = new List<BarChartPoint>()
+            };
+
+            for (int month = 1; month <= 12; month++)
+            {
+                string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+                barChartPointsDict[CategoryType.EARNING].Add(new BarChartPoint()
+                {
+                    X = monthName, Y = DailyInfo2.GetTotalEarningsByMonth(month, selectedYear), BackColor = Color.Green
+                });
+
+                barChartPointsDict[CategoryType.EXPENSE].Add(new BarChartPoint()
+                {
+                    X = monthName, Y = DailyInfo2.GetTotalExpensesByMonth(month, selectedYear), BackColor = Color.Red
+                });
+            }
+
+            _view.PlotData(monthlyOverviews, pieChartPoints, barChartPointsDict);
             
-            double totalSavings = totalEarning > totalExpense ? totalEarning - totalExpense : 0.0;
-
-            _view.OverviewPieChart.Series["DefaultSeries"].Points.AddXY("Earning", totalEarning);
-            _view.OverviewPieChart.Series["DefaultSeries"].Points.AddXY("Expense", totalExpense);
-            _view.OverviewPieChart.Series["DefaultSeries"].Points.AddXY("Savings", totalSavings);
         }
 
-        private void AddDataPointOnViewBarChart(int month, double value, string seriesName)
-        {
-            DataPoint point = new DataPoint();
-            point.SetValueXY(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month), value);
-            point.ToolTip = string.Format("${0:00}", value);
-            _view.OverviewBarChart.Series[seriesName].Points.Add(point);
-        }
-
-        private void AddRowToViewDGV(int year)
+        private void ListMonthlyOverviewsByYear(int year, ref List<MonthlyOverview> monthlyOverviews)
         {
             for (int month = 12; month > 0; month--)
             {
@@ -126,8 +145,17 @@ namespace Phinanze.Presenters
                 string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
                 double totalEarning = DailyInfo2.GetTotalEarningsByMonth(month, year);
                 double totalExpense = DailyInfo2.GetTotalExpensesByMonth(month, year);
-                _view.OverviewDGV.Rows.Add(year, monthName, totalEarning, totalExpense, (totalEarning - totalExpense));
+                //_view.OverviewDGV.Rows.Add(year, monthName, totalEarning, totalExpense, (totalEarning - totalExpense));
+                monthlyOverviews.Add(new MonthlyOverview() 
+                { 
+                    Year = year,
+                    Month = monthName,
+                    TotalEarning = totalEarning,
+                    TotalExpense = totalExpense,
+                    Difference = totalEarning - totalExpense,
+                });
             }
+
         }
 
         #endregion

@@ -10,8 +10,6 @@ namespace Phinanze.Views
 {
     public interface IContainerView : IView
     {
-        Panel HeaderPanel { get; }
 
-        Point ViewLocation { get; set; }
     }
 }

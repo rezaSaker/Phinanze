@@ -6,11 +6,7 @@ namespace Phinanze.Views
 {
     public interface IDashboardView : IView
     {
-        ComboBox YearComboBox { get; }
-        DataGridView OverviewDGV { get; }
-        Chart OverviewPieChart { get; }
-        Chart OverviewBarChart { get; }
-
+        string SelectedYear { get; }
         event EventHandler YearComboBoxSelectedIndexChanged;
         event EventHandler OverviewDGVRowDoubleClick;
     }

@@ -19,37 +19,13 @@ namespace Phinanze.Presenters
 
             _view = view;
             _containerView = containerView;
-
-            _view.HeaderPanel.MouseDown += OnMouseDown;
-            _view.HeaderPanel.MouseUp += OnMouseUp;
-            _view.HeaderPanel.MouseMove += OnMouseMove;
             _view.ViewShown += OnViewShown;
 
             Show(_view, _containerView);
         }
 
         #region EventHandler Methods
-        private void OnMouseDown(object sender, MouseEventArgs e)
-        {
-            _allowFormMovement = true;
-        }
-
-        private void OnMouseUp(object sender, MouseEventArgs e)
-        {
-            _allowFormMovement = false;
-        }
-
-        private void OnMouseMove(object sender, MouseEventArgs e)
-        {
-            if (_allowFormMovement)
-            {
-                int xShift = _prevMousePosition.X - Cursor.Position.X;
-                int yShift = _prevMousePosition.Y - Cursor.Position.Y;
-
-                _view.ViewLocation = new Point(_view.ViewLocation.X - xShift, _view.ViewLocation.Y - yShift);
-            }
-            _prevMousePosition = Cursor.Position;
-        }
+        
 
         private void OnViewShown(object sender, EventArgs e)
         {

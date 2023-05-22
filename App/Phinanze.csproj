@@ -167,6 +167,10 @@
     <Compile Include="Models\Validations\EntityValidationResult.cs" />
     <Compile Include="Models\Validations\EntityValidator.cs" />
     <Compile Include="Models\Validations\ValidationError.cs" />
+    <Compile Include="Models\ViewModels\BarChartPoint.cs" />
+    <Compile Include="Models\ViewModels\PieChartPoint.cs" />
+    <Compile Include="Models\ViewModels\DailyOverview.cs" />
+    <Compile Include="Models\ViewModels\MonthlyOverview.cs" />
     <Compile Include="Presenters\DashboardPresenter.cs" />
     <Compile Include="Presenters\MDIContainerPresenter.cs" />
     <Compile Include="Presenters\MonthlyReportPresenter.cs" />

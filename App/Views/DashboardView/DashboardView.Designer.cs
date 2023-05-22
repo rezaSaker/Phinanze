@@ -51,11 +51,6 @@
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.HomeButton = new System.Windows.Forms.Button();
             this.AddNewDataButton = new System.Windows.Forms.Button();
-            this.yearColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monthColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.earningColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expenseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.overviewColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewDGV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overviewPieChart)).BeginInit();
@@ -120,12 +115,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.overviewDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.overviewDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.overviewDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.yearColumn,
-            this.monthColumn,
-            this.earningColumn,
-            this.expenseColumn,
-            this.overviewColumn});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -347,46 +336,6 @@
             this.AddNewDataButton.Text = "Add Daily Info";
             this.AddNewDataButton.UseVisualStyleBackColor = false;
             // 
-            // yearColumn
-            // 
-            this.yearColumn.FillWeight = 59.89317F;
-            this.yearColumn.HeaderText = "Year";
-            this.yearColumn.MinimumWidth = 6;
-            this.yearColumn.Name = "yearColumn";
-            this.yearColumn.ReadOnly = true;
-            // 
-            // monthColumn
-            // 
-            this.monthColumn.FillWeight = 101.5228F;
-            this.monthColumn.HeaderText = "Month";
-            this.monthColumn.MinimumWidth = 6;
-            this.monthColumn.Name = "monthColumn";
-            this.monthColumn.ReadOnly = true;
-            // 
-            // earningColumn
-            // 
-            this.earningColumn.FillWeight = 115.8797F;
-            this.earningColumn.HeaderText = "Earning";
-            this.earningColumn.MinimumWidth = 6;
-            this.earningColumn.Name = "earningColumn";
-            this.earningColumn.ReadOnly = true;
-            // 
-            // expenseColumn
-            // 
-            this.expenseColumn.FillWeight = 119.688F;
-            this.expenseColumn.HeaderText = "Expense";
-            this.expenseColumn.MinimumWidth = 6;
-            this.expenseColumn.Name = "expenseColumn";
-            this.expenseColumn.ReadOnly = true;
-            // 
-            // overviewColumn
-            // 
-            this.overviewColumn.FillWeight = 103.0162F;
-            this.overviewColumn.HeaderText = "Overview";
-            this.overviewColumn.MinimumWidth = 6;
-            this.overviewColumn.Name = "overviewColumn";
-            this.overviewColumn.ReadOnly = true;
-            // 
             // DashboardView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -434,10 +383,5 @@
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Button AddNewDataButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yearColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn monthColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn earningColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expenseColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn overviewColumn;
     }
 }

@@ -13,5 +13,6 @@ namespace Phinanze.Models.Statics
     {
         public const string EXPENSE = "Expense";
         public const string EARNING = "Earning";
+        public const string SAVINGS = "Savings";
     }
 }

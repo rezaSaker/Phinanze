@@ -29,23 +29,13 @@ namespace Phinanze.Views.MonthlyReportView
         private static MonthlyReportView _instance;
         public static MonthlyReportView Instance => _instance ?? (_instance = new MonthlyReportView());
 
-        public ComboBox MonthComboBox => this.monthComboBox;
-
-        public ComboBox YearComboBox => this.yearComboBox;
-
-        public TextBox SearchTextBox => this.searchTextBox;
-
-        public DataGridView MonthlyReportDGV => this.monthlyReportDGV;
-
-        public Label TotalTransactionLabel => this.TotalTransactionLabel;
-
-        public Button EditButton => this.editButton;
-
-        public Button DeleteButton => this.deleteButton;
-
         public bool IsOpen { get; private set; }
 
         public bool IsHidden { get; private set; }
+
+        public int SelectedMonth { get => monthComboBox.SelectedIndex + 1; set => monthComboBox.SelectedIndex = value - 1; }
+
+        public int SelectedYear { get => int.Parse(yearComboBox.SelectedItem.ToString()); set => yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(value); }
 
         public new void Show()
         {
@@ -59,6 +49,22 @@ namespace Phinanze.Views.MonthlyReportView
             this.IsOpen = false;
             this.IsHidden = true;
             base.Hide();
+        }
+
+        public void InitializeComponents(params object[] dataSource)
+        {
+            monthComboBox.DataSource = dataSource[0];
+            yearComboBox.DataSource = dataSource[1];
+        }
+
+        public void PlotData(params object[] dataSource)
+        {
+            monthlyReportDGV.DataSource = dataSource[0];
+        }
+
+        public void ClearData()
+        {
+            throw new NotImplementedException();
         }
 
         public event EventHandler ViewLoading;

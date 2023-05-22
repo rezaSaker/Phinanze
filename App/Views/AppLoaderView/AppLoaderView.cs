@@ -59,6 +59,21 @@ namespace Phinanze.Views
             _secondsCount++;
         }
 
+        public void InitializeComponents(params object[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PlotData(params object[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearData()
+        {
+            throw new NotImplementedException();
+        }
+
         public event EventHandler ViewShown;
         public event EventHandler ViewLoading;
     }
