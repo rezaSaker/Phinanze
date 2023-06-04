@@ -29,10 +29,20 @@ namespace Phinanze.Views
 
         public bool IsHidden { get; private set; }
 
-        public string YearListSelectedItem
+        public string SelectedYearFromYearList
         {  
             get => yearComboBox.SelectedItem.ToString();
             set => yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(value);
+        }
+
+        public int? SelectedYearFromOverviewTable
+        {
+            get => Int32.TryParse(overviewDGV.SelectedRows[0]?.Cells[0].Value.ToString(), out int year) ? (int?)year : null;
+        }
+
+        public string SelectedMonthFromOverviewTable
+        {
+            get => overviewDGV.SelectedRows[0]?.Cells[1].Value.ToString();
         }
 
         public new void Show()

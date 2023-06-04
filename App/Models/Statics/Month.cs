@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,13 +20,13 @@ namespace Phinanze.Models.Statics
             return MonthNames[month - 1];
         }
 
-        public static int MonthNumber(string monthName)
+        public static int? MonthNumber(string monthName)
         {
-            if(!MonthNames.Contains(monthName))
+            if(monthName.IsNullOrEmpty() || !MonthNames.Contains(monthName))
             {
-                throw new ArgumentException("Invalid month name");
+                return null;
             }
-            return MonthNames.IndexOf(monthName) + 1;
+            return (int?)MonthNames.IndexOf(monthName) + 1;
         }
     }
 }

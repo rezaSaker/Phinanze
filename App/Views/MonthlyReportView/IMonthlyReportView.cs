@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phinanze.Views.MonthlyReportView
+namespace Phinanze.Views
 {
     public interface IMonthlyReportView : IView
     {
@@ -14,5 +14,7 @@ namespace Phinanze.Views.MonthlyReportView
         int SelectedMonth { get; set; }
 
         int SelectedYear { get; set; }
+
+        string SearchBoxText { get; set; }
     }
 }

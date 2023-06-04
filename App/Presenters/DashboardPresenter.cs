@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 using Phinanze.Models;
 using Phinanze.Models.Statics;
 using Phinanze.Models.ViewModels;
 using Phinanze.Views;
-using Phinanze.Views.MonthlyReportView;
 
 namespace Phinanze.Presenters
 {
@@ -49,7 +45,7 @@ namespace Phinanze.Presenters
 
         private void OnViewShown(object sender, EventArgs e)
         {
-            _view.YearListSelectedItem = "All Years";
+            _view.SelectedYearFromYearList = "All Years";
         }
 
         private void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
@@ -59,15 +55,8 @@ namespace Phinanze.Presenters
 
         private void OnOverviewDGVRowDoubleClick(object sender, EventArgs e)
         {
-            var selectedRow = ((DataGridView)sender).SelectedRows[0];
-            int? year = int.TryParse(selectedRow.Cells[0].Value.ToString(), out int y) ? (int?)y : null;
-            int? month = null;
-
-            if(year != null)
-            {
-                try { month = Month.MonthNumber(selectedRow.Cells[1].Value.ToString()); }
-                catch { month = null; }
-            }
+            int? year = _view.SelectedYearFromOverviewTable;
+            int? month = Month.MonthNumber(_view.SelectedMonthFromOverviewTable);
 
             MonthlyReportPresenter presenter = new MonthlyReportPresenter(MonthlyReportView.Instance, MDIContainerView.Instance, year, month);
             _view.Hide();
@@ -81,7 +70,7 @@ namespace Phinanze.Presenters
         {
             _view.ClearData();
 
-            int? selectedYear = Int32.TryParse(_view.YearListSelectedItem, out int temp) ? (int?)temp : null;
+            int? selectedYear = Int32.TryParse(_view.SelectedYearFromYearList, out int temp) ? (int?)temp : null;
 
             double totalEarning = 0.0;
             double totalExpense = 0.0;

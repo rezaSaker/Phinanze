@@ -1,8 +1,6 @@
-﻿using Phinanze.Presenters;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using Phinanze.Views;
-using System.Diagnostics;
+using Phinanze.Presenters;
 
 namespace Phinanze.Views
 {

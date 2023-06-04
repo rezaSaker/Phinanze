@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Phinanze.Models.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
-namespace Phinanze.Views.MonthlyReportView
+namespace Phinanze.Views
 {
     public partial class MonthlyReportView : Form, IMonthlyReportView
     {
@@ -17,6 +20,8 @@ namespace Phinanze.Views.MonthlyReportView
             this.monthlyReportDGV.CellDoubleClick += delegate { MonthlyReportDGVRowDoubleClick?.Invoke(this.monthlyReportDGV, EventArgs.Empty); };
             this.editButton.Click += delegate { EditButtonClick?.Invoke(this.editButton, EventArgs.Empty); };
             this.deleteButton.Click += delegate { DeleteButtonClick?.Invoke(this.deleteButton, EventArgs.Empty); };
+
+            CustomViewProps.Placeholder(this.searchTextBox, "Search...");
         }
 
         private static MonthlyReportView _instance;
@@ -26,9 +31,23 @@ namespace Phinanze.Views.MonthlyReportView
 
         public bool IsHidden { get; private set; }
 
-        public int SelectedMonth { get => monthComboBox.SelectedIndex + 1; set => monthComboBox.SelectedIndex = value - 1; }
+        public int SelectedMonth 
+        { 
+            get => monthComboBox.SelectedIndex + 1; 
+            set => monthComboBox.SelectedIndex = value - 1; 
+        }
 
-        public int SelectedYear { get => int.Parse(yearComboBox.SelectedItem.ToString()); set => yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(value); }
+        public int SelectedYear 
+        { 
+            get => int.Parse(yearComboBox.SelectedItem.ToString()); 
+            set => yearComboBox.SelectedIndex = yearComboBox.Items.IndexOf(value); 
+        }
+
+        public string SearchBoxText
+        {
+            get => CustomViewProps.HasPlaceholder(this.searchTextBox) ? string.Empty : this.searchTextBox.Text;
+            set => searchTextBox.Text = value;
+        }
 
         public new void Show()
         {
@@ -52,7 +71,18 @@ namespace Phinanze.Views.MonthlyReportView
 
         public void PlotData(params object[] dataSource)
         {
-            monthlyReportDGV.DataSource = dataSource[0];
+            if (dataSource[0].GetType() != typeof(List<DailyOverview>))
+            {
+                return;
+            }
+            List<DailyOverview> dailyOverviews = (List<DailyOverview>)dataSource[0];
+
+            monthlyReportDGV.DataSource = dailyOverviews;
+
+            double totalEarning = dailyOverviews.Sum(d => d.TotalEarning);
+            double totalExpense = dailyOverviews.Sum(d => d.TotalExpense);
+
+            this.totalTransactionLabel.Text = "Earning: $" + totalEarning + "\t Expense: $" + totalExpense;
         }
 
         public void ClearData()
