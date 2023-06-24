@@ -80,8 +80,8 @@ namespace Phinanze.Views
 
             transactionsDGV.DataSource = transactionOverviews;
 
-            double totalEarning = dataSource[1] is double ? (double)dataSource[1] : 0;
-            double totalExpense = dataSource[1] is double ? (double)dataSource[1] : 0;
+            double totalEarning = dataSource.Length > 1 && dataSource[1] is double ? (double)dataSource[1] : 0;
+            double totalExpense = dataSource.Length > 2 && dataSource[2] is double ? (double)dataSource[2] : 0;
 
             this.totalTransactionLabel.Text = "Earning: $" + totalEarning + "\t Expense: $" + totalExpense;
         }

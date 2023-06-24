@@ -55,6 +55,12 @@ namespace Phinanze.Test.App.ViewTest
 
             TransactionsView.Instance.ClearData();
             Assert.AreEqual(0, transactionsDGV.RowCount);
+
+            TransactionsView.Instance.PlotData(dgvData); // This should not throw any error 
+            Assert.AreEqual(2, transactionsDGV.RowCount);
+
+            TransactionsView.Instance.ClearData();
+            Assert.AreEqual(0, transactionsDGV.RowCount);
         }
     }
 }
