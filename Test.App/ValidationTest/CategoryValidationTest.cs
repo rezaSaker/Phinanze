@@ -11,7 +11,7 @@ namespace App.Test.ValidationTest
     {
         [DataTestMethod]
         [DynamicData(nameof(TestCases), DynamicDataSourceType.Method)]
-        public void TestCategoryModelValidations(string name, string type, bool expectValid, string msg)
+        public void CategoryModelValidationTest(string name, string type, bool expectValid, string msg)
         {
             Category c = new Category()
             {

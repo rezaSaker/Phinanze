@@ -51,27 +51,29 @@ namespace Phinanze.Presenters
             }
 
             _view.InitializeComponents(Month.MonthNames, years);
-            _loadMonthlyReportData = true;
-
+            
             _view.SelectedMonth = _selectedMonth;
             _view.SelectedYear = _selectedYear;
+            _loadMonthlyReportData = true;
+
+            LoadMonthlyReportData();
         }
 
         private void OnViewShown(object sender, EventArgs e) { }
 
         private void OnMonthComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMonthlyReportData(_view.SearchBoxText);
+            LoadMonthlyReportData();
         }
 
         private void OnYearComboBoxSelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMonthlyReportData(_view.SearchBoxText);
+            LoadMonthlyReportData();
         }
 
         private void OnSearchTextBoxInputChanged(object sender, EventArgs e)
         {
-            LoadMonthlyReportData(_view.SearchBoxText);
+            LoadMonthlyReportData();
         }
 
         private void OnMonthlyReportDGVRowDoubleClick(object sender, EventArgs e)
@@ -94,7 +96,7 @@ namespace Phinanze.Presenters
 
         #region Data Processing Methods
 
-        private void LoadMonthlyReportData(string searchParam = null)
+        private void LoadMonthlyReportData()
         {
             if (!_loadMonthlyReportData)
             {
@@ -103,9 +105,9 @@ namespace Phinanze.Presenters
     
             List<DailyInfo2> dailyInfoList = DailyInfo2.Get.All().FindAll(d => d.Date.Month == _view.SelectedMonth && d.Date.Year == _view.SelectedYear);
 
-            if (!searchParam.IsNullOrEmpty())
+            if (!_view.SearchBoxText.IsNullOrEmpty())
             {
-                searchParam = searchParam.Trim().ToLower();
+                string searchParam = _view.SearchBoxText.Trim().ToLower();
                 dailyInfoList = dailyInfoList.FindAll(d =>
                     d.Date.ToString().Contains(searchParam) ||
                     d.Note.ToLower().Contains(searchParam) ||

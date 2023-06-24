@@ -12,7 +12,7 @@ namespace App.Test.ValidationTest
     {
         [DataTestMethod]
         [DynamicData(nameof(TestCases), DynamicDataSourceType.Method)]
-        public void TestDailyInfoModelValidations(DateTime date, string note, bool expectValid, string msg)
+        public void DailyInfoModelValidationTest(DateTime date, string note, bool expectValid, string msg)
         {
             DailyInfo2 d = new DailyInfo2()
             {

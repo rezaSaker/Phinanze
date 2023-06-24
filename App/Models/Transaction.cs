@@ -5,9 +5,9 @@ using Phinanze.Models.Repositories;
 
 namespace Phinanze.Models
 {
-    public class Earning: EarningRepository, IModel, ITransaction
+    public class Transaction: TransactionRepository, IModel, ITransaction
     {
-        public Earning() { Model = this; }
+        public Transaction() { Model = this; }
 
         [Required(ErrorMessage = "Earning amount is required")]
         [Range(0, 1000000, ErrorMessage = "Earning amount must be between 0 and 1000000")]

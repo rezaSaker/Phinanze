@@ -1,4 +1,5 @@
 ﻿using Phinanze.Models.DBInfo;
+using Phinanze.Models.Statics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +22,19 @@ namespace Phinanze.Models.Repositories
             }
         }
 
-        public List<Earning> Earnings()
+        public List<Transaction> Transactions()
         {
-            return Earning.Get.All().FindAll(e => e.DailyInfoId == Id);
+            return Transaction.Get.All().FindAll(t => t.DailyInfoId == Id);
         }
 
-        public List<Expense> Expenses()
+        public List<Transaction> Earnings()
         {
-            return Expense.Get.All().FindAll(e => e.DailyInfoId == Id);
+            return Transaction.Get.All().FindAll(t => t.DailyInfoId == Id && t.Category().CategoryType == CategoryType.EARNING);
+        }
+
+        public List<Transaction> Expenses()
+        {
+            return Transaction.Get.All().FindAll(t => t.DailyInfoId == Id && t.Category().CategoryType == CategoryType.EXPENSE);
         }
 
         public double TotalExpense()

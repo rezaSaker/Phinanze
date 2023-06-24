@@ -150,14 +150,12 @@
     <Compile Include="Models\DBInfo\Host.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\DailyInfo2.cs" />
-    <Compile Include="Models\Earning.cs" />
-    <Compile Include="Models\Expense.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\ITransaction.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\CategoryRepository.cs" />
     <Compile Include="Models\Repositories\DailyInfoRepository.cs" />
-    <Compile Include="Models\Repositories\EarningRepository.cs" />
-    <Compile Include="Models\Repositories\ExpenseRepository.cs" />
+    <Compile Include="Models\Repositories\TransactionRepository.cs" />
     <Compile Include="Models\Repositories\Http\HttpRequest.cs" />
     <Compile Include="Models\Repositories\Http\HttpResponseTypes.cs" />
     <Compile Include="Models\Repositories\UserRepository.cs" />

@@ -35,6 +35,7 @@ namespace Phinanze.Models.Repositories
         // The model that extends the Base Repository through the Model's specific repository
         protected T Model
         {
+            get {  return _model; }
             set
             {
                 if (_model == null) _model = value;

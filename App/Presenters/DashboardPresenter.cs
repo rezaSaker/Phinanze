@@ -83,15 +83,15 @@ namespace Phinanze.Presenters
                     ListMonthlyOverviewsByYear(year, ref monthlyOverviews);
                 }
 
-                totalEarning = Earning.Get.All().Sum(e => e.Amount);
-                totalExpense = Expense.Get.All().Sum(e => e.Amount);
+                totalEarning = Transaction.AllEarnings().Sum(e => e.Amount);
+                totalExpense = Transaction.AllExpenses().Sum(e => e.Amount);
             }
             else
             {
                 ListMonthlyOverviewsByYear((int)selectedYear, ref monthlyOverviews);
 
-                totalEarning = Earning.Get.All().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
-                totalExpense = Expense.Get.All().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
+                totalEarning = Transaction.AllEarnings().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
+                totalExpense = Transaction.AllExpenses().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
             }
 
             List<PieChartPoint> pieChartPoints = new List<PieChartPoint>()
