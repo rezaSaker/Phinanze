@@ -58,7 +58,7 @@ namespace Phinanze.Presenters
             int? year = _view.SelectedYearFromOverviewTable;
             int? month = Month.MonthNumber(_view.SelectedMonthFromOverviewTable);
 
-            MonthlyReportPresenter presenter = new MonthlyReportPresenter(MonthlyReportView.Instance, MDIContainerView.Instance, year, month);
+            TransactionsPresenter presenter = new TransactionsPresenter(TransactionsView.Instance, MDIContainerView.Instance, year, month);
             _view.Hide();
         }
         #endregion
@@ -90,8 +90,8 @@ namespace Phinanze.Presenters
             {
                 ListMonthlyOverviewsByYear((int)selectedYear, ref monthlyOverviews);
 
-                totalEarning = Transaction.AllEarnings().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
-                totalExpense = Transaction.AllExpenses().FindAll(e => DailyInfo2.Get.One(e.DailyInfoId)?.Date.Year == selectedYear).Sum(e => e.Amount);
+                totalEarning = Transaction.AllEarnings().FindAll(t => t.Date.Year == selectedYear).Sum(t => t.Amount);
+                totalExpense = Transaction.AllExpenses().FindAll(t => t.Date.Year == selectedYear).Sum(t => t.Amount);
             }
 
             List<PieChartPoint> pieChartPoints = new List<PieChartPoint>()
@@ -118,12 +118,12 @@ namespace Phinanze.Presenters
                 string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
                 barChartPointsDict[CategoryType.EARNING].Add(new BarChartPoint()
                 {
-                    X = monthName, Y = DailyInfo2.GetTotalEarningsByMonth(month, selectedYear)
+                    X = monthName, Y = Transaction.GetTotalEarningsByMonth(month, selectedYear)
                 });
 
                 barChartPointsDict[CategoryType.EXPENSE].Add(new BarChartPoint()
                 {
-                    X = monthName, Y = DailyInfo2.GetTotalExpensesByMonth(month, selectedYear)
+                    X = monthName, Y = Transaction.GetTotalExpensesByMonth(month, selectedYear)
                 });
             }
 
@@ -140,8 +140,8 @@ namespace Phinanze.Presenters
                     continue;
                 }
 
-                double totalEarning = DailyInfo2.GetTotalEarningsByMonth(month, year);
-                double totalExpense = DailyInfo2.GetTotalExpensesByMonth(month, year);
+                double totalEarning = Transaction.GetTotalEarningsByMonth(month, year);
+                double totalExpense = Transaction.GetTotalExpensesByMonth(month, year);
 
                 monthlyOverviews.Add(new MonthlyOverview() 
                 { 

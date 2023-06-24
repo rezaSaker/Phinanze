@@ -3,6 +3,7 @@ using Phinanze.Models.Validations;
 using App.Test.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System;
 
 namespace App.Test.ValidationTest
 {
@@ -27,34 +28,22 @@ namespace App.Test.ValidationTest
             return new List<object[]>
             {   
                 // Test amount validation
-                new object[] { new Transaction() { Amount = -10.5, CategoryId = 1, Comment = string.Empty, DailyInfoId = 1 }, false, "Earning amount must be between 0 and 1000000" },
+                new object[] { new Transaction() { Amount = -10.5, CategoryId = 1, Note = string.Empty, Date = DateTime.Today }, false, "Amount must be between 0 and 1000000" },
 
                 // Test amount validation
-                new object[] { new Transaction() { Amount = 1000000001, CategoryId = 1, Comment = string.Empty, DailyInfoId = 1 }, false, "Earning amount must be between 0 and 1000000" },
+                new object[] { new Transaction() { Amount = 1000000001, CategoryId = 1, Note = string.Empty, Date = DateTime.Today }, false, "Amount must be between 0 and 1000000" },
 
                 // Test category id validation
-                new object[] { new Transaction() { Amount = 150, CategoryId = 0, Comment = string.Empty, DailyInfoId = 1 }, false, "Invalid Category id" },
+                new object[] { new Transaction() { Amount = 150, CategoryId = 0, Note = string.Empty, Date = DateTime.Today }, false, "Invalid Category id" },
 
                 // Test category id validation
-                new object[] { new Transaction() { Amount = 10000, CategoryId = 1000000001, Comment = string.Empty, DailyInfoId = 1 }, false, "Invalid Category id" },
+                new object[] { new Transaction() { Amount = 10000, CategoryId = 1000000001, Note = string.Empty, Date = DateTime.Today }, false, "Invalid Category id" },
 
-                // Test comment validation
-                new object[] { new Transaction() { Amount = 10006, CategoryId = 1, Comment = string.Empty, DailyInfoId = 1 }, true, string.Empty },
+                // Test Note validation
+                new object[] { new Transaction() { Amount = 10006, CategoryId = 1, Note = string.Empty, Date = DateTime.Today }, true, string.Empty },
 
-                // Test comment validation
-                new object[] { new Transaction() { Amount = 10.5, CategoryId = 1, Comment = StrGenerator.Const(256), DailyInfoId = 0 }, false, "Comment cannot exceed 255 characters" },
-
-                // Test dailyinfo id validation
-                new object[] { new Transaction() { Amount = 10.5, CategoryId = 1, Comment = string.Empty, DailyInfoId = 0 }, false, "Invalid DailyInfo id" },
-
-                // Test dailyinfo id validation
-                new object[] { new Transaction() { Amount = 10.5, CategoryId = 1, Comment = string.Empty, DailyInfoId = -1 }, false, "Invalid DailyInfo id" },
-
-                // Test dailyinfo id validation
-                new object[] { new Transaction() { Amount = 10.5, CategoryId = 1, Comment = string.Empty, DailyInfoId = 1000000001 }, false, "Invalid DailyInfo id" },
-
-                // Test dailyinfo id validation
-                new object[] { new Transaction() { Amount = 10.5, CategoryId = 1, Comment = string.Empty, DailyInfoId = 1 }, true, string.Empty },
+                // Test Note validation
+                new object[] { new Transaction() { Amount = 10.5, CategoryId = 1, Note = StrGenerator.Const(256), Date = DateTime.Today }, false, "Note cannot exceed 255 characters" },
             };
         }
     }

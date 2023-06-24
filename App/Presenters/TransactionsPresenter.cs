@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.IdentityModel.Tokens;
 using Phinanze.Models;
 using Phinanze.Models.Statics;
@@ -8,9 +9,9 @@ using Phinanze.Views;
 
 namespace Phinanze.Presenters
 {
-    public class MonthlyReportPresenter : Presenter
+    public class TransactionsPresenter : Presenter
     {
-        private readonly IMonthlyReportView _view;
+        private readonly ITransactionsView _view;
         private readonly IView _containerView;
 
         private int _selectedMonth;
@@ -18,7 +19,7 @@ namespace Phinanze.Presenters
 
         private bool _loadMonthlyReportData;
 
-        public MonthlyReportPresenter(IMonthlyReportView view, IView containerView, int? year = null, int? month = null)
+        public TransactionsPresenter(ITransactionsView view, IView containerView, int? year = null, int? month = null)
         {
             _view = view;
             _containerView = containerView;
@@ -103,33 +104,37 @@ namespace Phinanze.Presenters
                 return; // Prevents loading data while initializing the month and year select boxes in the view
             }
     
-            List<DailyInfo2> dailyInfoList = DailyInfo2.Get.All().FindAll(d => d.Date.Month == _view.SelectedMonth && d.Date.Year == _view.SelectedYear);
+            List<Transaction> transactionList = Transaction.Get.All().FindAll(t => t.Date.Month == _view.SelectedMonth && t.Date.Year == _view.SelectedYear);
 
             if (!_view.SearchBoxText.IsNullOrEmpty())
             {
                 string searchParam = _view.SearchBoxText.Trim().ToLower();
-                dailyInfoList = dailyInfoList.FindAll(d =>
-                    d.Date.ToString().Contains(searchParam) ||
-                    d.Note.ToLower().Contains(searchParam) ||
-                    d.TotalEarning().ToString().Contains(searchParam) ||
-                    d.TotalExpense().ToString().Contains(searchParam)
+                transactionList = transactionList.FindAll(t =>
+                    t.Date.ToString().Contains(searchParam) ||
+                    t.Note.ToLower().Contains(searchParam) ||
+                    t.Amount.ToString().Contains(searchParam) ||
+                    t.Category().Name.Contains(searchParam)
                 );
             }
-   
-            List<DailyOverview> dailyOverviews = new List<DailyOverview>();
 
-            foreach(var dailyInfo in dailyInfoList)
+            double totalEarning = transactionList.FindAll(t => t.Category().CategoryType == CategoryType.EARNING).Sum(t => t.Amount);
+            double totalExpense = transactionList.FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE).Sum(t => t.Amount);
+
+            List<TransactionOverview> transactionOverviews = new List<TransactionOverview>();
+
+            foreach(var transaction in transactionList)
             {
-                dailyOverviews.Add(new DailyOverview()
+                transactionOverviews.Add(new TransactionOverview()
                 {
-                    Date = dailyInfo.Date,
-                    Note = dailyInfo.Note,
-                    TotalEarning = dailyInfo.TotalEarning(),
-                    TotalExpense = dailyInfo.TotalExpense()
+                    Date = transaction.Date,
+                    Note = transaction.Note,
+                    Category = transaction.Category().Name,
+                    Amount = transaction.Amount
+
                 });
             }
 
-            _view.PlotData(dailyOverviews);
+            _view.PlotData(transactionOverviews, totalEarning, totalExpense);
         }
 
         #endregion

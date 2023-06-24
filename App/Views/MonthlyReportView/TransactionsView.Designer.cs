@@ -1,6 +1,6 @@
 ﻿namespace Phinanze.Views
 {
-    partial class MonthlyReportView
+    partial class TransactionsView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LogoButton = new System.Windows.Forms.Button();
             this.searchTextBox = new System.Windows.Forms.TextBox();
             this.editButton = new System.Windows.Forms.Button();
@@ -42,10 +42,10 @@
             this.deleteButton = new System.Windows.Forms.Button();
             this.yearComboBox = new System.Windows.Forms.ComboBox();
             this.HomeButton = new System.Windows.Forms.Button();
-            this.monthlyReportDGV = new System.Windows.Forms.DataGridView();
+            this.transactionsDGV = new System.Windows.Forms.DataGridView();
             this.monthComboBox = new System.Windows.Forms.ComboBox();
             this.totalTransactionLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.monthlyReportDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionsDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // LogoButton
@@ -221,51 +221,51 @@
             this.HomeButton.Text = "Home";
             this.HomeButton.UseVisualStyleBackColor = false;
             // 
-            // monthlyReportDGV
+            // transactionsDGV
             // 
-            this.monthlyReportDGV.AllowUserToAddRows = false;
-            this.monthlyReportDGV.AllowUserToResizeColumns = false;
-            this.monthlyReportDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.transactionsDGV.AllowUserToAddRows = false;
+            this.transactionsDGV.AllowUserToResizeColumns = false;
+            this.transactionsDGV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.monthlyReportDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.monthlyReportDGV.BackgroundColor = System.Drawing.Color.White;
-            this.monthlyReportDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.monthlyReportDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.monthlyReportDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.monthlyReportDGV.DefaultCellStyle = dataGridViewCellStyle5;
-            this.monthlyReportDGV.GridColor = System.Drawing.Color.Black;
-            this.monthlyReportDGV.Location = new System.Drawing.Point(23, 163);
-            this.monthlyReportDGV.Margin = new System.Windows.Forms.Padding(4);
-            this.monthlyReportDGV.Name = "monthlyReportDGV";
-            this.monthlyReportDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.monthlyReportDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.monthlyReportDGV.RowHeadersVisible = false;
-            this.monthlyReportDGV.RowHeadersWidth = 30;
-            this.monthlyReportDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.monthlyReportDGV.Size = new System.Drawing.Size(1258, 516);
-            this.monthlyReportDGV.TabIndex = 62;
+            this.transactionsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.transactionsDGV.BackgroundColor = System.Drawing.Color.White;
+            this.transactionsDGV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.transactionsDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.transactionsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.transactionsDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            this.transactionsDGV.GridColor = System.Drawing.Color.Black;
+            this.transactionsDGV.Location = new System.Drawing.Point(23, 163);
+            this.transactionsDGV.Margin = new System.Windows.Forms.Padding(4);
+            this.transactionsDGV.Name = "transactionsDGV";
+            this.transactionsDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.transactionsDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.transactionsDGV.RowHeadersVisible = false;
+            this.transactionsDGV.RowHeadersWidth = 30;
+            this.transactionsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.transactionsDGV.Size = new System.Drawing.Size(1258, 516);
+            this.transactionsDGV.TabIndex = 62;
             // 
             // monthComboBox
             // 
@@ -305,7 +305,7 @@
             this.totalTransactionLabel.TabIndex = 79;
             this.totalTransactionLabel.Text = "Earning: 0.00 Expense 0.00";
             // 
-            // MonthlyReportView
+            // TransactionsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -322,11 +322,11 @@
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.yearComboBox);
             this.Controls.Add(this.HomeButton);
-            this.Controls.Add(this.monthlyReportDGV);
+            this.Controls.Add(this.transactionsDGV);
             this.Controls.Add(this.monthComboBox);
-            this.Name = "MonthlyReportView";
+            this.Name = "TransactionsView";
             this.Text = "MonthlyReportView";
-            ((System.ComponentModel.ISupportInitialize)(this.monthlyReportDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.transactionsDGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,7 +344,7 @@
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.ComboBox yearComboBox;
         private System.Windows.Forms.Button HomeButton;
-        private System.Windows.Forms.DataGridView monthlyReportDGV;
+        private System.Windows.Forms.DataGridView transactionsDGV;
         private System.Windows.Forms.ComboBox monthComboBox;
         private System.Windows.Forms.Label totalTransactionLabel;
     }

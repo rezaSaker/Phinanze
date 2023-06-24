@@ -149,12 +149,9 @@
     <Compile Include="Models\DBInfo\API_URL.cs" />
     <Compile Include="Models\DBInfo\Host.cs" />
     <Compile Include="Models\IModel.cs" />
-    <Compile Include="Models\DailyInfo2.cs" />
     <Compile Include="Models\Transaction.cs" />
-    <Compile Include="Models\ITransaction.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="Models\Repositories\CategoryRepository.cs" />
-    <Compile Include="Models\Repositories\DailyInfoRepository.cs" />
     <Compile Include="Models\Repositories\TransactionRepository.cs" />
     <Compile Include="Models\Repositories\Http\HttpRequest.cs" />
     <Compile Include="Models\Repositories\Http\HttpResponseTypes.cs" />
@@ -168,12 +165,12 @@
     <Compile Include="Models\Validations\ValidationError.cs" />
     <Compile Include="Models\ViewModels\BarChartPoint.cs" />
     <Compile Include="Models\ViewModels\PieChartPoint.cs" />
-    <Compile Include="Models\ViewModels\DailyOverview.cs" />
+    <Compile Include="Models\ViewModels\TransactionOverview.cs" />
     <Compile Include="Models\ViewModels\MonthlyOverview.cs" />
     <Compile Include="Presenters\AddNewDailyInfoPresenter.cs" />
     <Compile Include="Presenters\DashboardPresenter.cs" />
     <Compile Include="Presenters\MDIContainerPresenter.cs" />
-    <Compile Include="Presenters\MonthlyReportPresenter.cs" />
+    <Compile Include="Presenters\TransactionsPresenter.cs" />
     <Compile Include="Presenters\Presenter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -293,12 +290,12 @@
     <Compile Include="Views\MDIContainerView\MDIContainerView.Designer.cs">
       <DependentUpon>MDIContainerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MonthlyReportView\IMonthlyReportView.cs" />
-    <Compile Include="Views\MonthlyReportView\MonthlyReportView.cs">
+    <Compile Include="Views\MonthlyReportView\ITransactionsView.cs" />
+    <Compile Include="Views\MonthlyReportView\TransactionsView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MonthlyReportView\MonthlyReportView.Designer.cs">
-      <DependentUpon>MonthlyReportView.cs</DependentUpon>
+    <Compile Include="Views\MonthlyReportView\TransactionsView.Designer.cs">
+      <DependentUpon>TransactionsView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\AppLoaderForm\AppLoaderForm.resx">
       <DependentUpon>AppLoaderForm.cs</DependentUpon>
@@ -353,8 +350,8 @@
     <EmbeddedResource Include="Views\MDIContainerView\MDIContainerView.resx">
       <DependentUpon>MDIContainerView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MonthlyReportView\MonthlyReportView.resx">
-      <DependentUpon>MonthlyReportView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MonthlyReportView\TransactionsView.resx">
+      <DependentUpon>TransactionsView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="app.manifest" />

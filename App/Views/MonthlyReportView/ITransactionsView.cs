@@ -2,7 +2,7 @@
 
 namespace Phinanze.Views
 {
-    public interface IMonthlyReportView : IView
+    public interface ITransactionsView : IView
     {
         event EventHandler MonthComboBoxSelectedIndexChanged;
         event EventHandler YearComboBoxSelectedIndexChanged;

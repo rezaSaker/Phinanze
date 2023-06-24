@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Phinanze.Models.ViewModels
 {
-    public class DailyOverview
+    public class TransactionOverview
     {
         [DisplayName("Date")]
         public DateTime Date { get; set; }
@@ -15,10 +15,10 @@ namespace Phinanze.Models.ViewModels
         [DisplayName("Note")]
         public string Note { get; set; }
 
-        [DisplayName("Total Earning")]
-        public double TotalEarning { get; set; }
+        [DisplayName("Category")]
+        public string Category { get; set; }
 
-        [DisplayName("Total Expense")]
-        public double TotalExpense { get; set; }
+        [DisplayName("Amount")]
+        public double Amount { get; set; }
     }
 }

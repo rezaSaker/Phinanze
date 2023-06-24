@@ -30,6 +30,33 @@ namespace Phinanze.Models.Repositories
             return Get.All().FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE);
         }
 
+        public static List<Transaction> GetAllFromMonth(int month, int? year = null)
+        {
+            if (year == null)
+            {
+                return Get.All().FindAll(t => t.Date.Month == month);
+            }
+            return Get.All().FindAll(t => t.Date.Month == month && t.Date.Year == year);
+        }
+
+        public static double GetTotalEarningsByMonth(int month, int? year = null)
+        {
+            if (year == null)
+            {
+                return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EARNING).Sum(t => t.Amount);
+            }
+            return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EARNING).Sum(t => t.Amount);
+        }
+
+        public static double GetTotalExpensesByMonth(int month, int? year = null)
+        {
+            if (year == null)
+            {
+                return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE).Sum(t => t.Amount);
+            }
+            return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE).Sum(t => t.Amount);
+        }
+
         public Category Category()
         {
             return Phinanze.Models.Category.Get.All().Find(c => c.Id == Model.CategoryId);

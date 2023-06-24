@@ -1,4 +1,5 @@
-﻿using Phinanze.Models.ViewModels;
+﻿using Phinanze.Models.Statics;
+using Phinanze.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,9 +7,9 @@ using System.Windows.Forms;
 
 namespace Phinanze.Views
 {
-    public partial class MonthlyReportView : Form, IMonthlyReportView
+    public partial class TransactionsView : Form, ITransactionsView
     {
-        private MonthlyReportView()
+        private TransactionsView()
         {
             InitializeComponent();
 
@@ -17,15 +18,15 @@ namespace Phinanze.Views
             this.monthComboBox.SelectedIndexChanged += delegate { MonthComboBoxSelectedIndexChanged?.Invoke(this.monthComboBox, EventArgs.Empty); };
             this.yearComboBox.SelectedIndexChanged += delegate { YearComboBoxSelectedIndexChanged?.Invoke(this.yearComboBox, EventArgs.Empty); };
             this.searchTextBox.TextChanged += delegate { SearchTextBoxInputChanged?.Invoke(this.searchTextBox, EventArgs.Empty); };
-            this.monthlyReportDGV.CellDoubleClick += delegate { MonthlyReportDGVRowDoubleClick?.Invoke(this.monthlyReportDGV, EventArgs.Empty); };
+            this.transactionsDGV.CellDoubleClick += delegate { MonthlyReportDGVRowDoubleClick?.Invoke(this.transactionsDGV, EventArgs.Empty); };
             this.editButton.Click += delegate { EditButtonClick?.Invoke(this.editButton, EventArgs.Empty); };
             this.deleteButton.Click += delegate { DeleteButtonClick?.Invoke(this.deleteButton, EventArgs.Empty); };
 
             CustomViewProps.Placeholder(this.searchTextBox, "Search...");
         }
 
-        private static MonthlyReportView _instance;
-        public static MonthlyReportView Instance => _instance ?? (_instance = new MonthlyReportView());
+        private static TransactionsView _instance;
+        public static TransactionsView Instance => _instance ?? (_instance = new TransactionsView());
 
         public bool IsOpen { get; private set; }
 
@@ -71,23 +72,23 @@ namespace Phinanze.Views
 
         public void PlotData(params object[] dataSource)
         {
-            if (dataSource[0].GetType() != typeof(List<DailyOverview>))
+            if (dataSource[0].GetType() != typeof(List<TransactionOverview>))
             {
                 return;
             }
-            List<DailyOverview> dailyOverviews = (List<DailyOverview>)dataSource[0];
+            List<TransactionOverview> transactionOverviews = (List<TransactionOverview>)dataSource[0];
 
-            monthlyReportDGV.DataSource = dailyOverviews;
+            transactionsDGV.DataSource = transactionOverviews;
 
-            double totalEarning = dailyOverviews.Sum(d => d.TotalEarning);
-            double totalExpense = dailyOverviews.Sum(d => d.TotalExpense);
+            double totalEarning = dataSource[1] is double ? (double)dataSource[1] : 0;
+            double totalExpense = dataSource[1] is double ? (double)dataSource[1] : 0;
 
             this.totalTransactionLabel.Text = "Earning: $" + totalEarning + "\t Expense: $" + totalExpense;
         }
 
         public void ClearData()
         {
-            monthlyReportDGV.DataSource = null;
+            transactionsDGV.DataSource = null;
         }
 
         public event EventHandler ViewLoading;
