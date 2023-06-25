@@ -10,7 +10,7 @@ namespace Test.App.PresenterTest
     public class MDIContainerPresenterTest
     {
         [TestMethod]
-        public void TestMDIContainerPresenter_InitAndViewShow()
+        public void MDIContainerPresenter_InitializeAndShowView_SetsIsOpenAndMdiParent()
         {
             MDIContainerPresenter presenter = new MDIContainerPresenter(MDIContainerView.Instance);
             Assert.IsTrue(MDIContainerView.Instance.IsOpen);

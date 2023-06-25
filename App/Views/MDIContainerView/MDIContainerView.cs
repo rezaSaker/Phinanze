@@ -9,7 +9,7 @@ namespace Phinanze.Views
         private bool _allowFormMovement;
         private Point _prevMousePosition;
 
-        public MDIContainerView()
+        private MDIContainerView()
         {
             InitializeComponent();
 
@@ -18,6 +18,7 @@ namespace Phinanze.Views
 
             this.Shown += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
             this.Load += delegate { ViewLoading?.Invoke(this, EventArgs.Empty); };
+            this.addTransactionButton.Click += delegate { AddTransactionButtonClicked?.Invoke(this, EventArgs.Empty); };
         }
 
         private static MDIContainerView _instance;
@@ -45,6 +46,22 @@ namespace Phinanze.Views
 
         public event EventHandler ViewLoading;
         public event EventHandler ViewShown;
+        public event EventHandler AddTransactionButtonClicked;
+
+        public void InitializeComponents(params object[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PlotData(params object[] data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearData()
+        {
+            throw new NotImplementedException();
+        }
 
         private void HeaderPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -66,21 +83,6 @@ namespace Phinanze.Views
                 Location = new Point(Location.X - xShift, Location.Y - yShift);
             }
             _prevMousePosition = Cursor.Position;
-        }
-
-        public void InitializeComponents(params object[] data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void PlotData(params object[] data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearData()
-        {
-            throw new NotImplementedException();
         }
     }
 }

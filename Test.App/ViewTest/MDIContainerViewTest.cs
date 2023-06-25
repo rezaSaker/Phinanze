@@ -8,7 +8,7 @@ namespace Phinanze.Test.App.ViewTest
     public class MDIContainerViewTest
     {
         [TestMethod]
-        public void TestMDIContainerViewInitAndObjectRelations()
+        public void MDIContainerView_ObjectRelations_ValidRelations()
         {
             IView view1 = MDIContainerView.Instance;
             IContainerView view2 = MDIContainerView.Instance;

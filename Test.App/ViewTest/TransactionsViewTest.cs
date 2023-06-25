@@ -11,7 +11,7 @@ namespace Phinanze.Test.App.ViewTest
     public class TransactionsViewTest
     {
         [TestMethod]
-        public void TestTransactionsViewInitAndObjectRelations()
+        public void TransactionsView_ObjectRelations_ValidRelations()
         {
             IView view1 = TransactionsView.Instance;
             ITransactionsView view2 = TransactionsView.Instance;
@@ -25,7 +25,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestTransactionsReportDGV()
+        public void TransactionsView_OverviewDataGridView_ValidDataGridView()
         {
             PrivateObject pvtObj = new PrivateObject(TransactionsView.Instance);
             DataGridView transactionsDGV = (DataGridView)pvtObj.GetFieldOrProperty("transactionsDGV");
@@ -35,7 +35,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestPlotData()
+        public void TransactionsView_PlotData_PopulatesControls()
         {
             PrivateObject pvtObj = new PrivateObject(TransactionsView.Instance);
             DataGridView transactionsDGV = (DataGridView)pvtObj.GetFieldOrProperty("transactionsDGV");

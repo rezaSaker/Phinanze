@@ -13,7 +13,7 @@ namespace Phinanze.Test.App.ViewTest
     public class DashboardViewTest
     {
         [TestMethod]
-        public void TestDashboardViewInitAndObjectRelations()
+        public void DashboardView_ObjectRelations_ValidRelations()
         {
             IView view1 = DashboardView.Instance;
             IDashboardView view2 = DashboardView.Instance;
@@ -27,7 +27,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestOverviewBarChart()
+        public void DashboardView_OverviewBarChart_ValidChart()
         {
             PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
             Chart overviewBarChart = (Chart)pvtObj.GetFieldOrProperty("overviewBarChart");
@@ -43,7 +43,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestOverviewPieChart()
+        public void DashboardView_OverviewPieChart_ValidChart()
         {
             PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
             Chart overviewPieChart = (Chart)pvtObj.GetFieldOrProperty("overviewPieChart");
@@ -56,7 +56,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestOverviewDataGridView()
+        public void DashboardView_OverviewDataGridView_ValidDataGridView()
         {
             PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
             DataGridView overviewDGV = (DataGridView)pvtObj.GetFieldOrProperty("overviewDGV");
@@ -67,7 +67,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TestPlotData()
+        public void DashboardView_PlotData_PopulatesControls()
         {
             // Test case for the datagridview
             List<MonthlyOverview> dgvData = new List<MonthlyOverview>()

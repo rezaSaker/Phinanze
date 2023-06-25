@@ -50,6 +50,11 @@ namespace Phinanze.Views
             set => searchTextBox.Text = value;
         }
 
+        public int IdOfSelectedTransaction
+        {
+            get => int.TryParse(this.transactionsDGV.SelectedRows[0].Cells[0].Value.ToString(), out int id) ? id : -1;
+        }
+
         public new void Show()
         {
             this.IsOpen = true;
@@ -79,6 +84,7 @@ namespace Phinanze.Views
             List<TransactionOverview> transactionOverviews = (List<TransactionOverview>)dataSource[0];
 
             transactionsDGV.DataSource = transactionOverviews;
+            this.transactionsDGV.Columns["TransactionId"].Visible = false;
 
             double totalEarning = dataSource.Length > 1 && dataSource[1] is double ? (double)dataSource[1] : 0;
             double totalExpense = dataSource.Length > 2 && dataSource[2] is double ? (double)dataSource[2] : 0;

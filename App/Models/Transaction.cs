@@ -6,7 +6,7 @@ using Phinanze.Models.Validations;
 
 namespace Phinanze.Models
 {
-    public class Transaction: TransactionRepository, IModel
+    public class Transaction: TransactionRepository, IModel, ITransaction
     {
         public Transaction() { Model = this; }
 

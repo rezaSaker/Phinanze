@@ -16,5 +16,7 @@ namespace Phinanze.Views
         int SelectedYear { get; set; }
 
         string SearchBoxText { get; set; }
+
+        int IdOfSelectedTransaction { get; }
     }
 }

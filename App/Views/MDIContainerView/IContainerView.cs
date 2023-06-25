@@ -10,6 +10,6 @@ namespace Phinanze.Views
 {
     public interface IContainerView : IView
     {
-
+        event EventHandler AddTransactionButtonClicked;
     }
 }

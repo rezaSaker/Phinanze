@@ -15,6 +15,7 @@ namespace Phinanze.Presenters
             _view = view;
             _containerView = containerView;
             _view.ViewShown += OnViewShown;
+            _view.AddTransactionButtonClicked += OnAddTransactionButtonClicked;
 
             Show(_view, _containerView);
         }
@@ -25,6 +26,11 @@ namespace Phinanze.Presenters
         private void OnViewShown(object sender, EventArgs e)
         {
             DashboardPresenter dashboardPresenter = new DashboardPresenter(DashboardView.Instance, MDIContainerView.Instance);
+        }
+
+        private void OnAddTransactionButtonClicked(object sender, EventArgs e)
+        {
+            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(AddTransactionView.Instance, null, null);
         }
 
         #endregion

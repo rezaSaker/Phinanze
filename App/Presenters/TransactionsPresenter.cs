@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Microsoft.IdentityModel.Tokens;
 using Phinanze.Models;
 using Phinanze.Models.Statics;
@@ -79,8 +80,8 @@ namespace Phinanze.Presenters
 
         private void OnMonthlyReportDGVRowDoubleClick(object sender, EventArgs e)
         {
-            AddNewDailyInfoPresenter presenter = new AddNewDailyInfoPresenter(AddNewDailyInfoView.Instance, MDIContainerView.Instance);
-            _view.Hide();
+            Transaction transaction = Transaction.Get.All().Find(t => t.Id == _view.IdOfSelectedTransaction);
+            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(AddTransactionView.Instance, null, transaction);
         }
 
         private void OnEditButtonClick(object sender, EventArgs e)
@@ -126,6 +127,7 @@ namespace Phinanze.Presenters
             {
                 transactionOverviews.Add(new TransactionOverview()
                 {
+                    TransactionId = transaction.Id,
                     Date = transaction.Date,
                     Note = transaction.Note,
                     Category = transaction.Category().Name,

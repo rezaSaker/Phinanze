@@ -14,8 +14,11 @@ namespace Test.App.PresenterTest
         static DashboardPresenter presenter = new DashboardPresenter(DashboardView.Instance, MDIContainerView.Instance);
 
         [TestMethod]
-        public void TestDashboardPresenter_InitAndViewShow()
+        public void DashboardPresenter_Constructor_InitializesVariables()
         {
+            var presenter = new DashboardPresenter(DashboardView.Instance, MDIContainerView.Instance);
+
+            Assert.IsNotNull(presenter);
             Assert.IsTrue(MDIContainerView.Instance.IsOpen);
             Assert.IsNotNull(DashboardView.Instance.MdiParent);
             Assert.IsInstanceOfType(DashboardView.Instance.MdiParent, typeof(IContainerView));
@@ -23,7 +26,7 @@ namespace Test.App.PresenterTest
         }
 
         [TestMethod]
-        public void TestDashboardPresenter_OnViewLoad()
+        public void DashboardPresenter_OnViewLoad_InitializesComponents()
         {
             PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
             ComboBox yearCB = (ComboBox)pvtObj.GetFieldOrProperty("yearComboBox");
@@ -38,7 +41,7 @@ namespace Test.App.PresenterTest
         }
 
         [TestMethod]
-        public void TestDashboardPresenter_LoadDashboardData()
+        public void DashboardPresenter_LoadDashboardData_PopulatesChartsWithData()
         {
             PrivateObject presenterObj = new PrivateObject(presenter);
             presenterObj.Invoke("OnViewShown", new object[] { this, null }); // This will trigger LoadDashboardData()
