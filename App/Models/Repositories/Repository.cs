@@ -15,13 +15,14 @@ namespace Phinanze.Models.Repositories
     /// <typeparam name="T">The model associated with the child repository class</typeparam>
     public class Repository<T> where T : IModel
     {
-        private int? _id;  // _id of the child model T
-        private T _model;  // the child T model 
-        private List<T> _localCopyOfAllEntries;   // Local copy of all DB entries of child T model associated with the current user
+        private int? _id; 
+        private T _model; 
+        private List<T> _localCopyOfAllEntries; 
+        private string _responseStringFromLastSaveRequest; 
 
         private static bool _resetLocalCopyOfAllEntries = true; // Indicates whether _localCopyOfAllEntries needs to be reset
 
-        // The Id of the associated model object (NULL if the model object hasn't been saved into DB)
+        // The Id of the child model (NULL if the model hasn't been saved into DB)
         public int Id
         {
             get { return (int)_id; }
@@ -32,7 +33,9 @@ namespace Phinanze.Models.Repositories
             }
         }
 
-        // The model that extends the Base Repository through the Model's specific repository
+        /// <summary>
+        /// The child model
+        /// </summary>
         protected T Model
         {
             get {  return _model; }
@@ -44,8 +47,13 @@ namespace Phinanze.Models.Repositories
         }
 
         /// <summary>
-        /// Constructor
+        /// Response String from the last save request
         /// </summary>
+        public string ResponseStringFromLastSaveRequest()
+        {
+            return _responseStringFromLastSaveRequest; 
+        }
+
         public Repository() 
         {
             _id = null;
@@ -58,8 +66,12 @@ namespace Phinanze.Models.Repositories
         /// <returns>True if the save is successful, otherwise false</returns>
         public bool Save()
         {
-            if(!EntityValidator.Validate(_model).IsValid)
+            _responseStringFromLastSaveRequest = String.Empty;
+            EntityValidationResult validator = EntityValidator.Validate(_model);
+
+            if (!validator.IsValid)
             {
+                validator.Errors.ForEach(error => _responseStringFromLastSaveRequest += error.ErrorMessage + '\n');
                 return false;
             }
 
@@ -91,8 +103,11 @@ namespace Phinanze.Models.Repositories
                     _id = http.ResponseModel.Id;
                 }
                 _resetLocalCopyOfAllEntries = true;
+                return true;
             }
-            return http.IsSuccessful;
+
+            _responseStringFromLastSaveRequest += http.ResponseString;
+            return false;
         }
 
         /// <summary>

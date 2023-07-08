@@ -14,8 +14,6 @@ namespace Phinanze.Views
 {
     public partial class AddTransactionView : Form, IView, IAddTransactionView
     {
-        private Category _category;
-
         private AddTransactionView()
         {
             InitializeComponent();
@@ -35,7 +33,11 @@ namespace Phinanze.Views
 
         public bool IsHidden { get; private set; }
 
-        public DateTime Date { get => this.dateDTP.Value; set => this.dateDTP.Value = value; }
+        public DateTime Date 
+        { 
+            get => this.dateDTP.Value; 
+            set => this.dateDTP.Value = value;
+        }
 
         public double Amount 
         { 
@@ -45,13 +47,20 @@ namespace Phinanze.Views
 
         public Category Category 
         { 
-            get => _category;
-            set
+            get
             {
-                _category = value;     
+                if(this.categoryComboBox.SelectedIndex >= 0)
+                {
+                    string categoryName = this.categoryComboBox.Items[this.categoryComboBox.SelectedIndex].ToString();
+                    return Phinanze.Models.Category.Get.All().FirstOrDefault(c => c.Name == categoryName) ?? null;
+                }
+                return null;
+            }
+            set
+            {    
                 if(value != null)
                 {
-                    this.categoryComboBox.SelectedIndex = this.categoryComboBox.Items.IndexOf(value?.Name);
+                    this.categoryComboBox.SelectedIndex = this.categoryComboBox.Items.IndexOf(value.Name);
                 }
                 else
                 {
@@ -60,7 +69,11 @@ namespace Phinanze.Views
             }
         }
 
-        public string Note { get => this.noteTextBox.Text; set => this.noteTextBox.Text = value; }
+        public string Note 
+        { 
+            get => this.noteTextBox.Text;
+            set => this.noteTextBox.Text = value; 
+        }
 
         public void InitializeComponents(params object[] dataSource)
         {

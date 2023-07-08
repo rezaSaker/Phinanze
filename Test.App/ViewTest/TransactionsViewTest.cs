@@ -49,9 +49,9 @@ namespace Phinanze.Test.App.ViewTest
             TransactionsView.Instance.PlotData(dgvData, 10.0, 15);
 
             Assert.AreEqual(2, transactionsDGV.RowCount);
-            Assert.AreEqual(4, transactionsDGV.ColumnCount);
-            Assert.AreEqual(DateTime.Today.Date, transactionsDGV.Rows[0].Cells[0].Value);
-            Assert.AreEqual("Note", transactionsDGV.Rows[0].Cells[1].Value);
+            Assert.AreEqual(5, transactionsDGV.ColumnCount);
+            Assert.AreEqual(DateTime.Today.Date, transactionsDGV.Rows[0].Cells[1].Value);
+            Assert.AreEqual("Note", transactionsDGV.Rows[0].Cells[2].Value);
 
             TransactionsView.Instance.ClearData();
             Assert.AreEqual(0, transactionsDGV.RowCount);
