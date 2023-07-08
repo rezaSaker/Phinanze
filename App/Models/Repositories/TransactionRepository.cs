@@ -45,7 +45,7 @@ namespace Phinanze.Models.Repositories
             {
                 return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EARNING).Sum(t => t.Amount);
             }
-            return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EARNING).Sum(t => t.Amount);
+            return GetAllFromMonth(month, year).FindAll(t => t.Category().CategoryType == CategoryType.EARNING).Sum(t => t.Amount);
         }
 
         public static double GetTotalExpensesByMonth(int month, int? year = null)
@@ -54,7 +54,7 @@ namespace Phinanze.Models.Repositories
             {
                 return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE).Sum(t => t.Amount);
             }
-            return GetAllFromMonth(month).FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE).Sum(t => t.Amount);
+            return GetAllFromMonth(month, year).FindAll(t => t.Category().CategoryType == CategoryType.EXPENSE).Sum(t => t.Amount);
         }
 
         public Category Category()
