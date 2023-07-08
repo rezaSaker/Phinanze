@@ -81,7 +81,7 @@ namespace Phinanze.Presenters
         private void OnMonthlyReportDGVRowDoubleClick(object sender, EventArgs e)
         {
             Transaction transaction = Transaction.Get.All().Find(t => t.Id == _view.IdOfSelectedTransaction);
-            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(new AddTransactionView(), null, transaction);
+            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(AddTransactionView.Instance(), null, transaction);
         }
 
         private void OnEditButtonClick(object sender, EventArgs e)

@@ -30,7 +30,7 @@ namespace Phinanze.Presenters
 
         private void OnAddTransactionButtonClicked(object sender, EventArgs e)
         {
-            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(new AddTransactionView(), null);
+            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(AddTransactionView.Instance(), null);
         }
 
         #endregion

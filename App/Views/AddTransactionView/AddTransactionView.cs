@@ -14,15 +14,25 @@ namespace Phinanze.Views
 {
     public partial class AddTransactionView : Form, IView, IAddTransactionView
     {
-        public AddTransactionView()
+        private AddTransactionView()
         {
             InitializeComponent();
 
             this.Load += delegate { ViewLoading?.Invoke(this, EventArgs.Empty); };
-            this.Shown += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
+            this.VisibleChanged += delegate { ViewShown?.Invoke(this, EventArgs.Empty); };
             this.savebutton.Click += delegate { SaveButtonClicked?.Invoke(this, EventArgs.Empty); };
             this.deleteButton.Click += delegate { DeleteButtonClicked?.Invoke(this, EventArgs.Empty); };
             this.FormClosing += OnFormClosing;
+        }
+
+        private static AddTransactionView _instance;
+        public static AddTransactionView Instance()
+        {
+            if (_instance == null)
+            {
+                _instance = new AddTransactionView();
+            }
+            return _instance;
         }
 
         public bool IsOpen { get; private set; }
@@ -116,6 +126,11 @@ namespace Phinanze.Views
             this.IsOpen = false;
             this.IsHidden = true;
             base.Hide();
+        }
+
+        public new void Close()
+        {
+            this.Hide();
         }
 
         public void OnFormClosing(object sender, FormClosingEventArgs e)

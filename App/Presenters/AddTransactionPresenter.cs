@@ -54,7 +54,7 @@ namespace Phinanze.Presenters
             if (transaction.Save())
             {
                 MessageBox.Show("Transacation has been saved!");
-                _view.Hide();
+                _view.Close();
 
                 if(MDIContainerView.Instance.ActiveMdiChild.GetType() == typeof(DashboardView))
                 {
