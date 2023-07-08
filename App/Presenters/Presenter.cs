@@ -5,13 +5,18 @@ namespace Phinanze.Presenters
 {
     public class Presenter
     {
-        protected void Show(IView view, IView containerView = null)
+        protected void Show(IView view, IContainerView containerView = null)
         {
             if (containerView != null)
             {
                 if(!containerView.IsOpen)
                 {
                     containerView.Show();
+                }
+
+                if(containerView.ActiveChildView != null)
+                {
+                    containerView.ActiveChildView.Close();
                 }
 
                 ((Form)view).MdiParent = (Form)containerView;

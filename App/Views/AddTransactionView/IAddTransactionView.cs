@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace Phinanze.Views
 {
-    public interface IAddTransactionView  :IView
+    public interface IAddTransactionView : IView
     {
         event EventHandler SaveButtonClicked;
         event EventHandler DeleteButtonClicked;
-        event EventHandler ViewVisibilityChanged;
 
         DateTime Date { get; set; }
         double Amount { get; set; }

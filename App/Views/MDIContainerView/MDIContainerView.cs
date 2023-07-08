@@ -30,6 +30,8 @@ namespace Phinanze.Views
 
         public bool IsHidden { get; private set; }
 
+        public IView ActiveChildView { get => (IView)this.ActiveMdiChild; }
+
         public new void Show()
         {
             this.IsOpen = true;

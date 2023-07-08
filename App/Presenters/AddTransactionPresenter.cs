@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Phinanze.Models;
+using Phinanze.Models.Statics;
 using Phinanze.Views;
 
 namespace Phinanze.Presenters
@@ -15,14 +16,13 @@ namespace Phinanze.Presenters
         private IContainerView _containerView;
         private ITransaction _transaction;
 
-        public AddTransactionPresenter(IAddTransactionView view, IContainerView containerView, ITransaction transaction)        {
+        public AddTransactionPresenter(IAddTransactionView view, IContainerView containerView, ITransaction transaction = null)        {
             _view = view;
             _containerView = containerView;
             _transaction = transaction;
 
             _view.ViewLoading += OnViewLoading;
-            //_view.ViewShown += OnViewShown;
-            _view.ViewVisibilityChanged += OnViewShown;
+            _view.ViewShown += OnViewShown;
             _view.SaveButtonClicked += OnSaveButtonClicked;
 
             Show(_view, _containerView);
@@ -44,20 +44,26 @@ namespace Phinanze.Presenters
 
         public void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            Category cat = _view.Category;
+            Transaction transaction = _transaction != null ? (Transaction)_transaction : new Transaction();
 
-            Transaction transaction = new Transaction()
-            {
-                Date = _view.Date,
-                Amount = _view.Amount,
-                CategoryId = _view.Category.Id,
-                Note = _view.Note
-            };
+            transaction.Date = _view.Date;
+            transaction.Amount = _view.Amount;
+            transaction.CategoryId = _view.Category != null ? _view.Category.Id : 0;
+            transaction.Note = _view.Note;
 
             if (transaction.Save())
             {
                 MessageBox.Show("Transacation has been saved!");
                 _view.Hide();
+
+                if(MDIContainerView.Instance.ActiveMdiChild.GetType() == typeof(DashboardView))
+                {
+                    DashboardPresenter dashboardPresenter = new DashboardPresenter(new DashboardView(), MDIContainerView.Instance);
+                }
+                else if(MDIContainerView.Instance.ActiveMdiChild.GetType() == typeof(TransactionsView))
+                {
+                    TransactionsPresenter presenter = new TransactionsPresenter(new TransactionsView(), MDIContainerView.Instance, _view.Date.Year, _view.Date.Month);
+                }
             }
             else
             {

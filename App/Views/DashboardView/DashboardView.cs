@@ -12,7 +12,7 @@ namespace Phinanze.Views
 {
     public partial class DashboardView : Form, IDashboardView
     {
-        private DashboardView()
+        public DashboardView()
         {
             InitializeComponent();
 
@@ -21,9 +21,6 @@ namespace Phinanze.Views
             this.yearComboBox.SelectedIndexChanged += delegate { YearComboBoxSelectedIndexChanged?.Invoke(this.yearComboBox, EventArgs.Empty); };
             this.overviewDGV.CellDoubleClick += delegate { OverviewDGVRowDoubleClick?.Invoke(this.overviewDGV, EventArgs.Empty); };
         }
-
-        private static DashboardView _instance;
-        public static DashboardView Instance => _instance ?? (_instance = new DashboardView());
 
         public bool IsOpen { get; private set; }
 

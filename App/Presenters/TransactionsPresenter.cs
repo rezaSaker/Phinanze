@@ -13,14 +13,14 @@ namespace Phinanze.Presenters
     public class TransactionsPresenter : Presenter
     {
         private readonly ITransactionsView _view;
-        private readonly IView _containerView;
+        private readonly IContainerView _containerView;
 
         private int _selectedMonth;
         private int _selectedYear;
 
         private bool _loadMonthlyReportData;
 
-        public TransactionsPresenter(ITransactionsView view, IView containerView, int? year = null, int? month = null)
+        public TransactionsPresenter(ITransactionsView view, IContainerView containerView, int? year = null, int? month = null)
         {
             _view = view;
             _containerView = containerView;
@@ -81,7 +81,7 @@ namespace Phinanze.Presenters
         private void OnMonthlyReportDGVRowDoubleClick(object sender, EventArgs e)
         {
             Transaction transaction = Transaction.Get.All().Find(t => t.Id == _view.IdOfSelectedTransaction);
-            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(AddTransactionView.Instance, null, transaction);
+            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(new AddTransactionView(), null, transaction);
         }
 
         private void OnEditButtonClick(object sender, EventArgs e)

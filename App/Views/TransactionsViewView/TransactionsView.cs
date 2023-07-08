@@ -9,7 +9,7 @@ namespace Phinanze.Views
 {
     public partial class TransactionsView : Form, ITransactionsView
     {
-        private TransactionsView()
+        public TransactionsView()
         {
             InitializeComponent();
 
@@ -24,9 +24,6 @@ namespace Phinanze.Views
 
             CustomViewProps.Placeholder(this.searchTextBox, "Search...");
         }
-
-        private static TransactionsView _instance;
-        public static TransactionsView Instance => _instance ?? (_instance = new TransactionsView());
 
         public bool IsOpen { get; private set; }
 

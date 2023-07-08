@@ -8,9 +8,9 @@ namespace Phinanze.Presenters
     public class MDIContainerPresenter : Presenter
     {
         private readonly IContainerView _view;
-        private readonly IView _containerView;
+        private readonly IContainerView _containerView;
 
-        public MDIContainerPresenter(IContainerView view, IView containerView = null)
+        public MDIContainerPresenter(IContainerView view, IContainerView containerView = null)
         {
             _view = view;
             _containerView = containerView;
@@ -25,12 +25,12 @@ namespace Phinanze.Presenters
 
         private void OnViewShown(object sender, EventArgs e)
         {
-            DashboardPresenter dashboardPresenter = new DashboardPresenter(DashboardView.Instance, MDIContainerView.Instance);
+            DashboardPresenter dashboardPresenter = new DashboardPresenter(new DashboardView(), MDIContainerView.Instance);
         }
 
         private void OnAddTransactionButtonClicked(object sender, EventArgs e)
         {
-            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(AddTransactionView.Instance, null, null);
+            AddTransactionPresenter transactionPresenter = new AddTransactionPresenter(new AddTransactionView(), null);
         }
 
         #endregion

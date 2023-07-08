@@ -13,10 +13,8 @@ namespace Phinanze.Test.App.ViewTest
         [TestMethod]
         public void TransactionsView_ObjectRelations_ValidRelations()
         {
-            IView view1 = TransactionsView.Instance;
-            ITransactionsView view2 = TransactionsView.Instance;
-
-            Assert.AreSame(view1, view2);
+            IView view1 = new TransactionsView();
+            ITransactionsView view2 = new TransactionsView();
 
             view2 = view1 as ITransactionsView;
             Assert.AreSame(view1, view2);
@@ -27,7 +25,7 @@ namespace Phinanze.Test.App.ViewTest
         [TestMethod]
         public void TransactionsView_OverviewDataGridView_ValidDataGridView()
         {
-            PrivateObject pvtObj = new PrivateObject(TransactionsView.Instance);
+            PrivateObject pvtObj = new PrivateObject(new TransactionsView());
             DataGridView transactionsDGV = (DataGridView)pvtObj.GetFieldOrProperty("transactionsDGV");
 
             Assert.AreEqual(0, transactionsDGV.ColumnCount);
@@ -37,7 +35,8 @@ namespace Phinanze.Test.App.ViewTest
         [TestMethod]
         public void TransactionsView_PlotData_PopulatesControls()
         {
-            PrivateObject pvtObj = new PrivateObject(TransactionsView.Instance);
+            TransactionsView view = new TransactionsView();
+            PrivateObject pvtObj = new PrivateObject(view);
             DataGridView transactionsDGV = (DataGridView)pvtObj.GetFieldOrProperty("transactionsDGV");
 
             Assert.AreEqual(0, transactionsDGV.RowCount);
@@ -46,20 +45,20 @@ namespace Phinanze.Test.App.ViewTest
                 new TransactionOverview() { Date = DateTime.Today.Date, Note = "Note", Amount = 100, Category = "Car" },
                 new TransactionOverview() { Date = DateTime.Today.Date, Note = "Note", Amount = 100, Category = "Food" }
             };
-            TransactionsView.Instance.PlotData(dgvData, 10.0, 15);
+            view.PlotData(dgvData, 10.0, 15);
 
             Assert.AreEqual(2, transactionsDGV.RowCount);
             Assert.AreEqual(5, transactionsDGV.ColumnCount);
             Assert.AreEqual(DateTime.Today.Date, transactionsDGV.Rows[0].Cells[1].Value);
             Assert.AreEqual("Note", transactionsDGV.Rows[0].Cells[2].Value);
 
-            TransactionsView.Instance.ClearData();
+            view.ClearData();
             Assert.AreEqual(0, transactionsDGV.RowCount);
 
-            TransactionsView.Instance.PlotData(dgvData); // This should not throw any error 
+            view.PlotData(dgvData); // This should not throw any error 
             Assert.AreEqual(2, transactionsDGV.RowCount);
 
-            TransactionsView.Instance.ClearData();
+            view.ClearData();
             Assert.AreEqual(0, transactionsDGV.RowCount);
         }
     }

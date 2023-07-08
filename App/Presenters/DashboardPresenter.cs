@@ -13,9 +13,9 @@ namespace Phinanze.Presenters
     public class DashboardPresenter : Presenter
     {
         private readonly IDashboardView _view;
-        private readonly IView _containerView;
+        private readonly IContainerView _containerView;
 
-        public DashboardPresenter(IDashboardView view, IView containerView = null)
+        public DashboardPresenter(IDashboardView view, IContainerView containerView = null)
         {
             _view = view;
             _containerView = containerView;
@@ -58,8 +58,7 @@ namespace Phinanze.Presenters
             int? year = _view.SelectedYearFromOverviewTable;
             int? month = Month.MonthNumber(_view.SelectedMonthFromOverviewTable);
 
-            TransactionsPresenter presenter = new TransactionsPresenter(TransactionsView.Instance, MDIContainerView.Instance, year, month);
-            _view.Hide();
+            TransactionsPresenter presenter = new TransactionsPresenter(new TransactionsView(), MDIContainerView.Instance, year, month);
         }
         #endregion
 

@@ -13,23 +13,10 @@ namespace Phinanze.Test.App.ViewTest
     public class DashboardViewTest
     {
         [TestMethod]
-        public void DashboardView_ObjectRelations_ValidRelations()
-        {
-            IView view1 = DashboardView.Instance;
-            IDashboardView view2 = DashboardView.Instance;
-
-            Assert.AreSame(view1, view2);
-
-            view2 = view1 as IDashboardView;
-            Assert.AreSame(view1, view2);
-
-            Assert.IsInstanceOfType(view1, typeof(Form));
-        }
-
-        [TestMethod]
         public void DashboardView_OverviewBarChart_ValidChart()
         {
-            PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
+            DashboardView view = new DashboardView();
+            PrivateObject pvtObj = new PrivateObject(view);
             Chart overviewBarChart = (Chart)pvtObj.GetFieldOrProperty("overviewBarChart");
 
             Assert.IsNotNull(overviewBarChart);
@@ -45,7 +32,8 @@ namespace Phinanze.Test.App.ViewTest
         [TestMethod]
         public void DashboardView_OverviewPieChart_ValidChart()
         {
-            PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
+            DashboardView view = new DashboardView();
+            PrivateObject pvtObj = new PrivateObject(view);
             Chart overviewPieChart = (Chart)pvtObj.GetFieldOrProperty("overviewPieChart");
 
             Assert.IsNotNull(overviewPieChart);
@@ -58,7 +46,8 @@ namespace Phinanze.Test.App.ViewTest
         [TestMethod]
         public void DashboardView_OverviewDataGridView_ValidDataGridView()
         {
-            PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
+            DashboardView view = new DashboardView();
+            PrivateObject pvtObj = new PrivateObject(view);
             DataGridView overviewDGV = (DataGridView)pvtObj.GetFieldOrProperty("overviewDGV");
 
             Assert.IsNotNull(overviewDGV);
@@ -97,11 +86,12 @@ namespace Phinanze.Test.App.ViewTest
                 new PieChartPoint() { X = "Expense", Y = -10.5 }
             };
 
-            PrivateObject pvtObj = new PrivateObject(DashboardView.Instance);
+            DashboardView view = new DashboardView();
+            PrivateObject pvtObj = new PrivateObject(view);
             DataGridView overviewDGV = (DataGridView)pvtObj.GetFieldOrProperty("overviewDGV");
             Chart overviewBarChart = (Chart)pvtObj.GetFieldOrProperty("overviewBarChart");
             Chart overviewPieChart = (Chart)pvtObj.GetFieldOrProperty("overviewPieChart");
-            DashboardView.Instance.PlotData(dgvData, pcData, bcData);
+            view.PlotData(dgvData, pcData, bcData);
 
             // DGV test
             Assert.AreEqual(2, overviewDGV.RowCount);
@@ -130,7 +120,7 @@ namespace Phinanze.Test.App.ViewTest
             {
                 new MonthlyOverview(){ Year = 2023, Month = null, TotalEarning = 100.50, TotalExpense = 90.50, Difference = 10.0 }
             };
-            DashboardView.Instance.PlotData(dgvBadCase, pcData, bcData);
+            view.PlotData(dgvBadCase, pcData, bcData);
             Assert.AreEqual(1, overviewDGV.RowCount);
 
             Dictionary<string, List<BarChartPoint>>  bcBadCase = new Dictionary<string, List<BarChartPoint>>()
@@ -140,16 +130,16 @@ namespace Phinanze.Test.App.ViewTest
                     new BarChartPoint() { X = null, Y = 100.5 }
                 }
             };
-            Assert.ThrowsException<ArgumentNullException>(() => DashboardView.Instance.PlotData(dgvData, pcData, bcBadCase));
+            Assert.ThrowsException<ArgumentNullException>(() => view.PlotData(dgvData, pcData, bcBadCase));
 
 
             List<PieChartPoint> pcBadCase = new List<PieChartPoint>()
             {
                 new PieChartPoint() { X = null, Y = 100.5 }
             };
-            Assert.ThrowsException<ArgumentNullException>(() => DashboardView.Instance.PlotData(dgvData, pcBadCase, bcData));
+            Assert.ThrowsException<ArgumentNullException>(() => view.PlotData(dgvData, pcBadCase, bcData));
 
-            DashboardView.Instance.ClearData();
+            view.ClearData();
 
             Assert.AreEqual(0, overviewDGV.RowCount);
         }

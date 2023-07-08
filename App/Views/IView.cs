@@ -24,6 +24,8 @@ namespace Phinanze.Views
 
         void ClearData();
 
+        void Close();
+
         event EventHandler ViewLoading;
         event EventHandler ViewShown;
     }
