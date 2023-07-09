@@ -16,25 +16,30 @@ namespace Phinanze.Presenters
         private IContainerView _containerView;
         private ITransaction _transaction;
 
-        public AddTransactionPresenter(IAddTransactionView view, IContainerView containerView, ITransaction transaction = null)        {
+        public AddTransactionPresenter(IAddTransactionView view, IContainerView containerView, ITransaction transaction = null)
+        {
             _view = view;
             _containerView = containerView;
             _transaction = transaction;
 
             _view.ViewLoading += OnViewLoading;
             _view.ViewShown += OnViewShown;
-            _view.SaveButtonClicked += OnSaveButtonClicked;
+            _view.SaveButtonClicked += OnSaveButtonClick;
 
+            if(view.IsOpen)
+            {
+                view.Hide();
+            }
             Show(_view, _containerView);
         }
 
-        public void OnViewLoading(object sender, EventArgs e)
+        private void OnViewLoading(object sender, EventArgs e)
         {
             List<Category> categoryList = Category.Get.All();
             _view.InitializeComponents(categoryList);
         }
 
-        public void OnViewShown(object sender, EventArgs e)
+        private void OnViewShown(object sender, EventArgs e)
         {
             if(_transaction != null && _view.IsOpen)
             {
@@ -42,7 +47,7 @@ namespace Phinanze.Presenters
             }
         }
 
-        public void OnSaveButtonClicked(object sender, EventArgs e)
+        private void OnSaveButtonClick(object sender, EventArgs e)
         {
             Transaction transaction = _transaction != null ? (Transaction)_transaction : new Transaction();
 
@@ -55,6 +60,11 @@ namespace Phinanze.Presenters
             {
                 MessageBox.Show("Transacation has been saved!");
                 _view.Close();
+
+                if(MDIContainerView.Instance.ActiveMdiChild == null)
+                {
+                    return;
+                }
 
                 if(MDIContainerView.Instance.ActiveMdiChild.GetType() == typeof(DashboardView))
                 {
