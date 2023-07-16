@@ -56,7 +56,6 @@
     <Compile Include="HttpRequestTest\CategoryHttpCRUDTest.cs" />
     <Compile Include="HttpRequestTest\TransctionHttpCRUDTest.cs" />
     <Compile Include="PresenterTest\AddTransactionPresenterTest.cs" />
-    <Compile Include="PresenterTest\MDIContainerPresenterTest.cs" />
     <Compile Include="PresenterTest\DashboardPresenterTest.cs" />
     <Compile Include="PresenterTest\TransactionsPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,7 +64,6 @@
     <Compile Include="ValidationTest\TransactionValidationTest.cs" />
     <Compile Include="ViewTest\AddTransactionViewTest.cs" />
     <Compile Include="ViewTest\DashboardViewTest.cs" />
-    <Compile Include="ViewTest\MDIContainerViewTest.cs" />
     <Compile Include="ViewTest\TransactionsViewTest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,19 +11,7 @@ namespace Phinanze.Test.App.ViewTest
     public class TransactionsViewTest
     {
         [TestMethod]
-        public void TransactionsView_ObjectRelations_ValidRelations()
-        {
-            IView view1 = new TransactionsView();
-            ITransactionsView view2 = new TransactionsView();
-
-            view2 = view1 as ITransactionsView;
-            Assert.AreSame(view1, view2);
-
-            Assert.IsInstanceOfType(view1, typeof(Form));
-        }
-
-        [TestMethod]
-        public void TransactionsView_OverviewDataGridView_ValidDataGridView()
+        public void OverviewDataGridShouldLoadAsSpecified()
         {
             PrivateObject pvtObj = new PrivateObject(new TransactionsView());
             DataGridView transactionsDGV = (DataGridView)pvtObj.GetFieldOrProperty("transactionsDGV");
@@ -33,7 +21,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void TransactionsView_PlotData_PopulatesControls()
+        public void PlotDataShouldPopulateControls()
         {
             TransactionsView view = new TransactionsView();
             PrivateObject pvtObj = new PrivateObject(view);

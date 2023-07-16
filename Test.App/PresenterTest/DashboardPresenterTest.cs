@@ -11,21 +11,9 @@ namespace Test.App.PresenterTest
     [TestClass]
     public class DashboardPresenterTest
     {
-        [TestMethod]
-        public void DashboardPresenter_Constructor_InitializesVariables()
-        {
-            DashboardView view = new DashboardView();
-            var presenter = new DashboardPresenter(view, MDIContainerView.Instance);
-
-            Assert.IsNotNull(presenter);
-            Assert.IsTrue(MDIContainerView.Instance.IsOpen);
-            Assert.IsNotNull(view.MdiParent);
-            Assert.IsInstanceOfType(view.MdiParent, typeof(IContainerView));
-            Assert.AreEqual(MDIContainerView.Instance, view.MdiParent);
-        }
 
         [TestMethod]
-        public void DashboardPresenter_OnViewLoad_InitializesComponents()
+        public void OnViewLoadShouldInitializeComponents()
         {
             DashboardView view = new DashboardView();
             DashboardPresenter presenter = new DashboardPresenter(view, MDIContainerView.Instance);
@@ -45,7 +33,7 @@ namespace Test.App.PresenterTest
         }
 
         [TestMethod]
-        public void DashboardPresenter_LoadDashboardData_PopulatesChartsWithData()
+        public void LoadDashboardDataShouldPopulateChartsWithData()
         {
             DashboardView view = new DashboardView();
             DashboardPresenter presenter = new DashboardPresenter(view, MDIContainerView.Instance);

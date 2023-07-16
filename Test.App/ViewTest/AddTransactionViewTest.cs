@@ -15,7 +15,7 @@ namespace Test.App.ViewTest
     public class AddTransactionViewTest
     {
         [TestMethod]
-        public void AddTransactionView_IsSingleton()
+        public void AddTransactionViewShouldBeSingleton()
         {
             IView view1 = AddTransactionView.Instance();
             AddTransactionView view2 = AddTransactionView.Instance();
@@ -24,7 +24,7 @@ namespace Test.App.ViewTest
         }
 
         [TestMethod]
-        public void AddTransactionsView_PlotData_PopulatesControls()
+        public void PlotDataShouldPopulateControls()
         {
             AddTransactionView view = AddTransactionView.Instance();
             view.InitializeComponents(Category.Get.All());

@@ -13,7 +13,7 @@ namespace Phinanze.Test.App.ViewTest
     public class DashboardViewTest
     {
         [TestMethod]
-        public void DashboardView_OverviewBarChart_ValidChart()
+        public void OverviewBarChartShouldLoadAsSpecified()
         {
             DashboardView view = new DashboardView();
             PrivateObject pvtObj = new PrivateObject(view);
@@ -30,7 +30,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void DashboardView_OverviewPieChart_ValidChart()
+        public void OverviewPieChartShouldLoadAsSpecified()
         {
             DashboardView view = new DashboardView();
             PrivateObject pvtObj = new PrivateObject(view);
@@ -44,7 +44,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void DashboardView_OverviewDataGridView_ValidDataGridView()
+        public void OverviewDataGridViewShouldLoadAsSpecified()
         {
             DashboardView view = new DashboardView();
             PrivateObject pvtObj = new PrivateObject(view);
@@ -56,7 +56,7 @@ namespace Phinanze.Test.App.ViewTest
         }
 
         [TestMethod]
-        public void DashboardView_PlotData_PopulatesControls()
+        public void PlotDataShouldPopulateControls()
         {
             // Test case for the datagridview
             List<MonthlyOverview> dgvData = new List<MonthlyOverview>()
